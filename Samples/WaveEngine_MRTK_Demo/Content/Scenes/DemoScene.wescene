@@ -1,0 +1,99 @@
+!WaveEngine.Framework.Assets.AssetSources.Entities.SceneModel,WaveEngine.Framework
+Items:
+  - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+    Name: camera
+    Tag: null
+    IsEnabled: true
+    IsStatic: false
+    Components:
+      - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+        Id: d8af0a4f-ec5d-4dbd-88d5-b657d9821e64
+        LocalOrientation:
+          W: 0.923879564
+          X: -0.382683396
+          Y: 0.0
+          Z: 0.0
+        LocalPosition:
+          X: 0.0
+          Y: 2.0
+          Z: 2.0
+        LocalScale:
+          X: 1.0
+          Y: 1.0
+          Z: 1.0
+      - !WaveEngine.Components.Cameras.FreeCamera3D,WaveEngine.Components
+        Id: 98c044c8-e826-4290-bdec-7c37e65dd58a
+        MaxPitch: 1.49225616
+        MouseSensibility: 0.0299999993
+        Speed: 5.0
+        TouchMoveAndOrientationRatio: 0.5
+        TouchSensibility: 1.0
+        UpdateOrder: 0.5
+      - !WaveEngine.Framework.Graphics.Camera3D,WaveEngine.Framework
+        Id: e6234645-a09c-405e-b7cc-e8970277f72c
+        AspectRatio: -1.0
+        BackgroundColor:
+          A: 255
+          B: 237
+          G: 149
+          R: 100
+        CameraOrder: 0.0
+        ClearDepth: 1.0
+        ClearFlags: All
+        ClearStencil: 0
+        CustomProjection: null
+        DepthRange:
+          MaxDepth: 1.0
+          MinDepth: 0.0
+        DisplayTag: null
+        FarPlane: 1000.0
+        FieldOfView: 0.785398185
+        FrameBuffer: null
+        FrustumCullingEnabled: true
+        LayerMaskDefaultValue: true
+        NearPlane: 0.100000001
+        ScreenViewport:
+          Height: 0.0
+          MaxDepth: 0.0
+          MinDepth: 0.0
+          Width: 0.0
+          X: 0.0
+          Y: 0.0
+        UpVector:
+          X: 0.0
+          Y: 1.0
+          Z: 0.0
+    Children: []
+    Id: b0c3cd83-5c05-4c45-9228-c44aebdd9b4d
+  - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+    Name: light
+    Tag: null
+    IsEnabled: true
+    IsStatic: false
+    Components:
+      - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+        Id: 848d32a0-29b0-4bd6-a38b-5404440d43bb
+        LocalOrientation:
+          W: 0.853553474
+          X: 0.146446586
+          Y: -0.353553355
+          Z: -0.353553355
+        LocalPosition:
+          X: 4.0
+          Y: 4.0
+          Z: 4.0
+        LocalScale:
+          X: 1.0
+          Y: 1.0
+          Z: 1.0
+      - !WaveEngine.Framework.Graphics.DirectionalLight,WaveEngine.Framework
+        Id: bfa90d7d-f587-4134-a0e6-f25469815872
+        Color:
+          A: 255
+          B: 255
+          G: 255
+          R: 255
+        Intensity: 1.0
+    Children: []
+    Id: 5f21b4ac-83db-45ee-9b06-a71c7b9f35ff
+Managers: []

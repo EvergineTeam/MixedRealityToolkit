@@ -190,3 +190,5 @@ _InstallerOutput/
 
 src/.idea/
 .waveengine
+
+WaveContent.cs

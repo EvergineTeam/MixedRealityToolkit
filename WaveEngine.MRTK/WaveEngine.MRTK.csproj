@@ -1,0 +1,8 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Description>Provides and set of components that help developing Mixed Reality applications using Wave Engine.</Description>
+  </PropertyGroup>
+
+</Project>

@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GenerateWaveContent>True</GenerateWaveContent>
+    <GenerateWaveAssets>False</GenerateWaveAssets>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="WaveEngine.Common" Version="3.0.0.3989-nightly" />
+    <PackageReference Include="WaveEngine.Components" Version="3.0.0.3989-nightly" />
+    <PackageReference Include="WaveEngine.Framework" Version="3.0.0.3989-nightly" />
+    <PackageReference Include="WaveEngine.Mathematics" Version="3.0.0.3989-nightly" />
+    <PackageReference Include="WaveEngine.Platform" Version="3.0.0.3989-nightly" />
+    <PackageReference Include="WaveEngine.Targets" Version="3.0.0.3989-nightly" />
+  </ItemGroup>
+
+</Project>
