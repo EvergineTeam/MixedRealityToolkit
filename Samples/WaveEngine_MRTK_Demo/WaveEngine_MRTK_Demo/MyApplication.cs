@@ -2,6 +2,7 @@ using WaveEngine.Framework;
 using WaveEngine.Framework.Services;
 using WaveEngine.Framework.Threading;
 using WaveEngine.Platform;
+using WaveEngine_MRTK_Demo.Scenes;
 
 namespace WaveEngine_MRTK_Demo
 {
