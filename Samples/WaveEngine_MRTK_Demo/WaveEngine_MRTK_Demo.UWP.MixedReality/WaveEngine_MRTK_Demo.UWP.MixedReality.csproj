@@ -109,6 +109,9 @@
     <PackageReference Include="WaveEngine.UWPView">
       <Version>3.0.0.3989-nightly</Version>
     </PackageReference>
+    <PackageReference Include="WaveEngine.Bullet">
+      <Version>3.0.0.3989-nightly</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WaveEngine_MRTK_Demo\WaveEngine_MRTK_Demo.csproj">
