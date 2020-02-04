@@ -4,6 +4,7 @@ DefaultProfile:
   ExcludeAsset: false
   Name: null
   Platform: Undefined
+ExportAsRaw: false
 Profiles: {}
 Source:
   Header:
@@ -11,4 +12,4 @@ Source:
     IsCompressed: true
   LastModified: 0001-01-01T00:00:00.0000000
   SceneData:
-    Id: f6350770-b538-471e-b9e2-ccc328182133
+    Id: b5c6af18-c040-420f-ad1f-65ef11b180cc
