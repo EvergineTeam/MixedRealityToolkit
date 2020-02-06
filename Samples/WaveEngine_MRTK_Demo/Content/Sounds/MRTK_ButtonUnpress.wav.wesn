@@ -1,0 +1,22 @@
+!WaveEngine.Assets.Exporters.SoundMetaFile,WaveEngine.Assets
+Id: 7f835fa0-da0a-4152-b6ee-157943781e61
+DefaultProfile:
+  ChannelFormat: Mono
+  Encoding: PCM16
+  ExcludeAsset: false
+  Name: null
+  Platform: Undefined
+  SampleRateMode: High
+ExportAsRaw: false
+Profiles: {}
+Source:
+  Header:
+    Id: eceacbf9-517d-4c5a-9df0-8dc33e1cc3e5
+    IsCompressed: true
+  LastModified: 0001-01-01T00:00:00.0000000
+  SoundInfo:
+    Id: 0c2b5c1c-8f98-4f44-9406-c2bbe6af17e6
+    Format:
+      Channels: 1
+      Encoding: PCM16
+      SampleRate: 48000

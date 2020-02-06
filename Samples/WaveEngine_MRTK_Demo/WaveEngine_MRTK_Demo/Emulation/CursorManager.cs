@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Linq;
-using WaveEngine.Framework;
 using WaveEngine.Framework.Graphics;
 using WaveEngine.Framework.Managers;
 using WaveEngine.Framework.Physics3D;
-using WaveEngine.MRTK.EventDatum.Input;
-using WaveEngine.MRTK.Interfaces.InputSystem.Handlers;
+using WaveEngine.MRTK.Base.EventDatum.Input;
+using WaveEngine.MRTK.Base.Interfaces.InputSystem.Handlers;
 
 namespace WaveEngine_MRTK_Demo.Emulation
 {

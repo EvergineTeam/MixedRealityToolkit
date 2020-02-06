@@ -1,4 +1,5 @@
 ﻿using System;
+using WaveEngine.Common.Attributes;
 using WaveEngine.Common.Input.Keyboard;
 using WaveEngine.Framework;
 using WaveEngine.Framework.Graphics;
@@ -12,8 +13,10 @@ namespace WaveEngine_MRTK_Demo.Behaviors
         [BindComponent]
         protected Transform3D transform = null;
 
+        [RenderProperty(Tooltip = "The speed at which the entity will be moved")]
         public float Speed { get; set; } = 0.01f;
 
+        [RenderProperty(Tooltip = "Set whether the component needs the right Shift key to be pressed in order to move the entity")]
         public bool UseShift { get; set; } = false;
 
         private Vector3 initialPosition;
