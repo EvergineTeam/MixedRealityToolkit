@@ -1,7 +1,7 @@
 ﻿using WaveEngine.Framework;
 using WaveEngine.Mathematics;
 
-namespace WaveEngine.MRTK.EventDatum.Input
+namespace WaveEngine.MRTK.Base.EventDatum.Input
 {
     public class HandTrackingInputEventData
     {

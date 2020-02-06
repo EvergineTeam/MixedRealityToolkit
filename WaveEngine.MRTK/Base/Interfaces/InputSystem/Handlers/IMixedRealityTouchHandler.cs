@@ -1,9 +1,9 @@
-﻿using WaveEngine.MRTK.EventDatum.Input;
+﻿using WaveEngine.MRTK.Base.EventDatum.Input;
 
-namespace WaveEngine.MRTK.Interfaces.InputSystem.Handlers
+namespace WaveEngine.MRTK.Base.Interfaces.InputSystem.Handlers
 {
     /// <summary>
-    /// Implementation of this interface causes a script to receive notifications of Touch events from HandTrackingInputSources
+    /// Implementation of this interface causes a component to receive notifications of Touch events from HandTrackingInputSources
     /// </summary>
     public interface IMixedRealityTouchHandler
     {
