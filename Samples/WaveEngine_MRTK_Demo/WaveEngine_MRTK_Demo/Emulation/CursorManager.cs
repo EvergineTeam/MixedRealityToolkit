@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using WaveEngine.Framework;
 using WaveEngine.Framework.Graphics;
 using WaveEngine.Framework.Managers;
 using WaveEngine.Framework.Physics3D;
@@ -44,16 +46,19 @@ namespace WaveEngine_MRTK_Demo.Emulation
         private void StaticBody3D_BeginCollision(object sender, CollisionInfo3D info)
         {
             this.RunTouchHandlers(info, (h, e) => h?.OnTouchStarted(e));
+            this.DoPointerEmulation(info, true, false);
         }
 
         private void StaticBody3D_UpdateCollision(object sender, CollisionInfo3D info)
         {
             this.RunTouchHandlers(info, (h, e) => h?.OnTouchUpdated(e));
+            this.DoPointerEmulation(info, false, false);
         }
 
         private void StaticBody3D_EndCollision(object sender, CollisionInfo3D info)
         {
             this.RunTouchHandlers(info, (h, e) => h?.OnTouchCompleted(e));
+            this.DoPointerEmulation(info, false, true);
         }
 
         private void RunTouchHandlers(CollisionInfo3D info, Action<IMixedRealityTouchHandler, HandTrackingInputEventData> action)
@@ -67,7 +72,7 @@ namespace WaveEngine_MRTK_Demo.Emulation
                 Position = position,
             };
 
-            var interactables = info.OtherBody.Owner.Components
+            var interactables = this.GatherComponents(info.OtherBody.Owner)
                 .Select(c => c as IMixedRealityTouchHandler)
                 .Where(c => c != null);
 
@@ -75,6 +80,74 @@ namespace WaveEngine_MRTK_Demo.Emulation
             {
                 action(touchHandler, eventArgs);
             }
+        }
+
+        private void RunPointerHandlers(CollisionInfo3D info, Action<IMixedRealityPointerHandler, MixedRealityPointerEventData> action)
+        {
+            var cursorEntity = info.ThisBody.Owner;
+            var position = cursorEntity.FindComponent<Transform3D>().Position;
+
+            var eventArgs = new MixedRealityPointerEventData()
+            {
+                Cursor = cursorEntity,
+                Position = position,
+            };
+
+            var interactables = this.GatherComponents(info.OtherBody.Owner)
+                .Select(c => c as IMixedRealityPointerHandler)
+                .Where(c => c != null);
+
+            foreach (var touchHandler in interactables)
+            {
+                action(touchHandler, eventArgs);
+            }
+        }
+
+        private void DoPointerEmulation(CollisionInfo3D info, bool first, bool last)
+        {
+            var cursorComponent = info.ThisBody.Owner.FindComponent<Cursor>();
+
+            if (cursorComponent.Pinch != cursorComponent.PreviousPinch)
+            {
+                if (cursorComponent.Pinch)
+                {
+                    this.RunPointerHandlers(info, (h, e) => h?.OnPointerDown(e));
+                }
+                else
+                {
+                    this.RunPointerHandlers(info, (h, e) => h?.OnPointerUp(e));
+                }
+            }
+            else if (cursorComponent.Pinch)
+            {
+                if (first)
+                {
+                    this.RunPointerHandlers(info, (h, e) => h?.OnPointerDown(e));
+                }
+                else if (last)
+                {
+                    this.RunPointerHandlers(info, (h, e) => h?.OnPointerUp(e));
+                }
+                else
+                {
+                    this.RunPointerHandlers(info, (h, e) => h?.OnPointerDragged(e));
+                }
+            }
+        }
+
+        private IEnumerable<Component> GatherComponents(Entity entity)
+        {
+            List<Component> result = new List<Component>();
+
+            Entity current = entity;
+
+            while (current != null)
+            {
+                result.AddRange(current.Components);
+                current = current.Parent;
+            }
+
+            return result;
         }
     }
 }

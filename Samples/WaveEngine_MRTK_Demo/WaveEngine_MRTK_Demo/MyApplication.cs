@@ -18,6 +18,7 @@ namespace WaveEngine_MRTK_Demo
             this.Container.RegisterType<GraphicsPresenter>();
             this.Container.RegisterType<AssetsDirectory>();
             this.Container.RegisterType<AssetsService>();
+            this.Container.RegisterType<WorkActionScheduler>();
             this.Container.RegisterType<ForegroundTaskSchedulerService>();
 
             ForegroundTaskScheduler.Foreground.Configure(this.Container);
