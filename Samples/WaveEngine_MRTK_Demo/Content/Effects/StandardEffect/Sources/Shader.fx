@@ -12,7 +12,6 @@
 [directives:ClearCoat CLEAR_OFF CLEAR CLEAR_NORMAL]
 [directives:VertexColor VCOLOR_OFF VCOLOR]
 [directives:AmbientOcclusion AO_OFF AO]
-[directives:Stereo STEREO_OFF STEREO]
 
 struct LightProperties 
 {
@@ -163,9 +162,9 @@ struct VSOutputPbr
 	float2 TexCoord1    : TEXCOORD1;
 #endif
 
-#if STEREO
+//#if STEREO
 	uint ViewId         : SV_RenderTargetArrayIndex;
-#endif
+//#endif
 };
 
 VSOutputPbr VertexFunction(VSInputPbr input)
@@ -182,11 +181,11 @@ VSOutputPbr VertexFunction(VSInputPbr input)
 	// Taking the modulo of the instance ID allows geometry instancing to be used
 	// along with stereo instanced drawing; in that case, two copies of each 
 	// instance would be drawn, one for left and one for right.
-#if STEREO
+//#if STEREO
 	output.ViewId = vid;
-#else
+//#else
 	
-#endif
+//#endif
 
 	const float4 transformedPosWorld = mul(float4(input.Position, 1), World);
 	output.PositionProj = mul(transformedPosWorld, viewProj);
@@ -516,13 +515,13 @@ void InitMaterial(const VSOutputPbr input, inout MaterialInputs material)
 
 void ComputeShadingParams(const VSOutputPbr input, inout ShadingParams shading)
 {
-#if STEREO
+//#if STEREO
 	int iid = input.ViewId / EyeCount;
 	int vid = input.ViewId % EyeCount;
 	float3 cameraPosition = EyePosition[vid];
-#else
-	float3 cameraPosition = EyePosition[0];
-#endif
+//#else
+//	float3 cameraPosition = EyePosition[0];
+//#endif
 	
 #if LIT || IBL
 	// Normal
