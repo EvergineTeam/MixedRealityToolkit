@@ -13,12 +13,15 @@ namespace WaveEngine.MRTK.Services.InputSystem
         [BindComponent]
         public StaticBody3D StaticBody3D;
 
+        [WaveIgnore]
         [DontRenderProperty]
         public Vector3 LocalPressDirection { get; private set; } = Vector3.Forward;
 
+        [WaveIgnore]
         [DontRenderProperty]
         public Matrix4x4 BoxCollider3DTransform = Matrix4x4.Identity;
 
+        [WaveIgnore]
         [DontRenderProperty]
         public Matrix4x4 BoxCollider3DTransformInverse = Matrix4x4.Identity;
 
