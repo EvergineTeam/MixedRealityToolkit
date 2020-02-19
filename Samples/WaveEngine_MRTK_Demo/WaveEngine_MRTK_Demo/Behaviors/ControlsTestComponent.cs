@@ -5,8 +5,10 @@ using WaveEngine.Framework;
 using WaveEngine.Framework.Graphics;
 using WaveEngine.Framework.Graphics.Materials;
 using WaveEngine.Mathematics;
+using WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation;
 using WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons;
 using WaveEngine.MRTK.SDK.Features.UX.Components.Sliders;
+using WaveEngine_MRTK_Demo.Drawables;
 
 namespace WaveEngine_MRTK_Demo.Behaviors
 {
@@ -24,11 +26,17 @@ namespace WaveEngine_MRTK_Demo.Behaviors
         [BindComponent(isRequired: false, source: BindComponentSource.Scene)]
         protected PinchSlider pinchSlider;
 
+        [BindComponent(isRequired: false)]
+        protected SimpleManipulationHandler simpleManipulationHandler;
+
+        [BindComponent(isRequired: false)]
+        protected BoxColliderRenderer boxColliderRenderer;
+
         private StandardMaterial material;
 
-        private Vector3 initialScale;
         private Color initialColor;
         private Color colorBeforePressing;
+        private Vector3 scaleBeforePressing;
 
         protected override bool OnAttached()
         {
@@ -52,7 +60,17 @@ namespace WaveEngine_MRTK_Demo.Behaviors
                     this.pinchSlider.ValueUpdated += this.PinchSlider_ValueUpdated;
                 }
 
-                this.initialScale = this.transform.LocalScale;
+                if (this.simpleManipulationHandler != null)
+                {
+                    this.simpleManipulationHandler.ManipulationStarted += SimpleManipulationHandler_ManipulationStarted;
+                    this.simpleManipulationHandler.ManipulationEnded += SimpleManipulationHandler_ManipulationEnded;
+                }
+
+                if (this.boxColliderRenderer != null)
+                {
+                    this.boxColliderRenderer.IsEnabled = false;
+                }
+
                 this.initialColor = this.material.BaseColor;
             }
 
@@ -73,19 +91,27 @@ namespace WaveEngine_MRTK_Demo.Behaviors
             {
                 this.pinchSlider.ValueUpdated -= this.PinchSlider_ValueUpdated;
             }
+
+            if (this.simpleManipulationHandler != null)
+            {
+                this.simpleManipulationHandler.ManipulationStarted -= SimpleManipulationHandler_ManipulationStarted;
+                this.simpleManipulationHandler.ManipulationEnded -= SimpleManipulationHandler_ManipulationEnded;
+            }
         }
 
         private void PressableButton_ButtonPressed(object sender, EventArgs e)
         {
             this.colorBeforePressing = this.material.BaseColor;
             this.material.BaseColor = Color.Red;
-            this.transform.LocalScale = this.initialScale * 0.9f;
+
+            this.scaleBeforePressing = this.transform.LocalScale;
+            this.transform.LocalScale *= 0.9f;
         }
 
         private void PressableButton_ButtonReleased(object sender, EventArgs e)
         {
             this.material.BaseColor = this.colorBeforePressing;
-            this.transform.LocalScale = this.initialScale;
+            this.transform.LocalScale = this.scaleBeforePressing;
         }
 
         private void PinchSlider_ValueUpdated(object sender, SliderEventData eventData)
@@ -93,6 +119,22 @@ namespace WaveEngine_MRTK_Demo.Behaviors
             if (this.material != null)
             {
                 this.material.BaseColor = this.initialColor * eventData.NewValue;
+            }
+        }
+
+        private void SimpleManipulationHandler_ManipulationStarted(object sender, EventArgs e)
+        {
+            if (this.boxColliderRenderer != null)
+            {
+                this.boxColliderRenderer.IsEnabled = true;
+            }
+        }
+
+        private void SimpleManipulationHandler_ManipulationEnded(object sender, EventArgs e)
+        {
+            if (this.boxColliderRenderer != null)
+            {
+                this.boxColliderRenderer.IsEnabled = false;
             }
         }
     }

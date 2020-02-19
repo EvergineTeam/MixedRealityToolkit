@@ -7,6 +7,8 @@ namespace WaveEngine.MRTK.Base.EventDatum.Input
     {
         public Vector3 Position { get; set; }
 
+        public Quaternion Orientation { get; set; }
+
         public Entity Cursor { get; set; }
     }
 }

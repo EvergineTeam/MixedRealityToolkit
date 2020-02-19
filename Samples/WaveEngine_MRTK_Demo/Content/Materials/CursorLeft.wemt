@@ -6,7 +6,7 @@ DefaultProfile:
   Platform: Undefined
 ExportAsRaw: false
 MaterialInfo:
-  Id: d7b96fde-dbc4-4b9d-a1d4-e98df8412291
+  Id: 5e2a051a-8796-4e7d-9135-eec9654e9e3b
   ActiveDirectives:
     - IBL
   EffectID: daa1f60a-82ad-40fc-8fbb-7b85caa6de0a
@@ -20,7 +20,7 @@ MaterialInfo:
       ValueByteArray: AwAAAAAAAAA=
     - Name: ViewProj
       Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
-      ValueByteArray: nLg0QAAAAAAAAAAAAAAAAAAAAACYMgpADf/kvjD55L4AAAAAmjKKvwv/ZL8u+WS/AAAAAHmCGjUf7ItAvRuPQA==
+      ValueByteArray: 2dgtQAAAAAAAAAAAAAAAAAAAAACYMgpADf/kvjD55L4AAAAAmjKKvwv/ZL8u+WS/AAAAAHmCGjUf7ItAvRuPQA==
     - Name: EyePosition
       Type: WaveEngine.Mathematics.Vector3,WaveEngine.Mathematics
       ValueByteArray: AAAAAAAAAEAAAIBA
@@ -41,7 +41,7 @@ MaterialInfo:
       ValueByteArray: AQCAPw==
     - Name: BaseColor
       Type: WaveEngine.Mathematics.Vector3,WaveEngine.Mathematics
-      ValueByteArray: AACAP5baIT8AAAAA
+      ValueByteArray: AACAP/Sj3j0AAAAA
     - Name: Alpha
       Type: System.Single
       ValueByteArray: AACAPw==

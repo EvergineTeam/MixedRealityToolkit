@@ -49,6 +49,8 @@ namespace WaveEngine_MRTK_Demo.Behaviors
             }
 
             Vector3 displacement = Vector3.Zero;
+            Quaternion rotation = Quaternion.Identity;
+
             Matrix4x4 localTransform = this.transform.LocalTransform;
 
             if (keyboardDispatcher.IsKeyDown(Keys.I))
@@ -78,9 +80,19 @@ namespace WaveEngine_MRTK_Demo.Behaviors
                 displacement += localTransform.Down;
             }
 
+            if (keyboardDispatcher.IsKeyDown(Keys.F))
+            {
+                rotation *= Quaternion.CreateFromEuler(Vector3.UnitX * 0.01f);
+            }
+            else if (keyboardDispatcher.IsKeyDown(Keys.H))
+            {
+                rotation *= Quaternion.CreateFromEuler(-Vector3.UnitX * 0.01f);
+            }
+
             displacement.Normalize();
 
             this.transform.LocalPosition += displacement * (float)gameTime.TotalSeconds * this.Speed;
+            this.transform.LocalOrientation *= rotation;
         }
     }
 }

@@ -10,18 +10,18 @@ namespace WaveEngine_MRTK_Demo.Behaviors
     /// </summary>
     public class TrackXRJoint : TrackXRDevice
     {
-        //public SpatialHandJointKind JointKind { get; set; } = SpatialHandJointKind.IndexTip;
+        public SpatialHandJointKind JointKind { get; set; } = SpatialHandJointKind.IndexTip;
 
-        ///// <inheritdoc/>
-        //protected override void InternalUpdate()
-        //{
-        //    base.InternalUpdate();
+        /// <inheritdoc/>
+        protected override void InternalUpdate()
+        {
+            base.InternalUpdate();
 
-        //    if (this.TrackedDevice.TryGetArticulatedHandJoint(this.JointKind, out var joint))
-        //    {
-        //        this.transform.LocalPosition = joint.Pose.Position;
-        //        this.transform.LocalOrientation = joint.Pose.Orientation;
-        //    }
-        //}
+            if (this.TrackedDevice.TryGetArticulatedHandJoint(this.JointKind, out var joint))
+            {
+                this.transform.LocalPosition = joint.Pose.Position;
+                this.transform.LocalOrientation = joint.Pose.Orientation;
+            }
+        }
     }
 }

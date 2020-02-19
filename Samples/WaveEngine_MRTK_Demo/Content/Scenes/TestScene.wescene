@@ -418,7 +418,7 @@ Items:
                 EndPitch: 1.25
                 InteractionEndSound: 8380b296-60d7-41ff-af98-f8a7e4c8f43b
                 InteractionStartSound: 6828c3e0-fcd7-41d0-8643-5fb8dc589a43
-                MinSecondsBetweenTicks: 0.1
+                MinSecondsBetweenTicks: 0.100000001
                 PassNotchSound: 2c95a330-903a-4af5-a978-775fb7a39ce5
                 PlayTickSounds: true
                 StartPitch: 0.75
@@ -600,9 +600,9 @@ Items:
               Y: -0.707106948
               Z: 0.0
             LocalPosition:
-              X: 0.100000039
+              X: 0.0999996886
               Y: -0.099999994
-              Z: 0.180000007
+              Z: -0.0599999987
             LocalScale:
               X: 0.100000001
               Y: 0.100000001
@@ -625,6 +625,58 @@ Items:
             OrderBias: 0
           - !WaveEngine_MRTK_Demo.Behaviors.ControlsTestComponent,WaveEngine_MRTK_Demo
             Id: 9d77366a-0eab-4763-9e19-5fc74b3df8bf
+          - !WaveEngine.MRTK.Services.InputSystem.NearInteractionGrabbable,WaveEngine.MRTK
+            Id: 202d715b-fa44-4dcb-b016-e0fdab9c9559
+          - !WaveEngine.Framework.Physics3D.BoxCollider3D,WaveEngine.Framework
+            Id: b4c35e3d-afd6-44e7-aaa1-9c5e2880850c
+            Margin: 0.00100000005
+            Offset:
+              X: 0.0
+              Y: 0.0
+              Z: 0.0
+            OrientationOffset:
+              W: 1.0
+              X: 0.0
+              Y: 0.0
+              Z: 0.0
+            Size:
+              X: 1.0
+              Y: 1.0
+              Z: 1.0
+          - !WaveEngine.Framework.Physics3D.StaticBody3D,WaveEngine.Framework
+            Id: be2bdbf7-65b4-4ad6-b086-c957e5345c0e
+            CcdMotionThreshold: 0.0
+            CcdSweptSphereRadius: 0.200000003
+            CollisionCategories: Cat1
+            Friction: 0.5
+            IsSensor: true
+            MaskBits: All
+            Restitution: 0.0
+            RollingFriction: 0.0
+            UpdateOrder: 0.5
+          - !WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation.SimpleManipulationHandler,WaveEngine.MRTK
+            Id: a4657f7b-20a7-45a8-8dcf-45b55dc773ce
+            UpdateOrder: 0.5
+          - !WaveEngine_MRTK_Demo.Drawables.BoxColliderRenderer,WaveEngine_MRTK_Demo
+            Id: c0256a3d-14c2-4e26-8b72-b1a56041dfac
+            DebugBoundingbox: true
+            FrustumCullingEnabled: true
+            OrderBias: 0
+          - !WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation.ManipulationHandlerSoundFeedbackComponent,WaveEngine.MRTK
+            Id: 31b5891c-4b83-4d17-894e-e3eb2b0cc0e0
+            ManipulationEndedSound: fd9d4d83-ee1a-479b-8836-2d7de657ce46
+            ManipulationStartedSound: 225031ed-2f89-4ab3-8f3b-ec380424b7bc
+          - !WaveEngine.Components.Sound.SoundEmitter3D,WaveEngine.Components
+            Id: 1dbdf882-6908-487b-909d-fbac85854c07
+            Apply3D: true
+            Audio: null
+            DistanceScaleFactor: 1.0
+            IsMuted: false
+            Loop: false
+            Pitch: 1.0
+            PlayAutomatically: false
+            UpdateOrder: 0.5
+            Volume: 1.0
         Children: []
         Id: fa833a6a-4568-4714-b18f-f7cf6fcb0ba1
     Id: bf7601de-e3ee-4c6a-9ec4-717fc4c11ddd

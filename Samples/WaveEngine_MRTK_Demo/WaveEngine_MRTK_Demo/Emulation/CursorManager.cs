@@ -85,12 +85,13 @@ namespace WaveEngine_MRTK_Demo.Emulation
         private void RunPointerHandlers(CollisionInfo3D info, Action<IMixedRealityPointerHandler, MixedRealityPointerEventData> action)
         {
             var cursorEntity = info.ThisBody.Owner;
-            var position = cursorEntity.FindComponent<Transform3D>().Position;
+            var transform = cursorEntity.FindComponent<Transform3D>();
 
             var eventArgs = new MixedRealityPointerEventData()
             {
                 Cursor = cursorEntity,
-                Position = position,
+                Position = transform.Position,
+                Orientation = transform.Orientation
             };
 
             var interactables = this.GatherComponents(info.OtherBody.Owner)

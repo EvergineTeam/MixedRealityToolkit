@@ -14,8 +14,8 @@ namespace WaveEngine_MRTK_Demo.Emulation
 {
     public class Cursor : Behavior
     {
-        //[BindComponent]
-        //private Transform3D transform;
+        [BindComponent]
+        protected Transform3D transform = null;
 
         [BindComponent(isExactType: false)]
         public Collider3D Collider3D;
@@ -40,22 +40,12 @@ namespace WaveEngine_MRTK_Demo.Emulation
 
         [WaveIgnore]
         [DontRenderProperty]
-        public bool Pinch
-        {
-            get => this.pinch;
-
-            set
-            {
-                this.PreviousPinch = this.pinch;
-                this.pinch = value;
-            }
-        }
+        public bool Pinch { get; private set; }
 
         [WaveIgnore]
         [DontRenderProperty]
-        public bool PreviousPinch { get; set; }
+        public bool PreviousPinch { get; private set; }
 
-        private bool pinch;
         private StandardMaterial material;
 
         protected override bool OnAttached()
@@ -80,22 +70,24 @@ namespace WaveEngine_MRTK_Demo.Emulation
 
         protected override void Update(TimeSpan gameTime)
         {
+            this.PreviousPinch = this.Pinch;
+
             var xrPlatform = Application.Current.Container.Resolve<XRPlatform>();
 
             if (xrPlatform != null)
             {
                 // HoloLens 2
-                //if (this.trackXRJoint != null
-                //    && this.trackXRJoint.TrackedDevice != null
-                //    && this.trackXRJoint.TrackedDevice.TryGetArticulatedHandJoint(WaveEngine.Framework.XR.Interaction.SpatialHandJointKind.ThumbTip, out var joint))
-                //{
-                //    var distance = this.transform.Position - joint.Pose.Position;
-                //    this.Pinch = distance.Length() < 0.02f;
-                //}
-                //else
-                //{
-                //    this.Pinch = false;
-                //}
+                if (this.trackXRJoint != null
+                    && this.trackXRJoint.TrackedDevice != null
+                    && this.trackXRJoint.TrackedDevice.TryGetArticulatedHandJoint(WaveEngine.Framework.XR.Interaction.SpatialHandJointKind.ThumbTip, out var joint))
+                {
+                    var distance = this.transform.Position - joint.Pose.Position;
+                    this.Pinch = distance.Length() < 0.03f;
+                }
+                else
+                {
+                    this.Pinch = false;
+                }
             }
             else
             {
@@ -108,7 +100,10 @@ namespace WaveEngine_MRTK_Demo.Emulation
                     return;
                 }
 
-                this.Pinch = keyboardDispatcher.IsKeyDown(Keys.P);
+                if (keyboardDispatcher.ReadKeyState(Keys.P) == WaveEngine.Common.Input.ButtonState.Pressing)
+                {
+                    this.Pinch = !this.Pinch;
+                }
             }
 
             if (this.Pinch != this.PreviousPinch)
