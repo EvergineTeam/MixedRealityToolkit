@@ -1,6 +1,7 @@
 ﻿// Copyright © 2019 Wave Engine S.L. All rights reserved. Use is subject to license terms.
 
 using WaveEngine.Components.XR;
+using WaveEngine.Framework.XR;
 using WaveEngine.Framework.XR.Interaction;
 
 namespace WaveEngine_MRTK_Demo.Behaviors
@@ -10,7 +11,7 @@ namespace WaveEngine_MRTK_Demo.Behaviors
     /// </summary>
     public class TrackXRJoint : TrackXRDevice
     {
-        public SpatialHandJointKind JointKind { get; set; } = SpatialHandJointKind.IndexTip;
+        public XRHandJointKind JointKind { get; set; } = XRHandJointKind.IndexTip;
 
         /// <inheritdoc/>
         protected override void InternalUpdate()

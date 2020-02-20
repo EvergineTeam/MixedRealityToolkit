@@ -79,7 +79,7 @@ namespace WaveEngine_MRTK_Demo.Emulation
                 // HoloLens 2
                 if (this.trackXRJoint != null
                     && this.trackXRJoint.TrackedDevice != null
-                    && this.trackXRJoint.TrackedDevice.TryGetArticulatedHandJoint(WaveEngine.Framework.XR.Interaction.SpatialHandJointKind.ThumbTip, out var joint))
+                    && this.trackXRJoint.TrackedDevice.TryGetArticulatedHandJoint(WaveEngine.Framework.XR.XRHandJointKind.ThumbTip, out var joint))
                 {
                     var distance = this.transform.Position - joint.Pose.Position;
                     this.Pinch = distance.Length() < 0.03f;

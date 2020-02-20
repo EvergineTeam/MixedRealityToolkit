@@ -31,8 +31,8 @@ namespace WaveEngine_MRTK_Demo.Scenes
             if (xrPlatform != null)
             {
                 // HoloLens 2
-                cursorLeftEntity.AddComponent(new TrackXRJoint() { Handedness = XRHandedness.LeftHand, SelectionStrategy = TrackXRDevice.SelectionDeviceStrategy.ByHandedness, JointKind = SpatialHandJointKind.IndexTip });
-                cursorRightEntity.AddComponent(new TrackXRJoint() { Handedness = XRHandedness.RightHand, SelectionStrategy = TrackXRDevice.SelectionDeviceStrategy.ByHandedness, JointKind = SpatialHandJointKind.IndexTip });
+                cursorLeftEntity.AddComponent(new TrackXRJoint() { Handedness = XRHandedness.LeftHand, SelectionStrategy = TrackXRDevice.SelectionDeviceStrategy.ByHandedness, JointKind = XRHandJointKind.IndexTip });
+                cursorRightEntity.AddComponent(new TrackXRJoint() { Handedness = XRHandedness.RightHand, SelectionStrategy = TrackXRDevice.SelectionDeviceStrategy.ByHandedness, JointKind = XRHandJointKind.IndexTip });
             }
             else
             {
