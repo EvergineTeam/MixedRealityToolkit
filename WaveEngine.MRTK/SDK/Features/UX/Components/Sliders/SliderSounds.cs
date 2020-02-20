@@ -1,4 +1,6 @@
-﻿using System;
+﻿// Copyright © 2019 Wave Engine S.L. All rights reserved. Use is subject to license terms.
+
+using System;
 using WaveEngine.Common.Attributes;
 using WaveEngine.Common.Audio;
 using WaveEngine.Common.Media;
@@ -8,35 +10,68 @@ using WaveEngine.Mathematics;
 
 namespace WaveEngine.MRTK.SDK.Features.UX.Components.Sliders
 {
+    /// <summary>
+    /// The slider sound behavior.
+    /// </summary>
     public class SliderSounds : Behavior
     {
+        /// <summary>
+        /// The pinch slider.
+        /// </summary>
         [BindComponent]
         protected PinchSlider pinchSlider;
 
+        /// <summary>
+        /// The sound emitter.
+        /// </summary>
         [BindComponent]
         protected SoundEmitter3D soundEmitter;
 
+        /// <summary>
+        /// Gets or sets the sound to be played when interaction with the slider starts.
+        /// </summary>
         [RenderProperty(Tooltip = "The sound to be played when interaction with the slider starts")]
         public AudioBuffer InteractionStartSound { get; set; }
 
+        /// <summary>
+        /// Gets or sets the sound to be played when interaction with the slider ends.
+        /// </summary>
         [RenderProperty(Tooltip = "The sound to be played when interaction with the slider ends")]
         public AudioBuffer InteractionEndSound { get; set; }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether to play 'tick tick' sounds as the slider passes notches.
+        /// </summary>
         [RenderProperty(Tooltip = "Whether to play 'tick tick' sounds as the slider passes notches")]
         public bool PlayTickSounds { get; set; } = true;
 
+        /// <summary>
+        /// Gets or sets the sound to play when slider passes a notch.
+        /// </summary>
         [RenderProperty(Tooltip = "Sound to play when slider passes a notch")]
         public AudioBuffer PassNotchSound { get; set; }
 
+        /// <summary>
+        /// Gets or sets the amount the slider value has to change to play the tick sound.
+        /// </summary>
         [RenderPropertyAsFInput(Tooltip = "The amount the slider value has to change to play the tick sound", MinLimit = 0, MaxLimit = 1)]
         public float TickEvery { get; set; } = 0.1f;
 
+        /// <summary>
+        /// Gets or sets the pitch the tick sound will have at the lowest slider value.
+        /// </summary>
         [RenderProperty(Tooltip = "The pitch the tick sound will have at the lowest slider value")]
         public float StartPitch { get; set; } = 0.75f;
 
+        /// <summary>
+        /// Gets or sets the pitch the tick sound will have at the highest slider value.
+        /// </summary>
         [RenderProperty(Tooltip = "The pitch the tick sound will have at the highest slider value")]
         public float EndPitch { get; set; } = 1.25f;
 
+        /// <summary>
+        /// Gets or sets the minimum time in seconds to wait between every tick sound.
+        /// </summary>
         [RenderProperty(Tooltip = "The minimum time in seconds to wait between every tick sound")]
         public float MinSecondsBetweenTicks { get; set; } = 0.1f;
 
@@ -44,6 +79,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.Sliders
         private float lastSoundPlayTime;
         private float timeSinceStart;
 
+        /// <inheritdoc/>
         protected override bool OnAttached()
         {
             var attached = base.OnAttached();
@@ -58,6 +94,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.Sliders
             return attached;
         }
 
+        /// <inheritdoc/>
         protected override void OnActivated()
         {
             base.OnActivated();
@@ -102,6 +139,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.Sliders
             }
         }
 
+        /// <inheritdoc/>
         protected override void Update(TimeSpan gameTime)
         {
             this.timeSinceStart += (float)gameTime.TotalSeconds;

@@ -1,4 +1,6 @@
-﻿using System;
+﻿// Copyright © 2019 Wave Engine S.L. All rights reserved. Use is subject to license terms.
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using WaveEngine.Common.Attributes;
@@ -10,18 +12,37 @@ using WaveEngine.MRTK.Base.Interfaces.InputSystem.Handlers;
 
 namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
 {
+    /// <summary>
+    /// A simple manipulation handler.
+    /// </summary>
     public class SimpleManipulationHandler : Behavior, IMixedRealityPointerHandler
     {
+        /// <summary>
+        /// The transform.
+        /// </summary>
         [BindComponent]
         protected Transform3D transform = null;
 
+        /// <summary>
+        /// Gets or sets a value indicating whether the manipulation smoothing is enabled.
+        /// </summary>
         [RenderProperty(Tooltip = "Enable manipulation smoothing")]
         public bool SmoothingActive { get; set; } = true;
 
+        /// <summary>
+        /// Gets  or sets the amount of smoothing to apply to the movement, scale and rotation. 0 means no smoothing, 1 means no change to value.
+        /// </summary>
         [RenderPropertyAsFInput(Tooltip = "The amount of smoothing to apply to the movement, scale and rotation. 0 means no smoothing, 1 means no change to value", MinLimit = 0, MaxLimit = 1)]
         public float SmoothingAmount { get; set; } = 0.001f;
 
+        /// <summary>
+        /// The manipulation started event.
+        /// </summary>
         public event EventHandler ManipulationStarted;
+
+        /// <summary>
+        /// The manipulation ended event.
+        /// </summary>
         public event EventHandler ManipulationEnded;
 
         private bool lastLeftPressed;
@@ -35,8 +56,9 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
         // Distance between the controllers at the moment the grab is started
         private float grabDistance;
 
-        private Dictionary<Entity, Matrix4x4> activeCursors = new Dictionary<Entity, Matrix4x4>();
+        private readonly Dictionary<Entity, Matrix4x4> activeCursors = new Dictionary<Entity, Matrix4x4>();
 
+        /// <inheritdoc/>
         protected override void OnDeactivated()
         {
             base.OnDeactivated();
@@ -44,6 +66,7 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
             this.activeCursors.Clear();
         }
 
+        /// <inheritdoc/>
         public void OnPointerDown(MixedRealityPointerEventData eventData)
         {
             var cursor = eventData.Cursor;
@@ -59,6 +82,7 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
             }
         }
 
+        /// <inheritdoc/>
         public void OnPointerDragged(MixedRealityPointerEventData eventData)
         {
             var cursor = eventData.Cursor;
@@ -69,6 +93,7 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
             }
         }
 
+        /// <inheritdoc/>
         public void OnPointerUp(MixedRealityPointerEventData eventData)
         {
             var cursor = eventData.Cursor;
@@ -84,6 +109,7 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
             }
         }
 
+        /// <inheritdoc/>
         public void OnPointerClicked(MixedRealityPointerEventData eventData)
         {
             // Nothing to do
@@ -94,6 +120,7 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
             return Matrix4x4.CreateFromQuaternion(eventData.Orientation) * Matrix4x4.CreateTranslation(eventData.Position);
         }
 
+        /// <inheritdoc/>
         protected override void Update(TimeSpan gameTime)
         {
             var values = this.activeCursors.Values;

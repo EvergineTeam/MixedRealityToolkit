@@ -1,4 +1,6 @@
-﻿using System;
+﻿// Copyright © 2019 Wave Engine S.L. All rights reserved. Use is subject to license terms.
+
+using System;
 using System.Linq;
 using WaveEngine.Common.Attributes;
 using WaveEngine.Framework;
@@ -6,21 +8,38 @@ using WaveEngine.Mathematics;
 
 namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
 {
+    /// <summary>
+    /// Represent a pressable button.
+    /// </summary>
     public class PressableButton : PressableObject
     {
+        /// <summary>
+        /// The button feedback.
+        /// </summary>
         [BindComponent(isExactType: false, isRequired: false, source: BindComponentSource.Children)]
         protected IPressableButtonFeedback movingVisualsFeedback;
 
+        /// <summary>
+        /// Gets or sets the speed for retracting the moving button visuals on release.
+        /// </summary>
         [RenderProperty(Tooltip = "Speed for retracting the moving button visuals on release.")]
         public float RetractSpeed { get; set; } = 1f;
 
+        /// <summary>
+        /// Event fired when the button is pressed.
+        /// </summary>
         public event EventHandler ButtonPressed;
+
+        /// <summary>
+        /// Event fired when the button is released.
+        /// </summary>
         public event EventHandler ButtonReleased;
 
         private bool isPressing;
 
         private float currentPosition;
 
+        /// <inheritdoc/>
         protected override void OnLoaded()
         {
             base.OnLoaded();
@@ -28,6 +47,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
             this.currentPosition = this.StartPosition;
         }
 
+        /// <inheritdoc/>
         protected override void Update(TimeSpan gameTime)
         {
             float targetPosition;

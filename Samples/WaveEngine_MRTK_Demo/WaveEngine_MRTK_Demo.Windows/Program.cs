@@ -21,8 +21,8 @@ namespace WaveEngine_MRTK_Demo.Windows
             var window = windowsSystem.CreateWindow("WaveEngine_MRTK_Demo", width, height);
 
             ConfigureGraphicsContext(application, window);
-			
-			// Creates XAudio device
+
+            // Creates XAudio device
             var xaudio = new WaveEngine.XAudio2.XAudioDevice();
             application.Container.RegisterInstance(xaudio);
 

@@ -1,4 +1,6 @@
-﻿using System;
+﻿// Copyright © 2019 Wave Engine S.L. All rights reserved. Use is subject to license terms.
+
+using System;
 using WaveEngine.Common.Attributes;
 using WaveEngine.Framework;
 using WaveEngine.Framework.Graphics;
@@ -9,11 +11,20 @@ using WaveEngine.MRTK.Services.InputSystem;
 
 namespace WaveEngine.MRTK.SDK.Features.UX.Components.Sliders
 {
+    /// <summary>
+    /// Represent an interactable slider.
+    /// </summary>
     public class PinchSlider : Component, IMixedRealityPointerHandler
     {
+        /// <summary>
+        /// The transform.
+        /// </summary>
         [BindComponent]
         protected Transform3D transform;
 
+        /// <summary>
+        /// The near interaction grabbable component.
+        /// </summary>
         [BindComponent(source: BindComponentSource.Children)]
         protected NearInteractionGrabbable nearInteractionGrabbable;
 
@@ -21,15 +32,27 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.Sliders
         // It must be a normalized vector.
         private Vector3 SliderAxis { get; } = Vector3.Up;
 
+        /// <summary>
+        /// Gets or sets the value where the slider track starts, as distance from center along slider axis, in local space units.
+        /// </summary>
         [RenderProperty(Tooltip = "Where the slider track starts, as distance from center along slider axis, in local space units.")]
         public float SliderStartDistance { get; set; } = -0.5f;
 
+        /// <summary>
+        /// Gets or sets where the slider track ends, as distance from center along slider axis, in local space units.
+        /// </summary>
         [RenderProperty(Tooltip = "Where the slider track ends, as distance from center along slider axis, in local space units.")]
         public float SliderEndDistance { get; set; } = 0.5f;
 
+        /// <summary>
+        /// Gets or sets he initial value for the slider, in the range of 0 to 1.
+        /// </summary>
         [RenderPropertyAsFInput(Tooltip = "The initial value for the slider, in the range of 0 to 1", MinLimit = 0, MaxLimit = 1)]
         public float InitialValue { get; set; } = 0.5f;
 
+        /// <summary>
+        /// Gets or sets the slider value.
+        /// </summary>
         [WaveIgnore]
         [DontRenderProperty]
         public float SliderValue
@@ -52,8 +75,19 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.Sliders
 
         private float SliderLength => this.SliderEndDistance - this.SliderStartDistance;
 
+        /// <summary>
+        /// Event fired when the slider value is updated.
+        /// </summary>
         public event EventHandler<SliderEventData> ValueUpdated;
+
+        /// <summary>
+        /// Event fired when an interaction has been started.
+        /// </summary>
         public event EventHandler InteractionStarted;
+
+        /// <summary>
+        /// Event fired when an interaction has been ended.
+        /// </summary>
         public event EventHandler InteractionEnded;
 
         private Entity thumbRootEntity;
@@ -66,6 +100,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.Sliders
 
         private float sliderValue;
 
+        /// <inheritdoc/>
         protected override void OnActivated()
         {
             base.OnActivated();
@@ -81,6 +116,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.Sliders
             this.sliderValue = this.InitialValue;
         }
 
+        /// <inheritdoc/>
         protected override void OnDeactivated()
         {
             base.OnDeactivated();
@@ -90,7 +126,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.Sliders
 
         private void UpdateUI()
         {
-            this.thumbRootTransform.LocalPosition = this.SliderStartPosition + this.sliderThumbOffset + this.SliderAxis * this.SliderLength * this.sliderValue;
+            this.thumbRootTransform.LocalPosition = this.SliderStartPosition + this.sliderThumbOffset + (this.SliderAxis * this.SliderLength * this.sliderValue);
         }
 
         private void EndInteraction()
@@ -99,6 +135,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.Sliders
             this.activePointer = null;
         }
 
+        /// <inheritdoc/>
         public void OnPointerDown(MixedRealityPointerEventData eventData)
         {
             if (this.activePointer == null)
@@ -111,6 +148,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.Sliders
             }
         }
 
+        /// <inheritdoc/>
         public void OnPointerDragged(MixedRealityPointerEventData eventData)
         {
             if (this.activePointer == eventData.Cursor)
@@ -118,10 +156,11 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.Sliders
                 var delta = Vector3.TransformCoordinate(eventData.Position, this.transform.WorldInverseTransform) - this.startPointerPosition;
                 var handDelta = Vector3.Dot(this.SliderAxis, delta);
 
-                this.SliderValue = MathHelper.Clamp(this.startSliderValue + handDelta / this.SliderLength, 0, 1);
+                this.SliderValue = MathHelper.Clamp(this.startSliderValue + (handDelta / this.SliderLength), 0, 1);
             }
         }
 
+        /// <inheritdoc/>
         public void OnPointerUp(MixedRealityPointerEventData eventData)
         {
             if (this.activePointer == eventData.Cursor)
@@ -130,6 +169,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.Sliders
             }
         }
 
+        /// <inheritdoc/>
         public void OnPointerClicked(MixedRealityPointerEventData eventData)
         {
             // Nothing to do
