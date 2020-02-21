@@ -110,7 +110,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.Sliders
 
             // Store the position of the thumb entity relative to the closest point on the slider axis
             var startToThumb = this.thumbRootTransform.LocalPosition - this.SliderStartPosition;
-            var thumbProjectedOnTrack = this.SliderStartPosition + Vector3Extensions.Project(startToThumb, this.SliderAxis);
+            var thumbProjectedOnTrack = this.SliderStartPosition + Vector3.Project(startToThumb, this.SliderAxis);
             this.sliderThumbOffset = this.thumbRootTransform.LocalPosition - thumbProjectedOnTrack;
 
             this.sliderValue = this.InitialValue;
