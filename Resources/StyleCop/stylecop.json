@@ -1,0 +1,15 @@
+﻿{
+  "$schema": "https://raw.githubusercontent.com/DotNetAnalyzers/StyleCopAnalyzers/master/StyleCop.Analyzers/StyleCop.Analyzers/Settings/stylecop.schema.json",
+  "settings": {
+    "documentationRules": {
+      "companyName": "Wave Engine S.L.",
+      "copyrightText": "Copyright © 2019 {companyName} All rights reserved. Use is subject to license terms.",
+      "xmlHeader": false,
+      "fileNamingConvention": "metadata",
+      "documentInternalElements": false
+    },
+    "layoutRules": {
+      "newlineAtEndOfFile": "require"
+    }
+  }
+}

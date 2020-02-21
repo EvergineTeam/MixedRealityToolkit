@@ -1,0 +1,8 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+	<ItemGroup>
+		<AdditionalFiles Include="$(MSBuildThisFileDirectory)\stylecop.json" />
+		<PackageReference Include="StyleCop.Analyzers" Version="1.1.118" PrivateAssets="All" />
+	</ItemGroup>
+
+</Project>
