@@ -15,4 +15,4 @@ Profiles:
     NonAlphaCompressionFormat: BC3_UNorm
     Platform: UWP
 ResourcesPath: Content
-WaveVersion: 3.0.0.3989-nightly
+WaveVersion: 3.0.0.4278-nightly
