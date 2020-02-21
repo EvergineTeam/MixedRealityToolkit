@@ -3,7 +3,7 @@
 using WaveEngine.Framework;
 using WaveEngine.Mathematics;
 
-namespace WaveEngine.MRTK.Base.EventDatum.Input
+namespace WaveEngine.MixedReality.Toolkit.Input
 {
     /// <summary>
     /// The pointer event data.

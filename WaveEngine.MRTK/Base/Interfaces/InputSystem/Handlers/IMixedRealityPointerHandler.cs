@@ -1,8 +1,6 @@
 ﻿// Copyright © 2019 Wave Engine S.L. All rights reserved. Use is subject to license terms.
 
-using WaveEngine.MRTK.Base.EventDatum.Input;
-
-namespace WaveEngine.MRTK.Base.Interfaces.InputSystem.Handlers
+namespace WaveEngine.MixedReality.Toolkit.Input
 {
     /// <summary>
     /// Implementation of this interface causes a component to receive notifications of Pointer events.

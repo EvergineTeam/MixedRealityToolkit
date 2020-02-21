@@ -7,8 +7,7 @@ using WaveEngine.Common.Attributes;
 using WaveEngine.Framework;
 using WaveEngine.Framework.Graphics;
 using WaveEngine.Mathematics;
-using WaveEngine.MRTK.Base.EventDatum.Input;
-using WaveEngine.MRTK.Base.Interfaces.InputSystem.Handlers;
+using WaveEngine.MixedReality.Toolkit.Input;
 
 namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
 {
