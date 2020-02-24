@@ -5,8 +5,7 @@ using WaveEngine.Common.Attributes;
 using WaveEngine.Framework;
 using WaveEngine.Framework.Graphics;
 using WaveEngine.Mathematics;
-using WaveEngine.MRTK.Base.EventDatum.Input;
-using WaveEngine.MRTK.Base.Interfaces.InputSystem.Handlers;
+using WaveEngine.MixedReality.Toolkit.Input;
 using WaveEngine.MRTK.Services.InputSystem;
 
 namespace WaveEngine.MRTK.SDK.Features.UX.Components.Sliders

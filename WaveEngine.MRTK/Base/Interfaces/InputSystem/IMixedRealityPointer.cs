@@ -1,6 +1,7 @@
 ﻿// Copyright © 2019 Wave Engine S.L. All rights reserved. Use is subject to license terms.
 
 using System.Collections;
+using WaveEngine.Framework.Physics3D;
 using WaveEngine.Mathematics;
 
 namespace WaveEngine.MixedReality.Toolkit.Input
@@ -77,7 +78,7 @@ namespace WaveEngine.MixedReality.Toolkit.Input
         /// IMixedRealityPointer.PrioritizedLayerMasksOverride = new LayerMask[] { nonSR, sr };
         /// ]]></code>
         /// </example>
-        LayerMask[] PrioritizedLayerMasksOverride { get; set; }
+        CollisionCategory3D PrioritizedLayerMasksOverride { get; set; }
 
         /// <summary>
         /// Gets or sets the currently focused target.
@@ -107,7 +108,7 @@ namespace WaveEngine.MixedReality.Toolkit.Input
         /// <summary>
         /// Gets the Pointer rotation.
         /// </summary>
-        Quaternion Rotation { get; }
+        Quaternion Orientation { get; }
 
         /// <summary>
         /// Called before performing the scene query.
