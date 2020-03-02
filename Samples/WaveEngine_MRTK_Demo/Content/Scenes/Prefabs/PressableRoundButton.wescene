@@ -1,7 +1,7 @@
 !WaveEngine.Framework.Assets.AssetSources.Entities.SceneModel,WaveEngine.Framework
 Items:
   - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
-    Name: pressableRoundButton
+    Name: PressableRoundButtonPREFAB
     Tag: null
     IsEnabled: true
     IsStatic: false
