@@ -3,6 +3,7 @@
 using System.Collections;
 using WaveEngine.Framework.Physics3D;
 using WaveEngine.Mathematics;
+using WaveEngine.MixedReality.Toolkit.Physics;
 
 namespace WaveEngine.MixedReality.Toolkit.Input
 {
@@ -67,17 +68,9 @@ namespace WaveEngine.MixedReality.Toolkit.Input
         RayStep[] Rays { get; }
 
         /// <summary>
-        /// The physics layers to use when performing scene queries.
+        /// Gets or sets the physics layers to use when performing scene queries.
         /// </summary>
         /// <remarks>If set, will override the <see cref="IMixedRealityInputSystem"/>'s default scene query layer mask array.</remarks>
-        /// <example>
-        /// Allow the pointer to hit SR, but first prioritize any DefaultRaycastLayers (potentially behind SR).
-        /// <code language="csharp"><![CDATA[
-        /// int sr = LayerMask.GetMask("SR");
-        /// int nonSR = Physics.DefaultRaycastLayers &amp; ~sr;
-        /// IMixedRealityPointer.PrioritizedLayerMasksOverride = new LayerMask[] { nonSR, sr };
-        /// ]]></code>
-        /// </example>
         CollisionCategory3D PrioritizedLayerMasksOverride { get; set; }
 
         /// <summary>
