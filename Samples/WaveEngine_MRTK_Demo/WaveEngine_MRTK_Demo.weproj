@@ -1,4 +1,4 @@
-!WaveEngine.Framework.ProjectModel,WaveEngine.Framework
+!WaveEngine.Common.ProjectModel,WaveEngine.Common
 Profiles:
   - AlphaCompressionFormat: BC3_UNorm
     CompileEffects: false
