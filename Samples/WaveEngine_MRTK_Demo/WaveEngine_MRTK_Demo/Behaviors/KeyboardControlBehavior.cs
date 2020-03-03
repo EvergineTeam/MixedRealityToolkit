@@ -91,7 +91,7 @@ namespace WaveEngine_MRTK_Demo.Behaviors
 
             displacement.Normalize();
 
-            this.transform.LocalPosition += displacement * (float)gameTime.TotalSeconds * this.Speed;
+            this.transform.LocalPosition += displacement * Math.Min(0.3f, (float)gameTime.TotalSeconds) * this.Speed;
             this.transform.LocalOrientation *= rotation;
         }
     }
