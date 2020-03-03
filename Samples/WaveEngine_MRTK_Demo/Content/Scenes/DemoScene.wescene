@@ -226,7 +226,7 @@ Items:
                       - !WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButton,WaveEngine.MRTK
                         Id: a45ee70c-9568-4381-b9bc-8b4133933221
                         EndPosition: -0.100000001
-                        EnforceFrontPush: false
+                        EnforceFrontPush: true
                         IsEnabled: true
                         PressPosition: 0.100000001
                         ReleasePosition: 0.300000012
@@ -471,7 +471,7 @@ Items:
                       - !WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButton,WaveEngine.MRTK
                         Id: a45ee70c-9568-4381-b9bc-8b4133933221
                         EndPosition: -0.100000001
-                        EnforceFrontPush: false
+                        EnforceFrontPush: true
                         IsEnabled: true
                         PressPosition: 0.100000001
                         ReleasePosition: 0.300000012
@@ -716,7 +716,7 @@ Items:
                       - !WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButton,WaveEngine.MRTK
                         Id: a45ee70c-9568-4381-b9bc-8b4133933221
                         EndPosition: -0.100000001
-                        EnforceFrontPush: false
+                        EnforceFrontPush: true
                         IsEnabled: true
                         PressPosition: 0.100000001
                         ReleasePosition: 0.300000012
@@ -1276,7 +1276,7 @@ Items:
                   - !WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButton,WaveEngine.MRTK
                     Id: 001d1547-5ca7-45c9-95d0-ff91e9bf4f4d
                     EndPosition: -0.100000001
-                    EnforceFrontPush: true
+                    EnforceFrontPush: false
                     IsEnabled: true
                     PressPosition: 0.100000001
                     ReleasePosition: 0.300000012
@@ -1286,6 +1286,23 @@ Items:
                   - !WaveEngine.MRTK.Services.InputSystem.NearInteractionTouchable,WaveEngine.MRTK
                     Id: e0855056-569a-4ca8-b533-6385c0f37a89
                     IsEnabled: true
+                  - !WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButtonSoundFeedbackComponent,WaveEngine.MRTK
+                    Id: 2f63c602-a4e9-4d67-8d51-2df7a5973e2c
+                    IsEnabled: true
+                    PressedSound: b2d7de44-4b77-4b42-8124-ecea259beb9e
+                    ReleasedSound: null
+                  - !WaveEngine.Components.Sound.SoundEmitter3D,WaveEngine.Components
+                    Id: d3c32b57-8350-4672-be9a-0bafe63411f4
+                    Apply3D: true
+                    Audio: null
+                    DistanceScaleFactor: 1.0
+                    IsEnabled: true
+                    IsMuted: false
+                    Loop: false
+                    Pitch: 1.0
+                    PlayAutomatically: false
+                    UpdateOrder: 0.5
+                    Volume: 1.0
                 Children:
                   - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
                     Name: MovingKey
