@@ -87,22 +87,22 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
         void IPressableButtonFeedback.Feedback(Vector3 pushVector, Matrix4x4 colliderTransform, float pressRatio, bool pressed)
         {
             // Transform the push vector into the collider's parent's space
-            Vector3 pushVectorLocal = Vector3.TransformNormal(pushVector, colliderTransform);
+            Vector3 pushVectorLocal = Vector3.TransformNormal(pushVector, this.transform.WorldToLocalTransform);
 
-            if (this.Compressable)
-            {
-                // Move visuals half the travel distance to accomodate for the scale change
-                this.transform.LocalPosition = this.movingVisualsInitialLocalPosition + (pushVectorLocal / 2);
+            ////if (this.Compressable)
+            ////{
+            ////    // Move visuals half the travel distance to accomodate for the scale change
+            ////    this.transform.LocalPosition = this.movingVisualsInitialLocalPosition + (pushVectorLocal / 2);
 
-                // Apply scale in press direction
-                var transformedOffset = Vector3.Transform(pushVector, this.transform.Orientation);
-                this.transform.LocalScale = this.movingVisualsInitialLocalScale * (Vector3.One - Vector3.Abs(transformedOffset));
-            }
-            else
-            {
-                // Move visuals
-                this.transform.LocalPosition = this.movingVisualsInitialLocalPosition + pushVectorLocal;
-            }
+            ////    // Apply scale in press direction
+            ////    var transformedOffset = Vector3.Transform(pushVector, this.transform.Orientation);
+            ////    this.transform.LocalScale = this.movingVisualsInitialLocalScale * (Vector3.One - Vector3.Abs(transformedOffset));
+            ////}
+            ////else
+            ////{
+            // Move visuals
+            this.transform.LocalPosition = this.movingVisualsInitialLocalPosition + pushVectorLocal;
+            ////}
 
             if (this.ChangeColor)
             {

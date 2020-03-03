@@ -85,7 +85,8 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
                     var colliderTransform = this.nearInteractionTouchable.BoxCollider3DTransform;
                     var pressRatio = (this.StartPosition - this.currentPosition) / (this.StartPosition - this.EndPosition);
 
-                    this.movingVisualsFeedback.Feedback(pushVector, colliderTransform, pressRatio, this.isPressing);
+                    Vector3 pushVectorWorld = Vector3.TransformNormal(Vector3.TransformNormal(pushVector, colliderTransform), this.transform.WorldTransform);
+                    this.movingVisualsFeedback.Feedback(pushVectorWorld, colliderTransform, pressRatio, this.isPressing);
                 }
             }
         }
