@@ -54,7 +54,7 @@ Items:
       - !WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButton,WaveEngine.MRTK
         Id: a45ee70c-9568-4381-b9bc-8b4133933221
         EndPosition: -0.100000001
-        EnforceFrontPush: false
+        EnforceFrontPush: true
         IsEnabled: true
         PressPosition: 0.100000001
         ReleasePosition: 0.300000012
@@ -115,7 +115,6 @@ Items:
                 AsignedTo: Default
                 IsEnabled: true
                 Material: 90ff04a5-fc9e-433e-be4b-ff4e024105e5
-                UseCopy: false
               - !WaveEngine.Components.Graphics3D.CylinderMesh,WaveEngine.Components
                 Id: 700079f6-8bc7-4e12-af75-b88f4dcd8820
                 Diameter: 1.0
@@ -182,7 +181,6 @@ Items:
                     AsignedTo: Default
                     IsEnabled: true
                     Material: 3f1baba7-748b-4798-82af-8cd1de38ff75
-                    UseCopy: true
                   - !WaveEngine.Components.Graphics3D.CylinderMesh,WaveEngine.Components
                     Id: 824f5e15-9524-492d-84fd-ddf6c4f70e83
                     Diameter: 0.799999952

@@ -15,9 +15,9 @@ Items:
           Y: -3.22577876E-08
           Z: -7.78772034E-08
         LocalPosition:
-          X: 5.82326038E-07
-          Y: 0.230000004
-          Z: 0.129999995
+          X: 0.149402618
+          Y: 0.0366906971
+          Z: 1.31096721
         LocalScale:
           X: 1.0
           Y: 1.0
@@ -34,7 +34,7 @@ Items:
       - !WaveEngine.Framework.Graphics.Camera3D,WaveEngine.Framework
         Id: e6234645-a09c-405e-b7cc-e8970277f72c
         Aperture: 1.0
-        AspectRatio: 1.28727269
+        AspectRatio: 1.6452992
         BackgroundColor:
           A: 255
           B: 237
@@ -60,10 +60,10 @@ Items:
         LayerMaskDefaultValue: true
         NearPlane: 0.100000001
         ScreenViewport:
-          Height: 275.0
+          Height: 234.0
           MaxDepth: 1.0
           MinDepth: 0.0
-          Width: 354.0
+          Width: 385.0
           X: 0.0
           Y: 0.0
         Sensitivity: 100.0
@@ -89,9 +89,9 @@ Items:
           Y: 1.0
           Z: 0.0
         LocalPosition:
-          X: -3.08833918E-08
-          Y: 0.100000001
-          Z: 6.07277343E-07
+          X: 0.0670000017
+          Y: 0.171000004
+          Z: 0.98718971
         LocalScale:
           X: 1.0
           Y: 1.0
@@ -112,9 +112,9 @@ Items:
               Y: 0.0
               Z: 0.0
             LocalPosition:
-              X: 0.0
-              Y: 0.0
-              Z: 0.0
+              X: -0.0450000018
+              Y: -0.128322095
+              Z: 0.0944314599
             LocalScale:
               X: 1.0
               Y: 1.0
@@ -131,13 +131,13 @@ Items:
                 IsEnabled: true
                 LocalOrientation:
                   W: 0.923879564
-                  X: 0.382683396
+                  X: 0.382683367
                   Y: 0.0
                   Z: 0.0
                 LocalPosition:
-                  X: 0.0
-                  Y: 0.0
-                  Z: 0.0
+                  X: -0.0379000008
+                  Y: -0.206699997
+                  Z: -0.0373999998
                 LocalScale:
                   X: 1.0
                   Y: 1.0
@@ -287,7 +287,6 @@ Items:
                                 AsignedTo: Default
                                 IsEnabled: true
                                 Material: 90ff04a5-fc9e-433e-be4b-ff4e024105e5
-                                UseCopy: false
                               - !WaveEngine.Components.Graphics3D.CylinderMesh,WaveEngine.Components
                                 Id: 700079f6-8bc7-4e12-af75-b88f4dcd8820
                                 Diameter: 1.0
@@ -354,7 +353,6 @@ Items:
                                     AsignedTo: Default
                                     IsEnabled: true
                                     Material: 3f1baba7-748b-4798-82af-8cd1de38ff75
-                                    UseCopy: true
                                   - !WaveEngine.Components.Graphics3D.CylinderMesh,WaveEngine.Components
                                     Id: 824f5e15-9524-492d-84fd-ddf6c4f70e83
                                     Diameter: 0.799999952
@@ -534,7 +532,6 @@ Items:
                                 AsignedTo: Default
                                 IsEnabled: true
                                 Material: 90ff04a5-fc9e-433e-be4b-ff4e024105e5
-                                UseCopy: false
                               - !WaveEngine.Components.Graphics3D.CylinderMesh,WaveEngine.Components
                                 Id: 700079f6-8bc7-4e12-af75-b88f4dcd8820
                                 Diameter: 1.0
@@ -601,7 +598,6 @@ Items:
                                     AsignedTo: Default
                                     IsEnabled: true
                                     Material: 3f1baba7-748b-4798-82af-8cd1de38ff75
-                                    UseCopy: true
                                   - !WaveEngine.Components.Graphics3D.CylinderMesh,WaveEngine.Components
                                     Id: 824f5e15-9524-492d-84fd-ddf6c4f70e83
                                     Diameter: 0.799999952
@@ -781,7 +777,6 @@ Items:
                                 AsignedTo: Default
                                 IsEnabled: true
                                 Material: 90ff04a5-fc9e-433e-be4b-ff4e024105e5
-                                UseCopy: false
                               - !WaveEngine.Components.Graphics3D.CylinderMesh,WaveEngine.Components
                                 Id: 700079f6-8bc7-4e12-af75-b88f4dcd8820
                                 Diameter: 1.0
@@ -848,7 +843,6 @@ Items:
                                     AsignedTo: Default
                                     IsEnabled: true
                                     Material: 3f1baba7-748b-4798-82af-8cd1de38ff75
-                                    UseCopy: true
                                   - !WaveEngine.Components.Graphics3D.CylinderMesh,WaveEngine.Components
                                     Id: 824f5e15-9524-492d-84fd-ddf6c4f70e83
                                     Diameter: 0.799999952
@@ -885,6 +879,471 @@ Items:
                     Id: 749cbf9a-e45d-4113-b71c-28e4d8543929
                 Id: 372a1494-694e-499a-8065-e291fbfcce62
             Id: 92a40ec7-7556-4edf-9e3e-3ca7b6411c94
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: PianoKeys_fbx
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: 367bda64-591a-4601-87a8-4613927de79f
+                IsEnabled: true
+                LocalOrientation:
+                  W: 1.0
+                  X: 0.0
+                  Y: 0.0
+                  Z: 0.0
+                LocalPosition:
+                  X: -0.0471212268
+                  Y: -0.342200011
+                  Z: -0.170304716
+                LocalScale:
+                  X: 7.75
+                  Y: 7.75
+                  Z: 7.75
+            Children:
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: PianoKeyBlack
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: 4c9c8295-3c3d-46d2-8798-f6825e9341c3
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 3.09086232E-08
+                      X: -3.09086197E-08
+                      Y: -0.707106769
+                      Z: 0.707106769
+                    LocalPosition:
+                      X: 0.0135723753
+                      Y: 0.00349999988
+                      Z: 0.0399999954
+                    LocalScale:
+                      X: 0.393700927
+                      Y: 0.393700957
+                      Z: 0.393700957
+                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+                    Id: 31d14671-09c5-49aa-b3d8-c939ab142c83
+                    AsignedTo: PianoOctave
+                    IsEnabled: true
+                    Material: 5b5cb150-20b3-48ca-b085-1fff3b3469bd
+                  - !WaveEngine.Components.Graphics3D.MeshComponent,WaveEngine.Framework
+                    Id: dd86f7be-7e1e-40bb-bb7d-a11ce6038d1b
+                    IsEnabled: true
+                    Model: 7c21179e-542e-49f4-9f4a-d86929587278
+                    ModelMeshName: PianoKeyBlack
+                  - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+                    Id: cee98129-6d50-4b7c-adec-9a089e1f713a
+                    DebugBoundingbox: true
+                    FrustumCullingEnabled: true
+                    IsEnabled: true
+                    OrderBias: 0
+                Children: []
+                Id: e5321342-a116-4062-b39b-f0128fef7a24
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: PianoKey-D
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: bcbde2d1-5516-47c6-ad6a-7dab0c4fc07f
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 3.09086232E-08
+                      X: -3.09086197E-08
+                      Y: -0.707106769
+                      Z: 0.707106769
+                    LocalPosition:
+                      X: 0.0102531081
+                      Y: 0.00350000104
+                      Z: 0.0400000028
+                    LocalScale:
+                      X: 0.393999994
+                      Y: 0.393700957
+                      Z: 0.393700957
+                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+                    Id: 8163cf44-878a-4008-880a-a66f6c441cd3
+                    AsignedTo: PianoOctave
+                    IsEnabled: true
+                    Material: 5b5cb150-20b3-48ca-b085-1fff3b3469bd
+                  - !WaveEngine.Components.Graphics3D.MeshComponent,WaveEngine.Framework
+                    Id: 839e0009-a138-4c44-baff-f4d8d8b406e2
+                    IsEnabled: true
+                    Model: 7c21179e-542e-49f4-9f4a-d86929587278
+                    ModelMeshName: PianoKey-D
+                  - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+                    Id: 542f0ce6-a8b9-46c8-a3df-31b0bd54ee7e
+                    DebugBoundingbox: true
+                    FrustumCullingEnabled: true
+                    IsEnabled: true
+                    OrderBias: 0
+                Children: []
+                Id: 4ac3b7c7-9313-4ead-9ae5-1000831b8c67
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: PianoKey-E
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: 3767900f-fa12-4ed0-b0d6-df91ec5ed87e
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 3.09086232E-08
+                      X: -3.09086197E-08
+                      Y: -0.707106769
+                      Z: 0.707106769
+                    LocalPosition:
+                      X: 0.00466886489
+                      Y: 0.00350000313
+                      Z: 0.0399999954
+                    LocalScale:
+                      X: 0.393700927
+                      Y: 0.393700957
+                      Z: 0.393700957
+                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+                    Id: d02ac2df-956c-42c8-aec0-1bd97e3f48ba
+                    AsignedTo: PianoOctave
+                    IsEnabled: true
+                    Material: 5b5cb150-20b3-48ca-b085-1fff3b3469bd
+                  - !WaveEngine.Components.Graphics3D.MeshComponent,WaveEngine.Framework
+                    Id: 4c21ce98-3046-4877-a8b4-79590fea0881
+                    IsEnabled: true
+                    Model: 7c21179e-542e-49f4-9f4a-d86929587278
+                    ModelMeshName: PianoKey-E
+                  - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+                    Id: 5860d0cd-8044-43ab-90bf-e926482fd652
+                    DebugBoundingbox: true
+                    FrustumCullingEnabled: true
+                    IsEnabled: true
+                    OrderBias: 0
+                Children: []
+                Id: f860c6aa-8ebe-491e-9a61-69cb49d862b9
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: PianoKey-F
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: 69e28fc0-8377-4033-b11b-924a7da10a49
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 3.09086232E-08
+                      X: -3.09086197E-08
+                      Y: -0.707106769
+                      Z: 0.707106769
+                    LocalPosition:
+                      X: -0.00199539331
+                      Y: 0.00350000197
+                      Z: 0.0399999991
+                    LocalScale:
+                      X: 0.393700927
+                      Y: 0.393700957
+                      Z: 0.393700957
+                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+                    Id: b14f4060-acae-411d-a67b-7cd56d77e44e
+                    AsignedTo: PianoOctave
+                    IsEnabled: true
+                    Material: 5b5cb150-20b3-48ca-b085-1fff3b3469bd
+                  - !WaveEngine.Components.Graphics3D.MeshComponent,WaveEngine.Framework
+                    Id: cac54604-5779-43bd-b0fb-7ef4fbb66dd9
+                    IsEnabled: true
+                    Model: 7c21179e-542e-49f4-9f4a-d86929587278
+                    ModelMeshName: PianoKey-F
+                  - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+                    Id: 06479b51-6705-4574-96e4-06872d5200cd
+                    DebugBoundingbox: true
+                    FrustumCullingEnabled: true
+                    IsEnabled: true
+                    OrderBias: 0
+                Children: []
+                Id: a22fb23f-bcdf-4ffc-8372-c474894b5d92
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: PianoKey-G
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: 305a8484-76a7-496a-8ffb-54b94a080612
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 3.09086232E-08
+                      X: -3.09086197E-08
+                      Y: -0.707106769
+                      Z: 0.707106769
+                    LocalPosition:
+                      X: -0.00199539494
+                      Y: 0.00350000104
+                      Z: 0.0399999991
+                    LocalScale:
+                      X: 0.393700927
+                      Y: 0.393700957
+                      Z: 0.393700957
+                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+                    Id: ecbe8a48-b8ce-4ec6-b689-0905435ca34f
+                    AsignedTo: PianoOctave
+                    IsEnabled: true
+                    Material: 5b5cb150-20b3-48ca-b085-1fff3b3469bd
+                  - !WaveEngine.Components.Graphics3D.MeshComponent,WaveEngine.Framework
+                    Id: fb2c2ce3-c444-4f66-bd8f-a21fa5136494
+                    IsEnabled: true
+                    Model: 7c21179e-542e-49f4-9f4a-d86929587278
+                    ModelMeshName: PianoKey-G
+                  - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+                    Id: 6b686f80-22da-48cb-a9cd-1f09945693e8
+                    DebugBoundingbox: true
+                    FrustumCullingEnabled: true
+                    IsEnabled: true
+                    OrderBias: 0
+                Children: []
+                Id: 6fee07a3-32f4-4b56-a037-b83b338e82de
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: PianoKey-A
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: e499e562-0ac8-459f-a007-1245d806e94d
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 3.09086232E-08
+                      X: -3.09086197E-08
+                      Y: -0.707106769
+                      Z: 0.707106769
+                    LocalPosition:
+                      X: -0.00745198177
+                      Y: 0.00350000104
+                      Z: 0.0399999991
+                    LocalScale:
+                      X: 0.393700927
+                      Y: 0.393700957
+                      Z: 0.393700957
+                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+                    Id: ee40a252-3f22-464f-af7b-31ce95e74936
+                    AsignedTo: PianoOctave
+                    IsEnabled: true
+                    Material: 5b5cb150-20b3-48ca-b085-1fff3b3469bd
+                  - !WaveEngine.Components.Graphics3D.MeshComponent,WaveEngine.Framework
+                    Id: c77d69af-dadd-4ae0-bbda-e366c7a037c7
+                    IsEnabled: true
+                    Model: 7c21179e-542e-49f4-9f4a-d86929587278
+                    ModelMeshName: PianoKey-A
+                  - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+                    Id: d3f813d8-1c0e-492d-ab68-f60b6684e67a
+                    DebugBoundingbox: true
+                    FrustumCullingEnabled: true
+                    IsEnabled: true
+                    OrderBias: 0
+                Children: []
+                Id: 561da1fb-2e8d-4aba-8e90-b6c5cc3a0a05
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: PianoKey-B
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: 097d67af-e62f-4964-81fc-2dbcb57f776f
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 3.09086232E-08
+                      X: -3.09086197E-08
+                      Y: -0.707106769
+                      Z: 0.707106769
+                    LocalPosition:
+                      X: -0.0123705296
+                      Y: 0.00350000104
+                      Z: 0.0399999917
+                    LocalScale:
+                      X: 0.393700927
+                      Y: 0.393700957
+                      Z: 0.393700957
+                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+                    Id: 122112f6-2d13-4893-9455-fa65a363dfd2
+                    AsignedTo: PianoOctave
+                    IsEnabled: true
+                    Material: 5b5cb150-20b3-48ca-b085-1fff3b3469bd
+                  - !WaveEngine.Components.Graphics3D.MeshComponent,WaveEngine.Framework
+                    Id: 706ae2ee-71dd-48b0-b5e6-545b0b742475
+                    IsEnabled: true
+                    Model: 7c21179e-542e-49f4-9f4a-d86929587278
+                    ModelMeshName: PianoKey-B
+                  - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+                    Id: 91fc2301-a4cc-4376-881f-faf5f5f4bdb2
+                    DebugBoundingbox: true
+                    FrustumCullingEnabled: true
+                    IsEnabled: true
+                    OrderBias: 0
+                Children: []
+                Id: e8733f4c-44a5-43cc-b6be-f12700f38255
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: Velvet
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: bfca6b41-32c1-43a3-bf00-df68e750fda1
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 0.707106829
+                      X: -0.707106709
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: 0.00146602513
+                      Y: 0.000416119379
+                      Z: 0.0134387296
+                    LocalScale:
+                      X: 0.393700987
+                      Y: 0.393700957
+                      Z: 0.393700957
+                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+                    Id: 69163337-5fcf-43d3-a12c-6ad31f50ab5f
+                    AsignedTo: DefaultMaterial
+                    IsEnabled: true
+                    Material: 30c217a1-6c1d-4818-a3ec-b51cdee25212
+                  - !WaveEngine.Components.Graphics3D.MeshComponent,WaveEngine.Framework
+                    Id: a1029af5-f09d-4174-9960-2ece2abcbd0b
+                    IsEnabled: true
+                    Model: 7c21179e-542e-49f4-9f4a-d86929587278
+                    ModelMeshName: Velvet
+                  - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+                    Id: e91b9fa4-344c-476f-96d8-0a3b6d6b0ecb
+                    DebugBoundingbox: true
+                    FrustumCullingEnabled: true
+                    IsEnabled: true
+                    OrderBias: 0
+                Children: []
+                Id: a1196fc1-d7b3-4695-bfd0-2aa2ba706ab2
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: C
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: 29afb3f0-7f0b-431f-a469-aadafab1944c
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 2.98023508E-08
+                      X: -2.98023082E-08
+                      Y: -0.707106709
+                      Z: 0.707106829
+                    LocalPosition:
+                      X: 0.0153014828
+                      Y: 0.00236564875
+                      Z: 0.0124577135
+                    LocalScale:
+                      X: 0.393700927
+                      Y: 0.393700927
+                      Z: 0.393700927
+                  - !WaveEngine.Framework.Physics3D.BoxCollider3D,WaveEngine.Framework
+                    Id: 579f941b-8f66-4757-8077-cc92abba2522
+                    IsEnabled: true
+                    Margin: 0.0399999991
+                    Offset:
+                      X: 0.0
+                      Y: 0.0299999975
+                      Z: 0.0
+                    OrientationOffset:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    Size:
+                      X: 0.00999999233
+                      Y: 0.0599999838
+                      Z: 0.00999999233
+                  - !WaveEngine.Framework.Physics3D.StaticBody3D,WaveEngine.Framework
+                    Id: 3cad22b8-2d3d-4252-ad37-15c3230a62a3
+                    CcdMotionThreshold: 0.0
+                    CcdSweptSphereRadius: 0.200000003
+                    CollisionCategories: Cat1
+                    Friction: 0.5
+                    IsEnabled: true
+                    IsSensor: true
+                    MaskBits: All
+                    Restitution: 0.0
+                    RollingFriction: 0.0
+                    UpdateOrder: 0.5
+                  - !WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButton,WaveEngine.MRTK
+                    Id: 001d1547-5ca7-45c9-95d0-ff91e9bf4f4d
+                    EndPosition: -0.100000001
+                    EnforceFrontPush: true
+                    IsEnabled: true
+                    PressPosition: 0.100000001
+                    ReleasePosition: 0.300000012
+                    RetractSpeed: 1.0
+                    StartPosition: 0.5
+                    UpdateOrder: 0.5
+                  - !WaveEngine.MRTK.Services.InputSystem.NearInteractionTouchable,WaveEngine.MRTK
+                    Id: e0855056-569a-4ca8-b533-6385c0f37a89
+                    IsEnabled: true
+                Children:
+                  - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                    Name: MovingKey
+                    Tag: null
+                    IsEnabled: true
+                    IsStatic: false
+                    Components:
+                      - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                        Id: d6ea76af-e560-4208-af73-f1242472e1c5
+                        IsEnabled: true
+                        LocalOrientation:
+                          W: 1.0
+                          X: -1.69406589E-21
+                          Y: -7.10542736E-15
+                          Z: 0.0
+                        LocalPosition:
+                          X: -0.000332207419
+                          Y: -0.0699573159
+                          Z: -0.00288062543
+                        LocalScale:
+                          X: 1.0
+                          Y: 0.99999994
+                          Z: 0.99999994
+                      - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+                        Id: 960025f4-79ac-48e5-890e-254659312f13
+                        AsignedTo: PianoOctave
+                        IsEnabled: true
+                        Material: 5b5cb150-20b3-48ca-b085-1fff3b3469bd
+                      - !WaveEngine.Components.Graphics3D.MeshComponent,WaveEngine.Framework
+                        Id: 1449fca1-51e0-4da8-9575-c792c63ee7f0
+                        IsEnabled: true
+                        Model: 7c21179e-542e-49f4-9f4a-d86929587278
+                        ModelMeshName: PianoKey-C
+                      - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+                        Id: 1abef602-3e2a-4679-9ec0-b68ac6e5a975
+                        DebugBoundingbox: true
+                        FrustumCullingEnabled: true
+                        IsEnabled: true
+                        OrderBias: 0
+                      - !WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButtonVisualFeedbackComponent,WaveEngine.MRTK
+                        Id: 9a8d5a6e-cc90-4364-8ff9-ad14629f51a5
+                        ChangeColor: true
+                        Compressable: true
+                        IsEnabled: true
+                        PressedColor:
+                          A: 255
+                          B: 0
+                          G: 0
+                          R: 255
+                        ReleasedColor:
+                          A: 255
+                          B: 255
+                          G: 255
+                          R: 255
+                    Children: []
+                    Id: 9ac12d3c-3739-46c9-8f96-db81ff3c030a
+                Id: a43dee2b-0830-4db9-8019-006ab796cc75
+            Id: 42170941-daf2-4b46-a743-abb20b73edf9
         Id: 47d72413-3506-4620-bb70-f7a391fa8bd1
     Id: bf7601de-e3ee-4c6a-9ec4-717fc4c11ddd
   - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
@@ -902,9 +1361,9 @@ Items:
           Y: 0.0
           Z: 0.0
         LocalPosition:
-          X: 0.0
-          Y: 0.0
-          Z: 0.0
+          X: 0.0548217185
+          Y: -0.313527942
+          Z: 1.07538331
         LocalScale:
           X: 1.0
           Y: 1.0
@@ -937,7 +1396,6 @@ Items:
             AsignedTo: Default
             IsEnabled: true
             Material: 02181b63-5a0e-46d1-9208-d92376ae33fb
-            UseCopy: false
           - !WaveEngine.Components.Graphics3D.SphereMesh,WaveEngine.Components
             Id: 785a798e-03bc-4caf-8a87-8e9e537f1261
             Diameter: 1.0
@@ -1018,7 +1476,6 @@ Items:
             AsignedTo: Default
             IsEnabled: true
             Material: 02181b63-5a0e-46d1-9208-d92376ae33fb
-            UseCopy: false
           - !WaveEngine.Components.Graphics3D.SphereMesh,WaveEngine.Components
             Id: 73a60d12-73ba-4bc6-98ed-f7e0e989f6ee
             Diameter: 1.0

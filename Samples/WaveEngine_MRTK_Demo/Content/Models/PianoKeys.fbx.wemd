@@ -1,0 +1,37 @@
+!WaveEngine.Assets.Exporters.ModelMetaFile,WaveEngine.Assets
+Id: 7c21179e-542e-49f4-9f4a-d86929587278
+Clips: []
+DefaultProfile:
+  ExcludeAsset: false
+  Name: null
+  Platform: Undefined
+ExportAnimations: true
+ExportAsRaw: false
+GenerateTangentSpace: false
+Profiles: {}
+Source:
+  Header:
+    Id: a423549c-fbb9-43b0-b34d-54f8dcbec8c3
+    IsCompressed: true
+  LastModified: 0001-01-01T00:00:00.0000000
+  ModelInfo:
+    Id: 6edb6d99-a240-4d36-b854-d3a30544e762
+    AnimationTracks: []
+    EmbeddedResources: null
+    Materials:
+      - Item1: PianoOctave
+        Item2: 5b5cb150-20b3-48ca-b085-1fff3b3469bd
+      - Item1: DefaultMaterial
+        Item2: 30c217a1-6c1d-4818-a3ec-b51cdee25212
+    Nodes:
+      - RootNode
+      - RootNode.PianoKeyBlack
+      - RootNode.PianoKey-C
+      - RootNode.PianoKey-D
+      - RootNode.PianoKey-E
+      - RootNode.PianoKey-F
+      - RootNode.PianoKey-G
+      - RootNode.PianoKey-A
+      - RootNode.PianoKey-B
+      - RootNode.Velvet
+SwapWindingOrder: false
