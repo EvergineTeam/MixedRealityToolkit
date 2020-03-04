@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
+using WaveEngine.Components.Graphics3D;
 using WaveEngine.Framework;
 using WaveEngine.Framework.Assets;
 using WaveEngine.Framework.Assets.Importers;
+using WaveEngine.Framework.Graphics;
 using WaveEngine.Framework.Services;
 using WaveEngine.Platform;
 
@@ -13,6 +16,8 @@ namespace WaveEngine_MRTK_Demo.Behaviors
 {
     public class ScenePrefab : Component
     {
+        public bool duplicateMaterials = false;
+
         private AssetsDirectory assetsDirectory;
 
         public enum PrefabTypes
@@ -50,10 +55,52 @@ namespace WaveEngine_MRTK_Demo.Behaviors
                 }
 
                 Entity root = source.SceneData.Items.First().Entity;
+
+                
+                if (duplicateMaterials)
+                {
+                    foreach (MaterialComponent m in root.FindComponentsInChildren<MaterialComponent>())
+                    {
+                        m.Material = this.CopyMaterial(m.Material);
+                    }
+                }
+                
+
                 this.Owner.AddChild(root);
             }
 
             return true;
+        }
+
+        private unsafe Material CopyMaterial(Material material)
+        {
+            Material copy = new Material(material.Effect);
+            copy.ActiveDirectivesNames = material.ActiveDirectivesNames;
+            copy.LayerDescription = material.LayerDescription;
+            copy.OrderBias = material.OrderBias;
+            copy.AllowInstancing = material.AllowInstancing;
+
+            for (int c = 0; c < material.CBuffers.Length; c++)
+            {                
+                void* copyData = (void*)copy.CBuffers[c].Data;
+                void* data = (void*)material.CBuffers[c].Data;
+                uint size = material.CBuffers[c].Size;
+
+                Unsafe.CopyBlock(copyData, data, size);
+                copy.CBuffers[c].Dirty = true;
+            }
+
+            for (int t = 0; t < material.TextureSlots.Length; t++)
+            {
+                copy.TextureSlots[t] = material.TextureSlots[t];
+            }
+
+            for (int s = 0; s < material.SamplerSlots.Length; s++)
+            {
+                copy.SamplerSlots[s] = material.SamplerSlots[s];
+            }            
+
+            return copy;
         }
 
         private string GetAssetPath(Guid id)

@@ -5,6 +5,9 @@
     <GenerateWaveContent>True</GenerateWaveContent>
     <GenerateWaveAssets>False</GenerateWaveAssets>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="WaveEngine.Bullet" Version="3.0.0.4428-nightly" />
     <PackageReference Include="WaveEngine.Common" Version="3.0.0.4428-nightly" />

@@ -10,14 +10,14 @@ Items:
         Id: d8af0a4f-ec5d-4dbd-88d5-b657d9821e64
         IsEnabled: true
         LocalOrientation:
-          W: 0.923879564
-          X: -0.382683367
-          Y: -3.22577876E-08
-          Z: -7.78772034E-08
+          W: 0.917418182
+          X: -0.203386739
+          Y: 0.33391279
+          Z: 0.0740265772
         LocalPosition:
-          X: 0.149402618
-          Y: 0.0366906971
-          Z: 1.31096721
+          X: 0.0
+          Y: 0.0
+          Z: 0.0
         LocalScale:
           X: 1.0
           Y: 1.0
@@ -34,12 +34,12 @@ Items:
       - !WaveEngine.Framework.Graphics.Camera3D,WaveEngine.Framework
         Id: e6234645-a09c-405e-b7cc-e8970277f72c
         Aperture: 1.0
-        AspectRatio: 1.6452992
+        AspectRatio: 1.22666669
         BackgroundColor:
-          A: 255
-          B: 237
-          G: 149
-          R: 100
+          A: 0
+          B: 0
+          G: 0
+          R: 0
         CameraOrder: 0.0
         ClearDepth: 1.0
         ClearFlags: All
@@ -60,10 +60,10 @@ Items:
         LayerMaskDefaultValue: true
         NearPlane: 0.100000001
         ScreenViewport:
-          Height: 234.0
+          Height: 225.0
           MaxDepth: 1.0
           MinDepth: 0.0
-          Width: 385.0
+          Width: 276.0
           X: 0.0
           Y: 0.0
         Sensitivity: 100.0
@@ -89,9 +89,9 @@ Items:
           Y: 1.0
           Z: 0.0
         LocalPosition:
-          X: 0.0670000017
-          Y: 0.171000004
-          Z: 0.98718971
+          X: -0.0815415233
+          Y: 0.276700109
+          Z: -0.384492248
         LocalScale:
           X: 1.0
           Y: 1.0
@@ -112,9 +112,9 @@ Items:
               Y: 0.0
               Z: 0.0
             LocalPosition:
-              X: -0.0450000018
-              Y: -0.128322095
-              Z: 0.0944314599
+              X: 0.0309248269
+              Y: 0.00863751769
+              Z: -0.0417255014
             LocalScale:
               X: 1.0
               Y: 1.0
@@ -170,223 +170,9 @@ Items:
                     IsEnabled: true
                     TypeToId:
                       - 36cadeae-b478-4b98-a06c-72a186813083
+                    duplicateMaterials: true
                     prefabType: PressableRoundButton
-                Children:
-                  - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
-                    Name: PressableRoundButtonPREFAB
-                    Tag: null
-                    IsEnabled: true
-                    IsStatic: false
-                    Components:
-                      - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
-                        Id: 4ac65382-ad0f-4d8a-a01c-8972f3130015
-                        IsEnabled: true
-                        LocalOrientation:
-                          W: 1.0
-                          X: 0.0
-                          Y: 0.0
-                          Z: 0.0
-                        LocalPosition:
-                          X: 0.0
-                          Y: 0.0
-                          Z: 0.0
-                        LocalScale:
-                          X: 1.0
-                          Y: 1.0
-                          Z: 1.0
-                      - !WaveEngine.Framework.Physics3D.BoxCollider3D,WaveEngine.Framework
-                        Id: d0d30a41-087b-410f-b4a7-dfff9e047435
-                        IsEnabled: true
-                        Margin: 0.00100000005
-                        Offset:
-                          X: 0.0
-                          Y: 0.0
-                          Z: 0.00200000009
-                        OrientationOffset:
-                          W: 1.0
-                          X: 0.0
-                          Y: 0.0
-                          Z: 0.0
-                        Size:
-                          X: 0.0320000015
-                          Y: 0.0320000015
-                          Z: 0.0149999997
-                      - !WaveEngine.Framework.Physics3D.StaticBody3D,WaveEngine.Framework
-                        Id: c46bb04b-a6e4-456f-8f73-dc1dea376eb4
-                        CcdMotionThreshold: 0.0
-                        CcdSweptSphereRadius: 0.200000003
-                        CollisionCategories: Cat1
-                        Friction: 0.5
-                        IsEnabled: true
-                        IsSensor: true
-                        MaskBits: All
-                        Restitution: 0.0
-                        RollingFriction: 0.0
-                        UpdateOrder: 0.5
-                      - !WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButton,WaveEngine.MRTK
-                        Id: a45ee70c-9568-4381-b9bc-8b4133933221
-                        EndPosition: -0.100000001
-                        EnforceFrontPush: true
-                        IsEnabled: true
-                        PressPosition: 0.100000001
-                        ReleasePosition: 0.300000012
-                        RetractSpeed: 1.0
-                        StartPosition: 0.5
-                        UpdateOrder: 0.5
-                      - !WaveEngine.MRTK.Services.InputSystem.NearInteractionTouchable,WaveEngine.MRTK
-                        Id: cdabb5cd-db58-4756-8d43-d891b7f9a8da
-                        IsEnabled: true
-                    Children:
-                      - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
-                        Name: buttonContent
-                        Tag: null
-                        IsEnabled: true
-                        IsStatic: false
-                        Components:
-                          - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
-                            Id: de013bdd-a396-477a-b03a-653e76bdd94d
-                            IsEnabled: true
-                            LocalOrientation:
-                              W: 1.0
-                              X: 0.0
-                              Y: 0.0
-                              Z: 0.0
-                            LocalPosition:
-                              X: 0.0
-                              Y: 0.0
-                              Z: -5.96046448E-07
-                            LocalScale:
-                              X: 1.0
-                              Y: 1.0
-                              Z: 1.0
-                        Children:
-                          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
-                            Name: tube
-                            Tag: null
-                            IsEnabled: true
-                            IsStatic: false
-                            Components:
-                              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
-                                Id: 663772d7-664c-4ecb-aab9-00f3566e31f0
-                                IsEnabled: true
-                                LocalOrientation:
-                                  W: 0.707106829
-                                  X: -0.707106709
-                                  Y: 0.0
-                                  Z: 0.0
-                                LocalPosition:
-                                  X: 0.0
-                                  Y: 0.0
-                                  Z: 0.00800000038
-                                LocalScale:
-                                  X: 0.0333333313
-                                  Y: 0.0333333313
-                                  Z: 0.0333333313
-                              - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
-                                Id: 141105e4-f3a9-4fb9-a051-c15ee0a4c315
-                                AsignedTo: Default
-                                IsEnabled: true
-                                Material: 90ff04a5-fc9e-433e-be4b-ff4e024105e5
-                              - !WaveEngine.Components.Graphics3D.CylinderMesh,WaveEngine.Components
-                                Id: 700079f6-8bc7-4e12-af75-b88f4dcd8820
-                                Diameter: 1.0
-                                Height: 0.299999833
-                                IsEnabled: true
-                                Model: 00000000-0000-0000-0000-000000000000
-                                ModelMeshName: cylinder_primitive
-                                Tessellation: 32
-                              - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
-                                Id: bcb3882e-fb76-4212-9442-7aeb211a5418
-                                DebugBoundingbox: true
-                                FrustumCullingEnabled: true
-                                IsEnabled: true
-                                OrderBias: 0
-                            Children: []
-                            Id: e3311087-e856-4269-b539-6323e37fd62d
-                          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
-                            Name: cylinderContainer
-                            Tag: null
-                            IsEnabled: true
-                            IsStatic: false
-                            Components:
-                              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
-                                Id: 8be5698a-e708-4b82-820e-1023f594ff43
-                                IsEnabled: true
-                                LocalOrientation:
-                                  W: 1.0
-                                  X: 0.0
-                                  Y: 0.0
-                                  Z: 0.0
-                                LocalPosition:
-                                  X: 0.0
-                                  Y: 0.0
-                                  Z: 0.0
-                                LocalScale:
-                                  X: 1.0
-                                  Y: 1.0
-                                  Z: 1.0
-                            Children:
-                              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
-                                Name: cylinder
-                                Tag: null
-                                IsEnabled: true
-                                IsStatic: false
-                                Components:
-                                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
-                                    Id: 7dc34655-8def-4a41-9d93-d900b0a61116
-                                    IsEnabled: true
-                                    LocalOrientation:
-                                      W: 0.707106829
-                                      X: -0.707106709
-                                      Y: 0.0
-                                      Z: 0.0
-                                    LocalPosition:
-                                      X: 0.0
-                                      Y: 0.0
-                                      Z: 0.0
-                                    LocalScale:
-                                      X: 0.0333333313
-                                      Y: 0.0333333313
-                                      Z: 0.0333333313
-                                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
-                                    Id: 65182969-b575-4f02-92f3-d9c8b594fa14
-                                    AsignedTo: Default
-                                    IsEnabled: true
-                                    Material: 3f1baba7-748b-4798-82af-8cd1de38ff75
-                                  - !WaveEngine.Components.Graphics3D.CylinderMesh,WaveEngine.Components
-                                    Id: 824f5e15-9524-492d-84fd-ddf6c4f70e83
-                                    Diameter: 0.799999952
-                                    Height: 0.299999833
-                                    IsEnabled: true
-                                    Model: 00000000-0000-0000-0000-000000000000
-                                    ModelMeshName: cylinder_primitive
-                                    Tessellation: 32
-                                  - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
-                                    Id: a3f0fc1e-781f-4317-ba9d-9aa0b722d40c
-                                    DebugBoundingbox: true
-                                    FrustumCullingEnabled: true
-                                    IsEnabled: true
-                                    OrderBias: 0
-                                  - !WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButtonVisualFeedbackComponent,WaveEngine.MRTK
-                                    Id: 0028b0ec-c90c-4419-94a5-c0eab8b379f0
-                                    ChangeColor: true
-                                    Compressable: true
-                                    IsEnabled: true
-                                    PressedColor:
-                                      A: 255
-                                      B: 0
-                                      G: 255
-                                      R: 254
-                                    ReleasedColor:
-                                      A: 255
-                                      B: 255
-                                      G: 204
-                                      R: 9
-                                Children: []
-                                Id: 33826060-56b5-4524-beb1-6617e704c49a
-                            Id: 81e0d5c7-91fa-4300-96da-22fd1aeff2dd
-                        Id: d939db42-6f70-4e21-abbe-abae1ddfcff2
-                    Id: 749cbf9a-e45d-4113-b71c-28e4d8543929
+                Children: []
                 Id: 749cbf9a-e45d-4113-b71c-28e4d8543929
               - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
                 Name: PressableRoundButton (2)
@@ -415,223 +201,9 @@ Items:
                     IsEnabled: true
                     TypeToId:
                       - 36cadeae-b478-4b98-a06c-72a186813083
+                    duplicateMaterials: true
                     prefabType: PressableRoundButton
-                Children:
-                  - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
-                    Name: PressableRoundButtonPREFAB
-                    Tag: null
-                    IsEnabled: true
-                    IsStatic: false
-                    Components:
-                      - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
-                        Id: 4ac65382-ad0f-4d8a-a01c-8972f3130015
-                        IsEnabled: true
-                        LocalOrientation:
-                          W: 1.0
-                          X: 0.0
-                          Y: 0.0
-                          Z: 0.0
-                        LocalPosition:
-                          X: 0.0
-                          Y: 0.0
-                          Z: 0.0
-                        LocalScale:
-                          X: 1.0
-                          Y: 1.0
-                          Z: 1.0
-                      - !WaveEngine.Framework.Physics3D.BoxCollider3D,WaveEngine.Framework
-                        Id: d0d30a41-087b-410f-b4a7-dfff9e047435
-                        IsEnabled: true
-                        Margin: 0.00100000005
-                        Offset:
-                          X: 0.0
-                          Y: 0.0
-                          Z: 0.00200000009
-                        OrientationOffset:
-                          W: 1.0
-                          X: 0.0
-                          Y: 0.0
-                          Z: 0.0
-                        Size:
-                          X: 0.0320000015
-                          Y: 0.0320000015
-                          Z: 0.0149999997
-                      - !WaveEngine.Framework.Physics3D.StaticBody3D,WaveEngine.Framework
-                        Id: c46bb04b-a6e4-456f-8f73-dc1dea376eb4
-                        CcdMotionThreshold: 0.0
-                        CcdSweptSphereRadius: 0.200000003
-                        CollisionCategories: Cat1
-                        Friction: 0.5
-                        IsEnabled: true
-                        IsSensor: true
-                        MaskBits: All
-                        Restitution: 0.0
-                        RollingFriction: 0.0
-                        UpdateOrder: 0.5
-                      - !WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButton,WaveEngine.MRTK
-                        Id: a45ee70c-9568-4381-b9bc-8b4133933221
-                        EndPosition: -0.100000001
-                        EnforceFrontPush: true
-                        IsEnabled: true
-                        PressPosition: 0.100000001
-                        ReleasePosition: 0.300000012
-                        RetractSpeed: 1.0
-                        StartPosition: 0.5
-                        UpdateOrder: 0.5
-                      - !WaveEngine.MRTK.Services.InputSystem.NearInteractionTouchable,WaveEngine.MRTK
-                        Id: cdabb5cd-db58-4756-8d43-d891b7f9a8da
-                        IsEnabled: true
-                    Children:
-                      - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
-                        Name: buttonContent
-                        Tag: null
-                        IsEnabled: true
-                        IsStatic: false
-                        Components:
-                          - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
-                            Id: de013bdd-a396-477a-b03a-653e76bdd94d
-                            IsEnabled: true
-                            LocalOrientation:
-                              W: 1.0
-                              X: 0.0
-                              Y: 0.0
-                              Z: 0.0
-                            LocalPosition:
-                              X: 0.0
-                              Y: 0.0
-                              Z: -5.96046448E-07
-                            LocalScale:
-                              X: 1.0
-                              Y: 1.0
-                              Z: 1.0
-                        Children:
-                          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
-                            Name: tube
-                            Tag: null
-                            IsEnabled: true
-                            IsStatic: false
-                            Components:
-                              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
-                                Id: 663772d7-664c-4ecb-aab9-00f3566e31f0
-                                IsEnabled: true
-                                LocalOrientation:
-                                  W: 0.707106829
-                                  X: -0.707106709
-                                  Y: 0.0
-                                  Z: 0.0
-                                LocalPosition:
-                                  X: 0.0
-                                  Y: 0.0
-                                  Z: 0.00800000038
-                                LocalScale:
-                                  X: 0.0333333313
-                                  Y: 0.0333333313
-                                  Z: 0.0333333313
-                              - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
-                                Id: 141105e4-f3a9-4fb9-a051-c15ee0a4c315
-                                AsignedTo: Default
-                                IsEnabled: true
-                                Material: 90ff04a5-fc9e-433e-be4b-ff4e024105e5
-                              - !WaveEngine.Components.Graphics3D.CylinderMesh,WaveEngine.Components
-                                Id: 700079f6-8bc7-4e12-af75-b88f4dcd8820
-                                Diameter: 1.0
-                                Height: 0.299999833
-                                IsEnabled: true
-                                Model: 00000000-0000-0000-0000-000000000000
-                                ModelMeshName: cylinder_primitive
-                                Tessellation: 32
-                              - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
-                                Id: bcb3882e-fb76-4212-9442-7aeb211a5418
-                                DebugBoundingbox: true
-                                FrustumCullingEnabled: true
-                                IsEnabled: true
-                                OrderBias: 0
-                            Children: []
-                            Id: e3311087-e856-4269-b539-6323e37fd62d
-                          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
-                            Name: cylinderContainer
-                            Tag: null
-                            IsEnabled: true
-                            IsStatic: false
-                            Components:
-                              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
-                                Id: 8be5698a-e708-4b82-820e-1023f594ff43
-                                IsEnabled: true
-                                LocalOrientation:
-                                  W: 1.0
-                                  X: 0.0
-                                  Y: 0.0
-                                  Z: 0.0
-                                LocalPosition:
-                                  X: 0.0
-                                  Y: 0.0
-                                  Z: 0.0
-                                LocalScale:
-                                  X: 1.0
-                                  Y: 1.0
-                                  Z: 1.0
-                            Children:
-                              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
-                                Name: cylinder
-                                Tag: null
-                                IsEnabled: true
-                                IsStatic: false
-                                Components:
-                                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
-                                    Id: 7dc34655-8def-4a41-9d93-d900b0a61116
-                                    IsEnabled: true
-                                    LocalOrientation:
-                                      W: 0.707106829
-                                      X: -0.707106709
-                                      Y: 0.0
-                                      Z: 0.0
-                                    LocalPosition:
-                                      X: 0.0
-                                      Y: 0.0
-                                      Z: 0.0
-                                    LocalScale:
-                                      X: 0.0333333313
-                                      Y: 0.0333333313
-                                      Z: 0.0333333313
-                                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
-                                    Id: 65182969-b575-4f02-92f3-d9c8b594fa14
-                                    AsignedTo: Default
-                                    IsEnabled: true
-                                    Material: 3f1baba7-748b-4798-82af-8cd1de38ff75
-                                  - !WaveEngine.Components.Graphics3D.CylinderMesh,WaveEngine.Components
-                                    Id: 824f5e15-9524-492d-84fd-ddf6c4f70e83
-                                    Diameter: 0.799999952
-                                    Height: 0.299999833
-                                    IsEnabled: true
-                                    Model: 00000000-0000-0000-0000-000000000000
-                                    ModelMeshName: cylinder_primitive
-                                    Tessellation: 32
-                                  - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
-                                    Id: a3f0fc1e-781f-4317-ba9d-9aa0b722d40c
-                                    DebugBoundingbox: true
-                                    FrustumCullingEnabled: true
-                                    IsEnabled: true
-                                    OrderBias: 0
-                                  - !WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButtonVisualFeedbackComponent,WaveEngine.MRTK
-                                    Id: 0028b0ec-c90c-4419-94a5-c0eab8b379f0
-                                    ChangeColor: true
-                                    Compressable: true
-                                    IsEnabled: true
-                                    PressedColor:
-                                      A: 255
-                                      B: 0
-                                      G: 255
-                                      R: 254
-                                    ReleasedColor:
-                                      A: 255
-                                      B: 255
-                                      G: 204
-                                      R: 9
-                                Children: []
-                                Id: 33826060-56b5-4524-beb1-6617e704c49a
-                            Id: 81e0d5c7-91fa-4300-96da-22fd1aeff2dd
-                        Id: d939db42-6f70-4e21-abbe-abae1ddfcff2
-                    Id: 749cbf9a-e45d-4113-b71c-28e4d8543929
+                Children: []
                 Id: c8a01bad-674e-4763-823f-018ef4eca286
               - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
                 Name: PressableRoundButton (3)
@@ -660,223 +232,9 @@ Items:
                     IsEnabled: true
                     TypeToId:
                       - 36cadeae-b478-4b98-a06c-72a186813083
+                    duplicateMaterials: true
                     prefabType: PressableRoundButton
-                Children:
-                  - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
-                    Name: PressableRoundButtonPREFAB
-                    Tag: null
-                    IsEnabled: true
-                    IsStatic: false
-                    Components:
-                      - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
-                        Id: 4ac65382-ad0f-4d8a-a01c-8972f3130015
-                        IsEnabled: true
-                        LocalOrientation:
-                          W: 1.0
-                          X: 0.0
-                          Y: 0.0
-                          Z: 0.0
-                        LocalPosition:
-                          X: 0.0
-                          Y: 0.0
-                          Z: 0.0
-                        LocalScale:
-                          X: 1.0
-                          Y: 1.0
-                          Z: 1.0
-                      - !WaveEngine.Framework.Physics3D.BoxCollider3D,WaveEngine.Framework
-                        Id: d0d30a41-087b-410f-b4a7-dfff9e047435
-                        IsEnabled: true
-                        Margin: 0.00100000005
-                        Offset:
-                          X: 0.0
-                          Y: 0.0
-                          Z: 0.00200000009
-                        OrientationOffset:
-                          W: 1.0
-                          X: 0.0
-                          Y: 0.0
-                          Z: 0.0
-                        Size:
-                          X: 0.0320000015
-                          Y: 0.0320000015
-                          Z: 0.0149999997
-                      - !WaveEngine.Framework.Physics3D.StaticBody3D,WaveEngine.Framework
-                        Id: c46bb04b-a6e4-456f-8f73-dc1dea376eb4
-                        CcdMotionThreshold: 0.0
-                        CcdSweptSphereRadius: 0.200000003
-                        CollisionCategories: Cat1
-                        Friction: 0.5
-                        IsEnabled: true
-                        IsSensor: true
-                        MaskBits: All
-                        Restitution: 0.0
-                        RollingFriction: 0.0
-                        UpdateOrder: 0.5
-                      - !WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButton,WaveEngine.MRTK
-                        Id: a45ee70c-9568-4381-b9bc-8b4133933221
-                        EndPosition: -0.100000001
-                        EnforceFrontPush: true
-                        IsEnabled: true
-                        PressPosition: 0.100000001
-                        ReleasePosition: 0.300000012
-                        RetractSpeed: 1.0
-                        StartPosition: 0.5
-                        UpdateOrder: 0.5
-                      - !WaveEngine.MRTK.Services.InputSystem.NearInteractionTouchable,WaveEngine.MRTK
-                        Id: cdabb5cd-db58-4756-8d43-d891b7f9a8da
-                        IsEnabled: true
-                    Children:
-                      - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
-                        Name: buttonContent
-                        Tag: null
-                        IsEnabled: true
-                        IsStatic: false
-                        Components:
-                          - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
-                            Id: de013bdd-a396-477a-b03a-653e76bdd94d
-                            IsEnabled: true
-                            LocalOrientation:
-                              W: 1.0
-                              X: 0.0
-                              Y: 0.0
-                              Z: 0.0
-                            LocalPosition:
-                              X: 0.0
-                              Y: 0.0
-                              Z: -5.96046448E-07
-                            LocalScale:
-                              X: 1.0
-                              Y: 1.0
-                              Z: 1.0
-                        Children:
-                          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
-                            Name: tube
-                            Tag: null
-                            IsEnabled: true
-                            IsStatic: false
-                            Components:
-                              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
-                                Id: 663772d7-664c-4ecb-aab9-00f3566e31f0
-                                IsEnabled: true
-                                LocalOrientation:
-                                  W: 0.707106829
-                                  X: -0.707106709
-                                  Y: 0.0
-                                  Z: 0.0
-                                LocalPosition:
-                                  X: 0.0
-                                  Y: 0.0
-                                  Z: 0.00800000038
-                                LocalScale:
-                                  X: 0.0333333313
-                                  Y: 0.0333333313
-                                  Z: 0.0333333313
-                              - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
-                                Id: 141105e4-f3a9-4fb9-a051-c15ee0a4c315
-                                AsignedTo: Default
-                                IsEnabled: true
-                                Material: 90ff04a5-fc9e-433e-be4b-ff4e024105e5
-                              - !WaveEngine.Components.Graphics3D.CylinderMesh,WaveEngine.Components
-                                Id: 700079f6-8bc7-4e12-af75-b88f4dcd8820
-                                Diameter: 1.0
-                                Height: 0.299999833
-                                IsEnabled: true
-                                Model: 00000000-0000-0000-0000-000000000000
-                                ModelMeshName: cylinder_primitive
-                                Tessellation: 32
-                              - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
-                                Id: bcb3882e-fb76-4212-9442-7aeb211a5418
-                                DebugBoundingbox: true
-                                FrustumCullingEnabled: true
-                                IsEnabled: true
-                                OrderBias: 0
-                            Children: []
-                            Id: e3311087-e856-4269-b539-6323e37fd62d
-                          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
-                            Name: cylinderContainer
-                            Tag: null
-                            IsEnabled: true
-                            IsStatic: false
-                            Components:
-                              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
-                                Id: 8be5698a-e708-4b82-820e-1023f594ff43
-                                IsEnabled: true
-                                LocalOrientation:
-                                  W: 1.0
-                                  X: 0.0
-                                  Y: 0.0
-                                  Z: 0.0
-                                LocalPosition:
-                                  X: 0.0
-                                  Y: 0.0
-                                  Z: 0.0
-                                LocalScale:
-                                  X: 1.0
-                                  Y: 1.0
-                                  Z: 1.0
-                            Children:
-                              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
-                                Name: cylinder
-                                Tag: null
-                                IsEnabled: true
-                                IsStatic: false
-                                Components:
-                                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
-                                    Id: 7dc34655-8def-4a41-9d93-d900b0a61116
-                                    IsEnabled: true
-                                    LocalOrientation:
-                                      W: 0.707106829
-                                      X: -0.707106709
-                                      Y: 0.0
-                                      Z: 0.0
-                                    LocalPosition:
-                                      X: 0.0
-                                      Y: 0.0
-                                      Z: 0.0
-                                    LocalScale:
-                                      X: 0.0333333313
-                                      Y: 0.0333333313
-                                      Z: 0.0333333313
-                                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
-                                    Id: 65182969-b575-4f02-92f3-d9c8b594fa14
-                                    AsignedTo: Default
-                                    IsEnabled: true
-                                    Material: 3f1baba7-748b-4798-82af-8cd1de38ff75
-                                  - !WaveEngine.Components.Graphics3D.CylinderMesh,WaveEngine.Components
-                                    Id: 824f5e15-9524-492d-84fd-ddf6c4f70e83
-                                    Diameter: 0.799999952
-                                    Height: 0.299999833
-                                    IsEnabled: true
-                                    Model: 00000000-0000-0000-0000-000000000000
-                                    ModelMeshName: cylinder_primitive
-                                    Tessellation: 32
-                                  - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
-                                    Id: a3f0fc1e-781f-4317-ba9d-9aa0b722d40c
-                                    DebugBoundingbox: true
-                                    FrustumCullingEnabled: true
-                                    IsEnabled: true
-                                    OrderBias: 0
-                                  - !WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButtonVisualFeedbackComponent,WaveEngine.MRTK
-                                    Id: 0028b0ec-c90c-4419-94a5-c0eab8b379f0
-                                    ChangeColor: true
-                                    Compressable: true
-                                    IsEnabled: true
-                                    PressedColor:
-                                      A: 255
-                                      B: 0
-                                      G: 255
-                                      R: 254
-                                    ReleasedColor:
-                                      A: 255
-                                      B: 255
-                                      G: 204
-                                      R: 9
-                                Children: []
-                                Id: 33826060-56b5-4524-beb1-6617e704c49a
-                            Id: 81e0d5c7-91fa-4300-96da-22fd1aeff2dd
-                        Id: d939db42-6f70-4e21-abbe-abae1ddfcff2
-                    Id: 749cbf9a-e45d-4113-b71c-28e4d8543929
+                Children: []
                 Id: 372a1494-694e-499a-8065-e291fbfcce62
             Id: 92a40ec7-7556-4edf-9e3e-3ca7b6411c94
           - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
@@ -2616,9 +1974,9 @@ Items:
           Y: 0.0
           Z: 0.0
         LocalPosition:
-          X: 0.0548217185
-          Y: -0.313527942
-          Z: 1.07538331
+          X: 0.0
+          Y: 0.0
+          Z: 0.0
         LocalScale:
           X: 1.0
           Y: 1.0
@@ -2719,9 +2077,9 @@ Items:
               Y: 0.0
               Z: 0.0
             LocalPosition:
-              X: 0.00999999978
-              Y: 0.100000001
-              Z: 0.0199999996
+              X: -0.0688542426
+              Y: 0.0843855664
+              Z: -0.25935483
             LocalScale:
               X: 0.00999999978
               Y: 0.00999999978
