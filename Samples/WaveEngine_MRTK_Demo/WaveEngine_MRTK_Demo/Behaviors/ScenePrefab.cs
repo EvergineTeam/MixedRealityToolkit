@@ -22,12 +22,14 @@ namespace WaveEngine_MRTK_Demo.Behaviors
 
         public enum PrefabTypes
         {
-            PressableRoundButton
+            PressableRoundButton,
+            Slider
         }
 
-        public System.Guid[] TypeToId =
+        public static System.Guid[] TypeToId =
         {
-            WaveContent.Scenes.Prefabs.PressableRoundButton_wescene
+            WaveContent.Scenes.Prefabs.PressableRoundButton_wescene,
+            WaveContent.Scenes.Prefabs.slider_wescene
         };
 
 

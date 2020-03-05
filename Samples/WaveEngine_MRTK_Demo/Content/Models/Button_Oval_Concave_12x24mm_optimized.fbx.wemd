@@ -1,0 +1,27 @@
+!WaveEngine.Assets.Exporters.ModelMetaFile,WaveEngine.Assets
+Id: d062dd03-25f9-4635-af8c-7435b93bbfd2
+Clips: []
+DefaultProfile:
+  ExcludeAsset: false
+  Name: null
+  Platform: Undefined
+ExportAnimations: true
+ExportAsRaw: false
+GenerateTangentSpace: false
+Profiles: {}
+Source:
+  Header:
+    Id: 4c348830-8ec3-4b89-87ed-b56493ee56d4
+    IsCompressed: true
+  LastModified: 0001-01-01T00:00:00.0000000
+  ModelInfo:
+    Id: a08279e5-135a-42b7-8d9d-a19359c0ee3c
+    AnimationTracks: []
+    EmbeddedResources: null
+    Materials:
+      - Item1: lambert1
+        Item2: 0bf88a99-44af-4e83-983a-730c9d84e824
+    Nodes:
+      - RootNode
+      - Button_Oval_Concave_12x24mm
+SwapWindingOrder: false
