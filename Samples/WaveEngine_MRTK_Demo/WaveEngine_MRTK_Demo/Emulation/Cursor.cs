@@ -38,9 +38,23 @@ namespace WaveEngine_MRTK_Demo.Emulation
 
         public bool UseShift { get; set; }
 
+        private bool pinch;
         [WaveIgnore]
         [DontRenderProperty]
-        public bool Pinch { get; private set; }
+        public bool Pinch {
+            get
+            {
+                return pinch;
+            }
+            set
+            {
+                if (value != pinch)
+                {
+                    pinch = value;
+                    this.SetColor(this.Pinch ? this.PressedColor : this.ReleasedColor);
+                }
+            }
+        }
 
         [WaveIgnore]
         [DontRenderProperty]
@@ -104,11 +118,6 @@ namespace WaveEngine_MRTK_Demo.Emulation
                 {
                     this.Pinch = !this.Pinch;
                 }
-            }
-
-            if (this.Pinch != this.PreviousPinch)
-            {
-                this.SetColor(this.Pinch ? this.PressedColor : this.ReleasedColor);
             }
         }
 

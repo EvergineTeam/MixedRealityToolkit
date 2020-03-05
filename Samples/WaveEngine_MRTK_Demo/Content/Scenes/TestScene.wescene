@@ -2,12 +2,13 @@
 Items:
   - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
     Name: camera
-    Tag: null
+    Tag: MainCamera
     IsEnabled: true
     IsStatic: false
     Components:
       - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
         Id: d8af0a4f-ec5d-4dbd-88d5-b657d9821e64
+        IsEnabled: true
         LocalOrientation:
           W: 0.917418242
           X: -0.203386709
@@ -23,6 +24,7 @@ Items:
           Z: 1.0
       - !WaveEngine.Components.Cameras.FreeCamera3D,WaveEngine.Components
         Id: 98c044c8-e826-4290-bdec-7c37e65dd58a
+        IsEnabled: true
         MaxPitch: 1.49225616
         MouseSensibility: 0.200000003
         Speed: 0.200000003
@@ -32,7 +34,7 @@ Items:
       - !WaveEngine.Framework.Graphics.Camera3D,WaveEngine.Framework
         Id: e6234645-a09c-405e-b7cc-e8970277f72c
         Aperture: 1.0
-        AspectRatio: 1.35636365
+        AspectRatio: 1.22222221
         BackgroundColor:
           A: 0
           B: 0
@@ -52,14 +54,16 @@ Items:
         Exposure: 1.00000012
         FarPlane: 100.0
         FieldOfView: 0.785398185
+        FieldOfViewAxis: Vertical
         FrustumCullingEnabled: true
+        IsEnabled: true
         LayerMaskDefaultValue: true
         NearPlane: 0.100000001
         ScreenViewport:
-          Height: 275.0
+          Height: 225.0
           MaxDepth: 1.0
           MinDepth: 0.0
-          Width: 373.0
+          Width: 275.0
           X: 0.0
           Y: 0.0
         Sensitivity: 100.0
@@ -78,6 +82,7 @@ Items:
     Components:
       - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
         Id: c9b81e95-16a2-42d7-905d-d7bbcd044c07
+        IsEnabled: true
         LocalOrientation:
           W: 1.94707184E-07
           X: 0.0
@@ -100,6 +105,7 @@ Items:
         Components:
           - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
             Id: 070c932c-94aa-48c5-bc9f-22cef79a3d79
+            IsEnabled: true
             LocalOrientation:
               W: 1.0
               X: 0.0
@@ -122,6 +128,7 @@ Items:
             Components:
               - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
                 Id: 31a7a5ee-3127-49a5-8e26-87ff36f52178
+                IsEnabled: true
                 LocalOrientation:
                   W: 1.0
                   X: 0.0
@@ -144,6 +151,7 @@ Items:
                 Components:
                   - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
                     Id: 4ac65382-ad0f-4d8a-a01c-8972f3130015
+                    IsEnabled: true
                     LocalOrientation:
                       W: 1.0
                       X: 0.0
@@ -159,6 +167,7 @@ Items:
                       Z: 1.0
                   - !WaveEngine.Framework.Physics3D.BoxCollider3D,WaveEngine.Framework
                     Id: d0d30a41-087b-410f-b4a7-dfff9e047435
+                    IsEnabled: true
                     Margin: 0.00100000005
                     Offset:
                       X: 0.0
@@ -179,6 +188,7 @@ Items:
                     CcdSweptSphereRadius: 0.200000003
                     CollisionCategories: Cat1
                     Friction: 0.5
+                    IsEnabled: true
                     IsSensor: true
                     MaskBits: All
                     Restitution: 0.0
@@ -188,6 +198,7 @@ Items:
                     Id: 74d5cb12-f58c-48dc-8fd7-88299f6061ea
                     EndPosition: -0.100000001
                     EnforceFrontPush: true
+                    IsEnabled: true
                     PressPosition: 0.100000001
                     ReleasePosition: 0.300000012
                     RetractSpeed: 10.0
@@ -195,8 +206,10 @@ Items:
                     UpdateOrder: 0.5
                   - !WaveEngine.MRTK.Services.InputSystem.NearInteractionTouchable,WaveEngine.MRTK
                     Id: a70141af-a341-4c49-9dce-5e42a626fd83
+                    IsEnabled: true
                   - !WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButtonSoundFeedbackComponent,WaveEngine.MRTK
                     Id: c67c2a4d-fc24-4c9c-99f4-c3fab537e167
+                    IsEnabled: true
                     PressedSound: 2f03824d-5709-4c4d-9857-c6a47769a5bc
                     ReleasedSound: 7f835fa0-da0a-4152-b6ee-157943781e61
                   - !WaveEngine.Components.Sound.SoundEmitter3D,WaveEngine.Components
@@ -204,6 +217,7 @@ Items:
                     Apply3D: true
                     Audio: null
                     DistanceScaleFactor: 1.0
+                    IsEnabled: true
                     IsMuted: false
                     Loop: false
                     Pitch: 1.0
@@ -219,6 +233,7 @@ Items:
                     Components:
                       - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
                         Id: de013bdd-a396-477a-b03a-653e76bdd94d
+                        IsEnabled: true
                         LocalOrientation:
                           W: 1.0
                           X: 0.0
@@ -241,6 +256,7 @@ Items:
                         Components:
                           - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
                             Id: 663772d7-664c-4ecb-aab9-00f3566e31f0
+                            IsEnabled: true
                             LocalOrientation:
                               W: 0.707106829
                               X: -0.707106709
@@ -257,12 +273,13 @@ Items:
                           - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
                             Id: 141105e4-f3a9-4fb9-a051-c15ee0a4c315
                             AsignedTo: Default
+                            IsEnabled: true
                             Material: 90ff04a5-fc9e-433e-be4b-ff4e024105e5
-                            UseCopy: false
                           - !WaveEngine.Components.Graphics3D.CylinderMesh,WaveEngine.Components
                             Id: 700079f6-8bc7-4e12-af75-b88f4dcd8820
                             Diameter: 1.0
                             Height: 0.299999833
+                            IsEnabled: true
                             Model: 00000000-0000-0000-0000-000000000000
                             ModelMeshName: cylinder_primitive
                             Tessellation: 32
@@ -270,6 +287,7 @@ Items:
                             Id: bcb3882e-fb76-4212-9442-7aeb211a5418
                             DebugBoundingbox: true
                             FrustumCullingEnabled: true
+                            IsEnabled: true
                             OrderBias: 0
                         Children: []
                         Id: e3311087-e856-4269-b539-6323e37fd62d
@@ -281,6 +299,7 @@ Items:
                         Components:
                           - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
                             Id: 8be5698a-e708-4b82-820e-1023f594ff43
+                            IsEnabled: true
                             LocalOrientation:
                               W: 1.0
                               X: 0.0
@@ -303,6 +322,7 @@ Items:
                             Components:
                               - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
                                 Id: 7dc34655-8def-4a41-9d93-d900b0a61116
+                                IsEnabled: true
                                 LocalOrientation:
                                   W: 0.707106829
                                   X: -0.707106709
@@ -319,12 +339,13 @@ Items:
                               - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
                                 Id: 65182969-b575-4f02-92f3-d9c8b594fa14
                                 AsignedTo: Default
+                                IsEnabled: true
                                 Material: 3f1baba7-748b-4798-82af-8cd1de38ff75
-                                UseCopy: false
                               - !WaveEngine.Components.Graphics3D.CylinderMesh,WaveEngine.Components
                                 Id: 824f5e15-9524-492d-84fd-ddf6c4f70e83
                                 Diameter: 0.799999952
                                 Height: 0.299999833
+                                IsEnabled: true
                                 Model: 00000000-0000-0000-0000-000000000000
                                 ModelMeshName: cylinder_primitive
                                 Tessellation: 32
@@ -332,11 +353,13 @@ Items:
                                 Id: a3f0fc1e-781f-4317-ba9d-9aa0b722d40c
                                 DebugBoundingbox: true
                                 FrustumCullingEnabled: true
+                                IsEnabled: true
                                 OrderBias: 0
                               - !WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButtonVisualFeedbackComponent,WaveEngine.MRTK
                                 Id: 1ff2a1e0-533f-4f45-9b41-fe61fae9fb15
                                 ChangeColor: true
                                 Compressable: false
+                                IsEnabled: true
                                 PressedColor:
                                   A: 255
                                   B: 255
@@ -362,6 +385,7 @@ Items:
         Components:
           - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
             Id: 71398d61-0d91-4142-a1df-01e39864407b
+            IsEnabled: true
             LocalOrientation:
               W: 1.0
               X: 0.0
@@ -384,6 +408,7 @@ Items:
             Components:
               - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
                 Id: ea0272b2-a7d6-4202-b68b-ad1c35bfbce6
+                IsEnabled: true
                 LocalOrientation:
                   W: 1.0
                   X: 0.0
@@ -400,6 +425,7 @@ Items:
               - !WaveEngine.MRTK.SDK.Features.UX.Components.Sliders.PinchSlider,WaveEngine.MRTK
                 Id: 21e7bfb8-e27f-485e-8f93-c192186d400d
                 InitialValue: 0.5
+                IsEnabled: true
                 SliderEndDistance: 0.075000003
                 SliderStartDistance: -0.075000003
               - !WaveEngine.Components.Sound.SoundEmitter3D,WaveEngine.Components
@@ -407,6 +433,7 @@ Items:
                 Apply3D: true
                 Audio: null
                 DistanceScaleFactor: 1.0
+                IsEnabled: true
                 IsMuted: false
                 Loop: false
                 Pitch: 1.0
@@ -418,6 +445,7 @@ Items:
                 EndPitch: 1.25
                 InteractionEndSound: 8380b296-60d7-41ff-af98-f8a7e4c8f43b
                 InteractionStartSound: 6828c3e0-fcd7-41d0-8643-5fb8dc589a43
+                IsEnabled: true
                 MinSecondsBetweenTicks: 0.100000001
                 PassNotchSound: 2c95a330-903a-4af5-a978-775fb7a39ce5
                 PlayTickSounds: true
@@ -433,6 +461,7 @@ Items:
                 Components:
                   - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
                     Id: 22fa2ed9-462d-49df-be4d-7733385ca4c9
+                    IsEnabled: true
                     LocalOrientation:
                       W: 1.0
                       X: 0.0
@@ -455,6 +484,7 @@ Items:
                     Components:
                       - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
                         Id: 094e72b0-b723-4834-8907-195281ac93fe
+                        IsEnabled: true
                         LocalOrientation:
                           W: 1.0
                           X: 0.0
@@ -471,12 +501,13 @@ Items:
                       - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
                         Id: a1909cf9-9875-451b-b462-21e26fe5b926
                         AsignedTo: Default
+                        IsEnabled: true
                         Material: 90ff04a5-fc9e-433e-be4b-ff4e024105e5
-                        UseCopy: false
                       - !WaveEngine.Components.Graphics3D.CylinderMesh,WaveEngine.Components
                         Id: a87344ae-59ff-4fa5-81ed-1f8a8b396719
                         Diameter: 0.00200000009
                         Height: 0.149999842
+                        IsEnabled: true
                         Model: 00000000-0000-0000-0000-000000000000
                         ModelMeshName: cylinder_primitive
                         Tessellation: 16
@@ -484,6 +515,7 @@ Items:
                         Id: d953b076-53f1-4daf-977d-ddfc4820de88
                         DebugBoundingbox: true
                         FrustumCullingEnabled: true
+                        IsEnabled: true
                         OrderBias: 0
                     Children: []
                     Id: 11c208ed-ecbf-41df-95d4-b35d44bc63e0
@@ -496,6 +528,7 @@ Items:
                 Components:
                   - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
                     Id: adcc5215-f512-4262-84e7-4f3f4af1b069
+                    IsEnabled: true
                     LocalOrientation:
                       W: 1.0
                       X: 0.0
@@ -511,6 +544,7 @@ Items:
                       Z: 1.0
                   - !WaveEngine.Framework.Physics3D.BoxCollider3D,WaveEngine.Framework
                     Id: fd8022d6-3e69-42bd-b77d-a62f33d45e6d
+                    IsEnabled: true
                     Margin: 0.00100000005
                     Offset:
                       X: 0.0
@@ -531,6 +565,7 @@ Items:
                     CcdSweptSphereRadius: 0.200000003
                     CollisionCategories: Cat1
                     Friction: 0.5
+                    IsEnabled: true
                     IsSensor: true
                     MaskBits: All
                     Restitution: 0.0
@@ -538,6 +573,7 @@ Items:
                     UpdateOrder: 0.5
                   - !WaveEngine.MRTK.Services.InputSystem.NearInteractionGrabbable,WaveEngine.MRTK
                     Id: df6e2768-3642-4c67-b08a-224f266ae39b
+                    IsEnabled: true
                 Children:
                   - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
                     Name: sliderButton
@@ -547,6 +583,7 @@ Items:
                     Components:
                       - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
                         Id: eb0c17df-3790-4ca7-92d2-b0be08e14fa2
+                        IsEnabled: true
                         LocalOrientation:
                           W: 1.0
                           X: 0.0
@@ -563,12 +600,13 @@ Items:
                       - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
                         Id: e51f1519-3f79-4e9b-af97-1887eda25243
                         AsignedTo: Default
+                        IsEnabled: true
                         Material: c8d05e91-fdd0-4ac5-a098-cb018c984ddb
-                        UseCopy: false
                       - !WaveEngine.Components.Graphics3D.CubeMesh,WaveEngine.Components
                         Id: 5a162903-d2bc-4dfe-84a2-28bf8c04694b
                         InitialU: 0.0
                         InitialV: 0.0
+                        IsEnabled: true
                         Model: 00000000-0000-0000-0000-000000000000
                         ModelMeshName: cube_primitive
                         Size: 1.0
@@ -580,6 +618,7 @@ Items:
                         Id: e4027d14-00bb-4ed8-ba61-cfd68e68f828
                         DebugBoundingbox: true
                         FrustumCullingEnabled: true
+                        IsEnabled: true
                         OrderBias: 0
                     Children: []
                     Id: a5f558ee-ec6f-4db5-a219-28a12dc50c87
@@ -594,6 +633,7 @@ Items:
         Components:
           - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
             Id: c860660d-8dcc-4634-a65d-b9835311b9de
+            IsEnabled: true
             LocalOrientation:
               W: -0.70710659
               X: 0.0
@@ -610,10 +650,11 @@ Items:
           - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
             Id: 442ddc1d-2f69-4eab-b32f-e6d8cf06b107
             AsignedTo: Default
+            IsEnabled: true
             Material: 13d15436-27e3-4148-a2b5-0810843a138c
-            UseCopy: false
           - !WaveEngine.Components.Graphics3D.TeapotMesh,WaveEngine.Components
             Id: 4a85a245-753a-48a1-af28-53db8c35dcf8
+            IsEnabled: true
             Model: 00000000-0000-0000-0000-000000000000
             ModelMeshName: teapot_primitive
             Size: 1.0
@@ -622,13 +663,17 @@ Items:
             Id: 755006e2-5418-4550-94b1-01f4863500cc
             DebugBoundingbox: true
             FrustumCullingEnabled: true
+            IsEnabled: true
             OrderBias: 0
           - !WaveEngine_MRTK_Demo.Behaviors.ControlsTestComponent,WaveEngine_MRTK_Demo
             Id: 9d77366a-0eab-4763-9e19-5fc74b3df8bf
+            IsEnabled: true
           - !WaveEngine.MRTK.Services.InputSystem.NearInteractionGrabbable,WaveEngine.MRTK
             Id: 202d715b-fa44-4dcb-b016-e0fdab9c9559
+            IsEnabled: true
           - !WaveEngine.Framework.Physics3D.BoxCollider3D,WaveEngine.Framework
             Id: b4c35e3d-afd6-44e7-aaa1-9c5e2880850c
+            IsEnabled: true
             Margin: 0.00100000005
             Offset:
               X: 0.0
@@ -649,6 +694,7 @@ Items:
             CcdSweptSphereRadius: 0.200000003
             CollisionCategories: Cat1
             Friction: 0.5
+            IsEnabled: true
             IsSensor: true
             MaskBits: All
             Restitution: 0.0
@@ -656,14 +702,19 @@ Items:
             UpdateOrder: 0.5
           - !WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation.SimpleManipulationHandler,WaveEngine.MRTK
             Id: a4657f7b-20a7-45a8-8dcf-45b55dc773ce
+            IsEnabled: true
+            SmoothingActive: true
+            SmoothingAmount: 0.00100000005
             UpdateOrder: 0.5
           - !WaveEngine_MRTK_Demo.Drawables.BoxColliderRenderer,WaveEngine_MRTK_Demo
             Id: c0256a3d-14c2-4e26-8b72-b1a56041dfac
             DebugBoundingbox: true
             FrustumCullingEnabled: true
+            IsEnabled: false
             OrderBias: 0
           - !WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation.ManipulationHandlerSoundFeedbackComponent,WaveEngine.MRTK
             Id: 31b5891c-4b83-4d17-894e-e3eb2b0cc0e0
+            IsEnabled: true
             ManipulationEndedSound: fd9d4d83-ee1a-479b-8836-2d7de657ce46
             ManipulationStartedSound: 225031ed-2f89-4ab3-8f3b-ec380424b7bc
           - !WaveEngine.Components.Sound.SoundEmitter3D,WaveEngine.Components
@@ -671,6 +722,7 @@ Items:
             Apply3D: true
             Audio: null
             DistanceScaleFactor: 1.0
+            IsEnabled: true
             IsMuted: false
             Loop: false
             Pitch: 1.0
@@ -688,6 +740,7 @@ Items:
     Components:
       - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
         Id: 7b37bebc-7ca2-4b75-970b-8f4a02f393fe
+        IsEnabled: true
         LocalOrientation:
           W: 1.0
           X: 0.0
@@ -710,6 +763,7 @@ Items:
         Components:
           - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
             Id: 05b9417b-bc6d-4af5-bbbb-f2d5e8a98e63
+            IsEnabled: true
             LocalOrientation:
               W: 1.0
               X: 0.0
@@ -726,11 +780,12 @@ Items:
           - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
             Id: 13b3df29-7623-4712-b1f0-0ea3e04ceca7
             AsignedTo: Default
+            IsEnabled: true
             Material: b65fb622-f2bc-42ef-a797-3a98cd7df438
-            UseCopy: false
           - !WaveEngine.Components.Graphics3D.SphereMesh,WaveEngine.Components
             Id: 785a798e-03bc-4caf-8a87-8e9e537f1261
             Diameter: 1.0
+            IsEnabled: true
             Model: 00000000-0000-0000-0000-000000000000
             ModelMeshName: sphere_primitive
             Tessellation: 16
@@ -740,9 +795,11 @@ Items:
             Id: fe1a08b4-4551-44bd-8374-2455d0080b31
             DebugBoundingbox: true
             FrustumCullingEnabled: true
+            IsEnabled: true
             OrderBias: 0
           - !WaveEngine_MRTK_Demo.Emulation.Cursor,WaveEngine_MRTK_Demo
             Id: 9bf2f5b6-b4ac-4e40-9329-b9feb0e662e2
+            IsEnabled: true
             PressedColor:
               A: 255
               B: 128
@@ -757,6 +814,7 @@ Items:
             UseShift: false
           - !WaveEngine.Framework.Physics3D.SphereCollider3D,WaveEngine.Framework
             Id: 0b4be18f-a116-4c7d-85ca-8de0d10df96a
+            IsEnabled: true
             Margin: 0.00100000005
             Offset:
               X: 0.0
@@ -769,6 +827,7 @@ Items:
             CcdSweptSphereRadius: 0.200000003
             CollisionCategories: Cat1
             Friction: 0.5
+            IsEnabled: true
             IsSensor: true
             MaskBits: All
             Restitution: 0.0
@@ -784,6 +843,7 @@ Items:
         Components:
           - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
             Id: 8fd90005-8bc4-4a2c-a8a7-c895188c0b7b
+            IsEnabled: true
             LocalOrientation:
               W: 1.0
               X: 0.0
@@ -800,11 +860,12 @@ Items:
           - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
             Id: 619f984c-82ce-4056-a7ea-3d34176d27df
             AsignedTo: Default
+            IsEnabled: true
             Material: ca59c04a-7d64-44e2-aa93-57d962979c5b
-            UseCopy: false
           - !WaveEngine.Components.Graphics3D.SphereMesh,WaveEngine.Components
             Id: 73a60d12-73ba-4bc6-98ed-f7e0e989f6ee
             Diameter: 1.0
+            IsEnabled: true
             Model: 00000000-0000-0000-0000-000000000000
             ModelMeshName: sphere_primitive
             Tessellation: 16
@@ -814,9 +875,11 @@ Items:
             Id: fd325834-b9ca-45ee-b541-b7bcd5bed046
             DebugBoundingbox: true
             FrustumCullingEnabled: true
+            IsEnabled: true
             OrderBias: 0
           - !WaveEngine_MRTK_Demo.Emulation.Cursor,WaveEngine_MRTK_Demo
             Id: 5e33d1c6-7359-4b9e-9f30-e04772ce69a4
+            IsEnabled: true
             PressedColor:
               A: 255
               B: 128
@@ -831,6 +894,7 @@ Items:
             UseShift: false
           - !WaveEngine.Framework.Physics3D.SphereCollider3D,WaveEngine.Framework
             Id: bf60dced-1832-4d5c-8ac7-e0f0747d69d4
+            IsEnabled: true
             Margin: 0.00100000005
             Offset:
               X: 0.0
@@ -843,10 +907,15 @@ Items:
             CcdSweptSphereRadius: 0.200000003
             CollisionCategories: Cat1
             Friction: 0.5
+            IsEnabled: true
             IsSensor: true
             MaskBits: All
             Restitution: 0.0
             RollingFriction: 0.0
+            UpdateOrder: 0.5
+          - !WaveEngine_MRTK_Demo.Behaviors.MouseControlBehavior,WaveEngine_MRTK_Demo
+            Id: a1b2ae36-0ad3-425d-a62b-65933ae28575
+            IsEnabled: true
             UpdateOrder: 0.5
         Children: []
         Id: 0a1b717d-2afc-413b-a520-57f429737cca
