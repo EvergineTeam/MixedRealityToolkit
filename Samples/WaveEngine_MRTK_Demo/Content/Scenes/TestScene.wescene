@@ -913,10 +913,6 @@ Items:
             Restitution: 0.0
             RollingFriction: 0.0
             UpdateOrder: 0.5
-          - !WaveEngine_MRTK_Demo.Behaviors.MouseControlBehavior,WaveEngine_MRTK_Demo
-            Id: a1b2ae36-0ad3-425d-a62b-65933ae28575
-            IsEnabled: true
-            UpdateOrder: 0.5
         Children: []
         Id: 0a1b717d-2afc-413b-a520-57f429737cca
     Id: 04aa31c2-6453-445f-9887-71b256aeaf02
