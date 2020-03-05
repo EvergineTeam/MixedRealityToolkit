@@ -57,7 +57,6 @@ namespace WaveEngine_MRTK_Demo.Behaviors
                 }
 
                 Entity root = source.SceneData.Items.First().Entity;
-
                 
                 if (duplicateMaterials)
                 {
@@ -66,7 +65,6 @@ namespace WaveEngine_MRTK_Demo.Behaviors
                         m.Material = this.CopyMaterial(m.Material);
                     }
                 }
-                
 
                 this.Owner.AddChild(root);
             }

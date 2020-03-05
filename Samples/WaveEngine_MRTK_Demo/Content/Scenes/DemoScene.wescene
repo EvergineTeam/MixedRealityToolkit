@@ -285,7 +285,7 @@ Items:
                                 Id: 141105e4-f3a9-4fb9-a051-c15ee0a4c315
                                 AsignedTo: Default
                                 IsEnabled: true
-                                Material: a27368c1-5c29-4f88-a858-dd5dcc134463
+                                Material: 64193417-2f67-465a-90a4-c9530e9d409d
                               - !WaveEngine.Components.Graphics3D.CylinderMesh,WaveEngine.Components
                                 Id: 700079f6-8bc7-4e12-af75-b88f4dcd8820
                                 Diameter: 1.0
@@ -351,7 +351,7 @@ Items:
                                     Id: 65182969-b575-4f02-92f3-d9c8b594fa14
                                     AsignedTo: Default
                                     IsEnabled: true
-                                    Material: 61db54f6-1317-4142-b5bf-c6a4c983af28
+                                    Material: 60a00df4-7d58-4907-aa29-be2db261f3c4
                                   - !WaveEngine.Components.Graphics3D.CylinderMesh,WaveEngine.Components
                                     Id: 824f5e15-9524-492d-84fd-ddf6c4f70e83
                                     Diameter: 0.799999952
@@ -529,7 +529,7 @@ Items:
                                 Id: 141105e4-f3a9-4fb9-a051-c15ee0a4c315
                                 AsignedTo: Default
                                 IsEnabled: true
-                                Material: 1430a694-dded-4bae-9c11-fcde8daa9acf
+                                Material: efdb3076-7d19-4af6-b826-91a3e42fdf0a
                               - !WaveEngine.Components.Graphics3D.CylinderMesh,WaveEngine.Components
                                 Id: 700079f6-8bc7-4e12-af75-b88f4dcd8820
                                 Diameter: 1.0
@@ -595,7 +595,7 @@ Items:
                                     Id: 65182969-b575-4f02-92f3-d9c8b594fa14
                                     AsignedTo: Default
                                     IsEnabled: true
-                                    Material: b7143394-eebf-496f-96e1-4d08331e045c
+                                    Material: 20ec2689-0f91-48be-9367-7ae9943fdf7f
                                   - !WaveEngine.Components.Graphics3D.CylinderMesh,WaveEngine.Components
                                     Id: 824f5e15-9524-492d-84fd-ddf6c4f70e83
                                     Diameter: 0.799999952
@@ -773,7 +773,7 @@ Items:
                                 Id: 141105e4-f3a9-4fb9-a051-c15ee0a4c315
                                 AsignedTo: Default
                                 IsEnabled: true
-                                Material: 1d2b846d-8821-48db-afc3-9ae1923f208c
+                                Material: bff2ffe6-a890-4dc3-a960-e64b86cb459f
                               - !WaveEngine.Components.Graphics3D.CylinderMesh,WaveEngine.Components
                                 Id: 700079f6-8bc7-4e12-af75-b88f4dcd8820
                                 Diameter: 1.0
@@ -839,7 +839,7 @@ Items:
                                     Id: 65182969-b575-4f02-92f3-d9c8b594fa14
                                     AsignedTo: Default
                                     IsEnabled: true
-                                    Material: 80f306c1-8f0e-4111-b95e-153977f46ded
+                                    Material: 36412086-1993-456b-8022-1c511b391278
                                   - !WaveEngine.Components.Graphics3D.CylinderMesh,WaveEngine.Components
                                     Id: 824f5e15-9524-492d-84fd-ddf6c4f70e83
                                     Diameter: 0.799999952
@@ -2622,7 +2622,7 @@ Items:
         Children:
           - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
             Name: PinchSliderColorRed
-            Tag: null
+            Tag: PinchSliderRed
             IsEnabled: true
             IsStatic: false
             Components:
@@ -2750,7 +2750,7 @@ Items:
                             Id: a1909cf9-9875-451b-b462-21e26fe5b926
                             AsignedTo: Default
                             IsEnabled: true
-                            Material: 8f89203f-1fa1-4d11-99a8-70e1e9863e69
+                            Material: 8e8ac3bf-2ed5-4fdd-900b-19f4efc929d9
                           - !WaveEngine.Components.Graphics3D.CylinderMesh,WaveEngine.Components
                             Id: a87344ae-59ff-4fa5-81ed-1f8a8b396719
                             Diameter: 0.00200000009
@@ -2824,58 +2824,51 @@ Items:
                         IsEnabled: true
                     Children:
                       - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
-                        Name: sliderButton
+                        Name: Button_Oval_Concave_12x24mm_optimized_fbx
                         Tag: null
                         IsEnabled: true
                         IsStatic: false
                         Components:
                           - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
-                            Id: eb0c17df-3790-4ca7-92d2-b0be08e14fa2
+                            Id: 4b02096f-247a-4a01-b41a-731a66912bae
                             IsEnabled: true
                             LocalOrientation:
-                              W: 1.0
-                              X: 0.0
-                              Y: 0.0
-                              Z: 0.0
+                              W: 8.54225206E-08
+                              X: -0.70710665
+                              Y: -0.707106888
+                              Z: -8.80869919E-08
                             LocalPosition:
-                              X: 0.0
+                              X: -2.85894508E-09
                               Y: 0.0
-                              Z: -0.00499999989
+                              Z: -0.0123416819
                             LocalScale:
-                              X: 0.0199999996
-                              Y: 0.00999999978
-                              Z: 0.0199999996
+                              X: 0.999999881
+                              Y: 0.999999881
+                              Z: 1.0
                           - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
-                            Id: e51f1519-3f79-4e9b-af97-1887eda25243
-                            AsignedTo: Default
+                            Id: e2cd7596-1a8b-4819-8457-0c7b0c8a2b1f
+                            AsignedTo: lambert1
                             IsEnabled: true
-                            Material: 019e8aeb-34e9-4ab2-8189-df48f60e4854
-                          - !WaveEngine.Components.Graphics3D.CubeMesh,WaveEngine.Components
-                            Id: 5a162903-d2bc-4dfe-84a2-28bf8c04694b
-                            InitialU: 0.0
-                            InitialV: 0.0
+                            Material: ace4e757-f831-4cfc-bf04-b11b20e7503e
+                          - !WaveEngine.Components.Graphics3D.MeshComponent,WaveEngine.Framework
+                            Id: f559c7d2-023f-4689-a08d-56b145303bb6
                             IsEnabled: true
-                            Model: 00000000-0000-0000-0000-000000000000
-                            ModelMeshName: cube_primitive
-                            Size: 1.0
-                            UTile: 1.0
-                            UVHorizontalFlip: false
-                            UVVerticalFlip: false
-                            YTile: 1.0
+                            Model: d062dd03-25f9-4635-af8c-7435b93bbfd2
+                            ModelMeshName: Button_Oval_Concave_12x24mm
                           - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
-                            Id: e4027d14-00bb-4ed8-ba61-cfd68e68f828
+                            Id: db42ed51-5196-4465-8023-45dd97b09526
                             DebugBoundingbox: true
                             FrustumCullingEnabled: true
                             IsEnabled: true
                             OrderBias: 0
                         Children: []
-                        Id: a5f558ee-ec6f-4db5-a219-28a12dc50c87
+                        Id: e0b2f115-1b88-44f9-adcf-b100a8e5b898
                     Id: 9c0d18b5-5928-4a8c-bf0a-ee78937b1c7b
                 Id: 660df448-a8ac-4d33-a9bd-ae324caebaeb
             Id: 57983931-b67d-4331-8cd6-14b1213d5654
           - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
             Name: PinchSliderColorGreen
-            Tag: null
+            Tag: PinchSliderGreen
             IsEnabled: true
             IsStatic: false
             Components:
@@ -3003,7 +2996,7 @@ Items:
                             Id: a1909cf9-9875-451b-b462-21e26fe5b926
                             AsignedTo: Default
                             IsEnabled: true
-                            Material: 8f4ff7ec-af7b-40b2-a2ac-536642453e64
+                            Material: 1c98fd30-e607-4391-b479-1ee25568d519
                           - !WaveEngine.Components.Graphics3D.CylinderMesh,WaveEngine.Components
                             Id: a87344ae-59ff-4fa5-81ed-1f8a8b396719
                             Diameter: 0.00200000009
@@ -3077,58 +3070,51 @@ Items:
                         IsEnabled: true
                     Children:
                       - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
-                        Name: sliderButton
+                        Name: Button_Oval_Concave_12x24mm_optimized_fbx
                         Tag: null
                         IsEnabled: true
                         IsStatic: false
                         Components:
                           - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
-                            Id: eb0c17df-3790-4ca7-92d2-b0be08e14fa2
+                            Id: 4b02096f-247a-4a01-b41a-731a66912bae
                             IsEnabled: true
                             LocalOrientation:
-                              W: 1.0
-                              X: 0.0
-                              Y: 0.0
-                              Z: 0.0
+                              W: 8.54225206E-08
+                              X: -0.70710665
+                              Y: -0.707106888
+                              Z: -8.80869919E-08
                             LocalPosition:
-                              X: 0.0
+                              X: -2.85894508E-09
                               Y: 0.0
-                              Z: -0.00499999989
+                              Z: -0.0123416819
                             LocalScale:
-                              X: 0.0199999996
-                              Y: 0.00999999978
-                              Z: 0.0199999996
+                              X: 0.999999881
+                              Y: 0.999999881
+                              Z: 1.0
                           - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
-                            Id: e51f1519-3f79-4e9b-af97-1887eda25243
-                            AsignedTo: Default
+                            Id: e2cd7596-1a8b-4819-8457-0c7b0c8a2b1f
+                            AsignedTo: lambert1
                             IsEnabled: true
-                            Material: db72ad6f-c153-48a7-9bf1-5dafd25049b8
-                          - !WaveEngine.Components.Graphics3D.CubeMesh,WaveEngine.Components
-                            Id: 5a162903-d2bc-4dfe-84a2-28bf8c04694b
-                            InitialU: 0.0
-                            InitialV: 0.0
+                            Material: 7f28a619-bd0a-457f-a756-b79a7740db15
+                          - !WaveEngine.Components.Graphics3D.MeshComponent,WaveEngine.Framework
+                            Id: f559c7d2-023f-4689-a08d-56b145303bb6
                             IsEnabled: true
-                            Model: 00000000-0000-0000-0000-000000000000
-                            ModelMeshName: cube_primitive
-                            Size: 1.0
-                            UTile: 1.0
-                            UVHorizontalFlip: false
-                            UVVerticalFlip: false
-                            YTile: 1.0
+                            Model: d062dd03-25f9-4635-af8c-7435b93bbfd2
+                            ModelMeshName: Button_Oval_Concave_12x24mm
                           - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
-                            Id: e4027d14-00bb-4ed8-ba61-cfd68e68f828
+                            Id: db42ed51-5196-4465-8023-45dd97b09526
                             DebugBoundingbox: true
                             FrustumCullingEnabled: true
                             IsEnabled: true
                             OrderBias: 0
                         Children: []
-                        Id: a5f558ee-ec6f-4db5-a219-28a12dc50c87
+                        Id: e0b2f115-1b88-44f9-adcf-b100a8e5b898
                     Id: 9c0d18b5-5928-4a8c-bf0a-ee78937b1c7b
                 Id: 660df448-a8ac-4d33-a9bd-ae324caebaeb
             Id: 56ebdbd2-b3b8-40be-a348-06ebbca4bd82
           - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
             Name: PinchSliderColorBlue
-            Tag: null
+            Tag: PinchSliderBlue
             IsEnabled: true
             IsStatic: false
             Components:
@@ -3256,7 +3242,7 @@ Items:
                             Id: a1909cf9-9875-451b-b462-21e26fe5b926
                             AsignedTo: Default
                             IsEnabled: true
-                            Material: f1b9f6aa-6b4d-408b-afc4-8d3d6a8634b2
+                            Material: 9fca2145-9330-42e3-a769-d377320fe92d
                           - !WaveEngine.Components.Graphics3D.CylinderMesh,WaveEngine.Components
                             Id: a87344ae-59ff-4fa5-81ed-1f8a8b396719
                             Diameter: 0.00200000009
@@ -3330,56 +3316,116 @@ Items:
                         IsEnabled: true
                     Children:
                       - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
-                        Name: sliderButton
+                        Name: Button_Oval_Concave_12x24mm_optimized_fbx
                         Tag: null
                         IsEnabled: true
                         IsStatic: false
                         Components:
                           - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
-                            Id: eb0c17df-3790-4ca7-92d2-b0be08e14fa2
+                            Id: 4b02096f-247a-4a01-b41a-731a66912bae
                             IsEnabled: true
                             LocalOrientation:
-                              W: 1.0
-                              X: 0.0
-                              Y: 0.0
-                              Z: 0.0
+                              W: 8.54225206E-08
+                              X: -0.70710665
+                              Y: -0.707106888
+                              Z: -8.80869919E-08
                             LocalPosition:
-                              X: 0.0
+                              X: -2.85894508E-09
                               Y: 0.0
-                              Z: -0.00499999989
+                              Z: -0.0123416819
                             LocalScale:
-                              X: 0.0199999996
-                              Y: 0.00999999978
-                              Z: 0.0199999996
+                              X: 0.999999881
+                              Y: 0.999999881
+                              Z: 1.0
                           - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
-                            Id: e51f1519-3f79-4e9b-af97-1887eda25243
-                            AsignedTo: Default
+                            Id: e2cd7596-1a8b-4819-8457-0c7b0c8a2b1f
+                            AsignedTo: lambert1
                             IsEnabled: true
-                            Material: 048ab66b-32c1-45e9-9441-53b7b2224cdc
-                          - !WaveEngine.Components.Graphics3D.CubeMesh,WaveEngine.Components
-                            Id: 5a162903-d2bc-4dfe-84a2-28bf8c04694b
-                            InitialU: 0.0
-                            InitialV: 0.0
+                            Material: 422b6ef5-5734-4125-8743-96700edd1bd4
+                          - !WaveEngine.Components.Graphics3D.MeshComponent,WaveEngine.Framework
+                            Id: f559c7d2-023f-4689-a08d-56b145303bb6
                             IsEnabled: true
-                            Model: 00000000-0000-0000-0000-000000000000
-                            ModelMeshName: cube_primitive
-                            Size: 1.0
-                            UTile: 1.0
-                            UVHorizontalFlip: false
-                            UVVerticalFlip: false
-                            YTile: 1.0
+                            Model: d062dd03-25f9-4635-af8c-7435b93bbfd2
+                            ModelMeshName: Button_Oval_Concave_12x24mm
                           - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
-                            Id: e4027d14-00bb-4ed8-ba61-cfd68e68f828
+                            Id: db42ed51-5196-4465-8023-45dd97b09526
                             DebugBoundingbox: true
                             FrustumCullingEnabled: true
                             IsEnabled: true
                             OrderBias: 0
                         Children: []
-                        Id: a5f558ee-ec6f-4db5-a219-28a12dc50c87
+                        Id: e0b2f115-1b88-44f9-adcf-b100a8e5b898
                     Id: 9c0d18b5-5928-4a8c-bf0a-ee78937b1c7b
                 Id: 660df448-a8ac-4d33-a9bd-ae324caebaeb
             Id: 7686bf59-db4b-4b11-90e5-881e27417b76
         Id: 05f7ba05-7c4c-43d7-9ca3-d4b67a054f5b
+      - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+        Name: TouchExamples
+        Tag: null
+        IsEnabled: true
+        IsStatic: false
+        Components:
+          - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+            Id: 408a926a-2dad-4b66-984d-e87c9804c459
+            IsEnabled: true
+            LocalOrientation:
+              W: 1.0
+              X: 0.0
+              Y: 0.0
+              Z: 0.0
+            LocalPosition:
+              X: -0.370999992
+              Y: -0.128322095
+              Z: 0.0944314897
+            LocalScale:
+              X: 1.0
+              Y: 1.0
+              Z: 1.0
+        Children:
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: Platonic
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: 6db73f31-b0c7-4cb9-a2cb-700a83bd0608
+                IsEnabled: true
+                LocalOrientation:
+                  W: 0.857167363
+                  X: 0.0
+                  Y: 0.515038013
+                  Z: 0.0
+                LocalPosition:
+                  X: 0.064000003
+                  Y: -0.231000006
+                  Z: -0.0399999991
+                LocalScale:
+                  X: 0.114848398
+                  Y: 0.114848398
+                  Z: 0.114848398
+              - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+                Id: 6f0a8217-8036-42fd-8b6e-59624bf32a1e
+                AsignedTo: DefaultMaterial
+                IsEnabled: true
+                Material: ed39fa14-3237-4c87-b295-9b890cb6c171
+              - !WaveEngine.Components.Graphics3D.MeshComponent,WaveEngine.Framework
+                Id: 224f96a8-fac8-458b-b729-e5ad44d9e00a
+                IsEnabled: true
+                Model: fea0a9fa-7078-4742-9d9c-42ded82a82c4
+                ModelMeshName: Platonic
+              - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+                Id: 9d15d3a5-721c-484c-9e5f-9fc763771f0a
+                DebugBoundingbox: true
+                FrustumCullingEnabled: true
+                IsEnabled: true
+                OrderBias: 0
+              - !WaveEngine_MRTK_Demo.Components.SliderChangeColor,WaveEngine_MRTK_Demo
+                Id: 6dc6586f-183b-446f-bc30-6b351fa0aa18
+                IsEnabled: true
+            Children: []
+            Id: 28af444b-8d96-4107-afac-60747bce401f
+        Id: 74dbe57c-6a6c-412b-b2d1-d0db5a5b523c
     Id: bf7601de-e3ee-4c6a-9ec4-717fc4c11ddd
   - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
     Name: cursors
