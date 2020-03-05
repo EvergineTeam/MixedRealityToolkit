@@ -41,16 +41,26 @@ namespace WaveEngine_MRTK_Demo.Behaviors
             {
                 var mouseDispatcher = graphicsPresenter.FocusedDisplay.MouseDispatcher;
 
-                camDist += mouseDispatcher.ScrollDelta.Y * 0.01f;
+                if (keyboardDispatcher.ReadKeyState(Keys.LeftControl) == WaveEngine.Common.Input.ButtonState.Pressed)
+                {
+                    transform.Orientation = Quaternion.CreateFromAxisAngle(Vector3.Up, mouseDispatcher.PositionDelta.X * 0.01f) * transform.Orientation;
+                    transform.Orientation = Quaternion.CreateFromAxisAngle(Vector3.Left, -mouseDispatcher.PositionDelta.Y * 0.01f) * transform.Orientation;
+                }
+                else
+                {
+                    camDist += mouseDispatcher.ScrollDelta.Y * 0.01f;
 
-                Ray ray;
-                Vector2 mousePos = mouseDispatcher.Position.ToVector2();
-                camera.CalculateRay(ref mousePos, out ray);
+                    Ray ray;
+                    Vector2 mousePos = mouseDispatcher.Position.ToVector2();
+                    camera.CalculateRay(ref mousePos, out ray);
 
-                float ang = Vector3.Angle(ray.Direction, camera.Transform.WorldTransform.Forward);
-                float rDist = camDist / (float)Math.Cos(ang);
+                    float ang = Vector3.Angle(ray.Direction, camera.Transform.WorldTransform.Forward);
+                    float rDist = camDist / (float)Math.Cos(ang);
 
-                this.transform.Position = ray.GetPoint(rDist);
+                    this.transform.Position = ray.GetPoint(rDist);
+                }
+
+
                 if(mouseDispatcher.ReadButtonState(WaveEngine.Common.Input.Mouse.MouseButtons.Left) == WaveEngine.Common.Input.ButtonState.Pressing)
                 {
                     cursor.Pinch = true;
