@@ -43,16 +43,5 @@ namespace WaveEngine_MRTK_Demo.Scenes
                 cursorRightEntity?.AddComponent(new MouseControlBehavior() { key = WaveEngine.Common.Input.Keyboard.Keys.Space });
             }
         }
-
-        protected override void Start()
-        {
-            base.Start();
-            var rigidBody = this.Managers.EntityManager.FindFirstComponentOfType<RigidBody3D>();
-            rigidBody.Transform3D.PositionChanged += Transform3D_PositionChanged;
-        }
-
-        private void Transform3D_PositionChanged(object sender, System.EventArgs e)
-        {
-        }
     }
 }

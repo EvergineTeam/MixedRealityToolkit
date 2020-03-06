@@ -5,8 +5,10 @@ using WaveEngine.Common.Graphics;
 using WaveEngine.Components.Graphics3D;
 using WaveEngine.Framework;
 using WaveEngine.Framework.Graphics.Materials;
+using WaveEngine.Mathematics;
 using WaveEngine.MRTK.SDK.Features.UX.Components.Sliders;
 using WaveEngine_MRTK_Demo.Behaviors;
+using WaveEngine_MRTK_Demo.Effects;
 
 namespace WaveEngine_MRTK_Demo.Components
 {
@@ -25,11 +27,11 @@ namespace WaveEngine_MRTK_Demo.Components
         protected MaterialComponent materialComponent;
 
         PinchSlider[] pinchSliders = new PinchSlider[3];
-        StandardMaterial materialDecorator;
+        HoloGraphic materialDecorator;
 
         protected override bool OnAttached()
         {
-            materialDecorator = new StandardMaterial(materialComponent.Material);
+            materialDecorator = new HoloGraphic(materialComponent.Material);
 
             pinchSliders[0] = pinchSliderPrefabR.Owner.FindComponentInChildren<PinchSlider>();
             pinchSliders[1] = pinchSliderPrefabG.Owner.FindComponentInChildren<PinchSlider>();
@@ -49,9 +51,9 @@ namespace WaveEngine_MRTK_Demo.Components
             {
                 if(sender == pinchSliders[i])
                 {
-                    Color c = materialDecorator.BaseColor;
-                    c[i] = (byte)(255 * e.NewValue);
-                    materialDecorator.BaseColor = c;
+                    Vector3 c = materialDecorator.Matrices_Color;
+                    c[i] = (e.NewValue);
+                    materialDecorator.Matrices_Color = c;
 
                     break;
                 }
