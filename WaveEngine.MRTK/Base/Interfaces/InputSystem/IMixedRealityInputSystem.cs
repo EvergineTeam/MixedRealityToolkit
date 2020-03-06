@@ -13,7 +13,7 @@ namespace WaveEngine.MixedReality.Toolkit.Input
     /// Manager interface for a Input system in the Mixed Reality Toolkit
     /// All replacement systems for providing Input System functionality should derive from this interface.
     /// </summary>
-    public interface IMixedRealityInputSystem
+    public interface IMixedRealityInputSystem : IMixedRealityEventSystem
     {
         /// <summary>
         /// Event that's raised when the Input is enabled.

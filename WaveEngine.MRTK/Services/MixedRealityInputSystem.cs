@@ -1,16 +1,15 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License. See LICENSE in the project root for license information.
+// Copyright © 2019 Wave Engine S.L. All rights reserved. Use is subject to license terms.
 
-using Microsoft.MixedReality.Toolkit.Utilities;
+using WaveEngine.MixedReality.Toolkit.Utilities;
 using System;
 using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.EventSystems;
+using WaveEngine.MixedReality.Toolkit.Input;
+using WaveEngine.MixedReality.Toolkit;
 
 namespace Microsoft.MixedReality.Toolkit.Input
 {
     /// <summary>
-    /// The Mixed Reality Toolkit's specific implementation of the <see cref="Microsoft.MixedReality.Toolkit.Input.IMixedRealityInputSystem"/>
+    /// The Mixed Reality Toolkit's specific implementation of the <see cref="IMixedRealityInputSystem"/>.
     /// </summary>
     [HelpURL("https://microsoft.github.io/MixedRealityToolkit-Unity/Documentation/Input/Overview.html")]
     public class MixedRealityInputSystem : BaseDataProviderAccessCoreSystem, IMixedRealityInputSystem, IMixedRealityCapabilityCheck
@@ -148,7 +147,7 @@ namespace Microsoft.MixedReality.Toolkit.Input
 
         /// <inheritdoc />
         /// <remarks>
-        /// Input system is critical, so should be processed before all other managers
+        /// Input system is critical, so should be processed before all other managers.
         /// </remarks>
         public override uint Priority => 1;
 
@@ -465,7 +464,7 @@ namespace Microsoft.MixedReality.Toolkit.Input
         /// <summary>
         /// Handles a pointer event
         /// Assumption: We only send pointer events to the objects that pointers are focusing, except for global event listeners (which listen to everything)
-        /// In contract, all other events get sent to all other pointers attached to a given input source
+        /// In contract, all other events get sent to all other pointers attached to a given input source.
         /// </summary>
         private void HandlePointerEvent<T>(BaseEventData eventData, ExecuteEvents.EventFunction<T> eventHandler) where T : IMixedRealityPointerHandler
         {
@@ -498,7 +497,7 @@ namespace Microsoft.MixedReality.Toolkit.Input
 
         /// <summary>
         /// Dispatch an input event to all global event listeners
-        /// Return true if the event has been handled by a global event listener
+        /// Return true if the event has been handled by a global event listener.
         /// </summary>
         private void DispatchEventToGlobalListeners<T>(BaseInputEventData baseInputEventData, ExecuteEvents.EventFunction<T> eventHandler) where T : IEventSystemHandler
         {
@@ -511,7 +510,7 @@ namespace Microsoft.MixedReality.Toolkit.Input
         }
 
         /// <summary>
-        /// Dispatch a focus event to all global event listeners
+        /// Dispatch a focus event to all global event listeners.
         /// </summary>
         private void DispatchEventToGlobalListeners<T>(FocusEventData focusEventData, ExecuteEvents.EventFunction<T> eventHandler) where T : IEventSystemHandler
         {
@@ -535,7 +534,7 @@ namespace Microsoft.MixedReality.Toolkit.Input
         /// <summary>
         /// Dispatch an input event to the object focused by the given IMixedRealityPointer.
         /// If a modal dialog is active, dispatch the pointer event to that modal dialog
-        /// Returns true if the event was handled by a modal handler
+        /// Returns true if the event was handled by a modal handler.
         /// </summary>
         private bool DispatchEventToObjectFocusedByPointer<T>(IMixedRealityPointer mixedRealityPointer, BaseInputEventData baseInputEventData,
             bool modalEventHandled, ExecuteEvents.EventFunction<T> eventHandler) where T : IEventSystemHandler
@@ -670,7 +669,7 @@ namespace Microsoft.MixedReality.Toolkit.Input
         /// Push a game object into the modal input stack. Any input handlers
         /// on the game object are given priority to input events before any focused objects.
         /// </summary>
-        /// <param name="inputHandler">The input handler to push</param>
+        /// <param name="inputHandler">The input handler to push.</param>
         public void PushModalInputHandler(GameObject inputHandler)
         {
             modalInputStack.Push(inputHandler);
@@ -704,7 +703,7 @@ namespace Microsoft.MixedReality.Toolkit.Input
         /// Push a game object into the fallback input stack. Any input handlers on
         /// the game object are given input events when no modal or focused objects consume the event.
         /// </summary>
-        /// <param name="inputHandler">The input handler to push</param>
+        /// <param name="inputHandler">The input handler to push.</param>
         public void PushFallbackInputHandler(GameObject inputHandler)
         {
             fallbackInputStack.Push(inputHandler);
