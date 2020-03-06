@@ -4180,7 +4180,7 @@ Items:
                   Z: 1.0
                 LinearVelocity:
                   X: 0.0
-                  Y: -2545.04248
+                  Y: 0.0
                   Z: 0.0
                 MaskBits: All
                 Mass: 1.0
@@ -4189,6 +4189,23 @@ Items:
                 Restitution: 0.0
                 RollingFriction: 0.0
                 UpdateOrder: 0.5
+              - !WaveEngine.Framework.Physics3D.BoxCollider3D,WaveEngine.Framework
+                Id: efd256c5-276f-4958-97e1-a213c245c2e1
+                IsEnabled: true
+                Margin: 0.0399999991
+                Offset:
+                  X: 0.0
+                  Y: 0.0
+                  Z: 0.0
+                OrientationOffset:
+                  W: 1.0
+                  X: 0.0
+                  Y: 0.0
+                  Z: 0.0
+                Size:
+                  X: 1.0
+                  Y: 1.0
+                  Z: 1.0
             Children: []
             Id: ab15e01d-d68f-4934-8bea-0753dbb001d1
         Id: aa1c9d33-1751-44b9-9925-d93b76042bce

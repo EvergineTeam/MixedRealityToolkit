@@ -17,7 +17,7 @@ namespace WaveEngine_MRTK_Demo.Scenes
         {
             base.RegisterManagers();
 
-            this.Managers.AddManager(new BulletPhysicManager3D() { DrawFlags = WaveEngine.Framework.Physics3D.DebugDrawFlags.All, Gravity = Vector3.Zero });
+            this.Managers.AddManager(new BulletPhysicManager3D());
             this.Managers.AddManager(new CursorManager());
         }
 

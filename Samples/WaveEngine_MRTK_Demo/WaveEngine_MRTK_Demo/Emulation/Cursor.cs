@@ -32,6 +32,9 @@ namespace WaveEngine_MRTK_Demo.Emulation
         [BindComponent(isRequired: false)]
         protected TrackXRJoint trackXRJoint;
 
+        [BindService(false)]
+        private XRPlatform xrPlatform;
+
         public Color PressedColor { get; set; }
 
         public Color ReleasedColor { get; set; }
@@ -86,9 +89,7 @@ namespace WaveEngine_MRTK_Demo.Emulation
         {
             this.PreviousPinch = this.Pinch;
 
-            var xrPlatform = Application.Current.Container.Resolve<XRPlatform>();
-
-            if (xrPlatform != null)
+            if (this.xrPlatform != null)
             {
                 // HoloLens 2
                 if (this.trackXRJoint != null
