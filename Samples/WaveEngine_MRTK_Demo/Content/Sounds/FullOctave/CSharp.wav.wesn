@@ -2,7 +2,7 @@
 Id: 12182847-e67a-44ef-acaf-ef479e91117e
 DefaultProfile:
   ChannelFormat: Mono
-  Encoding: PCM8
+  Encoding: PCM16
   ExcludeAsset: false
   Name: null
   Platform: Undefined

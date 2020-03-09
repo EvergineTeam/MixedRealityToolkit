@@ -2,7 +2,7 @@
 Id: 06cf9911-80f8-44da-91e3-3ec898b0be58
 DefaultProfile:
   ChannelFormat: Mono
-  Encoding: PCM8
+  Encoding: PCM16
   ExcludeAsset: false
   Name: null
   Platform: Undefined
