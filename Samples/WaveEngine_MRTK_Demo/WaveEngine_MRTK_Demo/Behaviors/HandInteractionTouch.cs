@@ -6,6 +6,7 @@ using WaveEngine.Common.Media;
 using WaveEngine.Components.Graphics3D;
 using WaveEngine.Components.Sound;
 using WaveEngine.Framework;
+using WaveEngine.Framework.Physics3D;
 using WaveEngine.Mathematics;
 using WaveEngine.MRTK.Base.EventDatum.Input;
 using WaveEngine.MRTK.Base.Interfaces.InputSystem.Handlers;
@@ -15,7 +16,6 @@ namespace WaveEngine_MRTK_Demo.Behaviors
 {
     public class HandInteractionTouch : Behavior, IMixedRealityTouchHandler
     {
-        [BindComponent]
         protected SoundEmitter3D soundEmitter;
 
         [BindComponent(isRequired: true, source: BindComponentSource.Owner)]
@@ -27,6 +27,30 @@ namespace WaveEngine_MRTK_Demo.Behaviors
         bool animating = false;
         float animation_time;
         Vector3 cachedColor;
+
+
+        T CheckComponent<T>() where T: Component, new()
+        {
+            T t = Owner.FindComponent<T>();
+            if(t == null)
+            {
+                t = new T();
+                Owner.AddComponent(t);
+            }
+            return t;
+        }
+
+        protected override bool OnAttached()
+        {
+            if (!Application.Current.IsEditor)
+            {
+                CheckComponent<BoxCollider3D>();
+                CheckComponent<StaticBody3D>();
+                soundEmitter = CheckComponent<SoundEmitter3D>();
+            }
+
+            return base.OnAttached();
+        }
 
         protected override void Start()
         {
