@@ -17,7 +17,7 @@ using WaveEngine_MRTK_Demo.Effects;
 
 namespace WaveEngine_MRTK_Demo.Components
 {
-    class SliderChangeColor : Behavior, IMixedRealityTouchHandler
+    class SliderChangeColor : Component
     {
         [BindComponent(isRequired: true, source: BindComponentSource.Scene, tag: "PinchSliderRed")]
         protected ScenePrefab pinchSliderPrefabR;
@@ -31,45 +31,8 @@ namespace WaveEngine_MRTK_Demo.Components
         [BindComponent(isRequired: true, source: BindComponentSource.Owner)]
         protected MaterialComponent materialComponent;
 
-        [BindComponent]
-        protected SoundEmitter3D soundEmitter;
-        
-        public AudioBuffer sound { get; set; }
-
         PinchSlider[] pinchSliders = new PinchSlider[3];
         HoloGraphic materialDecorator;
-        
-        bool animating = false;
-        float animation_time;
-
-        public void OnTouchCompleted(HandTrackingInputEventData eventData)
-        {
-            animating = false;
-            materialDecorator.Matrices_Color = new Vector3(pinchSliders[0].SliderValue, pinchSliders[1].SliderValue, pinchSliders[2].SliderValue);
-        }
-
-        public void OnTouchStarted(HandTrackingInputEventData eventData)
-        {
-            animating = true;
-            animation_time = 0.0f;
-            materialDecorator.Matrices_Color = new Vector3(pinchSliders[0].SliderValue, pinchSliders[1].SliderValue, pinchSliders[2].SliderValue);
-
-            if (this.soundEmitter != null)
-            {
-                if (this.soundEmitter.PlayState == PlayState.Playing)
-                {
-                    this.soundEmitter.Stop();
-                }
-
-                this.soundEmitter.Audio = sound;
-
-                this.soundEmitter.Play();
-            }
-        }
-
-        public void OnTouchUpdated(HandTrackingInputEventData eventData)
-        {
-        }
 
         protected override void Start()
         {
@@ -84,20 +47,6 @@ namespace WaveEngine_MRTK_Demo.Components
                 PinchSlider p = pinchSliders[i];
                 p.SliderValue = materialDecorator.Matrices_Color[i];
                 p.ValueUpdated += P_ValueUpdated;
-            }
-        }
-
-        protected override void Update(TimeSpan gameTime)
-        {
-            if (animating)
-            {
-                animation_time += (float)gameTime.TotalSeconds;
-
-                Vector3 c = materialDecorator.Matrices_Color;
-                c[0] = 0.5f + (float)Math.Sin(animation_time * 2.0f) * 0.5f;
-                c[1] = 1.0f - c[0];
-                c[2] = 0.0f;
-                materialDecorator.Matrices_Color = c;
             }
         }
 
