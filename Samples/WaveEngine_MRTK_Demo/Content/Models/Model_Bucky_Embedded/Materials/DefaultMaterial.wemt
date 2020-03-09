@@ -6,9 +6,9 @@ DefaultProfile:
   Platform: Undefined
 ExportAsRaw: false
 MaterialInfo:
-  Id: 882d4f49-b3f8-4b85-a7dd-c84d144adfe8
+  Id: 20c27bc9-a098-473a-b49d-109e3674a8e4
   ActiveDirectives:
-    - LIT
+    - IBL
   EffectID: daa1f60a-82ad-40fc-8fbb-7b85caa6de0a
   Layer: 0db59561-b3f5-444f-b5de-e62e3a5b42bf
   Parameters:
@@ -20,10 +20,10 @@ MaterialInfo:
       ValueByteArray: AwAAAAAAAAA=
     - Name: ViewProj
       Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
-      ValueByteArray: OlsxQAAAAAAAAAAAAAAAAAAAAACYMgpADf/kvjD55L4AAAAAmjKKvwv/ZL8u+WS/AAAAAHmCGjUf7ItAvRuPQA==
+      ValueByteArray: R38nQDiW3zqfWKi+UFSovq4Hl7JhghpAh9wMO+zYDDuxPGm/IJGgO+zKcb+7xHG/SVsxNfTcHzUj7ItAwRuPQA==
     - Name: EyePosition
       Type: WaveEngine.Mathematics.Vector3,WaveEngine.Mathematics
-      ValueByteArray: AAAAAAAAAEAAAIBA
+      ValueByteArray: rjK8PwB6HbwbJ4dA
     - Name: EyeCount
       Type: System.Int32
       ValueByteArray: AQAAAA==
@@ -47,13 +47,13 @@ MaterialInfo:
       ValueByteArray: AACAPw==
     - Name: Metallic
       Type: System.Single
-      ValueByteArray: mpkZPw==
+      ValueByteArray: AACAPw==
     - Name: Roughness
       Type: System.Single
-      ValueByteArray: AACAPw==
+      ValueByteArray: AAAAMg==
     - Name: Reflectance
       Type: System.Single
-      ValueByteArray: AAAAPw==
+      ValueByteArray: AAAAAA==
     - Name: ReferenceAlpha
       Type: System.Single
       ValueByteArray: AAAAAA==

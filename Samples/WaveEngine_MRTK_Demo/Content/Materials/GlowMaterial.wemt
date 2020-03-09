@@ -6,29 +6,32 @@ DefaultProfile:
   Platform: Undefined
 ExportAsRaw: false
 MaterialInfo:
-  Id: 79ea88b0-51e1-4969-8945-c0546798f1a4
+  Id: 36e7975c-4003-4d65-910c-a715ad70a5a4
   ActiveDirectives: []
   EffectID: 4f7e4c24-e83c-4350-9cd4-511fb2199cf4
-  Layer: 0db59561-b3f5-444f-b5de-e62e3a5b42bf
+  Layer: e35c59a9-26ab-4b4c-8210-4b1f21c31530
   Parameters:
     - Name: WorldViewProj
       Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
-      ValueByteArray: o/kqP3EQi7+Pi/e/OYX3v20EBTMFfZZAqB/ovrcZ6L5gELDAeAsHvuljcL7BXXC+BSyNsRghGzUf7ItAvRuPQA==
+      ValueByteArray: 3PiCQGvX6r8NnY6/ZpmOvzpbsbPHR39A7UaQvztDkL+yLW/A4pgAwBgwnL8YLJy/iOjzM0kxJjUg7ItAvhuPQA==
     - Name: World
       Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
       ValueByteArray: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
     - Name: Color
       Type: WaveEngine.Mathematics.Vector3,WaveEngine.Mathematics
-      ValueByteArray: CtejPuF6FD+4HkU/
-    - Name: EdgeColor
+      ValueByteArray: AAAAAGl0Az8AAIA/
+    - Name: Alpha
+      Type: System.Single
+      ValueByteArray: AACAPw==
+    - Name: InnerGlowColor
       Type: WaveEngine.Mathematics.Vector3,WaveEngine.Mathematics
-      ValueByteArray: AACAPyy2Oz8AAAAA
-    - Name: EdgeWidth
+      ValueByteArray: AACAPzMzMz8AAAAA
+    - Name: InnerGlowAlpha
       Type: System.Single
-      ValueByteArray: AACAQA==
-    - Name: EdgeOffset
+      ValueByteArray: AACAPw==
+    - Name: InnerGlowPower
       Type: System.Single
-      ValueByteArray: mpmZPg==
+      ValueByteArray: AAAgQQ==
   Samplers: null
   Textures: null
 Profiles: {}

@@ -9,9 +9,10 @@
 	cbuffer Matrices : register(b1)
 	{
 		float3 Color			: packoffset(c0);   [Default(0.3, 0.3, 1.0)]
-		float3 EdgeColor		: packoffset(c1.x); [Default(1,1,1)]
-		float EdgeWidth			: packoffset(c0.w); [Default(0.01)]
-		float EdgeOffset		: packoffset(c1.w); [Default(0.08)]
+		float Alpha             : packoffset(c0.w); [Default(1.0)]
+		float3 InnerGlowColor   : packoffset(c1);   [Default(1,1,1)]
+		float InnerGlowAlpha    : packoffset(c1.w); [Default(1)]
+		float InnerGlowPower    : packoffset(c2.x); [Default(10)]
 	};
 
 [End_ResourceLayout]
@@ -48,9 +49,15 @@
 		float2 distanceToEdge;
         distanceToEdge.x = abs(input.uv.x - 0.5) * 2.0;
         distanceToEdge.y = abs(input.uv.y - 0.5) * 2.0;
-        float minDist = 1 - saturate((1 - max(distanceToEdge.x, distanceToEdge.y)) * EdgeWidth + EdgeOffset);
+        
+        float4 output = float4(Color, Alpha);
+        
+        //Inner Glow
+        float2 uvGlow = pow(distanceToEdge * InnerGlowAlpha, InnerGlowPower);
+        output.rgb += lerp(float3(0.0, 0.0, 0.0), InnerGlowColor, uvGlow.x + uvGlow.y);
+                
 	
-		return float4(Color + EdgeColor * minDist, 1);
+		return output;
 	}
 
 [End_Pass]

@@ -1,12 +1,13 @@
 !WaveEngine.Assets.Exporters.RenderLayerMetaFile,WaveEngine.Assets
+Id: e35c59a9-26ab-4b4c-8210-4b1f21c31530
 DefaultProfile:
   ExcludeAsset: false
   Name: null
   Platform: Undefined
-Id: e35c59a9-26ab-4b4c-8210-4b1f21c31530
+ExportAsRaw: false
 Profiles: {}
 RenderLayerInfo:
-  Id: 1e709006-0a70-4832-8f64-32178408974d
+  Id: 2806e5b6-1c4e-4131-8e86-9620ba83dacf
   Order: 1
   RenderState:
     BlendFactor: null

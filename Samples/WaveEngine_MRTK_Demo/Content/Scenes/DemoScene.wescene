@@ -285,7 +285,7 @@ Items:
                                 Id: 141105e4-f3a9-4fb9-a051-c15ee0a4c315
                                 AsignedTo: Default
                                 IsEnabled: true
-                                Material: f69c97d9-9c77-4263-9f1b-f6a817a25b89
+                                Material: 961665cf-9a8d-480d-9c9a-7e22c8e555f6
                               - !WaveEngine.Components.Graphics3D.CylinderMesh,WaveEngine.Components
                                 Id: 700079f6-8bc7-4e12-af75-b88f4dcd8820
                                 Diameter: 1.0
@@ -351,7 +351,7 @@ Items:
                                     Id: 65182969-b575-4f02-92f3-d9c8b594fa14
                                     AsignedTo: Default
                                     IsEnabled: true
-                                    Material: 8927def9-13ad-42fa-8fd3-d8a4a9ac53bc
+                                    Material: 7b08a81d-6762-4dc5-9fda-a11aebba6820
                                   - !WaveEngine.Components.Graphics3D.CylinderMesh,WaveEngine.Components
                                     Id: 824f5e15-9524-492d-84fd-ddf6c4f70e83
                                     Diameter: 0.799999952
@@ -529,7 +529,7 @@ Items:
                                 Id: 141105e4-f3a9-4fb9-a051-c15ee0a4c315
                                 AsignedTo: Default
                                 IsEnabled: true
-                                Material: 6f0546cf-c089-4b4e-985b-c87700f7b56a
+                                Material: d4af8f64-c08d-4e54-8fd5-762896538cb8
                               - !WaveEngine.Components.Graphics3D.CylinderMesh,WaveEngine.Components
                                 Id: 700079f6-8bc7-4e12-af75-b88f4dcd8820
                                 Diameter: 1.0
@@ -595,7 +595,7 @@ Items:
                                     Id: 65182969-b575-4f02-92f3-d9c8b594fa14
                                     AsignedTo: Default
                                     IsEnabled: true
-                                    Material: cd753f0a-141f-49e1-9ae7-839f9c3b14bc
+                                    Material: 75e9e075-60cf-4725-ba21-529b7f901e69
                                   - !WaveEngine.Components.Graphics3D.CylinderMesh,WaveEngine.Components
                                     Id: 824f5e15-9524-492d-84fd-ddf6c4f70e83
                                     Diameter: 0.799999952
@@ -773,7 +773,7 @@ Items:
                                 Id: 141105e4-f3a9-4fb9-a051-c15ee0a4c315
                                 AsignedTo: Default
                                 IsEnabled: true
-                                Material: 31d501ca-2e9a-4b4c-8dba-7d65b2503e4f
+                                Material: 8adcc17c-f9b4-4a94-8b22-a7873f2d226a
                               - !WaveEngine.Components.Graphics3D.CylinderMesh,WaveEngine.Components
                                 Id: 700079f6-8bc7-4e12-af75-b88f4dcd8820
                                 Diameter: 1.0
@@ -839,7 +839,7 @@ Items:
                                     Id: 65182969-b575-4f02-92f3-d9c8b594fa14
                                     AsignedTo: Default
                                     IsEnabled: true
-                                    Material: ccd57741-e1ba-4864-8c30-a8a5d1586041
+                                    Material: 7cf216df-3c57-4a6a-adcb-c747356cff9e
                                   - !WaveEngine.Components.Graphics3D.CylinderMesh,WaveEngine.Components
                                     Id: 824f5e15-9524-492d-84fd-ddf6c4f70e83
                                     Diameter: 0.799999952
@@ -2750,7 +2750,7 @@ Items:
                             Id: a1909cf9-9875-451b-b462-21e26fe5b926
                             AsignedTo: Default
                             IsEnabled: true
-                            Material: df4c1885-b727-430d-8256-7866a8a02f5b
+                            Material: 673a0009-ed4c-496c-b32e-01285e2d3330
                           - !WaveEngine.Components.Graphics3D.CylinderMesh,WaveEngine.Components
                             Id: a87344ae-59ff-4fa5-81ed-1f8a8b396719
                             Diameter: 0.00200000009
@@ -2849,7 +2849,7 @@ Items:
                             Id: e2cd7596-1a8b-4819-8457-0c7b0c8a2b1f
                             AsignedTo: lambert1
                             IsEnabled: true
-                            Material: e02d124d-8d13-4b69-815f-9e22164c04d1
+                            Material: a81e6867-9288-4118-8341-9ed023682e59
                           - !WaveEngine.Components.Graphics3D.MeshComponent,WaveEngine.Framework
                             Id: f559c7d2-023f-4689-a08d-56b145303bb6
                             IsEnabled: true
@@ -2996,7 +2996,7 @@ Items:
                             Id: a1909cf9-9875-451b-b462-21e26fe5b926
                             AsignedTo: Default
                             IsEnabled: true
-                            Material: 913d9177-7d3d-402b-989d-785918902a38
+                            Material: 66198afa-5177-4d8a-9dee-fe5bef3dc355
                           - !WaveEngine.Components.Graphics3D.CylinderMesh,WaveEngine.Components
                             Id: a87344ae-59ff-4fa5-81ed-1f8a8b396719
                             Diameter: 0.00200000009
@@ -3095,7 +3095,7 @@ Items:
                             Id: e2cd7596-1a8b-4819-8457-0c7b0c8a2b1f
                             AsignedTo: lambert1
                             IsEnabled: true
-                            Material: a8a43726-6831-4c47-bd24-34a9e915336f
+                            Material: 80c52df3-14a2-4296-a990-3df408ab0312
                           - !WaveEngine.Components.Graphics3D.MeshComponent,WaveEngine.Framework
                             Id: f559c7d2-023f-4689-a08d-56b145303bb6
                             IsEnabled: true
@@ -3242,7 +3242,7 @@ Items:
                             Id: a1909cf9-9875-451b-b462-21e26fe5b926
                             AsignedTo: Default
                             IsEnabled: true
-                            Material: 037f7682-3a69-4642-9ba3-ca9c3e6b984e
+                            Material: e8aeb225-5d3b-4652-b751-5b2797e8d799
                           - !WaveEngine.Components.Graphics3D.CylinderMesh,WaveEngine.Components
                             Id: a87344ae-59ff-4fa5-81ed-1f8a8b396719
                             Diameter: 0.00200000009
@@ -3341,7 +3341,7 @@ Items:
                             Id: e2cd7596-1a8b-4819-8457-0c7b0c8a2b1f
                             AsignedTo: lambert1
                             IsEnabled: true
-                            Material: a6d376d9-d318-44aa-912c-3efed41e6962
+                            Material: a7515f66-c753-4869-a794-db1e63ca2c0a
                           - !WaveEngine.Components.Graphics3D.MeshComponent,WaveEngine.Framework
                             Id: f559c7d2-023f-4689-a08d-56b145303bb6
                             IsEnabled: true
@@ -3899,9 +3899,9 @@ Items:
                       Y: 0.0
                       Z: 0.0
                     LocalPosition:
-                      X: 0.0
+                      X: -3.7252903E-07
                       Y: 0.0
-                      Z: -0.0529999994
+                      Z: -0.0530000031
                     LocalScale:
                       X: 0.0700000003
                       Y: 0.0700000003
@@ -4211,6 +4211,12 @@ Items:
                   X: 1.0
                   Y: 1.0
                   Z: 1.0
+              - !WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation.SimpleManipulationHandler,WaveEngine.MRTK
+                Id: 341fb7a3-42b8-415e-b59c-269a455e2d59
+                IsEnabled: true
+                SmoothingActive: true
+                SmoothingAmount: 0.00100000005
+                UpdateOrder: 0.5
             Children: []
             Id: ab15e01d-d68f-4934-8bea-0753dbb001d1
         Id: aa1c9d33-1751-44b9-9925-d93b76042bce
@@ -4428,7 +4434,7 @@ Items:
           B: 255
           G: 255
           R: 255
-        Intensity: 1.0
+        Intensity: 6.0
         IsEnabled: true
     Children: []
     Id: 384f3ab7-279e-4cf5-a4f8-25a35ef5d8af
