@@ -6,7 +6,7 @@ DefaultProfile:
   Platform: Undefined
 ExportAsRaw: false
 MaterialInfo:
-  Id: 0ee6f33e-ae69-4d70-a510-27fb50b66fb4
+  Id: 6ed04337-6e3c-4a41-add7-ffcca8198367
   ActiveDirectives: []
   EffectID: 4f7e4c24-e83c-4350-9cd4-511fb2199cf4
   Layer: 0db59561-b3f5-444f-b5de-e62e3a5b42bf
@@ -19,7 +19,7 @@ MaterialInfo:
       ValueByteArray: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
     - Name: Color
       Type: WaveEngine.Mathematics.Vector3,WaveEngine.Mathematics
-      ValueByteArray: CtejPuF6FD+4HkU/
+      ValueByteArray: AAAAAGl0Az8AAIA/
     - Name: EdgeColor
       Type: WaveEngine.Mathematics.Vector3,WaveEngine.Mathematics
       ValueByteArray: AACAPyy2Oz8AAAAA
