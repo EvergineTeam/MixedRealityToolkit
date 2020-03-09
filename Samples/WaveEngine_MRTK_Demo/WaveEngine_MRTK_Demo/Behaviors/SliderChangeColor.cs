@@ -29,20 +29,20 @@ namespace WaveEngine_MRTK_Demo.Components
         PinchSlider[] pinchSliders = new PinchSlider[3];
         HoloGraphic materialDecorator;
 
-        protected override bool OnAttached()
+        protected override void Start()
         {
             materialDecorator = new HoloGraphic(materialComponent.Material);
 
             pinchSliders[0] = pinchSliderPrefabR.Owner.FindComponentInChildren<PinchSlider>();
             pinchSliders[1] = pinchSliderPrefabG.Owner.FindComponentInChildren<PinchSlider>();
             pinchSliders[2] = pinchSliderPrefabB.Owner.FindComponentInChildren<PinchSlider>();
-            foreach(PinchSlider p in pinchSliders)
-            {
-                p.ValueUpdated += P_ValueUpdated;
-                P_ValueUpdated(p, new SliderEventData(p.InitialValue, p.InitialValue));
-            }
 
-            return true;
+            for (int i = 0; i < 3; ++i)
+            {
+                PinchSlider p = pinchSliders[i];
+                p.SliderValue = materialDecorator.Matrices_Color[i];
+                p.ValueUpdated += P_ValueUpdated;
+            }
         }
 
         private void P_ValueUpdated(object sender, SliderEventData e)

@@ -285,7 +285,7 @@ Items:
                                 Id: 141105e4-f3a9-4fb9-a051-c15ee0a4c315
                                 AsignedTo: Default
                                 IsEnabled: true
-                                Material: ea623624-590e-4a01-bdeb-400478382999
+                                Material: f34fd316-1aae-4f15-82a2-487dd6fcdaaa
                               - !WaveEngine.Components.Graphics3D.CylinderMesh,WaveEngine.Components
                                 Id: 700079f6-8bc7-4e12-af75-b88f4dcd8820
                                 Diameter: 1.0
@@ -351,7 +351,7 @@ Items:
                                     Id: 65182969-b575-4f02-92f3-d9c8b594fa14
                                     AsignedTo: Default
                                     IsEnabled: true
-                                    Material: 6b77a40c-a72b-4319-a515-cbf9db57f564
+                                    Material: e4bd866a-6974-4d61-b027-865d2da5ff87
                                   - !WaveEngine.Components.Graphics3D.CylinderMesh,WaveEngine.Components
                                     Id: 824f5e15-9524-492d-84fd-ddf6c4f70e83
                                     Diameter: 0.799999952
@@ -529,7 +529,7 @@ Items:
                                 Id: 141105e4-f3a9-4fb9-a051-c15ee0a4c315
                                 AsignedTo: Default
                                 IsEnabled: true
-                                Material: e2e8379c-8249-4cff-8ba1-0e58c0d8e0ca
+                                Material: 76858f87-a851-4714-8369-b03ddf1a9493
                               - !WaveEngine.Components.Graphics3D.CylinderMesh,WaveEngine.Components
                                 Id: 700079f6-8bc7-4e12-af75-b88f4dcd8820
                                 Diameter: 1.0
@@ -595,7 +595,7 @@ Items:
                                     Id: 65182969-b575-4f02-92f3-d9c8b594fa14
                                     AsignedTo: Default
                                     IsEnabled: true
-                                    Material: 05cf1807-5a4e-49f2-8561-6ce637c0ad72
+                                    Material: f1dd78a1-9b34-4342-a925-405b6c894541
                                   - !WaveEngine.Components.Graphics3D.CylinderMesh,WaveEngine.Components
                                     Id: 824f5e15-9524-492d-84fd-ddf6c4f70e83
                                     Diameter: 0.799999952
@@ -773,7 +773,7 @@ Items:
                                 Id: 141105e4-f3a9-4fb9-a051-c15ee0a4c315
                                 AsignedTo: Default
                                 IsEnabled: true
-                                Material: 557e9a95-f354-453a-99b2-5f583abf9d08
+                                Material: 48015761-8889-4b69-be10-a5e1d0e966fb
                               - !WaveEngine.Components.Graphics3D.CylinderMesh,WaveEngine.Components
                                 Id: 700079f6-8bc7-4e12-af75-b88f4dcd8820
                                 Diameter: 1.0
@@ -839,7 +839,7 @@ Items:
                                     Id: 65182969-b575-4f02-92f3-d9c8b594fa14
                                     AsignedTo: Default
                                     IsEnabled: true
-                                    Material: b4139fd3-ba25-4939-a7e0-e397db5bc7bc
+                                    Material: 3cccbf67-c18f-48d2-9cca-43cb124f9989
                                   - !WaveEngine.Components.Graphics3D.CylinderMesh,WaveEngine.Components
                                     Id: 824f5e15-9524-492d-84fd-ddf6c4f70e83
                                     Diameter: 0.799999952
@@ -2750,7 +2750,7 @@ Items:
                             Id: a1909cf9-9875-451b-b462-21e26fe5b926
                             AsignedTo: Default
                             IsEnabled: true
-                            Material: 8c275ec3-cee6-459e-b207-4c3205a50d8f
+                            Material: 87cd426a-77dd-4374-9dff-20bd29274bc9
                           - !WaveEngine.Components.Graphics3D.CylinderMesh,WaveEngine.Components
                             Id: a87344ae-59ff-4fa5-81ed-1f8a8b396719
                             Diameter: 0.00200000009
@@ -2784,7 +2784,7 @@ Items:
                           Z: 0.0
                         LocalPosition:
                           X: 0.0
-                          Y: 0.0
+                          Y: -0.075000003
                           Z: 0.0
                         LocalScale:
                           X: 1.0
@@ -2849,7 +2849,7 @@ Items:
                             Id: e2cd7596-1a8b-4819-8457-0c7b0c8a2b1f
                             AsignedTo: lambert1
                             IsEnabled: true
-                            Material: 2c796e65-f3e1-412f-a932-c93c54797791
+                            Material: 98e203be-06c9-4c3f-8bdc-87272d34a440
                           - !WaveEngine.Components.Graphics3D.MeshComponent,WaveEngine.Framework
                             Id: f559c7d2-023f-4689-a08d-56b145303bb6
                             IsEnabled: true
@@ -2996,7 +2996,7 @@ Items:
                             Id: a1909cf9-9875-451b-b462-21e26fe5b926
                             AsignedTo: Default
                             IsEnabled: true
-                            Material: 5680d666-aa8e-4c7c-b78c-a11a0412fd49
+                            Material: b7ee3197-9f3f-43cd-8d65-f7e7a806f58f
                           - !WaveEngine.Components.Graphics3D.CylinderMesh,WaveEngine.Components
                             Id: a87344ae-59ff-4fa5-81ed-1f8a8b396719
                             Diameter: 0.00200000009
@@ -3030,7 +3030,7 @@ Items:
                           Z: 0.0
                         LocalPosition:
                           X: 0.0
-                          Y: 0.0
+                          Y: 0.00202425569
                           Z: 0.0
                         LocalScale:
                           X: 1.0
@@ -3095,7 +3095,7 @@ Items:
                             Id: e2cd7596-1a8b-4819-8457-0c7b0c8a2b1f
                             AsignedTo: lambert1
                             IsEnabled: true
-                            Material: 7aaaf405-2541-445a-a89e-a0b2e64ad296
+                            Material: 3734cc85-f3a2-438d-b4e9-eb0b5fab400f
                           - !WaveEngine.Components.Graphics3D.MeshComponent,WaveEngine.Framework
                             Id: f559c7d2-023f-4689-a08d-56b145303bb6
                             IsEnabled: true
@@ -3242,7 +3242,7 @@ Items:
                             Id: a1909cf9-9875-451b-b462-21e26fe5b926
                             AsignedTo: Default
                             IsEnabled: true
-                            Material: 59de29d6-d0d7-4b26-a78d-f1b407e5c71c
+                            Material: 5d91b20c-29d0-4671-9c9f-d8902e1616b2
                           - !WaveEngine.Components.Graphics3D.CylinderMesh,WaveEngine.Components
                             Id: a87344ae-59ff-4fa5-81ed-1f8a8b396719
                             Diameter: 0.00200000009
@@ -3276,7 +3276,7 @@ Items:
                           Z: 0.0
                         LocalPosition:
                           X: 0.0
-                          Y: 0.0
+                          Y: 0.075000003
                           Z: 0.0
                         LocalScale:
                           X: 1.0
@@ -3341,7 +3341,7 @@ Items:
                             Id: e2cd7596-1a8b-4819-8457-0c7b0c8a2b1f
                             AsignedTo: lambert1
                             IsEnabled: true
-                            Material: 8eed099f-216e-4636-a78c-07fa9dec05ad
+                            Material: 06860eb9-aea0-462e-a2c3-e5baa0487911
                           - !WaveEngine.Components.Graphics3D.MeshComponent,WaveEngine.Framework
                             Id: f559c7d2-023f-4689-a08d-56b145303bb6
                             IsEnabled: true
@@ -3394,7 +3394,7 @@ Items:
                 LocalOrientation:
                   W: 0.857167363
                   X: 0.0
-                  Y: 0.515038013
+                  Y: -0.515038013
                   Z: 0.0
                 LocalPosition:
                   X: 0.064000003
@@ -4169,7 +4169,7 @@ Items:
                 Friction: 0.5
                 Gravity:
                   X: 0.0
-                  Y: -10.0
+                  Y: -9.80000019
                   Z: 0.0
                 IsEnabled: true
                 IsSensor: false
