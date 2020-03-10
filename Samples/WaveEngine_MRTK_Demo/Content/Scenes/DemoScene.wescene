@@ -34,7 +34,7 @@ Items:
       - !WaveEngine.Framework.Graphics.Camera3D,WaveEngine.Framework
         Id: e6234645-a09c-405e-b7cc-e8970277f72c
         Aperture: 1.0
-        AspectRatio: 1.22666669
+        AspectRatio: 1.13580251
         BackgroundColor:
           A: 0
           B: 0
@@ -60,7 +60,7 @@ Items:
         LayerMaskDefaultValue: true
         NearPlane: 0.100000001
         ScreenViewport:
-          Height: 225.0
+          Height: 243.0
           MaxDepth: 1.0
           MinDepth: 0.0
           Width: 276.0
@@ -285,7 +285,7 @@ Items:
                                 Id: 141105e4-f3a9-4fb9-a051-c15ee0a4c315
                                 AsignedTo: Default
                                 IsEnabled: true
-                                Material: e7563f13-f2e1-4ec1-9dd8-09ff1e42f347
+                                Material: b78dbea3-329a-4198-85cf-013a7fd06458
                               - !WaveEngine.Components.Graphics3D.CylinderMesh,WaveEngine.Components
                                 Id: 700079f6-8bc7-4e12-af75-b88f4dcd8820
                                 Diameter: 1.0
@@ -351,7 +351,7 @@ Items:
                                     Id: 65182969-b575-4f02-92f3-d9c8b594fa14
                                     AsignedTo: Default
                                     IsEnabled: true
-                                    Material: 2c2ea374-3101-4def-a30f-348c5675ea68
+                                    Material: a0e98d03-0ddf-42ee-bcc0-a47e0901ae13
                                   - !WaveEngine.Components.Graphics3D.CylinderMesh,WaveEngine.Components
                                     Id: 824f5e15-9524-492d-84fd-ddf6c4f70e83
                                     Diameter: 0.799999952
@@ -529,7 +529,7 @@ Items:
                                 Id: 141105e4-f3a9-4fb9-a051-c15ee0a4c315
                                 AsignedTo: Default
                                 IsEnabled: true
-                                Material: 2cba9bf1-63fd-4fd5-b059-dd13e709aba5
+                                Material: 1f29033f-27a9-47d3-875f-d6eb5a33ad32
                               - !WaveEngine.Components.Graphics3D.CylinderMesh,WaveEngine.Components
                                 Id: 700079f6-8bc7-4e12-af75-b88f4dcd8820
                                 Diameter: 1.0
@@ -595,7 +595,7 @@ Items:
                                     Id: 65182969-b575-4f02-92f3-d9c8b594fa14
                                     AsignedTo: Default
                                     IsEnabled: true
-                                    Material: 3370a3bd-d714-4507-87f2-91d6c12d66a7
+                                    Material: a8d62d32-fa28-4d69-9040-ef157d5ca88e
                                   - !WaveEngine.Components.Graphics3D.CylinderMesh,WaveEngine.Components
                                     Id: 824f5e15-9524-492d-84fd-ddf6c4f70e83
                                     Diameter: 0.799999952
@@ -773,7 +773,7 @@ Items:
                                 Id: 141105e4-f3a9-4fb9-a051-c15ee0a4c315
                                 AsignedTo: Default
                                 IsEnabled: true
-                                Material: 09c6f75c-3080-4517-a4c8-dbdc727d6262
+                                Material: 4fd816f5-1389-4eba-88d6-2d17634f05ff
                               - !WaveEngine.Components.Graphics3D.CylinderMesh,WaveEngine.Components
                                 Id: 700079f6-8bc7-4e12-af75-b88f4dcd8820
                                 Diameter: 1.0
@@ -839,7 +839,7 @@ Items:
                                     Id: 65182969-b575-4f02-92f3-d9c8b594fa14
                                     AsignedTo: Default
                                     IsEnabled: true
-                                    Material: da688c56-abe6-4e74-aaf1-2f5f157c312e
+                                    Material: efa60deb-c592-44be-aaf7-f5b0c9771407
                                   - !WaveEngine.Components.Graphics3D.CylinderMesh,WaveEngine.Components
                                     Id: 824f5e15-9524-492d-84fd-ddf6c4f70e83
                                     Diameter: 0.799999952
@@ -2750,7 +2750,7 @@ Items:
                             Id: a1909cf9-9875-451b-b462-21e26fe5b926
                             AsignedTo: Default
                             IsEnabled: true
-                            Material: 79d5375b-29e0-4117-9278-1f473661cef4
+                            Material: 9d9877e3-1699-4702-af9a-77b87b3ca69e
                           - !WaveEngine.Components.Graphics3D.CylinderMesh,WaveEngine.Components
                             Id: a87344ae-59ff-4fa5-81ed-1f8a8b396719
                             Diameter: 0.00200000009
@@ -2849,7 +2849,7 @@ Items:
                             Id: e2cd7596-1a8b-4819-8457-0c7b0c8a2b1f
                             AsignedTo: lambert1
                             IsEnabled: true
-                            Material: d9fd6bb7-fbab-46f8-b0b9-fa7a07cdf190
+                            Material: 275047c1-1e27-4520-9ec5-8bff369e269b
                           - !WaveEngine.Components.Graphics3D.MeshComponent,WaveEngine.Framework
                             Id: f559c7d2-023f-4689-a08d-56b145303bb6
                             IsEnabled: true
@@ -2996,7 +2996,7 @@ Items:
                             Id: a1909cf9-9875-451b-b462-21e26fe5b926
                             AsignedTo: Default
                             IsEnabled: true
-                            Material: 70f92ecc-4435-4c31-b76e-8fc7c51de1aa
+                            Material: f6021734-fe58-4b02-82ea-c6fc5870b282
                           - !WaveEngine.Components.Graphics3D.CylinderMesh,WaveEngine.Components
                             Id: a87344ae-59ff-4fa5-81ed-1f8a8b396719
                             Diameter: 0.00200000009
@@ -3095,7 +3095,7 @@ Items:
                             Id: e2cd7596-1a8b-4819-8457-0c7b0c8a2b1f
                             AsignedTo: lambert1
                             IsEnabled: true
-                            Material: b3067049-6f70-4636-b3cc-83416c26ab45
+                            Material: 15b2db32-3413-4679-9264-72da1bedb90b
                           - !WaveEngine.Components.Graphics3D.MeshComponent,WaveEngine.Framework
                             Id: f559c7d2-023f-4689-a08d-56b145303bb6
                             IsEnabled: true
@@ -3242,7 +3242,7 @@ Items:
                             Id: a1909cf9-9875-451b-b462-21e26fe5b926
                             AsignedTo: Default
                             IsEnabled: true
-                            Material: 84fef80f-88fe-411a-be81-b2a7a13e5207
+                            Material: 5a05a92c-52eb-452c-bb20-9ac4c934c450
                           - !WaveEngine.Components.Graphics3D.CylinderMesh,WaveEngine.Components
                             Id: a87344ae-59ff-4fa5-81ed-1f8a8b396719
                             Diameter: 0.00200000009
@@ -3341,7 +3341,7 @@ Items:
                             Id: e2cd7596-1a8b-4819-8457-0c7b0c8a2b1f
                             AsignedTo: lambert1
                             IsEnabled: true
-                            Material: c7805b9b-11b9-4c7e-b15d-313b88911fe7
+                            Material: 36cf12c7-0d99-4e77-a813-16cea0f50f9a
                           - !WaveEngine.Components.Graphics3D.MeshComponent,WaveEngine.Framework
                             Id: f559c7d2-023f-4689-a08d-56b145303bb6
                             IsEnabled: true
@@ -4437,6 +4437,642 @@ Items:
                 UpdateOrder: 0.5
             Children: []
             Id: 43c6d9e1-b426-497f-a0e5-5568cac46fd6
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: eagle_FBX
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: 4ec6b4b5-7d17-4b02-8b08-10310ec6bea8
+                IsEnabled: true
+                LocalOrientation:
+                  W: 0.923879445
+                  X: 0.0
+                  Y: 0.382683694
+                  Z: 0.0
+                LocalPosition:
+                  X: -0.334453583
+                  Y: -0.437653512
+                  Z: -0.639162004
+                LocalScale:
+                  X: 0.0455212295
+                  Y: 0.0455212332
+                  Z: 0.0455212295
+              - !WaveEngine.Framework.Physics3D.BoxCollider3D,WaveEngine.Framework
+                Id: da471aa8-fa0e-4e5c-851a-c831ffb206bb
+                IsEnabled: true
+                Margin: 0.0399999991
+                Offset:
+                  X: 0.0
+                  Y: 3.0
+                  Z: 0.0
+                OrientationOffset:
+                  W: 1.0
+                  X: 0.0
+                  Y: 0.0
+                  Z: 0.0
+                Size:
+                  X: 8.0
+                  Y: 8.0
+                  Z: 8.0
+              - !WaveEngine.Framework.Physics3D.RigidBody3D,WaveEngine.Framework
+                Id: f19f63a0-b354-4696-aa08-8a5b548f5b02
+                AngularDamping: 0.0
+                AngularFactor:
+                  X: 1.0
+                  Y: 1.0
+                  Z: 1.0
+                AngularVelocity:
+                  X: 0.0
+                  Y: 0.0
+                  Z: 0.0
+                CcdMotionThreshold: 0.0
+                CcdSweptSphereRadius: 0.200000003
+                CollisionCategories: Cat1
+                Friction: 0.5
+                Gravity:
+                  X: 0.0
+                  Y: -9.80000019
+                  Z: 0.0
+                IsEnabled: true
+                IsSensor: false
+                LinearDamping: 0.0
+                LinearFactor:
+                  X: 1.0
+                  Y: 1.0
+                  Z: 1.0
+                LinearVelocity:
+                  X: 0.0
+                  Y: 0.0
+                  Z: 0.0
+                MaskBits: All
+                Mass: 1.0
+                OverrideGravity: false
+                PhysicBodyType: Dynamic
+                Restitution: 0.0
+                RollingFriction: 0.0
+                UpdateOrder: 0.5
+              - !WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation.SimpleManipulationHandler,WaveEngine.MRTK
+                Id: f7b30e36-09aa-455d-a541-1b2f549bf269
+                IsEnabled: true
+                SmoothingActive: true
+                SmoothingAmount: 0.00100000005
+                UpdateOrder: 0.5
+            Children:
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: Point001
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: 2e21086f-e109-4c58-bc57-f5d814028867
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 8.14603425E-08
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalScale:
+                      X: 0.393700778
+                      Y: 0.393700778
+                      Z: 0.393700778
+                Children: []
+                Id: 548c3d01-8d4e-4897-a8cc-3dc2cd155d75
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: lunarLander
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: a64f2e85-1e04-4610-bc89-145156b2cbee
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 0.707106829
+                      X: -0.707106709
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: 0.00509372726
+                      Y: 3.44734311
+                      Z: 0.0
+                    LocalScale:
+                      X: 0.393700778
+                      Y: 0.393700749
+                      Z: 0.393700749
+                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+                    Id: f400aa29-7f00-4559-b033-f2e4011b4519
+                    AsignedTo: 'Material #25'
+                    IsEnabled: true
+                    Material: 3eb02471-1856-4172-bcd7-464929b7e888
+                  - !WaveEngine.Components.Graphics3D.MeshComponent,WaveEngine.Framework
+                    Id: 63ca9a6f-f064-470c-8b22-332d8acd3a1e
+                    IsEnabled: true
+                    Model: d6bcbd41-c81d-4903-bf13-0b52c60d2418
+                    ModelMeshName: lunarLander
+                  - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+                    Id: adb88232-4a9e-487b-a9a1-ba16d394b930
+                    DebugBoundingbox: true
+                    FrustumCullingEnabled: true
+                    IsEnabled: true
+                    OrderBias: 0
+                Children: []
+                Id: 0085ab61-9d62-444f-bfb6-ef2bd8f5c7fc
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: A2
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: a3013164-c74a-442e-8e03-adeab8de86cb
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 8.14603425E-08
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: -1.72767437
+                      Y: 4.09398985
+                      Z: 1.93608296
+                    LocalScale:
+                      X: 0.393700778
+                      Y: 0.393700778
+                      Z: 0.393700778
+                Children: []
+                Id: 7a77dc5f-29e5-498c-a6cd-fef1478cb2bf
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: ASS
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: 99cc1346-05e6-4e3f-87e2-fa2709e6eda8
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 8.14603425E-08
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: 0.0
+                      Y: 2.91409087
+                      Z: 0.0
+                    LocalScale:
+                      X: 0.393700778
+                      Y: 0.393700778
+                      Z: 0.393700778
+                Children: []
+                Id: a97e6bb6-96a3-449f-a307-b2ec9a573f16
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: A1
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: 8bc932ba-e081-4775-aade-a3b9370ca57d
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 8.14603425E-08
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: -1.73313701
+                      Y: 4.70910072
+                      Z: 1.93608296
+                    LocalScale:
+                      X: 0.393700778
+                      Y: 0.393700778
+                      Z: 0.393700778
+                Children: []
+                Id: c31a751e-aed7-44f9-b042-2e9d24d9af89
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: B2
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: 3145346b-5786-4ef2-9dc0-cc30f5f5f635
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 8.14603425E-08
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: 1.76519907
+                      Y: 4.09398985
+                      Z: 1.93608296
+                    LocalScale:
+                      X: 0.393700778
+                      Y: 0.393700778
+                      Z: 0.393700778
+                Children: []
+                Id: 66ded801-63df-4b62-b622-89f7cf82e7ac
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: B1
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: 32ea1c89-9dc8-44f5-8b52-6bc6bf64e926
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 8.14603425E-08
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: 1.76519907
+                      Y: 4.70910072
+                      Z: 1.93608296
+                    LocalScale:
+                      X: 0.393700778
+                      Y: 0.393700778
+                      Z: 0.393700778
+                Children: []
+                Id: 38cfeb59-150f-4571-8e83-ad0f597c2047
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: D2
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: dae234bb-39ef-4a08-845e-b3b5252e1716
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 8.14603425E-08
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: -1.73313701
+                      Y: 4.09398985
+                      Z: -1.9147445
+                    LocalScale:
+                      X: 0.393700778
+                      Y: 0.393700778
+                      Z: 0.393700778
+                Children: []
+                Id: c275fe37-2f48-48e2-b41a-eb539be86ca7
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: D1
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: 5aaf7f38-1d36-4516-872f-2f46961d0268
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 8.14603425E-08
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: -1.73313701
+                      Y: 4.70910072
+                      Z: -1.9147445
+                    LocalScale:
+                      X: 0.393700778
+                      Y: 0.393700778
+                      Z: 0.393700778
+                Children: []
+                Id: 84423867-e5ac-4799-a92b-5838baa922ef
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: C2
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: 9d5586a0-1849-4a6d-9c6d-1519346a7775
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 8.14603425E-08
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: 1.76519907
+                      Y: 4.09398985
+                      Z: -1.9147445
+                    LocalScale:
+                      X: 0.393700778
+                      Y: 0.393700778
+                      Z: 0.393700778
+                Children: []
+                Id: 2df53c03-a167-4def-84c4-ab93354f5170
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: C1
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: a26c047f-fb7f-4679-9f22-b2058e996171
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 8.14603425E-08
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: 1.76519907
+                      Y: 4.70910072
+                      Z: -1.9147445
+                    LocalScale:
+                      X: 0.393700778
+                      Y: 0.393700778
+                      Z: 0.393700778
+                Children: []
+                Id: 6f7e33bc-6274-476a-b309-81ecdc4ea16d
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: B4
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: e456f7db-ffbf-4fe6-b178-f4f442ede237
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 8.14603425E-08
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: 2.01464415
+                      Y: 4.40275669
+                      Z: 1.93608296
+                    LocalScale:
+                      X: 0.393700778
+                      Y: 0.393700778
+                      Z: 0.393700778
+                Children: []
+                Id: e08c09c7-f87a-4014-afba-4e51fcc6cd18
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: C4
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: a60cb8b4-9a56-4dfe-98ad-316e4b62a767
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 8.14603425E-08
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: 2.01464415
+                      Y: 4.40275669
+                      Z: -1.9147445
+                    LocalScale:
+                      X: 0.393700778
+                      Y: 0.393700778
+                      Z: 0.393700778
+                Children: []
+                Id: 5bbd1424-25b6-4e63-b34a-125e5bb046b4
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: A4
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: 43682ec8-e2da-46a4-a085-1c0343aff961
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 8.14603425E-08
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: -2.00069118
+                      Y: 4.40275669
+                      Z: 1.93608296
+                    LocalScale:
+                      X: 0.393700778
+                      Y: 0.393700778
+                      Z: 0.393700778
+                Children: []
+                Id: 6666092e-5a63-4c47-a397-32d3052b6bd5
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: D4
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: b1ba1f53-188d-4d19-8727-8ec8fc406b8e
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 8.14603425E-08
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: -2.00069118
+                      Y: 4.40275669
+                      Z: -1.9147445
+                    LocalScale:
+                      X: 0.393700778
+                      Y: 0.393700778
+                      Z: 0.393700778
+                Children: []
+                Id: f3fd3acb-dc8e-430f-8eba-db4321cee6b7
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: A3
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: e4721708-1460-47a0-810b-2fde54ecd25c
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 8.14603425E-08
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: -1.73313701
+                      Y: 4.40275669
+                      Z: 2.18006325
+                    LocalScale:
+                      X: 0.393700778
+                      Y: 0.393700778
+                      Z: 0.393700778
+                Children: []
+                Id: 5c08cb4d-c57c-46b9-bb41-1e92801ec939
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: B3
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: 7b147e5e-135a-454f-b916-82439e75c29a
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 8.14603425E-08
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: 1.76519907
+                      Y: 4.40275669
+                      Z: 2.18006325
+                    LocalScale:
+                      X: 0.393700778
+                      Y: 0.393700778
+                      Z: 0.393700778
+                Children: []
+                Id: 1e8e6d24-5eeb-4d75-8956-2caa68e1db55
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: D3
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: 402280ee-82f1-4e14-8650-1cc4f2339b0e
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 8.14603425E-08
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: -1.73313701
+                      Y: 4.40275669
+                      Z: -2.15971851
+                    LocalScale:
+                      X: 0.393700778
+                      Y: 0.393700778
+                      Z: 0.393700778
+                Children: []
+                Id: 3a9753a0-d319-4da7-98d2-7e213ad4f654
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: C3
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: 1f8f4d16-a5b5-4006-a809-0c45a1a1412e
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 8.14603425E-08
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: 1.76519907
+                      Y: 4.40275669
+                      Z: -2.15971851
+                    LocalScale:
+                      X: 0.393700778
+                      Y: 0.393700778
+                      Z: 0.393700778
+                Children: []
+                Id: 8cd09e2c-b491-4e84-a12e-7d82d4797a99
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: glass
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: 2e490668-731f-4951-8880-fce200c53b76
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 0.707106829
+                      X: -0.707106709
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: 0.00509372726
+                      Y: 3.44734311
+                      Z: 0.0
+                    LocalScale:
+                      X: 0.393700778
+                      Y: 0.393700749
+                      Z: 0.393700749
+                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+                    Id: 66494b74-b0e0-469f-86f9-0e1c8b5acfac
+                    AsignedTo: 'Material #25'
+                    IsEnabled: true
+                    Material: 3eb02471-1856-4172-bcd7-464929b7e888
+                  - !WaveEngine.Components.Graphics3D.MeshComponent,WaveEngine.Framework
+                    Id: f7ffdcae-a11b-4364-a9df-73c334add126
+                    IsEnabled: true
+                    Model: d6bcbd41-c81d-4903-bf13-0b52c60d2418
+                    ModelMeshName: glass
+                  - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+                    Id: 14a70d9e-e186-4445-9bc6-38c0475a5260
+                    DebugBoundingbox: true
+                    FrustumCullingEnabled: true
+                    IsEnabled: true
+                    OrderBias: 0
+                Children: []
+                Id: 880b0205-9461-4020-9e6f-fd8438e394a0
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: metallic
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: 9155acb8-f024-40ac-9a04-223000724738
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 0.707106829
+                      X: -0.707106709
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: 0.00509372726
+                      Y: 3.44734311
+                      Z: 0.0
+                    LocalScale:
+                      X: 0.393700778
+                      Y: 0.393700749
+                      Z: 0.393700749
+                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+                    Id: 7acdc1f0-efc5-4aec-aa7f-44aafa87ffba
+                    AsignedTo: 'Material #25'
+                    IsEnabled: true
+                    Material: 3eb02471-1856-4172-bcd7-464929b7e888
+                  - !WaveEngine.Components.Graphics3D.MeshComponent,WaveEngine.Framework
+                    Id: b4309443-401e-4766-81bd-fb25b51844ab
+                    IsEnabled: true
+                    Model: d6bcbd41-c81d-4903-bf13-0b52c60d2418
+                    ModelMeshName: metallic
+                  - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+                    Id: 65c39886-ee14-4def-9e8d-b66677d0f6b8
+                    DebugBoundingbox: true
+                    FrustumCullingEnabled: true
+                    IsEnabled: true
+                    OrderBias: 0
+                Children: []
+                Id: fc740ac2-ab67-43c6-9030-c6cb1879c1c1
+            Id: 0dd3ee2c-a979-467d-b8e9-abdec58b9e3e
         Id: aa1c9d33-1751-44b9-9925-d93b76042bce
     Id: bf7601de-e3ee-4c6a-9ec4-717fc4c11ddd
   - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
