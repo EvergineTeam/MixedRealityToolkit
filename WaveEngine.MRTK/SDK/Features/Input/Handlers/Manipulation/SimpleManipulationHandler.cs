@@ -65,6 +65,8 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
 
         private readonly Dictionary<Entity, Matrix4x4> activeCursors = new Dictionary<Entity, Matrix4x4>();
 
+        private Vector3 originalPosition;
+
         /// <inheritdoc/>
         protected override void OnDeactivated()
         {
@@ -125,6 +127,12 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
         private Matrix4x4 CreateCursorTransform(MixedRealityPointerEventData eventData)
         {
             return Matrix4x4.CreateFromQuaternion(eventData.Orientation) * Matrix4x4.CreateTranslation(eventData.Position);
+        }
+
+        /// <inheritdoc/>
+        protected override void Start()
+        {
+            this.originalPosition = this.transform.Position;
         }
 
         /// <inheritdoc/>
@@ -222,6 +230,13 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
                     this.rigidBody.AngularVelocity = Quaternion.ToEuler(finalTransform.Orientation * Quaternion.Inverse(this.transform.Orientation)) / timeStep;
                     this.rigidBody.WakeUp();
                 }
+            }
+
+            if (this.rigidBody != null && (this.transform.Position - this.originalPosition).LengthSquared() > 10)
+            {
+                this.rigidBody.ResetTransform(this.originalPosition, this.transform.Orientation, this.transform.Scale);
+                this.rigidBody.LinearVelocity = Vector3.Zero;
+                this.rigidBody.AngularVelocity = Vector3.Zero;
             }
         }
 
