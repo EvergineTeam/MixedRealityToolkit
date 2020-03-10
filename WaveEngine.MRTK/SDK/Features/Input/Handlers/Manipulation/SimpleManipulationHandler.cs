@@ -6,6 +6,7 @@ using System.Linq;
 using WaveEngine.Common.Attributes;
 using WaveEngine.Framework;
 using WaveEngine.Framework.Graphics;
+using WaveEngine.Framework.Physics3D;
 using WaveEngine.Mathematics;
 using WaveEngine.MRTK.Base.EventDatum.Input;
 using WaveEngine.MRTK.Base.Interfaces.InputSystem.Handlers;
@@ -22,6 +23,12 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
         /// </summary>
         [BindComponent]
         protected Transform3D transform = null;
+
+        /// <summary>
+        /// The rigid body.
+        /// </summary>
+        [BindComponent(isRequired: false)]
+        protected RigidBody3D rigidBody;
 
         /// <summary>
         /// Gets or sets a value indicating whether the manipulation smoothing is enabled.
@@ -203,9 +210,18 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
                 // Update object transform
                 float lerpAmount = this.GetLerpAmount(timeStep);
 
-                this.transform.Position = Vector3.Lerp(this.transform.Position, finalTransform.Translation, lerpAmount);
-                this.transform.Orientation = Quaternion.Lerp(this.transform.Orientation, finalTransform.Orientation, lerpAmount);
-                this.transform.Scale = Vector3.Lerp(this.transform.Scale, finalTransform.Scale, lerpAmount);
+                if (this.rigidBody == null)
+                {
+                    this.transform.Position = Vector3.Lerp(this.transform.Position, finalTransform.Translation, lerpAmount);
+                    this.transform.Orientation = Quaternion.Lerp(this.transform.Orientation, finalTransform.Orientation, lerpAmount);
+                    this.transform.Scale = Vector3.Lerp(this.transform.Scale, finalTransform.Scale, lerpAmount);
+                }
+                else
+                {
+                    this.rigidBody.LinearVelocity = (finalTransform.Translation - this.transform.Position) / timeStep;
+                    this.rigidBody.AngularVelocity = Quaternion.ToEuler(finalTransform.Orientation * Quaternion.Inverse(this.transform.Orientation)) / timeStep;
+                    this.rigidBody.WakeUp();
+                }
             }
         }
 
