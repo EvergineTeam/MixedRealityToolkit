@@ -28,25 +28,13 @@ namespace WaveEngine_MRTK_Demo.Behaviors
         float animation_time;
         Vector3 cachedColor;
 
-
-        T CheckComponent<T>() where T: Component, new()
-        {
-            T t = Owner.FindComponent<T>();
-            if(t == null)
-            {
-                t = new T();
-                Owner.AddComponent(t);
-            }
-            return t;
-        }
-
         protected override bool OnAttached()
         {
             if (!Application.Current.IsEditor)
             {
-                CheckComponent<BoxCollider3D>();
-                CheckComponent<StaticBody3D>();
-                soundEmitter = CheckComponent<SoundEmitter3D>();
+                Owner.GetOrAddComponent<BoxCollider3D>();
+                Owner.GetOrAddComponent<StaticBody3D>();
+                soundEmitter = Owner.GetOrAddComponent<SoundEmitter3D>();
             }
 
             return base.OnAttached();
