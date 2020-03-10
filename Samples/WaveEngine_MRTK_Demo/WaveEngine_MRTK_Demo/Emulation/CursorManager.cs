@@ -12,7 +12,7 @@ namespace WaveEngine_MRTK_Demo.Emulation
 {
     public class CursorManager : SceneManager
     {
-        private Cursor[] cursors;
+        public Cursor[] cursors { private set; get; }
 
         protected override void OnActivated()
         {

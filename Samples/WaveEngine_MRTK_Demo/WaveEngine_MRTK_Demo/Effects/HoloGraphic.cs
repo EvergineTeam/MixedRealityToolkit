@@ -65,19 +65,7 @@ namespace WaveEngine_MRTK_Demo.Effects
             }
         }
         
-        public WaveEngine.Mathematics.Vector3 Matrices_EdgeColor
-        {
-            get
-            {
-                return this.material.CBuffers[1].GetBufferData<WaveEngine.Mathematics.Vector3>(16);
-            }
-            set
-            {
-				this.material.CBuffers[1].SetBufferData(value, 16);
-            }
-        }
-        
-        public float Matrices_EdgeWidth
+        public float Matrices_Alpha
         {
             get
             {
@@ -89,7 +77,19 @@ namespace WaveEngine_MRTK_Demo.Effects
             }
         }
         
-        public float Matrices_EdgeOffset
+        public WaveEngine.Mathematics.Vector3 Matrices_InnerGlowColor
+        {
+            get
+            {
+                return this.material.CBuffers[1].GetBufferData<WaveEngine.Mathematics.Vector3>(16);
+            }
+            set
+            {
+				this.material.CBuffers[1].SetBufferData(value, 16);
+            }
+        }
+        
+        public float Matrices_InnerGlowAlpha
         {
             get
             {
@@ -98,6 +98,54 @@ namespace WaveEngine_MRTK_Demo.Effects
             set
             {
 				this.material.CBuffers[1].SetBufferData(value, 28);
+            }
+        }
+        
+        public float Matrices_InnerGlowPower
+        {
+            get
+            {
+                return this.material.CBuffers[1].GetBufferData<System.Single>(44);
+            }
+            set
+            {
+				this.material.CBuffers[1].SetBufferData(value, 44);
+            }
+        }
+        
+        public float Matrices_MaxFingerDist
+        {
+            get
+            {
+                return this.material.CBuffers[1].GetBufferData<System.Single>(60);
+            }
+            set
+            {
+				this.material.CBuffers[1].SetBufferData(value, 60);
+            }
+        }
+        
+        public WaveEngine.Mathematics.Vector3 Matrices_FingerPosLeft
+        {
+            get
+            {
+                return this.material.CBuffers[1].GetBufferData<WaveEngine.Mathematics.Vector3>(32);
+            }
+            set
+            {
+				this.material.CBuffers[1].SetBufferData(value, 32);
+            }
+        }
+        
+        public WaveEngine.Mathematics.Vector3 Matrices_FingerPosRight
+        {
+            get
+            {
+                return this.material.CBuffers[1].GetBufferData<WaveEngine.Mathematics.Vector3>(48);
+            }
+            set
+            {
+				this.material.CBuffers[1].SetBufferData(value, 48);
             }
         }
     }

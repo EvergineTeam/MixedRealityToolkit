@@ -15,7 +15,7 @@ namespace WaveEngine_MRTK_Demo.Emulation
     public class Cursor : Behavior
     {
         [BindComponent]
-        protected Transform3D transform = null;
+        public Transform3D transform = null;
 
         [BindComponent(isExactType: false)]
         public Collider3D Collider3D;
