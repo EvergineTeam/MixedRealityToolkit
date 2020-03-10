@@ -26,6 +26,7 @@ namespace WaveEngine_MRTK_Demo.Behaviors
         protected override void Update(TimeSpan gameTime)
         {
             materialDecorator.Matrices_FingerPosLeft = cursorManager.cursors[0].transform.Position;
+            materialDecorator.Matrices_FingerPosRight = cursorManager.cursors[1].transform.Position;
         }
     }
 }

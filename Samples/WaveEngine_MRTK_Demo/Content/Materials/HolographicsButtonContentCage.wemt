@@ -6,14 +6,15 @@ DefaultProfile:
   Platform: Undefined
 ExportAsRaw: false
 MaterialInfo:
-  Id: 00741e87-cf95-4572-8717-43840af416b1
-  ActiveDirectives: []
+  Id: fef235ae-24ca-4670-b943-e95c91a818c8
+  ActiveDirectives:
+    - FINGERS_DIST
   EffectID: 4f7e4c24-e83c-4350-9cd4-511fb2199cf4
   Layer: e35c59a9-26ab-4b4c-8210-4b1f21c31530
   Parameters:
     - Name: WorldViewProj
       Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
-      ValueByteArray: OluxQAAAAAAAAAAAAAAAAAAAAACYMopADf9kvzD5ZL8AAAAAmjIKwAv/5L8u+eS/AAAAAHmCGjUf7ItAvRuPQA==
+      ValueByteArray: S0wmQJJ/g79xItu/1RzbvwAAAAA18pVABw/3vrQI974El5vAZIwMv0o3ar9LMWq/gvmnNLDaVzUf7ItAvRuPQA==
     - Name: World
       Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
       ValueByteArray: AAAAQAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAACAPw==
@@ -34,7 +35,7 @@ MaterialInfo:
       ValueByteArray: AAAgQQ==
     - Name: MaxFingerDist
       Type: System.Single
-      ValueByteArray: CtcjPA==
+      ValueByteArray: zczMPQ==
     - Name: FingerPosLeft
       Type: WaveEngine.Mathematics.Vector3,WaveEngine.Mathematics
       ValueByteArray: AAAAAAAAAAAAAAAA

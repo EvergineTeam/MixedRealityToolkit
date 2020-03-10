@@ -1,5 +1,7 @@
 [Begin_ResourceLayout]
 
+[directives:FINGERS_DIST FINGERS_DIST NO_FINGERS_DIST]
+
 	cbuffer Base : register(b0)
 	{
 		float4x4 WorldViewProj		: packoffset(c0);	[WorldViewProjection]
@@ -62,7 +64,10 @@
         output.rgb += lerp(float3(0.0, 0.0, 0.0), InnerGlowColor, uvGlow.x + uvGlow.y);
         output.a   += lerp(0.0, InnerGlowAlpha, uvGlow.x + uvGlow.y);
         
-		output.a *= lerp(1, 0, saturate(length(input.worldPos - FingerPosLeft) / MaxFingerDist));
+        #if FINGERS_DIST
+        float minDist = min(length(input.worldPos - FingerPosLeft), length(input.worldPos - FingerPosRight));
+		output.a *= lerp(1, 0, saturate(minDist / MaxFingerDist));
+		#endif
 	
 		return output;
 	}
