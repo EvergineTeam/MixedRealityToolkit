@@ -75,14 +75,18 @@ namespace WaveEngine_MRTK_Demo.Emulation
                 {
                     this.UseShift = keyboardControlBehavior.UseShift;
                 }
-
-                if (this.materialComponent != null)
-                {
-                    this.material = new StandardMaterial(this.materialComponent.Material);
-                }
             }
 
             return attached;
+        }
+
+        protected override void Start()
+        {
+            if (this.materialComponent != null)
+            {
+                this.materialComponent.Material = this.materialComponent.Material.Clone();
+                this.material = new StandardMaterial(this.materialComponent.Material);
+            }
         }
 
         protected override void Update(TimeSpan gameTime)
