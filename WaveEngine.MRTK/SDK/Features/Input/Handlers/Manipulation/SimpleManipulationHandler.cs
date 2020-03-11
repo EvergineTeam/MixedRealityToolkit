@@ -140,6 +140,9 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
             if (this.rigidBody != null)
             {
                 this.UpdateOrder = this.rigidBody.UpdateOrder + 0.1f;
+
+                // Hack: it seems that a Reset Transform is mandatory, and it needs to be different
+                this.rigidBody.ResetTransform(this.originalPosition * 10000f, this.originalRotation, this.transform.Scale);
             }
         }
 
@@ -240,7 +243,7 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
                 }
             }
 
-            if (this.rigidBody != null && (this.transform.Position - this.originalPosition).LengthSquared() > 10)
+            if (this.rigidBody != null && (this.transform.Position - this.originalPosition).LengthSquared() > 0.5f)
             {
                 this.rigidBody.ResetTransform(this.originalPosition, this.originalRotation, this.transform.Scale);
                 this.rigidBody.LinearVelocity = Vector3.Zero;
