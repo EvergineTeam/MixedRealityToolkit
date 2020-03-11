@@ -7,7 +7,7 @@ DefaultProfile:
   Platform: Undefined
 ExportAnimations: true
 ExportAsRaw: false
-GenerateTangentSpace: false
+GenerateTangentSpace: true
 Profiles: {}
 Source:
   Header:

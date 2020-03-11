@@ -6,10 +6,12 @@ DefaultProfile:
   Platform: Undefined
 ExportAsRaw: false
 MaterialInfo:
-  Id: 22404a42-1ad4-49d3-9273-50c77451a25c
+  Id: 4ebb0169-40e7-4ba2-a35e-ec742b182d49
   ActiveDirectives:
+    - DIFF
     - IBL
     - LIT
+    - NORMAL
   EffectID: daa1f60a-82ad-40fc-8fbb-7b85caa6de0a
   Layer: 0db59561-b3f5-444f-b5de-e62e3a5b42bf
   Parameters:
@@ -21,16 +23,16 @@ MaterialInfo:
       ValueByteArray: AwAAAAAAAAA=
     - Name: ViewProj
       Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
-      ValueByteArray: OlsxQAAAAAAAAAAAAAAAAAAAAACYMgpADf/kvjD55L4AAAAAmjKKvwv/ZL8u+WS/AAAAAHmCGjUf7ItAvRuPQA==
+      ValueByteArray: mKAwQIsM3jw94uM8Z9zjPAAAAAAWRw9A3Km/vvSkv74Pnak9Kjtnv6FObb+OSG2/GgWoL8KVGjUf7ItAvRuPQA==
     - Name: EyePosition
       Type: WaveEngine.Mathematics.Vector3,WaveEngine.Mathematics
-      ValueByteArray: AAAAAAAAAEAAAIBA
+      ValueByteArray: m8H+vc5D1j88pYRA
     - Name: EyeCount
       Type: System.Int32
       ValueByteArray: AQAAAA==
     - Name: EV100
       Type: System.Single
-      ValueByteArray: c6yGvg==
+      ValueByteArray: d6yGvg==
     - Name: Exposure
       Type: System.Single
       ValueByteArray: AQCAPw==
@@ -48,10 +50,10 @@ MaterialInfo:
       ValueByteArray: AACAPw==
     - Name: Metallic
       Type: System.Single
-      ValueByteArray: mpkZPw==
+      ValueByteArray: AAAAAA==
     - Name: Roughness
       Type: System.Single
-      ValueByteArray: AACAPw==
+      ValueByteArray: AAAAPw==
     - Name: Reflectance
       Type: System.Single
       ValueByteArray: AAAAPw==
@@ -102,10 +104,10 @@ MaterialInfo:
     - ID: 00000000-0000-0000-0000-000000000000
       Name: null
   Textures:
-    - ID: 00000000-0000-0000-0000-000000000000
-      Name: null
-    - ID: 00000000-0000-0000-0000-000000000000
-      Name: null
+    - ID: 877f10d1-fec6-4c3d-8993-72b81a964dc4
+      Name: BaseColorTexture
+    - ID: 83c0a7f7-62c7-4a4e-9df0-5e906fe48f7d
+      Name: NormalTexture
     - ID: 00000000-0000-0000-0000-000000000000
       Name: null
     - ID: 00000000-0000-0000-0000-000000000000
