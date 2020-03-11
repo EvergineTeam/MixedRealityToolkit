@@ -5073,6 +5073,226 @@ Items:
                 Children: []
                 Id: fc740ac2-ab67-43c6-9030-c6cb1879c1c1
             Id: 0dd3ee2c-a979-467d-b8e9-abdec58b9e3e
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: PiggyBot_glb
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: 26c748fb-86d6-464c-bf15-593fb00509b0
+                IsEnabled: true
+                LocalOrientation:
+                  W: 0.706888735
+                  X: -0.706888616
+                  Y: -0.0175599921
+                  Z: -0.0175599959
+                LocalPosition:
+                  X: -0.209000006
+                  Y: -0.395000011
+                  Z: -0.518999994
+                LocalScale:
+                  X: 0.0113803074
+                  Y: 0.0113803083
+                  Z: 0.0113803074
+              - !WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation.SimpleManipulationHandler,WaveEngine.MRTK
+                Id: 47a2acc8-bad9-4421-be0a-31505771d21d
+                IsEnabled: true
+                SmoothingActive: true
+                SmoothingAmount: 0.00100000005
+                UpdateOrder: 0.5
+              - !WaveEngine.Framework.Physics3D.BoxCollider3D,WaveEngine.Framework
+                Id: 23d36077-952c-4ba8-bdd6-bd84e7eb0c3a
+                IsEnabled: true
+                Margin: 0.0399999991
+                Offset:
+                  X: 0.0
+                  Y: 0.0
+                  Z: 10.0
+                OrientationOffset:
+                  W: 1.0
+                  X: 0.0
+                  Y: 0.0
+                  Z: 0.0
+                Size:
+                  X: 10.0
+                  Y: 10.0
+                  Z: 20.0
+              - !WaveEngine.Framework.Physics3D.RigidBody3D,WaveEngine.Framework
+                Id: c39867ae-6309-441f-80c5-eb80c776d6cf
+                AngularDamping: 0.0
+                AngularFactor:
+                  X: 1.0
+                  Y: 1.0
+                  Z: 1.0
+                AngularVelocity:
+                  X: 0.0
+                  Y: 0.0
+                  Z: 0.0
+                CcdMotionThreshold: 0.0
+                CcdSweptSphereRadius: 0.200000003
+                CollisionCategories: Cat1
+                Friction: 0.5
+                Gravity:
+                  X: 0.0
+                  Y: -9.80000019
+                  Z: 0.0
+                IsEnabled: true
+                IsSensor: false
+                LinearDamping: 0.0
+                LinearFactor:
+                  X: 1.0
+                  Y: 1.0
+                  Z: 1.0
+                LinearVelocity:
+                  X: 0.0
+                  Y: 0.0
+                  Z: 0.0
+                MaskBits: All
+                Mass: 1.0
+                OverrideGravity: false
+                PhysicBodyType: Dynamic
+                Restitution: 0.0
+                RollingFriction: 0.0
+                UpdateOrder: 0.5
+            Children:
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: RootNode (model correction matrix)
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: d93f496c-c7c7-4401-b870-599d8650e1e7
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalScale:
+                      X: 1.0
+                      Y: 1.0
+                      Z: 1.0
+                Children:
+                  - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                    Name: 8cc9408ce4dc488e8c407eafe6e60d34_fbx
+                    Tag: null
+                    IsEnabled: true
+                    IsStatic: false
+                    Components:
+                      - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                        Id: 4946fc8e-e59c-42a9-ac5b-febe82fd503a
+                        IsEnabled: true
+                        LocalOrientation:
+                          W: 0.707106769
+                          X: 0.707106769
+                          Y: 0.0
+                          Z: 0.0
+                        LocalPosition:
+                          X: 0.0
+                          Y: 0.0
+                          Z: 0.0
+                        LocalScale:
+                          X: 1.0
+                          Y: 1.0
+                          Z: 1.0
+                    Children:
+                      - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                        Name: RootNode
+                        Tag: null
+                        IsEnabled: true
+                        IsStatic: false
+                        Components:
+                          - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                            Id: e6f804fe-be52-4ce5-a34e-0211b6c2c9ec
+                            IsEnabled: true
+                            LocalOrientation:
+                              W: 1.0
+                              X: 0.0
+                              Y: 0.0
+                              Z: 0.0
+                            LocalPosition:
+                              X: 0.0
+                              Y: 0.0
+                              Z: 0.0
+                            LocalScale:
+                              X: 1.0
+                              Y: 1.0
+                              Z: 1.0
+                        Children:
+                          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                            Name: Piggy_Bot
+                            Tag: null
+                            IsEnabled: true
+                            IsStatic: false
+                            Components:
+                              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                                Id: 9b94d6b5-a888-4acc-862b-d72b5c1f1417
+                                IsEnabled: true
+                                LocalOrientation:
+                                  W: 0.707106769
+                                  X: -0.707106769
+                                  Y: 0.0
+                                  Z: 0.0
+                                LocalPosition:
+                                  X: -1.64008594
+                                  Y: 19.3122368
+                                  Z: 0.0748250484
+                                LocalScale:
+                                  X: 1.0
+                                  Y: 1.0
+                                  Z: 1.0
+                            Children:
+                              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                                Name: Piggy_Bot_Piggy_Bot_Complete_0
+                                Tag: null
+                                IsEnabled: true
+                                IsStatic: false
+                                Components:
+                                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                                    Id: 28a3902b-7c07-43cd-9a43-72e0b7f784a5
+                                    IsEnabled: true
+                                    LocalOrientation:
+                                      W: 1.0
+                                      X: 0.0
+                                      Y: 0.0
+                                      Z: 0.0
+                                    LocalPosition:
+                                      X: 0.0
+                                      Y: 0.0
+                                      Z: 0.0
+                                    LocalScale:
+                                      X: 1.0
+                                      Y: 1.0
+                                      Z: 1.0
+                                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+                                    Id: 541c5022-f528-43b3-9d83-e654e231cefe
+                                    AsignedTo: Piggy_Bot_Complete
+                                    IsEnabled: true
+                                    Material: d50d00e8-f5b2-461d-9b85-1f7ed6d8d4f5
+                                  - !WaveEngine.Components.Graphics3D.MeshComponent,WaveEngine.Framework
+                                    Id: 0e70a42d-3663-4b5c-a6ea-1d76035edf45
+                                    IsEnabled: true
+                                    Model: 261a775b-1156-4290-bbc0-3524ecd7fec8
+                                    ModelMeshName: Piggy_Bot_Piggy_Bot_Complete_0
+                                  - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+                                    Id: 70011cb7-3fe5-41c7-bf59-53e45223ae1e
+                                    DebugBoundingbox: true
+                                    FrustumCullingEnabled: true
+                                    IsEnabled: true
+                                    OrderBias: 0
+                                Children: []
+                                Id: 01097cf6-a7ec-4950-9f10-f41fb2a4575d
+                            Id: e51f7127-9093-472a-b4bb-9cb3b07db497
+                        Id: c870a538-30e3-4b84-864e-72477b67f31d
+                    Id: e79bf0ab-2c80-423a-ba4b-3b6a1332eb39
+                Id: 6c3e47d2-ce2a-4028-a894-faa9fe129fab
+            Id: 8ad5adaa-8607-4010-98ea-decb39362564
         Id: aa1c9d33-1751-44b9-9925-d93b76042bce
     Id: bf7601de-e3ee-4c6a-9ec4-717fc4c11ddd
   - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
