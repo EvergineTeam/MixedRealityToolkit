@@ -23,7 +23,7 @@ namespace WaveEngine_MRTK_Demo.Scenes
 
         protected override void CreateScene()
         {
-            //this.Managers.RenderManager.DebugLines = true;
+            this.Managers.RenderManager.DebugLines = true;
 
             var xrPlatform = Application.Current.Container.Resolve<XRPlatform>();
 

@@ -82,7 +82,7 @@ namespace WaveEngine_MRTK_Demo.Emulation
 
         protected override void Start()
         {
-            if (this.materialComponent != null)
+            if (!Application.Current.IsEditor && this.materialComponent != null)
             {
                 this.materialComponent.Material = this.materialComponent.Material.Clone();
                 this.material = new StandardMaterial(this.materialComponent.Material);

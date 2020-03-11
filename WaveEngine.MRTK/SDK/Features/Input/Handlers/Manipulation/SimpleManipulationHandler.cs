@@ -135,6 +135,12 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
         {
             this.originalPosition = this.transform.Position;
             this.originalRotation = this.transform.Orientation;
+
+            // Ensure this is always updated after the rigidbody
+            if (this.rigidBody != null)
+            {
+                this.UpdateOrder = this.rigidBody.UpdateOrder + 0.1f;
+            }
         }
 
         /// <inheritdoc/>
