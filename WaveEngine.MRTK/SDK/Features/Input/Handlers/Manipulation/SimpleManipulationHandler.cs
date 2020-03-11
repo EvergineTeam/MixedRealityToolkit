@@ -239,6 +239,12 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
                 {
                     this.rigidBody.LinearVelocity = (finalTransform.Translation - this.transform.Position) / timeStep;
                     this.rigidBody.AngularVelocity = Quaternion.ToEuler(finalTransform.Orientation * Quaternion.Inverse(this.transform.Orientation)) / timeStep;
+                    if (this.transform.Scale != finalTransform.Scale)
+                    {
+                        this.rigidBody.ResetTransform(finalTransform.Translation, finalTransform.Orientation, finalTransform.Scale);
+                        this.transform.Scale = finalTransform.Scale;
+                    }
+
                     this.rigidBody.WakeUp();
                 }
             }
