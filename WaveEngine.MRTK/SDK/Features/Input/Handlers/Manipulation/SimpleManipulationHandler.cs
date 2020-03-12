@@ -229,20 +229,23 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
                 // Update object transform
                 float lerpAmount = this.GetLerpAmount(timeStep);
 
+                Vector3 pos = Vector3.Lerp(this.transform.Position, finalTransform.Translation, lerpAmount);
+                Quaternion rot = Quaternion.Lerp(this.transform.Orientation, finalTransform.Orientation, lerpAmount);
+                Vector3 scl = Vector3.Lerp(this.transform.Scale, finalTransform.Scale, lerpAmount);
                 if (this.rigidBody == null)
                 {
-                    this.transform.Position = Vector3.Lerp(this.transform.Position, finalTransform.Translation, lerpAmount);
-                    this.transform.Orientation = Quaternion.Lerp(this.transform.Orientation, finalTransform.Orientation, lerpAmount);
-                    this.transform.Scale = Vector3.Lerp(this.transform.Scale, finalTransform.Scale, lerpAmount);
+                    this.transform.Position = pos;
+                    this.transform.Orientation = rot;
+                    this.transform.Scale = scl;
                 }
                 else
                 {
-                    this.rigidBody.LinearVelocity = (finalTransform.Translation - this.transform.Position) / timeStep;
-                    this.rigidBody.AngularVelocity = Quaternion.ToEuler(finalTransform.Orientation * Quaternion.Inverse(this.transform.Orientation)) / timeStep;
-                    if (this.transform.Scale != finalTransform.Scale)
+                    this.rigidBody.LinearVelocity = (pos - this.transform.Position) / timeStep;
+                    this.rigidBody.AngularVelocity = Quaternion.ToEuler(rot * Quaternion.Inverse(this.transform.Orientation)) / timeStep;
+                    if (this.transform.Scale != scl)
                     {
-                        this.rigidBody.ResetTransform(finalTransform.Translation, finalTransform.Orientation, finalTransform.Scale);
-                        this.transform.Scale = finalTransform.Scale;
+                        this.rigidBody.ResetTransform(pos, rot, scl);
+                        this.transform.Scale = scl;
                     }
 
                     this.rigidBody.WakeUp();
