@@ -10,9 +10,12 @@ using WaveEngine.MRTK.Base.Interfaces.InputSystem.Handlers;
 
 namespace WaveEngine_MRTK_Demo.Emulation
 {
-    public class CursorManager : SceneManager
+    public class CursorManager : UpdatableSceneManager
     {
-        public Cursor[] cursors { private set; get; }
+        private Cursor[] cursors;
+
+        private Dictionary<Entity, Entity> cursorCollisions = new Dictionary<Entity, Entity>();
+        private Dictionary<Entity, Entity> interactedEntities = new Dictionary<Entity, Entity>();
 
         protected override void OnActivated()
         {
@@ -25,9 +28,9 @@ namespace WaveEngine_MRTK_Demo.Emulation
 
             foreach (var cursor in this.cursors)
             {
-                cursor.StaticBody3D.BeginCollision += this.StaticBody3D_BeginCollision;
-                cursor.StaticBody3D.UpdateCollision += this.StaticBody3D_UpdateCollision;
-                cursor.StaticBody3D.EndCollision += this.StaticBody3D_EndCollision;
+                cursor.StaticBody3D.BeginCollision += this.Cursor_BeginCollision;
+                cursor.StaticBody3D.UpdateCollision += this.Cursor_UpdateCollision;
+                cursor.StaticBody3D.EndCollision += this.Cursor_EndCollision;
             }
         }
 
@@ -37,42 +40,104 @@ namespace WaveEngine_MRTK_Demo.Emulation
 
             foreach (var cursor in this.cursors)
             {
-                cursor.StaticBody3D.BeginCollision -= this.StaticBody3D_BeginCollision;
-                cursor.StaticBody3D.UpdateCollision -= this.StaticBody3D_UpdateCollision;
-                cursor.StaticBody3D.EndCollision -= this.StaticBody3D_EndCollision;
+                cursor.StaticBody3D.BeginCollision -= this.Cursor_BeginCollision;
+                cursor.StaticBody3D.UpdateCollision -= this.Cursor_UpdateCollision;
+                cursor.StaticBody3D.EndCollision -= this.Cursor_EndCollision;
             }
         }
 
-        private void StaticBody3D_BeginCollision(object sender, CollisionInfo3D info)
-        {
-            this.RunTouchHandlers(info, (h, e) => h?.OnTouchStarted(e));
-            this.DoPointerEmulation(info, true, false);
-        }
-
-        private void StaticBody3D_UpdateCollision(object sender, CollisionInfo3D info)
-        {
-            this.RunTouchHandlers(info, (h, e) => h?.OnTouchUpdated(e));
-            this.DoPointerEmulation(info, false, false);
-        }
-
-        private void StaticBody3D_EndCollision(object sender, CollisionInfo3D info)
-        {
-            this.RunTouchHandlers(info, (h, e) => h?.OnTouchCompleted(e));
-            this.DoPointerEmulation(info, false, true);
-        }
-
-        private void RunTouchHandlers(CollisionInfo3D info, Action<IMixedRealityTouchHandler, HandTrackingInputEventData> action)
+        private void Cursor_BeginCollision(object sender, CollisionInfo3D info)
         {
             var cursorEntity = info.ThisBody.Owner;
-            var position = cursorEntity.FindComponent<Transform3D>().Position;
+            var interactedEntity = info.OtherBody.Owner;
+
+            this.RunTouchHandlers(cursorEntity, interactedEntity, (h, e) => h?.OnTouchStarted(e));
+
+            if (!this.cursorCollisions.ContainsKey(cursorEntity))
+            {
+                this.cursorCollisions[cursorEntity] = interactedEntity;
+            }
+        }
+
+        private void Cursor_UpdateCollision(object sender, CollisionInfo3D info)
+        {
+            var cursorEntity = info.ThisBody.Owner;
+            var interactedEntity = info.OtherBody.Owner;
+
+            this.RunTouchHandlers(cursorEntity, interactedEntity, (h, e) => h?.OnTouchUpdated(e));
+        }
+
+        private void Cursor_EndCollision(object sender, CollisionInfo3D info)
+        {
+            var cursorEntity = info.ThisBody.Owner;
+            var interactedEntity = info.OtherBody.Owner;
+
+            this.RunTouchHandlers(cursorEntity, interactedEntity, (h, e) => h?.OnTouchCompleted(e));
+
+            this.cursorCollisions.Remove(cursorEntity);
+        }
+
+        public override void Update(TimeSpan gameTime)
+        {
+            foreach (KeyValuePair<Entity, Entity> entry in this.cursorCollisions)
+            {
+                var cursorEntity = entry.Key;
+                var interactedEntity = entry.Value;
+
+                var cursorComponent = cursorEntity.FindComponent<Cursor>();
+
+                if (!cursorComponent.PreviousPinch && cursorComponent.Pinch)
+                {
+                    // PointerDown when the cursor transitions to pinched while inside a collider
+                    this.RunPointerHandlers(cursorEntity, interactedEntity, (h, e) => h?.OnPointerDown(e));
+                    this.interactedEntities[cursorEntity] = interactedEntity;
+                }
+            }
+
+            LinkedList<Entity> finishedInteractions = new LinkedList<Entity>();
+
+            var cursors = this.interactedEntities.Keys.ToArray();
+            foreach (Entity cursorEntity in cursors)
+            {
+                var interactedEntity = this.interactedEntities[cursorEntity];
+
+                var cursorComponent = cursorEntity.FindComponent<Cursor>();
+
+                if (cursorComponent.PreviousPinch)
+                {
+                    if (cursorComponent.Pinch)
+                    {
+                        // PointerDragged while the cursor is pinched
+                        this.RunPointerHandlers(cursorEntity, interactedEntity, (h, e) => h?.OnPointerDragged(e));
+                    }
+                    else
+                    {
+                        // PointerUp when the cursor is unpinched
+                        this.RunPointerHandlers(cursorEntity, interactedEntity, (h, e) => h?.OnPointerUp(e));
+
+                        finishedInteractions.AddLast(cursorEntity);
+                    }
+                }
+            }
+
+            // Remove finished interactions
+            foreach (Entity cursor in finishedInteractions)
+            {
+                this.interactedEntities.Remove(cursor);
+            }
+        }
+
+        private void RunTouchHandlers(Entity cursor, Entity other, Action<IMixedRealityTouchHandler, HandTrackingInputEventData> action)
+        {
+            var position = cursor.FindComponent<Transform3D>().Position;
 
             var eventArgs = new HandTrackingInputEventData()
             {
-                Cursor = cursorEntity,
+                Cursor = cursor,
                 Position = position,
             };
 
-            var interactables = this.GatherComponents(info.OtherBody.Owner)
+            var interactables = this.GatherComponents(other)
                 .Select(c => c as IMixedRealityTouchHandler)
                 .Where(c => c != null);
 
@@ -82,57 +147,24 @@ namespace WaveEngine_MRTK_Demo.Emulation
             }
         }
 
-        private void RunPointerHandlers(CollisionInfo3D info, Action<IMixedRealityPointerHandler, MixedRealityPointerEventData> action)
+        private void RunPointerHandlers(Entity cursor, Entity other, Action<IMixedRealityPointerHandler, MixedRealityPointerEventData> action)
         {
-            var cursorEntity = info.ThisBody.Owner;
-            var transform = cursorEntity.FindComponent<Transform3D>();
+            var transform = cursor.FindComponent<Transform3D>();
 
             var eventArgs = new MixedRealityPointerEventData()
             {
-                Cursor = cursorEntity,
+                Cursor = cursor,
                 Position = transform.Position,
                 Orientation = transform.Orientation
             };
 
-            var interactables = this.GatherComponents(info.OtherBody.Owner)
+            var interactables = this.GatherComponents(other)
                 .Select(c => c as IMixedRealityPointerHandler)
                 .Where(c => c != null);
 
             foreach (var touchHandler in interactables)
             {
                 action(touchHandler, eventArgs);
-            }
-        }
-
-        private void DoPointerEmulation(CollisionInfo3D info, bool first, bool last)
-        {
-            var cursorComponent = info.ThisBody.Owner.FindComponent<Cursor>();
-
-            if (cursorComponent.Pinch != cursorComponent.PreviousPinch)
-            {
-                if (cursorComponent.Pinch)
-                {
-                    this.RunPointerHandlers(info, (h, e) => h?.OnPointerDown(e));
-                }
-                else
-                {
-                    this.RunPointerHandlers(info, (h, e) => h?.OnPointerUp(e));
-                }
-            }
-            else if (cursorComponent.Pinch)
-            {
-                if (first)
-                {
-                    this.RunPointerHandlers(info, (h, e) => h?.OnPointerDown(e));
-                }
-                else if (last)
-                {
-                    this.RunPointerHandlers(info, (h, e) => h?.OnPointerUp(e));
-                }
-                else
-                {
-                    this.RunPointerHandlers(info, (h, e) => h?.OnPointerDragged(e));
-                }
             }
         }
 
