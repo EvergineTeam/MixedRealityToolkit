@@ -28,7 +28,7 @@ namespace WaveEngine_MRTK_Demo.Behaviors
         protected override bool OnAttached()
         {
             var attached = base.OnAttached();
-            this.UpdateOrder = cursor.UpdateOrder + 0.1f;
+            this.UpdateOrder = cursor.UpdateOrder + 0.1f; //Ensure this is executed always afte the Cursor (beacuse it cactched PreviousPinch)
 
             return attached;
         }
