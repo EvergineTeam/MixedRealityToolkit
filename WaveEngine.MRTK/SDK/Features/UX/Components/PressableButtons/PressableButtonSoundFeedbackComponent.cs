@@ -23,7 +23,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
         /// <summary>
         /// A sound emitter.
         /// </summary>
-        [BindComponent]
+        [BindComponent(isRequired: false)]
         protected SoundEmitter3D soundEmitter;
 
         /// <summary>
@@ -47,6 +47,12 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
             {
                 this.pressableButton.ButtonPressed += this.PressableButton_ButtonPressed;
                 this.pressableButton.ButtonReleased += this.PressableButton_ButtonReleased;
+            }
+
+            if (this.soundEmitter == null)
+            {
+                this.soundEmitter = new SoundEmitter3D();
+                this.Owner.AddComponent(this.soundEmitter);
             }
 
             return attached;

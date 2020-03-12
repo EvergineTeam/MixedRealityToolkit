@@ -64,6 +64,11 @@ Items:
       - !WaveEngine.MRTK.Services.InputSystem.NearInteractionTouchable,WaveEngine.MRTK
         Id: cdabb5cd-db58-4756-8d43-d891b7f9a8da
         IsEnabled: true
+      - !WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButtonSoundFeedbackComponent,WaveEngine.MRTK
+        Id: 0f00b79b-2d98-4434-9670-2802a158dbd6
+        IsEnabled: true
+        PressedSound: 2f03824d-5709-4c4d-9857-c6a47769a5bc
+        ReleasedSound: 7f835fa0-da0a-4152-b6ee-157943781e61
     Children:
       - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
         Name: buttonContent
