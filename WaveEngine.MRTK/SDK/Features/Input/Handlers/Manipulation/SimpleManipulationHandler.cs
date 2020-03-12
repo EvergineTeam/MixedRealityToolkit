@@ -227,7 +227,7 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
                 Matrix4x4 finalTransform = this.grabTransform * controllerTransform;
 
                 // Update object transform
-                float lerpAmount = this.GetLerpAmount(timeStep);
+                float lerpAmount = 1.0f; // this.GetLerpAmount(timeStep);
 
                 Vector3 pos = Vector3.Lerp(this.transform.Position, finalTransform.Translation, lerpAmount);
                 Quaternion rot = Quaternion.Lerp(this.transform.Orientation, finalTransform.Orientation, lerpAmount);
@@ -240,12 +240,18 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
                 }
                 else
                 {
-                    this.rigidBody.LinearVelocity = (pos - this.transform.Position) / timeStep;
-                    this.rigidBody.AngularVelocity = Quaternion.ToEuler(rot * Quaternion.Inverse(this.transform.Orientation)) / timeStep;
                     if (this.transform.Scale != scl)
                     {
                         this.rigidBody.ResetTransform(pos, rot, scl);
                         this.transform.Scale = scl;
+
+                        this.rigidBody.LinearVelocity = Vector3.Zero;
+                        this.rigidBody.AngularVelocity = Vector3.Zero;
+                    }
+                    else
+                    {
+                        this.rigidBody.LinearVelocity = (pos - this.transform.Position) / timeStep;
+                        this.rigidBody.AngularVelocity = Quaternion.ToEuler(rot * Quaternion.Inverse(this.transform.Orientation)) / timeStep;
                     }
 
                     this.rigidBody.WakeUp();
