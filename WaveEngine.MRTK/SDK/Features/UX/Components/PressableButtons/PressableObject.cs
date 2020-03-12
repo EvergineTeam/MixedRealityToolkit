@@ -115,9 +115,9 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
 
             if (this.cursorLocalPositions.ContainsKey(cursor))
             {
-                var localTransform = this.GetLocalPosition(eventData.Position);
+                var localPosition = this.GetLocalPosition(eventData.Position);
 
-                this.UpdateCursor(cursor, localTransform);
+                this.UpdateCursor(cursor, localPosition);
 
                 this.InternalOnTouchUpdated(cursor);
             }
