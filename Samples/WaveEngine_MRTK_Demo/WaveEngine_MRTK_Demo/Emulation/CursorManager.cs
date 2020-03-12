@@ -12,7 +12,7 @@ namespace WaveEngine_MRTK_Demo.Emulation
 {
     public class CursorManager : UpdatableSceneManager
     {
-        private Cursor[] cursors;
+        public Cursor[] cursors;
 
         private Dictionary<Entity, Entity> cursorCollisions = new Dictionary<Entity, Entity>();
         private Dictionary<Entity, Entity> interactedEntities = new Dictionary<Entity, Entity>();
