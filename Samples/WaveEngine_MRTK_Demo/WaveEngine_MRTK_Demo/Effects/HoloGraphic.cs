@@ -29,7 +29,7 @@ namespace WaveEngine_MRTK_Demo.Effects
         {
         }
         
-        public WaveEngine.Mathematics.Matrix4x4 Base_WorldViewProj
+        public WaveEngine.Mathematics.Matrix4x4 PerDrawCall_WorldViewProj
         {
             get
             {
@@ -41,7 +41,7 @@ namespace WaveEngine_MRTK_Demo.Effects
             }
         }
         
-        public WaveEngine.Mathematics.Matrix4x4 Base_World
+        public WaveEngine.Mathematics.Matrix4x4 PerDrawCall_World
         {
             get
             {
@@ -53,7 +53,7 @@ namespace WaveEngine_MRTK_Demo.Effects
             }
         }
         
-        public WaveEngine.Mathematics.Vector3 Matrices_Color
+        public WaveEngine.Mathematics.Vector3 Parameters_Color
         {
             get
             {
@@ -65,7 +65,7 @@ namespace WaveEngine_MRTK_Demo.Effects
             }
         }
         
-        public float Matrices_Alpha
+        public float Parameters_Alpha
         {
             get
             {
@@ -77,7 +77,7 @@ namespace WaveEngine_MRTK_Demo.Effects
             }
         }
         
-        public WaveEngine.Mathematics.Vector3 Matrices_InnerGlowColor
+        public WaveEngine.Mathematics.Vector3 Parameters_InnerGlowColor
         {
             get
             {
@@ -89,7 +89,7 @@ namespace WaveEngine_MRTK_Demo.Effects
             }
         }
         
-        public float Matrices_InnerGlowAlpha
+        public float Parameters_InnerGlowAlpha
         {
             get
             {
@@ -101,7 +101,7 @@ namespace WaveEngine_MRTK_Demo.Effects
             }
         }
         
-        public float Matrices_InnerGlowPower
+        public float Parameters_InnerGlowPower
         {
             get
             {
@@ -113,7 +113,7 @@ namespace WaveEngine_MRTK_Demo.Effects
             }
         }
         
-        public float Matrices_MaxFingerDist
+        public float Parameters_MaxFingerDist
         {
             get
             {
@@ -125,7 +125,7 @@ namespace WaveEngine_MRTK_Demo.Effects
             }
         }
         
-        public WaveEngine.Mathematics.Vector3 Matrices_FingerPosLeft
+        public WaveEngine.Mathematics.Vector3 Parameters_FingerPosLeft
         {
             get
             {
@@ -137,7 +137,7 @@ namespace WaveEngine_MRTK_Demo.Effects
             }
         }
         
-        public WaveEngine.Mathematics.Vector3 Matrices_FingerPosRight
+        public WaveEngine.Mathematics.Vector3 Parameters_FingerPosRight
         {
             get
             {
@@ -146,6 +146,30 @@ namespace WaveEngine_MRTK_Demo.Effects
             set
             {
 				this.material.CBuffers[1].SetBufferData(value, 48);
+            }
+        }
+        
+        public WaveEngine.Mathematics.Matrix4x4 PerCamera_MultiviewViewProj
+        {
+            get
+            {
+                return this.material.CBuffers[2].GetBufferData<WaveEngine.Mathematics.Matrix4x4>(0);
+            }
+            set
+            {
+				this.material.CBuffers[2].SetBufferData(value, 0);
+            }
+        }
+        
+        public int PerCamera_EyeCount
+        {
+            get
+            {
+                return this.material.CBuffers[2].GetBufferData<System.Int32>(160);
+            }
+            set
+            {
+				this.material.CBuffers[2].SetBufferData(value, 160);
             }
         }
     }

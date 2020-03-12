@@ -6,7 +6,7 @@ DefaultProfile:
   Platform: Undefined
 ExportAsRaw: false
 MaterialInfo:
-  Id: fef235ae-24ca-4670-b943-e95c91a818c8
+  Id: 20ed096d-a6a9-4923-8def-8a71c1a46c3b
   ActiveDirectives:
     - FINGERS_DIST
   EffectID: 4f7e4c24-e83c-4350-9cd4-511fb2199cf4
@@ -14,7 +14,7 @@ MaterialInfo:
   Parameters:
     - Name: WorldViewProj
       Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
-      ValueByteArray: S0wmQJJ/g79xItu/1RzbvwAAAAA18pVABw/3vrQI974El5vAZIwMv0o3ar9LMWq/gvmnNLDaVzUf7ItAvRuPQA==
+      ValueByteArray: JeaMQAAAAAAAAAAAAAAAAAAAAACYMopADf9kvzD5ZL8AAAAAmjIKwAv/5L8u+eS/AAAAAHmCGjUf7ItAvRuPQA==
     - Name: World
       Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
       ValueByteArray: AAAAQAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAACAPw==
@@ -42,6 +42,12 @@ MaterialInfo:
     - Name: FingerPosRight
       Type: WaveEngine.Mathematics.Vector3,WaveEngine.Mathematics
       ValueByteArray: AAAAAAAAAAAAAAAA
+    - Name: MultiviewViewProj
+      Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
+      ValueByteArray: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
+    - Name: EyeCount
+      Type: System.Int32
+      ValueByteArray: AAAAAA==
   Samplers: null
   Textures: null
 Profiles: {}

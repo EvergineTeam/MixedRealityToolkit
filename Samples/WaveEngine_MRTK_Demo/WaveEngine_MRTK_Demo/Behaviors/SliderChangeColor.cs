@@ -45,7 +45,7 @@ namespace WaveEngine_MRTK_Demo.Components
             for (int i = 0; i < 3; ++i)
             {
                 PinchSlider p = pinchSliders[i];
-                p.SliderValue = materialDecorator.Matrices_Color[i];
+                p.SliderValue = materialDecorator.Parameters_Color[i];
                 p.ValueUpdated += P_ValueUpdated;
             }
         }
@@ -56,9 +56,9 @@ namespace WaveEngine_MRTK_Demo.Components
             {
                 if(sender == pinchSliders[i])
                 {
-                    Vector3 c = materialDecorator.Matrices_Color;
+                    Vector3 c = materialDecorator.Parameters_Color;
                     c[i] = (e.NewValue);
-                    materialDecorator.Matrices_Color = c;
+                    materialDecorator.Parameters_Color = c;
 
                     break;
                 }

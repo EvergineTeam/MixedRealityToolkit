@@ -48,14 +48,14 @@ namespace WaveEngine_MRTK_Demo.Behaviors
         public void OnTouchCompleted(HandTrackingInputEventData eventData)
         {
             animating = false;
-            materialDecorator.Matrices_Color = cachedColor;
+            materialDecorator.Parameters_Color = cachedColor;
         }
 
         public void OnTouchStarted(HandTrackingInputEventData eventData)
         {
             animating = true;
             animation_time = 0.0f;
-            cachedColor = materialDecorator.Matrices_Color;
+            cachedColor = materialDecorator.Parameters_Color;
 
             if (this.soundEmitter != null)
             {
@@ -80,11 +80,11 @@ namespace WaveEngine_MRTK_Demo.Behaviors
             {
                 animation_time += (float)gameTime.TotalSeconds;
 
-                Vector3 c = materialDecorator.Matrices_Color;
+                Vector3 c = materialDecorator.Parameters_Color;
                 c[0] = 0.5f + (float)Math.Sin(animation_time * 2.0f) * 0.5f;
                 c[1] = 1.0f - c[0];
                 c[2] = 0.0f;
-                materialDecorator.Matrices_Color = c;
+                materialDecorator.Parameters_Color = c;
             }
         }
     }
