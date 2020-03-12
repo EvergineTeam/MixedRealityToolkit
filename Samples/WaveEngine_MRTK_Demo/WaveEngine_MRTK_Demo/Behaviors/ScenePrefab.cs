@@ -57,6 +57,7 @@ namespace WaveEngine_MRTK_Demo.Behaviors
                 }
 
                 Entity root = source.SceneData.Items.First().Entity;
+                root.Flags = HideFlags.DontSave;
                 
                 if (duplicateMaterials)
                 {
