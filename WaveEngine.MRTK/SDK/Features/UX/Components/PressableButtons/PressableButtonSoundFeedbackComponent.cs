@@ -49,7 +49,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
                 this.pressableButton.ButtonReleased += this.PressableButton_ButtonReleased;
             }
 
-            if (this.soundEmitter == null)
+            if (!Application.Current.IsEditor && this.soundEmitter == null)
             {
                 this.soundEmitter = new SoundEmitter3D();
                 this.Owner.AddComponent(this.soundEmitter);
