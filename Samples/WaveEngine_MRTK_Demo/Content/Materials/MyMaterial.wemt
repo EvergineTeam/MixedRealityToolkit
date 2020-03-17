@@ -1,0 +1,40 @@
+!WaveEngine.Assets.Exporters.MaterialMetaFile,WaveEngine.Assets
+Id: 1637a925-8be0-46de-b7e9-8c0d4fbbcc52
+DefaultProfile:
+  ExcludeAsset: false
+  Name: null
+  Platform: Undefined
+ExportAsRaw: false
+MaterialInfo:
+  Id: 587a9052-6c38-4796-8baa-28f9753fdfe6
+  ActiveDirectives: []
+  EffectID: 4a7683be-17e6-4312-bbfe-3ffb70d0e6aa
+  Layer: 0db59561-b3f5-444f-b5de-e62e3a5b42bf
+  Parameters:
+    - Name: WorldViewProj
+      Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
+      ValueByteArray: WtZ9QAAAAAAAAAAAAAAAAAAAAACYMopADf9kvzD5ZL8AAAAAmjIKwAv/5L8u+eS/AAAAAHmCGjUf7ItAvRuPQA==
+    - Name: World
+      Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
+      ValueByteArray: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
+    - Name: Color
+      Type: WaveEngine.Mathematics.Vector3,WaveEngine.Mathematics
+      ValueByteArray: mpmZPpqZmT4AAIA/
+    - Name: EdgeColor
+      Type: WaveEngine.Mathematics.Vector3,WaveEngine.Mathematics
+      ValueByteArray: AACAPwAAgD8AAIA/
+    - Name: EdgeWidth
+      Type: System.Single
+      ValueByteArray: AACAPw==
+    - Name: EdgeSmooth
+      Type: System.Single
+      ValueByteArray: AACAPw==
+    - Name: MultiviewViewProj
+      Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
+      ValueByteArray: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
+    - Name: EyeCount
+      Type: System.Int32
+      ValueByteArray: AAAAAA==
+  Samplers: null
+  Textures: null
+Profiles: {}
