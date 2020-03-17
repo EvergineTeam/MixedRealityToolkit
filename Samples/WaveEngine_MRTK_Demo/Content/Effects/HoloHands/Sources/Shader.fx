@@ -103,7 +103,9 @@
 		GS_IN output = (GS_IN)0;
 
 		output.pos = input.Position;
+#if MULTIVIEW
 		output.InstId = input.InstId;
+#endif
 
 		return output;
 	}

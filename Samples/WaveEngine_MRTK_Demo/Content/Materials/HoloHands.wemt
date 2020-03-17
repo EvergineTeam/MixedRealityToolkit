@@ -6,35 +6,51 @@ DefaultProfile:
   Platform: Undefined
 ExportAsRaw: false
 MaterialInfo:
-  Id: 047c045a-3902-431f-b3eb-9194576bc24a
-  ActiveDirectives: []
-  EffectID: 4a7683be-17e6-4312-bbfe-3ffb70d0e6aa
+  Id: e77091ff-255a-4e82-88cb-a774be6009a5
+  ActiveDirectives:
+    - BASE
+  EffectID: 61522b7c-6a53-4a1d-bfb7-6c1c4b0728c6
   Layer: 0db59561-b3f5-444f-b5de-e62e3a5b42bf
   Parameters:
     - Name: WorldViewProj
       Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
-      ValueByteArray: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
+      ValueByteArray: CvqmQAAAAAAAAAAAAAAAAAAAAACYMopADf9kvzD5ZL8AAAAAmjIKwAv/5L8u+eS/AAAAAHmCGjUf7ItAvRuPQA==
     - Name: World
       Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
-      ValueByteArray: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
-    - Name: Color
-      Type: WaveEngine.Mathematics.Vector3,WaveEngine.Mathematics
-      ValueByteArray: mpmZPpqZmT4AAIA/
+      ValueByteArray: AAAAQAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAACAPw==
+    - Name: Time
+      Type: System.Single
+      ValueByteArray: hWxHQQ==
     - Name: EdgeColor
       Type: WaveEngine.Mathematics.Vector3,WaveEngine.Mathematics
       ValueByteArray: AACAPwAAgD8AAIA/
     - Name: EdgeWidth
       Type: System.Single
-      ValueByteArray: AACAPw==
+      ValueByteArray: CtcjPA==
+    - Name: FillColor0
+      Type: WaveEngine.Mathematics.Vector3,WaveEngine.Mathematics
+      ValueByteArray: ke0cP8HKAT/P93M/
     - Name: EdgeSmooth
       Type: System.Single
-      ValueByteArray: AACAPw==
+      ValueByteArray: CtejPQ==
+    - Name: FillColor1
+      Type: WaveEngine.Mathematics.Vector3,WaveEngine.Mathematics
+      ValueByteArray: sp1vPnnpBj+R7Xw/
+    - Name: Displacement
+      Type: System.Single
+      ValueByteArray: zcxMPg==
+    - Name: tPosY
+      Type: System.Single
+      ValueByteArray: AAAAAA==
+    - Name: distorsionH
+      Type: System.Single
+      ValueByteArray: AAAgQg==
     - Name: MultiviewViewProj
       Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
-      ValueByteArray: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
+      ValueByteArray: vB+GP7Sujr59mUu/BJZLvzJVKrc/6BhAMxsTvrEYE77YFrW/k19TvsjLFr81yRa/RDCzPWqPHT7t2nQ/LDiHPw==
     - Name: EyeCount
       Type: System.Int32
-      ValueByteArray: AAAAAA==
+      ValueByteArray: AQAAAA==
   Samplers: null
   Textures: null
 Profiles: {}
