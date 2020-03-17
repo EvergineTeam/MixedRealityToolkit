@@ -622,6 +622,85 @@ Items:
                         OrderBias: 0
                     Children: []
                     Id: a5f558ee-ec6f-4db5-a219-28a12dc50c87
+                  - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                    Name: value
+                    Tag: null
+                    IsEnabled: true
+                    IsStatic: false
+                    Components:
+                      - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                        Id: 7316988a-7693-4c47-942f-cbf9a795c354
+                        IsEnabled: true
+                        LocalOrientation:
+                          W: 1.37678782E-07
+                          X: 1.37678754E-07
+                          Y: 0.707106829
+                          Z: -0.707106709
+                        LocalPosition:
+                          X: -0.0700000003
+                          Y: 0.0
+                          Z: 2.98023224E-08
+                        LocalScale:
+                          X: 0.100000001
+                          Y: 0.100000001
+                          Z: 0.100000001
+                      - !WaveEngine_MRTK_Demo.Components.Text3D,WaveEngine_MRTK_Demo
+                        Id: f14fa961-5935-410c-a28c-7359be6ff675
+                        Alpha: 1.0
+                        FontSize: 36
+                        HorizontalAlignment: Left
+                        IsEnabled: true
+                        Quality: 0.5
+                        Resolution:
+                          X: 200.0
+                          Y: 100.0
+                        Size:
+                          X: 1.0
+                          Y: 0.5
+                        Text: 0.50
+                      - !WaveEngine_MRTK_Demo.Components.ShowSliderValue,WaveEngine_MRTK_Demo
+                        Id: 65da24ef-6c25-4f64-893f-d7c42c1b7847
+                        IsEnabled: true
+                    Children: []
+                    Id: cab3e09d-aced-4748-a2e5-79925d33dead
+                  - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                    Name: title
+                    Tag: null
+                    IsEnabled: true
+                    IsStatic: false
+                    Components:
+                      - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                        Id: a2b73c96-5fe3-46ca-9f54-b6e66604ded8
+                        IsEnabled: true
+                        LocalOrientation:
+                          W: 9.06143569E-08
+                          X: 9.06143214E-08
+                          Y: 0.707106829
+                          Z: -0.707106709
+                        LocalPosition:
+                          X: -0.0700000003
+                          Y: 0.0149999997
+                          Z: 1.49011612E-07
+                        LocalScale:
+                          X: 0.100000001
+                          Y: 0.100000001
+                          Z: 0.100000001
+                      - !WaveEngine_MRTK_Demo.Components.Text3D,WaveEngine_MRTK_Demo
+                        Id: dac94535-3c81-43aa-ab9f-e84a79a2b4e8
+                        Alpha: 1.0
+                        FontSize: 24
+                        HorizontalAlignment: Left
+                        IsEnabled: true
+                        Quality: 0.5
+                        Resolution:
+                          X: 200.0
+                          Y: 100.0
+                        Size:
+                          X: 1.0
+                          Y: 0.5
+                        Text: Value
+                    Children: []
+                    Id: 311372ea-867b-4183-b401-e7baf65acbc9
                 Id: 9c0d18b5-5928-4a8c-bf0a-ee78937b1c7b
             Id: 660df448-a8ac-4d33-a9bd-ae324caebaeb
         Id: 275934f7-acb8-4db4-9abd-31381e25e4af
@@ -916,4 +995,31 @@ Items:
         Children: []
         Id: 0a1b717d-2afc-413b-a520-57f429737cca
     Id: 04aa31c2-6453-445f-9887-71b256aeaf02
+  - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+    Name: services
+    Tag: null
+    IsEnabled: true
+    IsStatic: false
+    Components:
+      - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+        Id: aa5a1c25-46c2-4af2-9cb6-5b33ec46975c
+        IsEnabled: true
+        LocalOrientation:
+          W: 1.0
+          X: 0.0
+          Y: 0.0
+          Z: 0.0
+        LocalPosition:
+          X: 0.0
+          Y: 0.0
+          Z: 0.0
+        LocalScale:
+          X: 1.0
+          Y: 1.0
+          Z: 1.0
+      - !WaveEngine_MRTK_Demo.Components.NoesisServiceRegistrationComponent,WaveEngine_MRTK_Demo
+        Id: e25db5ad-8e3c-4d66-ba5c-85384631a914
+        IsEnabled: true
+    Children: []
+    Id: e845c79e-d18c-4ac6-8c38-f04b64b46227
 Managers: []
