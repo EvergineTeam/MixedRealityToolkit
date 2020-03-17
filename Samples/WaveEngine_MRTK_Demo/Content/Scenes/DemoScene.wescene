@@ -2925,6 +2925,11 @@ Items:
                 Restitution: 0.0
                 RollingFriction: 0.0
                 UpdateOrder: 0.5
+              - !WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation.TetheredPlacement,WaveEngine.MRTK
+                Id: a019a3b1-232b-4643-b7b3-737dbf47c6a0
+                DistanceThreshold: 0.5
+                IsEnabled: true
+                UpdateOrder: 0.5
             Children: []
             Id: ab15e01d-d68f-4934-8bea-0753dbb001d1
           - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
@@ -3031,6 +3036,11 @@ Items:
                 PhysicBodyType: Dynamic
                 Restitution: 0.0
                 RollingFriction: 0.0
+                UpdateOrder: 0.5
+              - !WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation.TetheredPlacement,WaveEngine.MRTK
+                Id: 7020a278-b69b-4047-ad47-08cbe820bae9
+                DistanceThreshold: 0.5
+                IsEnabled: true
                 UpdateOrder: 0.5
             Children: []
             Id: 93c7ca12-e6c0-4b3f-a6c5-544166d6f308
@@ -3139,6 +3149,11 @@ Items:
                 Restitution: 0.0
                 RollingFriction: 0.0
                 UpdateOrder: 0.5
+              - !WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation.TetheredPlacement,WaveEngine.MRTK
+                Id: ee4fd34b-f807-4bcb-8d57-24146ab95187
+                DistanceThreshold: 0.5
+                IsEnabled: true
+                UpdateOrder: 0.5
             Children: []
             Id: 43c6d9e1-b426-497f-a0e5-5568cac46fd6
           - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
@@ -3223,6 +3238,11 @@ Items:
                 SmoothingActive: true
                 SmoothingAmount: 0.00100000005
                 UpdateOrder: 0.600000024
+              - !WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation.TetheredPlacement,WaveEngine.MRTK
+                Id: 1e280922-9c57-4c2c-a528-0604505521a1
+                DistanceThreshold: 0.5
+                IsEnabled: true
+                UpdateOrder: 0.5
             Children:
               - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
                 Name: lunarLander
@@ -3410,6 +3430,11 @@ Items:
                 SmoothingActive: true
                 SmoothingAmount: 0.00100000005
                 UpdateOrder: 0.600000024
+              - !WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation.TetheredPlacement,WaveEngine.MRTK
+                Id: ec2e7c36-b62c-4bfa-90e9-04f8fe19f358
+                DistanceThreshold: 0.5
+                IsEnabled: true
+                UpdateOrder: 0.5
             Children:
               - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
                 Name: Piggy_Bot_Piggy_Bot_Complete_0

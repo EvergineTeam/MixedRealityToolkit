@@ -65,9 +65,6 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
 
         private readonly Dictionary<Entity, Matrix4x4> activeCursors = new Dictionary<Entity, Matrix4x4>();
 
-        private Vector3 originalPosition;
-        private Quaternion originalRotation;
-
         /// <inheritdoc/>
         protected override void OnDeactivated()
         {
@@ -133,16 +130,10 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
         /// <inheritdoc/>
         protected override void Start()
         {
-            this.originalPosition = this.transform.Position;
-            this.originalRotation = this.transform.Orientation;
-
             // Ensure this is always updated after the rigidbody
             if (this.rigidBody != null)
             {
                 this.UpdateOrder = this.rigidBody.UpdateOrder + 0.1f;
-
-                // Hack: it seems that a Reset Transform is mandatory, and it needs to be different
-                this.rigidBody.ResetTransform(this.originalPosition * 10000f, this.originalRotation, this.transform.Scale);
             }
         }
 
@@ -256,13 +247,6 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
 
                     this.rigidBody.WakeUp();
                 }
-            }
-
-            if (this.rigidBody != null && (this.transform.Position - this.originalPosition).LengthSquared() > 0.5f)
-            {
-                this.rigidBody.ResetTransform(this.originalPosition, this.originalRotation, this.transform.Scale);
-                this.rigidBody.LinearVelocity = Vector3.Zero;
-                this.rigidBody.AngularVelocity = Vector3.Zero;
             }
         }
 
