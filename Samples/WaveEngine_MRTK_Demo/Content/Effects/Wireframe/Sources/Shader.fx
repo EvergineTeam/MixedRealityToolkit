@@ -1,5 +1,7 @@
 [Begin_ResourceLayout]
 
+[directives:Multiview MULTIVIEW_OFF MULTIVIEW]
+
 	cbuffer Base : register(b0)
 	{
 		float4x4 WorldViewProj		: packoffset(c0);	[WorldViewProjection]
@@ -14,6 +16,12 @@
 		float EdgeSmooth		: packoffset(c1.w); [Default(1)]
 	};
 
+	cbuffer PerCamera : register(b2)
+	{
+		float4x4  MultiviewViewProj[2]		: packoffset(c0.x);  [StereoCameraViewProjection]
+		int       EyeCount                  : packoffset(c10.x); [StereoEyeCount]
+	};
+
 [End_ResourceLayout]
 
 [Begin_Pass:Default]
@@ -24,30 +32,54 @@
 	struct VS_IN
 	{
 		float4 Position : POSITION;
-		float2 uv : TEXCOORD0;
+		
+#if MULTIVIEW
+		uint InstId : SV_InstanceID;
+#endif
 	};
 
 	struct GS_IN
 	{
 		float4 pos 		: SV_POSITION;
 		float4 ipos		: TEXCOORD0;
-		float2 uv		: TEXCOORD1;
+		
+#if MULTIVIEW
+		uint ViewId         : SV_RenderTargetArrayIndex;
+#endif
 	};
 	
 	struct PS_IN
 	{
 		float4 pos 		: SV_POSITION;
-		float2 uv : TEXCOORD0;
 		float3 barycentricCoordinates : TEXCOORD1;
+
+#if MULTIVIEW
+		uint ViewId         : SV_RenderTargetArrayIndex;
+#endif
 	};
 	
 	GS_IN VS(VS_IN input)
 	{
 		GS_IN output = (GS_IN)0;
 
-		output.pos = mul(input.Position, WorldViewProj);
+#if MULTIVIEW
+		const int vid = input.InstId % EyeCount;
+		const float4x4 viewProj = MultiviewViewProj[vid];
+	
+		float4x4 worldViewProj = mul(World, viewProj);
+		
+		// Note which view this vertex has been sent to. Used for matrix lookup.
+		// Taking the modulo of the instance ID allows geometry instancing to be used
+		// along with stereo instanced drawing; in that case, two copies of each 
+		// instance would be drawn, one for left and one for right.
+	
+		output.ViewId = vid;
+#else
+		float4x4 worldViewProj = WorldViewProj;
+#endif
+
+		output.pos = mul(input.Position, worldViewProj);
 		output.ipos = input.Position;
-		output.uv = input.uv;
 
 		return output;
 	}
@@ -56,20 +88,21 @@
 	void GS(triangle GS_IN input[3], inout TriangleStream<PS_IN> outStream)
     {   
         PS_IN output;
+
+#if MULTIVIEW
+        output.ViewId = input[0].ViewId;
+#endif
         
         output.pos = input[0].pos;
         output.barycentricCoordinates = float3(1, 0, 0);
-        output.uv = input[0].uv;
         outStream.Append(output);
         
         output.pos = input[1].pos;
         output.barycentricCoordinates = float3(0, 1, 0);
-        output.uv = input[1].uv;
         outStream.Append(output);
         
         output.pos = input[2].pos;
         output.barycentricCoordinates = float3(0, 0, 1);
-        output.uv = input[2].uv;
         outStream.Append(output);
 	}
 
