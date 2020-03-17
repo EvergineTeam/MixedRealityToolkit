@@ -1020,7 +1020,6 @@ Items:
       - !WaveEngine_MRTK_Demo.Components.NoesisServiceRegistrationComponent,WaveEngine_MRTK_Demo
         Id: e25db5ad-8e3c-4d66-ba5c-85384631a914
         IsEnabled: true
-        NoesisStyle: null
     Children: []
     Id: e845c79e-d18c-4ac6-8c38-f04b64b46227
 Managers: []

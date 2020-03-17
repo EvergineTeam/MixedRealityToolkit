@@ -1,4 +1,6 @@
 ﻿using Noesis;
+using System;
+using System.Collections.Generic;
 using WaveEngine.Common.Attributes;
 using WaveEngine.Common.Graphics;
 using WaveEngine.Components.Graphics3D;
@@ -29,34 +31,103 @@ namespace WaveEngine_MRTK_Demo.Components
             }
             set
             {
-                if (this.text != value)
+                this.SetProperty(ref this.text, value, this.textBlock, () =>
                 {
-                    this.text = value;
-                    if (this.textBlock != null)
-                    {
-                        this.textBlock.Text = value;
-                    }
-                }
+                    this.textBlock.Text = value;
+                });
             }
         }
+        private string text = string.Empty;
 
         [RenderProperty(Tooltip = "The font size used to render the text")]
-        public int FontSize { get; set; } = 12;
+        public int FontSize
+        {
+            get
+            {
+                return this.fontSize;
+            }
+            set
+            {
+                this.SetProperty(ref this.fontSize, value, this.textBlock, () =>
+                {
+                    this.textBlock.FontSize = value;
+                });
+            }
+        }
+        private int fontSize = 12;
 
         [RenderPropertyAsFInput(Tooltip = "The alpha value for the text component", MinLimit = 0, MaxLimit = 1)]
-        public float Alpha { get; set; } = 1.0f;
+        public float Alpha
+        {
+            get
+            {
+                return this.alpha;
+            }
+            set
+            {
+                this.SetProperty(ref this.alpha, value, this.standardMaterial, () =>
+                {
+                    this.standardMaterial.Alpha = value;
+                });
+            }
+        }
+        private float alpha = 1.0f;
 
         [RenderProperty(Tooltip = "The panel size")]
-        public Vector2 Size { get; set; } = new Vector2(1, 0.5f);
+        public Vector2 Size
+        {
+            get
+            {
+                return this.size;
+            }
+            set
+            {
+                this.SetProperty(ref this.size, value, this.planeMesh, () =>
+                {
+                    this.planeMesh.Width = value.X;
+                    this.planeMesh.Height = value.Y;
+                });
+            }
+        }
+        private Vector2 size = new Vector2(1, 0.5f);
 
         [RenderProperty(Tooltip = "The panel resolution")]
-        public Vector2 Resolution { get; set; } = new Vector2(200, 100);
+        public Vector2 Resolution
+        {
+            get
+            {
+                return this.resolution;
+            }
+            set
+            {
+                this.SetProperty(ref this.resolution, value, this.noesisFramebufferPanel, () =>
+                {
+                    this.noesisFramebufferPanel.Width = (uint)this.Resolution.X;
+                    this.noesisFramebufferPanel.Height = (uint)this.Resolution.Y;
+                });
+            }
+        }
+        private Vector2 resolution = new Vector2(200, 100);
 
         [RenderPropertyAsFInput(Tooltip = "The panel tessellation quality", MinLimit = 0, MaxLimit = 1)]
         public float Quality { get; set; } = 0.5f;
 
         [RenderProperty(Tooltip = "The text horizontal alignment")]
-        public HorizontalAlignment HorizontalAlignment { get; set; } = HorizontalAlignment.Center;
+        public HorizontalAlignment HorizontalAlignment
+        {
+            get
+            {
+                return this.horizontalAlignment;
+            }
+            set
+            {
+                this.SetProperty(ref this.horizontalAlignment, value, this.textBlock, () =>
+                {
+                    this.textBlock.HorizontalAlignment = value;
+                });
+            }
+        }
+        private HorizontalAlignment horizontalAlignment = HorizontalAlignment.Center;
 
         private MaterialComponent materialComponent;
         private MeshRenderer meshRenderer;
@@ -68,8 +139,6 @@ namespace WaveEngine_MRTK_Demo.Components
 
         private FrameworkElement frameworkElement;
         private TextBlock textBlock;
-
-        private string text = string.Empty;
 
         protected override bool OnAttached()
         {
@@ -190,6 +259,18 @@ namespace WaveEngine_MRTK_Demo.Components
             frameworkElement.Children.Add(this.textBlock);
 
             return frameworkElement;
+        }
+
+        private void SetProperty<T>(ref T property, T value, object checkNotNull, Action action)
+        {
+            if (!EqualityComparer<T>.Default.Equals(property, value))
+            {
+                property = value;
+                if (checkNotNull != null)
+                {
+                    action.Invoke();
+                }
+            }
         }
     }
 }
