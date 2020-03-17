@@ -31,10 +31,10 @@ namespace WaveEngine_MRTK_Demo.Components
             }
             set
             {
-                this.SetProperty(ref this.text, value, this.textBlock, () =>
+                if (this.SetProperty(ref this.text, value, this.textBlock))
                 {
                     this.textBlock.Text = value;
-                });
+                };
             }
         }
         private string text = string.Empty;
@@ -48,10 +48,10 @@ namespace WaveEngine_MRTK_Demo.Components
             }
             set
             {
-                this.SetProperty(ref this.fontSize, value, this.textBlock, () =>
+                if (this.SetProperty(ref this.fontSize, value, this.textBlock))
                 {
                     this.textBlock.FontSize = value;
-                });
+                }
             }
         }
         private int fontSize = 12;
@@ -65,10 +65,10 @@ namespace WaveEngine_MRTK_Demo.Components
             }
             set
             {
-                this.SetProperty(ref this.alpha, value, this.standardMaterial, () =>
+                if (this.SetProperty(ref this.alpha, value, this.standardMaterial))
                 {
                     this.standardMaterial.Alpha = value;
-                });
+                }
             }
         }
         private float alpha = 1.0f;
@@ -82,11 +82,11 @@ namespace WaveEngine_MRTK_Demo.Components
             }
             set
             {
-                this.SetProperty(ref this.size, value, this.planeMesh, () =>
+                if (this.SetProperty(ref this.size, value, this.planeMesh))
                 {
                     this.planeMesh.Width = value.X;
                     this.planeMesh.Height = value.Y;
-                });
+                }
             }
         }
         private Vector2 size = new Vector2(1, 0.5f);
@@ -100,11 +100,11 @@ namespace WaveEngine_MRTK_Demo.Components
             }
             set
             {
-                this.SetProperty(ref this.resolution, value, this.noesisFramebufferPanel, () =>
+                if (this.SetProperty(ref this.resolution, value, this.noesisFramebufferPanel))
                 {
                     this.noesisFramebufferPanel.Width = (uint)this.Resolution.X;
                     this.noesisFramebufferPanel.Height = (uint)this.Resolution.Y;
-                });
+                }
             }
         }
         private Vector2 resolution = new Vector2(200, 100);
@@ -121,10 +121,10 @@ namespace WaveEngine_MRTK_Demo.Components
             }
             set
             {
-                this.SetProperty(ref this.horizontalAlignment, value, this.textBlock, () =>
+                if (this.SetProperty(ref this.horizontalAlignment, value, this.textBlock))
                 {
                     this.textBlock.HorizontalAlignment = value;
-                });
+                }
             }
         }
         private HorizontalAlignment horizontalAlignment = HorizontalAlignment.Center;
@@ -261,16 +261,16 @@ namespace WaveEngine_MRTK_Demo.Components
             return frameworkElement;
         }
 
-        private void SetProperty<T>(ref T property, T value, object checkNotNull, Action action)
+        private bool SetProperty<T>(ref T property, T value, object checkNotNull)
         {
             if (!EqualityComparer<T>.Default.Equals(property, value))
             {
                 property = value;
-                if (checkNotNull != null)
-                {
-                    action.Invoke();
-                }
+
+                return checkNotNull != null;
             }
+
+            return false;
         }
     }
 }
