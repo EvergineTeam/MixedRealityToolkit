@@ -218,7 +218,7 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
                 Matrix4x4 finalTransform = this.grabTransform * controllerTransform;
 
                 // Update object transform
-                float lerpAmount = this.rigidBody == null ? this.GetLerpAmount(timeStep) : 1.0f; // lerp doesn't seem necessary when there is a rigidbody
+                float lerpAmount = this.GetLerpAmount(timeStep);
 
                 Vector3 pos = Vector3.Lerp(this.transform.Position, finalTransform.Translation, lerpAmount);
                 Quaternion rot = Quaternion.Lerp(this.transform.Orientation, finalTransform.Orientation, lerpAmount);
