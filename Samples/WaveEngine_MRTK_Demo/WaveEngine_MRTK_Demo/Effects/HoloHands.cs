@@ -160,5 +160,29 @@ namespace WaveEngine_MRTK_Demo.Effects
 				this.material.CBuffers[1].SetBufferData(value, 52);
             }
         }
+        
+        public WaveEngine.Mathematics.Matrix4x4 PerCamera_MultiviewViewProj
+        {
+            get
+            {
+                return this.material.CBuffers[2].GetBufferData<WaveEngine.Mathematics.Matrix4x4>(0);
+            }
+            set
+            {
+				this.material.CBuffers[2].SetBufferData(value, 0);
+            }
+        }
+        
+        public int PerCamera_EyeCount
+        {
+            get
+            {
+                return this.material.CBuffers[2].GetBufferData<System.Int32>(160);
+            }
+            set
+            {
+				this.material.CBuffers[2].SetBufferData(value, 160);
+            }
+        }
     }
 }

@@ -19,13 +19,16 @@ namespace WaveEngine_MRTK_Demo.Behaviors
         protected override bool OnAttached()
         {
             holoHandsDecorator = new HoloHands(mat);
+            mat.ActiveDirectivesNames = new string[] { "MULTIVIEW", "PULSE" };
 
             return base.OnAttached();
         }
 
+        float time = 0;
         protected override void Update(TimeSpan gameTime)
         {
-            holoHandsDecorator.Matrices_TPosY = transform.Position.Y;
+            time += (float)gameTime.TotalSeconds;
+            holoHandsDecorator.Matrices_TPosY = transform.Position.Y - ((float)Math.Sin(time) + 1.0f) * 0.1f;
         }
     }
 }
