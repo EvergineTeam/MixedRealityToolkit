@@ -1,0 +1,50 @@
+!WaveEngine.Assets.Exporters.MaterialMetaFile,WaveEngine.Assets
+Id: d7c4a591-2f7a-4754-80c4-d47c976843b9
+DefaultProfile:
+  ExcludeAsset: false
+  Name: null
+  Platform: Undefined
+ExportAsRaw: false
+MaterialInfo:
+  Id: ae74cf33-9a70-4019-95ec-616c692505a0
+  ActiveDirectives:
+    - PULSE
+  EffectID: 61522b7c-6a53-4a1d-bfb7-6c1c4b0728c6
+  Layer: 0db59561-b3f5-444f-b5de-e62e3a5b42bf
+  Parameters:
+    - Name: WorldViewProj
+      Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
+      ValueByteArray: wqmFQAAAAAAAAAAAAAAAAAAAAACYMopADf9kvzD5ZL8AAAAAmjIKwAv/5L8u+eS/AAAAAHmCGjUf7ItAvRuPQA==
+    - Name: World
+      Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
+      ValueByteArray: AAAAQAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAACAPw==
+    - Name: Time
+      Type: System.Single
+      ValueByteArray: aBckQw==
+    - Name: EdgeColor
+      Type: WaveEngine.Mathematics.Vector3,WaveEngine.Mathematics
+      ValueByteArray: AACAPwAAgD8AAIA/
+    - Name: EdgeWidth
+      Type: System.Single
+      ValueByteArray: CtcjPA==
+    - Name: FillColor0
+      Type: WaveEngine.Mathematics.Vector3,WaveEngine.Mathematics
+      ValueByteArray: ke0cP8HKAT/P93M/
+    - Name: EdgeSmooth
+      Type: System.Single
+      ValueByteArray: CtejPQ==
+    - Name: FillColor1
+      Type: WaveEngine.Mathematics.Vector3,WaveEngine.Mathematics
+      ValueByteArray: sp1vPnnpBj+R7Xw/
+    - Name: Displacement
+      Type: System.Single
+      ValueByteArray: zcxMPg==
+    - Name: tPosY
+      Type: System.Single
+      ValueByteArray: AAAAAA==
+    - Name: distorsionH
+      Type: System.Single
+      ValueByteArray: AACgQQ==
+  Samplers: null
+  Textures: null
+Profiles: {}

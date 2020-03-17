@@ -17,6 +17,8 @@
 		float EdgeSmooth		: packoffset(c1.w); [Default(0.08)]
 		float3 FillColor1		: packoffset(c2.x); [Default(0.234, 0.527, 0.988)]
 		float Displacement		: packoffset(c2.w); [Default(0.2)]
+		float tPosY             : packoffset(c3.x); [Default(0)]
+		float distorsionH       : packoffset(c3.y); [Default(2)]
 	};
 
 [End_ResourceLayout]
@@ -102,10 +104,15 @@
 		
 #if PULSE
         float4 center = (input[0].pos + input[1].pos + input[2].pos) / 3.0;
+        float4 worldCenter = mul(center, World);
 
-		float pulse = input[0].pos.y + 0.25 + cos(Time) * 0.7;
-        pulse = smoothstep(0.1,0.5, pulse);
-		distorsion = 1 - pulse;// lerp(InCirc(pulse), OutCirc(pulse), rnd);
+		//float pulse = input[0].pos.y + 0.25 + cos(Time) * 0.7;
+		//pulse = smoothstep(0.1,0.5, pulse);
+		
+        
+        float pulse = saturate((worldCenter.y - tPosY ) * distorsionH);
+        
+        distorsion = 1 - lerp(InCirc(pulse), OutCirc(pulse), rnd);
 		
 		float4 normal = float4(GetNormal(input), 1);
 #endif
