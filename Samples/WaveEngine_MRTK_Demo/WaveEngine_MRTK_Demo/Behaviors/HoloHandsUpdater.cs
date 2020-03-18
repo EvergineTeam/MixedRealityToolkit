@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using WaveEngine.Components.Graphics3D;
+using WaveEngine.Components.XR;
 using WaveEngine.Framework;
 using WaveEngine.Framework.Graphics;
 using WaveEngine.Mathematics;
@@ -13,19 +15,33 @@ namespace WaveEngine_MRTK_Demo.Behaviors
         [BindComponent]
         protected Transform3D transform = null;
 
-        public Material mat;
+        public string XRModelName;
 
         private HoloHands holoHandsDecorator;
         private Camera3D camera;
+        private Material material;
 
-        protected override bool OnAttached()
+        protected override void Start()
         {
-            holoHandsDecorator = new HoloHands(mat);
-            mat.ActiveDirectivesNames = new string[] { "MULTIVIEW", "PULSE" };
+            if (!Application.Current.IsEditor)
+            {
+                MaterialComponent materialComponent = null;
+                foreach (XRDeviceMeshComponent xrdm in this.Managers.EntityManager.FindComponentsOfType<XRDeviceMeshComponent>())
+                {
+                    if (xrdm.XRModelName == XRModelName)
+                    {
+                        materialComponent = xrdm.Owner.FindComponent<MaterialComponent>();
+                        break;
+                    }
+                }
 
-            camera = this.Managers.RenderManager.ActiveCamera3D;
+                materialComponent.Material = materialComponent.Material.Clone();
+                material = materialComponent.Material;
+                holoHandsDecorator = new HoloHands(material);
+                material.ActiveDirectivesNames = new string[] { "MULTIVIEW", "PULSE" };
 
-            return base.OnAttached();
+                camera = this.Managers.RenderManager.ActiveCamera3D;
+            }
         }
 
         float time = 0;

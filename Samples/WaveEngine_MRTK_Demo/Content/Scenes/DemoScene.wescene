@@ -3601,7 +3601,7 @@ Items:
             Id: 3fff6115-16c2-4682-bdd5-b25e02695418
             IsEnabled: true
             UpdateOrder: 0.5
-            mat: d7c4a591-2f7a-4754-80c4-d47c976843b9
+            XRModelName: RightHand
         Children: []
         Id: 692e7a60-0d92-4ce3-841f-08e4797ce188
       - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
@@ -3682,6 +3682,11 @@ Items:
             Restitution: 0.0
             RollingFriction: 0.0
             UpdateOrder: 0.5
+          - !WaveEngine_MRTK_Demo.Behaviors.HoloHandsUpdater,WaveEngine_MRTK_Demo
+            Id: aad82309-a9e8-456c-8a5c-e36ccf67aede
+            IsEnabled: true
+            UpdateOrder: 0.5
+            XRModelName: LeftHand
         Children: []
         Id: 0a1b717d-2afc-413b-a520-57f429737cca
     Id: 04aa31c2-6453-445f-9887-71b256aeaf02
@@ -3766,4 +3771,52 @@ Items:
         OrderBias: 0
     Children: []
     Id: ec61826a-a8d8-42af-b463-0eca4899bdc3
+  - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+    Name: LeftHand
+    Tag: null
+    IsEnabled: true
+    IsStatic: false
+    Components:
+      - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+        Id: 36044312-2a7d-47e8-a0ee-1af8b6c43385
+        IsEnabled: true
+        LocalOrientation:
+          W: 1.0
+          X: 0.0
+          Y: 0.0
+          Z: 0.0
+        LocalPosition:
+          X: 0.0
+          Y: 0.0
+          Z: 1.1920929E-06
+        LocalScale:
+          X: 1.0
+          Y: 1.0
+          Z: 1.0
+      - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+        Id: 63a58ef4-6951-4e5d-92e2-0eedfd58612f
+        AsignedTo: Default
+        IsEnabled: true
+        Material: d7c4a591-2f7a-4754-80c4-d47c976843b9
+      - !WaveEngine.Components.XR.XRDeviceMeshComponent,WaveEngine.Components
+        Id: 3f286643-0b2e-4993-84d0-1de5f42ef96c
+        IsEnabled: true
+        Model: null
+        ModelMeshName: null
+        XRModelName: LeftHand
+      - !WaveEngine.Components.XR.TrackModelNode,WaveEngine.Components
+        Id: d351b4c1-b449-4e7b-a420-49422875eaa7
+        IsEnabled: true
+        Model: null
+        NodeIndex: 0
+        SelectionStrategy: RootNode
+        UpdateOrder: 0.5
+      - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+        Id: 9191acdd-0df8-4fb6-a9db-fffe66f1e1a5
+        DebugBoundingbox: true
+        FrustumCullingEnabled: true
+        IsEnabled: true
+        OrderBias: 0
+    Children: []
+    Id: b1bc574f-0608-4d27-854b-929b808c3a65
 Managers: []
