@@ -22,6 +22,9 @@ namespace WaveEngine_MRTK_Demo.Components
         [BindService]
         protected AssetsService assetsService;
 
+        [BindComponent]
+        protected Transform3D transform;
+
         [RenderProperty(Tooltip = "The text that will be shown")]
         public string Text
         {
@@ -73,26 +76,8 @@ namespace WaveEngine_MRTK_Demo.Components
         }
         private float alpha = 1.0f;
 
-        [RenderProperty(Tooltip = "The panel size")]
-        public Vector2 Size
-        {
-            get
-            {
-                return this.size;
-            }
-            set
-            {
-                if (this.SetProperty(ref this.size, value, this.planeMesh))
-                {
-                    this.planeMesh.Width = value.X;
-                    this.planeMesh.Height = value.Y;
-                }
-            }
-        }
-        private Vector2 size = new Vector2(1, 0.5f);
-
-        [RenderProperty(Tooltip = "The panel resolution")]
-        public Vector2 Resolution
+        [RenderProperty(Tooltip = "The panel resolution per unit of Scale. The panel resolution Width and Height are affected by the values of Scale X and Z components respectively")]
+        public int Resolution
         {
             get
             {
@@ -102,12 +87,11 @@ namespace WaveEngine_MRTK_Demo.Components
             {
                 if (this.SetProperty(ref this.resolution, value, this.noesisFramebufferPanel))
                 {
-                    this.noesisFramebufferPanel.Width = (uint)this.Resolution.X;
-                    this.noesisFramebufferPanel.Height = (uint)this.Resolution.Y;
+                    this.UpdateNoesisPanelFramebuffer();
                 }
             }
         }
-        private Vector2 resolution = new Vector2(200, 100);
+        private int resolution = 1000;
 
         [RenderPropertyAsFInput(Tooltip = "The panel tessellation quality", MinLimit = 0, MaxLimit = 1)]
         public float Quality { get; set; } = 0.5f;
@@ -180,6 +164,8 @@ namespace WaveEngine_MRTK_Demo.Components
 
             if (attached)
             {
+                this.transform.ScaleChanged += this.Transform_ScaleChanged;
+
                 // Add components to owner entity
                 this.materialComponent = new MaterialComponent();
 
@@ -197,10 +183,8 @@ namespace WaveEngine_MRTK_Demo.Components
                 };
 
                 // Set property values
-                this.planeMesh.Width = this.Size.X;
-                this.planeMesh.Height = this.Size.Y;
-                this.noesisFramebufferPanel.Width = (uint)this.Resolution.X;
-                this.noesisFramebufferPanel.Height = (uint)this.Resolution.Y;
+                this.planeMesh.Width = 1f;
+                this.planeMesh.Height = 1f;
                 this.noesisFramebufferPanel.TessellationQuality = this.Quality;
 
                 // Build FrameworkElement
@@ -239,8 +223,8 @@ namespace WaveEngine_MRTK_Demo.Components
 
                 this.standardMaterial.Alpha = this.Alpha;
 
-                // Set material texture to use Noesis framebuffer texture
-                this.standardMaterial.BaseColorTexture = this.noesisFramebufferPanel.FrameBuffer.ColorTargets[0].Texture;
+                // Update Noesis panel framebuffer
+                this.UpdateNoesisPanelFramebuffer();
 
                 // Add container entity and components (bug workaround)
                 var containerEntity = new Entity("components")
@@ -264,12 +248,19 @@ namespace WaveEngine_MRTK_Demo.Components
         {
             base.OnDetach();
 
+            this.transform.ScaleChanged -= this.Transform_ScaleChanged;
+
             if (this.noesisFramebuffer != null)
             {
                 this.noesisFramebuffer.Dispose();
                 this.noesisFramebufferPanel.FrameBuffer = null;
                 this.materialComponent.Material?.SetTexture(null, 0);
             }
+        }
+
+        private void Transform_ScaleChanged(object sender, System.EventArgs e)
+        {
+            this.UpdateNoesisPanelFramebuffer();
         }
 
         protected virtual TextBlock BuildTextBlock()
@@ -294,6 +285,28 @@ namespace WaveEngine_MRTK_Demo.Components
             frameworkElement.Children.Add(this.textBlock);
 
             return frameworkElement;
+        }
+
+        private void UpdateNoesisPanelFramebuffer()
+        {
+            this.noesisFramebufferPanel.Width = Math.Max(1, (uint)(this.Resolution * this.transform.Scale.X));
+            this.noesisFramebufferPanel.Height = Math.Max(1, (uint)(this.Resolution * this.transform.Scale.Z));
+
+            if (this.noesisFramebufferPanel.FrameBuffer != null)
+            {
+                this.noesisFramebuffer.Dispose();
+                this.noesisFramebuffer = null;
+                this.noesisFramebufferPanel.FrameBuffer = null;
+            }
+
+            if (this.noesisFramebufferPanel.FrameBuffer == null)
+            {
+                this.noesisFramebuffer = this.graphicsContext.Factory.CreateFrameBuffer(this.noesisFramebufferPanel.Width, this.noesisFramebufferPanel.Height);
+                this.noesisFramebufferPanel.FrameBuffer = this.noesisFramebuffer;
+            }
+
+            // Set material texture to use Noesis framebuffer texture
+            this.standardMaterial.BaseColorTexture = this.noesisFramebufferPanel.FrameBuffer.ColorTargets[0].Texture;
         }
 
         private bool SetProperty<T>(ref T property, T value, object checkNotNull)

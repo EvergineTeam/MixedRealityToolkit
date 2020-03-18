@@ -637,13 +637,13 @@ Items:
                           Y: 0.707106829
                           Z: -0.707106709
                         LocalPosition:
-                          X: -0.0700000003
+                          X: -0.0450000018
                           Y: 0.0
                           Z: 2.98023224E-08
                         LocalScale:
-                          X: 0.100000001
+                          X: 0.0500000007
                           Y: 0.100000001
-                          Z: 0.100000001
+                          Z: 0.0199999921
                       - !WaveEngine_MRTK_Demo.Components.Text3D,WaveEngine_MRTK_Demo
                         Id: f14fa961-5935-410c-a28c-7359be6ff675
                         Alpha: 1.0
@@ -651,13 +651,10 @@ Items:
                         HorizontalAlignment: Left
                         IsEnabled: true
                         Quality: 0.5
-                        Resolution:
-                          X: 200.0
-                          Y: 100.0
-                        Size:
-                          X: 1.0
-                          Y: 0.5
+                        Resolution: 2000
                         Text: 0.50
+                        TextWrapping: NoWrap
+                        VerticalAlignment: Center
                       - !WaveEngine_MRTK_Demo.Components.ShowSliderValue,WaveEngine_MRTK_Demo
                         Id: 65da24ef-6c25-4f64-893f-d7c42c1b7847
                         IsEnabled: true
@@ -678,13 +675,13 @@ Items:
                           Y: 0.707106829
                           Z: -0.707106709
                         LocalPosition:
-                          X: -0.0700000003
+                          X: -0.0450000018
                           Y: 0.0149999997
                           Z: 1.49011612E-07
                         LocalScale:
-                          X: 0.100000001
+                          X: 0.0499999858
                           Y: 0.100000001
-                          Z: 0.100000001
+                          Z: 0.0199999996
                       - !WaveEngine_MRTK_Demo.Components.Text3D,WaveEngine_MRTK_Demo
                         Id: dac94535-3c81-43aa-ab9f-e84a79a2b4e8
                         Alpha: 1.0
@@ -692,13 +689,10 @@ Items:
                         HorizontalAlignment: Left
                         IsEnabled: true
                         Quality: 0.5
-                        Resolution:
-                          X: 200.0
-                          Y: 100.0
-                        Size:
-                          X: 1.0
-                          Y: 0.5
+                        Resolution: 2000
                         Text: Value
+                        TextWrapping: NoWrap
+                        VerticalAlignment: Center
                     Children: []
                     Id: 311372ea-867b-4183-b401-e7baf65acbc9
                 Id: 9c0d18b5-5928-4a8c-bf0a-ee78937b1c7b
