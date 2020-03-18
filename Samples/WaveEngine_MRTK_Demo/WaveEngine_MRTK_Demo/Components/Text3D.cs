@@ -129,6 +129,40 @@ namespace WaveEngine_MRTK_Demo.Components
         }
         private HorizontalAlignment horizontalAlignment = HorizontalAlignment.Center;
 
+        [RenderProperty(Tooltip = "The text vertical alignment")]
+        public VerticalAlignment VerticalAlignment
+        {
+            get
+            {
+                return this.verticalAlignment;
+            }
+            set
+            {
+                if (this.SetProperty(ref this.verticalAlignment, value, this.textBlock))
+                {
+                    this.textBlock.VerticalAlignment = value;
+                }
+            }
+        }
+        private VerticalAlignment verticalAlignment = VerticalAlignment.Center;
+
+        [RenderProperty(Tooltip = "The text wrapping to use")]
+        public TextWrapping TextWrapping
+        {
+            get
+            {
+                return this.textWrapping;
+            }
+            set
+            {
+                if (this.SetProperty(ref this.textWrapping, value, this.textBlock))
+                {
+                    this.textBlock.TextWrapping = value;
+                }
+            }
+        }
+        private TextWrapping textWrapping = TextWrapping.NoWrap;
+
         private MaterialComponent materialComponent;
         private MeshRenderer meshRenderer;
         private PlaneMesh planeMesh;
@@ -245,7 +279,8 @@ namespace WaveEngine_MRTK_Demo.Components
                 Foreground = Brushes.White,
                 Background = Brushes.Transparent,
                 HorizontalAlignment = this.HorizontalAlignment,
-                VerticalAlignment = VerticalAlignment.Center,
+                VerticalAlignment = this.VerticalAlignment,
+                TextWrapping = this.TextWrapping,
             };
         }
 
