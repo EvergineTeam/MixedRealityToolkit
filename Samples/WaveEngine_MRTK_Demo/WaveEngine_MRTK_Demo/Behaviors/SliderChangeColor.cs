@@ -42,11 +42,30 @@ namespace WaveEngine_MRTK_Demo.Components
             pinchSliders[1] = pinchSliderPrefabG.Owner.FindComponentInChildren<PinchSlider>();
             pinchSliders[2] = pinchSliderPrefabB.Owner.FindComponentInChildren<PinchSlider>();
 
+            string[] titles = {"Red", "Green", "Blue"};
             for (int i = 0; i < 3; ++i)
             {
                 PinchSlider p = pinchSliders[i];
+                Entity title = p.Owner.FindChild("Title", true);
+                if(title != null)
+                {
+                    Text3D text = title.FindComponent<Text3D>();
+                    if(text != null)
+                    {
+                        text.Text = titles[i];
+                    }
+                }
+
                 p.SliderValue = materialDecorator.Parameters_Color[i];
                 p.ValueUpdated += P_ValueUpdated;
+            }
+        }
+
+        protected override void OnDestroy()
+        {
+            for (int i = 0; i < 3; ++i)
+            {
+                pinchSliders[i].ValueUpdated -= P_ValueUpdated;
             }
         }
 

@@ -215,6 +215,89 @@ Items:
                 OrderBias: 0
             Children: []
             Id: e0b2f115-1b88-44f9-adcf-b100a8e5b898
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: Title
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: f4a22c88-f69c-4f4f-864b-a20fa676a96d
+                IsEnabled: true
+                LocalOrientation:
+                  W: 0.707106829
+                  X: 0.707106709
+                  Y: 0.0
+                  Z: 0.0
+                LocalPosition:
+                  X: -0.0661406517
+                  Y: -2.66886468E-09
+                  Z: -1.2453456E-09
+                LocalScale:
+                  X: 0.100000001
+                  Y: 0.100000001
+                  Z: 0.100000001
+              - !WaveEngine_MRTK_Demo.Components.Text3D,WaveEngine_MRTK_Demo
+                Id: 2d146da0-dc69-4713-96f6-02f27aa3f6e4
+                Alpha: 1.0
+                FontSize: 24
+                HorizontalAlignment: Right
+                IsEnabled: true
+                Quality: 0.5
+                Resolution:
+                  X: 200.0
+                  Y: 100.0
+                Size:
+                  X: 1.0
+                  Y: 0.5
+                Text: Title
+                TextWrapping: NoWrap
+                VerticalAlignment: Center
+            Children: []
+            Id: f822d1fd-a540-4f1f-a1c5-b2a97dc7b151
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: Value
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: 67f0cc20-fe0a-4ed6-a5c6-b88a639011f9
+                IsEnabled: true
+                LocalOrientation:
+                  W: 0.707106829
+                  X: 0.707106709
+                  Y: 0.0
+                  Z: 0.0
+                LocalPosition:
+                  X: -0.0659999996
+                  Y: -0.0184613019
+                  Z: 2.21890017E-09
+                LocalScale:
+                  X: 0.100000001
+                  Y: 0.100000001
+                  Z: 0.100000001
+              - !WaveEngine_MRTK_Demo.Components.Text3D,WaveEngine_MRTK_Demo
+                Id: a1cc0b39-c06b-4e2b-8f45-cfc2236572f7
+                Alpha: 1.0
+                FontSize: 36
+                HorizontalAlignment: Right
+                IsEnabled: true
+                Quality: 0.5
+                Resolution:
+                  X: 200.0
+                  Y: 100.0
+                Size:
+                  X: 1.0
+                  Y: 0.5
+                Text: value
+                TextWrapping: NoWrap
+                VerticalAlignment: Center
+              - !WaveEngine_MRTK_Demo.Components.ShowSliderValue,WaveEngine_MRTK_Demo
+                Id: a5c9ddb0-e967-41ba-b350-5035ea53a5f5
+                IsEnabled: true
+            Children: []
+            Id: 2d1a0452-acba-444e-bd8e-d7a8cb9aedbc
         Id: 9c0d18b5-5928-4a8c-bf0a-ee78937b1c7b
     Id: 660df448-a8ac-4d33-a9bd-ae324caebaeb
 Managers: []
