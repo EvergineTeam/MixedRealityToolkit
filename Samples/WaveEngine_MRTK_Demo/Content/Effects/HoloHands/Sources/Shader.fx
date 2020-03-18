@@ -5,7 +5,7 @@
 
 	cbuffer Base : register(b0)
 	{
-		float4x4 WorldViewProj		: packoffset(c0);	[WorldViewProjection]
+		float4x4 ViewProj		    : packoffset(c0);	[ViewProjection]
 		float4x4 World				: packoffset(c4);	[World]
 		float Time					: packoffset(c8.x); [Time]
 	};
@@ -47,6 +47,7 @@
 	struct GS_IN
 	{
 		float4 pos 		: SV_POSITION;
+		float4 worldPos : TEXCOORD0;
 		
 #if MULTIVIEW
 		uint InstId         : SV_RenderTargetArrayIndex;
@@ -92,8 +93,8 @@
 	
 	inline float3 GetNormal(GS_IN input[3])
 	{
-		float3 a = input[0].pos.xyz - input[1].pos.xyz;
-		float3 b = input[2].pos.xyz - input[1].pos.xyz;
+		float3 a = input[0].worldPos.xyz - input[1].worldPos.xyz;
+		float3 b = input[2].worldPos.xyz - input[1].worldPos.xyz;
 		return normalize(cross(a, b));
 	}
 #endif
@@ -103,6 +104,7 @@
 		GS_IN output = (GS_IN)0;
 
 		output.pos = input.Position;
+		output.worldPos = mul(input.Position, World);
 #if MULTIVIEW
 		output.InstId = input.InstId;
 #endif
@@ -124,8 +126,7 @@
 		float distorsion = 0;
 		
 #if PULSE
-        float4 center = (input[0].pos + input[1].pos + input[2].pos) / 3.0;
-        float4 worldCenter = mul(center, World);
+        float4 worldCenter = (input[0].worldPos + input[1].worldPos + input[2].worldPos) / 3.0;
 
 		//float pulse = input[0].pos.y + 0.25 + cos(Time) * 0.7;
 		//pulse = smoothstep(0.1,0.5, pulse);
@@ -134,14 +135,12 @@
         
         distorsion = 1 - lerp(InCirc(pulse), OutCirc(pulse), rnd);
 		
-		float4 normal = float4(GetNormal(input), 1);
+		float4 normal = float4(GetNormal(input), 0);
 #endif
 
 #if MULTIVIEW
 		const int vid = input[0].InstId % EyeCount;
 		const float4x4 viewProj = MultiviewViewProj[vid];
-	
-		float4x4 worldViewProj = mul(World, viewProj);
 		
 		// Note which view this vertex has been sent to. Used for matrix lookup.
 		// Taking the modulo of the instance ID allows geometry instancing to be used
@@ -150,7 +149,7 @@
 	
 		output.ViewId = vid;
 #else
-		float4x4 worldViewProj = WorldViewProj;
+		float4x4 viewProj = ViewProj;
 #endif
 
 		float3 vertexColor[3] = {
@@ -162,13 +161,13 @@
 		for (int i = 0; i < 3; i++)
 		{
 		
-			float4 newPos = input[i].pos;
+			float4 newPos = input[i].worldPos;
 #if PULSE
-			dir = center - input[i].pos;
-			newPos = input[i].pos + normal * distorsion * Displacement + dir * distorsion;
+			dir = worldCenter - input[i].worldPos;
+			newPos = input[i].worldPos + normal * distorsion * Displacement + dir * distorsion;
 #endif
 			
-	        output.pos = mul(newPos, worldViewProj);
+	        output.pos = mul(newPos, viewProj);
 	        output.extra = distorsion.xxxx;
 			output.info = float4(vertexColor[i], rnd);
 	        outStream.Append(output);

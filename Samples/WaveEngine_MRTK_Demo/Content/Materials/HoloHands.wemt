@@ -6,21 +6,22 @@ DefaultProfile:
   Platform: Undefined
 ExportAsRaw: false
 MaterialInfo:
-  Id: e77091ff-255a-4e82-88cb-a774be6009a5
+  Id: 853e851b-b8e8-4b3c-bf6b-0c98c6c2b51d
   ActiveDirectives:
-    - BASE
+    - MULTIVIEW
+    - PULSE
   EffectID: 61522b7c-6a53-4a1d-bfb7-6c1c4b0728c6
   Layer: 0db59561-b3f5-444f-b5de-e62e3a5b42bf
   Parameters:
-    - Name: WorldViewProj
+    - Name: ViewProj
       Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
-      ValueByteArray: CvqmQAAAAAAAAAAAAAAAAAAAAACYMopADf9kvzD5ZL8AAAAAmjIKwAv/5L8u+eS/AAAAAHmCGjUf7ItAvRuPQA==
+      ValueByteArray: 6QoOQAAAAAAAAAAAAAAAAAAAAACYMgpADf/kvjD55L4AAAAAmjKKvwv/ZL8u+WS/AAAAAHmCGjUf7ItAvRuPQA==
     - Name: World
       Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
       ValueByteArray: AAAAQAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAACAPw==
     - Name: Time
       Type: System.Single
-      ValueByteArray: hWxHQQ==
+      ValueByteArray: ldzWQA==
     - Name: EdgeColor
       Type: WaveEngine.Mathematics.Vector3,WaveEngine.Mathematics
       ValueByteArray: AACAPwAAgD8AAIA/
@@ -38,7 +39,7 @@ MaterialInfo:
       ValueByteArray: sp1vPnnpBj+R7Xw/
     - Name: Displacement
       Type: System.Single
-      ValueByteArray: zcxMPg==
+      ValueByteArray: CtejPA==
     - Name: tPosY
       Type: System.Single
       ValueByteArray: AAAAAA==
@@ -47,7 +48,7 @@ MaterialInfo:
       ValueByteArray: AAAgQg==
     - Name: MultiviewViewProj
       Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
-      ValueByteArray: vB+GP7Sujr59mUu/BJZLvzJVKrc/6BhAMxsTvrEYE77YFrW/k19TvsjLFr81yRa/RDCzPWqPHT7t2nQ/LDiHPw==
+      ValueByteArray: 6QoOQAAAAAAAAAAAAAAAAAAAAACYMgpADf/kvjD55L4AAAAAmjKKvwv/ZL8u+WS/AAAAAHmCGjUf7ItAvRuPQA==
     - Name: EyeCount
       Type: System.Int32
       ValueByteArray: AQAAAA==
