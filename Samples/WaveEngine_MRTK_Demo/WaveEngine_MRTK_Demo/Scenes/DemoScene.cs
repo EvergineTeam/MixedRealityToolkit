@@ -33,8 +33,26 @@ namespace WaveEngine_MRTK_Demo.Scenes
             if (xrPlatform != null)
             {
                 // HoloLens 2
-                cursorLeftEntity?.AddComponent(new TrackXRJoint() { Handedness = XRHandedness.LeftHand, SelectionStrategy = TrackXRDevice.SelectionDeviceStrategy.ByHandedness, JointKind = XRHandJointKind.IndexTip, TrackingLostMode = TrackXRDevice.XRTrackingLostMode.KeepLastPose });
-                cursorRightEntity?.AddComponent(new TrackXRJoint() { Handedness = XRHandedness.RightHand, SelectionStrategy = TrackXRDevice.SelectionDeviceStrategy.ByHandedness, JointKind = XRHandJointKind.IndexTip, TrackingLostMode = TrackXRDevice.XRTrackingLostMode.KeepLastPose });
+                cursorLeftEntity?
+                    .AddComponent(new TrackXRJoint()
+                    {
+                        Handedness = XRHandedness.LeftHand,
+                        SelectionStrategy = TrackXRDevice.SelectionDeviceStrategy.ByHandedness,
+                        JointKind = XRHandJointKind.IndexTip,
+                        TrackingLostMode = TrackXRDevice.XRTrackingLostMode.KeepLastPose,
+                    })
+                    .AddComponent(new HoloLensControlBehavior())
+                    ;
+                cursorRightEntity?
+                    .AddComponent(new TrackXRJoint()
+                    {
+                        Handedness = XRHandedness.RightHand,
+                        SelectionStrategy = TrackXRDevice.SelectionDeviceStrategy.ByHandedness,
+                        JointKind = XRHandJointKind.IndexTip,
+                        TrackingLostMode = TrackXRDevice.XRTrackingLostMode.KeepLastPose,
+                    })
+                    .AddComponent(new HoloLensControlBehavior())
+                    ;
             }
             else
             {
