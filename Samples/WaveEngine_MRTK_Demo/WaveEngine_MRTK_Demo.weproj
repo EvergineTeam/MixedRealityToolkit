@@ -1,13 +1,15 @@
 !WaveEngine.Common.ProjectModel,WaveEngine.Common
 Profiles:
-  - AlphaCompressionFormat: BC3_UNorm
+  - AdditionalEffectTechniqueCombinations: null
+    AlphaCompressionFormat: BC3_UNorm
     CompileEffects: false
     GraphicsBackend: DirectX11
     LauncherType: Default
     Name: Windows
     NonAlphaCompressionFormat: BC3_UNorm
     Platform: Windows
-  - AlphaCompressionFormat: BC3_UNorm
+  - AdditionalEffectTechniqueCombinations: MULTIVIEW
+    AlphaCompressionFormat: BC3_UNorm
     CompileEffects: false
     GraphicsBackend: DirectX11
     LauncherType: MixedReality
@@ -15,4 +17,3 @@ Profiles:
     NonAlphaCompressionFormat: BC3_UNorm
     Platform: UWP
 ResourcesPath: Content
-WaveVersion: 3.0.0.4621-nightly
