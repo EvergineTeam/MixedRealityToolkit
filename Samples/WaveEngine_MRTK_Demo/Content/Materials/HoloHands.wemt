@@ -6,22 +6,21 @@ DefaultProfile:
   Platform: Undefined
 ExportAsRaw: false
 MaterialInfo:
-  Id: 853e851b-b8e8-4b3c-bf6b-0c98c6c2b51d
+  Id: 8c14a141-e6a3-4514-9ecc-c3d25d23bc14
   ActiveDirectives:
-    - MULTIVIEW
     - PULSE
   EffectID: 61522b7c-6a53-4a1d-bfb7-6c1c4b0728c6
   Layer: 0db59561-b3f5-444f-b5de-e62e3a5b42bf
   Parameters:
     - Name: ViewProj
       Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
-      ValueByteArray: 6QoOQAAAAAAAAAAAAAAAAAAAAACYMgpADf/kvjD55L4AAAAAmjKKvwv/ZL8u+WS/AAAAAHmCGjUf7ItAvRuPQA==
+      ValueByteArray: kIUxQAAAAAAAAAAAAAAAAAAAAACYMgpADf/kvjD55L4AAAAAmjKKvwv/ZL8u+WS/AAAAAHmCGjUf7ItAvRuPQA==
     - Name: World
       Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
       ValueByteArray: AAAAQAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAACAPw==
     - Name: Time
       Type: System.Single
-      ValueByteArray: ldzWQA==
+      ValueByteArray: TasjQg==
     - Name: EdgeColor
       Type: WaveEngine.Mathematics.Vector3,WaveEngine.Mathematics
       ValueByteArray: AACAPwAAgD8AAIA/
@@ -48,7 +47,7 @@ MaterialInfo:
       ValueByteArray: AAAgQg==
     - Name: MultiviewViewProj
       Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
-      ValueByteArray: 6QoOQAAAAAAAAAAAAAAAAAAAAACYMgpADf/kvjD55L4AAAAAmjKKvwv/ZL8u+WS/AAAAAHmCGjUf7ItAvRuPQA==
+      ValueByteArray: FZkNQAAAAAAAAAAAAAAAAAAAAACYMgpADf/kvjD55L4AAAAAmjKKvwv/ZL8u+WS/AAAAAHmCGjUf7ItAvRuPQA==
     - Name: EyeCount
       Type: System.Int32
       ValueByteArray: AQAAAA==

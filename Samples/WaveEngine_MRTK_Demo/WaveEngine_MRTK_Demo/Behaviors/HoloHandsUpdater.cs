@@ -5,57 +5,66 @@ using WaveEngine.Components.Graphics3D;
 using WaveEngine.Components.XR;
 using WaveEngine.Framework;
 using WaveEngine.Framework.Graphics;
+using WaveEngine.Framework.XR;
 using WaveEngine.Mathematics;
 using WaveEngine_MRTK_Demo.Effects;
+using WaveEngine_MRTK_Demo.Emulation;
 
 namespace WaveEngine_MRTK_Demo.Behaviors
 {
     public class HoloHandsUpdater : Behavior
     {
-        [BindComponent]
-        protected Transform3D transform = null;
-
-        public string XRModelName;
+        public XRHandedness handedness;
 
         private HoloHands holoHandsDecorator;
         private Camera3D camera;
         private Material material;
+        private TrackXRJoint trackXRJoint;
+        private Transform3D transform;
 
         protected override void Start()
         {
             if (!Application.Current.IsEditor)
             {
-                MaterialComponent materialComponent = null;
-                foreach (XRDeviceMeshComponent xrdm in this.Managers.EntityManager.FindComponentsOfType<XRDeviceMeshComponent>())
-                {
-                    if (xrdm.XRModelName == XRModelName)
-                    {
-                        materialComponent = xrdm.Owner.FindComponent<MaterialComponent>();
-                        break;
-                    }
-                }
-
+                MaterialComponent materialComponent = this.Owner.FindComponent<MaterialComponent>(); ;
                 materialComponent.Material = materialComponent.Material.Clone();
                 material = materialComponent.Material;
                 holoHandsDecorator = new HoloHands(material);
                 material.ActiveDirectivesNames = new string[] { "MULTIVIEW", "PULSE" };
 
                 camera = this.Managers.RenderManager.ActiveCamera3D;
+
+                CursorManager cursorManager = Owner.Scene.Managers.FindManager<CursorManager>();
+                foreach (Cursor c in cursorManager.cursors)
+                {
+                    TrackXRJoint joint = c.Owner.FindComponent<TrackXRJoint>();
+                    if (joint != null && joint.Handedness == handedness)
+                    {
+                        trackXRJoint = joint;
+                        transform = c.Owner.FindComponent<Transform3D>();
+                        break;
+                    }
+                }
             }
         }
 
         float time = 0;
         protected override void Update(TimeSpan gameTime)
         {
-            time += (float)gameTime.TotalSeconds;
-            holoHandsDecorator.Matrices_TPosY = transform.Position.Y  + 0.1f - time * 0.2f;
-
-            Vector3 camForward = camera.Transform.WorldTransform.Forward;
-            Vector3 camPosV = transform.Position - camera.Transform.Position;
-
-            if (Vector3.Angle(camForward, camPosV) > (0.3f))
+            if (trackXRJoint != null)
             {
-                time = 0;
+                if (!trackXRJoint.Owner.IsEnabled)
+                {
+                    if (time != 0)
+                    {
+                        time = 0;
+                    }
+                }
+                else
+                {
+                    time += (float)gameTime.TotalSeconds;
+                    holoHandsDecorator.Matrices_TPosY = transform.Position.Y + 0.1f - time * 0.2f;
+                }
             }
         }
     }
