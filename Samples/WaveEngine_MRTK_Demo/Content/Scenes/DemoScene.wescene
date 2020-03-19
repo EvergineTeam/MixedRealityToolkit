@@ -3385,9 +3385,9 @@ Items:
                   Y: -0.373274088
                   Z: -0.564999998
                 LocalScale:
-                  X: 0.0455212295
-                  Y: 0.0455212332
-                  Z: 0.0455212295
+                  X: 0.0599999987
+                  Y: 0.0599999987
+                  Z: 0.0599999987
               - !WaveEngine.Framework.Physics3D.BoxCollider3D,WaveEngine.Framework
                 Id: 72f701e7-9b78-44d0-889e-302faac8de73
                 IsEnabled: true
@@ -3590,13 +3590,13 @@ Items:
                   Y: -0.0175599921
                   Z: -0.0175599959
                 LocalPosition:
-                  X: -0.209000006
-                  Y: -0.395000011
-                  Z: -0.518999994
+                  X: -0.18178606
+                  Y: -0.394999832
+                  Z: -0.546235383
                 LocalScale:
-                  X: 0.0113803074
-                  Y: 0.0113803083
-                  Z: 0.0113803074
+                  X: 0.0250000004
+                  Y: 0.0250000004
+                  Z: 0.0250000004
               - !WaveEngine.Framework.Physics3D.RigidBody3D,WaveEngine.Framework
                 Id: d674dbd2-b258-4032-93e3-d93b1ed3b46b
                 AngularDamping: 0.0
