@@ -738,7 +738,7 @@ Items:
             FrustumCullingEnabled: true
             IsEnabled: true
             OrderBias: 0
-          - !WaveEngine_MRTK_Demo.Behaviors.ControlsTestComponent,WaveEngine_MRTK_Demo
+          - !WaveEngine_MRTK_Demo.Components.ControlsTestComponent,WaveEngine_MRTK_Demo
             Id: 9d77366a-0eab-4763-9e19-5fc74b3df8bf
             IsEnabled: true
           - !WaveEngine.MRTK.Services.InputSystem.NearInteractionGrabbable,WaveEngine.MRTK

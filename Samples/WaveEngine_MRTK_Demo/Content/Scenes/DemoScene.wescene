@@ -165,7 +165,7 @@ Items:
                       X: 1.5
                       Y: 1.5
                       Z: 1.5
-                  - !WaveEngine_MRTK_Demo.Behaviors.ScenePrefab,WaveEngine_MRTK_Demo
+                  - !WaveEngine_MRTK_Demo.Components.ScenePrefab,WaveEngine_MRTK_Demo
                     Id: ccb178c0-9dc3-4b27-b79f-d13ed203e5d7
                     IsEnabled: true
                     duplicateMaterials: true
@@ -194,7 +194,7 @@ Items:
                       X: 1.5
                       Y: 1.5
                       Z: 1.5
-                  - !WaveEngine_MRTK_Demo.Behaviors.ScenePrefab,WaveEngine_MRTK_Demo
+                  - !WaveEngine_MRTK_Demo.Components.ScenePrefab,WaveEngine_MRTK_Demo
                     Id: 70d467ba-6531-4e23-ac22-dcd010d91596
                     IsEnabled: true
                     duplicateMaterials: true
@@ -223,7 +223,7 @@ Items:
                       X: 1.5
                       Y: 1.5
                       Z: 1.5
-                  - !WaveEngine_MRTK_Demo.Behaviors.ScenePrefab,WaveEngine_MRTK_Demo
+                  - !WaveEngine_MRTK_Demo.Components.ScenePrefab,WaveEngine_MRTK_Demo
                     Id: 4410c0e9-6146-4311-8629-ccbdb8786e65
                     IsEnabled: true
                     duplicateMaterials: true
@@ -2067,7 +2067,7 @@ Items:
                   X: 1.0
                   Y: 1.0
                   Z: 1.0
-              - !WaveEngine_MRTK_Demo.Behaviors.ScenePrefab,WaveEngine_MRTK_Demo
+              - !WaveEngine_MRTK_Demo.Components.ScenePrefab,WaveEngine_MRTK_Demo
                 Id: bb12a84d-9cc1-45d1-a6df-5d3ec71cc6e1
                 IsEnabled: true
                 duplicateMaterials: true
@@ -2096,7 +2096,7 @@ Items:
                   X: 1.0
                   Y: 1.0
                   Z: 1.0
-              - !WaveEngine_MRTK_Demo.Behaviors.ScenePrefab,WaveEngine_MRTK_Demo
+              - !WaveEngine_MRTK_Demo.Components.ScenePrefab,WaveEngine_MRTK_Demo
                 Id: 06d52a8d-a73d-48bb-9aee-128a636cf2fe
                 IsEnabled: true
                 duplicateMaterials: true
@@ -2125,7 +2125,7 @@ Items:
                   X: 1.0
                   Y: 1.0
                   Z: 1.0
-              - !WaveEngine_MRTK_Demo.Behaviors.ScenePrefab,WaveEngine_MRTK_Demo
+              - !WaveEngine_MRTK_Demo.Components.ScenePrefab,WaveEngine_MRTK_Demo
                 Id: 18c8d9ab-2499-4bdb-9b35-18c14b8b6342
                 IsEnabled: true
                 duplicateMaterials: true

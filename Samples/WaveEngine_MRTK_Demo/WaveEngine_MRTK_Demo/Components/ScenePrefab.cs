@@ -12,7 +12,7 @@ using WaveEngine.Framework.Graphics;
 using WaveEngine.Framework.Services;
 using WaveEngine.Platform;
 
-namespace WaveEngine_MRTK_Demo.Behaviors
+namespace WaveEngine_MRTK_Demo.Components
 {
     public class ScenePrefab : Component
     {

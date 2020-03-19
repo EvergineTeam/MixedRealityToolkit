@@ -10,7 +10,7 @@ using WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons;
 using WaveEngine.MRTK.SDK.Features.UX.Components.Sliders;
 using WaveEngine_MRTK_Demo.Drawables;
 
-namespace WaveEngine_MRTK_Demo.Behaviors
+namespace WaveEngine_MRTK_Demo.Components
 {
     public class ControlsTestComponent : Component
     {
