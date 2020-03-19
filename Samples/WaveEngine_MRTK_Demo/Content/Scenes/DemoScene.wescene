@@ -3877,11 +3877,6 @@ Items:
             Restitution: 0.0
             RollingFriction: 0.0
             UpdateOrder: 0.5
-          - !WaveEngine_MRTK_Demo.Behaviors.HoloHandsUpdater,WaveEngine_MRTK_Demo
-            Id: 3fff6115-16c2-4682-bdd5-b25e02695418
-            IsEnabled: true
-            UpdateOrder: 0.5
-            XRModelName: RightHand
         Children: []
         Id: 692e7a60-0d92-4ce3-841f-08e4797ce188
       - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
@@ -3962,11 +3957,6 @@ Items:
             Restitution: 0.0
             RollingFriction: 0.0
             UpdateOrder: 0.5
-          - !WaveEngine_MRTK_Demo.Behaviors.HoloHandsUpdater,WaveEngine_MRTK_Demo
-            Id: aad82309-a9e8-456c-8a5c-e36ccf67aede
-            IsEnabled: true
-            UpdateOrder: 0.5
-            XRModelName: LeftHand
         Children: []
         Id: 0a1b717d-2afc-413b-a520-57f429737cca
     Id: 04aa31c2-6453-445f-9887-71b256aeaf02
@@ -4049,6 +4039,11 @@ Items:
         FrustumCullingEnabled: true
         IsEnabled: true
         OrderBias: 0
+      - !WaveEngine_MRTK_Demo.Behaviors.HoloHandsUpdater,WaveEngine_MRTK_Demo
+        Id: eded91b9-3ba3-44a2-9aaf-0963220ca7e9
+        IsEnabled: true
+        UpdateOrder: 0.5
+        handedness: RightHand
     Children: []
     Id: ec61826a-a8d8-42af-b463-0eca4899bdc3
   - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
@@ -4097,6 +4092,11 @@ Items:
         FrustumCullingEnabled: true
         IsEnabled: true
         OrderBias: 0
+      - !WaveEngine_MRTK_Demo.Behaviors.HoloHandsUpdater,WaveEngine_MRTK_Demo
+        Id: b21fffd3-0893-41c7-82fd-4e6cf3793503
+        IsEnabled: true
+        UpdateOrder: 0.5
+        handedness: LeftHand
     Children: []
     Id: b1bc574f-0608-4d27-854b-929b808c3a65
   - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
