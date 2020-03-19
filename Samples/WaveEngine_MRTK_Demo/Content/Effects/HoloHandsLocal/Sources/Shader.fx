@@ -187,10 +187,10 @@
 		// Transition Color
 		float3 fillcolor = lerp(FillColor0, FillColor1, input.info.w);
 		float3 color = lerp(EdgeColor, fillcolor, minBary);
-		float alpha = 1;
+		float alpha = 0.8;
 		
 #if PULSE
-		alpha = 1 - input.extra;
+		alpha = saturate(alpha - input.extra);
 		color *= alpha;
 #endif
 		
