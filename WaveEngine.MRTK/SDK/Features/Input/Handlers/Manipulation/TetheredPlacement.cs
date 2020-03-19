@@ -42,9 +42,9 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
         /// <inheritdoc/>
         protected override void Update(TimeSpan gameTime)
         {
-            float distanceSqr = (this.transform.Position - this.respawnPoint).LengthSquared();
+            float distance = (this.transform.Position - this.respawnPoint).Length();
 
-            if (distanceSqr > this.DistanceThreshold)
+            if (distance > this.DistanceThreshold)
             {
                 if (this.rigidBody != null)
                 {
