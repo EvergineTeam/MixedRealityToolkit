@@ -16,7 +16,7 @@ namespace WaveEngine_MRTK_Demo.Behaviors
     {
         public XRHandedness handedness;
 
-        private HoloHands holoHandsDecorator;
+        private HoloHandsLocal holoHandsDecorator;
         private Camera3D camera;
         private Material material;
         private TrackXRJoint trackXRJoint;
@@ -29,7 +29,7 @@ namespace WaveEngine_MRTK_Demo.Behaviors
                 MaterialComponent materialComponent = this.Owner.FindComponent<MaterialComponent>(); ;
                 materialComponent.Material = materialComponent.Material.Clone();
                 material = materialComponent.Material;
-                holoHandsDecorator = new HoloHands(material);
+                holoHandsDecorator = new HoloHandsLocal(material);
                 material.ActiveDirectivesNames = new string[] { "MULTIVIEW", "PULSE" };
 
                 camera = this.Managers.RenderManager.ActiveCamera3D;
@@ -53,18 +53,15 @@ namespace WaveEngine_MRTK_Demo.Behaviors
         {
             if (trackXRJoint != null)
             {
-                if (!trackXRJoint.Owner.IsEnabled)
+                if (trackXRJoint.TrackedDevice == null || !trackXRJoint.TrackedDevice.IsConnected || !trackXRJoint.TrackedDevice.PoseIsValid)
                 {
-                    if (time != 0)
-                    {
-                        time = 0;
-                    }
+                    time = MathHelper.Clamp(time - (float)gameTime.TotalSeconds, 0, 1);
                 }
                 else
                 {
-                    time += (float)gameTime.TotalSeconds;
-                    holoHandsDecorator.Matrices_TPosY = transform.Position.Y + 0.1f - time * 0.2f;
+                    time = MathHelper.Clamp(time + (float)gameTime.TotalSeconds, 0, 1);
                 }
+                holoHandsDecorator.Matrices_T = 1 - time * 0.8f;
             }
         }
     }

@@ -6,21 +6,21 @@ DefaultProfile:
   Platform: Undefined
 ExportAsRaw: false
 MaterialInfo:
-  Id: 8c14a141-e6a3-4514-9ecc-c3d25d23bc14
+  Id: 41119192-7d8f-40e2-9581-7acd3de07ce2
   ActiveDirectives:
     - PULSE
-  EffectID: 61522b7c-6a53-4a1d-bfb7-6c1c4b0728c6
+  EffectID: b7b6076f-e298-45cf-babc-a8316996f359
   Layer: 0db59561-b3f5-444f-b5de-e62e3a5b42bf
   Parameters:
-    - Name: ViewProj
+    - Name: WorldViewProj
       Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
-      ValueByteArray: kIUxQAAAAAAAAAAAAAAAAAAAAACYMgpADf/kvjD55L4AAAAAmjKKvwv/ZL8u+WS/AAAAAHmCGjUf7ItAvRuPQA==
+      ValueByteArray: S///QAAAAAAAAAAAAAAAAAAAAACYMopADf9kvzD5ZL8AAAAAmjIKwAv/5L8u+eS/AAAAAHmCGjUf7ItAvRuPQA==
     - Name: World
       Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
-      ValueByteArray: AAAAQAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAACAPw==
+      ValueByteArray: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
     - Name: Time
       Type: System.Single
-      ValueByteArray: TasjQg==
+      ValueByteArray: 4tupQw==
     - Name: EdgeColor
       Type: WaveEngine.Mathematics.Vector3,WaveEngine.Mathematics
       ValueByteArray: AACAPwAAgD8AAIA/
@@ -39,18 +39,24 @@ MaterialInfo:
     - Name: Displacement
       Type: System.Single
       ValueByteArray: CtejPA==
-    - Name: tPosY
+    - Name: t
       Type: System.Single
       ValueByteArray: AAAAAA==
     - Name: distorsionH
       Type: System.Single
-      ValueByteArray: AAAgQg==
+      ValueByteArray: AACgQQ==
+    - Name: t0
+      Type: System.Single
+      ValueByteArray: mpkZPg==
+    - Name: t1
+      Type: System.Single
+      ValueByteArray: mpmZvg==
     - Name: MultiviewViewProj
       Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
-      ValueByteArray: FZkNQAAAAAAAAAAAAAAAAAAAAACYMgpADf/kvjD55L4AAAAAmjKKvwv/ZL8u+WS/AAAAAHmCGjUf7ItAvRuPQA==
+      ValueByteArray: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
     - Name: EyeCount
       Type: System.Int32
-      ValueByteArray: AQAAAA==
+      ValueByteArray: AAAAAA==
   Samplers: null
   Textures: null
 Profiles: {}
