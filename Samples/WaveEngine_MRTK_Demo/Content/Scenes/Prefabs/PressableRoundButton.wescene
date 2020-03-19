@@ -209,12 +209,12 @@ Items:
                       A: 255
                       B: 0
                       G: 255
-                      R: 254
+                      R: 255
                     ReleasedColor:
                       A: 255
                       B: 255
-                      G: 204
-                      R: 9
+                      G: 255
+                      R: 0
                 Children: []
                 Id: 33826060-56b5-4524-beb1-6617e704c49a
             Id: 81e0d5c7-91fa-4300-96da-22fd1aeff2dd

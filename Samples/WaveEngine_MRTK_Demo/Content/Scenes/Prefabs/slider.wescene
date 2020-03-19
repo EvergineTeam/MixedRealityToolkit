@@ -176,7 +176,7 @@ Items:
             IsEnabled: true
         Children:
           - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
-            Name: Button_Oval_Concave_12x24mm_optimized_fbx
+            Name: Slider_Button
             Tag: null
             IsEnabled: true
             IsStatic: false

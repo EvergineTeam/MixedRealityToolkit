@@ -3846,13 +3846,13 @@ Items:
             IsEnabled: true
             PressedColor:
               A: 255
-              B: 0
-              G: 0
+              B: 48
+              G: 128
               R: 255
             ReleasedColor:
               A: 255
-              B: 255
-              G: 255
+              B: 0
+              G: 93
               R: 255
             UpdateOrder: 0.300000012
             UseShift: false
@@ -3926,13 +3926,13 @@ Items:
             IsEnabled: true
             PressedColor:
               A: 255
-              B: 0
-              G: 0
+              B: 48
+              G: 128
               R: 255
             ReleasedColor:
               A: 255
-              B: 255
-              G: 255
+              B: 0
+              G: 93
               R: 255
             UpdateOrder: 0.300000012
             UseShift: false
