@@ -1951,6 +1951,76 @@ Items:
                     Id: 2e043057-3e58-45c3-bf96-019af716d664
                 Id: 671231f6-d16e-4d72-a9b4-4b19afb97a64
             Id: 42170941-daf2-4b46-a743-abb20b73edf9
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: SectionTitle
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: 790411de-f9b1-41bb-b60c-ff57e4c4ea9f
+                IsEnabled: true
+                LocalOrientation:
+                  W: 1.37678782E-07
+                  X: 1.37678754E-07
+                  Y: 0.707106829
+                  Z: -0.707106709
+                LocalPosition:
+                  X: 0.0845796764
+                  Y: 0.101099998
+                  Z: 0.0430117846
+                LocalScale:
+                  X: 0.200000003
+                  Y: 1.0
+                  Z: 0.0199999996
+              - !WaveEngine_MRTK_Demo.Components.Text3D,WaveEngine_MRTK_Demo
+                Id: c8b43e5b-3bac-415c-aa6f-e8dd01bf5021
+                Alpha: 1.0
+                FontSize: 36
+                HorizontalAlignment: Left
+                IsEnabled: true
+                Quality: 0.5
+                Resolution: 2000
+                Text: Press Interaction
+                TextWrapping: NoWrap
+                VerticalAlignment: Center
+            Children: []
+            Id: 1f21ce6c-6de8-4460-bcce-2d280e4dd91a
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: SectionSubtitle
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: 667759d4-38b3-4aa1-ada1-e9e2914c1f04
+                IsEnabled: true
+                LocalOrientation:
+                  W: 1.37678782E-07
+                  X: 1.37678754E-07
+                  Y: 0.707106829
+                  Z: -0.707106709
+                LocalPosition:
+                  X: 0.0335480869
+                  Y: 0.0683999807
+                  Z: 0.0430058837
+                LocalScale:
+                  X: 0.300000012
+                  Y: 1.0
+                  Z: 0.0399999991
+              - !WaveEngine_MRTK_Demo.Components.Text3D,WaveEngine_MRTK_Demo
+                Id: 1180496f-b689-45a3-b0d9-268f096ecbad
+                Alpha: 1.0
+                FontSize: 24
+                HorizontalAlignment: Left
+                IsEnabled: true
+                Quality: 0.5
+                Resolution: 2000
+                Text: HoloLens 2 buttons and other custom button examples using PressableButton.cs
+                TextWrapping: Wrap
+                VerticalAlignment: Center
+            Children: []
+            Id: cc885280-1130-4d6b-9af7-34fabfd8eb74
         Id: 47d72413-3506-4620-bb70-f7a391fa8bd1
       - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
         Name: SliderExample
@@ -2062,6 +2132,76 @@ Items:
                 prefabType: Slider
             Children: []
             Id: 7686bf59-db4b-4b11-90e5-881e27417b76
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: SectionTitle
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: 084bc699-4751-43d9-9728-236559d7eda5
+                IsEnabled: true
+                LocalOrientation:
+                  W: 1.37678782E-07
+                  X: 1.37678754E-07
+                  Y: 0.707106829
+                  Z: -0.707106709
+                LocalPosition:
+                  X: 0.0422187299
+                  Y: -0.397199988
+                  Z: 0.112999976
+                LocalScale:
+                  X: 0.200000003
+                  Y: 0.100000001
+                  Z: 0.0250000004
+              - !WaveEngine_MRTK_Demo.Components.Text3D,WaveEngine_MRTK_Demo
+                Id: 7aae6cfc-6179-48b4-a22d-f2992eabc05b
+                Alpha: 1.0
+                FontSize: 36
+                HorizontalAlignment: Left
+                IsEnabled: true
+                Quality: 0.5
+                Resolution: 2000
+                Text: Slider Interaction
+                TextWrapping: NoWrap
+                VerticalAlignment: Center
+            Children: []
+            Id: ecf63ff0-d57f-4ca0-857c-f077557a0b1c
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: SectionSubtitle
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: 44aa5000-aeca-4769-8ed7-8c38a2e1a0e3
+                IsEnabled: true
+                LocalOrientation:
+                  W: 1.37678782E-07
+                  X: 1.37678754E-07
+                  Y: 0.707106829
+                  Z: -0.707106709
+                LocalPosition:
+                  X: 0.0417401046
+                  Y: -0.41615808
+                  Z: 0.113000035
+                LocalScale:
+                  X: 0.200000003
+                  Y: 1.0
+                  Z: 0.0199999996
+              - !WaveEngine_MRTK_Demo.Components.Text3D,WaveEngine_MRTK_Demo
+                Id: 20f39854-b50a-4ee2-b592-b58f556d548a
+                Alpha: 1.0
+                FontSize: 24
+                HorizontalAlignment: Left
+                IsEnabled: true
+                Quality: 0.5
+                Resolution: 2000
+                Text: Example using PinchSlider.cs
+                TextWrapping: NoWrap
+                VerticalAlignment: Center
+            Children: []
+            Id: cf686804-c748-40b6-9338-c1c30563221d
         Id: 05f7ba05-7c4c-43d7-9ca3-d4b67a054f5b
       - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
         Name: TouchExamples
@@ -2714,6 +2854,76 @@ Items:
                     Id: d9132da8-787c-4359-a13f-87465fdc9c46
                 Id: 0843c41d-3fa3-41de-ac5e-269c0f13c337
             Id: 5a510c5e-923a-4198-be7a-43f52ef03885
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: SectionTitle
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: 733194d1-59f5-4c9f-88ed-b98614222060
+                IsEnabled: true
+                LocalOrientation:
+                  W: 1.37678782E-07
+                  X: 1.37678754E-07
+                  Y: 0.707106829
+                  Z: -0.707106709
+                LocalPosition:
+                  X: 0.0699029714
+                  Y: 0.101099998
+                  Z: 0.0429971516
+                LocalScale:
+                  X: 0.200000003
+                  Y: 1.0
+                  Z: 0.0199999996
+              - !WaveEngine_MRTK_Demo.Components.Text3D,WaveEngine_MRTK_Demo
+                Id: 3a9ba340-3908-457b-b4cb-0bf03b798787
+                Alpha: 1.0
+                FontSize: 36
+                HorizontalAlignment: Left
+                IsEnabled: true
+                Quality: 0.5
+                Resolution: 2000
+                Text: Touch Interaction
+                TextWrapping: NoWrap
+                VerticalAlignment: Center
+            Children: []
+            Id: e7c9e550-a03e-47a7-8da0-f348db44baa7
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: SectionSubtitle
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: e8c18fb0-aa14-4a85-b5e7-603c3f10743c
+                IsEnabled: true
+                LocalOrientation:
+                  W: 1.37678782E-07
+                  X: 1.37678754E-07
+                  Y: 0.707106829
+                  Z: -0.707106709
+                LocalPosition:
+                  X: 0.0283994079
+                  Y: 0.0695872009
+                  Z: 0.0429997146
+                LocalScale:
+                  X: 0.280000001
+                  Y: 1.0
+                  Z: 0.0500000007
+              - !WaveEngine_MRTK_Demo.Components.Text3D,WaveEngine_MRTK_Demo
+                Id: 8a685d4c-0dff-487f-acc4-1f4b0103a4eb
+                Alpha: 1.0
+                FontSize: 24
+                HorizontalAlignment: Left
+                IsEnabled: true
+                Quality: 0.5
+                Resolution: 2000
+                Text: Examples of touch events using HandInteractionTouch.cs Only works with HoloLens 2's articulated hand
+                TextWrapping: Wrap
+                VerticalAlignment: Center
+            Children: []
+            Id: f04753a8-4c34-4112-83ff-ba21ed7e0428
         Id: 74dbe57c-6a6c-412b-b2d1-d0db5a5b523c
       - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
         Name: ManipulationExamples
@@ -3494,6 +3704,76 @@ Items:
                 Children: []
                 Id: 01097cf6-a7ec-4950-9f10-f41fb2a4575d
             Id: 8ad5adaa-8607-4010-98ea-decb39362564
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: SectionTitle
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: 9fa10ca2-05a6-481a-9425-28339cd550a8
+                IsEnabled: true
+                LocalOrientation:
+                  W: 0.707106829
+                  X: 0.707106709
+                  Y: -8.42936672E-08
+                  Z: 8.42936814E-08
+                LocalPosition:
+                  X: -0.453794122
+                  Y: 0.838273406
+                  Z: -0.371448338
+                LocalScale:
+                  X: 0.600000024
+                  Y: 1.0
+                  Z: 0.0399999991
+              - !WaveEngine_MRTK_Demo.Components.Text3D,WaveEngine_MRTK_Demo
+                Id: d0a2d182-2602-4f45-ae43-d202ef7ffbde
+                Alpha: 1.0
+                FontSize: 36
+                HorizontalAlignment: Left
+                IsEnabled: true
+                Quality: 0.5
+                Resolution: 2000
+                Text: Manipulation Interaction
+                TextWrapping: NoWrap
+                VerticalAlignment: Center
+            Children: []
+            Id: cef5b85f-0593-423c-8604-23cf6b89fd79
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: SectionSubtitle
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: 92064526-b58f-4c01-8932-ba849f867b2b
+                IsEnabled: true
+                LocalOrientation:
+                  W: 0.707106829
+                  X: 0.707106709
+                  Y: 0.0
+                  Z: 0.0
+                LocalPosition:
+                  X: -0.377154648
+                  Y: 0.777649879
+                  Z: -0.371013343
+                LocalScale:
+                  X: 0.75
+                  Y: 1.0
+                  Z: 0.0799999982
+              - !WaveEngine_MRTK_Demo.Components.Text3D,WaveEngine_MRTK_Demo
+                Id: 3db179b7-16cb-4eb9-b357-3168cde586b6
+                Alpha: 1.0
+                FontSize: 24
+                HorizontalAlignment: Left
+                IsEnabled: true
+                Quality: 0.5
+                Resolution: 2002
+                Text: Examples using SimpleManipulationHandler.cs with and without physics and using TetheredPlacement.cs
+                TextWrapping: Wrap
+                VerticalAlignment: Center
+            Children: []
+            Id: 0d595e45-1439-4a2d-be3d-1ee061ffccef
         Id: aa1c9d33-1751-44b9-9925-d93b76042bce
     Id: bf7601de-e3ee-4c6a-9ec4-717fc4c11ddd
   - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
