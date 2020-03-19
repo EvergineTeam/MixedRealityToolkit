@@ -4126,48 +4126,4 @@ Items:
         IsEnabled: true
     Children: []
     Id: 6a044e04-ad4e-47f6-8cc6-9af02f9b3c33
-  - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
-    Name: sphere
-    Tag: null
-    IsEnabled: true
-    IsStatic: false
-    Components:
-      - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
-        Id: c6d54b58-20ee-459f-8ca3-c8d466decadb
-        IsEnabled: true
-        LocalOrientation:
-          W: 1.0
-          X: 0.0
-          Y: 0.0
-          Z: 0.0
-        LocalPosition:
-          X: 0.670896828
-          Y: -0.189844608
-          Z: -0.227763563
-        LocalScale:
-          X: 1.0
-          Y: 1.0
-          Z: 1.0
-      - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
-        Id: 94395d48-184b-4bdf-94bc-2dd0a114e5fa
-        AsignedTo: Default
-        IsEnabled: true
-        Material: d7c4a591-2f7a-4754-80c4-d47c976843b9
-      - !WaveEngine.Components.Graphics3D.SphereMesh,WaveEngine.Components
-        Id: 6c5e013b-42e9-4768-8f83-581b685531cd
-        Diameter: 0.25
-        IsEnabled: true
-        Model: 00000000-0000-0000-0000-000000000000
-        ModelMeshName: sphere_primitive
-        Tessellation: 16
-        UVHorizontalFlip: false
-        UVVerticalFlip: false
-      - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
-        Id: 82e6f024-f23e-4b7d-82ca-d36b7e2c2ae4
-        DebugBoundingbox: true
-        FrustumCullingEnabled: true
-        IsEnabled: true
-        OrderBias: 0
-    Children: []
-    Id: c8e337c6-0447-4c33-be61-6ee5c6fe25be
 Managers: []
