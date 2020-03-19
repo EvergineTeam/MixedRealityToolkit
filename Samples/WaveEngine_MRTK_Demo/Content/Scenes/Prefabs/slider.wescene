@@ -230,13 +230,13 @@ Items:
                   Y: 0.0
                   Z: 0.0
                 LocalPosition:
-                  X: -0.0661406517
-                  Y: -2.66886468E-09
-                  Z: -1.2453456E-09
+                  X: -0.0545182526
+                  Y: -1.97612504E-09
+                  Z: -9.22009524E-10
                 LocalScale:
-                  X: 0.100000001
+                  X: 0.0500000007
                   Y: 0.100000001
-                  Z: 0.100000001
+                  Z: 0.0199999996
               - !WaveEngine_MRTK_Demo.Components.Text3D,WaveEngine_MRTK_Demo
                 Id: 2d146da0-dc69-4713-96f6-02f27aa3f6e4
                 Alpha: 1.0
@@ -244,12 +244,7 @@ Items:
                 HorizontalAlignment: Right
                 IsEnabled: true
                 Quality: 0.5
-                Resolution:
-                  X: 200.0
-                  Y: 100.0
-                Size:
-                  X: 1.0
-                  Y: 0.5
+                Resolution: 2000
                 Text: Title
                 TextWrapping: NoWrap
                 VerticalAlignment: Center
@@ -270,13 +265,13 @@ Items:
                   Y: 0.0
                   Z: 0.0
                 LocalPosition:
-                  X: -0.0659999996
+                  X: -0.0779834539
                   Y: -0.0184613019
-                  Z: 2.21890017E-09
+                  Z: 1.88554727E-09
                 LocalScale:
                   X: 0.100000001
                   Y: 0.100000001
-                  Z: 0.100000001
+                  Z: 0.0199999996
               - !WaveEngine_MRTK_Demo.Components.Text3D,WaveEngine_MRTK_Demo
                 Id: a1cc0b39-c06b-4e2b-8f45-cfc2236572f7
                 Alpha: 1.0
@@ -284,12 +279,7 @@ Items:
                 HorizontalAlignment: Right
                 IsEnabled: true
                 Quality: 0.5
-                Resolution:
-                  X: 200.0
-                  Y: 100.0
-                Size:
-                  X: 1.0
-                  Y: 0.5
+                Resolution: 2000
                 Text: value
                 TextWrapping: NoWrap
                 VerticalAlignment: Center
