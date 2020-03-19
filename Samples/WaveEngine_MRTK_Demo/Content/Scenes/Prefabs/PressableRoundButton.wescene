@@ -29,16 +29,16 @@ Items:
         Offset:
           X: 0.0
           Y: 0.0
-          Z: 0.00200000009
+          Z: 0.00400000019
         OrientationOffset:
           W: 1.0
           X: 0.0
           Y: 0.0
           Z: 0.0
         Size:
-          X: 0.0320000015
-          Y: 0.0320000015
-          Z: 0.0149999997
+          X: 0.0350000001
+          Y: 0.0350000001
+          Z: 0.0199999996
       - !WaveEngine.Framework.Physics3D.StaticBody3D,WaveEngine.Framework
         Id: c46bb04b-a6e4-456f-8f73-dc1dea376eb4
         CcdMotionThreshold: 0.0
@@ -53,11 +53,11 @@ Items:
         UpdateOrder: 0.5
       - !WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButton,WaveEngine.MRTK
         Id: a45ee70c-9568-4381-b9bc-8b4133933221
-        EndPosition: 0.100000001
+        EndPosition: 0.200000003
         EnforceFrontPush: true
         IsEnabled: true
-        PressPosition: 0.200000003
-        ReleasePosition: 0.300000012
+        PressPosition: 0.300000012
+        ReleasePosition: 0.400000006
         RetractSpeed: 3.0
         StartPosition: 0.5
         UpdateOrder: 0.5
@@ -112,9 +112,9 @@ Items:
                   Y: 0.0
                   Z: 0.00800000038
                 LocalScale:
-                  X: 0.0333333313
-                  Y: 0.0333333313
-                  Z: 0.0333333313
+                  X: 0.0399999991
+                  Y: 0.0399999991
+                  Z: 0.0399999991
               - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
                 Id: 141105e4-f3a9-4fb9-a051-c15ee0a4c315
                 AsignedTo: Default
@@ -178,9 +178,9 @@ Items:
                       Y: 0.0
                       Z: 0.0
                     LocalScale:
-                      X: 0.0333333313
-                      Y: 0.0333333313
-                      Z: 0.0333333313
+                      X: 0.0399999991
+                      Y: 0.0399999991
+                      Z: 0.0399999991
                   - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
                     Id: 65182969-b575-4f02-92f3-d9c8b594fa14
                     AsignedTo: Default
