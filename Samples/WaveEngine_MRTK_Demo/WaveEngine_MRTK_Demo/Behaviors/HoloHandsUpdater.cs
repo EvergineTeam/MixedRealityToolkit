@@ -53,18 +53,15 @@ namespace WaveEngine_MRTK_Demo.Behaviors
         {
             if (trackXRJoint != null)
             {
-                if (!trackXRJoint.Owner.IsEnabled)
+                if (trackXRJoint.TrackedDevice == null || !trackXRJoint.TrackedDevice.IsConnected || !trackXRJoint.TrackedDevice.PoseIsValid)
                 {
-                    if (time != 0)
-                    {
-                        time = 0;
-                    }
+                    time = MathHelper.Clamp(time - (float)gameTime.TotalSeconds, 0, 1);
                 }
                 else
                 {
-                    time += (float)gameTime.TotalSeconds;
-                    holoHandsDecorator.Matrices_T = 1 - time * 0.8f;
+                    time = MathHelper.Clamp(time + (float)gameTime.TotalSeconds, 0, 1);
                 }
+                holoHandsDecorator.Matrices_T = 1 - time * 0.8f;
             }
         }
     }
