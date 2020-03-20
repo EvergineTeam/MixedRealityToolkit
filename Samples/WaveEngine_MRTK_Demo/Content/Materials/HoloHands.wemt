@@ -6,21 +6,21 @@ DefaultProfile:
   Platform: Undefined
 ExportAsRaw: false
 MaterialInfo:
-  Id: 298930c6-03d5-4849-a91d-c18d4dd7a7e0
+  Id: 7a11f0a3-c37f-499f-ad77-bfd9606402ca
   ActiveDirectives:
     - PULSE
   EffectID: b7b6076f-e298-45cf-babc-a8316996f359
-  Layer: e35c59a9-26ab-4b4c-8210-4b1f21c31530
+  Layer: ec4f0d2c-a47c-42c0-9784-86f2c09d10e5
   Parameters:
     - Name: WorldViewProj
       Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
-      ValueByteArray: aPR9QAAAAAAAAAAAAAAAAAAAAACYMopADf9kvzD5ZL8AAAAAmjIKwAv/5L8u+eS/AAAAAHmCGjUf7ItAvRuPQA==
+      ValueByteArray: xB0MwO4KBT+yKuc/xyTnP4hZKLNkbJlA13FyvqJrcr57FJlAOo1zPhaXUz+rkVM/c0PYsWjk8jQf7ItAvRuPQA==
     - Name: World
       Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
       ValueByteArray: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
     - Name: Time
       Type: System.Single
-      ValueByteArray: NuDrQA==
+      ValueByteArray: 6d7VQQ==
     - Name: EdgeColor
       Type: WaveEngine.Mathematics.Vector3,WaveEngine.Mathematics
       ValueByteArray: AACAPwAAgD8AAIA/
