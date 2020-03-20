@@ -79,7 +79,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
 
         private void PlaySound(AudioBuffer sound)
         {
-            if (this.soundEmitter != null)
+            if (this.soundEmitter != null && sound != null)
             {
                 if (this.soundEmitter.PlayState == PlayState.Playing)
                 {
