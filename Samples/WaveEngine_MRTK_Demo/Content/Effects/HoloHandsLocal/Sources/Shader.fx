@@ -23,6 +23,8 @@
 		
 		float t0              : packoffset(c3.z); [Default(0.15)]
 		float t1              : packoffset(c3.w); [Default(-0.3)]
+		
+		float Alpha           : packoffset(c4.x); [Default(0.8)]
 	};
 
 	cbuffer PerCamera : register(b2)
@@ -187,8 +189,8 @@
 		// Transition Color
 		float3 fillcolor = lerp(FillColor0, FillColor1, input.info.w);
 		float3 color = lerp(EdgeColor, fillcolor, minBary);
-		float alpha = 0.8;
 		
+		float alpha = Alpha;
 #if PULSE
 		alpha = saturate(alpha - input.extra);
 		color *= alpha;
