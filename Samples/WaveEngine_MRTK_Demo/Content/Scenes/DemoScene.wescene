@@ -3137,7 +3137,7 @@ Items:
                 UpdateOrder: 0.5
               - !WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation.TetheredPlacement,WaveEngine.MRTK
                 Id: a019a3b1-232b-4643-b7b3-737dbf47c6a0
-                DistanceThreshold: 0.5
+                DistanceThreshold: 20.0
                 IsEnabled: true
                 UpdateOrder: 0.5
             Children: []
@@ -3249,7 +3249,7 @@ Items:
                 UpdateOrder: 0.5
               - !WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation.TetheredPlacement,WaveEngine.MRTK
                 Id: 7020a278-b69b-4047-ad47-08cbe820bae9
-                DistanceThreshold: 0.5
+                DistanceThreshold: 20.0
                 IsEnabled: true
                 UpdateOrder: 0.5
             Children: []
@@ -3361,7 +3361,7 @@ Items:
                 UpdateOrder: 0.5
               - !WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation.TetheredPlacement,WaveEngine.MRTK
                 Id: ee4fd34b-f807-4bcb-8d57-24146ab95187
-                DistanceThreshold: 0.5
+                DistanceThreshold: 20.0
                 IsEnabled: true
                 UpdateOrder: 0.5
             Children: []
@@ -3450,7 +3450,7 @@ Items:
                 UpdateOrder: 0.600000024
               - !WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation.TetheredPlacement,WaveEngine.MRTK
                 Id: 1e280922-9c57-4c2c-a528-0604505521a1
-                DistanceThreshold: 0.5
+                DistanceThreshold: 20.0
                 IsEnabled: true
                 UpdateOrder: 0.5
             Children:
@@ -3642,7 +3642,7 @@ Items:
                 UpdateOrder: 0.600000024
               - !WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation.TetheredPlacement,WaveEngine.MRTK
                 Id: ec2e7c36-b62c-4bfa-90e9-04f8fe19f358
-                DistanceThreshold: 0.5
+                DistanceThreshold: 20.0
                 IsEnabled: true
                 UpdateOrder: 0.5
             Children:
@@ -4039,9 +4039,9 @@ Items:
         OrderBias: 0
       - !WaveEngine_MRTK_Demo.Behaviors.HoloHandsUpdater,WaveEngine_MRTK_Demo
         Id: eded91b9-3ba3-44a2-9aaf-0963220ca7e9
+        Handedness: RightHand
         IsEnabled: true
         UpdateOrder: 0.5
-        Handedness: RightHand
     Children: []
     Id: ec61826a-a8d8-42af-b463-0eca4899bdc3
   - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
@@ -4092,9 +4092,9 @@ Items:
         OrderBias: 0
       - !WaveEngine_MRTK_Demo.Behaviors.HoloHandsUpdater,WaveEngine_MRTK_Demo
         Id: b21fffd3-0893-41c7-82fd-4e6cf3793503
+        Handedness: LeftHand
         IsEnabled: true
         UpdateOrder: 0.5
-        Handedness: LeftHand
     Children: []
     Id: b1bc574f-0608-4d27-854b-929b808c3a65
   - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
