@@ -51,6 +51,9 @@ MaterialInfo:
     - Name: t1
       Type: System.Single
       ValueByteArray: mpmZvg==
+    - Name: Alpha
+      Type: System.Single
+      ValueByteArray: MzMzPw==
     - Name: MultiviewViewProj
       Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
       ValueByteArray: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==

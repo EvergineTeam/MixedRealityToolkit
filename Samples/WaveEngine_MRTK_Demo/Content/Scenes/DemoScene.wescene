@@ -4372,7 +4372,7 @@ Items:
         Id: eded91b9-3ba3-44a2-9aaf-0963220ca7e9
         IsEnabled: true
         UpdateOrder: 0.5
-        handedness: RightHand
+        Handedness: RightHand
     Children: []
     Id: ec61826a-a8d8-42af-b463-0eca4899bdc3
   - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
@@ -4425,7 +4425,7 @@ Items:
         Id: b21fffd3-0893-41c7-82fd-4e6cf3793503
         IsEnabled: true
         UpdateOrder: 0.5
-        handedness: LeftHand
+        Handedness: LeftHand
     Children: []
     Id: b1bc574f-0608-4d27-854b-929b808c3a65
   - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework

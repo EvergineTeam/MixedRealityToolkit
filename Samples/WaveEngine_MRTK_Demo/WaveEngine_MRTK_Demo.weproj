@@ -10,7 +10,7 @@ Profiles:
     Platform: Windows
   - AdditionalEffectTechniqueCombinations: MULTIVIEW
     AlphaCompressionFormat: BC3_UNorm
-    CompileEffects: false
+    CompileEffects: true
     GraphicsBackend: DirectX11
     LauncherType: MixedReality
     Name: UWP.MixedReality
