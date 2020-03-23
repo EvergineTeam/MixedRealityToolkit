@@ -32,6 +32,10 @@ namespace WaveEngine_MRTK_Demo.Components
                 foreach (PressableButton b in buttonsParent.FindComponentsInChildren<PressableButton>())
                 {
                     b.ButtonPressed += OnButtonPressed;
+
+                    //Update text based on scale
+                    Text3D text3d = b.Owner.FindComponentInChildren<Text3D>();
+                    text3d.Text = string.Format("{0}x{0}mm", 32.0f * b.Owner.FindComponent<Transform3D>().Scale.X);
                 }
             }
         }

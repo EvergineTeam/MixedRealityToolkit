@@ -2101,14 +2101,14 @@ Items:
                       Y: 0.0
                       Z: 0.0
                     LocalScale:
-                      X: 1.0
-                      Y: 1.0
+                      X: 1.25
+                      Y: 1.25
                       Z: 1.0
                   - !WaveEngine_MRTK_Demo.Components.ScenePrefab,WaveEngine_MRTK_Demo
                     Id: abea5f6c-fc23-42a7-93a2-df906b2585e3
                     IsEnabled: true
                     duplicateMaterials: false
-                    prefabType: PressableButtonPlated40x40mm
+                    prefabType: PressableButtonPlated32x32mm
                   - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
                     Id: 23b34f1f-5a93-48c1-bc1e-39f24cf9bd05
                     AsignedTo: Default
@@ -2139,14 +2139,14 @@ Items:
                       Y: 0.0
                       Z: 0.0
                     LocalScale:
-                      X: 1.0
-                      Y: 1.0
+                      X: 1.5
+                      Y: 1.5
                       Z: 1.0
                   - !WaveEngine_MRTK_Demo.Components.ScenePrefab,WaveEngine_MRTK_Demo
                     Id: 7a30d1ce-7f67-4a37-8b70-7913f2e112ad
                     IsEnabled: true
                     duplicateMaterials: false
-                    prefabType: PressableButtonPlated48x48mm
+                    prefabType: PressableButtonPlated32x32mm
                   - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
                     Id: 82845a9d-2038-450c-8573-6a5b0495bf5f
                     AsignedTo: Default
@@ -2177,14 +2177,14 @@ Items:
                       Y: 0.0
                       Z: 0.0
                     LocalScale:
-                      X: 1.0
-                      Y: 1.0
+                      X: 1.5
+                      Y: 1.5
                       Z: 1.0
                   - !WaveEngine_MRTK_Demo.Components.ScenePrefab,WaveEngine_MRTK_Demo
                     Id: 4c0c782f-eb73-4f2a-b17c-3ee1e534ea59
                     IsEnabled: true
                     duplicateMaterials: false
-                    prefabType: PressableButtonPlated48x48mm
+                    prefabType: PressableButtonPlated32x32mm
                   - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
                     Id: 1120d35c-d234-46fe-80cf-b13fdd376017
                     AsignedTo: Default
@@ -2215,14 +2215,14 @@ Items:
                       Y: 0.0
                       Z: 0.0
                     LocalScale:
-                      X: 1.0
-                      Y: 1.0
+                      X: 1.25
+                      Y: 1.25
                       Z: 1.0
                   - !WaveEngine_MRTK_Demo.Components.ScenePrefab,WaveEngine_MRTK_Demo
                     Id: 2b86d5c7-1af3-4998-8356-64f0cc485bd7
                     IsEnabled: true
                     duplicateMaterials: false
-                    prefabType: PressableButtonPlated40x40mm
+                    prefabType: PressableButtonPlated32x32mm
                   - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
                     Id: ad3f8992-0db8-4257-bf78-83ed53865ae0
                     AsignedTo: Default
