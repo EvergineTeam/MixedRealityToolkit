@@ -34,7 +34,7 @@ Items:
       - !WaveEngine.Framework.Graphics.Camera3D,WaveEngine.Framework
         Id: e6234645-a09c-405e-b7cc-e8970277f72c
         Aperture: 1.0
-        AspectRatio: 1.61780107
+        AspectRatio: 1.3108108
         BackgroundColor:
           A: 0
           B: 0
@@ -60,10 +60,10 @@ Items:
         LayerMaskDefaultValue: true
         NearPlane: 0.100000001
         ScreenViewport:
-          Height: 191.0
+          Height: 222.0
           MaxDepth: 1.0
           MinDepth: 0.0
-          Width: 309.0
+          Width: 291.0
           X: 0.0
           Y: 0.0
         Sensitivity: 100.0
@@ -2021,6 +2021,156 @@ Items:
                 VerticalAlignment: Center
             Children: []
             Id: cc885280-1130-4d6b-9af7-34fabfd8eb74
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: PressableButtons
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: 7eb83060-aeb8-4c91-a56f-b1f4c712c242
+                IsEnabled: true
+                LocalOrientation:
+                  W: 1.0
+                  X: 0.0
+                  Y: 0.0
+                  Z: 0.0
+                LocalPosition:
+                  X: 0.0799999982
+                  Y: -0.0170000009
+                  Z: -0.0144999996
+                LocalScale:
+                  X: 1.0
+                  Y: 1.0
+                  Z: 1.0
+            Children:
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: PressableButtonPlated32x32mm
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: 7338b5be-39d0-454e-8799-6c09a3c0dbbc
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: 0.0549999997
+                      Y: 0.0
+                      Z: 0.0
+                    LocalScale:
+                      X: 1.0
+                      Y: 1.0
+                      Z: 1.0
+                  - !WaveEngine_MRTK_Demo.Components.ScenePrefab,WaveEngine_MRTK_Demo
+                    Id: aa2c7380-b9da-48ca-8e77-5b77bb33ad34
+                    IsEnabled: true
+                    duplicateMaterials: false
+                    prefabType: PressableButtonPlated32x32mm
+                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+                    Id: 5aa6a071-e17b-4571-850a-7797e8f864f2
+                    AsignedTo: Default
+                    IsEnabled: true
+                    Material: 75122a47-663c-4625-8118-ff2e2a2bcaeb
+                  - !WaveEngine_MRTK_Demo.Behaviors.CursorPosShaderUpdater,WaveEngine_MRTK_Demo
+                    Id: 6e7e860d-cfee-40f6-9625-83da7aa89abc
+                    IsEnabled: true
+                    UpdateOrder: 0.5
+                Children: []
+                Id: 709ed301-96ec-484d-a53b-9945776a8986
+            Id: cf260f8b-5d22-488a-98f3-c482b12c6228
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: PressedEventColorCube
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: 8a02c7cf-8c2a-4d5a-916a-6cea9e666cb0
+                IsEnabled: true
+                LocalOrientation:
+                  W: 1.0
+                  X: 0.0
+                  Y: 0.0
+                  Z: 0.0
+                LocalPosition:
+                  X: 0.143999994
+                  Y: 0.0399000011
+                  Z: 0.0429999791
+                LocalScale:
+                  X: 0.0114371004
+                  Y: 0.0114371004
+                  Z: 0.0114371004
+              - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+                Id: b50116bd-e984-4b0e-8399-3b01c7bd7494
+                AsignedTo: Default
+                IsEnabled: true
+                Material: b5810cca-0555-4aab-86b8-b591766234a5
+              - !WaveEngine.Components.Graphics3D.CubeMesh,WaveEngine.Components
+                Id: 70ee0f3c-230a-47c5-af6e-bbfd6eccc183
+                InitialU: 0.0
+                InitialV: 0.0
+                IsEnabled: true
+                Model: 00000000-0000-0000-0000-000000000000
+                ModelMeshName: cube_primitive
+                Size: 1.0
+                UTile: 1.0
+                UVHorizontalFlip: false
+                UVVerticalFlip: false
+                YTile: 1.0
+              - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+                Id: 00a2d303-9988-474f-9d57-b71cc0fba872
+                DebugBoundingbox: true
+                FrustumCullingEnabled: true
+                IsEnabled: true
+                OrderBias: 0
+              - !WaveEngine_MRTK_Demo.Components.ColorChanger,WaveEngine_MRTK_Demo
+                Id: 2d09d108-4268-4305-a4fc-9d5e0452cc2f
+                IsEnabled: true
+                material0: b5810cca-0555-4aab-86b8-b591766234a5
+                material1: 0867071b-476d-41cc-b072-9dd796ce98a2
+                material2: 3521d95f-b8ce-40cb-b4d0-c268f64496bd
+            Children:
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: text
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: f83edf56-c948-4012-8e71-610837442ba6
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.65776669E-07
+                      X: 1.65776655E-07
+                      Y: -0.707106709
+                      Z: 0.707106829
+                    LocalPosition:
+                      X: -7.55191231
+                      Y: 0.00013256073
+                      Z: 0.000606536865
+                    LocalScale:
+                      X: 12.5
+                      Y: 1.0
+                      Z: 1.0
+                  - !WaveEngine_MRTK_Demo.Components.Text3D,WaveEngine_MRTK_Demo
+                    Id: 3c0fee64-b08d-4827-a137-f3aa679199bb
+                    Alpha: 1.0
+                    FontSize: 16
+                    HorizontalAlignment: Left
+                    IsEnabled: true
+                    Quality: 0.5
+                    Resolution: 2000
+                    Text: Color Change on Pressed Event
+                    TextWrapping: NoWrap
+                    VerticalAlignment: Center
+                Children: []
+                Id: ec8d67f9-f1f5-4516-bd2d-7a85ce7397cd
+            Id: 7be99bd1-2b9d-4d84-90e1-b10f8a507538
         Id: 47d72413-3506-4620-bb70-f7a391fa8bd1
       - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
         Name: SliderExample
@@ -3855,7 +4005,6 @@ Items:
               G: 93
               R: 255
             UpdateOrder: 0.300000012
-            UseShift: false
           - !WaveEngine.Framework.Physics3D.SphereCollider3D,WaveEngine.Framework
             Id: 0b4be18f-a116-4c7d-85ca-8de0d10df96a
             IsEnabled: true
@@ -3935,7 +4084,6 @@ Items:
               G: 93
               R: 255
             UpdateOrder: 0.300000012
-            UseShift: false
           - !WaveEngine.Framework.Physics3D.SphereCollider3D,WaveEngine.Framework
             Id: bf60dced-1832-4d5c-8ac7-e0f0747d69d4
             IsEnabled: true

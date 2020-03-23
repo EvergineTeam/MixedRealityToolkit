@@ -1,6 +1,8 @@
 [Begin_ResourceLayout]
 
 [directives:FINGERS_DIST FINGERS_DIST NO_FINGERS_DIST]
+[directives:BORDER_LIGHT BORDER_LIGHT_OFF BORDER_LIGHT]
+[directives:INNER_GLOW INNER_GLOW_OFF INNER_GLOW]
 [directives:Multiview MULTIVIEW_OFF MULTIVIEW]
 
 	cbuffer PerDrawCall : register(b0)
@@ -13,12 +15,17 @@
 	{
 		float3 Color			: packoffset(c0);   [Default(0.3, 0.3, 1.0)]
 		float Alpha             : packoffset(c0.w); [Default(1.0)]
+
 		float3 InnerGlowColor   : packoffset(c1);   [Default(1.0, 1.0, 1.0)]
 		float InnerGlowAlpha    : packoffset(c1.w); [Default(1.0)]
 		float InnerGlowPower    : packoffset(c2.w); [Default(10.0)]
+		
 		float MaxFingerDist     : packoffset(c3.w); [Default(1.0)]
 		float3 FingerPosLeft    : packoffset(c2);
 		float3 FingerPosRight   : packoffset(c3);	
+		
+		float3 BorderLightColor : packoffset(c4);   [Default(1.0, 1.0, 1.0)]
+		float BorderLightWidth   : packoffset(c4.w); [Default(0.1)]
 	};
 	
 	cbuffer PerCamera : register(b2)
@@ -90,10 +97,19 @@
         
         float4 output = float4(Color, Alpha);
         
+#if BORDER_LIGHT
+        //Border light
+        float border = 1 - saturate((1 - max(distanceToEdge.x, distanceToEdge.y)) / BorderLightWidth);
+        output.rgb += BorderLightColor * border;
+        output.a += 1.0f * border;
+#endif
+
+#if INNER_GLOW
         //Inner Glow
         float2 uvGlow = pow(distanceToEdge * InnerGlowAlpha, InnerGlowPower);
         output.rgb += lerp(float3(0.0, 0.0, 0.0), InnerGlowColor, uvGlow.x + uvGlow.y);
         output.a   += lerp(0.0, InnerGlowAlpha, uvGlow.x + uvGlow.y);
+#endif
         
 #if FINGERS_DIST
         float minDist = min(length(input.worldPos - FingerPosLeft), length(input.worldPos - FingerPosRight));

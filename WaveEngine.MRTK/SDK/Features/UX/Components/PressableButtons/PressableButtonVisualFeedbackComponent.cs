@@ -63,7 +63,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
 
             if (attached)
             {
-                if (this.materialComponent != null)
+                if (this.materialComponent != null && this.material != null)
                 {
                     this.material = new StandardMaterial(this.materialComponent.Material);
                 }
