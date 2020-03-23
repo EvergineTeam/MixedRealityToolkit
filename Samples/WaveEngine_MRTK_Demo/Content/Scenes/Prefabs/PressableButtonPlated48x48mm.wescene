@@ -36,8 +36,8 @@ Items:
           Y: 0.0
           Z: 0.0
         Size:
-          X: 0.0320000015
-          Y: 0.0320000015
+          X: 0.0480000004
+          Y: 0.0480000004
           Z: 0.0160000008
       - !WaveEngine.Framework.Physics3D.StaticBody3D,WaveEngine.Framework
         Id: 29c2cc94-c21b-46c3-a1d3-74583b696908
@@ -131,9 +131,9 @@ Items:
                   Y: 0.0
                   Z: -5.96046448E-07
                 LocalScale:
-                  X: 0.0320000015
+                  X: 0.0480000004
                   Y: 0.00999999978
-                  Z: 0.0320000015
+                  Z: 0.0480000004
               - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
                 Id: de26b28f-b9c6-4576-9fb4-f33e50dc4e76
                 AsignedTo: Default
@@ -272,7 +272,7 @@ Items:
                 IsEnabled: true
                 Quality: 0.5
                 Resolution: 4000
-                Text: 32x32mm
+                Text: 48x48mm
                 TextWrapping: NoWrap
                 VerticalAlignment: Center
             Children: []
@@ -297,8 +297,8 @@ Items:
               Y: 0.0
               Z: -0.00800000038
             LocalScale:
-              X: 0.0320000015
-              Y: 0.0320000015
+              X: 0.0480000004
+              Y: 0.0480000004
               Z: 0.0160000008
           - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
             Id: c26415f6-dfc4-41f4-b470-083aa673632c
