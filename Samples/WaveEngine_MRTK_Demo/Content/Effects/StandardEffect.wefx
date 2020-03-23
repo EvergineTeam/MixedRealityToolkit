@@ -4,7 +4,7 @@ DefaultProfile:
   Compile: ByPlatform
   ExcludeAsset: false
   GraphicsBackend: ByPlatform
-  MandatoryCombinations: 
+  MandatoryCombinations: ",IBL,DIFF-IBL-LIT-MT_RG_TEXTURED-NORMAL,IBL-LIT,DIFF-EMIS-IBL-LIT-MT_RG_TEXTURED-NORMAL,DIFF-IBL-LIT-NORMAL,LIT,DIFF"
   Name: null
   Platform: Undefined
 ExportAsRaw: false
