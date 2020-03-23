@@ -32,7 +32,7 @@
         Executable="$targetnametoken$.exe"
         EntryPoint="WaveEngine_MRTK_Demo.UWP.MixedReality.AppView">
         <uap:VisualElements
-             DisplayName="WaveEngine_MRTK_Demo.UWP.MixedReality"
+             DisplayName="WaveEngine.MRTK"
              Square150x150Logo="Assets\Square150x150Logo.png" 
              Square44x44Logo="Assets\Square44x44Logo.png" 
              Description="WaveEngine_MRTK_Demo.UWP.MixedReality"
