@@ -6,15 +6,16 @@ DefaultProfile:
   Platform: Undefined
 ExportAsRaw: false
 MaterialInfo:
-  Id: 0bfe88ea-2769-42f5-ada1-df94d1ad1b58
+  Id: 011fc49d-2215-4c18-b9a8-e67a3b4f53ff
   ActiveDirectives:
+    - INNER_GLOW
     - NO_FINGERS_DIST
   EffectID: 4f7e4c24-e83c-4350-9cd4-511fb2199cf4
   Layer: e35c59a9-26ab-4b4c-8210-4b1f21c31530
   Parameters:
     - Name: WorldViewProj
       Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
-      ValueByteArray: JeaMQAAAAAAAAAAAAAAAAAAAAACYMopADf9kvzD5ZL8AAAAAmjIKwAv/5L8u+eS/AAAAAHmCGjUf7ItAvRuPQA==
+      ValueByteArray: NlKYQAAAAAAAAAAAAAAAAAAAAACYMopADf9kvzD5ZL8AAAAAmjIKwAv/5L8u+eS/AAAAAHmCGjUf7ItAvRuPQA==
     - Name: World
       Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
       ValueByteArray: AAAAQAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAACAPw==
@@ -42,12 +43,18 @@ MaterialInfo:
     - Name: FingerPosRight
       Type: WaveEngine.Mathematics.Vector3,WaveEngine.Mathematics
       ValueByteArray: AAAAAAAAAAAAAAAA
+    - Name: BorderLightColor
+      Type: WaveEngine.Mathematics.Vector3,WaveEngine.Mathematics
+      ValueByteArray: AACAPwAAgD8AAIA/
+    - Name: BorderLightWidth
+      Type: System.Single
+      ValueByteArray: zczMPQ==
     - Name: MultiviewViewProj
       Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
-      ValueByteArray: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
+      ValueByteArray: gXjHP0Evnr1HoKC+ip2gvmp/ALdOthlAFdXPvYnRz72RjwS/gRBuvpmzcb96r3G/ohMcvz/YjD34u50+e+zQPg==
     - Name: EyeCount
       Type: System.Int32
-      ValueByteArray: AAAAAA==
+      ValueByteArray: AQAAAA==
   Samplers: null
   Textures: null
 Profiles: {}
