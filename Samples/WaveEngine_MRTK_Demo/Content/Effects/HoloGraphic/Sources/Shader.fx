@@ -55,7 +55,7 @@
 	{
 		float4 pos      : SV_POSITION;
 		float4 worldPos : TEXCOORD0;
-		float2 uv       : TEXCOORD1;
+		float4 uv       : TEXCOORD1;
 		
 #if MULTIVIEW
 		uint ViewId         : SV_RenderTargetArrayIndex;
@@ -84,7 +84,14 @@
 
 		output.pos = mul(input.Position, worldViewProj);
 		output.worldPos = mul(input.Position, World);
-		output.uv = input.uv;
+		output.uv.xy = input.uv.xy;
+		
+		output.uv.z = length(mul(float4(1, 0, 0, 0), World)); //Scale in X
+		output.uv.w = length(mul(float4(0, 0, 1, 0), World)); //Scale in Y
+		
+		float minV = min(output.uv.z, output.uv.w);
+		output.uv.z = output.uv.z / minV;
+		output.uv.w = output.uv.w / minV;
 
 		return output;
 	}
@@ -92,21 +99,25 @@
 	float4 PS(PS_IN input) : SV_Target
 	{	
 		float2 distanceToEdge;
-        distanceToEdge.x = abs(input.uv.x - 0.5) * 2.0;
-        distanceToEdge.y = abs(input.uv.y - 0.5) * 2.0;
+        distanceToEdge.x = (1 - abs(input.uv.x - 0.5) * 2.0) * input.uv.z;
+        distanceToEdge.y = (1 - abs(input.uv.y - 0.5) * 2.0) * input.uv.w;
+        
+        float2 distanceToCenter;
+        distanceToCenter.x = 1 - saturate(distanceToEdge.x);
+        distanceToCenter.y = 1 - saturate(distanceToEdge.y);
         
         float4 output = float4(Color, Alpha);
         
 #if BORDER_LIGHT
         //Border light
-        float border = 1 - saturate((1 - max(distanceToEdge.x, distanceToEdge.y)) / BorderLightWidth);
+        float border = 1 - saturate((min(distanceToEdge.x, distanceToEdge.y)) / BorderLightWidth);
         output.rgb += BorderLightColor * border;
         output.a += 1.0f * border;
 #endif
 
 #if INNER_GLOW
         //Inner Glow
-        float2 uvGlow = pow(distanceToEdge * InnerGlowAlpha, InnerGlowPower);
+        float2 uvGlow = pow(distanceToCenter * InnerGlowAlpha, InnerGlowPower);
         output.rgb += lerp(float3(0.0, 0.0, 0.0), InnerGlowColor, uvGlow.x + uvGlow.y);
         output.a   += lerp(0.0, InnerGlowAlpha, uvGlow.x + uvGlow.y);
 #endif
