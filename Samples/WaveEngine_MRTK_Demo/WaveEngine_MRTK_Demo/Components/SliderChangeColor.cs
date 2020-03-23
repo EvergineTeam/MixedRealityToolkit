@@ -26,32 +26,29 @@ namespace WaveEngine_MRTK_Demo.Components
 
         protected override void Start()
         {
-            if (!Application.Current.IsEditor)
+            materialDecorator = new HoloGraphic(materialComponent.Material);
+
+            this.pinchSliders[0] = pinchSliderPrefabR.Owner.FindComponentInChildren<PinchSlider>();
+            this.pinchSliders[1] = pinchSliderPrefabG.Owner.FindComponentInChildren<PinchSlider>();
+            this.pinchSliders[2] = pinchSliderPrefabB.Owner.FindComponentInChildren<PinchSlider>();
+
+            string[] titles = {"Red", "Green", "Blue"};
+            for (int i = 0; i < 3; ++i)
             {
-                materialDecorator = new HoloGraphic(materialComponent.Material);
-
-                this.pinchSliders[0] = pinchSliderPrefabR.Owner.FindComponentInChildren<PinchSlider>();
-                this.pinchSliders[1] = pinchSliderPrefabG.Owner.FindComponentInChildren<PinchSlider>();
-                this.pinchSliders[2] = pinchSliderPrefabB.Owner.FindComponentInChildren<PinchSlider>();
-
-                string[] titles = { "Red", "Green", "Blue" };
-                for (int i = 0; i < 3; ++i)
+                PinchSlider p = pinchSliders[i];
+                Entity title = p.Owner.FindChild("Title", true);
+                if (title != null)
                 {
-                    PinchSlider p = pinchSliders[i];
-                    Entity title = p.Owner.FindChild("Title", true);
-                    if (title != null)
+                    Text3D text = title.FindComponent<Text3D>();
+                    if (text != null)
                     {
-                        Text3D text = title.FindComponent<Text3D>();
-                        if (text != null)
-                        {
-                            text.Text = titles[i];
-                        }
+                        text.Text = titles[i];
                     }
-
-                    p.InitialValue = materialDecorator.Parameters_Color[i];
-                    p.SliderValue = materialDecorator.Parameters_Color[i];
-                    p.ValueUpdated += this.P_ValueUpdated;
                 }
+
+                p.InitialValue = materialDecorator.Parameters_Color[i];
+                p.SliderValue = materialDecorator.Parameters_Color[i];
+                p.ValueUpdated += this.P_ValueUpdated;
             }
         }
 
