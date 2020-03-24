@@ -10,7 +10,6 @@ MaterialInfo:
   ActiveDirectives:
     - BORDER_LIGHT
     - FINGERS_DIST
-    - MULTIVIEW
   EffectID: 4f7e4c24-e83c-4350-9cd4-511fb2199cf4
   Layer: e35c59a9-26ab-4b4c-8210-4b1f21c31530
   Parameters:
