@@ -22,6 +22,9 @@ namespace WaveEngine_MRTK_Demo.Behaviors
         private Transform3D transform;
 
         private float time = 0;
+        private string[] directivesAnimating = { "PULSE" };
+        private string[] directivesNotAnimating = { "BASE" };
+        private bool isAnimating = true;
 
         protected override void Start()
         {
@@ -31,7 +34,7 @@ namespace WaveEngine_MRTK_Demo.Behaviors
                 materialComponent.Material = materialComponent.Material.Clone();
                 this.material = materialComponent.Material;
                 this.holoHandsDecorator = new HoloHandsLocal(this.material);
-                this.material.ActiveDirectivesNames = new string[] { "PULSE" };
+                this.material.ActiveDirectivesNames = directivesAnimating;
 
                 this.camera = this.Managers.RenderManager.ActiveCamera3D;
 
@@ -61,8 +64,18 @@ namespace WaveEngine_MRTK_Demo.Behaviors
                 {
                     this.time = MathHelper.Clamp(this.time + (float)gameTime.TotalSeconds * 0.3f, 0, 1);
                 }
+            }
 
+            if (this.isAnimating)
+            {
                 this.holoHandsDecorator.Matrices_T = 1 - this.time;
+            }
+
+            bool isAnimating = this.time != 0 && this.time != 1;
+            if (isAnimating != this.isAnimating)
+            {
+                this.material.ActiveDirectivesNames = isAnimating ? directivesAnimating : directivesNotAnimating;
+                this.isAnimating = isAnimating;
             }
         }
     }

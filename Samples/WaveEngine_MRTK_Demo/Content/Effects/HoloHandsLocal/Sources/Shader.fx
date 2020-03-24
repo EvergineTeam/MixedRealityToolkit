@@ -193,8 +193,8 @@
 		float alpha = Alpha;
 #if PULSE
 		alpha = saturate(alpha - input.extra);
-		color *= alpha;
 #endif
+		color *= alpha;
 		
 		return float4(color, alpha);
 	}
