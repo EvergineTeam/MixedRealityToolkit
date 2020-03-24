@@ -11,6 +11,8 @@ namespace WaveEngine_MRTK_Demo.Behaviors
 {
     public class HoloHandsUpdater : Behavior
     {
+        
+
         public XRHandedness Handedness { get; set; }
 
         private HoloHandsLocal holoHandsDecorator;
@@ -53,14 +55,14 @@ namespace WaveEngine_MRTK_Demo.Behaviors
             {
                 if (this.trackXRJoint.TrackedDevice == null || !this.trackXRJoint.TrackedDevice.IsConnected || !this.trackXRJoint.TrackedDevice.PoseIsValid)
                 {
-                    this.time = MathHelper.Clamp(this.time - (float)gameTime.TotalSeconds, 0, 1);
+                    this.time = MathHelper.Clamp(this.time - (float)gameTime.TotalSeconds * 0.3f, 0, 1);
                 }
                 else
                 {
-                    this.time = MathHelper.Clamp(this.time + (float)gameTime.TotalSeconds, 0, 1);
+                    this.time = MathHelper.Clamp(this.time + (float)gameTime.TotalSeconds * 0.3f, 0, 1);
                 }
 
-                this.holoHandsDecorator.Matrices_T = 1 - this.time * 0.8f;
+                this.holoHandsDecorator.Matrices_T = 1 - this.time;
             }
         }
     }
