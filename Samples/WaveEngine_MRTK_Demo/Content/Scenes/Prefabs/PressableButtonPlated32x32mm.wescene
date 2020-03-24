@@ -71,30 +71,6 @@ Items:
         ReleasedSound: 7f835fa0-da0a-4152-b6ee-157943781e61
     Children:
       - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
-        Name: rotatePivot
-        Tag: null
-        IsEnabled: true
-        IsStatic: false
-        Components:
-          - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
-            Id: 7d0f9f7d-7c42-4184-b620-fb199acfffe2
-            IsEnabled: true
-            LocalOrientation:
-              W: 0.707106829
-              X: -0.707106709
-              Y: 0.0
-              Z: 0.0
-            LocalPosition:
-              X: 0.0
-              Y: 0.0
-              Z: -5.96046448E-07
-            LocalScale:
-              X: 1.0
-              Y: 1.0
-              Z: 1.0
-        Children: []
-        Id: c6437664-9603-40a8-bb5e-d907170bcb02
-      - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
         Name: BackPlate
         Tag: null
         IsEnabled: true
