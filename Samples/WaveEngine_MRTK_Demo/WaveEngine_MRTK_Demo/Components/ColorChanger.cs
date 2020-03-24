@@ -28,14 +28,21 @@ namespace WaveEngine_MRTK_Demo.Components
                 materials = new Material[]{material0, material1, material2};
                 materialComponent.Material = material0;
 
-                Entity buttonsParent = this.Owner.Parent.Find("PressableButtons");
-                foreach (PressableButton b in buttonsParent.FindComponentsInChildren<PressableButton>())
+                string[] nodesWithButtons = { "PressableButtons", "PressableButtonsSharedPlate", "PressableButtonsSharedPlate40x40mm" };
+                foreach (string nodeName in nodesWithButtons)
                 {
-                    b.ButtonPressed += OnButtonPressed;
+                    Entity buttonsParent = this.Owner.Parent.Find(nodeName);
+                    foreach (PressableButton b in buttonsParent.FindComponentsInChildren<PressableButton>())
+                    {
+                        b.ButtonPressed += OnButtonPressed;
 
-                    //Update text based on scale
-                    Text3D text3d = b.Owner.FindComponentInChildren<Text3D>();
-                    text3d.Text = string.Format("{0}x{0}mm", 32.0f * b.Owner.FindComponent<Transform3D>().Scale.X);
+                        //Update text based on scale
+                        Text3D text3d = b.Owner.FindComponentInChildren<Text3D>();
+                        if (text3d != null)
+                        {
+                            text3d.Text = string.Format("{0}x{0}mm", 32.0f * b.Owner.FindComponent<Transform3D>().Scale.X);
+                        }
+                    }
                 }
             }
         }

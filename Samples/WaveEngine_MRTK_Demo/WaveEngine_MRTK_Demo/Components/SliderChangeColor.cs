@@ -26,6 +26,8 @@ namespace WaveEngine_MRTK_Demo.Components
 
         protected override void Start()
         {
+            if (Application.Current.IsEditor) return;
+
             materialDecorator = new HoloGraphic(materialComponent.Material);
 
             this.pinchSliders[0] = pinchSliderPrefabR.Owner.FindComponentInChildren<PinchSlider>();
@@ -54,6 +56,8 @@ namespace WaveEngine_MRTK_Demo.Components
 
         protected override void OnDestroy()
         {
+            if (Application.Current.IsEditor) return;
+
             for (int i = 0; i < 3; ++i)
             {
                 this.pinchSliders[i].ValueUpdated -= this.P_ValueUpdated;

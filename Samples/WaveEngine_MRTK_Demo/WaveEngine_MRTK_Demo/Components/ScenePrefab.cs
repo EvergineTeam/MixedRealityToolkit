@@ -24,14 +24,16 @@ namespace WaveEngine_MRTK_Demo.Components
         {
             PressableRoundButton,
             Slider,
-            PressableButtonPlated32x32mm
+            PressableButtonPlated32x32mm,
+            PressableButtonUnplated
         }
 
         public static System.Guid[] TypeToId =
         {
             WaveContent.Scenes.Prefabs.PressableRoundButton_wescene,
             WaveContent.Scenes.Prefabs.slider_wescene,
-            WaveContent.Scenes.Prefabs.PressableButtonPlated32x32mm_wescene
+            WaveContent.Scenes.Prefabs.PressableButtonPlated32x32mm_wescene,
+            WaveContent.Scenes.Prefabs.PressableButtonHoloLens2Unplated_wescene
         };
 
 
