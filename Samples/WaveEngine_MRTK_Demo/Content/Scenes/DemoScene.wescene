@@ -34,7 +34,7 @@ Items:
       - !WaveEngine.Framework.Graphics.Camera3D,WaveEngine.Framework
         Id: e6234645-a09c-405e-b7cc-e8970277f72c
         Aperture: 1.0
-        AspectRatio: 1.3108108
+        AspectRatio: 1.46460176
         BackgroundColor:
           A: 0
           B: 0
@@ -60,10 +60,10 @@ Items:
         LayerMaskDefaultValue: true
         NearPlane: 0.100000001
         ScreenViewport:
-          Height: 222.0
+          Height: 226.0
           MaxDepth: 1.0
           MinDepth: 0.0
-          Width: 291.0
+          Width: 331.0
           X: 0.0
           Y: 0.0
         Sensitivity: 100.0
@@ -2312,9 +2312,10 @@ Items:
               - !WaveEngine_MRTK_Demo.Components.ColorChanger,WaveEngine_MRTK_Demo
                 Id: 2d09d108-4268-4305-a4fc-9d5e0452cc2f
                 IsEnabled: true
-                material0: b5810cca-0555-4aab-86b8-b591766234a5
-                material1: 0867071b-476d-41cc-b072-9dd796ce98a2
-                material2: 3521d95f-b8ce-40cb-b4d0-c268f64496bd
+                material0: 3521d95f-b8ce-40cb-b4d0-c268f64496bd
+                material1: b5810cca-0555-4aab-86b8-b591766234a5
+                material2: c46cf687-2999-4576-a5a1-f1b6863e6d3f
+                material3: e15b70dc-4787-4517-a720-914d405afa85
             Children:
               - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
                 Name: text
