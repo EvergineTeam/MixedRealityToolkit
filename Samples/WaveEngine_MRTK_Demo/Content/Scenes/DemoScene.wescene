@@ -2449,6 +2449,9 @@ Items:
                         FrustumCullingEnabled: true
                         IsEnabled: true
                         OrderBias: 0
+                      - !WaveEngine_MRTK_Demo.Components.BatcherDisabler,WaveEngine_MRTK_Demo
+                        Id: 269694f9-edd1-4cf3-9852-40ca26819985
+                        IsEnabled: true
                     Children: []
                     Id: 85c4e697-d871-4581-90d5-05aef0da7e22
                 Id: d96cf240-ab6f-461e-9104-b2f5478c4aab
@@ -2666,6 +2669,9 @@ Items:
                         FrustumCullingEnabled: true
                         IsEnabled: true
                         OrderBias: 0
+                      - !WaveEngine_MRTK_Demo.Components.BatcherDisabler,WaveEngine_MRTK_Demo
+                        Id: 534b52d5-e366-4e66-8205-4f5e1b759b97
+                        IsEnabled: true
                     Children: []
                     Id: b433a8e0-eb5f-4c8b-b49f-6685356fac9c
                 Id: 2695742b-5a94-4382-9416-c4e035027f52
