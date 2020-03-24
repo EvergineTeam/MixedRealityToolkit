@@ -13,9 +13,8 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
         /// Notify when the button is pressed and need to apply a feedback.
         /// </summary>
         /// <param name="pushVector">The push direction.</param>
-        /// <param name="colliderTransform">The collider transform.</param>
         /// <param name="pressRatio">The press ratio.</param>
         /// <param name="pressed">If the button is pressed.</param>
-        void Feedback(Vector3 pushVector, Matrix4x4 colliderTransform, float pressRatio, bool pressed);
+        void Feedback(Vector3 pushVector, float pressRatio, bool pressed);
     }
 }

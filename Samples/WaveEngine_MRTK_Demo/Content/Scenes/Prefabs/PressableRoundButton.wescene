@@ -203,7 +203,7 @@ Items:
                   - !WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButtonVisualFeedbackComponent,WaveEngine.MRTK
                     Id: 0028b0ec-c90c-4419-94a5-c0eab8b379f0
                     ChangeColor: true
-                    Compressable: true
+                    Compressable: false
                     IsEnabled: true
                     PressedColor:
                       A: 255
