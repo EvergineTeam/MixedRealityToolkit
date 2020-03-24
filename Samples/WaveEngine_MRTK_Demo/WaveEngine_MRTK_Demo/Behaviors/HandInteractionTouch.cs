@@ -16,17 +16,16 @@ namespace WaveEngine_MRTK_Demo.Behaviors
 {
     public class HandInteractionTouch : Behavior, IMixedRealityTouchHandler
     {
-        protected SoundEmitter3D soundEmitter;
-
         [BindComponent(isRequired: true, source: BindComponentSource.Owner)]
         protected MaterialComponent materialComponent;
 
         public AudioBuffer sound { get; set; }
 
-        HoloGraphic materialDecorator;
-        bool animating = false;
-        float animation_time;
-        Vector3 cachedColor;
+        private SoundEmitter3D soundEmitter;
+        private HoloGraphic materialDecorator;
+        private bool animating = false;
+        private float animation_time;
+        private Vector3 cachedColor;
 
         protected override bool OnAttached()
         {

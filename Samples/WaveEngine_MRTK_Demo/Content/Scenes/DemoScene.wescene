@@ -3136,6 +3136,7 @@ Items:
                     Id: 17dc54a4-085c-4bac-963e-de06ca72e0d8
                     IsEnabled: true
                     UpdateOrder: 0.5
+                    sound: e911e7a0-7098-47f6-86c1-27a461c1eb24
                     speed: 3.0
                   - !WaveEngine.Framework.Physics3D.BoxCollider3D,WaveEngine.Framework
                     Id: fc065347-b4dd-418d-888c-87eb94984fd2
@@ -3357,6 +3358,7 @@ Items:
                     Id: aaa7edf3-8533-4a08-a0db-4d902ac172db
                     IsEnabled: true
                     UpdateOrder: 0.5
+                    sound: e911e7a0-7098-47f6-86c1-27a461c1eb24
                     speed: 3.0
                   - !WaveEngine_MRTK_Demo.Behaviors.CursorPosShaderUpdater,WaveEngine_MRTK_Demo
                     Id: 3dbf656d-9055-4cf5-bb7b-42a143ddf395
@@ -3553,6 +3555,7 @@ Items:
                     Id: c1dfeb40-0449-40b2-b794-f85ee90ae2f2
                     IsEnabled: true
                     UpdateOrder: 0.5
+                    sound: e911e7a0-7098-47f6-86c1-27a461c1eb24
                     speed: 3.0
                 Children:
                   - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework

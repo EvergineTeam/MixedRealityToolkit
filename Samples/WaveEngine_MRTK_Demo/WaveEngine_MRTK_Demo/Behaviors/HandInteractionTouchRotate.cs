@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using WaveEngine.Common.Audio;
+using WaveEngine.Common.Media;
+using WaveEngine.Components.Sound;
 using WaveEngine.Framework;
 using WaveEngine.Framework.Graphics;
 using WaveEngine.Mathematics;
@@ -16,7 +19,10 @@ namespace WaveEngine_MRTK_Demo.Behaviors
 
         public float speed = 3.0f;
 
-        bool rotate;
+        public AudioBuffer sound { get; set; }
+
+        private bool rotate;
+        private SoundEmitter3D soundEmitter;
 
         public void OnTouchCompleted(HandTrackingInputEventData eventData)
         {
@@ -25,6 +31,18 @@ namespace WaveEngine_MRTK_Demo.Behaviors
 
         public void OnTouchStarted(HandTrackingInputEventData eventData)
         {
+            if (this.soundEmitter != null)
+            {
+                if (this.soundEmitter.PlayState == PlayState.Playing)
+                {
+                    this.soundEmitter.Stop();
+                }
+
+                this.soundEmitter.Audio = sound;
+
+                this.soundEmitter.Play();
+            }
+
             rotate = true;
         }
 
@@ -34,15 +52,19 @@ namespace WaveEngine_MRTK_Demo.Behaviors
 
         protected override bool OnAttached()
         {
+            if (!Application.Current.IsEditor)
+            {
+                soundEmitter = Owner.GetOrAddComponent<SoundEmitter3D>();
+            }
+
             return base.OnAttached();
         }
-
 
         protected override void Update(TimeSpan gameTime)
         {
             if (rotate)
             {
-                target.Orientation *= Quaternion.CreateFromAxisAngle(Vector3.Up, speed * (float)gameTime.TotalSeconds);
+                target.Orientation *= Quaternion.CreateFromAxisAngle(Vector3.Down, speed * (float)gameTime.TotalSeconds);
             }
         }
     }
