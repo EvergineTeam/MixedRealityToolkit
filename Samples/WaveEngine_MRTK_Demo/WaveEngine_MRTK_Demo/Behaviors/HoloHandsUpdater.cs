@@ -74,7 +74,7 @@ namespace WaveEngine_MRTK_Demo.Behaviors
             bool isAnimating = this.time != 0 && this.time != 1;
             if (isAnimating != this.isAnimating)
             {
-                this.material.ActiveDirectivesNames = isAnimating ? directivesAnimating : directivesNotAnimating;
+                //this.material.ActiveDirectivesNames = isAnimating ? directivesAnimating : directivesNotAnimating;
                 this.isAnimating = isAnimating;
             }
         }
