@@ -4,3 +4,7 @@
 
 Sliders are UI components that allow you to continuously change a value by moving a slider on a track. The Pinch Slider can be moved by directly grabbing the slider.
 
+
+## How to use sliders
+
+Create a new Entity and add the Component ScenePrefab. Select any of the available options in the dropdown list and reload the scene. 

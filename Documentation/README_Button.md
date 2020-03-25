@@ -4,7 +4,7 @@
 
 A button gives the user a way to trigger an immediate action. It is one of the most foundational components in mixed reality. MRTK provides various types of button prefabs.
 
-## Button prefabs in MRTK
+## Button prefabs in WaveEngine.MRTK
 
 Examples of the button prefabs under ``Scenes/Prefabs`` folder
 
@@ -16,11 +16,12 @@ Examples of the button prefabs under ``Scenes/Prefabs`` folder
 
 ## How to use pressable buttons
 
-### Collider based buttons
+####Using ScenePrefab
 
-Create a new Entity and add the Component ScenePrefab. Select any of the available options in the dropdown list and reload the scene. 
+Create a new Entity and add the Component ScenePrefab. Select any of the next options in the dropdown list and reload the scene:
+- PressableRoundButton
+- PressableButtonPlated32x32
+- PressableButtonUnplated
 
-These button prefabs are already configured to have audio-visual feedback. 
-
-The Entity can be scaled to get different button sizes. 
+These button prefabs are already configured to have audio-visual feedback. The Entity can be scaled to get different button sizes. The size of the prefabs is 32x32mm.
 
