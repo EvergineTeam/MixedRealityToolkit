@@ -39,7 +39,7 @@ namespace WaveEngine_MRTK_Demo.Behaviors
                 this.camera = this.Managers.RenderManager.ActiveCamera3D;
 
                 CursorManager cursorManager = Owner.Scene.Managers.FindManager<CursorManager>();
-                foreach (Cursor c in cursorManager.cursors)
+                foreach (Cursor c in cursorManager.Cursors)
                 {
                     TrackXRJoint joint = c.Owner.FindComponent<TrackXRJoint>();
                     if (joint != null && joint.Handedness == this.Handedness)

@@ -5,6 +5,7 @@ using WaveEngine.Framework;
 using WaveEngine.Framework.Graphics;
 using WaveEngine.Framework.Managers;
 using WaveEngine.Framework.Physics3D;
+using WaveEngine.Mathematics;
 using WaveEngine.MRTK.Base.EventDatum.Input;
 using WaveEngine.MRTK.Base.Interfaces.InputSystem.Handlers;
 
@@ -12,25 +13,37 @@ namespace WaveEngine_MRTK_Demo.Emulation
 {
     public class CursorManager : UpdatableSceneManager
     {
-        public Cursor[] cursors;
+        private static readonly int VELOCITY_HISTORY_SIZE = 10;
+
+        public Cursor[] Cursors { get; private set; }
 
         private Dictionary<Entity, Entity> cursorCollisions = new Dictionary<Entity, Entity>();
         private Dictionary<Entity, Entity> interactedEntities = new Dictionary<Entity, Entity>();
+
+        private Dictionary<Entity, Vector3> cursorsLinearVelocity = new Dictionary<Entity, Vector3>();
+        private Dictionary<Entity, Quaternion> cursorsAngularVelocity = new Dictionary<Entity, Quaternion>();
+
+        private Dictionary<Cursor, LinkedList<Vector3>> cursorsPositionHistory = new Dictionary<Cursor, LinkedList<Vector3>>();
+        private Dictionary<Cursor, LinkedList<Quaternion>> cursorsOrientationHistory = new Dictionary<Cursor, LinkedList<Quaternion>>();
+        private LinkedList<float> gameTimeHistory = new LinkedList<float>();
 
         protected override void OnActivated()
         {
             base.OnActivated();
 
-            this.cursors = this.Managers.EntityManager
+            this.Cursors = this.Managers.EntityManager
                 .FindComponentsOfType<Cursor>()
                 .ToArray()
                ;
 
-            foreach (var cursor in this.cursors)
+            foreach (var cursor in this.Cursors)
             {
                 cursor.StaticBody3D.BeginCollision += this.Cursor_BeginCollision;
                 cursor.StaticBody3D.UpdateCollision += this.Cursor_UpdateCollision;
                 cursor.StaticBody3D.EndCollision += this.Cursor_EndCollision;
+
+                this.cursorsPositionHistory[cursor] = new LinkedList<Vector3>();
+                this.cursorsOrientationHistory[cursor] = new LinkedList<Quaternion>();
             }
         }
 
@@ -38,7 +51,7 @@ namespace WaveEngine_MRTK_Demo.Emulation
         {
             base.OnDeactivated();
 
-            foreach (var cursor in this.cursors)
+            foreach (var cursor in this.Cursors)
             {
                 cursor.StaticBody3D.BeginCollision -= this.Cursor_BeginCollision;
                 cursor.StaticBody3D.UpdateCollision -= this.Cursor_UpdateCollision;
@@ -79,6 +92,28 @@ namespace WaveEngine_MRTK_Demo.Emulation
 
         public override void Update(TimeSpan gameTime)
         {
+            // Update gameTime history
+            this.AddToHistoryList(this.gameTimeHistory, (float)gameTime.TotalSeconds);
+
+            // Compute history elapsed time
+            float historyElapsedTime = this.gameTimeHistory.Sum();
+
+            // Update cursors velocities
+            foreach (var cursor in this.Cursors)
+            {
+                var positionHistory = this.cursorsPositionHistory[cursor];
+                var orientationHistory = this.cursorsOrientationHistory[cursor];
+
+                this.AddToHistoryList(positionHistory, cursor.transform.Position);
+                this.AddToHistoryList(orientationHistory, cursor.transform.Orientation);
+
+                var linearVelocity = (positionHistory.Last.Value - positionHistory.First.Value) / historyElapsedTime;
+                var angularVelocity = (orientationHistory.Last.Value * Quaternion.Inverse(orientationHistory.First.Value)) * (1 / historyElapsedTime);
+
+                this.cursorsLinearVelocity[cursor.Owner] = linearVelocity;
+                this.cursorsAngularVelocity[cursor.Owner] = angularVelocity;
+            }
+
             foreach (KeyValuePair<Entity, Entity> entry in this.cursorCollisions)
             {
                 var cursorEntity = entry.Key;
@@ -155,7 +190,9 @@ namespace WaveEngine_MRTK_Demo.Emulation
             {
                 Cursor = cursor,
                 Position = transform.Position,
-                Orientation = transform.Orientation
+                Orientation = transform.Orientation,
+                LinearVelocity = this.cursorsLinearVelocity[cursor],
+                AngularVelocity = this.cursorsAngularVelocity[cursor],
             };
 
             var interactables = this.GatherComponents(other)
@@ -181,6 +218,16 @@ namespace WaveEngine_MRTK_Demo.Emulation
             }
 
             return result;
+        }
+
+        private void AddToHistoryList<T>(LinkedList<T> list, T newItem)
+        {
+            list.AddLast(newItem);
+
+            if (list.Count > VELOCITY_HISTORY_SIZE)
+            {
+                list.RemoveFirst();
+            }
         }
     }
 }
