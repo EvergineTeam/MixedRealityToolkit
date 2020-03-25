@@ -5,11 +5,11 @@
     <Description>Provides and set of components that help developing Mixed Reality applications using Wave Engine.</Description>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="WaveEngine.Bullet" Version="3.0.0.4703-nightly" />
-    <PackageReference Include="WaveEngine.Common" Version="3.0.0.4703-nightly" />
-    <PackageReference Include="WaveEngine.Components" Version="3.0.0.4703-nightly" />
-    <PackageReference Include="WaveEngine.Framework" Version="3.0.0.4703-nightly" />
-    <PackageReference Include="WaveEngine.Mathematics" Version="3.0.0.4703-nightly" />
-    <PackageReference Include="WaveEngine.Platform" Version="3.0.0.4703-nightly" />
+    <PackageReference Include="WaveEngine.Bullet" Version="3.0.0.4710-nightly" />
+    <PackageReference Include="WaveEngine.Common" Version="3.0.0.4710-nightly" />
+    <PackageReference Include="WaveEngine.Components" Version="3.0.0.4710-nightly" />
+    <PackageReference Include="WaveEngine.Framework" Version="3.0.0.4710-nightly" />
+    <PackageReference Include="WaveEngine.Mathematics" Version="3.0.0.4710-nightly" />
+    <PackageReference Include="WaveEngine.Platform" Version="3.0.0.4710-nightly" />
   </ItemGroup>
 </Project>
