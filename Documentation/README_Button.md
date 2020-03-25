@@ -16,7 +16,7 @@ Examples of the button prefabs under ``Scenes/Prefabs`` folder
 
 ## How to use pressable buttons
 
-####Using ScenePrefab
+**Using ScenePrefab**
 
 Create a new Entity and add the Component ScenePrefab. Select any of the next options in the dropdown list and reload the scene:
 - **PressableRoundButton**
@@ -25,7 +25,7 @@ Create a new Entity and add the Component ScenePrefab. Select any of the next op
 
 These button prefabs are already configured to have audio-visual feedback. The Entity can be scaled to get different button sizes. The size of the prefabs is 32x32mm.
 
-####Create a button from scratch
+**Create a button from scratch**
 
 You need to create two entities: the **button** and the **visual feedback**
  - The **button** manages the collisions and fires the events. This is usually the base of the button and a collider defining the area of interaction
@@ -41,7 +41,7 @@ You need to create two entities: the **button** and the **visual feedback**
       - Compress the mesh, scaling its transform
 
 
-####Button events
+**Button events**
 
 The pressable button class has the next events
 - **ButtonPressed**: fired when the button is pressed.
@@ -49,7 +49,7 @@ The pressable button class has the next events
 
 You can find examples of how to use this events in the class ColorChanger.cs
 
-####Adding sounds
+**Adding sounds**
 
 You can add the component **PressableButtonSoundFeedbackComponent** to any entity using a PressableButton to add sounds when it's pressed or relaesed
 
