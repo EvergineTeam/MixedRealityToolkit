@@ -3848,8 +3848,8 @@ Items:
               - !WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation.SimpleManipulationHandler,WaveEngine.MRTK
                 Id: 341fb7a3-42b8-415e-b59c-269a455e2d59
                 IsEnabled: true
-                SmoothingActive: false
-                SmoothingAmount: 0.00100000005
+                SmoothingActive: true
+                SmoothingAmount: 9.99999975E-05
                 UpdateOrder: 0.600000024
               - !WaveEngine.Framework.Physics3D.BoxCollider3D,WaveEngine.Framework
                 Id: 645e0215-d473-44e2-b5fe-ec64a32781f2
@@ -3960,8 +3960,8 @@ Items:
               - !WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation.SimpleManipulationHandler,WaveEngine.MRTK
                 Id: 272f7dc4-b4a4-4b31-9f22-eee106510352
                 IsEnabled: true
-                SmoothingActive: false
-                SmoothingAmount: 0.00100000005
+                SmoothingActive: true
+                SmoothingAmount: 9.99999975E-05
                 UpdateOrder: 0.600000024
               - !WaveEngine.Framework.Physics3D.BoxCollider3D,WaveEngine.Framework
                 Id: d83154e5-cb30-4a5a-8eca-4bbd7884f342
@@ -4072,8 +4072,8 @@ Items:
               - !WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation.SimpleManipulationHandler,WaveEngine.MRTK
                 Id: 4369f2f3-ee5f-45f3-a370-155ab75f76da
                 IsEnabled: true
-                SmoothingActive: false
-                SmoothingAmount: 0.00100000005
+                SmoothingActive: true
+                SmoothingAmount: 9.99999975E-05
                 UpdateOrder: 0.600000024
               - !WaveEngine.Framework.Physics3D.BoxCollider3D,WaveEngine.Framework
                 Id: 98f8b430-498b-4887-92d5-0c8fc1a47a81
@@ -4215,8 +4215,8 @@ Items:
               - !WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation.SimpleManipulationHandler,WaveEngine.MRTK
                 Id: 043ea2b1-3e30-497d-916d-8aa46dc9f3cf
                 IsEnabled: true
-                SmoothingActive: false
-                SmoothingAmount: 0.00100000005
+                SmoothingActive: true
+                SmoothingAmount: 9.99999975E-05
                 UpdateOrder: 0.600000024
               - !WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation.TetheredPlacement,WaveEngine.MRTK
                 Id: 1e280922-9c57-4c2c-a528-0604505521a1
@@ -4407,8 +4407,8 @@ Items:
               - !WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation.SimpleManipulationHandler,WaveEngine.MRTK
                 Id: 93b93049-b1f1-4e95-826d-2545acf10fdf
                 IsEnabled: true
-                SmoothingActive: false
-                SmoothingAmount: 0.00100000005
+                SmoothingActive: true
+                SmoothingAmount: 9.99999975E-05
                 UpdateOrder: 0.600000024
               - !WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation.TetheredPlacement,WaveEngine.MRTK
                 Id: ec2e7c36-b62c-4bfa-90e9-04f8fe19f358
