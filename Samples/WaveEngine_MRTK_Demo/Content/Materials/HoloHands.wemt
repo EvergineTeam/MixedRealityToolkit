@@ -6,7 +6,7 @@ DefaultProfile:
   Platform: Undefined
 ExportAsRaw: false
 MaterialInfo:
-  Id: 4402fb55-bc93-4080-9d13-c54e322de8bf
+  Id: 9d532b01-5130-4bc9-b3e7-ad470af9a691
   ActiveDirectives:
     - PULSE
   EffectID: b7b6076f-e298-45cf-babc-a8316996f359
@@ -20,7 +20,7 @@ MaterialInfo:
       ValueByteArray: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
     - Name: Time
       Type: System.Single
-      ValueByteArray: JMgXQQ==
+      ValueByteArray: S+6qQg==
     - Name: EdgeColor
       Type: WaveEngine.Mathematics.Vector3,WaveEngine.Mathematics
       ValueByteArray: AACAPwAAgD8AAIA/
@@ -47,10 +47,10 @@ MaterialInfo:
       ValueByteArray: AACgQQ==
     - Name: t0
       Type: System.Single
-      ValueByteArray: mpkZPg==
+      ValueByteArray: uB6FPQ==
     - Name: t1
       Type: System.Single
-      ValueByteArray: mpmZvg==
+      ValueByteArray: w/Uovg==
     - Name: Alpha
       Type: System.Single
       ValueByteArray: MzMzPw==

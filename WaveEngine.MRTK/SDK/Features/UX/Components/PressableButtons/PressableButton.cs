@@ -1,6 +1,7 @@
 ﻿// Copyright © 2019 Wave Engine S.L. All rights reserved. Use is subject to license terms.
 
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using WaveEngine.Common.Attributes;
 using WaveEngine.Framework;
@@ -17,7 +18,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
         /// The button feedback.
         /// </summary>
         [BindComponent(isExactType: false, isRequired: false, source: BindComponentSource.Children)]
-        protected IPressableButtonFeedback movingVisualsFeedback;
+        protected List<IPressableButtonFeedback> feedbackVisualsComponents;
 
         /// <summary>
         /// Gets or sets the speed for retracting the moving button visuals on release.
@@ -39,12 +40,27 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
 
         private float currentPosition;
 
+        private IPressableButtonFeedback[] feedbackVisualsComponentsArray;
+
         /// <inheritdoc/>
         protected override void OnLoaded()
         {
             base.OnLoaded();
 
             this.currentPosition = this.StartPosition;
+        }
+
+        /// <inheritdoc/>
+        protected override bool OnAttached()
+        {
+            var attached = base.OnAttached();
+
+            if (attached)
+            {
+                this.feedbackVisualsComponentsArray = this.feedbackVisualsComponents?.ToArray();
+            }
+
+            return attached;
         }
 
         /// <inheritdoc/>
@@ -78,15 +94,20 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
                 // Update the internal pressed state and raise events
                 this.UpdatePressedState();
 
-                // Call feedback function for moving visuals
-                if (this.movingVisualsFeedback != null)
+                // Call feedback function for feedback visuals
+                if (this.feedbackVisualsComponentsArray != null && this.feedbackVisualsComponentsArray.Length > 0)
                 {
                     Vector3 pushVector = this.nearInteractionTouchable.LocalPressDirection * (this.currentPosition - 0.5f);
                     var colliderTransform = this.nearInteractionTouchable.BoxCollider3DTransform;
                     var pressRatio = (this.StartPosition - this.currentPosition) / (this.StartPosition - this.EndPosition);
 
-                    Vector3 pushVectorWorld = Vector3.TransformNormal(Vector3.TransformNormal(pushVector, colliderTransform), this.transform.WorldTransform);
-                    this.movingVisualsFeedback.Feedback(pushVectorWorld, colliderTransform, pressRatio, this.isPressing);
+                    Vector3 pushVectorCollider = Vector3.TransformNormal(pushVector, colliderTransform);
+                    Vector3 pushVectorWorld = Vector3.TransformNormal(pushVectorCollider, this.transform.WorldTransform);
+
+                    for (int i = 0; i < this.feedbackVisualsComponentsArray.Length; i++)
+                    {
+                        this.feedbackVisualsComponentsArray[i].Feedback(pushVectorWorld, pressRatio, this.isPressing);
+                    }
                 }
             }
         }

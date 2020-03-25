@@ -11,20 +11,19 @@ namespace WaveEngine_MRTK_Demo.Behaviors
 {
     public class HoloHandsUpdater : Behavior
     {
-        
-
         public XRHandedness Handedness { get; set; }
 
         private HoloHandsLocal holoHandsDecorator;
         private Camera3D camera;
         private Material material;
         private TrackXRJoint trackXRJoint;
-        private Transform3D transform;
 
         private float time = 0;
         private string[] directivesAnimating = { "PULSE" };
         private string[] directivesNotAnimating = { "BASE" };
         private bool isAnimating = true;
+        private MeshRenderer meshRenderer;
+        private MeshRenderer cursorMeshRenderer;
 
         protected override void Start()
         {
@@ -35,6 +34,7 @@ namespace WaveEngine_MRTK_Demo.Behaviors
                 this.material = materialComponent.Material;
                 this.holoHandsDecorator = new HoloHandsLocal(this.material);
                 this.material.ActiveDirectivesNames = directivesAnimating;
+                this.meshRenderer = this.Owner.FindComponent<MeshRenderer>();
 
                 this.camera = this.Managers.RenderManager.ActiveCamera3D;
 
@@ -45,7 +45,7 @@ namespace WaveEngine_MRTK_Demo.Behaviors
                     if (joint != null && joint.Handedness == this.Handedness)
                     {
                         this.trackXRJoint = joint;
-                        this.transform = c.Owner.FindComponent<Transform3D>();
+                        this.cursorMeshRenderer = c.Owner.FindComponent<MeshRenderer>();
                         break;
                     }
                 }
@@ -58,11 +58,11 @@ namespace WaveEngine_MRTK_Demo.Behaviors
             {
                 if (this.trackXRJoint.TrackedDevice == null || !this.trackXRJoint.TrackedDevice.IsConnected || !this.trackXRJoint.TrackedDevice.PoseIsValid)
                 {
-                    this.time = MathHelper.Clamp(this.time - (float)gameTime.TotalSeconds * 0.3f, 0, 1);
+                    this.time = MathHelper.Clamp(this.time - (float)gameTime.TotalSeconds * 0.6f, 0, 1);
                 }
                 else
                 {
-                    this.time = MathHelper.Clamp(this.time + (float)gameTime.TotalSeconds * 0.3f, 0, 1);
+                    this.time = MathHelper.Clamp(this.time + (float)gameTime.TotalSeconds * 0.6f, 0, 1);
                 }
             }
 
@@ -74,7 +74,9 @@ namespace WaveEngine_MRTK_Demo.Behaviors
             bool isAnimating = this.time != 0 && this.time != 1;
             if (isAnimating != this.isAnimating)
             {
-                //this.material.ActiveDirectivesNames = isAnimating ? directivesAnimating : directivesNotAnimating;
+                this.material.ActiveDirectivesNames = isAnimating ? directivesAnimating : directivesNotAnimating;
+                this.meshRenderer.IsEnabled = isAnimating || this.time == 1;
+                this.cursorMeshRenderer.IsEnabled = this.time != 0;
                 this.isAnimating = isAnimating;
             }
         }

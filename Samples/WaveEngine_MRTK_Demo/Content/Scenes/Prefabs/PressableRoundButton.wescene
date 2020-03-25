@@ -67,8 +67,8 @@ Items:
       - !WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButtonSoundFeedbackComponent,WaveEngine.MRTK
         Id: 0f00b79b-2d98-4434-9670-2802a158dbd6
         IsEnabled: true
-        PressedSound: 2f03824d-5709-4c4d-9857-c6a47769a5bc
-        ReleasedSound: 7f835fa0-da0a-4152-b6ee-157943781e61
+        PressedSound: a84df6b7-3a53-46f0-860b-8afa5f39df29
+        ReleasedSound: e4201bf8-b60e-483c-8f72-44c78e353fb3
     Children:
       - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
         Name: buttonContent
@@ -203,8 +203,10 @@ Items:
                   - !WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButtonVisualFeedbackComponent,WaveEngine.MRTK
                     Id: 0028b0ec-c90c-4419-94a5-c0eab8b379f0
                     ChangeColor: true
-                    Compressable: true
+                    Compressable: false
                     IsEnabled: true
+                    MinCompressRatio: 0.25
+                    MovementScale: 1.0
                     PressedColor:
                       A: 255
                       B: 0

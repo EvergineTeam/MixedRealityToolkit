@@ -6,7 +6,7 @@ DefaultProfile:
   Platform: Undefined
 ExportAsRaw: false
 MaterialInfo:
-  Id: 9f2e3a9c-731a-4cf4-91eb-93c6170c9b9d
+  Id: 44c35f13-b2e7-4908-911c-60161dae1dd8
   ActiveDirectives:
     - BORDER_LIGHT
     - FINGERS_DIST
@@ -15,7 +15,7 @@ MaterialInfo:
   Parameters:
     - Name: WorldViewProj
       Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
-      ValueByteArray: NlKYQAAAAAAAAAAAAAAAAAAAAACYMopADf9kvzD5ZL8AAAAAmjIKwAv/5L8u+eS/AAAAAHmCGjUf7ItAvRuPQA==
+      ValueByteArray: As+CQEi6xb3qLTs6Hyk7Op/IXLGRg7C9G/z/v431/78Vdae9Q3SawOE2Ej0jMxI9m2n3MNZhAjUe7ItAvBuPQA==
     - Name: World
       Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
       ValueByteArray: AAAAQAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAACAPw==
@@ -45,7 +45,7 @@ MaterialInfo:
       ValueByteArray: AAAAAAAAAAAAAAAA
     - Name: BorderLightColor
       Type: WaveEngine.Mathematics.Vector3,WaveEngine.Mathematics
-      ValueByteArray: AACAPwAAgD8AAIA/
+      ValueByteArray: AAAAPwAAAD8AAAA/
     - Name: BorderLightWidth
       Type: System.Single
       ValueByteArray: zczMPQ==

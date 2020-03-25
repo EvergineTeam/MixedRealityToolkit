@@ -110,8 +110,9 @@
         
 #if BORDER_LIGHT
         //Border light
-        float border = 1 - saturate((min(distanceToEdge.x, distanceToEdge.y)) / BorderLightWidth);
-        output.rgb += BorderLightColor * border;
+        float border = (1 - saturate((min(distanceToEdge.x, distanceToEdge.y)) / BorderLightWidth));
+        border = smoothstep(0.0, 0.2, border);
+        output.rgb = lerp(output.rgb, BorderLightColor * border, border);
         output.a += 1.0f * border;
 #endif
 
