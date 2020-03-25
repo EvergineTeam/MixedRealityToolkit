@@ -419,6 +419,8 @@ Items:
                         ChangeColor: false
                         Compressable: false
                         IsEnabled: true
+                        MinCompressRatio: 0.25
+                        MovementScale: 1.0
                         PressedColor:
                           A: 0
                           B: 0
@@ -557,6 +559,8 @@ Items:
                         ChangeColor: false
                         Compressable: false
                         IsEnabled: true
+                        MinCompressRatio: 0.25
+                        MovementScale: 1.0
                         PressedColor:
                           A: 0
                           B: 0
@@ -695,6 +699,8 @@ Items:
                         ChangeColor: false
                         Compressable: false
                         IsEnabled: true
+                        MinCompressRatio: 0.25
+                        MovementScale: 1.0
                         PressedColor:
                           A: 0
                           B: 0
@@ -833,6 +839,8 @@ Items:
                         ChangeColor: false
                         Compressable: false
                         IsEnabled: true
+                        MinCompressRatio: 0.25
+                        MovementScale: 1.0
                         PressedColor:
                           A: 0
                           B: 0
@@ -971,6 +979,8 @@ Items:
                         ChangeColor: false
                         Compressable: false
                         IsEnabled: true
+                        MinCompressRatio: 0.25
+                        MovementScale: 1.0
                         PressedColor:
                           A: 0
                           B: 0
@@ -1109,6 +1119,8 @@ Items:
                         ChangeColor: false
                         Compressable: false
                         IsEnabled: true
+                        MinCompressRatio: 0.25
+                        MovementScale: 1.0
                         PressedColor:
                           A: 0
                           B: 0
@@ -1247,6 +1259,8 @@ Items:
                         ChangeColor: false
                         Compressable: false
                         IsEnabled: true
+                        MinCompressRatio: 0.25
+                        MovementScale: 1.0
                         PressedColor:
                           A: 0
                           B: 0
@@ -1385,6 +1399,8 @@ Items:
                         ChangeColor: false
                         Compressable: false
                         IsEnabled: true
+                        MinCompressRatio: 0.25
+                        MovementScale: 1.0
                         PressedColor:
                           A: 0
                           B: 0
@@ -1523,6 +1539,8 @@ Items:
                         ChangeColor: false
                         Compressable: false
                         IsEnabled: true
+                        MinCompressRatio: 0.25
+                        MovementScale: 1.0
                         PressedColor:
                           A: 0
                           B: 0
@@ -1661,6 +1679,8 @@ Items:
                         ChangeColor: false
                         Compressable: false
                         IsEnabled: true
+                        MinCompressRatio: 0.25
+                        MovementScale: 1.0
                         PressedColor:
                           A: 0
                           B: 0
@@ -1799,6 +1819,8 @@ Items:
                         ChangeColor: false
                         Compressable: false
                         IsEnabled: true
+                        MinCompressRatio: 0.25
+                        MovementScale: 1.0
                         PressedColor:
                           A: 0
                           B: 0
@@ -1937,6 +1959,8 @@ Items:
                         ChangeColor: false
                         Compressable: false
                         IsEnabled: true
+                        MinCompressRatio: 0.25
+                        MovementScale: 1.0
                         PressedColor:
                           A: 0
                           B: 0
@@ -2393,7 +2417,7 @@ Items:
                     LocalPosition:
                       X: 0.0159000009
                       Y: 0.0
-                      Z: 0.00889999978
+                      Z: 0.0
                     LocalScale:
                       X: 1.0
                       Y: 1.0
@@ -2613,7 +2637,7 @@ Items:
                     LocalPosition:
                       X: 0.0320000015
                       Y: 0.0
-                      Z: 0.00889999978
+                      Z: 0.0
                     LocalScale:
                       X: 0.75
                       Y: 1.0

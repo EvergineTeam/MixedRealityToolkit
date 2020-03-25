@@ -71,30 +71,6 @@ Items:
         ReleasedSound: 7f835fa0-da0a-4152-b6ee-157943781e61
     Children:
       - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
-        Name: rotatePivot
-        Tag: null
-        IsEnabled: true
-        IsStatic: false
-        Components:
-          - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
-            Id: 7d0f9f7d-7c42-4184-b620-fb199acfffe2
-            IsEnabled: true
-            LocalOrientation:
-              W: 0.707106829
-              X: -0.707106709
-              Y: 0.0
-              Z: 0.0
-            LocalPosition:
-              X: 0.0
-              Y: 0.0
-              Z: -5.96046448E-07
-            LocalScale:
-              X: 1.0
-              Y: 1.0
-              Z: 1.0
-        Children: []
-        Id: c6437664-9603-40a8-bb5e-d907170bcb02
-      - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
         Name: BackPlate
         Tag: null
         IsEnabled: true
@@ -188,11 +164,28 @@ Items:
             LocalPosition:
               X: 0.0
               Y: 2.13162821E-13
-              Z: -0.00577457994
+              Z: -0.00800000038
             LocalScale:
               X: 1.0
               Y: 1.0
               Z: 1.0
+          - !WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButtonVisualFeedbackComponent,WaveEngine.MRTK
+            Id: 9e743e35-7aa1-4f72-a77d-b31ae5175757
+            ChangeColor: false
+            Compressable: false
+            IsEnabled: true
+            MinCompressRatio: 0.25
+            MovementScale: 0.5
+            PressedColor:
+              A: 0
+              B: 0
+              G: 0
+              R: 0
+            ReleasedColor:
+              A: 0
+              B: 0
+              G: 0
+              R: 0
         Children:
           - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
             Name: UIButtonSquareIcon
@@ -205,12 +198,12 @@ Items:
                 IsEnabled: true
                 LocalOrientation:
                   W: 1.94707184E-07
-                  X: -9.19421161E-09
-                  Y: -1.0
-                  Z: 6.85391853E-07
+                  X: 9.19433418E-09
+                  Y: 1.0
+                  Z: -6.85391683E-07
                 LocalPosition:
                   X: 0.0
-                  Y: 0.00150000001
+                  Y: 0.0
                   Z: -2.68533178E-08
                 LocalScale:
                   X: 0.0149999997
@@ -263,7 +256,7 @@ Items:
                   Z: -1.94707141E-07
                 LocalPosition:
                   X: 0.0
-                  Y: 0.00218592957
+                  Y: 0.0
                   Z: -0.00999987032
                 LocalScale:
                   X: 0.0320000015
@@ -284,13 +277,13 @@ Items:
             Id: ba8b2d64-89d0-40f8-bbd2-86eefe4deea5
         Id: 00bbb74d-e74c-4115-9560-28ee316bcdac
       - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
-        Name: cube
+        Name: CompressableButtonVisuals
         Tag: null
         IsEnabled: true
         IsStatic: false
         Components:
           - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
-            Id: 10a4a2b4-f5eb-42b4-815f-af13ee0ab6d7
+            Id: c6f04b5b-7640-4a5a-b326-0a340bd43c2b
             IsEnabled: true
             LocalOrientation:
               W: 1.0
@@ -300,39 +293,18 @@ Items:
             LocalPosition:
               X: 0.0
               Y: 0.0
-              Z: -0.00800000038
+              Z: 0.0
             LocalScale:
-              X: 0.0320000015
-              Y: 0.0320000015
-              Z: 0.0160000008
-          - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
-            Id: c26415f6-dfc4-41f4-b470-083aa673632c
-            AsignedTo: Default
-            IsEnabled: true
-            Material: 75122a47-663c-4625-8118-ff2e2a2bcaeb
-          - !WaveEngine.Components.Graphics3D.CubeMesh,WaveEngine.Components
-            Id: aea5078a-934b-4461-931c-0f4cd4987e6b
-            InitialU: 0.0
-            InitialV: 0.0
-            IsEnabled: true
-            Model: 00000000-0000-0000-0000-000000000000
-            ModelMeshName: cube_primitive
-            Size: 1.0
-            UTile: 1.0
-            UVHorizontalFlip: false
-            UVVerticalFlip: false
-            YTile: 1.0
-          - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
-            Id: 742aa151-4b53-4797-97a8-8dd1821e9094
-            DebugBoundingbox: true
-            FrustumCullingEnabled: true
-            IsEnabled: true
-            OrderBias: 0
+              X: 1.0
+              Y: 1.0
+              Z: 1.0
           - !WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButtonVisualFeedbackComponent,WaveEngine.MRTK
-            Id: ed2169b5-d05d-4c7e-b967-efd8e5e22a7e
+            Id: 4adec8bf-3111-4936-9ab0-b2b997bc24b8
             ChangeColor: false
             Compressable: true
             IsEnabled: true
+            MinCompressRatio: 0.25
+            MovementScale: 1.0
             PressedColor:
               A: 0
               B: 0
@@ -343,7 +315,54 @@ Items:
               B: 0
               G: 0
               R: 0
-        Children: []
-        Id: df845455-77c1-4045-8d40-9324f7654c6c
+        Children:
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: cube
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: 10a4a2b4-f5eb-42b4-815f-af13ee0ab6d7
+                IsEnabled: true
+                LocalOrientation:
+                  W: 1.0
+                  X: 0.0
+                  Y: 0.0
+                  Z: 0.0
+                LocalPosition:
+                  X: 0.0
+                  Y: 0.0
+                  Z: -0.00800000038
+                LocalScale:
+                  X: 0.0320000015
+                  Y: 0.0320000015
+                  Z: 0.0160000008
+              - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+                Id: c26415f6-dfc4-41f4-b470-083aa673632c
+                AsignedTo: Default
+                IsEnabled: true
+                Material: 75122a47-663c-4625-8118-ff2e2a2bcaeb
+              - !WaveEngine.Components.Graphics3D.CubeMesh,WaveEngine.Components
+                Id: aea5078a-934b-4461-931c-0f4cd4987e6b
+                InitialU: 0.0
+                InitialV: 0.0
+                IsEnabled: true
+                Model: 00000000-0000-0000-0000-000000000000
+                ModelMeshName: cube_primitive
+                Size: 1.0
+                UTile: 1.0
+                UVHorizontalFlip: false
+                UVVerticalFlip: false
+                YTile: 1.0
+              - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+                Id: 742aa151-4b53-4797-97a8-8dd1821e9094
+                DebugBoundingbox: true
+                FrustumCullingEnabled: true
+                IsEnabled: true
+                OrderBias: 0
+            Children: []
+            Id: df845455-77c1-4045-8d40-9324f7654c6c
+        Id: bf5809d4-0569-4eac-a934-17ddd341a9c5
     Id: 114ed9c5-f183-44bc-bb2f-2c3c560f19d6
 Managers: []

@@ -6,7 +6,7 @@ DefaultProfile:
   ExcludeAsset: false
   Name: null
   Platform: Undefined
-  SampleRateMode: Low
+  SampleRateMode: High
 ExportAsRaw: false
 Profiles: {}
 Source:

@@ -1,5 +1,6 @@
 ﻿// Copyright © 2019 Wave Engine S.L. All rights reserved. Use is subject to license terms.
 
+using System;
 using WaveEngine.Common.Attributes;
 using WaveEngine.Common.Graphics;
 using WaveEngine.Components.Graphics3D;
@@ -46,6 +47,18 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
         public bool Compressable { get; set; } = false;
 
         /// <summary>
+        /// Gets or sets a value indicating the minimum ratio of the original scale the visual feedback entity can be compressed to.
+        /// </summary>
+        [RenderPropertyAsFInput(Tooltip = "The minimum ratio of the original scale the visual feedback entity can be compressed to.", MinLimit = 0.0f, MaxLimit = 1.0f)]
+        public float MinCompressRatio { get; set; } = 0.25f;
+
+        /// <summary>
+        /// Gets or sets a value indicating the scale to apply to the movement of the entity.
+        /// </summary>
+        [RenderPropertyAsFInput(Tooltip = "The scale to apply to the movement of the entity.", MinLimit = 0.0f, MaxLimit = 1.0f)]
+        public float MovementScale { get; set; } = 1f;
+
+        /// <summary>
         /// Gets or sets a value indicating whether the button visuals color will be modified when pressed.
         /// </summary>
         [RenderProperty(Tooltip = "Set whether the button visuals color will be modified when pressed")]
@@ -63,7 +76,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
 
             if (attached)
             {
-                if (this.materialComponent != null && this.material != null)
+                if (this.materialComponent?.Material != null)
                 {
                     this.material = new StandardMaterial(this.materialComponent.Material);
                 }
@@ -84,25 +97,25 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
         }
 
         /// <inheritdoc/>
-        void IPressableButtonFeedback.Feedback(Vector3 pushVector, Matrix4x4 colliderTransform, float pressRatio, bool pressed)
+        void IPressableButtonFeedback.Feedback(Vector3 pushVector, float pressRatio, bool pressed)
         {
-            // Transform the push vector into the collider's parent's space
-            Vector3 pushVectorLocal = Vector3.TransformNormal(pushVector, this.transform.WorldToLocalTransform);
+            if (this.Compressable)
+            {
+                // Compress the button visuals by the push amount.
+                float press = Math.Max(this.MinCompressRatio, 1.0f - pressRatio);
 
-            ////if (this.Compressable)
-            ////{
-            ////    // Move visuals half the travel distance to accomodate for the scale change
-            ////    this.transform.LocalPosition = this.movingVisualsInitialLocalPosition + (pushVectorLocal / 2);
+                Vector3 scale = this.transform.LocalScale;
+                scale.Z = this.movingVisualsInitialLocalScale.Z * press;
+                this.transform.LocalScale = scale;
+            }
+            else
+            {
+                // Transform the push vector into the collider's parent's space
+                Vector3 pushVectorLocal = Vector3.TransformNormal(pushVector, this.transform.WorldToLocalTransform);
 
-            ////    // Apply scale in press direction
-            ////    var transformedOffset = Vector3.Transform(pushVector, this.transform.Orientation);
-            ////    this.transform.LocalScale = this.movingVisualsInitialLocalScale * (Vector3.One - Vector3.Abs(transformedOffset));
-            ////}
-            ////else
-            ////{
-            // Move visuals
-            this.transform.LocalPosition = this.movingVisualsInitialLocalPosition + pushVectorLocal;
-            ////}
+                // Move visuals
+                this.transform.LocalPosition = this.movingVisualsInitialLocalPosition + (pushVectorLocal * this.MovementScale);
+            }
 
             if (this.ChangeColor)
             {
