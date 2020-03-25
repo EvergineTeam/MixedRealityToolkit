@@ -4894,4 +4894,156 @@ Items:
         IsEnabled: true
     Children: []
     Id: 6a044e04-ad4e-47f6-8cc6-9af02f9b3c33
+  - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+    Name: slider
+    Tag: null
+    IsEnabled: true
+    IsStatic: false
+    Components:
+      - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+        Id: 6050e6da-0b54-4b41-a05a-a0ec9d105c7f
+        IsEnabled: true
+        LocalOrientation:
+          W: 1.0
+          X: 0.0
+          Y: 0.0
+          Z: 0.0
+        LocalPosition:
+          X: 0.209255114
+          Y: 3.62561252E-08
+          Z: -0.863975286
+        LocalScale:
+          X: 1.0
+          Y: 1.0
+          Z: 1.0
+      - !WaveEngine.MRTK.SDK.Features.UX.Components.Sliders.PinchSlider,WaveEngine.MRTK
+        Id: bcab291f-3bb5-4ee9-b629-5c4a193bd91d
+        InitialValue: 0.5
+        IsEnabled: true
+        SliderEndDistance: 0.100000001
+        SliderStartDistance: -0.100000001
+    Children:
+      - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+        Name: cylinder
+        Tag: null
+        IsEnabled: true
+        IsStatic: false
+        Components:
+          - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+            Id: c39601ae-7a7e-4694-b54a-e7ae4c90b03d
+            IsEnabled: true
+            LocalOrientation:
+              W: 1.0
+              X: 0.0
+              Y: 0.0
+              Z: 0.0
+            LocalPosition:
+              X: 0.0
+              Y: 0.0
+              Z: 0.0
+            LocalScale:
+              X: 0.00100000005
+              Y: 0.204999939
+              Z: 0.00100000005
+          - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+            Id: 1e989b43-2a03-4021-bf2b-cf4089b43f54
+            AsignedTo: Default
+            IsEnabled: true
+            Material: 02181b63-5a0e-46d1-9208-d92376ae33fb
+          - !WaveEngine.Components.Graphics3D.CylinderMesh,WaveEngine.Components
+            Id: 9f2d7680-b8e8-4732-a7dd-dde3da09e5a6
+            Diameter: 1.0
+            Height: 1.0
+            IsEnabled: true
+            Model: 00000000-0000-0000-0000-000000000000
+            ModelMeshName: cylinder_primitive
+            Tessellation: 16
+          - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+            Id: e43eeb35-bdff-4b4f-a2d6-4d71bb40b321
+            DebugBoundingbox: true
+            FrustumCullingEnabled: true
+            IsEnabled: true
+            OrderBias: 0
+        Children: []
+        Id: 093a51c5-e7d3-4dc3-8df3-e3d44e8c0a55
+      - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+        Name: cube
+        Tag: null
+        IsEnabled: true
+        IsStatic: false
+        Components:
+          - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+            Id: 300a88fb-89c8-468b-87aa-905a5156cab8
+            IsEnabled: true
+            LocalOrientation:
+              W: 1.0
+              X: 0.0
+              Y: 0.0
+              Z: 0.0
+            LocalPosition:
+              X: 0.0
+              Y: 0.0
+              Z: 0.0
+            LocalScale:
+              X: 0.0249999985
+              Y: 0.00999999978
+              Z: 0.0199999996
+          - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+            Id: e8d3b5ca-8ed2-4c08-b0ee-5ad1257ec970
+            AsignedTo: Default
+            IsEnabled: true
+            Material: 02181b63-5a0e-46d1-9208-d92376ae33fb
+          - !WaveEngine.Components.Graphics3D.CubeMesh,WaveEngine.Components
+            Id: 186aa3b1-3b3c-41d9-b2b8-d5c541365ff5
+            InitialU: 0.0
+            InitialV: 0.0
+            IsEnabled: true
+            Model: 00000000-0000-0000-0000-000000000000
+            ModelMeshName: cube_primitive
+            Size: 1.0
+            UTile: 1.0
+            UVHorizontalFlip: false
+            UVVerticalFlip: false
+            YTile: 1.0
+          - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+            Id: 70cca399-1096-4699-8fef-941660bb9831
+            DebugBoundingbox: true
+            FrustumCullingEnabled: true
+            IsEnabled: true
+            OrderBias: 0
+          - !WaveEngine.Framework.Physics3D.BoxCollider3D,WaveEngine.Framework
+            Id: 8aa0fd52-8018-432f-b769-c8bd93b2c8ec
+            IsEnabled: true
+            Margin: 0.0399999991
+            Offset:
+              X: 0.0
+              Y: 0.0
+              Z: 0.0
+            OrientationOffset:
+              W: 1.0
+              X: 0.0
+              Y: 0.0
+              Z: 0.0
+            Size:
+              X: 1.0
+              Y: 1.0
+              Z: 1.0
+          - !WaveEngine.Framework.Physics3D.StaticBody3D,WaveEngine.Framework
+            Id: b15e07ee-bdf3-478e-9ee1-34445ba488c2
+            CcdMotionThreshold: 0.0
+            CcdSweptSphereRadius: 0.200000003
+            CollisionCategories: Cat1
+            Friction: 0.5
+            IsEnabled: true
+            IsSensor: false
+            MaskBits: All
+            Restitution: 0.0
+            RollingFriction: 0.0
+            UpdateOrder: 0.5
+          - !WaveEngine.MRTK.Services.InputSystem.NearInteractionGrabbable,WaveEngine.MRTK
+            Id: 96f4761c-7b59-44ef-a042-66415d9c24c2
+            IsEnabled: true
+        Children: []
+        Id: 5d98e89e-7e40-4902-a01f-bd2be2c2f910
+    Id: f56da0c0-895a-41eb-821e-c5ea63b422e4
 Managers: []
