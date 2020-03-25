@@ -64,20 +64,20 @@ namespace WaveEngine_MRTK_Demo.Behaviors
                 {
                     this.time = MathHelper.Clamp(this.time + (float)gameTime.TotalSeconds * 0.6f, 0, 1);
                 }
-            }
 
-            if (this.isAnimating)
-            {
-                this.holoHandsDecorator.Matrices_T = 1 - this.time;
-            }
+                if (this.isAnimating)
+                {
+                    this.holoHandsDecorator.Matrices_T = 1 - this.time;
+                }
 
-            bool isAnimating = this.time != 0 && this.time != 1;
-            if (isAnimating != this.isAnimating)
-            {
-                this.material.ActiveDirectivesNames = isAnimating ? directivesAnimating : directivesNotAnimating;
-                this.meshRenderer.IsEnabled = isAnimating || this.time == 1;
-                this.cursorMeshRenderer.IsEnabled = this.time != 0;
-                this.isAnimating = isAnimating;
+                bool isAnimating = this.time != 0 && this.time != 1;
+                if (isAnimating != this.isAnimating)
+                {
+                    this.material.ActiveDirectivesNames = isAnimating ? directivesAnimating : directivesNotAnimating;
+                    this.meshRenderer.IsEnabled = isAnimating || this.time == 1;
+                    this.cursorMeshRenderer.IsEnabled = this.time != 0;
+                    this.isAnimating = isAnimating;
+                }
             }
         }
     }
