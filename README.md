@@ -31,8 +31,6 @@ Check out WaveEngine.MRTK's various types of interactions and UI controls in our
 
 ![Example Scene](Documentation/Images/MRTK_Examples.png)
 
-## Videos
+## Video
 
 [![Alt text](https://img.youtube.com/vi/KbhLifObJNA/0.jpg)](https://www.youtube.com/watch?v=KbhLifObJNA)
-
-[![Alt text](https://img.youtube.com/vi/1c2UJxcMSE4/0.jpg)](https://www.youtube.com/watch?v=1c2UJxcMSE4)
