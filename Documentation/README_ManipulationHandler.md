@@ -7,6 +7,7 @@ The *SimpleManipulationHandler* script allows for an object to be made movable, 
 ## How to use the SimpleManipulationHandler class
 
 Follow the next steps in order to create a SimpleManipulationHandler from scratch
+
 - Add the object you want to interact with in your scene
 - Add a **collider** (a BoxCollider for example)
 - Add a **StaticBody3D**
@@ -21,9 +22,11 @@ Objects with the SimpleManipulationHandler script can have physics applied to th
 ### Events
 
 The SimpleManipulationHandler class has the next events:
+
 - ManipulationStarted: fired when the object starts being manipulated
 - ManipulationEnded: fired when the object end being manipulated
 
 ### Adding Sounds
+
 Sounds can be added to the **SimpleManipulationHandler** adding the class **ManipulationHandlerSoundFeedbackComponent**. You can add sounds to any of the events mentioned above
 

@@ -28,12 +28,14 @@ These button prefabs are already configured to have audio-visual feedback. The E
 **Create a button from scratch**
 
 You need to create two entities: the **button** and the **visual feedback**
+
  - The **button** manages the collisions and fires the events. This is usually the base of the button and a collider defining the area of interaction
     - Create an empty **Entity**
     - Add a **BoxCollider** and **StaticBody3D** to configure the collisions
     - Add a **NearInteractionTouchable** component
     - Optional, you can add a mesh to the button either in this node or as a child
     - Finally add the **PressableButton** component
+
  - The **visual feedback** is the entity that shows the current state of the button. This is the part of the button that moves or changes its color when the button is pressed
     - Add an empty **Entity** as child of the button
     - Add the component **PressableButtonVisualFeedbackComponent**. This component allows you to
