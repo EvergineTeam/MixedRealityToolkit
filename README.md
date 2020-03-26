@@ -27,10 +27,7 @@ These components can be added to your scene and customized using the Wave Engine
 <br>
 
 # Example scene
-Check out WaveEngine.MRTK's various types of interactions and UI controls in our sample scene, which can be found in the Releases section.
+Check out WaveEngine.MRTK's various types of interactions and UI controls in our sample scene, which can be found in the Releases section. (Click on the image to see a demo video)
 
-![Example Scene](Documentation/Images/MRTK_Examples.png)
+[![Example Scene](Documentation/Images/MRTK_Examples.png)](https://www.youtube.com/watch?v=KbhLifObJNA)
 
-## Video
-
-[![Alt text](https://img.youtube.com/vi/KbhLifObJNA/0.jpg)](https://www.youtube.com/watch?v=KbhLifObJNA)
