@@ -1,3 +1,5 @@
+![WaveEngine.MRTK](Documentation/Images/Wave_MRTK_banner.png)
+
 # What is WaveEngine.MRTK
 WaveEngine.MRTK is a project that provides a set of components and features used to accelerate cross-platform XR application development in Wave Engine. 
 
@@ -17,7 +19,7 @@ WaveEngine.MRTK is heavily based on Microsoft's [Mixed Reality Toolkit for Unity
 # UI and interaction building blocks
 These components can be added to your scene and customized using the Wave Engine Editor.
 ||||
-|:--- | :--- | :--- |
+| :--- | :--- | :--- |
 | ![Button](Documentation/Images/Button/MRTK_Button_Main.png) [Button](Documentation/README_Button.md) | ![Bounding Box](Documentation/Images/BoundingBox/MRTK_BoundingBox_Main.png) Bounding Box | ![Manipulation Handler](Documentation/Images/ManipulationHandler/MRTK_Manipulation_Main.png) [Manipulation Handler](Documentation/README_ManipulationHandler.md) |
 | A button control which supports various input methods, including HoloLens 2's articulated hand | Standard UI for manipulating objects in 3D space | Component for manipulating objects with one or two hands |
 | ![Slider](Documentation/Images/Slider/MRTK_UX_Slider_Main.jpg) [Slider](Documentation/README_Slider.md) | ![Hand Menu](Documentation/Images/Solver/MRTK_UX_HandMenu.png) Hand Menu | ![Fingertip Visualization](Documentation/Images/Fingertip/MRTK_FingertipVisualization_Main.png) Fingertip Visualization |
