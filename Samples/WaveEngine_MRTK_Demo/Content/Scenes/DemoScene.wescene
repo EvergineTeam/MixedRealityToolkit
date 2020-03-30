@@ -4746,8 +4746,8 @@ Items:
                       Y: -0.172318697
                       Z: 0.0605635643
                     LocalScale:
-                      X: 0.832270026
-                      Y: 0.0350000001
+                      X: 0.832000017
+                      Y: 1.0
                       Z: 0.469999999
                   - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
                     Id: 4890ecea-1d47-40e6-8c1c-3209d63ebd42
@@ -4780,6 +4780,42 @@ Items:
                     OrderBias: 0
                   - !WaveEngine_MRTK_Demo.Components.BatcherDisabler,WaveEngine_MRTK_Demo
                     Id: 96707328-19f3-4ea0-868e-05b839d4bc98
+                    IsEnabled: true
+                  - !WaveEngine.Framework.Physics3D.BoxCollider3D,WaveEngine.Framework
+                    Id: 581b7c45-9453-4e56-a875-c6054a1311b1
+                    IsEnabled: true
+                    Margin: 0.0399999991
+                    Offset:
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    OrientationOffset:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    Size:
+                      X: 1.0
+                      Y: 1.0
+                      Z: 1.0
+                  - !WaveEngine_MRTK_Demo.Behaviors.HandInteractionPanZoom,WaveEngine_MRTK_Demo
+                    Id: e8aa6e47-e291-4c79-b33c-7ef98587f31f
+                    IsEnabled: true
+                    UpdateOrder: 0.5
+                  - !WaveEngine.Framework.Physics3D.StaticBody3D,WaveEngine.Framework
+                    Id: ca22dd7d-5003-4116-aaab-a7e0317162a6
+                    CcdMotionThreshold: 0.0
+                    CcdSweptSphereRadius: 0.200000003
+                    CollisionCategories: Cat1
+                    Friction: 0.5
+                    IsEnabled: true
+                    IsSensor: false
+                    MaskBits: All
+                    Restitution: 0.0
+                    RollingFriction: 0.0
+                    UpdateOrder: 0.5
+                  - !WaveEngine.MRTK.Services.InputSystem.NearInteractionTouchable,WaveEngine.MRTK
+                    Id: 5ba8b96e-6329-4632-89b9-9fce9af51e1f
                     IsEnabled: true
                 Children: []
                 Id: c133015b-7348-4397-b5dc-da3fd76ebd9d
