@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using WaveEngine.Components.Graphics3D;
 using WaveEngine.Framework;
 using WaveEngine_MRTK_Demo.Effects;
@@ -9,24 +6,24 @@ using WaveEngine_MRTK_Demo.Emulation;
 
 namespace WaveEngine_MRTK_Demo.Behaviors
 {
-    class CursorPosShaderUpdater : Behavior
+    public class CursorPosShaderUpdater : Behavior
     {
-        HoloGraphic materialDecorator;
-        CursorManager cursorManager;
+        [BindComponent]
+        protected MaterialComponent materialComponent = null;
 
-        [BindComponent(isRequired: true, source: BindComponentSource.Owner)]
-        protected MaterialComponent materialComponent;
+        private HoloGraphic materialDecorator;
+        private CursorManager cursorManager;
 
         protected override void Start()
         {
-            cursorManager = Owner.Scene.Managers.FindManager<CursorManager>();
-            materialDecorator = new HoloGraphic(materialComponent.Material);
+            this.cursorManager = this.Owner.Scene.Managers.FindManager<CursorManager>();
+            this.materialDecorator = new HoloGraphic(this.materialComponent.Material);
         }
 
         protected override void Update(TimeSpan gameTime)
         {
-            materialDecorator.Parameters_FingerPosLeft = cursorManager.Cursors[0].transform.Position;
-            materialDecorator.Parameters_FingerPosRight = cursorManager.Cursors[1].transform.Position;
+            this.materialDecorator.Parameters_FingerPosLeft = this.cursorManager.Cursors[0].transform.Position;
+            this.materialDecorator.Parameters_FingerPosRight = this.cursorManager.Cursors[1].transform.Position;
         }
     }
 }
