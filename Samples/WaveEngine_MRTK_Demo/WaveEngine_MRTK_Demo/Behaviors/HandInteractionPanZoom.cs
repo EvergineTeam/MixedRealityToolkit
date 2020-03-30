@@ -48,7 +48,7 @@ namespace WaveEngine_MRTK_Demo.Behaviors
             var matrix = this.transform.WorldInverseTransform * this.nearInteractionTouchable.BoxCollider3DTransformInverse;
             Vector3 localPos =  Vector3.TransformCoordinate(position, matrix);
 
-            Vector2 uv0 = slateDecorator.Matrices_Offset * slateDecorator.Matrices_Tiling;
+            Vector2 uv0 = slateDecorator.Matrices_Offset;
             Vector2 uv1 = uv0 + Vector2.One * slateDecorator.Matrices_Tiling;
 
             Vector2 t = new Vector2(localPos.X + 0.5f, localPos.Z + 0.5f);
@@ -72,7 +72,7 @@ namespace WaveEngine_MRTK_Demo.Behaviors
                 //Translate
                 Vector2 uv = GetUVPos(touchInfos[0].transform.Position);
                 Vector2 disp = uv - touchInfos[0].uv;
-                slateDecorator.Matrices_Offset -= disp * slateDecorator.Matrices_Tiling;
+                slateDecorator.Matrices_Offset -= disp;
             }
         }
 
