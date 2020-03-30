@@ -66,7 +66,9 @@ namespace WaveEngine_MRTK_Demo.Behaviors
                 //Scale
                 if(touchInfos.Count > 1)
                 {
-
+                    float d0 = (touchInfos[0].uv - touchInfos[1].uv).Length();
+                    float d1 = (GetUVPos(touchInfos[0].transform.Position) - GetUVPos(touchInfos[1].transform.Position)).Length();
+                    slateDecorator.Matrices_Tiling *= d0 / d1;
                 }
 
                 //Translate
