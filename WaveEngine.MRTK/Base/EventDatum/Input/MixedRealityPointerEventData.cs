@@ -21,6 +21,16 @@ namespace WaveEngine.MixedReality.Toolkit.Input
         public Quaternion Orientation { get; set; }
 
         /// <summary>
+        /// Gets or sets the cursor linear velocity.
+        /// </summary>
+        public Vector3 LinearVelocity;
+
+        /// <summary>
+        /// Gets or sets the cursor angular velocity.
+        /// </summary>
+        public Quaternion AngularVelocity;
+
+        /// <summary>
         /// Gets or sets the cursor entity.
         /// </summary>
         public Entity Cursor { get; set; }

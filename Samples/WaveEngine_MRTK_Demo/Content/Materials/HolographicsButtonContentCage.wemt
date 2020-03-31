@@ -1,0 +1,60 @@
+!WaveEngine.Assets.Exporters.MaterialMetaFile,WaveEngine.Assets
+Id: 36a22ca4-c33c-4784-b55d-0c476895d080
+DefaultProfile:
+  ExcludeAsset: false
+  Name: null
+  Platform: Undefined
+ExportAsRaw: false
+MaterialInfo:
+  Id: 737f8061-8f5a-4c4a-8b00-acc7d8722e6e
+  ActiveDirectives:
+    - FINGERS_DIST
+    - INNER_GLOW
+  EffectID: 4f7e4c24-e83c-4350-9cd4-511fb2199cf4
+  Layer: e35c59a9-26ab-4b4c-8210-4b1f21c31530
+  Parameters:
+    - Name: WorldViewProj
+      Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
+      ValueByteArray: K0SJQAAAAAAAAAAAAAAAAAAAAACYMopADf9kvzD5ZL8AAAAAmjIKwAv/5L8u+eS/AAAAAHmCGjUf7ItAvRuPQA==
+    - Name: World
+      Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
+      ValueByteArray: AAAAQAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAACAPw==
+    - Name: Color
+      Type: WaveEngine.Mathematics.Vector3,WaveEngine.Mathematics
+      ValueByteArray: mpmZPpqZmT4AAIA/
+    - Name: Alpha
+      Type: System.Single
+      ValueByteArray: AAAAAA==
+    - Name: InnerGlowColor
+      Type: WaveEngine.Mathematics.Vector3,WaveEngine.Mathematics
+      ValueByteArray: AACAPwAAgD8AAIA/
+    - Name: InnerGlowAlpha
+      Type: System.Single
+      ValueByteArray: AACAPw==
+    - Name: InnerGlowPower
+      Type: System.Single
+      ValueByteArray: AAAgQQ==
+    - Name: MaxFingerDist
+      Type: System.Single
+      ValueByteArray: zczMPQ==
+    - Name: FingerPosLeft
+      Type: WaveEngine.Mathematics.Vector3,WaveEngine.Mathematics
+      ValueByteArray: AAAAAAAAAAAAAAAA
+    - Name: FingerPosRight
+      Type: WaveEngine.Mathematics.Vector3,WaveEngine.Mathematics
+      ValueByteArray: AAAAAAAAAAAAAAAA
+    - Name: BorderLightColor
+      Type: WaveEngine.Mathematics.Vector3,WaveEngine.Mathematics
+      ValueByteArray: AACAPwAAgD8AAIA/
+    - Name: BorderLightWidth
+      Type: System.Single
+      ValueByteArray: zczMPQ==
+    - Name: MultiviewViewProj
+      Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
+      ValueByteArray: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
+    - Name: EyeCount
+      Type: System.Int32
+      ValueByteArray: AAAAAA==
+  Samplers: null
+  Textures: null
+Profiles: {}

@@ -34,7 +34,8 @@ namespace WaveEngine_MRTK_Demo
             var assetsService = this.Container.Resolve<AssetsService>();
 
             // Navigate to scene
-            var scene = assetsService.Load<TestScene>(WaveContent.Scenes.TestScene_wescene);
+            var scene = assetsService.Load<DemoScene>(WaveContent.Scenes.DemoScene_wescene);
+            //var scene = assetsService.Load<TestScene>(WaveContent.Scenes.TestScene_wescene);
             ScreenContext screenContext = new ScreenContext(scene);
             screenContextManager.To(screenContext);
         }

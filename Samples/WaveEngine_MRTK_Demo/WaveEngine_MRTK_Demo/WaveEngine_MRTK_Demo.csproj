@@ -5,14 +5,21 @@
     <GenerateWaveContent>True</GenerateWaveContent>
     <GenerateWaveAssets>False</GenerateWaveAssets>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="WaveEngine.Bullet" Version="3.0.0.4278-nightly" />
-    <PackageReference Include="WaveEngine.Common" Version="3.0.0.4278-nightly" />
-    <PackageReference Include="WaveEngine.Components" Version="3.0.0.4278-nightly" />
-    <PackageReference Include="WaveEngine.Framework" Version="3.0.0.4278-nightly" />
-    <PackageReference Include="WaveEngine.Mathematics" Version="3.0.0.4278-nightly" />
-    <PackageReference Include="WaveEngine.Platform" Version="3.0.0.4278-nightly" />
-    <PackageReference Include="WaveEngine.Targets" Version="3.0.0.4278-nightly" />
+    <PackageReference Include="WaveEngine.Bullet" Version="3.0.0.4731-preview3" />
+    <PackageReference Include="WaveEngine.Common" Version="3.0.0.4731-preview3" />
+    <PackageReference Include="WaveEngine.Components" Version="3.0.0.4731-preview3" />
+    <PackageReference Include="WaveEngine.Framework" Version="3.0.0.4731-preview3" />
+    <PackageReference Include="WaveEngine.Mathematics" Version="3.0.0.4731-preview3" />
+    <PackageReference Include="WaveEngine.NoesisGUI" Version="3.0.0.4731-preview3" />
+    <PackageReference Include="WaveEngine.Platform" Version="3.0.0.4731-preview3" />
+    <PackageReference Include="WaveEngine.Targets" Version="3.0.0.4731-preview3" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\WaveEngine.MRTK\WaveEngine.MRTK.csproj" />

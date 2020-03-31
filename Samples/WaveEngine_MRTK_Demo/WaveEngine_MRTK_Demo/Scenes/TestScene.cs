@@ -37,8 +37,8 @@ namespace WaveEngine_MRTK_Demo.Scenes
             else
             {
                 // Windows
-                cursorLeftEntity.AddComponent(new KeyboardControlBehavior() { Speed = 0.05f, UseShift = true });
-                cursorRightEntity.AddComponent(new KeyboardControlBehavior() { Speed = 0.05f, UseShift = false });
+                cursorLeftEntity.AddComponent(new MouseControlBehavior() { key = WaveEngine.Common.Input.Keyboard.Keys.LeftShift });
+                cursorRightEntity.AddComponent(new MouseControlBehavior() { key = WaveEngine.Common.Input.Keyboard.Keys.Space });
             }
         }
     }

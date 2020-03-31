@@ -1,21 +1,18 @@
 ﻿using System;
 using WaveEngine.Common.Attributes;
 using WaveEngine.Common.Graphics;
-using WaveEngine.Common.Input.Keyboard;
 using WaveEngine.Components.Graphics3D;
 using WaveEngine.Framework;
 using WaveEngine.Framework.Graphics;
 using WaveEngine.Framework.Graphics.Materials;
 using WaveEngine.Framework.Physics3D;
-using WaveEngine.Framework.Services;
-using WaveEngine_MRTK_Demo.Behaviors;
 
 namespace WaveEngine_MRTK_Demo.Emulation
 {
     public class Cursor : Behavior
     {
         [BindComponent]
-        protected Transform3D transform = null;
+        public Transform3D transform = null;
 
         [BindComponent(isExactType: false)]
         public Collider3D Collider3D;
@@ -26,21 +23,31 @@ namespace WaveEngine_MRTK_Demo.Emulation
         [BindComponent(isRequired: false)]
         protected MaterialComponent materialComponent;
 
-        [BindComponent(isRequired: false)]
-        protected KeyboardControlBehavior keyboardControlBehavior;
-
-        [BindComponent(isRequired: false)]
-        protected TrackXRJoint trackXRJoint;
-
+        [RenderProperty(Tooltip = "The color to be set to the material when the cursor is pressed")]
         public Color PressedColor { get; set; }
 
+        [RenderProperty(Tooltip = "The color to be set to the material when the cursor is released")]
         public Color ReleasedColor { get; set; }
 
-        public bool UseShift { get; set; }
-
+        private bool pinch;
         [WaveIgnore]
         [DontRenderProperty]
-        public bool Pinch { get; private set; }
+        public bool Pinch
+        {
+            get
+            {
+                return pinch;
+            }
+
+            set
+            {
+                if (value != pinch)
+                {
+                    pinch = value;
+                    this.UpdateColor();
+                }
+            }
+        }
 
         [WaveIgnore]
         [DontRenderProperty]
@@ -48,75 +55,29 @@ namespace WaveEngine_MRTK_Demo.Emulation
 
         private StandardMaterial material;
 
-        protected override bool OnAttached()
+        protected override void Start()
         {
-            var attached = base.OnAttached();
-
-            if (attached)
+            if (this.materialComponent != null)
             {
-                if (this.keyboardControlBehavior != null)
+                if (!Application.Current.IsEditor)
                 {
-                    this.UseShift = keyboardControlBehavior.UseShift;
+                    this.materialComponent.Material = this.materialComponent.Material.Clone();
                 }
 
-                if (this.materialComponent != null)
-                {
-                    this.material = new StandardMaterial(this.materialComponent.Material);
-                }
+                this.material = new StandardMaterial(this.materialComponent.Material);
             }
-
-            return attached;
         }
 
         protected override void Update(TimeSpan gameTime)
         {
             this.PreviousPinch = this.Pinch;
-
-            var xrPlatform = Application.Current.Container.Resolve<XRPlatform>();
-
-            if (xrPlatform != null)
-            {
-                // HoloLens 2
-                if (this.trackXRJoint != null
-                    && this.trackXRJoint.TrackedDevice != null
-                    && this.trackXRJoint.TrackedDevice.TryGetArticulatedHandJoint(WaveEngine.Framework.XR.XRHandJointKind.ThumbTip, out var joint))
-                {
-                    var distance = this.transform.Position - joint.Pose.Position;
-                    this.Pinch = distance.Length() < 0.03f;
-                }
-                else
-                {
-                    this.Pinch = false;
-                }
-            }
-            else
-            {
-                // Windows
-                var graphicsPresenter = Application.Current.Container.Resolve<GraphicsPresenter>();
-                var keyboardDispatcher = graphicsPresenter.FocusedDisplay.KeyboardDispatcher;
-
-                if (keyboardDispatcher.IsKeyDown(Keys.RightShift) != this.UseShift)
-                {
-                    return;
-                }
-
-                if (keyboardDispatcher.ReadKeyState(Keys.P) == WaveEngine.Common.Input.ButtonState.Pressing)
-                {
-                    this.Pinch = !this.Pinch;
-                }
-            }
-
-            if (this.Pinch != this.PreviousPinch)
-            {
-                this.SetColor(this.Pinch ? this.PressedColor : this.ReleasedColor);
-            }
         }
 
-        private void SetColor(Color color)
+        private void UpdateColor()
         {
             if (this.material != null)
             {
-                this.material.BaseColor = color;
+                this.material.BaseColor = this.Pinch ? this.PressedColor : this.ReleasedColor;
             }
         }
     }

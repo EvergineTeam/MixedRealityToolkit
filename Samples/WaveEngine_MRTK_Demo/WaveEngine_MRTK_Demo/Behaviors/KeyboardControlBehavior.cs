@@ -5,6 +5,7 @@ using WaveEngine.Framework;
 using WaveEngine.Framework.Graphics;
 using WaveEngine.Framework.Services;
 using WaveEngine.Mathematics;
+using WaveEngine_MRTK_Demo.Emulation;
 
 namespace WaveEngine_MRTK_Demo.Behaviors
 {
@@ -12,6 +13,9 @@ namespace WaveEngine_MRTK_Demo.Behaviors
     {
         [BindComponent]
         protected Transform3D transform = null;
+
+        [BindComponent]
+        protected Cursor cursor;
 
         [RenderProperty(Tooltip = "The speed at which the entity will be moved")]
         public float Speed { get; set; } = 0.01f;
@@ -91,8 +95,13 @@ namespace WaveEngine_MRTK_Demo.Behaviors
 
             displacement.Normalize();
 
-            this.transform.LocalPosition += displacement * (float)gameTime.TotalSeconds * this.Speed;
+            this.transform.LocalPosition += displacement * Math.Min(0.3f, (float)gameTime.TotalSeconds) * this.Speed;
             this.transform.LocalOrientation *= rotation;
+
+            if (keyboardDispatcher.ReadKeyState(Keys.P) == WaveEngine.Common.Input.ButtonState.Pressing)
+            {
+                this.cursor.Pinch = !this.cursor.Pinch;
+            }
         }
     }
 }

@@ -6,6 +6,7 @@ using System.Linq;
 using WaveEngine.Common.Attributes;
 using WaveEngine.Framework;
 using WaveEngine.Framework.Graphics;
+using WaveEngine.Framework.Physics3D;
 using WaveEngine.Mathematics;
 using WaveEngine.MixedReality.Toolkit.Input;
 
@@ -21,6 +22,12 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
         /// </summary>
         [BindComponent]
         protected Transform3D transform = null;
+
+        /// <summary>
+        /// The rigid body.
+        /// </summary>
+        [BindComponent(isRequired: false)]
+        protected RigidBody3D rigidBody;
 
         /// <summary>
         /// Gets or sets a value indicating whether the manipulation smoothing is enabled.
@@ -57,6 +64,9 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
 
         private readonly Dictionary<Entity, Matrix4x4> activeCursors = new Dictionary<Entity, Matrix4x4>();
 
+        private Vector3 previousAngularFactor;
+        private Vector3 previousLinearFactor;
+
         /// <inheritdoc/>
         protected override void OnDeactivated()
         {
@@ -76,6 +86,15 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
 
                 if (this.activeCursors.Count == 1)
                 {
+                    if (this.rigidBody != null)
+                    {
+                        this.previousLinearFactor = this.rigidBody.LinearFactor;
+                        this.previousAngularFactor = this.rigidBody.AngularFactor;
+
+                        this.rigidBody.LinearFactor = Vector3.Zero;
+                        this.rigidBody.AngularFactor = Vector3.Zero;
+                    }
+
                     this.ManipulationStarted?.Invoke(this, EventArgs.Empty);
                 }
             }
@@ -99,12 +118,14 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
 
             if (this.activeCursors.ContainsKey(cursor))
             {
-                this.activeCursors.Remove(cursor);
-
-                if (this.activeCursors.Count == 0)
+                if (this.activeCursors.Count == 1)
                 {
+                    this.ReleaseRigidBody(eventData.LinearVelocity, eventData.AngularVelocity);
+
                     this.ManipulationEnded?.Invoke(this, EventArgs.Empty);
                 }
+
+                this.activeCursors.Remove(cursor);
             }
         }
 
@@ -117,6 +138,16 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
         private Matrix4x4 CreateCursorTransform(MixedRealityPointerEventData eventData)
         {
             return Matrix4x4.CreateFromQuaternion(eventData.Orientation) * Matrix4x4.CreateTranslation(eventData.Position);
+        }
+
+        /// <inheritdoc/>
+        protected override void Start()
+        {
+            // Ensure this is always updated after the rigidbody
+            if (this.rigidBody != null)
+            {
+                this.UpdateOrder = this.rigidBody.UpdateOrder + 0.1f;
+            }
         }
 
         /// <inheritdoc/>
@@ -202,9 +233,14 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
                 // Update object transform
                 float lerpAmount = this.GetLerpAmount(timeStep);
 
-                this.transform.Position = Vector3.Lerp(this.transform.Position, finalTransform.Translation, lerpAmount);
-                this.transform.Orientation = Quaternion.Lerp(this.transform.Orientation, finalTransform.Orientation, lerpAmount);
-                this.transform.Scale = Vector3.Lerp(this.transform.Scale, finalTransform.Scale, lerpAmount);
+                Vector3 pos = Vector3.Lerp(this.transform.Position, finalTransform.Translation, lerpAmount);
+                Quaternion rot = Quaternion.Lerp(this.transform.Orientation, finalTransform.Orientation, lerpAmount);
+                Vector3 scl = Vector3.Lerp(this.transform.Scale, finalTransform.Scale, lerpAmount);
+
+                this.rigidBody?.ResetTransform(pos, rot, scl);
+                this.transform.Position = pos;
+                this.transform.Orientation = rot;
+                this.transform.Scale = scl;
             }
         }
 
@@ -217,6 +253,20 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
 
             // www.rorydriscoll.com/2016/03/07/frame-rate-independent-damping-using-lerp/
             return 1.0f - (float)Math.Pow(this.SmoothingAmount, timeStep);
+        }
+
+        private void ReleaseRigidBody(Vector3 linearVelocity, Quaternion angularVelocity)
+        {
+            if (this.rigidBody != null)
+            {
+                this.rigidBody.LinearFactor = this.previousLinearFactor;
+                this.rigidBody.AngularFactor = this.previousAngularFactor;
+
+                this.rigidBody.LinearVelocity = linearVelocity;
+                this.rigidBody.AngularVelocity = Quaternion.ToEuler(angularVelocity);
+
+                this.rigidBody.WakeUp();
+            }
         }
     }
 }

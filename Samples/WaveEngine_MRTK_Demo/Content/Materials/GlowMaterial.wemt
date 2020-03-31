@@ -1,0 +1,60 @@
+!WaveEngine.Assets.Exporters.MaterialMetaFile,WaveEngine.Assets
+Id: e7a15e18-dad0-4e60-9390-4554f5b198af
+DefaultProfile:
+  ExcludeAsset: false
+  Name: null
+  Platform: Undefined
+ExportAsRaw: false
+MaterialInfo:
+  Id: 011fc49d-2215-4c18-b9a8-e67a3b4f53ff
+  ActiveDirectives:
+    - INNER_GLOW
+    - NO_FINGERS_DIST
+  EffectID: 4f7e4c24-e83c-4350-9cd4-511fb2199cf4
+  Layer: e35c59a9-26ab-4b4c-8210-4b1f21c31530
+  Parameters:
+    - Name: WorldViewProj
+      Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
+      ValueByteArray: NlKYQAAAAAAAAAAAAAAAAAAAAACYMopADf9kvzD5ZL8AAAAAmjIKwAv/5L8u+eS/AAAAAHmCGjUf7ItAvRuPQA==
+    - Name: World
+      Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
+      ValueByteArray: AAAAQAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAACAPw==
+    - Name: Color
+      Type: WaveEngine.Mathematics.Vector3,WaveEngine.Mathematics
+      ValueByteArray: CtejPuF6FD+4HkU/
+    - Name: Alpha
+      Type: System.Single
+      ValueByteArray: AACAPw==
+    - Name: InnerGlowColor
+      Type: WaveEngine.Mathematics.Vector3,WaveEngine.Mathematics
+      ValueByteArray: AACAPyy2Oz8AAAAA
+    - Name: InnerGlowAlpha
+      Type: System.Single
+      ValueByteArray: AACAPw==
+    - Name: InnerGlowPower
+      Type: System.Single
+      ValueByteArray: AAAgQQ==
+    - Name: MaxFingerDist
+      Type: System.Single
+      ValueByteArray: AACAPw==
+    - Name: FingerPosLeft
+      Type: WaveEngine.Mathematics.Vector3,WaveEngine.Mathematics
+      ValueByteArray: AAAAAAAAAAAAAAAA
+    - Name: FingerPosRight
+      Type: WaveEngine.Mathematics.Vector3,WaveEngine.Mathematics
+      ValueByteArray: AAAAAAAAAAAAAAAA
+    - Name: BorderLightColor
+      Type: WaveEngine.Mathematics.Vector3,WaveEngine.Mathematics
+      ValueByteArray: AACAPwAAgD8AAIA/
+    - Name: BorderLightWidth
+      Type: System.Single
+      ValueByteArray: zczMPQ==
+    - Name: MultiviewViewProj
+      Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
+      ValueByteArray: gXjHP0Evnr1HoKC+ip2gvmp/ALdOthlAFdXPvYnRz72RjwS/gRBuvpmzcb96r3G/ohMcvz/YjD34u50+e+zQPg==
+    - Name: EyeCount
+      Type: System.Int32
+      ValueByteArray: AQAAAA==
+  Samplers: null
+  Textures: null
+Profiles: {}

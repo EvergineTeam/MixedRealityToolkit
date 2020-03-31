@@ -1,12 +1,13 @@
 !WaveEngine.Assets.Exporters.RenderLayerMetaFile,WaveEngine.Assets
+Id: e35c59a9-26ab-4b4c-8210-4b1f21c31530
 DefaultProfile:
   ExcludeAsset: false
   Name: null
   Platform: Undefined
-Id: e35c59a9-26ab-4b4c-8210-4b1f21c31530
+ExportAsRaw: false
 Profiles: {}
 RenderLayerInfo:
-  Id: 1e709006-0a70-4832-8f64-32178408974d
+  Id: 7db27cda-df9f-4c5a-96b5-fd9badcfb8ba
   Order: 1
   RenderState:
     BlendFactor: null
@@ -21,7 +22,7 @@ RenderLayerInfo:
         DestinationBlendAlpha: InverseSourceAlpha
         DestinationBlendColor: InverseSourceAlpha
         SourceBlendAlpha: One
-        SourceBlendColor: One
+        SourceBlendColor: SourceAlpha
       RenderTarget1:
         BlendEnable: false
         BlendOperationAlpha: Add

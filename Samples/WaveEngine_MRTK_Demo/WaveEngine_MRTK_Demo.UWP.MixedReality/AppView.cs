@@ -26,15 +26,15 @@ namespace WaveEngine_MRTK_Demo.UWP.MixedReality
             // Register event handlers for app lifecycle.
             CoreApplication.Suspending += this.OnSuspending;
             CoreApplication.Resuming += this.OnResuming;
-
-            // At this point we have access to the device and we can create device-dependent
-            // resources.
-            // Create app
-            application = new MyApplication();
         }
 
         public void SetWindow(CoreWindow window)
         {
+            // At this point we have access to the device and we can create device-dependent
+            // resources.
+            // Create app
+            application = new MyApplication();
+
             // Create Services
             xrDevice = new MixedRealityPlatform();
             application.Container.RegisterInstance(xrDevice);

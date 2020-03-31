@@ -101,6 +101,7 @@
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>true</Prefer32Bit>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM64'">
     <OutputPath>bin\ARM64\Release\</OutputPath>
@@ -114,6 +115,7 @@
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>true</Prefer32Bit>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
   <ItemGroup>
@@ -121,22 +123,22 @@
       <Version>6.2.8</Version>
     </PackageReference>
     <PackageReference Include="WaveEngine.MixedReality">
-      <Version>3.0.0.4278-nightly</Version>
+      <Version>3.0.0.4731-preview3</Version>
     </PackageReference>
     <PackageReference Include="WaveEngine.XAudio2">
-      <Version>3.0.0.4278-nightly</Version>
+      <Version>3.0.0.4731-preview3</Version>
     </PackageReference>
     <PackageReference Include="WaveEngine.Targets">
-      <Version>3.0.0.4278-nightly</Version>
+      <Version>3.0.0.4731-preview3</Version>
     </PackageReference>
     <PackageReference Include="WaveEngine.Targets.UWP">
-      <Version>3.0.0.4278-nightly</Version>
+      <Version>3.0.0.4731-preview3</Version>
     </PackageReference>
     <PackageReference Include="WaveEngine.UWPView">
-      <Version>3.0.0.4278-nightly</Version>
+      <Version>3.0.0.4731-preview3</Version>
     </PackageReference>
     <PackageReference Include="WaveEngine.Bullet">
-      <Version>3.0.0.4278-nightly</Version>
+      <Version>3.0.0.4731-preview3</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
@@ -153,6 +155,6 @@
   </Target>
   -->
   <PropertyGroup>
-    <AppxPackageSigningEnabled>true</AppxPackageSigningEnabled>
+    <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
   </PropertyGroup>
 </Project>
