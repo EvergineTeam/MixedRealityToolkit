@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Text;
+using WaveEngine.Common.Audio;
+using WaveEngine.Common.Media;
+using WaveEngine.Components.Sound;
 using WaveEngine.Framework;
 using WaveEngine.Framework.Graphics;
 
@@ -60,6 +63,21 @@ namespace WaveEngine_MRTK_Demo
             }
 
             return copy;
+        }
+
+        public static void PlaySound(SoundEmitter3D soundEmitter,  AudioBuffer sound)
+        {
+            if (soundEmitter != null && sound != null)
+            {
+                if (soundEmitter.PlayState == PlayState.Playing)
+                {
+                    soundEmitter.Stop();
+                }
+
+                soundEmitter.Audio = sound;
+
+                soundEmitter.Play();
+            }
         }
     }
 }

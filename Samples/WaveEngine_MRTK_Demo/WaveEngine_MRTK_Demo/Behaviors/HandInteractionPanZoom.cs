@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using WaveEngine.Common.Attributes;
+using WaveEngine.Common.Audio;
 using WaveEngine.Components.Graphics3D;
+using WaveEngine.Components.Sound;
 using WaveEngine.Framework;
 using WaveEngine.Framework.Graphics;
 using WaveEngine.Framework.Physics3D;
@@ -64,11 +66,23 @@ namespace WaveEngine_MRTK_Demo.Behaviors
         [RenderPropertyAsFInput(Tooltip = "Pan drag", MinLimit = 0, MaxLimit = 1)]
         public float Drag { get; set; } = 0.15f;
 
+        /// <summary>
+        /// Gets or sets the sound to be played when the pan starts.
+        /// </summary>
+        [RenderProperty(Tooltip = "The sound to be played when the pan starts")]
+        public AudioBuffer PanStartedSound { get; set; }
+
+        /// <summary>
+        /// Gets or sets the sound to be played when the pan ends.
+        /// </summary>
+        [RenderProperty(Tooltip = "The sound to be played when the pan ends")]
+        public AudioBuffer PanEndedSound { get; set; }
+
         private NearInteractionTouchable nearInteractionTouchable;
         private Slate slateDecorator;
         private CursorManager cursorManager;
         private Vector2 speed;
-
+        private SoundEmitter3D soundEmitter;
 
         /// <summary>
         /// Internal class to store touches information
@@ -102,6 +116,7 @@ namespace WaveEngine_MRTK_Demo.Behaviors
             if (!Application.Current.IsEditor)
             {
                 nearInteractionTouchable = this.Owner.GetOrAddComponent<NearInteractionTouchable>();
+                this.soundEmitter = this.Owner.GetOrAddComponent<SoundEmitter3D>();
                 this.Owner.GetOrAddComponent<StaticBody3D>();
                 this.Owner.GetInChildrenOrAddComponent<BoxCollider3D>();
             }
@@ -182,6 +197,7 @@ namespace WaveEngine_MRTK_Demo.Behaviors
         public void OnTouchStarted(HandTrackingInputEventData eventData)
         {
             this.touchInfos.Add(new TouchInfo { Cursor = eventData.Cursor, Transform = eventData.Cursor.FindComponent< Transform3D >(), UV = GetUVPos(eventData.Position)});
+            Tools.PlaySound(soundEmitter, PanStartedSound);
         }
 
         /// <inheritdoc/>
@@ -205,6 +221,8 @@ namespace WaveEngine_MRTK_Demo.Behaviors
             }
 
             RemapTouches();
+
+            Tools.PlaySound(soundEmitter, PanEndedSound);
         }
     }
 }
