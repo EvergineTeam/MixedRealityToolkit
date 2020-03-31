@@ -51,8 +51,8 @@ namespace WaveEngine_MRTK_Demo.Behaviors
             var matrix = this.transform.WorldInverseTransform * this.nearInteractionTouchable.BoxCollider3DTransformInverse;
             Vector3 localPos =  Vector3.TransformCoordinate(position, matrix);
 
-            Vector2 uv0 = slateDecorator.Matrices_Offset;
-            Vector2 uv1 = uv0 + Vector2.One * slateDecorator.Matrices_Tiling;
+            Vector2 uv0 = slateDecorator. Parameters_Offset;
+            Vector2 uv1 = uv0 + Vector2.One * slateDecorator.Parameters_Tiling;
 
             Vector2 t = new Vector2(localPos.X + 0.5f, localPos.Z + 0.5f);
 
@@ -72,20 +72,20 @@ namespace WaveEngine_MRTK_Demo.Behaviors
                     float d0 = (touchInfos[0].uv - touchInfos[1].uv).Length();
                     float d1 = (GetUVPos(touchInfos[0].transform.Position) - GetUVPos(touchInfos[1].transform.Position)).Length();
 
-                    float scale = slateDecorator.Matrices_Tiling.X * d0 / d1;
+                    float scale = slateDecorator.Parameters_Tiling.X * d0 / d1;
                     if(scale < minScale || scale > maxScale)
                     {
                         scale = MathHelper.Clamp(scale, minScale, maxScale);
                         RemapTouches();
                     }
 
-                    slateDecorator.Matrices_Tiling = new Vector2(scale, scale);
+                    slateDecorator.Parameters_Tiling = new Vector2(scale, scale);
                 }
 
                 //Translate
                 Vector2 uv = GetUVPos(touchInfos[0].transform.Position);
                 Vector2 disp = uv - touchInfos[0].uv;
-                slateDecorator.Matrices_Offset -= disp;
+                slateDecorator.Parameters_Offset -= disp;
             }
         }
 

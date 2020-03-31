@@ -29,7 +29,7 @@ namespace WaveEngine_MRTK_Demo.Effects
         {
         }
         
-        public WaveEngine.Mathematics.Matrix4x4 Base_WorldViewProj
+        public WaveEngine.Mathematics.Matrix4x4 PerDrawCall_WorldViewProj
         {
             get
             {
@@ -41,7 +41,19 @@ namespace WaveEngine_MRTK_Demo.Effects
             }
         }
         
-        public WaveEngine.Mathematics.Vector2 Matrices_Tiling
+        public WaveEngine.Mathematics.Matrix4x4 PerDrawCall_World
+        {
+            get
+            {
+                return this.material.CBuffers[0].GetBufferData<WaveEngine.Mathematics.Matrix4x4>(64);
+            }
+            set
+            {
+				this.material.CBuffers[0].SetBufferData(value, 64);
+            }
+        }
+        
+        public WaveEngine.Mathematics.Vector2 Parameters_Tiling
         {
             get
             {
@@ -53,7 +65,7 @@ namespace WaveEngine_MRTK_Demo.Effects
             }
         }
         
-        public WaveEngine.Mathematics.Vector2 Matrices_Offset
+        public WaveEngine.Mathematics.Vector2 Parameters_Offset
         {
             get
             {
@@ -62,6 +74,30 @@ namespace WaveEngine_MRTK_Demo.Effects
             set
             {
 				this.material.CBuffers[1].SetBufferData(value, 8);
+            }
+        }
+        
+        public WaveEngine.Mathematics.Matrix4x4 PerCamera_MultiviewViewProj
+        {
+            get
+            {
+                return this.material.CBuffers[2].GetBufferData<WaveEngine.Mathematics.Matrix4x4>(0);
+            }
+            set
+            {
+				this.material.CBuffers[2].SetBufferData(value, 0);
+            }
+        }
+        
+        public int PerCamera_EyeCount
+        {
+            get
+            {
+                return this.material.CBuffers[2].GetBufferData<System.Int32>(160);
+            }
+            set
+            {
+				this.material.CBuffers[2].SetBufferData(value, 160);
             }
         }
         
