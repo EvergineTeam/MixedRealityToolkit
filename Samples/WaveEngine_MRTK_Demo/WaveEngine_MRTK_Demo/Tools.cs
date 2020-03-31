@@ -23,7 +23,7 @@ namespace WaveEngine_MRTK_Demo
         public static unsafe Material Clone(this Material material)
         {
             Material copy = new Material(material.Effect);
-            copy.ActiveDirectivesNames = material.ActiveDirectivesNames;
+            copy.ActiveDirectivesNames = (string[])material.ActiveDirectivesNames.Clone();
             copy.LayerDescription = material.LayerDescription;
             copy.OrderBias = material.OrderBias;
             copy.AllowInstancing = material.AllowInstancing;
