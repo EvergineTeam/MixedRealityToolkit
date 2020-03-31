@@ -25,11 +25,16 @@ namespace WaveEngine_MRTK_Demo.Behaviors
         [BindComponent]
         protected NearInteractionTouchable nearInteractionTouchable;
 
+        public bool enableZoom = true;
+        public bool lockHorizontal = false;
+        public bool lockVertical = false;
         public float maxScale = 4.0f;
         public float minScale = 0.1f;
+        public float drag = 0.85f;
 
         private Slate slateDecorator;
         private CursorManager cursorManager;
+        private Vector2 speed;
 
         class TouchInfo
         {
@@ -64,10 +69,12 @@ namespace WaveEngine_MRTK_Demo.Behaviors
 
         protected override void Update(TimeSpan gameTime)
         {
+            speed *= Vector2.One * drag;
+
             if (touchInfos.Count > 0)
             {
                 //Scale
-                if(touchInfos.Count > 1)
+                if(enableZoom && touchInfos.Count > 1)
                 {
                     float d0 = (touchInfos[0].uv - touchInfos[1].uv).Length();
                     float d1 = (GetUVPos(touchInfos[0].transform.Position) - GetUVPos(touchInfos[1].transform.Position)).Length();
@@ -85,8 +92,14 @@ namespace WaveEngine_MRTK_Demo.Behaviors
                 //Translate
                 Vector2 uv = GetUVPos(touchInfos[0].transform.Position);
                 Vector2 disp = uv - touchInfos[0].uv;
-                slateDecorator.Parameters_Offset -= disp;
+                speed = -disp;
             }
+
+            if (lockHorizontal)
+                speed.X = 0;
+            if (lockVertical)
+                speed.Y = 0;
+            slateDecorator.Parameters_Offset += speed;
         }
 
         private void RemapTouches()
