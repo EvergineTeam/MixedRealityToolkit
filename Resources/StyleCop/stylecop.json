@@ -3,7 +3,7 @@
   "settings": {
     "documentationRules": {
       "companyName": "Wave Engine S.L.",
-      "copyrightText": "Copyright © 2019 {companyName} All rights reserved. Use is subject to license terms.",
+      "copyrightText": "Copyright © {companyName} All rights reserved. Use is subject to license terms.",
       "xmlHeader": false,
       "fileNamingConvention": "metadata",
       "documentInternalElements": false
