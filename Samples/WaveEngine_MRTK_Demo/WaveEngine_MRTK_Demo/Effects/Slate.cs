@@ -41,7 +41,7 @@ namespace WaveEngine_MRTK_Demo.Effects
             }
         }
         
-        public WaveEngine.Mathematics.Vector2 Matrices_Offset
+        public WaveEngine.Mathematics.Vector2 Matrices_Tiling
         {
             get
             {
@@ -53,7 +53,7 @@ namespace WaveEngine_MRTK_Demo.Effects
             }
         }
         
-        public WaveEngine.Mathematics.Vector2 Matrices_Tiling
+        public WaveEngine.Mathematics.Vector2 Matrices_Offset
         {
             get
             {

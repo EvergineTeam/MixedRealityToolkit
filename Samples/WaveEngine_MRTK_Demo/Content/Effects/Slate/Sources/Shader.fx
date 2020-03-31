@@ -7,8 +7,8 @@
 
 	cbuffer Matrices : register(b1)
 	{
-		float2 Offset           : packoffset(c0.x);   [Default(0.0, 0.0)]
-		float2 Tiling           : packoffset(c0.z);   [Default(1.0, 1.0)]
+		float2 Tiling           : packoffset(c0.x);   [Default(1.0, 1.0)]
+		float2 Offset           : packoffset(c0.z);   [Default(0.0, 0.0)]
 	};
 	
 	Texture2D Texture		: register(t0);
