@@ -25,6 +25,9 @@ namespace WaveEngine_MRTK_Demo.Behaviors
         [BindComponent]
         protected NearInteractionTouchable nearInteractionTouchable;
 
+        public float maxScale = 4.0f;
+        public float minScale = 0.1f;
+
         private Slate slateDecorator;
         private CursorManager cursorManager;
 
@@ -68,13 +71,29 @@ namespace WaveEngine_MRTK_Demo.Behaviors
                 {
                     float d0 = (touchInfos[0].uv - touchInfos[1].uv).Length();
                     float d1 = (GetUVPos(touchInfos[0].transform.Position) - GetUVPos(touchInfos[1].transform.Position)).Length();
-                    slateDecorator.Matrices_Tiling *= d0 / d1;
+
+                    float scale = slateDecorator.Matrices_Tiling.X * d0 / d1;
+                    if(scale < minScale || scale > maxScale)
+                    {
+                        scale = MathHelper.Clamp(scale, minScale, maxScale);
+                        RemapTouches();
+                    }
+
+                    slateDecorator.Matrices_Tiling = new Vector2(scale, scale);
                 }
 
                 //Translate
                 Vector2 uv = GetUVPos(touchInfos[0].transform.Position);
                 Vector2 disp = uv - touchInfos[0].uv;
                 slateDecorator.Matrices_Offset -= disp;
+            }
+        }
+
+        private void RemapTouches()
+        {
+            foreach (TouchInfo t in touchInfos)
+            {
+                t.uv = GetUVPos(t.transform.Position);
             }
         }
 
@@ -99,6 +118,8 @@ namespace WaveEngine_MRTK_Demo.Behaviors
                     break;
                 }
             }
+
+            RemapTouches();
         }
     }
 }
