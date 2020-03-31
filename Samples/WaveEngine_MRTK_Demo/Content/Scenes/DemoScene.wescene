@@ -4809,8 +4809,10 @@ Items:
                     IsEnabled: true
                     LockHorizontal: false
                     LockVertical: false
-                    MaxScale: 4.0
-                    MinScale: 0.100000001
+                    MaxZoom: 4.0
+                    MinZoom: 0.100000001
+                    PanEndedSound: a6f60d00-4b90-4f6c-a51f-337138204f0f
+                    PanStartedSound: 55fa5193-d04b-4a84-9cce-ef0c7b423026
                     UpdateOrder: 0.5
                 Children:
                   - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
