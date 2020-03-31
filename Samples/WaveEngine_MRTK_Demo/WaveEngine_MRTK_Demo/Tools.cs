@@ -20,6 +20,17 @@ namespace WaveEngine_MRTK_Demo
             return t;
         }
 
+        public static T GetInChildrenOrAddComponent<T>(this Entity Owner) where T : Component, new()
+        {
+            T t = Owner.FindComponentInChildren<T>();
+            if (t == null)
+            {
+                t = new T();
+                Owner.AddComponent(t);
+            }
+            return t;
+        }
+
         public static unsafe Material Clone(this Material material)
         {
             Material copy = new Material(material.Effect);

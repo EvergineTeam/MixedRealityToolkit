@@ -4802,52 +4802,58 @@ Items:
                     FrustumCullingEnabled: true
                     IsEnabled: true
                     OrderBias: 0
-                  - !WaveEngine_MRTK_Demo.Components.BatcherDisabler,WaveEngine_MRTK_Demo
-                    Id: 96707328-19f3-4ea0-868e-05b839d4bc98
-                    IsEnabled: true
-                  - !WaveEngine.Framework.Physics3D.BoxCollider3D,WaveEngine.Framework
-                    Id: 581b7c45-9453-4e56-a875-c6054a1311b1
-                    IsEnabled: true
-                    Margin: 0.0399999991
-                    Offset:
-                      X: 0.0
-                      Y: 0.0
-                      Z: 0.0
-                    OrientationOffset:
-                      W: 1.0
-                      X: 0.0
-                      Y: 0.0
-                      Z: 0.0
-                    Size:
-                      X: 1.0
-                      Y: 1.0
-                      Z: 1.0
                   - !WaveEngine_MRTK_Demo.Behaviors.HandInteractionPanZoom,WaveEngine_MRTK_Demo
                     Id: e8aa6e47-e291-4c79-b33c-7ef98587f31f
+                    Drag: 0.150000006
+                    EnableZoom: true
                     IsEnabled: true
+                    LockHorizontal: false
+                    LockVertical: false
+                    MaxScale: 4.0
+                    MinScale: 0.100000001
                     UpdateOrder: 0.5
-                    drag: 0.850000024
-                    enableZoom: true
-                    lockHorizontal: false
-                    lockVertical: false
-                    maxScale: 4.0
-                    minScale: 0.100000001
-                  - !WaveEngine.Framework.Physics3D.StaticBody3D,WaveEngine.Framework
-                    Id: ca22dd7d-5003-4116-aaab-a7e0317162a6
-                    CcdMotionThreshold: 0.0
-                    CcdSweptSphereRadius: 0.200000003
-                    CollisionCategories: Cat1
-                    Friction: 0.5
+                Children:
+                  - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                    Name: Collider
+                    Tag: null
                     IsEnabled: true
-                    IsSensor: false
-                    MaskBits: All
-                    Restitution: 0.0
-                    RollingFriction: 0.0
-                    UpdateOrder: 0.5
-                  - !WaveEngine.MRTK.Services.InputSystem.NearInteractionTouchable,WaveEngine.MRTK
-                    Id: 5ba8b96e-6329-4632-89b9-9fce9af51e1f
-                    IsEnabled: true
-                Children: []
+                    IsStatic: false
+                    Components:
+                      - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                        Id: 67acabe2-2644-4b06-bf96-fcfa2da7948c
+                        IsEnabled: true
+                        LocalOrientation:
+                          W: 1.0
+                          X: 0.0
+                          Y: 0.0
+                          Z: 0.0
+                        LocalPosition:
+                          X: 0.0
+                          Y: 0.0
+                          Z: 0.0
+                        LocalScale:
+                          X: 1.0
+                          Y: 1.0
+                          Z: 1.0
+                      - !WaveEngine.Framework.Physics3D.BoxCollider3D,WaveEngine.Framework
+                        Id: b36a29a6-61bc-4df7-9370-7494fdb499eb
+                        IsEnabled: true
+                        Margin: 0.0399999991
+                        Offset:
+                          X: 0.0
+                          Y: -0.149999991
+                          Z: 0.0
+                        OrientationOffset:
+                          W: 1.0
+                          X: 0.0
+                          Y: 0.0
+                          Z: 0.0
+                        Size:
+                          X: 1.0
+                          Y: 0.300000668
+                          Z: 1.0
+                    Children: []
+                    Id: 8f47f4e5-7b2b-445a-bcd6-c359b5c5e32b
                 Id: c133015b-7348-4397-b5dc-da3fd76ebd9d
             Id: 0ced874d-fa3e-4fff-ab01-a429bb6536d8
           - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
