@@ -4670,6 +4670,30 @@ Items:
                         IsEnabled: true
                     Children: []
                     Id: fd72d7c2-62f7-4261-bf91-6fd0bd2a274e
+                  - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                    Name: Title
+                    Tag: null
+                    IsEnabled: true
+                    IsStatic: false
+                    Components:
+                      - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                        Id: 7dfeaa6e-c251-44a9-80fd-02d12b41a3a6
+                        IsEnabled: true
+                        LocalOrientation:
+                          W: 0.707106888
+                          X: 0.0
+                          Y: -0.70710665
+                          Z: 0.0
+                        LocalPosition:
+                          X: -0.0683000013
+                          Y: 0.113164499
+                          Z: 0.0604960285
+                        LocalScale:
+                          X: 2.40306044
+                          Y: 23.8095245
+                          Z: 285.714294
+                    Children: []
+                    Id: bd593b08-42ff-4527-8900-507cfd4fb70d
                 Id: cd955ecb-ac00-49e8-8f56-04c9a862b41e
               - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
                 Name: ContentBackPlate
@@ -4802,6 +4826,12 @@ Items:
                     Id: e8aa6e47-e291-4c79-b33c-7ef98587f31f
                     IsEnabled: true
                     UpdateOrder: 0.5
+                    drag: 0.850000024
+                    enableZoom: true
+                    lockHorizontal: false
+                    lockVertical: false
+                    maxScale: 4.0
+                    minScale: 0.100000001
                   - !WaveEngine.Framework.Physics3D.StaticBody3D,WaveEngine.Framework
                     Id: ca22dd7d-5003-4116-aaab-a7e0317162a6
                     CcdMotionThreshold: 0.0
@@ -4820,6 +4850,76 @@ Items:
                 Children: []
                 Id: c133015b-7348-4397-b5dc-da3fd76ebd9d
             Id: 0ced874d-fa3e-4fff-ab01-a429bb6536d8
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: SectionTitle
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: 5c55facd-0a51-4ada-a2ec-8a89b0c5db4a
+                IsEnabled: true
+                LocalOrientation:
+                  W: 0.707106829
+                  X: 0.707106769
+                  Y: 0.0
+                  Z: 0.0
+                LocalPosition:
+                  X: 0.148000181
+                  Y: 0.2585558
+                  Z: 0.0799999982
+                LocalScale:
+                  X: 1.0
+                  Y: 1.0
+                  Z: 1.0
+              - !WaveEngine_MRTK_Demo.Components.Text3D,WaveEngine_MRTK_Demo
+                Id: ad054e00-8418-4f5f-b3c7-26f58585b090
+                Alpha: 1.0
+                FontSize: 36
+                HorizontalAlignment: Left
+                IsEnabled: true
+                Quality: 0.5
+                Resolution: 2000
+                Text: Pan & Zoom Interaction
+                TextWrapping: NoWrap
+                VerticalAlignment: Center
+            Children: []
+            Id: 1fabc508-e034-4e7a-a393-f22661b7f30a
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: SectionSubtitle
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: 6197bfc1-f8f0-49f6-b23c-c40f0751202a
+                IsEnabled: true
+                LocalOrientation:
+                  W: 0.707106829
+                  X: 0.707106709
+                  Y: -7.7022591E-08
+                  Z: 7.70225412E-08
+                LocalPosition:
+                  X: 0.150000185
+                  Y: 0.193155795
+                  Z: 0.0799999982
+                LocalScale:
+                  X: 1.0
+                  Y: 1.0
+                  Z: 1.0
+              - !WaveEngine_MRTK_Demo.Components.Text3D,WaveEngine_MRTK_Demo
+                Id: 5f203229-f016-45a3-b25f-c3c3e5263eab
+                Alpha: 1.0
+                FontSize: 24
+                HorizontalAlignment: Left
+                IsEnabled: true
+                Quality: 0.5
+                Resolution: 2000
+                Text: Example of panning and zooming 2D content using HandInteractionPanZoom.cs
+                TextWrapping: Wrap
+                VerticalAlignment: Center
+            Children: []
+            Id: 3c6c0325-dcbf-40ed-b876-95e072a18f8b
         Id: b3a7521f-f10f-4fe2-96d1-ef6a07f0b0ef
     Id: bf7601de-e3ee-4c6a-9ec4-717fc4c11ddd
   - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
