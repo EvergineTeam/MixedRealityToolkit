@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿
 using System.Runtime.CompilerServices;
-using System.Text;
-using WaveEngine.Common.Audio;
 using WaveEngine.Common.Graphics;
 using WaveEngine.Common.Input.Keyboard;
-using WaveEngine.Common.Media;
 using WaveEngine.Components.Graphics3D;
-using WaveEngine.Components.Sound;
 using WaveEngine.Components.XR;
 using WaveEngine.Framework;
 using WaveEngine.Framework.Graphics;
@@ -20,30 +15,8 @@ using WaveEngine_MRTK_Demo.Emulation;
 
 namespace WaveEngine_MRTK_Demo
 {
-    public static class Tools
+    public static class MRTKDemoTools
     {
-        public static T GetOrAddComponent<T>(this Entity Owner) where T : Component, new()
-        {
-            T t = Owner.FindComponent<T>();
-            if (t == null)
-            {
-                t = new T();
-                Owner.AddComponent(t);
-            }
-            return t;
-        }
-
-        public static T GetInChildrenOrAddComponent<T>(this Entity Owner) where T : Component, new()
-        {
-            T t = Owner.FindComponentInChildren<T>();
-            if (t == null)
-            {
-                t = new T();
-                Owner.AddComponent(t);
-            }
-            return t;
-        }
-
         public static unsafe Material Clone(this Material material)
         {
             Material copy = new Material(material.Effect);
@@ -73,21 +46,6 @@ namespace WaveEngine_MRTK_Demo
             }
 
             return copy;
-        }
-
-        public static void PlaySound(SoundEmitter3D soundEmitter,  AudioBuffer sound)
-        {
-            if (soundEmitter != null && sound != null)
-            {
-                if (soundEmitter.PlayState == PlayState.Playing)
-                {
-                    soundEmitter.Stop();
-                }
-
-                soundEmitter.Audio = sound;
-
-                soundEmitter.Play();
-            }
         }
 
         private static void CreateXRHandMesh(Scene scene, AssetsService assetsService, XRHandedness handedness)

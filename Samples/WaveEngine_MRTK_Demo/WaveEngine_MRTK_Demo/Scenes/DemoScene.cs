@@ -18,7 +18,7 @@ namespace WaveEngine_MRTK_Demo.Scenes
         {
             //this.Managers.RenderManager.DebugLines = true;
 
-            Tools.CreateHands(this);
+            MRTKDemoTools.CreateHands(this);
         }
     }
 }
