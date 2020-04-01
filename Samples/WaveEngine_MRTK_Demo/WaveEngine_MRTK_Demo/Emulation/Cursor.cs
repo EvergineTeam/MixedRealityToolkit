@@ -55,6 +55,11 @@ namespace WaveEngine_MRTK_Demo.Emulation
 
         private StandardMaterial material;
 
+        protected override bool OnAttached()
+        {
+            return base.OnAttached();
+        }
+
         protected override void Start()
         {
             if (this.materialComponent != null)
@@ -62,6 +67,8 @@ namespace WaveEngine_MRTK_Demo.Emulation
                 if (!Application.Current.IsEditor)
                 {
                     this.materialComponent.Material = this.materialComponent.Material.Clone();
+
+                    this.Managers.FindManager<CursorManager>().AddCursor(this);
                 }
 
                 this.material = new StandardMaterial(this.materialComponent.Material);
