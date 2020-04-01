@@ -21,12 +21,6 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
         protected SimpleManipulationHandler manipulationHandler;
 
         /// <summary>
-        /// The sound emitter.
-        /// </summary>
-        [BindComponent]
-        protected SoundEmitter3D soundEmitter;
-
-        /// <summary>
         /// Gets or sets the sound to be played when the manipulation is started.
         /// </summary>
         [RenderProperty(Tooltip = "The sound to be played when the manipulation is started")]
@@ -38,6 +32,8 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
         [RenderProperty(Tooltip = "The sound to be played when the manipulation is ended")]
         public AudioBuffer ManipulationEndedSound { get; set; }
 
+        private SoundEmitter3D soundEmitter;
+
         /// <inheritdoc/>
         protected override bool OnAttached()
         {
@@ -47,6 +43,11 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
             {
                 this.manipulationHandler.ManipulationStarted += this.ManipulationHandler_ManipulationStarted;
                 this.manipulationHandler.ManipulationEnded += this.ManipulationHandler_ManipulationEnded;
+
+                if (!Application.Current.IsEditor)
+                {
+                    this.soundEmitter = this.Owner.GetOrAddComponent<SoundEmitter3D>();
+                }
             }
 
             return attached;
@@ -63,27 +64,12 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
 
         private void ManipulationHandler_ManipulationStarted(object sender, EventArgs e)
         {
-            this.PlaySound(this.ManipulationStartedSound);
+            Tools.PlaySound(this.soundEmitter, this.ManipulationStartedSound);
         }
 
         private void ManipulationHandler_ManipulationEnded(object sender, EventArgs e)
         {
-            this.PlaySound(this.ManipulationEndedSound);
-        }
-
-        private void PlaySound(AudioBuffer sound)
-        {
-            if (this.soundEmitter != null)
-            {
-                if (this.soundEmitter.PlayState == PlayState.Playing)
-                {
-                    this.soundEmitter.Stop();
-                }
-
-                this.soundEmitter.Audio = sound;
-
-                this.soundEmitter.Play();
-            }
+            Tools.PlaySound(this.soundEmitter, this.ManipulationEndedSound);
         }
     }
 }

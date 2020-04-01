@@ -55,7 +55,8 @@ namespace WaveEngine.MRTK.SDK.Features
         /// </summary>
         /// <param name="soundEmitter">The soundEmitter.</param>
         /// <param name="sound">The sound to play.</param>
-        public static void PlaySound(SoundEmitter3D soundEmitter, AudioBuffer sound)
+        /// <param name="pitch">The pitch.</param>
+        public static void PlaySound(SoundEmitter3D soundEmitter, AudioBuffer sound, float pitch = 1.0f)
         {
             if (soundEmitter != null && sound != null)
             {
@@ -65,6 +66,7 @@ namespace WaveEngine.MRTK.SDK.Features
                 }
 
                 soundEmitter.Audio = sound;
+                soundEmitter.Pitch = pitch;
 
                 soundEmitter.Play();
             }
