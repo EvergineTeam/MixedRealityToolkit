@@ -4963,31 +4963,4 @@ Items:
         IsEnabled: true
     Children: []
     Id: 384f3ab7-279e-4cf5-a4f8-25a35ef5d8af
-  - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
-    Name: services
-    Tag: null
-    IsEnabled: true
-    IsStatic: false
-    Components:
-      - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
-        Id: ff2aea0e-5bea-44c6-b783-a2c8307455f9
-        IsEnabled: true
-        LocalOrientation:
-          W: 1.0
-          X: 0.0
-          Y: 0.0
-          Z: 0.0
-        LocalPosition:
-          X: 0.0
-          Y: 0.0
-          Z: 0.0
-        LocalScale:
-          X: 1.0
-          Y: 1.0
-          Z: 1.0
-      - !WaveEngine_MRTK_Demo.Components.NoesisServiceRegistrationComponent,WaveEngine_MRTK_Demo
-        Id: df7a9f7a-0cdd-415f-9b07-cbac89e07b4f
-        IsEnabled: true
-    Children: []
-    Id: 6a044e04-ad4e-47f6-8cc6-9af02f9b3c33
 Managers: []
