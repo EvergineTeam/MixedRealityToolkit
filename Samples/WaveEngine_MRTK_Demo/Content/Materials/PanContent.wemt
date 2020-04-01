@@ -1,0 +1,30 @@
+!WaveEngine.Assets.Exporters.MaterialMetaFile,WaveEngine.Assets
+Id: 9ca041f7-ffef-4c3e-b349-e19cf446979a
+DefaultProfile:
+  ExcludeAsset: false
+  Name: null
+  Platform: Undefined
+ExportAsRaw: false
+MaterialInfo:
+  Id: 2a1df02a-223c-4f9a-b603-b7f68ee1dab9
+  ActiveDirectives:
+    - DIFF
+  EffectID: e668e6e8-6491-4419-8500-b3abbaf879ff
+  Layer: 0db59561-b3f5-444f-b5de-e62e3a5b42bf
+  Parameters:
+    - Name: WorldViewProj
+      Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
+      ValueByteArray: T5enQLshwryYVPq6L076us59UbFUDWw/UlD7v+NJ+7+vhNa8CaqXwK6Rw76sjMO+lcgHMsuMGrQf7ItAvRuPQA==
+    - Name: Offset
+      Type: WaveEngine.Mathematics.Vector2,WaveEngine.Mathematics
+      ValueByteArray: AAAAAAAAAAA=
+    - Name: Tiling
+      Type: WaveEngine.Mathematics.Vector2,WaveEngine.Mathematics
+      ValueByteArray: AACAPwAAgD8=
+  Samplers:
+    - ID: 9018edf8-ea96-4721-bf83-5561942432e0
+      Name: Sampler
+  Textures:
+    - ID: fdc10e79-2a87-42f1-a5b1-78f968cec18f
+      Name: Texture
+Profiles: {}

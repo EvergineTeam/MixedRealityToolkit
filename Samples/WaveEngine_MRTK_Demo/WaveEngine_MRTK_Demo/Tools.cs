@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Text;
+using WaveEngine.Common.Audio;
+using WaveEngine.Common.Media;
+using WaveEngine.Components.Sound;
 using WaveEngine.Framework;
 using WaveEngine.Framework.Graphics;
 
@@ -20,10 +23,21 @@ namespace WaveEngine_MRTK_Demo
             return t;
         }
 
+        public static T GetInChildrenOrAddComponent<T>(this Entity Owner) where T : Component, new()
+        {
+            T t = Owner.FindComponentInChildren<T>();
+            if (t == null)
+            {
+                t = new T();
+                Owner.AddComponent(t);
+            }
+            return t;
+        }
+
         public static unsafe Material Clone(this Material material)
         {
             Material copy = new Material(material.Effect);
-            copy.ActiveDirectivesNames = material.ActiveDirectivesNames;
+            copy.ActiveDirectivesNames = (string[])material.ActiveDirectivesNames.Clone();
             copy.LayerDescription = material.LayerDescription;
             copy.OrderBias = material.OrderBias;
             copy.AllowInstancing = material.AllowInstancing;
@@ -49,6 +63,21 @@ namespace WaveEngine_MRTK_Demo
             }
 
             return copy;
+        }
+
+        public static void PlaySound(SoundEmitter3D soundEmitter,  AudioBuffer sound)
+        {
+            if (soundEmitter != null && sound != null)
+            {
+                if (soundEmitter.PlayState == PlayState.Playing)
+                {
+                    soundEmitter.Stop();
+                }
+
+                soundEmitter.Audio = sound;
+
+                soundEmitter.Play();
+            }
         }
     }
 }
