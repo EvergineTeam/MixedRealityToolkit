@@ -3,13 +3,14 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <Description>Provides and set of components that help developing Mixed Reality applications using Wave Engine.</Description>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="WaveEngine.Bullet" Version="3.0.0.4731-preview3" />
-    <PackageReference Include="WaveEngine.Common" Version="3.0.0.4731-preview3" />
-    <PackageReference Include="WaveEngine.Components" Version="3.0.0.4731-preview3" />
-    <PackageReference Include="WaveEngine.Framework" Version="3.0.0.4731-preview3" />
-    <PackageReference Include="WaveEngine.Mathematics" Version="3.0.0.4731-preview3" />
-    <PackageReference Include="WaveEngine.Platform" Version="3.0.0.4731-preview3" />
+    <PackageReference Include="WaveEngine.Bullet" Version="3.0.0.4879-nightly" />
+    <PackageReference Include="WaveEngine.Common" Version="3.0.0.4879-nightly" />
+    <PackageReference Include="WaveEngine.Components" Version="3.0.0.4879-nightly" />
+    <PackageReference Include="WaveEngine.Framework" Version="3.0.0.4879-nightly" />
+    <PackageReference Include="WaveEngine.Mathematics" Version="3.0.0.4879-nightly" />
+    <PackageReference Include="WaveEngine.Platform" Version="3.0.0.4879-nightly" />
   </ItemGroup>
 </Project>
