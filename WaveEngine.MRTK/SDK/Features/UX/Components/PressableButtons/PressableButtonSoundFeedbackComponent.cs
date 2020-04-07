@@ -21,12 +21,6 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
         protected PressableButton pressableButton;
 
         /// <summary>
-        /// A sound emitter.
-        /// </summary>
-        [BindComponent(isRequired: false)]
-        protected SoundEmitter3D soundEmitter;
-
-        /// <summary>
         /// Gets or sets the sound to be played when the button is pressed.
         /// </summary>
         [RenderProperty(Tooltip = "The sound to be played when the button is pressed")]
@@ -38,6 +32,8 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
         [RenderProperty(Tooltip = "The sound to be played when the button is released")]
         public AudioBuffer ReleasedSound { get; set; }
 
+        private SoundEmitter3D soundEmitter;
+
         /// <inheritdoc/>
         protected override bool OnAttached()
         {
@@ -47,12 +43,11 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
             {
                 this.pressableButton.ButtonPressed += this.PressableButton_ButtonPressed;
                 this.pressableButton.ButtonReleased += this.PressableButton_ButtonReleased;
-            }
 
-            if (!Application.Current.IsEditor && this.soundEmitter == null)
-            {
-                this.soundEmitter = new SoundEmitter3D();
-                this.Owner.AddComponent(this.soundEmitter);
+                if (!Application.Current.IsEditor)
+                {
+                    this.soundEmitter = this.Owner.GetOrAddComponent<SoundEmitter3D>();
+                }
             }
 
             return attached;
@@ -69,27 +64,12 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
 
         private void PressableButton_ButtonPressed(object sender, EventArgs args)
         {
-            this.PlaySound(this.PressedSound);
+            Tools.PlaySound(this.soundEmitter, this.PressedSound);
         }
 
         private void PressableButton_ButtonReleased(object sender, EventArgs args)
         {
-            this.PlaySound(this.ReleasedSound);
-        }
-
-        private void PlaySound(AudioBuffer sound)
-        {
-            if (this.soundEmitter != null && sound != null)
-            {
-                if (this.soundEmitter.PlayState == PlayState.Playing)
-                {
-                    this.soundEmitter.Stop();
-                }
-
-                this.soundEmitter.Audio = sound;
-
-                this.soundEmitter.Play();
-            }
+            Tools.PlaySound(this.soundEmitter, this.ReleasedSound);
         }
     }
 }

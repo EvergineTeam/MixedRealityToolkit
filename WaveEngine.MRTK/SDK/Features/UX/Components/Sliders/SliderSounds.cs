@@ -22,12 +22,6 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.Sliders
         protected PinchSlider pinchSlider;
 
         /// <summary>
-        /// The sound emitter.
-        /// </summary>
-        [BindComponent]
-        protected SoundEmitter3D soundEmitter;
-
-        /// <summary>
         /// Gets or sets the sound to be played when interaction with the slider starts.
         /// </summary>
         [RenderProperty(Tooltip = "The sound to be played when interaction with the slider starts")]
@@ -78,6 +72,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.Sliders
         private float accumulatedDeltaSliderValue;
         private float lastSoundPlayTime;
         private float timeSinceStart;
+        private SoundEmitter3D soundEmitter;
 
         /// <inheritdoc/>
         protected override bool OnAttached()
@@ -89,6 +84,11 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.Sliders
                 this.pinchSlider.InteractionStarted += this.PinchSlider_InteractionStarted;
                 this.pinchSlider.InteractionEnded += this.PinchSlider_InteractionEnded;
                 this.pinchSlider.ValueUpdated += this.PinchSlider_ValueUpdated;
+
+                if (!Application.Current.IsEditor)
+                {
+                    this.soundEmitter = this.Owner.GetOrAddComponent<SoundEmitter3D>();
+                }
             }
 
             return attached;
@@ -108,7 +108,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.Sliders
         {
             if (this.InteractionStartSound != null)
             {
-                this.PlaySound(this.InteractionStartSound);
+                Tools.PlaySound(this.soundEmitter, this.InteractionStartSound);
             }
         }
 
@@ -116,7 +116,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.Sliders
         {
             if (this.InteractionEndSound != null)
             {
-                this.PlaySound(this.InteractionEndSound);
+                Tools.PlaySound(this.soundEmitter, this.InteractionEndSound);
             }
         }
 
@@ -131,7 +131,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.Sliders
                 if (this.accumulatedDeltaSliderValue > this.TickEvery && timeSinceLastSound > this.MinSecondsBetweenTicks)
                 {
                     var pitch = MathHelper.Lerp(this.StartPitch, this.EndPitch, eventData.NewValue);
-                    this.PlaySound(this.PassNotchSound, pitch);
+                    Tools.PlaySound(this.soundEmitter, this.PassNotchSound, pitch);
 
                     this.accumulatedDeltaSliderValue = 0;
                     this.lastSoundPlayTime = this.timeSinceStart;
@@ -143,22 +143,6 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.Sliders
         protected override void Update(TimeSpan gameTime)
         {
             this.timeSinceStart += (float)gameTime.TotalSeconds;
-        }
-
-        private void PlaySound(AudioBuffer sound, float pitch = 1.0f)
-        {
-            if (this.soundEmitter != null)
-            {
-                if (this.soundEmitter.PlayState == PlayState.Playing)
-                {
-                    this.soundEmitter.Stop();
-                }
-
-                this.soundEmitter.Audio = sound;
-                this.soundEmitter.Pitch = pitch;
-
-                this.soundEmitter.Play();
-            }
         }
     }
 }

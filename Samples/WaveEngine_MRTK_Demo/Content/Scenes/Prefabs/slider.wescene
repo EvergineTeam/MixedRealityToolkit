@@ -28,18 +28,6 @@ Items:
         IsEnabled: true
         SliderEndDistance: 0.075000003
         SliderStartDistance: -0.075000003
-      - !WaveEngine.Components.Sound.SoundEmitter3D,WaveEngine.Components
-        Id: bd7c3cf6-687f-40e0-8264-fb07d7aee267
-        Apply3D: true
-        Audio: null
-        DistanceScaleFactor: 1.0
-        IsEnabled: true
-        IsMuted: false
-        Loop: false
-        Pitch: 1.0
-        PlayAutomatically: false
-        UpdateOrder: 0.5
-        Volume: 1.0
       - !WaveEngine.MRTK.SDK.Features.UX.Components.Sliders.SliderSounds,WaveEngine.MRTK
         Id: f913aec0-e726-4dac-9d2b-f399b6760a7d
         EndPitch: 1.25

@@ -15,7 +15,7 @@ namespace WaveEngine_MRTK_Demo.Emulation
     {
         private static readonly int VELOCITY_HISTORY_SIZE = 10;
 
-        public Cursor[] Cursors { get; private set; }
+        public List<Cursor> Cursors { get; private set; } = new List<Cursor>();
 
         private Dictionary<Entity, Entity> cursorCollisions = new Dictionary<Entity, Entity>();
         private Dictionary<Entity, Entity> interactedEntities = new Dictionary<Entity, Entity>();
@@ -27,24 +27,19 @@ namespace WaveEngine_MRTK_Demo.Emulation
         private Dictionary<Cursor, LinkedList<Quaternion>> cursorsOrientationHistory = new Dictionary<Cursor, LinkedList<Quaternion>>();
         private LinkedList<float> gameTimeHistory = new LinkedList<float>();
 
-        protected override void OnActivated()
+        /// <summary>
+        /// Call this when the cursors have been created
+        /// </summary>
+        public void AddCursor(Cursor cursor)
         {
-            base.OnActivated();
+            this.Cursors.Add(cursor);
+            
+            cursor.StaticBody3D.BeginCollision += this.Cursor_BeginCollision;
+            cursor.StaticBody3D.UpdateCollision += this.Cursor_UpdateCollision;
+            cursor.StaticBody3D.EndCollision += this.Cursor_EndCollision;
 
-            this.Cursors = this.Managers.EntityManager
-                .FindComponentsOfType<Cursor>()
-                .ToArray()
-               ;
-
-            foreach (var cursor in this.Cursors)
-            {
-                cursor.StaticBody3D.BeginCollision += this.Cursor_BeginCollision;
-                cursor.StaticBody3D.UpdateCollision += this.Cursor_UpdateCollision;
-                cursor.StaticBody3D.EndCollision += this.Cursor_EndCollision;
-
-                this.cursorsPositionHistory[cursor] = new LinkedList<Vector3>();
-                this.cursorsOrientationHistory[cursor] = new LinkedList<Quaternion>();
-            }
+            this.cursorsPositionHistory[cursor] = new LinkedList<Vector3>();
+            this.cursorsOrientationHistory[cursor] = new LinkedList<Quaternion>();
         }
 
         protected override void OnDeactivated()
