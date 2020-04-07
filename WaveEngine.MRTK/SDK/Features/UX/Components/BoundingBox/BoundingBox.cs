@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using WaveEngine.Common.Attributes;
 using WaveEngine.Common.Graphics;
 using WaveEngine.Components.Graphics3D;
@@ -58,26 +59,19 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
 
         private StandardMaterial handleMaterial;
 
-        private Entity currentCursor;
-        private Transform3D rigRootTransform;
-        private PointerHandler rigRootPointerHandler;
+        // Rig
         private Entity rigRootEntity;
+        private Dictionary<Entity, BoundingBoxHelper> helpers;
+        private List<BoundingBoxHelper> helpersList;
 
-        private Vector3[] boundsCorners;
-        private Vector3[] edgeCenters;
-        private CardinalAxisType[] edgeAxes;
+        private Vector3 boundingBoxSize;
 
-        private List<Entity> corners;
-        private List<Entity> balls;
-        private List<Entity> links;
+        // Interaction variables
+        private Entity currentCursor;
+        private BoundingBoxHelper currentHandle;
 
-        private Vector3 boundsSize;
-
-        private HandleType currentHandleType;
         private Vector3 initialGrabPoint;
-        private Vector3 initialScaleOnGrabStart;
-        private Vector3 initialPositionOnGrabStart;
-        private Quaternion initialOrientationOnGrabStart;
+        private Matrix4x4 transformOnGrabStart;
 
         private Vector3 grabOppositeCorner;
         private Vector3 grabDiagonalDirection;
@@ -147,9 +141,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
             this.InitializeRigRoot();
             this.InitializeDataStructures();
             ////this.SetBoundingBoxCollider();
-            this.UpdateBounds();
-            this.AddCorners();
-            this.AddLinks();
+            this.AddHelpers();
             ////HandleIgnoreCollider();
             ////AddBoxDisplay();
             this.UpdateRigHandles();
@@ -163,9 +155,10 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
         {
             if (this.rigRootEntity != null)
             {
-                this.rigRootPointerHandler.OnPointerDown -= this.PointerHandler_OnPointerDown;
-                this.rigRootPointerHandler.OnPointerDragged -= this.PointerHandler_OnPointerDragged;
-                this.rigRootPointerHandler.OnPointerUp -= this.PointerHandler_OnPointerUp;
+                var rigRootPointerHandler = this.rigRootEntity.FindComponent<PointerHandler>();
+                rigRootPointerHandler.OnPointerDown -= this.PointerHandler_OnPointerDown;
+                rigRootPointerHandler.OnPointerDragged -= this.PointerHandler_OnPointerDragged;
+                rigRootPointerHandler.OnPointerUp -= this.PointerHandler_OnPointerUp;
 
                 this.Owner.RemoveChild(this.rigRootEntity);
                 this.rigRootEntity = null;
@@ -174,42 +167,30 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
 
         private void InitializeRigRoot()
         {
-            this.rigRootTransform = new Transform3D();
-
-            this.rigRootPointerHandler = new PointerHandler();
-            this.rigRootPointerHandler.OnPointerDown += this.PointerHandler_OnPointerDown;
-            this.rigRootPointerHandler.OnPointerDragged += this.PointerHandler_OnPointerDragged;
-            this.rigRootPointerHandler.OnPointerUp += this.PointerHandler_OnPointerUp;
+            var rigRootPointerHandler = new PointerHandler();
+            rigRootPointerHandler.OnPointerDown += this.PointerHandler_OnPointerDown;
+            rigRootPointerHandler.OnPointerDragged += this.PointerHandler_OnPointerDragged;
+            rigRootPointerHandler.OnPointerUp += this.PointerHandler_OnPointerUp;
 
             this.rigRootEntity = new Entity(RIG_ROOT_NAME)
             {
                 Flags = HideFlags.DontSave | HideFlags.DontShow,
             }
-            .AddComponent(this.rigRootTransform)
-            .AddComponent(this.rigRootPointerHandler);
+            .AddComponent(new Transform3D())
+            .AddComponent(rigRootPointerHandler);
 
             this.Owner.AddChild(this.rigRootEntity);
         }
 
         private void InitializeDataStructures()
         {
-            this.boundsCorners = new Vector3[8];
-            this.edgeCenters = new Vector3[12];
-            this.edgeAxes = new CardinalAxisType[12];
-
-            this.corners = new List<Entity>();
-            this.balls = new List<Entity>();
-            this.links = new List<Entity>();
+            this.helpers = new Dictionary<Entity, BoundingBoxHelper>();
         }
 
-        private void UpdateBounds()
+        private Vector3[] GetCornerPositionsFromBounds()
         {
-            this.GetCornerPositionsFromBounds();
-            this.CalculateEdgeCenters();
-        }
+            var boundsCorners = new Vector3[8];
 
-        private void GetCornerPositionsFromBounds()
-        {
             var center = this.boxCollider3D.Offset;
             var extent = this.boxCollider3D.Size / 2;
 
@@ -225,52 +206,86 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
             // Permutate all axes using minCorner and maxCorner.
             Vector3 minCorner = center - extent;
             Vector3 maxCorner = center + extent;
-            for (int c = 0; c < this.boundsCorners.Length; c++)
+            for (int c = 0; c < boundsCorners.Length; c++)
             {
-                this.boundsCorners[c] = new Vector3(
+                boundsCorners[c] = new Vector3(
                     (c & (1 << 0)) == 0 ? minCorner[0] : maxCorner[0],
                     (c & (1 << 1)) == 0 ? minCorner[1] : maxCorner[1],
                     (c & (1 << 2)) == 0 ? minCorner[2] : maxCorner[2]);
             }
 
-            this.boundsSize = maxCorner - minCorner;
+            return boundsCorners;
         }
 
-        private void CalculateEdgeCenters()
+        private Vector3 CalculateBoundingBoxSize(Vector3[] boundsCorners)
         {
-            if (this.boundsCorners != null)
-            {
-                this.edgeCenters[0] = (this.boundsCorners[0] + this.boundsCorners[1]) * 0.5f;
-                this.edgeCenters[1] = (this.boundsCorners[0] + this.boundsCorners[2]) * 0.5f;
-                this.edgeCenters[2] = (this.boundsCorners[3] + this.boundsCorners[2]) * 0.5f;
-                this.edgeCenters[3] = (this.boundsCorners[3] + this.boundsCorners[1]) * 0.5f;
-
-                this.edgeCenters[4] = (this.boundsCorners[4] + this.boundsCorners[5]) * 0.5f;
-                this.edgeCenters[5] = (this.boundsCorners[4] + this.boundsCorners[6]) * 0.5f;
-                this.edgeCenters[6] = (this.boundsCorners[7] + this.boundsCorners[6]) * 0.5f;
-                this.edgeCenters[7] = (this.boundsCorners[7] + this.boundsCorners[5]) * 0.5f;
-
-                this.edgeCenters[8] = (this.boundsCorners[0] + this.boundsCorners[4]) * 0.5f;
-                this.edgeCenters[9] = (this.boundsCorners[1] + this.boundsCorners[5]) * 0.5f;
-                this.edgeCenters[10] = (this.boundsCorners[2] + this.boundsCorners[6]) * 0.5f;
-                this.edgeCenters[11] = (this.boundsCorners[3] + this.boundsCorners[7]) * 0.5f;
-            }
+            return boundsCorners[7] - boundsCorners[0];
         }
 
-        private void AddCorners()
+        private Vector3[] CalculateEdgeCenters(Vector3[] boundsCorners)
         {
-            for (int i = 0; i < this.boundsCorners.Length; ++i)
+            var edgeCenters = new Vector3[12];
+
+            edgeCenters[0] = (boundsCorners[0] + boundsCorners[1]) * 0.5f;
+            edgeCenters[1] = (boundsCorners[0] + boundsCorners[2]) * 0.5f;
+            edgeCenters[2] = (boundsCorners[3] + boundsCorners[2]) * 0.5f;
+            edgeCenters[3] = (boundsCorners[3] + boundsCorners[1]) * 0.5f;
+
+            edgeCenters[4] = (boundsCorners[4] + boundsCorners[5]) * 0.5f;
+            edgeCenters[5] = (boundsCorners[4] + boundsCorners[6]) * 0.5f;
+            edgeCenters[6] = (boundsCorners[7] + boundsCorners[6]) * 0.5f;
+            edgeCenters[7] = (boundsCorners[7] + boundsCorners[5]) * 0.5f;
+
+            edgeCenters[8] = (boundsCorners[0] + boundsCorners[4]) * 0.5f;
+            edgeCenters[9] = (boundsCorners[1] + boundsCorners[5]) * 0.5f;
+            edgeCenters[10] = (boundsCorners[2] + boundsCorners[6]) * 0.5f;
+            edgeCenters[11] = (boundsCorners[3] + boundsCorners[7]) * 0.5f;
+
+            return edgeCenters;
+        }
+
+        private AxisType[] CalculateAxisTypes()
+        {
+            var edgeAxes = new AxisType[12];
+
+            edgeAxes[0] = AxisType.X;
+            edgeAxes[1] = AxisType.Y;
+            edgeAxes[2] = AxisType.X;
+            edgeAxes[3] = AxisType.Y;
+            edgeAxes[4] = AxisType.X;
+            edgeAxes[5] = AxisType.Y;
+            edgeAxes[6] = AxisType.X;
+            edgeAxes[7] = AxisType.Y;
+            edgeAxes[8] = AxisType.Z;
+            edgeAxes[9] = AxisType.Z;
+            edgeAxes[10] = AxisType.Z;
+            edgeAxes[11] = AxisType.Z;
+
+            return edgeAxes;
+        }
+
+        private void AddHelpers()
+        {
+            var boundsCorners = this.GetCornerPositionsFromBounds();
+            var edgeCenters = this.CalculateEdgeCenters(boundsCorners);
+            var edgeAxes = this.CalculateAxisTypes();
+
+            this.boundingBoxSize = this.CalculateBoundingBoxSize(boundsCorners);
+
+            for (int i = 0; i < boundsCorners.Length; ++i)
             {
                 // Add corners
+                Transform3D cornerTransform = new Transform3D()
+                {
+                    LocalPosition = boundsCorners[i],
+                };
+
                 Entity corner = new Entity($"corner_{i}")
-                    .AddComponent(new Transform3D()
-                    {
-                        LocalPosition = this.boundsCorners[i],
-                    })
+                    .AddComponent(cornerTransform)
                     .AddComponent(new BoxCollider3D()
-                     {
-                         Margin = 0.0001f,
-                     })
+                    {
+                        Margin = 0.0001f,
+                    })
                     .AddComponent(new StaticBody3D() { IsSensor = true })
                     .AddComponent(new NearInteractionGrabbable());
 
@@ -287,33 +302,28 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
 
                 corner.AddChild(visual);
 
-                this.corners.Add(corner);
+                var cornerHelper = new BoundingBoxHelper()
+                {
+                    Type = BoundingBoxHelperType.ScaleHandle,
+                    AxisType = AxisType.None,
+                    Entity = corner,
+                    Transform = cornerTransform,
+                    OppositeHandlePosition = boundsCorners[7 - i],
+                };
+
+                this.helpers.Add(corner, cornerHelper);
             }
-        }
 
-        private void AddLinks()
-        {
-            this.edgeAxes[0] = CardinalAxisType.X;
-            this.edgeAxes[1] = CardinalAxisType.Y;
-            this.edgeAxes[2] = CardinalAxisType.X;
-            this.edgeAxes[3] = CardinalAxisType.Y;
-            this.edgeAxes[4] = CardinalAxisType.X;
-            this.edgeAxes[5] = CardinalAxisType.Y;
-            this.edgeAxes[6] = CardinalAxisType.X;
-            this.edgeAxes[7] = CardinalAxisType.Y;
-            this.edgeAxes[8] = CardinalAxisType.Z;
-            this.edgeAxes[9] = CardinalAxisType.Z;
-            this.edgeAxes[10] = CardinalAxisType.Z;
-            this.edgeAxes[11] = CardinalAxisType.Z;
-
-            for (int i = 0; i < this.edgeCenters.Length; ++i)
+            // Add balls
+            for (int i = 0; i < edgeCenters.Length; ++i)
             {
-                // Add balls
+                Transform3D midpointTransform = new Transform3D()
+                {
+                    LocalPosition = edgeCenters[i],
+                };
+
                 Entity midpoint = new Entity($"midpoint_{i}")
-                    .AddComponent(new Transform3D()
-                    {
-                        LocalPosition = this.edgeCenters[i],
-                    })
+                    .AddComponent(midpointTransform)
                     .AddComponent(new SphereCollider3D()
                     {
                         Margin = 0.0001f,
@@ -334,29 +344,43 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
 
                 midpoint.AddChild(midpointVisual);
 
-                this.balls.Add(midpoint);
+                var midpointHelper = new BoundingBoxHelper()
+                {
+                    Type = BoundingBoxHelperType.RotationHandle,
+                    AxisType = edgeAxes[i],
+                    Entity = midpoint,
+                    Transform = midpointTransform,
+                };
 
+                this.helpers.Add(midpoint, midpointHelper);
+            }
+
+            for (int i = 0; i < edgeCenters.Length; ++i)
+            {
                 // Add links
-                Vector3 rotation;
-                if (this.edgeAxes[i] == CardinalAxisType.Y)
+                Vector3 rotation = Vector3.Zero;
+
+                switch (edgeAxes[i])
                 {
-                    rotation = new Vector3(0.0f, (float)Math.PI / 2, 0.0f);
+                    case AxisType.X:
+                        rotation = new Vector3(0.0f, 0.0f, (float)Math.PI / 2);
+                        break;
+                    case AxisType.Y:
+                        rotation = new Vector3(0.0f, (float)Math.PI / 2, 0.0f);
+                        break;
+                    case AxisType.Z:
+                        rotation = new Vector3((float)Math.PI / 2, 0.0f, 0.0f);
+                        break;
                 }
-                else if (this.edgeAxes[i] == CardinalAxisType.Z)
+
+                var linkTransform = new Transform3D()
                 {
-                    rotation = new Vector3((float)Math.PI / 2, 0.0f, 0.0f);
-                }
-                else //// X
-                {
-                    rotation = new Vector3(0.0f, 0.0f, (float)Math.PI / 2);
-                }
+                    LocalPosition = edgeCenters[i],
+                    Rotation = rotation,
+                };
 
                 Entity link = new Entity($"link_{i}")
-                    .AddComponent(new Transform3D()
-                    {
-                        LocalPosition = this.edgeCenters[i],
-                        Rotation = rotation,
-                    });
+                    .AddComponent(linkTransform);
 
                 this.rigRootEntity.AddChild(link);
 
@@ -371,90 +395,56 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
 
                 link.AddChild(linkVisual);
 
-                this.links.Add(link);
-            }
-        }
-
-        private Vector3 GetRotationAxis(Entity handle)
-        {
-            for (int i = 0; i < this.balls.Count; ++i)
-            {
-                if (handle == this.balls[i])
+                var linkHelper = new BoundingBoxHelper()
                 {
-                    System.Diagnostics.Trace.WriteLine(this.edgeAxes[i]);
-                    if (this.edgeAxes[i] == CardinalAxisType.X)
-                    {
-                        return this.transform.WorldTransform.Right;
-                    }
-                    else if (this.edgeAxes[i] == CardinalAxisType.Y)
-                    {
-                        return this.transform.WorldTransform.Up;
-                    }
-                    else
-                    {
-                        return this.transform.WorldTransform.Forward;
-                    }
-                }
+                    Type = BoundingBoxHelperType.WireframeLink,
+                    AxisType = edgeAxes[i],
+                    Entity = link,
+                    Transform = linkTransform,
+                };
+
+                this.helpers.Add(link, linkHelper);
             }
 
-            return Vector3.Zero;
+            this.helpersList = this.helpers.Values.ToList();
         }
 
         private void UpdateRigHandles()
         {
-            for (int i = 0; i < this.corners.Count; i++)
+            for (int i = 0; i < this.helpersList.Count; i++)
             {
-                var cornerTransform = this.corners[i].FindComponent<Transform3D>();
-                cornerTransform.Scale = Vector3.One * this.ScaleHandleScale;
-            }
+                var helper = this.helpersList[i];
 
-            for (int i = 0; i < this.balls.Count; i++)
-            {
-                var ballTransform = this.balls[i].FindComponent<Transform3D>();
-                ballTransform.Scale = Vector3.One * this.RotationHandleScale;
-            }
-
-            for (int i = 0; i < this.links.Count; i++)
-            {
-                float scaleY = this.transform.WorldTransform.Scale.Y;
-
-                if (this.edgeAxes[i] == CardinalAxisType.X)
+                switch (helper.Type)
                 {
-                    scaleY *= this.boundsSize.X;
-                }
-                else if (this.edgeAxes[i] == CardinalAxisType.Y)
-                {
-                    scaleY *= this.boundsSize.Y;
-                }
-                else //// Z
-                {
-                    scaleY *= this.boundsSize.Z;
-                }
+                    case BoundingBoxHelperType.WireframeLink:
+                        float scaleY = this.transform.WorldTransform.Scale.Y;
 
-                var linkTransform = this.links[i].FindComponent<Transform3D>();
-                linkTransform.Scale = new Vector3(this.LinkScale, scaleY, this.LinkScale);
-            }
-        }
+                        switch (helper.AxisType)
+                        {
+                            case AxisType.X:
+                                scaleY *= this.boundingBoxSize.X;
+                                break;
+                            case AxisType.Y:
+                                scaleY *= this.boundingBoxSize.Y;
+                                break;
+                            case AxisType.Z:
+                                scaleY *= this.boundingBoxSize.Z;
+                                break;
+                        }
 
-        private HandleType GetHandleType(Entity handle)
-        {
-            for (int i = 0; i < this.corners.Count; ++i)
-            {
-                if (handle == this.corners[i])
-                {
-                    return HandleType.Scale;
+                        helper.Transform.Scale = new Vector3(this.LinkScale, scaleY, this.LinkScale);
+                        break;
+
+                    case BoundingBoxHelperType.RotationHandle:
+                        helper.Transform.Scale = Vector3.One * this.RotationHandleScale;
+                        break;
+
+                    case BoundingBoxHelperType.ScaleHandle:
+                        helper.Transform.Scale = Vector3.One * this.ScaleHandleScale;
+                        break;
                 }
             }
-
-            for (int i = 0; i < this.balls.Count; ++i)
-            {
-                if (handle == this.balls[i])
-                {
-                    return HandleType.Rotation;
-                }
-            }
-
-            return HandleType.None;
         }
 
         private void PointerHandler_OnPointerDown(object sender, MixedRealityPointerEventData eventData)
@@ -466,33 +456,26 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
 
             if (this.currentCursor == null)
             {
-                var grabbedHandle = eventData.CurrentTarget;
-                this.currentHandleType = this.GetHandleType(grabbedHandle);
+                this.currentHandle = this.helpers[eventData.CurrentTarget];
 
-                if (this.currentHandleType != HandleType.None)
+                this.currentCursor = eventData.Cursor;
+                this.initialGrabPoint = eventData.Position;
+                this.transformOnGrabStart = this.transform.WorldTransform;
+
+                switch (this.currentHandle.Type)
                 {
-                    this.currentCursor = eventData.Cursor;
-                    this.initialGrabPoint = eventData.Position;
-                    this.initialScaleOnGrabStart = this.transform.LocalScale;
-                    this.initialPositionOnGrabStart = this.transform.Position;
-                    this.initialOrientationOnGrabStart = this.transform.Orientation;
+                    case BoundingBoxHelperType.RotationHandle:
+                        var axis = this.currentHandle.GetRotationAxis(this.transform.WorldTransform);
+                        this.currentRotationAxis = Vector3.Normalize(axis);
+                        break;
 
-                    if (this.currentHandleType == HandleType.Scale)
-                    {
-                        var grabbedHandleTransform = grabbedHandle.FindComponent<Transform3D>();
-
-                        //// grabOppositeCorner seems to be miscalculated
-                        this.grabOppositeCorner = Vector3.TransformCoordinate(-grabbedHandleTransform.LocalPosition, this.rigRootTransform.WorldTransform);
-                        this.grabDiagonalDirection = Vector3.Normalize(grabbedHandleTransform.Position - this.grabOppositeCorner);
-                    }
-                    else if (this.currentHandleType == HandleType.Rotation)
-                    {
-                        this.currentRotationAxis = Vector3.Normalize(this.GetRotationAxis(grabbedHandle));
-                        System.Diagnostics.Trace.WriteLine(this.currentRotationAxis);
-                    }
-
-                    eventData.SetHandled();
+                    case BoundingBoxHelperType.ScaleHandle:
+                        this.grabOppositeCorner = Vector3.TransformCoordinate(this.currentHandle.OppositeHandlePosition, this.transform.WorldTransform);
+                        this.grabDiagonalDirection = Vector3.Normalize(this.currentHandle.Transform.Position - this.grabOppositeCorner);
+                        break;
                 }
+
+                eventData.SetHandled();
             }
         }
 
@@ -505,21 +488,11 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
 
             if (this.currentCursor == eventData.Cursor)
             {
-                if (this.currentHandleType != HandleType.None)
+                var currentGrabPoint = eventData.Position;
+
+                switch (this.currentHandle.Type)
                 {
-                    var currentGrabPoint = eventData.Position;
-
-                    if (this.currentHandleType == HandleType.Scale)
-                    {
-                        float initialDist = Vector3.Dot(this.initialGrabPoint - this.grabOppositeCorner, this.grabDiagonalDirection);
-                        float currentDist = Vector3.Dot(currentGrabPoint - this.grabOppositeCorner, this.grabDiagonalDirection);
-                        float scaleFactor = 1 + ((currentDist - initialDist) / initialDist);
-
-                        this.transform.LocalScale = this.initialScaleOnGrabStart * scaleFactor;
-                        this.transform.Position = this.grabOppositeCorner + (scaleFactor * (this.initialPositionOnGrabStart - this.grabOppositeCorner));
-                    }
-                    else if (this.currentHandleType == HandleType.Rotation)
-                    {
+                    case BoundingBoxHelperType.RotationHandle:
                         var initialDir = this.ProjectOnPlane(this.transform.Position, this.currentRotationAxis, this.initialGrabPoint);
                         var currentDir = this.ProjectOnPlane(this.transform.Position, this.currentRotationAxis, currentGrabPoint);
 
@@ -530,9 +503,22 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
                         if (Vector3.DistanceSquared(dir1, dir2) > MathHelper.Epsilon)
                         {
                             var rotation = Quaternion.CreateFromTwoVectors(dir1, dir2);
-                            this.transform.Orientation = rotation * this.initialOrientationOnGrabStart;
+                            this.transform.Orientation = rotation * this.transformOnGrabStart.Orientation;
                         }
-                    }
+
+                        break;
+
+                    case BoundingBoxHelperType.ScaleHandle:
+                        float initialDist = Vector3.Dot(this.initialGrabPoint - this.grabOppositeCorner, this.grabDiagonalDirection);
+                        float currentDist = Vector3.Dot(currentGrabPoint - this.grabOppositeCorner, this.grabDiagonalDirection);
+                        float scaleFactor = 1 + ((currentDist - initialDist) / initialDist);
+
+                        this.transform.Scale = this.transformOnGrabStart.Scale * scaleFactor;
+                        this.transform.Position = this.grabOppositeCorner + (scaleFactor * (this.transformOnGrabStart.Translation - this.grabOppositeCorner));
+
+                        this.UpdateRigHandles();
+
+                        break;
                 }
 
                 eventData.SetHandled();
@@ -541,17 +527,10 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
 
         private void PointerHandler_OnPointerUp(object sender, MixedRealityPointerEventData eventData)
         {
-            ////if (eventData.EventHandled)
-            ////{
-            ////    return;
-            ////}
-
             if (this.currentCursor == eventData.Cursor)
             {
-                ////DropController();
-
                 this.currentCursor = null;
-                this.currentHandleType = HandleType.None;
+                this.currentHandle = null;
 
                 eventData.SetHandled();
             }
