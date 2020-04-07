@@ -79,6 +79,11 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
         /// <inheritdoc/>
         public void OnPointerDown(MixedRealityPointerEventData eventData)
         {
+            if (eventData.EventHandled)
+            {
+                return;
+            }
+
             var cursor = eventData.Cursor;
 
             if (!this.activeCursors.ContainsKey(cursor))
@@ -98,23 +103,37 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
 
                     this.ManipulationStarted?.Invoke(this, EventArgs.Empty);
                 }
+
+                eventData.SetHandled();
             }
         }
 
         /// <inheritdoc/>
         public void OnPointerDragged(MixedRealityPointerEventData eventData)
         {
+            if (eventData.EventHandled)
+            {
+                return;
+            }
+
             var cursor = eventData.Cursor;
 
             if (this.activeCursors.ContainsKey(cursor))
             {
                 this.activeCursors[cursor] = this.CreateCursorTransform(eventData);
+
+                eventData.SetHandled();
             }
         }
 
         /// <inheritdoc/>
         public void OnPointerUp(MixedRealityPointerEventData eventData)
         {
+            if (eventData.EventHandled)
+            {
+                return;
+            }
+
             var cursor = eventData.Cursor;
 
             if (this.activeCursors.ContainsKey(cursor))
@@ -127,6 +146,8 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
                 }
 
                 this.activeCursors.Remove(cursor);
+
+                eventData.SetHandled();
             }
         }
 

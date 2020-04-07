@@ -34,5 +34,18 @@ namespace WaveEngine.MRTK.Base.EventDatum.Input
         /// Gets or sets the cursor entity.
         /// </summary>
         public Entity Cursor { get; set; }
+
+        /// <summary>
+        /// Gets a value indicating whether this event was already handled.
+        /// </summary>
+        public bool EventHandled { get; private set; }
+
+        /// <summary>
+        /// Mark the event as handled.
+        /// </summary>
+        public void SetHandled()
+        {
+            this.EventHandled = true;
+        }
     }
 }
