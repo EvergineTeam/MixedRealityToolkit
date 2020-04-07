@@ -1,0 +1,59 @@
+﻿// Copyright © Wave Engine S.L. All rights reserved. Use is subject to license terms.
+
+using System;
+using WaveEngine.Framework;
+using WaveEngine.MRTK.Base.EventDatum.Input;
+using WaveEngine.MRTK.Base.Interfaces.InputSystem.Handlers;
+
+namespace WaveEngine.MRTK.SDK.Features.Input.Handlers
+{
+    /// <summary>
+    /// Script used to raise events in response to pointer events.
+    /// </summary>
+    public class PointerHandler : Component, IMixedRealityPointerHandler
+    {
+        /// <summary>
+        /// Unity event raised on pointer clicked.
+        /// </summary>
+        public event EventHandler<MixedRealityPointerEventData> OnPointerClicked;
+
+        /// <summary>
+        /// Event raised on pointer down.
+        /// </summary>
+        public event EventHandler<MixedRealityPointerEventData> OnPointerDown;
+
+        /// <summary>
+        /// Unity event raised every frame the pointer is down.
+        /// </summary>
+        public event EventHandler<MixedRealityPointerEventData> OnPointerDragged;
+
+        /// <summary>
+        /// Unity event raised on pointer up.
+        /// </summary>
+        public event EventHandler<MixedRealityPointerEventData> OnPointerUp;
+
+        /// <inheritdoc/>
+        void IMixedRealityPointerHandler.OnPointerClicked(MixedRealityPointerEventData eventData)
+        {
+            this.OnPointerClicked?.Invoke(this, eventData);
+        }
+
+        /// <inheritdoc/>
+        void IMixedRealityPointerHandler.OnPointerDown(MixedRealityPointerEventData eventData)
+        {
+            this.OnPointerDown?.Invoke(this, eventData);
+        }
+
+        /// <inheritdoc/>
+        void IMixedRealityPointerHandler.OnPointerDragged(MixedRealityPointerEventData eventData)
+        {
+            this.OnPointerDragged?.Invoke(this, eventData);
+        }
+
+        /// <inheritdoc/>
+        void IMixedRealityPointerHandler.OnPointerUp(MixedRealityPointerEventData eventData)
+        {
+            this.OnPointerUp?.Invoke(this, eventData);
+        }
+    }
+}
