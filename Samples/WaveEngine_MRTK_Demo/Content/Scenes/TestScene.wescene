@@ -98,6 +98,107 @@ Items:
           Z: 1.0
     Children:
       - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+        Name: teapot
+        Tag: null
+        IsEnabled: true
+        IsStatic: false
+        Components:
+          - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+            Id: c860660d-8dcc-4634-a65d-b9835311b9de
+            IsEnabled: true
+            LocalOrientation:
+              W: -0.70710659
+              X: 0.0
+              Y: -0.707106948
+              Z: 0.0
+            LocalPosition:
+              X: 0.0999996886
+              Y: -0.099999994
+              Z: -0.0600000024
+            LocalScale:
+              X: 0.100000001
+              Y: 0.100000001
+              Z: 0.099999994
+          - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+            Id: 442ddc1d-2f69-4eab-b32f-e6d8cf06b107
+            AsignedTo: Default
+            IsEnabled: true
+            Material: 13d15436-27e3-4148-a2b5-0810843a138c
+          - !WaveEngine.Components.Graphics3D.TeapotMesh,WaveEngine.Components
+            Id: 4a85a245-753a-48a1-af28-53db8c35dcf8
+            IsEnabled: true
+            Model: 00000000-0000-0000-0000-000000000000
+            ModelMeshName: teapot_primitive
+            Size: 1.0
+            Tessellation: 16
+          - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+            Id: 755006e2-5418-4550-94b1-01f4863500cc
+            DebugBoundingbox: true
+            FrustumCullingEnabled: true
+            IsEnabled: true
+            OrderBias: 0
+          - !WaveEngine.MRTK.Services.InputSystem.NearInteractionGrabbable,WaveEngine.MRTK
+            Id: 202d715b-fa44-4dcb-b016-e0fdab9c9559
+            IsEnabled: true
+          - !WaveEngine.Framework.Physics3D.BoxCollider3D,WaveEngine.Framework
+            Id: b4c35e3d-afd6-44e7-aaa1-9c5e2880850c
+            IsEnabled: true
+            Margin: 0.00100000005
+            Offset:
+              X: 0.0
+              Y: 0.0
+              Z: 0.0
+            OrientationOffset:
+              W: 1.0
+              X: 0.0
+              Y: 0.0
+              Z: 0.0
+            Size:
+              X: 0.800000012
+              Y: 0.800000012
+              Z: 0.800000012
+          - !WaveEngine.Framework.Physics3D.StaticBody3D,WaveEngine.Framework
+            Id: be2bdbf7-65b4-4ad6-b086-c957e5345c0e
+            CcdMotionThreshold: 0.0
+            CcdSweptSphereRadius: 0.200000003
+            CollisionCategories: Cat1
+            Friction: 0.5
+            IsEnabled: true
+            IsSensor: true
+            MaskBits: All
+            Restitution: 0.0
+            RollingFriction: 0.0
+            UpdateOrder: 0.5
+          - !WaveEngine_MRTK_Demo.Drawables.BoxColliderRenderer,WaveEngine_MRTK_Demo
+            Id: c0256a3d-14c2-4e26-8b72-b1a56041dfac
+            DebugBoundingbox: true
+            FrustumCullingEnabled: true
+            IsEnabled: false
+            OrderBias: 0
+          - !WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox.BoundingBox,WaveEngine.MRTK
+            Id: b95cb0bf-7902-4c1a-bbe8-33ecd2f9acc1
+            IsEnabled: true
+            LinkScale:
+              X: 0.00499999989
+              Y: 0.00200000009
+              Z: 0.00200000009
+            RotationHandleScale:
+              X: 0.00999999978
+              Y: 0.00999999978
+              Z: 0.00999999978
+            ScaleHandleScale:
+              X: 0.00999999978
+              Y: 0.00999999978
+              Z: 0.00999999978
+          - !WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation.SimpleManipulationHandler,WaveEngine.MRTK
+            Id: 25b5c124-3f29-4d6f-8ef0-e0bff4d51bcb
+            IsEnabled: true
+            SmoothingActive: true
+            SmoothingAmount: 0.00100000005
+            UpdateOrder: 0.5
+        Children: []
+        Id: fa833a6a-4568-4714-b18f-f7cf6fcb0ba1
+      - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
         Name: pressExamples
         Tag: null
         IsEnabled: true
@@ -360,6 +461,8 @@ Items:
                                 ChangeColor: true
                                 Compressable: false
                                 IsEnabled: true
+                                MinCompressRatio: 0.25
+                                MovementScale: 1.0
                                 PressedColor:
                                   A: 255
                                   B: 255
@@ -698,112 +801,6 @@ Items:
                 Id: 9c0d18b5-5928-4a8c-bf0a-ee78937b1c7b
             Id: 660df448-a8ac-4d33-a9bd-ae324caebaeb
         Id: 275934f7-acb8-4db4-9abd-31381e25e4af
-      - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
-        Name: teapot
-        Tag: null
-        IsEnabled: true
-        IsStatic: false
-        Components:
-          - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
-            Id: c860660d-8dcc-4634-a65d-b9835311b9de
-            IsEnabled: true
-            LocalOrientation:
-              W: -0.70710659
-              X: 0.0
-              Y: -0.707106948
-              Z: 0.0
-            LocalPosition:
-              X: 0.0999996886
-              Y: -0.099999994
-              Z: -0.0599999987
-            LocalScale:
-              X: 0.100000001
-              Y: 0.100000001
-              Z: 0.100000001
-          - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
-            Id: 442ddc1d-2f69-4eab-b32f-e6d8cf06b107
-            AsignedTo: Default
-            IsEnabled: true
-            Material: 13d15436-27e3-4148-a2b5-0810843a138c
-          - !WaveEngine.Components.Graphics3D.TeapotMesh,WaveEngine.Components
-            Id: 4a85a245-753a-48a1-af28-53db8c35dcf8
-            IsEnabled: true
-            Model: 00000000-0000-0000-0000-000000000000
-            ModelMeshName: teapot_primitive
-            Size: 1.0
-            Tessellation: 16
-          - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
-            Id: 755006e2-5418-4550-94b1-01f4863500cc
-            DebugBoundingbox: true
-            FrustumCullingEnabled: true
-            IsEnabled: true
-            OrderBias: 0
-          - !WaveEngine_MRTK_Demo.Components.ControlsTestComponent,WaveEngine_MRTK_Demo
-            Id: 9d77366a-0eab-4763-9e19-5fc74b3df8bf
-            IsEnabled: true
-          - !WaveEngine.MRTK.Services.InputSystem.NearInteractionGrabbable,WaveEngine.MRTK
-            Id: 202d715b-fa44-4dcb-b016-e0fdab9c9559
-            IsEnabled: true
-          - !WaveEngine.Framework.Physics3D.BoxCollider3D,WaveEngine.Framework
-            Id: b4c35e3d-afd6-44e7-aaa1-9c5e2880850c
-            IsEnabled: true
-            Margin: 0.00100000005
-            Offset:
-              X: 0.0
-              Y: 0.0
-              Z: 0.0
-            OrientationOffset:
-              W: 1.0
-              X: 0.0
-              Y: 0.0
-              Z: 0.0
-            Size:
-              X: 1.0
-              Y: 1.0
-              Z: 1.0
-          - !WaveEngine.Framework.Physics3D.StaticBody3D,WaveEngine.Framework
-            Id: be2bdbf7-65b4-4ad6-b086-c957e5345c0e
-            CcdMotionThreshold: 0.0
-            CcdSweptSphereRadius: 0.200000003
-            CollisionCategories: Cat1
-            Friction: 0.5
-            IsEnabled: true
-            IsSensor: true
-            MaskBits: All
-            Restitution: 0.0
-            RollingFriction: 0.0
-            UpdateOrder: 0.5
-          - !WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation.SimpleManipulationHandler,WaveEngine.MRTK
-            Id: a4657f7b-20a7-45a8-8dcf-45b55dc773ce
-            IsEnabled: true
-            SmoothingActive: true
-            SmoothingAmount: 0.00100000005
-            UpdateOrder: 0.5
-          - !WaveEngine_MRTK_Demo.Drawables.BoxColliderRenderer,WaveEngine_MRTK_Demo
-            Id: c0256a3d-14c2-4e26-8b72-b1a56041dfac
-            DebugBoundingbox: true
-            FrustumCullingEnabled: true
-            IsEnabled: false
-            OrderBias: 0
-          - !WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation.ManipulationHandlerSoundFeedbackComponent,WaveEngine.MRTK
-            Id: 31b5891c-4b83-4d17-894e-e3eb2b0cc0e0
-            IsEnabled: true
-            ManipulationEndedSound: fd9d4d83-ee1a-479b-8836-2d7de657ce46
-            ManipulationStartedSound: 225031ed-2f89-4ab3-8f3b-ec380424b7bc
-          - !WaveEngine.Components.Sound.SoundEmitter3D,WaveEngine.Components
-            Id: 1dbdf882-6908-487b-909d-fbac85854c07
-            Apply3D: true
-            Audio: null
-            DistanceScaleFactor: 1.0
-            IsEnabled: true
-            IsMuted: false
-            Loop: false
-            Pitch: 1.0
-            PlayAutomatically: false
-            UpdateOrder: 0.5
-            Volume: 1.0
-        Children: []
-        Id: fa833a6a-4568-4714-b18f-f7cf6fcb0ba1
     Id: bf7601de-e3ee-4c6a-9ec4-717fc4c11ddd
   - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
     Name: cursors
@@ -884,7 +881,6 @@ Items:
               G: 93
               R: 255
             UpdateOrder: 0.5
-            UseShift: false
           - !WaveEngine.Framework.Physics3D.SphereCollider3D,WaveEngine.Framework
             Id: 0b4be18f-a116-4c7d-85ca-8de0d10df96a
             IsEnabled: true
@@ -964,7 +960,6 @@ Items:
               G: 93
               R: 255
             UpdateOrder: 0.5
-            UseShift: false
           - !WaveEngine.Framework.Physics3D.SphereCollider3D,WaveEngine.Framework
             Id: bf60dced-1832-4d5c-8ac7-e0f0747d69d4
             IsEnabled: true
