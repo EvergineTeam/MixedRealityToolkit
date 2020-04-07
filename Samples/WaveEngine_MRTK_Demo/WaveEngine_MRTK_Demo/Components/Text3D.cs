@@ -229,7 +229,7 @@ namespace WaveEngine_MRTK_Demo.Components
                 // Add container entity and components (bug workaround)
                 var containerEntity = new Entity("components")
                 {
-                    Flags = HideFlags.DontSave,
+                    Flags = HideFlags.DontSave | HideFlags.DontShow,
                 }
                 .AddComponent(new Transform3D())
                 .AddComponent(this.materialComponent)
