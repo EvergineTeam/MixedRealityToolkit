@@ -36,6 +36,11 @@ namespace WaveEngine.MRTK.Base.EventDatum.Input
         public Entity Cursor { get; set; }
 
         /// <summary>
+        /// Gets or sets the current target.
+        /// </summary>
+        public Entity CurrentTarget { get; set; }
+
+        /// <summary>
         /// Gets a value indicating whether this event was already handled.
         /// </summary>
         public bool EventHandled { get; private set; }

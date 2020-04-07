@@ -184,6 +184,7 @@ namespace WaveEngine_MRTK_Demo.Emulation
             var eventArgs = new MixedRealityPointerEventData()
             {
                 Cursor = cursor,
+                CurrentTarget = other,
                 Position = transform.Position,
                 Orientation = transform.Orientation,
                 LinearVelocity = this.cursorsLinearVelocity[cursor],
