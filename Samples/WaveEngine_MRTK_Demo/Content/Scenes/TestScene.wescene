@@ -177,11 +177,14 @@ Items:
             OrderBias: 0
           - !WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox.BoundingBox,WaveEngine.MRTK
             Id: b95cb0bf-7902-4c1a-bbe8-33ecd2f9acc1
+            HandleGrabbedMaterial: 7c6dfc11-0f01-4d22-bfc9-bc5ca4fae227
+            HandleMaterial: 9adff77b-f6b6-4683-bf28-243fafea5436
             IsEnabled: true
             LinkScale: 0.00200000009
             RotationHandleScale: 0.0199999996
             ScaleHandleScale: 0.0199999996
             ShowWireframe: true
+            WireframeMaterial: d04c6b19-b181-4798-8052-73388883abfe
             WireframeShape: Cylindrical
           - !WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation.SimpleManipulationHandler,WaveEngine.MRTK
             Id: 25b5c124-3f29-4d6f-8ef0-e0bff4d51bcb

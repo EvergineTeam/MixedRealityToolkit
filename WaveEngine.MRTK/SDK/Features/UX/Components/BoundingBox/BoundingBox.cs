@@ -154,7 +154,74 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
 
         private WireframeType wireframeShape = WireframeType.Cubic;
 
-        private StandardMaterial handleMaterial;
+        /// <summary>
+        /// Gets or sets the material applied to the wireframe links.
+        /// </summary>
+        [RenderProperty(Tooltip = "The material applied to the wireframe links")]
+        public Material WireframeMaterial
+        {
+            get
+            {
+                return this.wireframeMaterial;
+            }
+
+            set
+            {
+                if (this.wireframeMaterial != value)
+                {
+                    this.wireframeMaterial = value;
+                    this.CreateRig();
+                }
+            }
+        }
+
+        private Material wireframeMaterial;
+
+        /// <summary>
+        /// Gets or sets the material applied to the handles when not in a grabbed state.
+        /// </summary>
+        [RenderProperty(Tooltip = "The material applied to the handles when not in a grabbed state")]
+        public Material HandleMaterial
+        {
+            get
+            {
+                return this.handleMaterial;
+            }
+
+            set
+            {
+                if (this.handleMaterial != value)
+                {
+                    this.handleMaterial = value;
+                    this.CreateRig();
+                }
+            }
+        }
+
+        private Material handleMaterial;
+
+        /// <summary>
+        /// Gets or sets the material applied to the handles when in a grabbed state.
+        /// </summary>
+        [RenderProperty(Tooltip = "The material applied to the handles when in a grabbed state")]
+        public Material HandleGrabbedMaterial
+        {
+            get
+            {
+                return this.handleGrabbedMaterial;
+            }
+
+            set
+            {
+                if (this.handleGrabbedMaterial != value)
+                {
+                    this.handleGrabbedMaterial = value;
+                    this.CreateRig();
+                }
+            }
+        }
+
+        private Material handleGrabbedMaterial;
 
         // Rig
         private Entity rigRootEntity;
@@ -183,13 +250,6 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
             {
                 var effect = this.assetsService.Load<Effect>(DefaultResourcesIDs.StandardEffectID);
                 var opaqueLayer = this.assetsService.Load<RenderLayerDescription>(DefaultResourcesIDs.OpaqueRenderLayerID);
-
-                this.handleMaterial = new StandardMaterial(effect)
-                {
-                    LightingEnabled = false,
-                    IBLEnabled = true,
-                    LayerDescription = opaqueLayer,
-                };
 
                 this.transform.ScaleChanged += this.Transform_ScaleChanged;
                 this.transform.LocalScaleChanged += this.Transform_ScaleChanged;
@@ -236,7 +296,6 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
             if (this.Owner != null)
             {
                 this.DestroyRig();
-                ////SetMaterials();
                 this.InitializeRigRoot();
                 this.InitializeDataStructures();
                 ////this.SetBoundingBoxCollider();
@@ -391,16 +450,15 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
 
                 this.rigRootEntity.AddChild(corner);
 
-                Entity visual = new Entity("visuals")
+                Entity cornerVisual = new Entity("visuals")
                     .AddComponent(new Transform3D())
                     .AddComponent(new CubeMesh())
                     .AddComponent(new MeshRenderer())
-                    .AddComponent(new MaterialComponent()
-                    {
-                        Material = this.handleMaterial.Material,
-                    });
+                    .AddComponent(new MaterialComponent());
 
-                corner.AddChild(visual);
+                corner.AddChild(cornerVisual);
+
+                this.ApplyMaterialToAllComponents(cornerVisual, this.handleMaterial);
 
                 var cornerHelper = new BoundingBoxHelper()
                 {
@@ -437,12 +495,11 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
                     .AddComponent(new Transform3D())
                     .AddComponent(new SphereMesh())
                     .AddComponent(new MeshRenderer())
-                    .AddComponent(new MaterialComponent()
-                    {
-                        Material = this.handleMaterial.Material,
-                    });
+                    .AddComponent(new MaterialComponent());
 
                 midpoint.AddChild(midpointVisual);
+
+                this.ApplyMaterialToAllComponents(midpoint, this.handleMaterial);
 
                 var midpointHelper = new BoundingBoxHelper()
                 {
@@ -487,21 +544,26 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
                     this.rigRootEntity.AddChild(link);
 
                     Entity linkVisual = new Entity("visuals")
-                        .AddComponent(new Transform3D())
-                        .AddComponent(new MeshRenderer())
-                        .AddComponent(new MaterialComponent()
-                        {
-                            Material = this.handleMaterial.Material,
-                        });
+                        .AddComponent(new Transform3D());
 
-                    switch (this.wireframeShape)
+                    if (this.wireframeMaterial != null)
                     {
-                        case WireframeType.Cubic:
-                            linkVisual.AddComponent(new CubeMesh());
-                            break;
-                        case WireframeType.Cylindrical:
-                            linkVisual.AddComponent(new CylinderMesh());
-                            break;
+                        linkVisual
+                            .AddComponent(new MeshRenderer())
+                            .AddComponent(new MaterialComponent()
+                            {
+                                Material = this.wireframeMaterial,
+                            });
+
+                        switch (this.wireframeShape)
+                        {
+                            case WireframeType.Cubic:
+                                linkVisual.AddComponent(new CubeMesh());
+                                break;
+                            case WireframeType.Cylindrical:
+                                linkVisual.AddComponent(new CylinderMesh());
+                                break;
+                        }
                     }
 
                     link.AddChild(linkVisual);
@@ -519,6 +581,19 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
             }
 
             this.helpersList = this.helpers.Values.ToList();
+        }
+
+        private void ApplyMaterialToAllComponents(Entity root, Material material)
+        {
+            if (material != null)
+            {
+                MaterialComponent[] components = root.FindComponentsInChildren<MaterialComponent>().ToArray();
+
+                for (int i = 0; i < components.Length; i++)
+                {
+                    components[i].Material = material;
+                }
+            }
         }
 
         private void UpdateRigHandles()
@@ -569,6 +644,8 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
             if (this.currentCursor == null)
             {
                 this.currentHandle = this.helpers[eventData.CurrentTarget];
+
+                this.ApplyMaterialToAllComponents(this.currentHandle.Entity, this.handleGrabbedMaterial);
 
                 this.currentCursor = eventData.Cursor;
                 this.initialGrabPoint = eventData.Position;
