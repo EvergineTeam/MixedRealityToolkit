@@ -192,6 +192,13 @@ Items:
             SmoothingActive: true
             SmoothingAmount: 0.00100000005
             UpdateOrder: 0.5
+          - !WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox.BoundingBoxSoundFeedbackComponent,WaveEngine.MRTK
+            Id: edf2416b-d9be-4425-a76b-2989984880b8
+            IsEnabled: true
+            RotateStartedSound: fc34b826-4d64-4aa9-944f-cd6a9f7ac84e
+            RotateStoppedSound: 2550413b-8a0d-4a9e-b665-08797e03d01a
+            ScaleStartedSound: 72bbb386-6f6a-4175-93ff-2467ca3f6136
+            ScaleStoppedSound: 45dc1893-7425-44b8-a79c-55162353d8c4
         Children: []
         Id: fa833a6a-4568-4714-b18f-f7cf6fcb0ba1
       - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
