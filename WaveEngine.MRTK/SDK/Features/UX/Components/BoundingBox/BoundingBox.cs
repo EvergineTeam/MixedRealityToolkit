@@ -223,6 +223,26 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
 
         private Material handleGrabbedMaterial;
 
+        /// <summary>
+        /// Event fired when interaction with a rotation handle starts.
+        /// </summary>
+        public event EventHandler RotateStarted;
+
+        /// <summary>
+        /// Event fired when interaction with a rotation handle stops.
+        /// </summary>
+        public event EventHandler RotateStopped;
+
+        /// <summary>
+        /// Event fired when interaction with a scale handle starts.
+        /// </summary>
+        public event EventHandler ScaleStarted;
+
+        /// <summary>
+        /// Event fired when interaction with a scale handle stops.
+        /// </summary>
+        public event EventHandler ScaleStopped;
+
         // Rig
         private Entity rigRootEntity;
         private Dictionary<Entity, BoundingBoxHelper> helpers;
@@ -656,11 +676,15 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
                     case BoundingBoxHelperType.RotationHandle:
                         var axis = this.currentHandle.GetRotationAxis(this.transform.WorldTransform);
                         this.currentRotationAxis = Vector3.Normalize(axis);
+
+                        this.RotateStarted?.Invoke(this, EventArgs.Empty);
                         break;
 
                     case BoundingBoxHelperType.ScaleHandle:
                         this.grabOppositeCorner = Vector3.TransformCoordinate(this.currentHandle.OppositeHandlePosition, this.transform.WorldTransform);
                         this.grabDiagonalDirection = Vector3.Normalize(this.currentHandle.Transform.Position - this.grabOppositeCorner);
+
+                        this.ScaleStarted?.Invoke(this, EventArgs.Empty);
                         break;
                 }
 
@@ -718,6 +742,18 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
         {
             if (this.currentCursor == eventData.Cursor)
             {
+                this.ApplyMaterialToAllComponents(this.currentHandle.Entity, this.handleMaterial);
+
+                switch (this.currentHandle.Type)
+                {
+                    case BoundingBoxHelperType.RotationHandle:
+                        this.RotateStopped?.Invoke(this, EventArgs.Empty);
+                        break;
+                    case BoundingBoxHelperType.ScaleHandle:
+                        this.ScaleStopped?.Invoke(this, EventArgs.Empty);
+                        break;
+                }
+
                 this.currentCursor = null;
                 this.currentHandle = null;
 
