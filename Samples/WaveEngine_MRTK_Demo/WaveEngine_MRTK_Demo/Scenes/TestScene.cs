@@ -3,7 +3,6 @@ using WaveEngine.Components.XR;
 using WaveEngine.Framework;
 using WaveEngine.Framework.Services;
 using WaveEngine.Framework.XR;
-using WaveEngine.Framework.XR.Interaction;
 using WaveEngine_MRTK_Demo.Behaviors;
 using WaveEngine_MRTK_Demo.Emulation;
 

@@ -108,6 +108,52 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
 
         private float linkScale = 0.005f;
 
+        /// <summary>
+        /// Gets or sets a value indicating whether to show the wireframe links around the box or not.
+        /// </summary>
+        [RenderProperty(Tooltip = "Whether to show the wireframe links around the box or not")]
+        public bool ShowWireframe
+        {
+            get
+            {
+                return this.showWireframe;
+            }
+
+            set
+            {
+                if (this.showWireframe != value)
+                {
+                    this.showWireframe = value;
+                    this.CreateRig();
+                }
+            }
+        }
+
+        private bool showWireframe = true;
+
+        /// <summary>
+        /// Gets or sets the shape of the wireframe links.
+        /// </summary>
+        [RenderProperty(Tooltip = "The shape of the wireframe links")]
+        public WireframeType WireframeShape
+        {
+            get
+            {
+                return this.wireframeShape;
+            }
+
+            set
+            {
+                if (this.wireframeShape != value)
+                {
+                    this.wireframeShape = value;
+                    this.CreateRig();
+                }
+            }
+        }
+
+        private WireframeType wireframeShape = WireframeType.Cubic;
+
         private StandardMaterial handleMaterial;
 
         // Rig
@@ -323,9 +369,9 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
 
             this.boundingBoxSize = this.CalculateBoundingBoxSize(boundsCorners);
 
+            // Add corners
             for (int i = 0; i < boundsCorners.Length; ++i)
             {
-                // Add corners
                 Transform3D cornerTransform = new Transform3D()
                 {
                     LocalPosition = boundsCorners[i],
@@ -406,55 +452,67 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
                 this.helpers.Add(midpoint, midpointHelper);
             }
 
-            for (int i = 0; i < edgeCenters.Length; ++i)
+            // Add links
+            if (this.showWireframe)
             {
-                // Add links
-                Vector3 rotation = Vector3.Zero;
-
-                switch (edgeAxes[i])
+                for (int i = 0; i < edgeCenters.Length; ++i)
                 {
-                    case AxisType.X:
-                        rotation = new Vector3(0.0f, 0.0f, (float)Math.PI / 2);
-                        break;
-                    case AxisType.Y:
-                        rotation = new Vector3(0.0f, (float)Math.PI / 2, 0.0f);
-                        break;
-                    case AxisType.Z:
-                        rotation = new Vector3((float)Math.PI / 2, 0.0f, 0.0f);
-                        break;
-                }
+                    Vector3 rotation = Vector3.Zero;
 
-                var linkTransform = new Transform3D()
-                {
-                    LocalPosition = edgeCenters[i],
-                    Rotation = rotation,
-                };
-
-                Entity link = new Entity($"link_{i}")
-                    .AddComponent(linkTransform);
-
-                this.rigRootEntity.AddChild(link);
-
-                Entity linkVisual = new Entity("visuals")
-                    .AddComponent(new Transform3D())
-                    .AddComponent(new CylinderMesh())
-                    .AddComponent(new MeshRenderer())
-                    .AddComponent(new MaterialComponent()
+                    switch (edgeAxes[i])
                     {
-                        Material = this.handleMaterial.Material,
-                    });
+                        case AxisType.X:
+                            rotation = new Vector3(0.0f, 0.0f, (float)Math.PI / 2);
+                            break;
+                        case AxisType.Y:
+                            rotation = new Vector3(0.0f, (float)Math.PI / 2, 0.0f);
+                            break;
+                        case AxisType.Z:
+                            rotation = new Vector3((float)Math.PI / 2, 0.0f, 0.0f);
+                            break;
+                    }
 
-                link.AddChild(linkVisual);
+                    var linkTransform = new Transform3D()
+                    {
+                        LocalPosition = edgeCenters[i],
+                        Rotation = rotation,
+                    };
 
-                var linkHelper = new BoundingBoxHelper()
-                {
-                    Type = BoundingBoxHelperType.WireframeLink,
-                    AxisType = edgeAxes[i],
-                    Entity = link,
-                    Transform = linkTransform,
-                };
+                    Entity link = new Entity($"link_{i}")
+                        .AddComponent(linkTransform);
 
-                this.helpers.Add(link, linkHelper);
+                    this.rigRootEntity.AddChild(link);
+
+                    Entity linkVisual = new Entity("visuals")
+                        .AddComponent(new Transform3D())
+                        .AddComponent(new MeshRenderer())
+                        .AddComponent(new MaterialComponent()
+                        {
+                            Material = this.handleMaterial.Material,
+                        });
+
+                    switch (this.wireframeShape)
+                    {
+                        case WireframeType.Cubic:
+                            linkVisual.AddComponent(new CubeMesh());
+                            break;
+                        case WireframeType.Cylindrical:
+                            linkVisual.AddComponent(new CylinderMesh());
+                            break;
+                    }
+
+                    link.AddChild(linkVisual);
+
+                    var linkHelper = new BoundingBoxHelper()
+                    {
+                        Type = BoundingBoxHelperType.WireframeLink,
+                        AxisType = edgeAxes[i],
+                        Entity = link,
+                        Transform = linkTransform,
+                    };
+
+                    this.helpers.Add(link, linkHelper);
+                }
             }
 
             this.helpersList = this.helpers.Values.ToList();
