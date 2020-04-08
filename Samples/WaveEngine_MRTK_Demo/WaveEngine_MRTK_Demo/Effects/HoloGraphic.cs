@@ -149,11 +149,11 @@ namespace WaveEngine_MRTK_Demo.Effects
             }
         }
         
-        public WaveEngine.Mathematics.Vector3 Parameters_BorderLightColor
+        public float Parameters_BorderWidth
         {
             get
             {
-                return this.material.CBuffers[1].GetBufferData<WaveEngine.Mathematics.Vector3>(64);
+                return this.material.CBuffers[1].GetBufferData<System.Single>(64);
             }
             set
             {
@@ -161,15 +161,75 @@ namespace WaveEngine_MRTK_Demo.Effects
             }
         }
         
-        public float Parameters_BorderLightWidth
+        public float Parameters_BorderMinValue
         {
             get
             {
-                return this.material.CBuffers[1].GetBufferData<System.Single>(76);
+                return this.material.CBuffers[1].GetBufferData<System.Single>(68);
             }
             set
             {
-				this.material.CBuffers[1].SetBufferData(value, 76);
+				this.material.CBuffers[1].SetBufferData(value, 68);
+            }
+        }
+        
+        public float Parameters_FluentLightIntensity
+        {
+            get
+            {
+                return this.material.CBuffers[1].GetBufferData<System.Single>(72);
+            }
+            set
+            {
+				this.material.CBuffers[1].SetBufferData(value, 72);
+            }
+        }
+        
+        public float Parameters_RoundCornerRadious
+        {
+            get
+            {
+                return this.material.CBuffers[1].GetBufferData<System.Single>(80);
+            }
+            set
+            {
+				this.material.CBuffers[1].SetBufferData(value, 80);
+            }
+        }
+        
+        public float Parameters_RoundCornerMargin
+        {
+            get
+            {
+                return this.material.CBuffers[1].GetBufferData<System.Single>(84);
+            }
+            set
+            {
+				this.material.CBuffers[1].SetBufferData(value, 84);
+            }
+        }
+        
+        public float Parameters_Cutoff
+        {
+            get
+            {
+                return this.material.CBuffers[1].GetBufferData<System.Single>(88);
+            }
+            set
+            {
+				this.material.CBuffers[1].SetBufferData(value, 88);
+            }
+        }
+        
+        public float Parameters_EdgeSmoothingValue
+        {
+            get
+            {
+                return this.material.CBuffers[1].GetBufferData<System.Single>(92);
+            }
+            set
+            {
+				this.material.CBuffers[1].SetBufferData(value, 92);
             }
         }
         

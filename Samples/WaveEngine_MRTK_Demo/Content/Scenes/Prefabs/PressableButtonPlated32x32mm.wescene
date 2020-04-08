@@ -80,8 +80,8 @@ Items:
             Id: 33e3b135-f8d4-4557-816f-56a58c2013b1
             IsEnabled: true
             LocalOrientation:
-              W: 0.707106888
-              X: -0.70710665
+              W: 1.0
+              X: 0.0
               Y: 0.0
               Z: 0.0
             LocalPosition:
@@ -113,8 +113,8 @@ Items:
                   Z: -5.96046448E-07
                 LocalScale:
                   X: 0.0320000015
-                  Y: 0.00999999978
-                  Z: 0.0320000015
+                  Y: 0.0320000015
+                  Z: 0.0100008119
               - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
                 Id: de26b28f-b9c6-4576-9fb4-f33e50dc4e76
                 AsignedTo: Default
@@ -130,8 +130,8 @@ Items:
                 ModelMeshName: plane_primitive
                 Normal:
                   X: 0.0
-                  Y: 1.0
-                  Z: 0.0
+                  Y: 0.0
+                  Z: 1.0
                 TwoSides: false
                 UTile: 1.0
                 UVHorizontalFlip: false

@@ -2093,7 +2093,7 @@ Items:
                   - !WaveEngine_MRTK_Demo.Components.ScenePrefab,WaveEngine_MRTK_Demo
                     Id: aa2c7380-b9da-48ca-8e77-5b77bb33ad34
                     IsEnabled: true
-                    duplicateMaterials: false
+                    duplicateMaterials: true
                     prefabType: PressableButtonPlated32x32mm
                   - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
                     Id: 5aa6a071-e17b-4571-850a-7797e8f864f2
@@ -2131,7 +2131,7 @@ Items:
                   - !WaveEngine_MRTK_Demo.Components.ScenePrefab,WaveEngine_MRTK_Demo
                     Id: abea5f6c-fc23-42a7-93a2-df906b2585e3
                     IsEnabled: true
-                    duplicateMaterials: false
+                    duplicateMaterials: true
                     prefabType: PressableButtonPlated32x32mm
                   - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
                     Id: 23b34f1f-5a93-48c1-bc1e-39f24cf9bd05
@@ -2169,7 +2169,7 @@ Items:
                   - !WaveEngine_MRTK_Demo.Components.ScenePrefab,WaveEngine_MRTK_Demo
                     Id: 7a30d1ce-7f67-4a37-8b70-7913f2e112ad
                     IsEnabled: true
-                    duplicateMaterials: false
+                    duplicateMaterials: true
                     prefabType: PressableButtonPlated32x32mm
                   - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
                     Id: 82845a9d-2038-450c-8573-6a5b0495bf5f
@@ -2207,7 +2207,7 @@ Items:
                   - !WaveEngine_MRTK_Demo.Components.ScenePrefab,WaveEngine_MRTK_Demo
                     Id: 4c0c782f-eb73-4f2a-b17c-3ee1e534ea59
                     IsEnabled: true
-                    duplicateMaterials: false
+                    duplicateMaterials: true
                     prefabType: PressableButtonPlated32x32mm
                   - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
                     Id: 1120d35c-d234-46fe-80cf-b13fdd376017
@@ -2245,7 +2245,7 @@ Items:
                   - !WaveEngine_MRTK_Demo.Components.ScenePrefab,WaveEngine_MRTK_Demo
                     Id: 2b86d5c7-1af3-4998-8356-64f0cc485bd7
                     IsEnabled: true
-                    duplicateMaterials: false
+                    duplicateMaterials: true
                     prefabType: PressableButtonPlated32x32mm
                   - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
                     Id: ad3f8992-0db8-4257-bf78-83ed53865ae0
@@ -2283,7 +2283,7 @@ Items:
                   - !WaveEngine_MRTK_Demo.Components.ScenePrefab,WaveEngine_MRTK_Demo
                     Id: 80d98e8d-5e19-432b-853b-30ec256c16c8
                     IsEnabled: true
-                    duplicateMaterials: false
+                    duplicateMaterials: true
                     prefabType: PressableButtonPlated32x32mm
                 Children: []
                 Id: 25be2efd-3d2c-4cfd-93fa-a2ad4ed17abf
@@ -2433,8 +2433,8 @@ Items:
                         Id: 3be7a394-183b-4108-afc2-ee4eed09416f
                         IsEnabled: true
                         LocalOrientation:
-                          W: 0.707106829
-                          X: -0.707106709
+                          W: 1.0
+                          X: 0.0
                           Y: 0.0
                           Z: 0.0
                         LocalPosition:
@@ -2443,8 +2443,8 @@ Items:
                           Z: 0.0
                         LocalScale:
                           X: 0.128000006
-                          Y: 0.00999999978
-                          Z: 0.0320000015
+                          Y: 0.0320000015
+                          Z: 0.00999999978
                       - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
                         Id: 96d9e162-e213-4581-94b3-36fa51fc2ae1
                         AsignedTo: Default
@@ -2460,8 +2460,8 @@ Items:
                         ModelMeshName: plane_primitive
                         Normal:
                           X: 0.0
-                          Y: 1.0
-                          Z: 0.0
+                          Y: 0.0
+                          Z: 1.0
                         TwoSides: false
                         UTile: 1.0
                         UVHorizontalFlip: false
@@ -2653,8 +2653,8 @@ Items:
                         Id: 165594c9-f760-433b-a3f6-32daf7394fc7
                         IsEnabled: true
                         LocalOrientation:
-                          W: 0.707106829
-                          X: -0.707106709
+                          W: 1.0
+                          X: 0.0
                           Y: 0.0
                           Z: 0.0
                         LocalPosition:
@@ -2663,8 +2663,8 @@ Items:
                           Z: 0.0
                         LocalScale:
                           X: 0.128000006
-                          Y: 0.00999999978
-                          Z: 0.0320000015
+                          Y: 0.0320000015
+                          Z: 0.00999999978
                       - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
                         Id: f834b1b7-681d-4a83-8b53-9cfaa784324f
                         AsignedTo: Default
@@ -2680,8 +2680,8 @@ Items:
                         ModelMeshName: plane_primitive
                         Normal:
                           X: 0.0
-                          Y: 1.0
-                          Z: 0.0
+                          Y: 0.0
+                          Z: 1.0
                         TwoSides: false
                         UTile: 1.0
                         UVHorizontalFlip: false

@@ -2,8 +2,10 @@
 
 [directives:FINGERS_DIST FINGERS_DIST NO_FINGERS_DIST]
 [directives:BORDER_LIGHT BORDER_LIGHT_OFF BORDER_LIGHT]
+[directives:BORDER_LIGHT_REPLACES_ALBEDO BORDER_LIGHT_REPLACES_ALBEDO_OFF BORDER_LIGHT_REPLACES_ALBEDO]
 [directives:INNER_GLOW INNER_GLOW_OFF INNER_GLOW]
-[directives:HoverLight HOVER_LIGHT_OFF HOVER_LIGHT_ON]
+[directives:ROUND_CORNERS ROUND_CORNERS_OFF ROUND_CORNERS]
+[directives:IGNORE_Z_SCALE IGNORE_Z_SCALE_OFF IGNORE_Z_SCALE]
 [directives:Multiview MULTIVIEW_OFF MULTIVIEW]
 
 	cbuffer PerDrawCall : register(b0)
@@ -14,19 +16,27 @@
 
 	cbuffer Parameters : register(b1)
 	{
-		float3 Color			: packoffset(c0);   [Default(0.3, 0.3, 1.0)]
-		float Alpha             : packoffset(c0.w); [Default(1.0)]
+		float3 Color				: packoffset(c0);   [Default(0.3, 0.3, 1.0)]
+		float Alpha             	: packoffset(c0.w); [Default(1.0)]
 
-		float3 InnerGlowColor   : packoffset(c1);   [Default(1.0, 1.0, 1.0)]
-		float InnerGlowAlpha    : packoffset(c1.w); [Default(1.0)]
-		float InnerGlowPower    : packoffset(c2.w); [Default(10.0)]
+		float3 InnerGlowColor   	: packoffset(c1);   [Default(1.0, 1.0, 1.0)]
+		float InnerGlowAlpha   		: packoffset(c1.w); [Default(0.75)]
+		float InnerGlowPower    	: packoffset(c2.w); [Default(4.0)] //Range(2.0, 32.0)
 		
-		float MaxFingerDist     : packoffset(c3.w); [Default(1.0)]
-		float3 FingerPosLeft    : packoffset(c2);
-		float3 FingerPosRight   : packoffset(c3);	
+		float MaxFingerDist     	: packoffset(c3.w); [Default(1.0)]
+		float3 FingerPosLeft    	: packoffset(c2);
+		float3 FingerPosRight   	: packoffset(c3);	
 		
-		float3 BorderLightColor : packoffset(c4);   [Default(1.0, 1.0, 1.0)]
-		float BorderLightWidth   : packoffset(c4.w); [Default(0.1)]
+		float BorderWidth  			: packoffset(c4.x); [Default(0.1)] //Range(0.0, 1.0) 
+		float BorderMinValue 		: packoffset(c4.y); [Default(0.1)] //Range(0.0, 1.0)
+		float FluentLightIntensity  : packoffset(c4.z); [Default(1.0)] //Range(0.0, 1.0)
+		
+		float RoundCornerRadious	: packoffset(c5.x); [Default(0.25)]  //Range(0.0, 0.5)
+		float RoundCornerMargin 	: packoffset(c5.y); [Default(0.01)]  //Range(0.0, 0.5)
+		float Cutoff				: packoffset(c5.z); [Default(0.5)]	 //Range(0.0, 0.5)
+
+		// BORDER_LIGHT OR ROUND_CORNERS
+		float EdgeSmoothingValue	: packoffset(c5.w); [Default(0.002)] //Range(0.0, 0.2)
 	};
 	
 	cbuffer PerCamera : register(b2)
@@ -38,6 +48,26 @@
 [End_ResourceLayout]
 
 [Begin_Pass:Default]
+	
+#define IF(a, b, c) lerp(b, c, step((float) (a), 0.0));
+	
+#if ROUND_CORNERS
+    inline float PointVsRoundedBox(float2 position, float2 cornerCircleDistance, float cornerCircleRadius)
+    {
+        return length(max(abs(position) - cornerCircleDistance, 0.0)) - cornerCircleRadius;
+    }
+
+    inline float RoundCornersSmooth(float2 position, float2 cornerCircleDistance, float cornerCircleRadius)
+    {
+        return smoothstep(1.0, 0.0, PointVsRoundedBox(position, cornerCircleDistance, cornerCircleRadius) / EdgeSmoothingValue);
+    }
+
+    inline float RoundCornersF(float2 position, float2 cornerCircleDistance, float cornerCircleRadius)
+    {
+    	//return RoundCornersSmooth(position, cornerCircleDistance, cornerCircleRadius);
+        return PointVsRoundedBox(position, cornerCircleDistance, cornerCircleRadius) < 0.0;
+    }
+#endif
 
 	[profile 11_0]
 	[entrypoints VS=VS PS=PS]
@@ -46,6 +76,7 @@
 	{
 		float4 Position : POSITION;
 		float2 uv : TEXCOORD0;
+		float3 normal : NORMAL;
 		
 #if MULTIVIEW
 		uint InstId : SV_InstanceID;
@@ -56,7 +87,15 @@
 	{
 		float4 pos      : SV_POSITION;
 		float4 worldPos : TEXCOORD0;
-		float4 uv       : TEXCOORD1;
+#if BORDER_LIGHT
+        float4 uv 		: TEXCOORD1;
+#elif INNER_GLOW || ROUND_CORNERS
+        float2 uv 		: TEXCOORD1;
+#endif
+
+#if BORDER_LIGHT || ROUND_CORNERS
+		float3 scale 	: TEXCOORD2;
+#endif
 		
 #if MULTIVIEW
 		uint ViewId         : SV_RenderTargetArrayIndex;
@@ -83,57 +122,142 @@
 		float4x4 worldViewProj = WorldViewProj;
 #endif
 
+		float3 localNormal = input.normal;
+
+#if BORDER_LIGHT || ROUND_CORNERS
+        output.scale.x = length(mul(float4(1.0, 0.0, 0.0, 0.0), World));
+        output.scale.y = length(mul(float4(0.0, 1.0, 0.0, 0.0), World));
+#if IGNORE_Z_SCALE
+        output.scale.z = output.scale.x;
+#else        
+        output.scale.z = length(mul(float4(0.0, 0.0, 1.0, 0.0), World));
+#endif
+        
+        output.uv.xy = input.uv;
+
+        float minScale = min(min(output.scale.x, output.scale.y), output.scale.z);
+
+#if BORDER_LIGHT
+        float maxScale = max(max(output.scale.x, output.scale.y), output.scale.z);
+        float minOverMiddleScale = minScale / (output.scale.x + output.scale.y + output.scale.z - minScale - maxScale);
+
+        float areaYZ = output.scale.y * output.scale.z;
+        float areaXZ = output.scale.z * output.scale.x;
+        float areaXY = output.scale.x * output.scale.y;
+
+        float borderWidth = BorderWidth;
+#endif
+
+        if (abs(localNormal.x) == 1.0) // Y,Z plane.
+        {
+            output.scale.x = output.scale.z;
+            output.scale.y = output.scale.y;
+
+#if BORDER_LIGHT
+            if (areaYZ > areaXZ && areaYZ > areaXY)
+            {
+                borderWidth *= minOverMiddleScale;
+            }
+#endif
+        }
+        else if (abs(localNormal.y) == 1.0) // X,Z plane.
+        {
+            output.scale.x = output.scale.x;
+            output.scale.y = output.scale.z;
+
+#if BORDER_LIGHT
+            if (areaXZ > areaXY && areaXZ > areaYZ)
+            {
+                borderWidth *= minOverMiddleScale;
+            }
+#endif
+        }
+        else  // X,Y plane.
+        {
+            output.scale.x = output.scale.x;
+            output.scale.y = output.scale.y;
+
+#if BORDER_LIGHT
+            if (areaXY > areaYZ && areaXY > areaXZ)
+            {
+                borderWidth *= minOverMiddleScale;
+            }
+#endif
+        }
+
+        output.scale.z = minScale;
+
+#if BORDER_LIGHT
+        float scaleRatio = min(output.scale.x, output.scale.y) / max(output.scale.x, output.scale.y);
+        output.uv.z = IF(output.scale.x > output.scale.y, 1.0 - (borderWidth * scaleRatio), 1.0 - borderWidth);
+        output.uv.w = IF(output.scale.x > output.scale.y, 1.0 - borderWidth, 1.0 - (borderWidth * scaleRatio));
+#endif
+#elif INNER_GLOW
+        output.uv = input.uv;
+#endif
+
 		output.pos = mul(input.Position, worldViewProj);
 		output.worldPos = mul(input.Position, World);
-		output.uv.xy = input.uv.xy;
-		
-		output.uv.z = length(mul(float4(1, 0, 0, 0), World)); //Scale in X
-		output.uv.w = length(mul(float4(0, 0, 1, 0), World)); //Scale in Y
-		
-		float minV = min(output.uv.z, output.uv.w);
-		output.uv.z = output.uv.z / minV;
-		output.uv.w = output.uv.w / minV;
 
 		return output;
 	}
 
 	float4 PS(PS_IN input) : SV_Target
-	{	
+	{
+		float4 albedo = float4(Color, Alpha);
+	
+#if BORDER_LIGHT || INNER_GLOW || ROUND_CORNERS
 		float2 distanceToEdge;
-        distanceToEdge.x = (1 - abs(input.uv.x - 0.5) * 2.0) * input.uv.z;
-        distanceToEdge.y = (1 - abs(input.uv.y - 0.5) * 2.0) * input.uv.w;
+        distanceToEdge.x = abs(input.uv.x - 0.5) * 2.0;
+        distanceToEdge.y = abs(input.uv.y - 0.5) * 2.0;
+#endif
         
-        float2 distanceToCenter;
-        distanceToCenter.x = 1 - saturate(distanceToEdge.x);
-        distanceToCenter.y = 1 - saturate(distanceToEdge.y);
-        
-        float4 output = float4(Color, Alpha);
+#if ROUND_CORNERS
+        float2 halfScale = input.scale.xy * 0.5;
+        float2 roundCornerPosition = distanceToEdge * halfScale;
+        float cornerCircleRadius = saturate(max(RoundCornerRadious - RoundCornerMargin, 0.01)) * input.scale.z;
+        float2 cornerCircleDistance = halfScale - (RoundCornerMargin * input.scale.z) - cornerCircleRadius;
+        float roundCornerClip = RoundCornersF(roundCornerPosition, cornerCircleDistance, cornerCircleRadius);
+#endif
 
 #if BORDER_LIGHT
-        //Border light
-        float border = (1 - saturate((min(distanceToEdge.x, distanceToEdge.y)) / BorderLightWidth));
-        border = smoothstep(0.0, 0.2, border);
-        output.rgb = lerp(output.rgb, BorderLightColor * border, border);
-        output.a += 1.0f * border;
+		float borderValue;
+#if ROUND_CORNERS
+		float borderMargin = RoundCornerMargin + BorderWidth * 0.5;
+		cornerCircleRadius = saturate(max(RoundCornerRadious - borderMargin, 0.01)) * input.scale.z;
+        cornerCircleDistance = halfScale - (borderMargin * input.scale.z) - cornerCircleRadius;
+        borderValue =  1.0 - RoundCornersSmooth(roundCornerPosition, cornerCircleDistance, cornerCircleRadius);
+#else
+		borderValue = max(smoothstep(input.uv.z - EdgeSmoothingValue, input.uv.z + EdgeSmoothingValue, distanceToEdge.x),
+                          smoothstep(input.uv.w - EdgeSmoothingValue, input.uv.w + EdgeSmoothingValue, distanceToEdge.y));
+#endif
+		float3 borderColor = float3(1.0, 1.0, 1.0);
+		float3 borderContribution = borderColor * borderValue * BorderMinValue * FluentLightIntensity;
+
+#if BORDER_LIGHT_REPLACES_ALBEDO
+		albedo.rgb = lerp(albedo.rgb, borderContribution, borderValue);
+#else
+		albedo.rgb += borderContribution;
+#endif
 #endif
 
+#if ROUND_CORNERS
+		albedo *= roundCornerClip;
+        clip(albedo.a - Cutoff);
+        albedo.a = Alpha;
+#endif
+		float4 output = albedo;
+
 #if INNER_GLOW
-        //Inner Glow
-        float2 uvGlow = pow(distanceToCenter * InnerGlowAlpha, InnerGlowPower);
+        float2 uvGlow = pow(distanceToEdge * InnerGlowAlpha, InnerGlowPower);
         output.rgb += lerp(float3(0.0, 0.0, 0.0), InnerGlowColor, uvGlow.x + uvGlow.y);
-        output.a   += lerp(0.0, InnerGlowAlpha, uvGlow.x + uvGlow.y);
 #endif
         
-#if FINGERS_DIST || HOVER_LIGHT_ON
+#if FINGERS_DIST
         float minDist = min(length(input.worldPos - FingerPosLeft), length(input.worldPos - FingerPosRight));
-#if FINGERS_DIST 
 		output.a *= lerp(1, 0, saturate(minDist / MaxFingerDist));
 #endif
-		
-#if HOVER_LIGHT_ON
-		output += lerp(float4(1.0, 1.0, 1.0, 1.0) * 1.0, float4(0.0, 0.0, 0.0, 0.0), saturate(minDist / 0.03));
-#endif
-#endif
+	
 		output.rgb *= output.a;
 	
 		return output;
