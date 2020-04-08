@@ -43,19 +43,70 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
         /// Gets or sets the scale applied to the scale handles.
         /// </summary>
         [RenderProperty(Tooltip = "Scale applied to the scale handles")]
-        public float ScaleHandleScale { get; set; } = 0.02f;
+        public float ScaleHandleScale
+        {
+            get
+            {
+                return this.scaleHandleScale;
+            }
+
+            set
+            {
+                if (this.scaleHandleScale != value)
+                {
+                    this.scaleHandleScale = value;
+                    this.CreateRig();
+                }
+            }
+        }
+
+        private float scaleHandleScale = 0.02f;
 
         /// <summary>
         /// Gets or sets the scale applied to the rotation handles.
         /// </summary>
         [RenderProperty(Tooltip = "Scale applied to the rotation handles")]
-        public float RotationHandleScale { get; set; } = 0.02f;
+        public float RotationHandleScale
+        {
+            get
+            {
+                return this.rotationHandleScale;
+            }
+
+            set
+            {
+                if (this.rotationHandleScale != value)
+                {
+                    this.rotationHandleScale = value;
+                    this.CreateRig();
+                }
+            }
+        }
+
+        private float rotationHandleScale = 0.02f;
 
         /// <summary>
         /// Gets or sets the scale applied to the wireframe links.
         /// </summary>
         [RenderProperty(Tooltip = "Scale applied to the wireframe links")]
-        public float LinkScale { get; set; } = 0.005f;
+        public float LinkScale
+        {
+            get
+            {
+                return this.linkScale;
+            }
+
+            set
+            {
+                if (this.linkScale != value)
+                {
+                    this.linkScale = value;
+                    this.CreateRig();
+                }
+            }
+        }
+
+        private float linkScale = 0.005f;
 
         private StandardMaterial handleMaterial;
 
