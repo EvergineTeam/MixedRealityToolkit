@@ -6,17 +6,17 @@ DefaultProfile:
   Platform: Undefined
 ExportAsRaw: false
 MaterialInfo:
-  Id: af729ca0-9376-4878-a394-9acca661b44a
+  Id: 1e0fc9d3-c661-40c9-b93b-2a6a308e9d68
   ActiveDirectives:
     - BORDER_LIGHT
-    - FINGERS_DIST
     - HOVER_LIGHT_ON
+    - NO_FINGERS_DIST
   EffectID: 4f7e4c24-e83c-4350-9cd4-511fb2199cf4
   Layer: 0db59561-b3f5-444f-b5de-e62e3a5b42bf
   Parameters:
     - Name: WorldViewProj
       Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
-      ValueByteArray: HS6MQAAAAAAAAAAAAAAAAAAAAACaMopADf9kvzD5ZL8AAAAAmjIKwA3/5L8w+eS/AAAAAAAAAAAg7ItAvhuPQA==
+      ValueByteArray: pZEBP8MMmr+KLPa/PSb2vwAAAADfkJVACn4Av8B6AL/KPYvASFkPvs4SZb7xDGW+8nJss1PQjjEg7ItAvhuPQA==
     - Name: World
       Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
       ValueByteArray: AAAAQAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAACAPw==
@@ -46,7 +46,7 @@ MaterialInfo:
       ValueByteArray: AAAAAAAAAAAAAAAA
     - Name: BorderLightColor
       Type: WaveEngine.Mathematics.Vector3,WaveEngine.Mathematics
-      ValueByteArray: AAAAPwAAAD8AAAA/
+      ValueByteArray: AACAPgAAgD4AAIA+
     - Name: BorderLightWidth
       Type: System.Single
       ValueByteArray: zczMPQ==

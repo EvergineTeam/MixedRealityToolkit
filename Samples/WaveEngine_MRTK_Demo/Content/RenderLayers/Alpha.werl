@@ -7,7 +7,7 @@ DefaultProfile:
 ExportAsRaw: false
 Profiles: {}
 RenderLayerInfo:
-  Id: 7db27cda-df9f-4c5a-96b5-fd9badcfb8ba
+  Id: cadec672-c6bc-4536-a92d-af50267b1b03
   Order: 1
   RenderState:
     BlendFactor: null
@@ -22,7 +22,7 @@ RenderLayerInfo:
         DestinationBlendAlpha: InverseSourceAlpha
         DestinationBlendColor: InverseSourceAlpha
         SourceBlendAlpha: One
-        SourceBlendColor: SourceAlpha
+        SourceBlendColor: One
       RenderTarget1:
         BlendEnable: false
         BlendOperationAlpha: Add

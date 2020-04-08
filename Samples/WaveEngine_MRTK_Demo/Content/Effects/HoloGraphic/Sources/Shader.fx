@@ -134,6 +134,7 @@
 		output += lerp(float4(1.0, 1.0, 1.0, 1.0) * 1.0, float4(0.0, 0.0, 0.0, 0.0), saturate(minDist / 0.03));
 #endif
 #endif
+		output.rgb *= output.a;
 	
 		return output;
 	}
