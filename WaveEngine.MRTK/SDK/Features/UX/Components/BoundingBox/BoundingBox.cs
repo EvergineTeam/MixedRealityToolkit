@@ -233,19 +233,22 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
         /// </summary>
         public void CreateRig()
         {
-            this.DestroyRig();
-            ////SetMaterials();
-            this.InitializeRigRoot();
-            this.InitializeDataStructures();
-            ////this.SetBoundingBoxCollider();
-            this.AddHelpers();
-            ////HandleIgnoreCollider();
-            ////AddBoxDisplay();
-            this.UpdateRigHandles();
-            ////Flatten();
-            ////ResetHandleVisibility();
-            ////rigRoot.gameObject.SetActive(active);
-            ////UpdateRigVisibilityInInspector();
+            if (this.Owner != null)
+            {
+                this.DestroyRig();
+                ////SetMaterials();
+                this.InitializeRigRoot();
+                this.InitializeDataStructures();
+                ////this.SetBoundingBoxCollider();
+                this.AddHelpers();
+                ////HandleIgnoreCollider();
+                ////AddBoxDisplay();
+                this.UpdateRigHandles();
+                ////Flatten();
+                ////ResetHandleVisibility();
+                ////rigRoot.gameObject.SetActive(active);
+                ////UpdateRigVisibilityInInspector();
+            }
         }
 
         private void DestroyRig()
