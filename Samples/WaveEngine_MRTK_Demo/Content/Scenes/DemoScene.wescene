@@ -3039,6 +3039,10 @@ Items:
                 IsEnabled: true
                 UpdateOrder: 0.5
                 sound: f0824659-252b-4fc7-9d49-10aacab65fc6
+              - !WaveEngine_MRTK_Demo.Behaviors.CursorPosShaderUpdater,WaveEngine_MRTK_Demo
+                Id: d32633a6-43ac-4814-bf8d-4136a887f0bb
+                IsEnabled: true
+                UpdateOrder: 0.5
             Children: []
             Id: 28af444b-8d96-4107-afac-60747bce401f
           - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework

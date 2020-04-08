@@ -6,16 +6,16 @@ DefaultProfile:
   Platform: Undefined
 ExportAsRaw: false
 MaterialInfo:
-  Id: 737f8061-8f5a-4c4a-8b00-acc7d8722e6e
+  Id: 762bffe4-feab-47dd-9a9b-757c9fb33cbb
   ActiveDirectives:
     - FINGERS_DIST
-    - INNER_GLOW
+    - HOVER_LIGHT_ON
   EffectID: 4f7e4c24-e83c-4350-9cd4-511fb2199cf4
   Layer: e35c59a9-26ab-4b4c-8210-4b1f21c31530
   Parameters:
     - Name: WorldViewProj
       Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
-      ValueByteArray: K0SJQAAAAAAAAAAAAAAAAAAAAACYMopADf9kvzD5ZL8AAAAAmjIKwAv/5L8u+eS/AAAAAHmCGjUf7ItAvRuPQA==
+      ValueByteArray: HS6MQAAAAAAAAAAAAAAAAAAAAACaMopADf9kvzD5ZL8AAAAAmjIKwA3/5L8w+eS/AAAAAAAAAAAg7ItAvhuPQA==
     - Name: World
       Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
       ValueByteArray: AAAAQAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAACAPw==
@@ -51,10 +51,10 @@ MaterialInfo:
       ValueByteArray: zczMPQ==
     - Name: MultiviewViewProj
       Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
-      ValueByteArray: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
+      ValueByteArray: kpPOPwjcv72p9ji+gfM4vnJaDrfRDxdA/yFXvlQeV77EUpu+3jP/vuj+db+2+nW/9FFXPnRC377/T5++KTRYvg==
     - Name: EyeCount
       Type: System.Int32
-      ValueByteArray: AAAAAA==
+      ValueByteArray: AQAAAA==
   Samplers: null
   Textures: null
 Profiles: {}

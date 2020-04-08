@@ -149,6 +149,30 @@ namespace WaveEngine_MRTK_Demo.Effects
             }
         }
         
+        public WaveEngine.Mathematics.Vector3 Parameters_BorderLightColor
+        {
+            get
+            {
+                return this.material.CBuffers[1].GetBufferData<WaveEngine.Mathematics.Vector3>(64);
+            }
+            set
+            {
+				this.material.CBuffers[1].SetBufferData(value, 64);
+            }
+        }
+        
+        public float Parameters_BorderLightWidth
+        {
+            get
+            {
+                return this.material.CBuffers[1].GetBufferData<System.Single>(76);
+            }
+            set
+            {
+				this.material.CBuffers[1].SetBufferData(value, 76);
+            }
+        }
+        
         public WaveEngine.Mathematics.Matrix4x4 PerCamera_MultiviewViewProj
         {
             get

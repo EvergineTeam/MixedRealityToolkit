@@ -3,6 +3,7 @@
 [directives:FINGERS_DIST FINGERS_DIST NO_FINGERS_DIST]
 [directives:BORDER_LIGHT BORDER_LIGHT_OFF BORDER_LIGHT]
 [directives:INNER_GLOW INNER_GLOW_OFF INNER_GLOW]
+[directives:HoverLight HOVER_LIGHT_OFF HOVER_LIGHT_ON]
 [directives:Multiview MULTIVIEW_OFF MULTIVIEW]
 
 	cbuffer PerDrawCall : register(b0)
@@ -107,7 +108,7 @@
         distanceToCenter.y = 1 - saturate(distanceToEdge.y);
         
         float4 output = float4(Color, Alpha);
-        
+
 #if BORDER_LIGHT
         //Border light
         float border = (1 - saturate((min(distanceToEdge.x, distanceToEdge.y)) / BorderLightWidth));
@@ -123,9 +124,15 @@
         output.a   += lerp(0.0, InnerGlowAlpha, uvGlow.x + uvGlow.y);
 #endif
         
-#if FINGERS_DIST
+#if FINGERS_DIST || HOVER_LIGHT_ON
         float minDist = min(length(input.worldPos - FingerPosLeft), length(input.worldPos - FingerPosRight));
+#if FINGERS_DIST 
 		output.a *= lerp(1, 0, saturate(minDist / MaxFingerDist));
+#endif
+		
+#if HOVER_LIGHT_ON
+		output += lerp(float4(1.0, 1.0, 1.0, 1.0) * 1.0, float4(0.0, 0.0, 0.0, 0.0), saturate(minDist / 0.03));
+#endif
 #endif
 	
 		return output;

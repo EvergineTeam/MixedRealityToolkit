@@ -6,16 +6,17 @@ DefaultProfile:
   Platform: Undefined
 ExportAsRaw: false
 MaterialInfo:
-  Id: 8019d582-4011-4810-a3b8-7e51c4f5f9ee
+  Id: ab8ec7c7-356a-4355-a732-6b4074a8a631
   ActiveDirectives:
     - BORDER_LIGHT
     - FINGERS_DIST
+    - HOVER_LIGHT_ON
   EffectID: 4f7e4c24-e83c-4350-9cd4-511fb2199cf4
   Layer: e35c59a9-26ab-4b4c-8210-4b1f21c31530
   Parameters:
     - Name: WorldViewProj
       Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
-      ValueByteArray: kMBSQF6TEcDniZK/J4aSv3MAHbSAmG5A4LOiv7avor8JxWjAR84DwH+thL8ZqoS/XmEhthJYrTNa+UVB4o1HQQ==
+      ValueByteArray: HS6MQAAAAAAAAAAAAAAAAAAAAACaMopADf9kvzD5ZL8AAAAAmjIKwA3/5L8w+eS/AAAAAAAAAAAg7ItAvhuPQA==
     - Name: World
       Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
       ValueByteArray: AAAAQAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAACAPw==

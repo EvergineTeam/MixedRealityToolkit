@@ -6,8 +6,9 @@ DefaultProfile:
   Platform: Undefined
 ExportAsRaw: false
 MaterialInfo:
-  Id: 011fc49d-2215-4c18-b9a8-e67a3b4f53ff
+  Id: 7ffd6adc-6e99-4c4f-ba92-a7ffad506ed9
   ActiveDirectives:
+    - HOVER_LIGHT_ON
     - INNER_GLOW
     - NO_FINGERS_DIST
   EffectID: 4f7e4c24-e83c-4350-9cd4-511fb2199cf4
@@ -15,7 +16,7 @@ MaterialInfo:
   Parameters:
     - Name: WorldViewProj
       Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
-      ValueByteArray: NlKYQAAAAAAAAAAAAAAAAAAAAACYMopADf9kvzD5ZL8AAAAAmjIKwAv/5L8u+eS/AAAAAHmCGjUf7ItAvRuPQA==
+      ValueByteArray: HS6MQAAAAAAAAAAAAAAAAAAAAACaMopADf9kvzD5ZL8AAAAAmjIKwA3/5L8w+eS/AAAAAAAAAAAg7ItAvhuPQA==
     - Name: World
       Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
       ValueByteArray: AAAAQAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAACAPw==
