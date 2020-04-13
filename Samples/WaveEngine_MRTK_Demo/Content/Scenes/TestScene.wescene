@@ -114,7 +114,7 @@ Items:
             LocalPosition:
               X: 0.0999996886
               Y: -0.099999994
-              Z: -0.0600000024
+              Z: -0.100000001
             LocalScale:
               X: 0.100000001
               Y: 0.100000001
@@ -154,9 +154,9 @@ Items:
               Y: 0.0
               Z: 0.0
             Size:
-              X: 0.800000012
-              Y: 0.800000012
-              Z: 0.800000012
+              X: 1.0
+              Y: 1.0
+              Z: 1.0
           - !WaveEngine.Framework.Physics3D.StaticBody3D,WaveEngine.Framework
             Id: be2bdbf7-65b4-4ad6-b086-c957e5345c0e
             CcdMotionThreshold: 0.0
@@ -179,6 +179,10 @@ Items:
             Id: b95cb0bf-7902-4c1a-bbe8-33ecd2f9acc1
             BoxGrabbedMaterial: 0852af68-ed44-4dd5-bebb-05c15449d498
             BoxMaterial: 76254053-dba8-4ecd-8ffd-2989ae519c06
+            BoxPadding:
+              X: 0.200000003
+              Y: 0.200000003
+              Z: 0.200000003
             HandleGrabbedMaterial: 7c6dfc11-0f01-4d22-bfc9-bc5ca4fae227
             HandleMaterial: 9adff77b-f6b6-4683-bf28-243fafea5436
             IsEnabled: true

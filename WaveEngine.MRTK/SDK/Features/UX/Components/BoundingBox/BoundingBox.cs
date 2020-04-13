@@ -109,6 +109,29 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
         private float linkScale = 0.005f;
 
         /// <summary>
+        /// Gets or sets the extra padding added to the actual bounds.
+        /// </summary>
+        [RenderProperty(Tooltip = "Extra padding added to the actual bounds.")]
+        public Vector3 BoxPadding
+        {
+            get
+            {
+                return this.boxPadding;
+            }
+
+            set
+            {
+                if (Vector3.Distance(this.boxPadding, value) > MathHelper.Epsilon)
+                {
+                    this.boxPadding = value;
+                    this.CreateRig();
+                }
+            }
+        }
+
+        private Vector3 boxPadding = Vector3.Zero;
+
+        /// <summary>
         /// Gets or sets the material applied to the box when not in a grabbed state.
         /// </summary>
         [RenderProperty(Tooltip = "The material applied to the box when not in a grabbed state. If set to null, no box will be displayed.")]
@@ -429,6 +452,8 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
                 this.boundingBoxCenter = this.boxCollider3D.Offset;
                 this.boundingBoxSize = this.boxCollider3D.Size;
             }
+
+            this.boundingBoxSize += this.boxPadding;
         }
 
         private Vector3[] GetCornerPositionsFromBounds()
