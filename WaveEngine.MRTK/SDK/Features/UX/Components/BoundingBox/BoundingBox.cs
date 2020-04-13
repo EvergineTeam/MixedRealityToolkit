@@ -109,6 +109,52 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
         private float linkScale = 0.005f;
 
         /// <summary>
+        /// Gets or sets the material applied to the box when not in a grabbed state.
+        /// </summary>
+        [RenderProperty(Tooltip = "The material applied to the box when not in a grabbed state. If set to null, no box will be displayed.")]
+        public Material BoxMaterial
+        {
+            get
+            {
+                return this.boxMaterial;
+            }
+
+            set
+            {
+                if (this.boxMaterial != value)
+                {
+                    this.boxMaterial = value;
+                    this.CreateRig();
+                }
+            }
+        }
+
+        private Material boxMaterial;
+
+        /// <summary>
+        /// Gets or sets the material applied to the box when in a grabbed state.
+        /// </summary>
+        [RenderProperty(Tooltip = "The material applied to the box when in a grabbed state. If set to null, no change will occur when grabbed.")]
+        public Material BoxGrabbedMaterial
+        {
+            get
+            {
+                return this.boxGrabbedMaterial;
+            }
+
+            set
+            {
+                if (this.boxGrabbedMaterial != value)
+                {
+                    this.boxGrabbedMaterial = value;
+                    this.CreateRig();
+                }
+            }
+        }
+
+        private Material boxGrabbedMaterial;
+
+        /// <summary>
         /// Gets or sets a value indicating whether to show the wireframe links around the box or not.
         /// </summary>
         [RenderProperty(Tooltip = "Whether to show the wireframe links around the box or not")]
@@ -247,6 +293,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
         private Entity rigRootEntity;
         private Dictionary<Entity, BoundingBoxHelper> helpers;
         private List<BoundingBoxHelper> helpersList;
+        private Entity boxDisplay;
 
         private Vector3 boundingBoxCenter;
         private Vector3 boundingBoxSize;
@@ -322,7 +369,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
                 ////this.SetBoundingBoxCollider();
                 this.AddHelpers();
                 ////HandleIgnoreCollider();
-                ////AddBoxDisplay();
+                this.AddBoxDisplay();
                 this.UpdateRigHandles();
                 ////Flatten();
                 ////ResetHandleVisibility();
@@ -604,6 +651,26 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
             this.helpersList = this.helpers.Values.ToList();
         }
 
+        private void AddBoxDisplay()
+        {
+            if (this.boxMaterial != null)
+            {
+                this.boxDisplay = new Entity($"boxDisplay")
+                    .AddComponent(new Transform3D()
+                    {
+                        LocalPosition = this.boundingBoxCenter,
+                        LocalScale = this.boundingBoxSize,
+                    })
+                    .AddComponent(new CubeMesh())
+                    .AddComponent(new MeshRenderer())
+                    .AddComponent(new MaterialComponent());
+
+                this.ApplyMaterialToAllComponents(this.boxDisplay, this.boxMaterial);
+
+                this.rigRootEntity.AddChild(this.boxDisplay);
+            }
+        }
+
         private void ApplyMaterialToAllComponents(Entity root, Material material)
         {
             if (material != null)
@@ -667,6 +734,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
                 this.currentHandle = this.helpers[eventData.CurrentTarget];
 
                 this.ApplyMaterialToAllComponents(this.currentHandle.Entity, this.handleGrabbedMaterial);
+                this.ApplyMaterialToAllComponents(this.boxDisplay, this.boxGrabbedMaterial);
 
                 this.currentCursor = eventData.Cursor;
                 this.initialGrabPoint = eventData.Position;
@@ -744,6 +812,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
             if (this.currentCursor == eventData.Cursor)
             {
                 this.ApplyMaterialToAllComponents(this.currentHandle.Entity, this.handleMaterial);
+                this.ApplyMaterialToAllComponents(this.boxDisplay, this.boxMaterial);
 
                 switch (this.currentHandle.Type)
                 {

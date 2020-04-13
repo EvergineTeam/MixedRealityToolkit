@@ -177,6 +177,8 @@ Items:
             OrderBias: 0
           - !WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox.BoundingBox,WaveEngine.MRTK
             Id: b95cb0bf-7902-4c1a-bbe8-33ecd2f9acc1
+            BoxGrabbedMaterial: 0852af68-ed44-4dd5-bebb-05c15449d498
+            BoxMaterial: 76254053-dba8-4ecd-8ffd-2989ae519c06
             HandleGrabbedMaterial: 7c6dfc11-0f01-4d22-bfc9-bc5ca4fae227
             HandleMaterial: 9adff77b-f6b6-4683-bf28-243fafea5436
             IsEnabled: true
