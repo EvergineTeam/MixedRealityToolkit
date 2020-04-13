@@ -6,7 +6,7 @@ DefaultProfile:
   Platform: Undefined
 ExportAsRaw: false
 MaterialInfo:
-  Id: c17a0475-bbd2-450d-b260-33066484beb9
+  Id: 4a2b6bb7-dd7b-4908-9f6b-07a3e622e515
   ActiveDirectives:
     - BORDER_LIGHT
     - BORDER_LIGHT_REPLACES_ALBEDO
@@ -18,7 +18,7 @@ MaterialInfo:
   Parameters:
     - Name: WorldViewProj
       Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
-      ValueByteArray: vJW6vlAAmcAdx3E+7MBxPlFNnTFVUBK/xTn+v0Mz/r+A3pzA+vu1PvXJj7xHxo+8wZk7sqIVGrQe7ItAvBuPQA==
+      ValueByteArray: brylP7LMkMBR9yO9HvMjvarD/LLRINM9nvf/vxDx/78J/17ApjzXvxS6c7zXs3O8IJSyMsp0BbQg7ItAvhuPQA==
     - Name: World
       Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
       ValueByteArray: AAAAQAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAACAPw==
@@ -67,6 +67,21 @@ MaterialInfo:
     - Name: EdgeSmoothingValue
       Type: System.Single
       ValueByteArray: AAAAAA==
+    - Name: FadeBeginDistance
+      Type: System.Single
+      ValueByteArray: CtcjPA==
+    - Name: FadeCompleteDistance
+      Type: System.Single
+      ValueByteArray: zcxMPQ==
+    - Name: FadeMinValue
+      Type: System.Single
+      ValueByteArray: AAAAAA==
+    - Name: HoverLightData
+      Type: WaveEngine.Mathematics.Vector4,WaveEngine.Mathematics
+      ValueByteArray: AAAAAAAAAAAAAAAAAAAAAA==
+    - Name: ProximityLightData
+      Type: WaveEngine.Mathematics.Vector4,WaveEngine.Mathematics
+      ValueByteArray: AAAAAAAAAAAAAAAAAAAAAA==
     - Name: MultiviewViewProj
       Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
       ValueByteArray: kpPOPwjcv72p9ji+gfM4vnJaDrfRDxdA/yFXvlQeV77EUpu+3jP/vuj+db+2+nW/9FFXPnRC377/T5++KTRYvg==

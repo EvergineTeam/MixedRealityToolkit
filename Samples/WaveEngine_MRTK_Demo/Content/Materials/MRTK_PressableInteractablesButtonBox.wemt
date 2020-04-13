@@ -6,23 +6,25 @@ DefaultProfile:
   Platform: Undefined
 ExportAsRaw: false
 MaterialInfo:
-  Id: ab8ec7c7-356a-4355-a732-6b4074a8a631
+  Id: 1b0abc95-3345-4dd0-a27d-beb111c40298
   ActiveDirectives:
     - BORDER_LIGHT
+    - BORDER_LIGHT_OPAQUE
+    - BORDER_LIGHT_REPLACES_ALBEDO
     - FINGERS_DIST
-    - HOVER_LIGHT_ON
+    - NEAR_LIGHT_FADE
   EffectID: 4f7e4c24-e83c-4350-9cd4-511fb2199cf4
   Layer: e35c59a9-26ab-4b4c-8210-4b1f21c31530
   Parameters:
     - Name: WorldViewProj
       Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
-      ValueByteArray: HS6MQAAAAAAAAAAAAAAAAAAAAACaMopADf9kvzD5ZL8AAAAAmjIKwA3/5L8w+eS/AAAAAAAAAAAg7ItAvhuPQA==
+      ValueByteArray: +KdKQPnfx79HvZu/SrmbvwAAAABcbYhAkl9wv2tZcL9knUDAcEvSv7nbo7+H16O/MwCrtNvjVDQg7ItAvhuPQA==
     - Name: World
       Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
       ValueByteArray: AAAAQAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAACAPw==
     - Name: Color
       Type: WaveEngine.Mathematics.Vector3,WaveEngine.Mathematics
-      ValueByteArray: mpmZPpqZmT4AAIA/
+      ValueByteArray: AACAPwAAgD8AAIA/
     - Name: Alpha
       Type: System.Single
       ValueByteArray: AAAAAA==
@@ -44,12 +46,42 @@ MaterialInfo:
     - Name: FingerPosRight
       Type: WaveEngine.Mathematics.Vector3,WaveEngine.Mathematics
       ValueByteArray: AAAAAAAAAAAAAAAA
-    - Name: BorderLightColor
-      Type: WaveEngine.Mathematics.Vector3,WaveEngine.Mathematics
-      ValueByteArray: AACAPwAAgD8AAIA/
-    - Name: BorderLightWidth
+    - Name: BorderWidth
       Type: System.Single
-      ValueByteArray: gBSuPQ==
+      ValueByteArray: 61G4PQ==
+    - Name: BorderMinValue
+      Type: System.Single
+      ValueByteArray: AACAPw==
+    - Name: FluentLightIntensity
+      Type: System.Single
+      ValueByteArray: AACAPw==
+    - Name: RoundCornerRadious
+      Type: System.Single
+      ValueByteArray: AACAPg==
+    - Name: RoundCornerMargin
+      Type: System.Single
+      ValueByteArray: CtcjPA==
+    - Name: Cutoff
+      Type: System.Single
+      ValueByteArray: AAAAPw==
+    - Name: EdgeSmoothingValue
+      Type: System.Single
+      ValueByteArray: bxIDOw==
+    - Name: FadeBeginDistance
+      Type: System.Single
+      ValueByteArray: CtcjPA==
+    - Name: FadeCompleteDistance
+      Type: System.Single
+      ValueByteArray: zcxMPQ==
+    - Name: FadeMinValue
+      Type: System.Single
+      ValueByteArray: AAAAAA==
+    - Name: HoverLightData
+      Type: WaveEngine.Mathematics.Vector4,WaveEngine.Mathematics
+      ValueByteArray: AAAAAAAAAAAAAAAAAAAAAA==
+    - Name: ProximityLightData
+      Type: WaveEngine.Mathematics.Vector4,WaveEngine.Mathematics
+      ValueByteArray: AAAAAAAAAAAAAAAAAAAAAA==
     - Name: MultiviewViewProj
       Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
       ValueByteArray: kpPOPwjcv72p9ji+gfM4vnJaDrfRDxdA/yFXvlQeV77EUpu+3jP/vuj+db+2+nW/9FFXPnRC377/T5++KTRYvg==

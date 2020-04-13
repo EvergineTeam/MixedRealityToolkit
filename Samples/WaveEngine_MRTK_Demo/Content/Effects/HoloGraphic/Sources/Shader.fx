@@ -1,11 +1,14 @@
 [Begin_ResourceLayout]
 
-[directives:FINGERS_DIST FINGERS_DIST NO_FINGERS_DIST]
 [directives:BORDER_LIGHT BORDER_LIGHT_OFF BORDER_LIGHT]
 [directives:BORDER_LIGHT_REPLACES_ALBEDO BORDER_LIGHT_REPLACES_ALBEDO_OFF BORDER_LIGHT_REPLACES_ALBEDO]
+[directives:BORDER_LIGHT_OPAQUE BORDER_LIGHT_OPAQUE_OFF BORDER_LIGHT_OPAQUE]
 [directives:INNER_GLOW INNER_GLOW_OFF INNER_GLOW]
 [directives:ROUND_CORNERS ROUND_CORNERS_OFF ROUND_CORNERS]
 [directives:IGNORE_Z_SCALE IGNORE_Z_SCALE_OFF IGNORE_Z_SCALE]
+[directives:NEAR_LIGHT_FADE NEAR_LIGHT_FADE_OFF NEAR_LIGHT_FADE]
+[directives:HOVER_LIGHT HOVER_LIGHT_OFF HOVER_LIGHT]
+[directives:PROXIMITY_LIGHT PROXIMITY_LIGHT_OFF PROXIMITY_LIGHT_ON]
 [directives:Multiview MULTIVIEW_OFF MULTIVIEW]
 
 	cbuffer PerDrawCall : register(b0)
@@ -21,22 +24,25 @@
 
 		float3 InnerGlowColor   	: packoffset(c1);   [Default(1.0, 1.0, 1.0)]
 		float InnerGlowAlpha   		: packoffset(c1.w); [Default(0.75)]
-		float InnerGlowPower    	: packoffset(c2.w); [Default(4.0)] //Range(2.0, 32.0)
+		float InnerGlowPower    	: packoffset(c2.x); [Default(4.0)] //Range(2.0, 32.0)
 		
-		float MaxFingerDist     	: packoffset(c3.w); [Default(1.0)]
-		float3 FingerPosLeft    	: packoffset(c2);
-		float3 FingerPosRight   	: packoffset(c3);	
+		float BorderWidth  			: packoffset(c2.y); [Default(0.1)] //Range(0.0, 1.0) 
+		float BorderMinValue 		: packoffset(c2.z); [Default(0.1)] //Range(0.0, 1.0)
+		float FluentLightIntensity  : packoffset(c2.w); [Default(1.0)] //Range(0.0, 1.0)
 		
-		float BorderWidth  			: packoffset(c4.x); [Default(0.1)] //Range(0.0, 1.0) 
-		float BorderMinValue 		: packoffset(c4.y); [Default(0.1)] //Range(0.0, 1.0)
-		float FluentLightIntensity  : packoffset(c4.z); [Default(1.0)] //Range(0.0, 1.0)
-		
-		float RoundCornerRadious	: packoffset(c5.x); [Default(0.25)]  //Range(0.0, 0.5)
-		float RoundCornerMargin 	: packoffset(c5.y); [Default(0.01)]  //Range(0.0, 0.5)
-		float Cutoff				: packoffset(c5.z); [Default(0.5)]	 //Range(0.0, 0.5)
+		float RoundCornerRadious	: packoffset(c3.x); [Default(0.25)]  //Range(0.0, 0.5)
+		float RoundCornerMargin 	: packoffset(c3.y); [Default(0.01)]  //Range(0.0, 0.5)
+		float Cutoff				: packoffset(c3.z); [Default(0.5)]	 //Range(0.0, 0.5)
 
 		// BORDER_LIGHT OR ROUND_CORNERS
-		float EdgeSmoothingValue	: packoffset(c5.w); [Default(0.002)] //Range(0.0, 0.2)
+		float EdgeSmoothingValue	: packoffset(c3.w); [Default(0.002)] //Range(0.0, 0.2)
+		
+		float FadeBeginDistance     : packoffset(c4.x); [Default(0.01)] //Range(0.0, 10.0)
+        float FadeCompleteDistance  : packoffset(c5.y); [Default(0.1)]  //Range(0.0, 10.0)
+        float FadeMinValue          : packoffset(c5.z); [Default(0.0)]  //Range(0.0, 1.0)
+        
+        float4 HoverLightData[6]     : packoffset(c20);
+        float4 ProximityLightData[12] : packoffset(c26);
 	};
 	
 	cbuffer PerCamera : register(b2)
@@ -71,6 +77,50 @@
 
 	[profile 11_0]
 	[entrypoints VS=VS PS=PS]
+
+#if HOVER_LIGHT || NEAR_LIGHT_FADE
+	//#if MULTI_HOVER_LIGHT
+		#define HOVER_LIGHT_COUNT 3
+	//#else
+	//	#define HOVER_LIGHT_COUNT 1
+	//#endif
+	#define HOVER_LIGHT_DATA_SIZE 2
+		//float4 _HoverLightData[HOVER_LIGHT_COUNT * HOVER_LIGHT_DATA_SIZE];
+	#if HOVER_COLOR_OVERRIDE
+		fixed3 _HoverColorOverride;
+	#endif
+#endif
+	
+#if PROXIMITY_LIGHT || NEAR_LIGHT_FADE
+	#define PROXIMITY_LIGHT_COUNT 2
+	#define PROXIMITY_LIGHT_DATA_SIZE 6
+		//float4 _ProximityLightData[PROXIMITY_LIGHT_COUNT * PROXIMITY_LIGHT_DATA_SIZE];
+	#if PROXIMITY_LIGHT_COLOR_OVERRIDE
+		float4 _ProximityLightCenterColorOverride;
+		float4 _ProximityLightMiddleColorOverride;
+		float4 _ProximityLightOuterColorOverride;
+	#endif
+#endif
+
+#if HOVER_LIGHT || PROXIMITY_LIGHT || BORDER_LIGHT
+	float _FluentLightIntensity;
+#endif
+
+#if NEAR_LIGHT_FADE
+    static const float _MaxNearLightDistance = 10.0;
+
+    inline float NearLightDistance(float4 light, float3 worldPosition)
+    {
+        return distance(worldPosition, light.xyz) + ((1.0 - light.w) * _MaxNearLightDistance);
+    }
+#endif
+
+#if HOVER_LIGHT
+    inline float HoverLight(float4 hoverLight, float inverseRadius, float3 worldPosition)
+    {
+        return (1.0 - saturate(length(hoverLight.xyz - worldPosition) * inverseRadius)) * hoverLight.w;
+    }
+#endif
 
 	struct VS_IN
 	{
@@ -123,6 +173,31 @@
 #endif
 
 		float3 localNormal = input.normal;
+
+
+		output.pos = mul(input.Position, worldViewProj);
+		output.worldPos = mul(input.Position, World);
+
+#if NEAR_LIGHT_FADE
+		float rangeInverse = 1.0 / (FadeBeginDistance - FadeCompleteDistance);
+	    float fadeDistance = _MaxNearLightDistance;
+	
+	    [unroll]
+	    for (int hoverLightIndex = 0; hoverLightIndex < HOVER_LIGHT_COUNT; ++hoverLightIndex)
+	    {
+	        int dataIndex = hoverLightIndex * HOVER_LIGHT_DATA_SIZE;
+	        fadeDistance = min(fadeDistance, NearLightDistance(HoverLightData[dataIndex], output.worldPos.xyz));
+	    }
+	
+	    /*[unroll]
+	    for (int proximityLightIndex = 0; proximityLightIndex < PROXIMITY_LIGHT_COUNT; ++proximityLightIndex)
+	    {
+	        int dataIndex = proximityLightIndex * PROXIMITY_LIGHT_DATA_SIZE;
+	        fadeDistance = min(fadeDistance, NearLightDistance(ProximityLightData[dataIndex], output.worldPos.xyz));
+	    }*/
+
+		output.worldPos.w = max(saturate(mad(fadeDistance, rangeInverse, - FadeCompleteDistance * rangeInverse)), FadeMinValue);
+#endif
 
 #if BORDER_LIGHT || ROUND_CORNERS
         output.scale.x = length(mul(float4(1.0, 0.0, 0.0, 0.0), World));
@@ -196,9 +271,6 @@
         output.uv = input.uv;
 #endif
 
-		output.pos = mul(input.Position, worldViewProj);
-		output.worldPos = mul(input.Position, World);
-
 		return output;
 	}
 
@@ -239,6 +311,12 @@
 #else
 		albedo.rgb += borderContribution;
 #endif
+
+#if BORDER_LIGHT_OPAQUE
+		float BorderLightOpaqueAlpha = 1.0f;
+		albedo.a = max(albedo.a, borderValue * BorderLightOpaqueAlpha);
+#endif
+
 #endif
 
 #if ROUND_CORNERS
@@ -251,11 +329,11 @@
 #if INNER_GLOW
         float2 uvGlow = pow(distanceToEdge * InnerGlowAlpha, InnerGlowPower);
         output.rgb += lerp(float3(0.0, 0.0, 0.0), InnerGlowColor, uvGlow.x + uvGlow.y);
+        output.a += lerp(0.0, InnerGlowAlpha, uvGlow.x + uvGlow.y);
 #endif
-        
-#if FINGERS_DIST
-        float minDist = min(length(input.worldPos - FingerPosLeft), length(input.worldPos - FingerPosRight));
-		output.a *= lerp(1, 0, saturate(minDist / MaxFingerDist));
+
+#if (NEAR_LIGHT_FADE)
+        output.a *= input.worldPos.w;
 #endif
 	
 		output.rgb *= output.a;

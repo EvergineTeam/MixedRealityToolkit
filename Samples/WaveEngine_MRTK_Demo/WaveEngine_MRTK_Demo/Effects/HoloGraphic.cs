@@ -233,6 +233,66 @@ namespace WaveEngine_MRTK_Demo.Effects
             }
         }
         
+        public float Parameters_FadeBeginDistance
+        {
+            get
+            {
+                return this.material.CBuffers[1].GetBufferData<System.Single>(96);
+            }
+            set
+            {
+				this.material.CBuffers[1].SetBufferData(value, 96);
+            }
+        }
+        
+        public float Parameters_FadeCompleteDistance
+        {
+            get
+            {
+                return this.material.CBuffers[1].GetBufferData<System.Single>(100);
+            }
+            set
+            {
+				this.material.CBuffers[1].SetBufferData(value, 100);
+            }
+        }
+        
+        public float Parameters_FadeMinValue
+        {
+            get
+            {
+                return this.material.CBuffers[1].GetBufferData<System.Single>(104);
+            }
+            set
+            {
+				this.material.CBuffers[1].SetBufferData(value, 104);
+            }
+        }
+        
+        public WaveEngine.Mathematics.Vector4 Parameters_HoverLightData
+        {
+            get
+            {
+                return this.material.CBuffers[1].GetBufferData<WaveEngine.Mathematics.Vector4>(320);
+            }
+            set
+            {
+				this.material.CBuffers[1].SetBufferData(value, 320);
+            }
+        }
+        
+        public WaveEngine.Mathematics.Vector4 Parameters_ProximityLightData
+        {
+            get
+            {
+                return this.material.CBuffers[1].GetBufferData<WaveEngine.Mathematics.Vector4>(416);
+            }
+            set
+            {
+				this.material.CBuffers[1].SetBufferData(value, 416);
+            }
+        }
+        
         public WaveEngine.Mathematics.Matrix4x4 PerCamera_MultiviewViewProj
         {
             get
