@@ -248,6 +248,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
         private Dictionary<Entity, BoundingBoxHelper> helpers;
         private List<BoundingBoxHelper> helpersList;
 
+        private Vector3 boundingBoxCenter;
         private Vector3 boundingBoxSize;
 
         // Interaction variables
@@ -366,25 +367,32 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
             this.helpers = new Dictionary<Entity, BoundingBoxHelper>();
         }
 
-        private Vector3[] GetCornerPositionsFromBounds()
+        private void CalculateBoundingBoxSizeAndCenter()
         {
-            var boundsCorners = new Vector3[8];
-
-            var center = this.boxCollider3D.Offset;
-            var extent = this.boxCollider3D.Size / 2;
-
             // Get size from child MeshComponent
             var bbox = this.meshComponent?.Model?.BoundingBox;
 
             if (bbox.HasValue)
             {
-                center = bbox.Value.Center;
-                extent = bbox.Value.HalfExtent;
+                this.boundingBoxCenter = bbox.Value.Center;
+                this.boundingBoxSize = bbox.Value.HalfExtent * 2;
             }
+            else
+            {
+                this.boundingBoxCenter = this.boxCollider3D.Offset;
+                this.boundingBoxSize = this.boxCollider3D.Size;
+            }
+        }
+
+        private Vector3[] GetCornerPositionsFromBounds()
+        {
+            this.CalculateBoundingBoxSizeAndCenter();
+
+            var boundsCorners = new Vector3[8];
 
             // Permutate all axes using minCorner and maxCorner.
-            Vector3 minCorner = center - extent;
-            Vector3 maxCorner = center + extent;
+            Vector3 minCorner = this.boundingBoxCenter - (this.boundingBoxSize / 2);
+            Vector3 maxCorner = this.boundingBoxCenter + (this.boundingBoxSize / 2);
             for (int c = 0; c < boundsCorners.Length; c++)
             {
                 boundsCorners[c] = new Vector3(
@@ -394,11 +402,6 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
             }
 
             return boundsCorners;
-        }
-
-        private Vector3 CalculateBoundingBoxSize(Vector3[] boundsCorners)
-        {
-            return boundsCorners[7] - boundsCorners[0];
         }
 
         private Vector3[] CalculateEdgeCenters(Vector3[] boundsCorners)
@@ -448,8 +451,6 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
             var boundsCorners = this.GetCornerPositionsFromBounds();
             var edgeCenters = this.CalculateEdgeCenters(boundsCorners);
             var edgeAxes = this.CalculateAxisTypes();
-
-            this.boundingBoxSize = this.CalculateBoundingBoxSize(boundsCorners);
 
             // Add corners
             for (int i = 0; i < boundsCorners.Length; ++i)
