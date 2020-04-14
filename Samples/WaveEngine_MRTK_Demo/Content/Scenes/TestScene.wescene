@@ -360,6 +360,8 @@ Items:
                                 ChangeColor: true
                                 Compressable: false
                                 IsEnabled: true
+                                MinCompressRatio: 0.25
+                                MovementScale: 1.0
                                 PressedColor:
                                   A: 255
                                   B: 255
@@ -647,7 +649,11 @@ Items:
                       - !WaveEngine_MRTK_Demo.Toolkit.Components.GUI.Text3D,WaveEngine_MRTK_Demo
                         Id: f14fa961-5935-410c-a28c-7359be6ff675
                         Alpha: 1.0
+                        FontFamilySource: 
                         FontSize: 36
+                        FontStretch: Normal
+                        FontStyle: Normal
+                        FontWeight: Normal
                         HorizontalAlignment: Left
                         IsEnabled: true
                         Quality: 0.5
@@ -685,7 +691,11 @@ Items:
                       - !WaveEngine_MRTK_Demo.Toolkit.Components.GUI.Text3D,WaveEngine_MRTK_Demo
                         Id: dac94535-3c81-43aa-ab9f-e84a79a2b4e8
                         Alpha: 1.0
+                        FontFamilySource: 
                         FontSize: 24
+                        FontStretch: Normal
+                        FontStyle: Normal
+                        FontWeight: Normal
                         HorizontalAlignment: Left
                         IsEnabled: true
                         Quality: 0.5
@@ -884,7 +894,6 @@ Items:
               G: 93
               R: 255
             UpdateOrder: 0.5
-            UseShift: false
           - !WaveEngine.Framework.Physics3D.SphereCollider3D,WaveEngine.Framework
             Id: 0b4be18f-a116-4c7d-85ca-8de0d10df96a
             IsEnabled: true
@@ -964,7 +973,6 @@ Items:
               G: 93
               R: 255
             UpdateOrder: 0.5
-            UseShift: false
           - !WaveEngine.Framework.Physics3D.SphereCollider3D,WaveEngine.Framework
             Id: bf60dced-1832-4d5c-8ac7-e0f0747d69d4
             IsEnabled: true
@@ -989,31 +997,4 @@ Items:
         Children: []
         Id: 0a1b717d-2afc-413b-a520-57f429737cca
     Id: 04aa31c2-6453-445f-9887-71b256aeaf02
-  - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
-    Name: services
-    Tag: null
-    IsEnabled: true
-    IsStatic: false
-    Components:
-      - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
-        Id: aa5a1c25-46c2-4af2-9cb6-5b33ec46975c
-        IsEnabled: true
-        LocalOrientation:
-          W: 1.0
-          X: 0.0
-          Y: 0.0
-          Z: 0.0
-        LocalPosition:
-          X: 0.0
-          Y: 0.0
-          Z: 0.0
-        LocalScale:
-          X: 1.0
-          Y: 1.0
-          Z: 1.0
-      - !WaveEngine_MRTK_Demo.Components.NoesisServiceRegistrationComponent,WaveEngine_MRTK_Demo
-        Id: e25db5ad-8e3c-4d66-ba5c-85384631a914
-        IsEnabled: true
-    Children: []
-    Id: e845c79e-d18c-4ac6-8c38-f04b64b46227
 Managers: []

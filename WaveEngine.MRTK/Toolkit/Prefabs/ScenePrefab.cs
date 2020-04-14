@@ -32,7 +32,7 @@ namespace WaveEngine.MRTK.Toolkit.Prefabs
         /// <summary>
         /// Gets or sets a value indicating whether the materials that this prefab uses will be duplicated.
         /// </summary>
-        [RenderProperty(Tooltip= "Set whether the materials that this prefab uses will be duplicated.")]
+        [RenderProperty(Tooltip = "Set whether the materials that this prefab uses will be duplicated.")]
         public bool DuplicateMaterials
         {
             get => this.duplicateMaterials;
