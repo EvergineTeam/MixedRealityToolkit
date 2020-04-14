@@ -176,7 +176,7 @@
 	struct PS_IN
 	{
 		float4 pos      : SV_POSITION;
-		float4 worldPos : TEXCOORD0;
+		float4 worldPosition : TEXCOORD0;
 #if PROXIMITY_LIGHT
 		float3 worldNormal : TEXCOORD1;
 #endif
@@ -216,7 +216,7 @@
 #endif
 
 		output.pos = mul(input.Position, worldViewProj);
-		output.worldPos = mul(input.Position, World);
+		output.worldPosition = mul(input.Position, World);
 		
 		float3 localNormal = input.normal;
 #if PROXIMITY_LIGHT
@@ -231,17 +231,17 @@
 	    for (int hoverLightIndex = 0; hoverLightIndex < HOVER_LIGHT_COUNT; ++hoverLightIndex)
 	    {
 	        int dataIndex = hoverLightIndex * HOVER_LIGHT_DATA_SIZE;
-	        fadeDistance = min(fadeDistance, NearLightDistance(HoverLightData[dataIndex], output.worldPos.xyz));
+	        fadeDistance = min(fadeDistance, NearLightDistance(HoverLightData[dataIndex], output.worldPosition.xyz));
 	    }
 	
 	    [unroll]
 	    for (int proximityLightIndex = 0; proximityLightIndex < PROXIMITY_LIGHT_COUNT; ++proximityLightIndex)
 	    {
 	        int dataIndex = proximityLightIndex * PROXIMITY_LIGHT_DATA_SIZE;
-	        fadeDistance = min(fadeDistance, NearLightDistance(ProximityLightData[dataIndex], output.worldPos.xyz));
+	        fadeDistance = min(fadeDistance, NearLightDistance(ProximityLightData[dataIndex], output.worldPosition.xyz));
 	    }
 
-		output.worldPos.w = max(saturate(mad(fadeDistance, rangeInverse, - FadeCompleteDistance * rangeInverse)), FadeMinValue);
+		output.worldPosition.w = max(saturate(mad(fadeDistance, rangeInverse, - FadeCompleteDistance * rangeInverse)), FadeMinValue);
 #endif
 
 #if BORDER_LIGHT || ROUND_CORNERS
@@ -353,7 +353,7 @@
         for (int hoverLightIndex = 0; hoverLightIndex < HOVER_LIGHT_COUNT; ++hoverLightIndex)
         {
             int dataIndex = hoverLightIndex * HOVER_LIGHT_DATA_SIZE;
-            float hoverValue = HoverLight(HoverLightData[dataIndex], HoverLightData[dataIndex + 1].w, input.worldPos.xyz);
+            float hoverValue = HoverLight(HoverLightData[dataIndex], HoverLightData[dataIndex + 1].w, input.worldPosition.xyz);
             pointToLight += hoverValue;
 #if !HOVER_COLOR_OVERRIDE
             fluentLightColor += lerp(float3(0.0, 0.0, 0.0), HoverLightData[dataIndex + 1].rgb, hoverValue);
@@ -375,7 +375,7 @@
         {
             int dataIndex = proximityLightIndex * PROXIMITY_LIGHT_DATA_SIZE;
             float colorValue;
-            float proximityValue = ProximityLight(ProximityLightData[dataIndex], ProximityLightData[dataIndex + 1], ProximityLightData[dataIndex + 2], input.worldPos.xyz, worldNormal, colorValue);
+            float proximityValue = ProximityLight(ProximityLightData[dataIndex], ProximityLightData[dataIndex + 1], ProximityLightData[dataIndex + 2], input.worldPosition.xyz, worldNormal, colorValue);
             pointToLight += proximityValue;
 	#if PROXIMITY_LIGHT_COLOR_OVERRIDE
             float3 proximityColor = MixProximityLightColor(ProximityLightCenterColorOverride, ProximityLightMiddleColorOverride, ProximityLightOuterColorOverride, colorValue);
@@ -438,7 +438,7 @@
 #endif
 
 #if (NEAR_LIGHT_FADE)
-        output.a *= input.worldPos.w;
+        output.a *= input.worldPosition.w;
 #endif
 
 // Hover and proximity lighting should occur after near plane fading.
