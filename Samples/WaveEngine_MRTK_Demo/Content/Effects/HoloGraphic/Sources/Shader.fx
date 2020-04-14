@@ -164,9 +164,9 @@
 	{
 		float4 Position : POSITION;
 		float2 uv : TEXCOORD0;
-#if PROXIMITY_LIGHT
+
 		float3 normal : NORMAL;
-#endif
+
 		
 #if MULTIVIEW
 		uint InstId : SV_InstanceID;
@@ -218,8 +218,8 @@
 		output.pos = mul(input.Position, worldViewProj);
 		output.worldPos = mul(input.Position, World);
 		
-#if PROXIMITY_LIGHT
 		float3 localNormal = input.normal;
+#if PROXIMITY_LIGHT
 		output.worldNormal = normalize(mul(float4(input.normal, 0), World).xyz);
 #endif
 
