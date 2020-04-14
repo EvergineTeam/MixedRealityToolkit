@@ -164,7 +164,9 @@
 	{
 		float4 Position : POSITION;
 		float2 uv : TEXCOORD0;
+#if PROXIMITY_LIGHT
 		float3 normal : NORMAL;
+#endif
 		
 #if MULTIVIEW
 		uint InstId : SV_InstanceID;
@@ -175,7 +177,9 @@
 	{
 		float4 pos      : SV_POSITION;
 		float4 worldPos : TEXCOORD0;
+#if PROXIMITY_LIGHT
 		float3 worldNormal : TEXCOORD1;
+#endif
 #if BORDER_LIGHT
         float4 uv 		: TEXCOORD2;
 #elif INNER_GLOW || ROUND_CORNERS
@@ -211,12 +215,13 @@
 		float4x4 worldViewProj = WorldViewProj;
 #endif
 
-		float3 localNormal = input.normal;
-
-
 		output.pos = mul(input.Position, worldViewProj);
 		output.worldPos = mul(input.Position, World);
+		
+#if PROXIMITY_LIGHT
+		float3 localNormal = input.normal;
 		output.worldNormal = normalize(mul(float4(input.normal, 0), World).xyz);
+#endif
 
 #if NEAR_LIGHT_FADE
 		float rangeInverse = 1.0 / (FadeBeginDistance - FadeCompleteDistance);
@@ -332,8 +337,10 @@
         float roundCornerClip = RoundCornersF(roundCornerPosition, cornerCircleDistance, cornerCircleRadius);
 #endif
 
+#if PROXIMITY_LIGHT
 // Normal calculation.
 		float3 worldNormal = normalize(input.worldNormal) * facing;
+#endif
 
 
         float pointToLight = 1.0;
