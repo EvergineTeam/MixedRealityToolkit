@@ -427,7 +427,7 @@
 // Hover and proximity lighting should occur after near plane fading.
 #if HOVER_LIGHT || PROXIMITY_LIGHT
         output.rgb += fluentLightColor * FluentLightIntensity * pointToLight;
-        //output.a += 1.0f * FluentLightIntensity * pointToLight;
+        output.a += 1.0f * FluentLightIntensity * pointToLight;
 #endif
 	
 		output.rgb *= output.a;
