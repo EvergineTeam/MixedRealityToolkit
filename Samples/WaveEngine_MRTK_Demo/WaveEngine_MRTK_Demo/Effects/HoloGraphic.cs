@@ -105,6 +105,42 @@ namespace WaveEngine_MRTK_Demo.Effects
         {
             get
             {
+                return this.material.CBuffers[1].GetBufferData<System.Single>(32);
+            }
+            set
+            {
+				this.material.CBuffers[1].SetBufferData(value, 32);
+            }
+        }
+        
+        public float Parameters_BorderWidth
+        {
+            get
+            {
+                return this.material.CBuffers[1].GetBufferData<System.Single>(36);
+            }
+            set
+            {
+				this.material.CBuffers[1].SetBufferData(value, 36);
+            }
+        }
+        
+        public float Parameters_BorderMinValue
+        {
+            get
+            {
+                return this.material.CBuffers[1].GetBufferData<System.Single>(40);
+            }
+            set
+            {
+				this.material.CBuffers[1].SetBufferData(value, 40);
+            }
+        }
+        
+        public float Parameters_FluentLightIntensity
+        {
+            get
+            {
                 return this.material.CBuffers[1].GetBufferData<System.Single>(44);
             }
             set
@@ -113,7 +149,43 @@ namespace WaveEngine_MRTK_Demo.Effects
             }
         }
         
-        public float Parameters_MaxFingerDist
+        public float Parameters_RoundCornerRadious
+        {
+            get
+            {
+                return this.material.CBuffers[1].GetBufferData<System.Single>(48);
+            }
+            set
+            {
+				this.material.CBuffers[1].SetBufferData(value, 48);
+            }
+        }
+        
+        public float Parameters_RoundCornerMargin
+        {
+            get
+            {
+                return this.material.CBuffers[1].GetBufferData<System.Single>(52);
+            }
+            set
+            {
+				this.material.CBuffers[1].SetBufferData(value, 52);
+            }
+        }
+        
+        public float Parameters_Cutoff
+        {
+            get
+            {
+                return this.material.CBuffers[1].GetBufferData<System.Single>(56);
+            }
+            set
+            {
+				this.material.CBuffers[1].SetBufferData(value, 56);
+            }
+        }
+        
+        public float Parameters_EdgeSmoothingValue
         {
             get
             {
@@ -125,31 +197,7 @@ namespace WaveEngine_MRTK_Demo.Effects
             }
         }
         
-        public WaveEngine.Mathematics.Vector3 Parameters_FingerPosLeft
-        {
-            get
-            {
-                return this.material.CBuffers[1].GetBufferData<WaveEngine.Mathematics.Vector3>(32);
-            }
-            set
-            {
-				this.material.CBuffers[1].SetBufferData(value, 32);
-            }
-        }
-        
-        public WaveEngine.Mathematics.Vector3 Parameters_FingerPosRight
-        {
-            get
-            {
-                return this.material.CBuffers[1].GetBufferData<WaveEngine.Mathematics.Vector3>(48);
-            }
-            set
-            {
-				this.material.CBuffers[1].SetBufferData(value, 48);
-            }
-        }
-        
-        public float Parameters_BorderWidth
+        public float Parameters_FadeBeginDistance
         {
             get
             {
@@ -161,7 +209,7 @@ namespace WaveEngine_MRTK_Demo.Effects
             }
         }
         
-        public float Parameters_BorderMinValue
+        public float Parameters_FadeCompleteDistance
         {
             get
             {
@@ -173,7 +221,7 @@ namespace WaveEngine_MRTK_Demo.Effects
             }
         }
         
-        public float Parameters_FluentLightIntensity
+        public float Parameters_FadeMinValue
         {
             get
             {
@@ -182,90 +230,6 @@ namespace WaveEngine_MRTK_Demo.Effects
             set
             {
 				this.material.CBuffers[1].SetBufferData(value, 72);
-            }
-        }
-        
-        public float Parameters_RoundCornerRadious
-        {
-            get
-            {
-                return this.material.CBuffers[1].GetBufferData<System.Single>(80);
-            }
-            set
-            {
-				this.material.CBuffers[1].SetBufferData(value, 80);
-            }
-        }
-        
-        public float Parameters_RoundCornerMargin
-        {
-            get
-            {
-                return this.material.CBuffers[1].GetBufferData<System.Single>(84);
-            }
-            set
-            {
-				this.material.CBuffers[1].SetBufferData(value, 84);
-            }
-        }
-        
-        public float Parameters_Cutoff
-        {
-            get
-            {
-                return this.material.CBuffers[1].GetBufferData<System.Single>(88);
-            }
-            set
-            {
-				this.material.CBuffers[1].SetBufferData(value, 88);
-            }
-        }
-        
-        public float Parameters_EdgeSmoothingValue
-        {
-            get
-            {
-                return this.material.CBuffers[1].GetBufferData<System.Single>(92);
-            }
-            set
-            {
-				this.material.CBuffers[1].SetBufferData(value, 92);
-            }
-        }
-        
-        public float Parameters_FadeBeginDistance
-        {
-            get
-            {
-                return this.material.CBuffers[1].GetBufferData<System.Single>(96);
-            }
-            set
-            {
-				this.material.CBuffers[1].SetBufferData(value, 96);
-            }
-        }
-        
-        public float Parameters_FadeCompleteDistance
-        {
-            get
-            {
-                return this.material.CBuffers[1].GetBufferData<System.Single>(100);
-            }
-            set
-            {
-				this.material.CBuffers[1].SetBufferData(value, 100);
-            }
-        }
-        
-        public float Parameters_FadeMinValue
-        {
-            get
-            {
-                return this.material.CBuffers[1].GetBufferData<System.Single>(104);
-            }
-            set
-            {
-				this.material.CBuffers[1].SetBufferData(value, 104);
             }
         }
         

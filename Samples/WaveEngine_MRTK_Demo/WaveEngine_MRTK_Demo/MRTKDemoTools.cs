@@ -82,6 +82,8 @@ namespace WaveEngine_MRTK_Demo
                 .AddComponent(new SphereCollider3D())
                 .AddComponent(new StaticBody3D() { CollisionCategories = CollisionCategory3D.Cat1, IsSensor = true })
                 .AddComponent(new Cursor() { PressedColor = new Color(255, 173, 128), ReleasedColor = new Color(255, 93, 0), UpdateOrder = 0.3f })
+                .AddComponent(new HoverLight())
+                .AddComponent(new ProximityLight())
                 ;
 
             var xrPlatform = Application.Current.Container.Resolve<XRPlatform>();

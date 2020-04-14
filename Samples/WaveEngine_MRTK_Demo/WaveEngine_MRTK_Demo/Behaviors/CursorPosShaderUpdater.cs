@@ -1,4 +1,5 @@
 ﻿using System;
+using WaveEngine.Common.Graphics;
 using WaveEngine.Components.Graphics3D;
 using WaveEngine.Framework;
 using WaveEngine.Mathematics;
@@ -13,30 +14,62 @@ namespace WaveEngine_MRTK_Demo.Behaviors
         protected MaterialComponent materialComponent = null;
 
         private HoloGraphic materialDecorator;
-        private CursorManager cursorManager;
 
         protected override void Start()
         {
-            this.cursorManager = this.Owner.Scene.Managers.FindManager<CursorManager>();
             this.materialDecorator = new HoloGraphic(this.materialComponent.Material);
         }
 
         protected override void Update(TimeSpan gameTime)
         {
-            //this.materialDecorator.Parameters_FingerPosLeft = this.cursorManager.Cursors[0].transform.Position;
-            //this.materialDecorator.Parameters_FingerPosRight = this.cursorManager.Cursors[1].transform.Position;
-            //Vector3 p0 = this.cursorManager.Cursors[0].transform.Position;
-            //this.materialDecorator.Parameters_HoverLightData = new Vector4(p0.X, p0.Y, p0.Z, 1.0f);
-
-            for (int i = 0; i < 2; ++i)
+            for (int i = 0; i < HoverLight.activeHoverLights.Count && i < HoverLight.MaxLights; ++i)
             {
-                this.materialComponent.Material.CBuffers[1].SetBufferData<Vector3>(this.cursorManager.Cursors[i].transform.Position, 320 + 32 * i);
-                this.materialComponent.Material.CBuffers[1].SetBufferData<float>(1.0f, 320 + 32 * i + 12);
-            }
-            //this.materialComponent.Material.CBuffers[1].SetBufferData<Vector3>(this.cursorManager.Cursors[1].transform.Position, 320 + 16);
-            //this.materialComponent.Material.CBuffers[1].SetBufferData<float>(1.0f, 320 + 16 + 12);
+                int accessIdx = 320 + 32 * i;
 
-            //this.material.CBuffers[1].GetBufferData<WaveEngine.Mathematics.Vector4>(320);
+                HoverLight light = HoverLight.activeHoverLights[i];
+                this.materialComponent.Material.CBuffers[1].SetBufferData<Vector3>(light.transform.Position, accessIdx);
+                this.materialComponent.Material.CBuffers[1].SetBufferData<float>  (light.Radius,             accessIdx + 12);
+                this.materialComponent.Material.CBuffers[1].SetBufferData<Vector4>(light.Color.ToVector4(),  accessIdx + 16);
+            }
+
+            for (int i = 0; i < ProximityLight.MaxLights; ++i)
+            {
+                int accessIdx = 416 + 96 * i;
+
+                ProximityLight light = i < ProximityLight.activeProximityLights.Count ? ProximityLight.activeProximityLights[i] : null;
+                if (light != null)
+                {
+                    this.materialComponent.Material.CBuffers[1].SetBufferData<Vector3>(light.transform.Position, accessIdx);
+                    this.materialComponent.Material.CBuffers[1].SetBufferData<float>(1.0f, accessIdx + 12);
+
+                    float pulseScaler = 1.0f;// + light.pulseTime;
+                    Vector4 v4 = new Vector4(
+                            light.NearRadius * pulseScaler,
+                            1.0f / MathHelper.Clamp(light.FarRadius * pulseScaler, 0.001f, 1.0f),
+                            1.0f / MathHelper.Clamp(light.NearDistance * pulseScaler, 0.001f, 1.0f),
+                            MathHelper.Clamp(light.MinNearSizePercentage, 0.0f, 1.0f)
+                        );
+                    this.materialComponent.Material.CBuffers[1].SetBufferData<Vector4>(
+                        v4,
+                        accessIdx + 16
+                    );
+                    v4 = new Vector4(
+                            light.NearDistance * light.pulseTime,
+                            MathHelper.Clamp(1.0f - light.pulseFade, 0.0f, 1.0f),
+                            0.0f,
+                            0.0f);
+                    this.materialComponent.Material.CBuffers[1].SetBufferData<Vector4>(
+                        v4,
+                        accessIdx + 32);
+                    this.materialComponent.Material.CBuffers[1].SetBufferData<Vector4>(light.CenterColor.ToVector4(), accessIdx + 48);
+                    this.materialComponent.Material.CBuffers[1].SetBufferData<Vector4>(light.MiddleColor.ToVector4(), accessIdx + 64);
+                    this.materialComponent.Material.CBuffers[1].SetBufferData<Vector4>(light.OuterColor.ToVector4(), accessIdx + 80);
+                }
+                else
+                {
+                    this.materialComponent.Material.CBuffers[1].SetBufferData<Vector4>(Vector4.Zero, accessIdx);
+                }
+            }
         }
     }
 }
