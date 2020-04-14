@@ -3234,6 +3234,10 @@ Items:
                         FrustumCullingEnabled: true
                         IsEnabled: true
                         OrderBias: 0
+                      - !WaveEngine_MRTK_Demo.Behaviors.CursorPosShaderUpdater,WaveEngine_MRTK_Demo
+                        Id: 39492fc1-2695-4fa8-9c55-d6807634a801
+                        IsEnabled: true
+                        UpdateOrder: 0.5
                     Children: []
                     Id: c51314c2-29b0-4bdd-8655-681be1823937
                 Id: 3768048a-0378-46c6-87e1-2384939373b1
@@ -3431,6 +3435,10 @@ Items:
                         FrustumCullingEnabled: true
                         IsEnabled: true
                         OrderBias: 0
+                      - !WaveEngine_MRTK_Demo.Behaviors.CursorPosShaderUpdater,WaveEngine_MRTK_Demo
+                        Id: 9823082b-98c2-493b-8c62-b52ae38e6af4
+                        IsEnabled: true
+                        UpdateOrder: 0.5
                     Children: []
                     Id: 71ab8e62-7c00-4373-aebd-80305edfb859
                 Id: 3372d141-3286-423d-b44a-c3b4fa4f6640
@@ -3624,6 +3632,10 @@ Items:
                         FrustumCullingEnabled: true
                         IsEnabled: true
                         OrderBias: 0
+                      - !WaveEngine_MRTK_Demo.Behaviors.CursorPosShaderUpdater,WaveEngine_MRTK_Demo
+                        Id: 8f859884-dd32-4b86-a93d-b7382de8404a
+                        IsEnabled: true
+                        UpdateOrder: 0.5
                     Children: []
                     Id: d9132da8-787c-4359-a13f-87465fdc9c46
                 Id: 0843c41d-3fa3-41de-ac5e-269c0f13c337
