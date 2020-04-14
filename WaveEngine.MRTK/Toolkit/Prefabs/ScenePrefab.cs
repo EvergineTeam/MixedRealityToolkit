@@ -127,7 +127,7 @@ namespace WaveEngine.MRTK.Toolkit.Prefabs
         private void PrepareEntity(Entity entity)
         {
             entity.Id = Guid.NewGuid();
-            entity.Flags = HideFlags.DontSave;
+            entity.Flags = HideFlags.DontSave | HideFlags.DontShow;
             foreach (var component in entity.Components)
             {
                 component.Id = Guid.NewGuid();
