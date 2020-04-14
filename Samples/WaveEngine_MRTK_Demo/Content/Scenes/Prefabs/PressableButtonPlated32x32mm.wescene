@@ -262,7 +262,7 @@ Items:
                   X: 0.0320000015
                   Y: 1.0
                   Z: 0.0320000015
-              - !WaveEngine_MRTK_Demo.Components.Text3D,WaveEngine_MRTK_Demo
+              - !WaveEngine_MRTK_Demo.Toolkit.Components.GUI.Text3D,WaveEngine_MRTK_Demo
                 Id: 0c3534a2-de82-4170-9ce7-41a75c558902
                 Alpha: 1.0
                 FontSize: 24

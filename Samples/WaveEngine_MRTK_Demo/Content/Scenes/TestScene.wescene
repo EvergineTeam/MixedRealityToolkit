@@ -644,7 +644,7 @@ Items:
                           X: 0.0500000007
                           Y: 0.100000001
                           Z: 0.0199999921
-                      - !WaveEngine_MRTK_Demo.Components.Text3D,WaveEngine_MRTK_Demo
+                      - !WaveEngine_MRTK_Demo.Toolkit.Components.GUI.Text3D,WaveEngine_MRTK_Demo
                         Id: f14fa961-5935-410c-a28c-7359be6ff675
                         Alpha: 1.0
                         FontSize: 36
@@ -682,7 +682,7 @@ Items:
                           X: 0.0499999858
                           Y: 0.100000001
                           Z: 0.0199999996
-                      - !WaveEngine_MRTK_Demo.Components.Text3D,WaveEngine_MRTK_Demo
+                      - !WaveEngine_MRTK_Demo.Toolkit.Components.GUI.Text3D,WaveEngine_MRTK_Demo
                         Id: dac94535-3c81-43aa-ab9f-e84a79a2b4e8
                         Alpha: 1.0
                         FontSize: 24

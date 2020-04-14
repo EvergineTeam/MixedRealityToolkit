@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using WaveEngine.Framework;
 using WaveEngine.MRTK.SDK.Features.UX.Components.Sliders;
+using WaveEngine_MRTK_Demo.Toolkit.Components.GUI;
 
 namespace WaveEngine_MRTK_Demo.Components
 {
