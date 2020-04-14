@@ -1,15 +1,19 @@
 [Begin_ResourceLayout]
 
-[directives:BORDER_LIGHT                 BORDER_LIGHT_OFF                 BORDER_LIGHT                 ]
-[directives:BORDER_LIGHT_REPLACES_ALBEDO BORDER_LIGHT_REPLACES_ALBEDO_OFF BORDER_LIGHT_REPLACES_ALBEDO ]
-[directives:BORDER_LIGHT_OPAQUE          BORDER_LIGHT_OPAQUE_OFF          BORDER_LIGHT_OPAQUE          ]
-[directives:INNER_GLOW                   INNER_GLOW_OFF                   INNER_GLOW                   ]
-[directives:ROUND_CORNERS                ROUND_CORNERS_OFF                ROUND_CORNERS                ]
-[directives:IGNORE_Z_SCALE               IGNORE_Z_SCALE_OFF               IGNORE_Z_SCALE               ]
-[directives:NEAR_LIGHT_FADE              NEAR_LIGHT_FADE_OFF              NEAR_LIGHT_FADE              ]
-[directives:HOVER_LIGHT                  HOVER_LIGHT_OFF                  HOVER_LIGHT                  ]
-[directives:PROXIMITY_LIGHT              PROXIMITY_LIGHT_OFF              PROXIMITY_LIGHT              ]
-[directives:Multiview                    MULTIVIEW_OFF                    MULTIVIEW                    ]
+[directives:BORDER_LIGHT                   BORDER_LIGHT_OFF                   BORDER_LIGHT                   ]
+[directives:BORDER_LIGHT_REPLACES_ALBEDO   BORDER_LIGHT_REPLACES_ALBEDO_OFF   BORDER_LIGHT_REPLACES_ALBEDO   ]
+[directives:BORDER_LIGHT_OPAQUE            BORDER_LIGHT_OPAQUE_OFF            BORDER_LIGHT_OPAQUE            ]
+[directives:INNER_GLOW                     INNER_GLOW_OFF                     INNER_GLOW                     ]
+[directives:ROUND_CORNERS                  ROUND_CORNERS_OFF                  ROUND_CORNERS                  ]
+[directives:IGNORE_Z_SCALE                 IGNORE_Z_SCALE_OFF                 IGNORE_Z_SCALE                 ]
+[directives:NEAR_LIGHT_FADE                NEAR_LIGHT_FADE_OFF                NEAR_LIGHT_FADE                ]
+[directives:HOVER_LIGHT                    HOVER_LIGHT_OFF                    HOVER_LIGHT                    ]
+[directives:HOVER_COLOR_OVERRIDE           HOVER_COLOR_OVERRIDE_OFF           HOVER_COLOR_OVERRIDE           ]
+[directives:PROXIMITY_LIGHT                PROXIMITY_LIGHT_OFF                PROXIMITY_LIGHT                ]
+[directives:PROXIMITY_LIGHT_TWO_SIDED      PROXIMITY_LIGHT_TWO_SIDED_OFF      PROXIMITY_LIGHT_TWO_SIDED      ]
+[directives:PROXIMITY_LIGHT_COLOR_OVERRIDE PROXIMITY_LIGHT_COLOR_OVERRIDE_OFF PROXIMITY_LIGHT_COLOR_OVERRIDE ]
+[directives:PROXIMITY_LIGHT_SUBTRACTIVE    PROXIMITY_LIGHT_SUBTRACTIVE_OFF    PROXIMITY_LIGHT_SUBTRACTIVE    ]
+[directives:Multiview                      MULTIVIEW_OFF                      MULTIVIEW                      ]
 
 	cbuffer PerDrawCall : register(b0)
 	{
@@ -37,9 +41,18 @@
 		// BORDER_LIGHT OR ROUND_CORNERS
 		float EdgeSmoothingValue	: packoffset(c3.w); [Default(0.002)] //Range(0.0, 0.2)
 		
+		//NEAR_LIGHT_FADE
 		float FadeBeginDistance     : packoffset(c4.x); [Default(0.01)] //Range(0.0, 10.0)
         float FadeCompleteDistance  : packoffset(c4.y); [Default(0.1)]  //Range(0.0, 10.0)
         float FadeMinValue          : packoffset(c4.z); [Default(0.0)]  //Range(0.0, 1.0)
+        
+        //HOVER_LIGHT
+        float3 HoverColorOverride   : packoffset(c5);   [Default(0.24, 0.24, 0.24)]
+        
+        //PROXIMITY_LIGHT
+        float4 ProximityLightCenterColorOverride : packoffset(c6); [Default(0.21, 0.55, 0.98, 0.0)]
+		float4 ProximityLightMiddleColorOverride : packoffset(c7); [Default(0.18, 0.51, 1.00, 0.2)]
+		float4 ProximityLightOuterColorOverride  : packoffset(c8); [Default(0.32, 0.12, 0.74, 1.0)]
         
         float4 HoverLightData[6]     : packoffset(c20);
         float4 ProximityLightData[12] : packoffset(c26);
@@ -87,7 +100,7 @@
 	#define HOVER_LIGHT_DATA_SIZE 2
 		//float4 HoverLightData[HOVER_LIGHT_COUNT * HOVER_LIGHT_DATA_SIZE];
 	#if HOVER_COLOR_OVERRIDE
-		float3 _HoverColorOverride;
+		//float3 _HoverColorOverride;
 	#endif
 #endif
 	
@@ -96,9 +109,9 @@
 	#define PROXIMITY_LIGHT_DATA_SIZE 6
 		//float4 _ProximityLightData[PROXIMITY_LIGHT_COUNT * PROXIMITY_LIGHT_DATA_SIZE];
 	#if PROXIMITY_LIGHT_COLOR_OVERRIDE
-		float4 _ProximityLightCenterColorOverride;
-		float4 _ProximityLightMiddleColorOverride;
-		float4 _ProximityLightOuterColorOverride;
+		//float4 _ProximityLightCenterColorOverride;
+		//float4 _ProximityLightMiddleColorOverride;
+		//float4 _ProximityLightOuterColorOverride;
 	#endif
 #endif
 
@@ -138,9 +151,6 @@
         float pulse = step(proximityLightPulseParams.x, projectedProximityLightDistance) * proximityLightPulseParams.y;
 
         return smoothstep(1.0, 0.0, projectedProximityLightDistance / (proximityLightParams.x * max(pow(normalizedProximityLightDistance, 0.25), proximityLightParams.w))) * pulse * attenuation;
-        
-        /*colorValue = smoothstep(0.03, 0, distance(worldPosition, proximityLight.xyz)) * proximityLightDistance;
-        return smoothstep(0.03, 0, distance(worldPosition, proximityLight.xyz))* proximityLightDistance;*/
     }
 
     inline float3 MixProximityLightColor(float4 centerColor, float4 middleColor, float4 outerColor, float t)
@@ -343,7 +353,7 @@
 #endif
         }
 #if HOVER_COLOR_OVERRIDE
-        fluentLightColor = _HoverColorOverride.rgb * pointToLight;
+        fluentLightColor = HoverColorOverride.rgb * pointToLight;
 #endif
 #endif
 
