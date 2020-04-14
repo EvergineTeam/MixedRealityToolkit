@@ -9,10 +9,9 @@ using WaveEngine.Framework.Graphics;
 using WaveEngine.Framework.Graphics.Effects;
 using WaveEngine.Framework.Graphics.Materials;
 using WaveEngine.Framework.Services;
-using WaveEngine.Mathematics;
 using WaveEngine.NoesisGUI;
 
-namespace WaveEngine_MRTK_Demo.Components
+namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
 {
     public class Text3D : Component
     {
@@ -147,6 +146,74 @@ namespace WaveEngine_MRTK_Demo.Components
         }
         private TextWrapping textWrapping = TextWrapping.NoWrap;
 
+        [RenderProperty(Tooltip = "The text font family source to use")]
+        public string FontFamilySource
+        {
+            get
+            {
+                return this.fontFamilySource;
+            }
+            set
+            {
+                if (this.SetProperty(ref this.fontFamilySource, value, this.textBlock))
+                {
+                    this.textBlock.FontFamily = this.GetFontFamily(this.fontFamilySource);
+                }
+            }
+        }
+        private string fontFamilySource = string.Empty;
+
+        [RenderProperty(Tooltip = "The text font weight to use")]
+        public FontWeight FontWeight
+        {
+            get
+            {
+                return this.fontWeight;
+            }
+            set
+            {
+                if (this.SetProperty(ref this.fontWeight, value, this.textBlock))
+                {
+                    this.textBlock.FontWeight = value;
+                }
+            }
+        }
+        private FontWeight fontWeight = FontWeight.Normal;
+
+        [RenderProperty(Tooltip = "The text font stretch to use")]
+        public FontStretch FontStretch
+        {
+            get
+            {
+                return this.fontStretch;
+            }
+            set
+            {
+                if (this.SetProperty(ref this.fontStretch, value, this.textBlock))
+                {
+                    this.textBlock.FontStretch = value;
+                }
+            }
+        }
+        private FontStretch fontStretch = FontStretch.Normal;
+
+        [RenderProperty(Tooltip = "The text font style to use")]
+        public FontStyle FontStyle
+        {
+            get
+            {
+                return this.fontStyle;
+            }
+            set
+            {
+                if (this.SetProperty(ref this.fontStyle, value, this.textBlock))
+                {
+                    this.textBlock.FontStyle = value;
+                }
+            }
+        }
+        private FontStyle fontStyle = FontStyle.Normal;
+
         private MaterialComponent materialComponent;
         private MeshRenderer meshRenderer;
         private PlaneMesh planeMesh;
@@ -189,9 +256,7 @@ namespace WaveEngine_MRTK_Demo.Components
 
                 // Build FrameworkElement
                 this.textBlock = this.BuildTextBlock();
-                this.textBlock.Text = this.Text;
-                this.textBlock.FontSize = this.FontSize;
-                this.frameworkElement = this.BuildFrameworkElement();
+                this.frameworkElement = this.BuildFrameworkElement(this.textBlock);
 
                 this.noesisFramebufferPanel.FrameworkElement = this.frameworkElement;
 
@@ -246,8 +311,6 @@ namespace WaveEngine_MRTK_Demo.Components
 
         protected override void OnDetach()
         {
-            base.OnDetach();
-
             this.transform.ScaleChanged -= this.Transform_ScaleChanged;
 
             if (this.noesisFramebuffer != null)
@@ -256,6 +319,7 @@ namespace WaveEngine_MRTK_Demo.Components
                 this.noesisFramebufferPanel.FrameBuffer = null;
                 this.materialComponent.Material?.SetTexture(null, 0);
             }
+            base.OnDetach();
         }
 
         private void Transform_ScaleChanged(object sender, System.EventArgs e)
@@ -271,20 +335,31 @@ namespace WaveEngine_MRTK_Demo.Components
                 Background = Brushes.Transparent,
                 HorizontalAlignment = this.HorizontalAlignment,
                 VerticalAlignment = this.VerticalAlignment,
+                Text = this.Text,
                 TextWrapping = this.TextWrapping,
+                FontWeight = this.FontWeight,
+                FontSize = this.FontSize,
+                FontStretch = this.FontStretch,
+                FontStyle = this.FontStyle,
+                FontFamily = this.GetFontFamily(this.FontFamilySource)
             };
         }
 
-        protected virtual FrameworkElement BuildFrameworkElement()
+        protected virtual FrameworkElement BuildFrameworkElement(TextBlock textBlock)
         {
             var frameworkElement = new Grid()
             {
                 Background = Brushes.Transparent,
             };
 
-            frameworkElement.Children.Add(this.textBlock);
+            frameworkElement.Children.Add(textBlock);
 
             return frameworkElement;
+        }
+
+        protected FontFamily GetFontFamily(string fontFamilySource)
+        {
+            return string.IsNullOrEmpty(fontFamilySource) ? null : new FontFamily(fontFamilySource);
         }
 
         private void UpdateNoesisPanelFramebuffer()
