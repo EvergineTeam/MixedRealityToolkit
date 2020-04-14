@@ -13,6 +13,7 @@
 [directives:PROXIMITY_LIGHT_TWO_SIDED      PROXIMITY_LIGHT_TWO_SIDED_OFF      PROXIMITY_LIGHT_TWO_SIDED      ]
 [directives:PROXIMITY_LIGHT_COLOR_OVERRIDE PROXIMITY_LIGHT_COLOR_OVERRIDE_OFF PROXIMITY_LIGHT_COLOR_OVERRIDE ]
 [directives:PROXIMITY_LIGHT_SUBTRACTIVE    PROXIMITY_LIGHT_SUBTRACTIVE_OFF    PROXIMITY_LIGHT_SUBTRACTIVE    ]
+[directives:DIRECTIONAL_LIGHT              DIRECTIONAL_LIGHT_OFF              DIRECTIONAL_LIGHT              ]
 [directives:Multiview                      MULTIVIEW_OFF                      MULTIVIEW                      ]
 
 	cbuffer PerDrawCall : register(b0)
@@ -53,6 +54,12 @@
         float4 ProximityLightCenterColorOverride : packoffset(c6); [Default(0.21, 0.55, 0.98, 0.0)]
 		float4 ProximityLightMiddleColorOverride : packoffset(c7); [Default(0.18, 0.51, 1.00, 0.2)]
 		float4 ProximityLightOuterColorOverride  : packoffset(c8); [Default(0.32, 0.12, 0.74, 1.0)]
+		
+		//DIRECTIONAL_LIGHT
+        float4 LightColor0 : packoffset(c9); [Default(0.5, 0.5, 0.5, 1)]
+        
+        float Metallic   : packoffset(c10.x); [Default(0.0)]
+        float Smoothness : packoffset(c10.y); [Default(0.5)]
         
         float4 HoverLightData[6]     : packoffset(c20);
         float4 ProximityLightData[12] : packoffset(c26);
@@ -119,6 +126,11 @@
 	//float _FluentLightIntensity;
 #endif
 
+#if DIRECTIONAL_LIGHT
+    static const float MinMetallicLightContribution = 0.7;
+    static const float IblContribution = 0.1;
+#endif
+
 #if NEAR_LIGHT_FADE
     static const float _MaxNearLightDistance = 10.0;
 
@@ -177,7 +189,7 @@
 	{
 		float4 pos      : SV_POSITION;
 		float4 worldPosition : TEXCOORD0;
-#if PROXIMITY_LIGHT
+#if PROXIMITY_LIGHT || DIRECTIONAL_LIGHT
 		float3 worldNormal : TEXCOORD1;
 #endif
 #if BORDER_LIGHT
@@ -219,7 +231,7 @@
 		output.worldPosition = mul(input.Position, World);
 		
 		float3 localNormal = input.normal;
-#if PROXIMITY_LIGHT
+#if PROXIMITY_LIGHT || DIRECTIONAL_LIGHT
 		output.worldNormal = normalize(mul(float4(input.normal, 0), World).xyz);
 #endif
 
@@ -337,7 +349,7 @@
         float roundCornerClip = RoundCornersF(roundCornerPosition, cornerCircleDistance, cornerCircleRadius);
 #endif
 
-#if PROXIMITY_LIGHT
+#if PROXIMITY_LIGHT || DIRECTIONAL_LIGHT
 // Normal calculation.
 		float3 worldNormal = normalize(input.worldNormal) * facing;
 #endif
@@ -429,7 +441,57 @@
         clip(albedo.a - Cutoff);
         albedo.a = Alpha;
 #endif
+		
+// Blinn phong lighting.
+#if DIRECTIONAL_LIGHT
+        float3 directionalLightDirection = normalize(float3(0.0, 0.0, 1.0));//_WorldSpaceLightPos0;
+
+        float diffuse = max(0.0, dot(worldNormal, directionalLightDirection));
+#if SPECULAR_HIGHLIGHTS
+        fixed halfVector = max(0.0, dot(worldNormal, normalize(directionalLightDirection + worldViewDir)));
+        fixed specular = saturate(pow(halfVector, _Shininess * pow(Smoothness, 4.0)) * (Smoothness * 2.0) * Metallic);
+#else
+        float specular = 0.0;
+#endif
+#endif
+
+// Image based lighting (attempt to mimic the Standard shader).
+#if REFLECTIONS
+	    fixed3 worldReflection = reflect(incident, worldNormal);
+	    fixed4 iblData = UNITY_SAMPLE_TEXCUBE_LOD(unity_SpecCube0, worldReflection, (1.0 - _Smoothness) * UNITY_SPECCUBE_LOD_STEPS);
+	    fixed3 ibl = DecodeHDR(iblData, unity_SpecCube0_HDR);
+#if REFRACTION
+	    fixed4 refractColor = UNITY_SAMPLE_TEXCUBE(unity_SpecCube0, refract(incident, worldNormal, _RefractiveIndex));
+	    ibl *= DecodeHDR(refractColor, unity_SpecCube0_HDR);
+#endif
+#else
+    	float3 ibl = float3(0.9, 0.9,0.9);//unity_IndirectSpecColor.rgb;
+#endif
+
+// Final lighting mix.
 		float4 output = albedo;
+#if SPHERICAL_HARMONICS
+    	float3 ambient = i.ambient;
+#else
+    	float3 ambient = float3(0.7, 0.7, 0.7);//glstate_lightmodel_ambient + float3(0.25, 0.25, 0.25);
+#endif
+		float minProperty = min(Smoothness, Metallic);
+	
+#if DIRECTIONAL_LIGHT
+	    float oneMinusMetallic = (1.0 - Metallic);
+	    output.rgb = lerp(output.rgb, ibl, minProperty);
+	
+	    float3 directionalLightColor = LightColor0.rgb;
+	
+	    output.rgb *= lerp((ambient + directionalLightColor * diffuse + directionalLightColor * specular) * max(oneMinusMetallic, MinMetallicLightContribution), albedo, minProperty);
+	    output.rgb += (directionalLightColor * albedo * specular) + (directionalLightColor * specular * Smoothness);
+	    output.rgb += ibl * oneMinusMetallic * IblContribution;
+#elif REFLECTIONS
+	    output.rgb = lerp(output.rgb, ibl, minProperty);
+	    output.rgb *= lerp(ambient, albedo, minProperty);
+#elif SPHERICAL_HARMONICS
+    	output.rgb *= ambient;
+#endif
 
 #if INNER_GLOW
         float2 uvGlow = pow(distanceToEdge * InnerGlowAlpha, InnerGlowPower);
@@ -446,6 +508,7 @@
         output.rgb += fluentLightColor * FluentLightIntensity * pointToLight;
         output.a += 1.0f * FluentLightIntensity * pointToLight;
 #endif
+
 	
 		output.rgb *= output.a;
 	
