@@ -13,7 +13,7 @@ namespace WaveEngine_MRTK_Demo.Emulation
         [BindComponent]
         public Transform3D transform = null;
 
-        public float Radius { get; set; } = 1.0f;
+        public float Radius { get; set; } = 0.15f;
         public Color Color { get; set; } = new Color(63, 63, 63, 255);
 
         protected override void OnActivated()
