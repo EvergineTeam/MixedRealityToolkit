@@ -2102,21 +2102,7 @@ Items:
                     Id: aa2c7380-b9da-48ca-8e77-5b77bb33ad34
                     DuplicateMaterials: false
                     IsEnabled: true
-<<<<<<< HEAD
-                    duplicateMaterials: true
-                    prefabType: PressableButtonPlated32x32mm
-=======
                     PrefabId: facc69c2-67f2-4bc3-97cd-d1ddbd42a7e5
-                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
-                    Id: 5aa6a071-e17b-4571-850a-7797e8f864f2
-                    AsignedTo: Default
-                    IsEnabled: true
-                    Material: 75122a47-663c-4625-8118-ff2e2a2bcaeb
-                  - !WaveEngine_MRTK_Demo.Behaviors.CursorPosShaderUpdater,WaveEngine_MRTK_Demo
-                    Id: 6e7e860d-cfee-40f6-9625-83da7aa89abc
-                    IsEnabled: true
-                    UpdateOrder: 0.5
->>>>>>> develop
                 Children: []
                 Id: 709ed301-96ec-484d-a53b-9945776a8986
               - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
@@ -2145,21 +2131,7 @@ Items:
                     Id: abea5f6c-fc23-42a7-93a2-df906b2585e3
                     DuplicateMaterials: false
                     IsEnabled: true
-<<<<<<< HEAD
-                    duplicateMaterials: true
-                    prefabType: PressableButtonPlated32x32mm
-=======
                     PrefabId: facc69c2-67f2-4bc3-97cd-d1ddbd42a7e5
-                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
-                    Id: 23b34f1f-5a93-48c1-bc1e-39f24cf9bd05
-                    AsignedTo: Default
-                    IsEnabled: true
-                    Material: 75122a47-663c-4625-8118-ff2e2a2bcaeb
-                  - !WaveEngine_MRTK_Demo.Behaviors.CursorPosShaderUpdater,WaveEngine_MRTK_Demo
-                    Id: 8faff05a-d4e8-48f3-be75-7f6142e00645
-                    IsEnabled: true
-                    UpdateOrder: 0.5
->>>>>>> develop
                 Children: []
                 Id: d70270df-f08b-4304-ba62-bcb3b7a6a13c
               - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
@@ -2188,21 +2160,7 @@ Items:
                     Id: 7a30d1ce-7f67-4a37-8b70-7913f2e112ad
                     DuplicateMaterials: false
                     IsEnabled: true
-<<<<<<< HEAD
-                    duplicateMaterials: true
-                    prefabType: PressableButtonPlated32x32mm
-=======
                     PrefabId: facc69c2-67f2-4bc3-97cd-d1ddbd42a7e5
-                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
-                    Id: 82845a9d-2038-450c-8573-6a5b0495bf5f
-                    AsignedTo: Default
-                    IsEnabled: true
-                    Material: 75122a47-663c-4625-8118-ff2e2a2bcaeb
-                  - !WaveEngine_MRTK_Demo.Behaviors.CursorPosShaderUpdater,WaveEngine_MRTK_Demo
-                    Id: d34c8723-263d-4827-b4c9-a9c3e735c577
-                    IsEnabled: true
-                    UpdateOrder: 0.5
->>>>>>> develop
                 Children: []
                 Id: 3e595de7-4180-4a9a-84a6-3fc1f2ce561c
               - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
@@ -2231,21 +2189,7 @@ Items:
                     Id: 4c0c782f-eb73-4f2a-b17c-3ee1e534ea59
                     DuplicateMaterials: false
                     IsEnabled: true
-<<<<<<< HEAD
-                    duplicateMaterials: true
-                    prefabType: PressableButtonPlated32x32mm
-=======
                     PrefabId: facc69c2-67f2-4bc3-97cd-d1ddbd42a7e5
-                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
-                    Id: 1120d35c-d234-46fe-80cf-b13fdd376017
-                    AsignedTo: Default
-                    IsEnabled: true
-                    Material: 75122a47-663c-4625-8118-ff2e2a2bcaeb
-                  - !WaveEngine_MRTK_Demo.Behaviors.CursorPosShaderUpdater,WaveEngine_MRTK_Demo
-                    Id: 857a926d-6f7f-4b44-9c61-f879b9212ea8
-                    IsEnabled: true
-                    UpdateOrder: 0.5
->>>>>>> develop
                 Children: []
                 Id: 3ec0cae7-bce5-4c25-b095-7889e95c6992
               - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
@@ -2274,21 +2218,7 @@ Items:
                     Id: 2b86d5c7-1af3-4998-8356-64f0cc485bd7
                     DuplicateMaterials: false
                     IsEnabled: true
-<<<<<<< HEAD
-                    duplicateMaterials: true
-                    prefabType: PressableButtonPlated32x32mm
-=======
                     PrefabId: facc69c2-67f2-4bc3-97cd-d1ddbd42a7e5
-                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
-                    Id: ad3f8992-0db8-4257-bf78-83ed53865ae0
-                    AsignedTo: Default
-                    IsEnabled: true
-                    Material: 75122a47-663c-4625-8118-ff2e2a2bcaeb
-                  - !WaveEngine_MRTK_Demo.Behaviors.CursorPosShaderUpdater,WaveEngine_MRTK_Demo
-                    Id: 0f1bd3d5-8f04-4690-8c1f-cfe46a8b55f1
-                    IsEnabled: true
-                    UpdateOrder: 0.5
->>>>>>> develop
                 Children: []
                 Id: 9e1597d5-9ed5-4ffb-b6a0-d91e78aba289
               - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
@@ -2317,12 +2247,7 @@ Items:
                     Id: 80d98e8d-5e19-432b-853b-30ec256c16c8
                     DuplicateMaterials: false
                     IsEnabled: true
-<<<<<<< HEAD
-                    duplicateMaterials: true
-                    prefabType: PressableButtonPlated32x32mm
-=======
                     PrefabId: facc69c2-67f2-4bc3-97cd-d1ddbd42a7e5
->>>>>>> develop
                 Children: []
                 Id: 25be2efd-3d2c-4cfd-93fa-a2ad4ed17abf
             Id: cf260f8b-5d22-488a-98f3-c482b12c6228
@@ -2475,8 +2400,8 @@ Items:
                         Id: 3be7a394-183b-4108-afc2-ee4eed09416f
                         IsEnabled: true
                         LocalOrientation:
-                          W: 1.0
-                          X: 0.0
+                          W: 0.707106829
+                          X: -0.707106709
                           Y: 0.0
                           Z: 0.0
                         LocalPosition:
@@ -2485,8 +2410,8 @@ Items:
                           Z: 0.0
                         LocalScale:
                           X: 0.128000006
-                          Y: 0.0320000015
-                          Z: 0.00999999978
+                          Y: 0.00999999978
+                          Z: 0.0320000015
                       - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
                         Id: 96d9e162-e213-4581-94b3-36fa51fc2ae1
                         AsignedTo: Default
@@ -2502,8 +2427,8 @@ Items:
                         ModelMeshName: plane_primitive
                         Normal:
                           X: 0.0
-                          Y: 0.0
-                          Z: 1.0
+                          Y: 1.0
+                          Z: 0.0
                         TwoSides: false
                         UTile: 1.0
                         UVHorizontalFlip: false
@@ -2695,8 +2620,8 @@ Items:
                         Id: 165594c9-f760-433b-a3f6-32daf7394fc7
                         IsEnabled: true
                         LocalOrientation:
-                          W: 1.0
-                          X: 0.0
+                          W: 0.707106829
+                          X: -0.707106709
                           Y: 0.0
                           Z: 0.0
                         LocalPosition:
@@ -2705,8 +2630,8 @@ Items:
                           Z: 0.0
                         LocalScale:
                           X: 0.128000006
-                          Y: 0.0320000015
-                          Z: 0.00999999978
+                          Y: 0.00999999978
+                          Z: 0.0320000015
                       - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
                         Id: f834b1b7-681d-4a83-8b53-9cfaa784324f
                         AsignedTo: Default
@@ -2722,8 +2647,8 @@ Items:
                         ModelMeshName: plane_primitive
                         Normal:
                           X: 0.0
-                          Y: 0.0
-                          Z: 1.0
+                          Y: 1.0
+                          Z: 0.0
                         TwoSides: false
                         UTile: 1.0
                         UVHorizontalFlip: false
