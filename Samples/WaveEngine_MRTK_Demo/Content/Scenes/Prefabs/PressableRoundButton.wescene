@@ -207,16 +207,7 @@ Items:
                     IsEnabled: true
                     MinCompressRatio: 0.25
                     MovementScale: 1.0
-                    PressedColor:
-                      A: 255
-                      B: 0
-                      G: 255
-                      R: 255
-                    ReleasedColor:
-                      A: 255
-                      B: 255
-                      G: 255
-                      R: 0
+                    PressedMaterial: 5690f16f-c7c7-49ac-958c-710cb6375515
                 Children: []
                 Id: 33826060-56b5-4524-beb1-6617e704c49a
             Id: 81e0d5c7-91fa-4300-96da-22fd1aeff2dd

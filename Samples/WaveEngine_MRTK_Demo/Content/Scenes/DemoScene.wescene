@@ -167,7 +167,7 @@ Items:
                       Z: 1.5
                   - !WaveEngine.MRTK.Toolkit.Prefabs.ScenePrefab,WaveEngine.MRTK
                     Id: ccb178c0-9dc3-4b27-b79f-d13ed203e5d7
-                    DuplicateMaterials: true
+                    DuplicateMaterials: false
                     IsEnabled: true
                     PrefabId: 36cadeae-b478-4b98-a06c-72a186813083
                 Children: []
@@ -196,7 +196,7 @@ Items:
                       Z: 1.5
                   - !WaveEngine.MRTK.Toolkit.Prefabs.ScenePrefab,WaveEngine.MRTK
                     Id: 70d467ba-6531-4e23-ac22-dcd010d91596
-                    DuplicateMaterials: true
+                    DuplicateMaterials: false
                     IsEnabled: true
                     PrefabId: 36cadeae-b478-4b98-a06c-72a186813083
                 Children: []
@@ -225,7 +225,7 @@ Items:
                       Z: 1.5
                   - !WaveEngine.MRTK.Toolkit.Prefabs.ScenePrefab,WaveEngine.MRTK
                     Id: 4410c0e9-6146-4311-8629-ccbdb8786e65
-                    DuplicateMaterials: true
+                    DuplicateMaterials: false
                     IsEnabled: true
                     PrefabId: 36cadeae-b478-4b98-a06c-72a186813083
                 Children: []
@@ -421,16 +421,7 @@ Items:
                         IsEnabled: true
                         MinCompressRatio: 0.25
                         MovementScale: 1.0
-                        PressedColor:
-                          A: 0
-                          B: 0
-                          G: 0
-                          R: 0
-                        ReleasedColor:
-                          A: 0
-                          B: 0
-                          G: 0
-                          R: 0
+                        PressedMaterial: null
                     Children: []
                     Id: 703f10b5-7ad9-4165-b868-234298f4d683
                 Id: a43dee2b-0830-4db9-8019-006ab796cc75
@@ -561,16 +552,7 @@ Items:
                         IsEnabled: true
                         MinCompressRatio: 0.25
                         MovementScale: 1.0
-                        PressedColor:
-                          A: 0
-                          B: 0
-                          G: 0
-                          R: 0
-                        ReleasedColor:
-                          A: 0
-                          B: 0
-                          G: 0
-                          R: 0
+                        PressedMaterial: null
                     Children: []
                     Id: 5a253ead-212a-41b9-ab75-54a6db499f98
                 Id: 554939df-9bdc-4632-b8b6-8bf56cbda0ba
@@ -701,16 +683,7 @@ Items:
                         IsEnabled: true
                         MinCompressRatio: 0.25
                         MovementScale: 1.0
-                        PressedColor:
-                          A: 0
-                          B: 0
-                          G: 0
-                          R: 0
-                        ReleasedColor:
-                          A: 0
-                          B: 0
-                          G: 0
-                          R: 0
+                        PressedMaterial: null
                     Children: []
                     Id: 512ec42f-42d7-4e16-b071-95b4346c3b38
                 Id: 53d2e5e0-ca05-481a-88fc-9aa826bdc147
@@ -841,16 +814,7 @@ Items:
                         IsEnabled: true
                         MinCompressRatio: 0.25
                         MovementScale: 1.0
-                        PressedColor:
-                          A: 0
-                          B: 0
-                          G: 0
-                          R: 0
-                        ReleasedColor:
-                          A: 0
-                          B: 0
-                          G: 0
-                          R: 0
+                        PressedMaterial: null
                     Children: []
                     Id: f091352c-b680-4beb-bc61-30d0b419b600
                 Id: fd8b6ee9-8ac2-460e-ab3f-065d03c249f0
@@ -981,16 +945,7 @@ Items:
                         IsEnabled: true
                         MinCompressRatio: 0.25
                         MovementScale: 1.0
-                        PressedColor:
-                          A: 0
-                          B: 0
-                          G: 0
-                          R: 0
-                        ReleasedColor:
-                          A: 0
-                          B: 0
-                          G: 0
-                          R: 0
+                        PressedMaterial: null
                     Children: []
                     Id: 6c373c67-d1f3-4da5-9c4f-4619d270d25f
                 Id: b44cd3a8-c8f0-4566-ad35-39fc855e5170
@@ -1121,16 +1076,7 @@ Items:
                         IsEnabled: true
                         MinCompressRatio: 0.25
                         MovementScale: 1.0
-                        PressedColor:
-                          A: 0
-                          B: 0
-                          G: 0
-                          R: 0
-                        ReleasedColor:
-                          A: 0
-                          B: 0
-                          G: 0
-                          R: 0
+                        PressedMaterial: null
                     Children: []
                     Id: 62757bf5-1d42-4209-a6ab-7b8af486b383
                 Id: 7cac88f6-54a3-4c07-8290-c146060850b6
@@ -1261,16 +1207,7 @@ Items:
                         IsEnabled: true
                         MinCompressRatio: 0.25
                         MovementScale: 1.0
-                        PressedColor:
-                          A: 0
-                          B: 0
-                          G: 0
-                          R: 0
-                        ReleasedColor:
-                          A: 0
-                          B: 0
-                          G: 0
-                          R: 0
+                        PressedMaterial: null
                     Children: []
                     Id: 33bd02bc-d5b1-4ec5-8aca-b1da26a300bc
                 Id: e10cc79f-d102-4188-8ed0-8528b37a8ea5
@@ -1401,16 +1338,7 @@ Items:
                         IsEnabled: true
                         MinCompressRatio: 0.25
                         MovementScale: 1.0
-                        PressedColor:
-                          A: 0
-                          B: 0
-                          G: 0
-                          R: 0
-                        ReleasedColor:
-                          A: 0
-                          B: 0
-                          G: 0
-                          R: 0
+                        PressedMaterial: null
                     Children: []
                     Id: 3bae8099-2b01-4a73-8976-845121e0cc1c
                 Id: 634dea54-16ea-4bb1-945d-5d4b7b52454a
@@ -1541,16 +1469,7 @@ Items:
                         IsEnabled: true
                         MinCompressRatio: 0.25
                         MovementScale: 1.0
-                        PressedColor:
-                          A: 0
-                          B: 0
-                          G: 0
-                          R: 0
-                        ReleasedColor:
-                          A: 0
-                          B: 0
-                          G: 0
-                          R: 0
+                        PressedMaterial: null
                     Children: []
                     Id: 86a32863-5da4-43cf-8d87-61c3f8f883fe
                 Id: 7d167a85-43cb-45be-b327-6026c355cf25
@@ -1681,16 +1600,7 @@ Items:
                         IsEnabled: true
                         MinCompressRatio: 0.25
                         MovementScale: 1.0
-                        PressedColor:
-                          A: 0
-                          B: 0
-                          G: 0
-                          R: 0
-                        ReleasedColor:
-                          A: 0
-                          B: 0
-                          G: 0
-                          R: 0
+                        PressedMaterial: null
                     Children: []
                     Id: efdbe4c8-1472-4ee9-ba3f-ec4e09647dac
                 Id: 243e0aae-ad41-437d-a1c0-56a5de00b77c
@@ -1821,16 +1731,7 @@ Items:
                         IsEnabled: true
                         MinCompressRatio: 0.25
                         MovementScale: 1.0
-                        PressedColor:
-                          A: 0
-                          B: 0
-                          G: 0
-                          R: 0
-                        ReleasedColor:
-                          A: 0
-                          B: 0
-                          G: 0
-                          R: 0
+                        PressedMaterial: null
                     Children: []
                     Id: d11a0ebf-d1f7-42ad-8e84-020c8063efe0
                 Id: 74be45fc-5f00-4735-99be-42b68e0a9fbe
@@ -1961,16 +1862,7 @@ Items:
                         IsEnabled: true
                         MinCompressRatio: 0.25
                         MovementScale: 1.0
-                        PressedColor:
-                          A: 0
-                          B: 0
-                          G: 0
-                          R: 0
-                        ReleasedColor:
-                          A: 0
-                          B: 0
-                          G: 0
-                          R: 0
+                        PressedMaterial: null
                     Children: []
                     Id: 2e043057-3e58-45c3-bf96-019af716d664
                 Id: 671231f6-d16e-4d72-a9b4-4b19afb97a64

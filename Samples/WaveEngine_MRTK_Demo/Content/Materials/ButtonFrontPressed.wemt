@@ -1,12 +1,12 @@
 !WaveEngine.Assets.Exporters.MaterialMetaFile,WaveEngine.Assets
-Id: 3f1baba7-748b-4798-82af-8cd1de38ff75
+Id: 5690f16f-c7c7-49ac-958c-710cb6375515
 DefaultProfile:
   ExcludeAsset: false
   Name: null
   Platform: Undefined
 ExportAsRaw: false
 MaterialInfo:
-  Id: f022bf16-7d87-4479-852a-4682da4272fb
+  Id: 3003d1f2-45cb-4f2a-b483-c9275cceb242
   ActiveDirectives:
     - DIRECTIONAL_LIGHT
     - HOVER_LIGHT
@@ -17,13 +17,13 @@ MaterialInfo:
   Parameters:
     - Name: WorldViewProj
       Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
-      ValueByteArray: UloEQQAAAAAAAAAAAAAAAAAAAACYMopADP9kvy/5ZL8AAAAAmTIKwAv/5L8u+eS/AAAAAAAAAADE7ctAvhvPQA==
+      ValueByteArray: Lr3mQAAAAAAAAAAAAAAAAAAAAACYMopADP9kvy/5ZL8AAAAAmTIKwAv/5L8u+eS/AAAAAHmCmjQf7ItAvRuPQA==
     - Name: World
       Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
       ValueByteArray: AAAAQAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAACAPw==
     - Name: Color
       Type: WaveEngine.Mathematics.Vector3,WaveEngine.Mathematics
-      ValueByteArray: AAAAABSuBz8AAEA/
+      ValueByteArray: JxhvPyNHPz+WWfE+
     - Name: Alpha
       Type: System.Single
       ValueByteArray: AACAPw==

@@ -233,6 +233,90 @@ namespace WaveEngine_MRTK_Demo.Effects
             }
         }
         
+        public WaveEngine.Mathematics.Vector3 Parameters_HoverColorOverride
+        {
+            get
+            {
+                return this.material.CBuffers[1].GetBufferData<WaveEngine.Mathematics.Vector3>(80);
+            }
+            set
+            {
+				this.material.CBuffers[1].SetBufferData(value, 80);
+            }
+        }
+        
+        public WaveEngine.Mathematics.Vector4 Parameters_ProximityLightCenterColorOverride
+        {
+            get
+            {
+                return this.material.CBuffers[1].GetBufferData<WaveEngine.Mathematics.Vector4>(96);
+            }
+            set
+            {
+				this.material.CBuffers[1].SetBufferData(value, 96);
+            }
+        }
+        
+        public WaveEngine.Mathematics.Vector4 Parameters_ProximityLightMiddleColorOverride
+        {
+            get
+            {
+                return this.material.CBuffers[1].GetBufferData<WaveEngine.Mathematics.Vector4>(112);
+            }
+            set
+            {
+				this.material.CBuffers[1].SetBufferData(value, 112);
+            }
+        }
+        
+        public WaveEngine.Mathematics.Vector4 Parameters_ProximityLightOuterColorOverride
+        {
+            get
+            {
+                return this.material.CBuffers[1].GetBufferData<WaveEngine.Mathematics.Vector4>(128);
+            }
+            set
+            {
+				this.material.CBuffers[1].SetBufferData(value, 128);
+            }
+        }
+        
+        public WaveEngine.Mathematics.Vector4 Parameters_LightColor0
+        {
+            get
+            {
+                return this.material.CBuffers[1].GetBufferData<WaveEngine.Mathematics.Vector4>(144);
+            }
+            set
+            {
+				this.material.CBuffers[1].SetBufferData(value, 144);
+            }
+        }
+        
+        public float Parameters_Metallic
+        {
+            get
+            {
+                return this.material.CBuffers[1].GetBufferData<System.Single>(160);
+            }
+            set
+            {
+				this.material.CBuffers[1].SetBufferData(value, 160);
+            }
+        }
+        
+        public float Parameters_Smoothness
+        {
+            get
+            {
+                return this.material.CBuffers[1].GetBufferData<System.Single>(164);
+            }
+            set
+            {
+				this.material.CBuffers[1].SetBufferData(value, 164);
+            }
+        }
+        
         public WaveEngine.Mathematics.Vector4 Parameters_HoverLightData
         {
             get
