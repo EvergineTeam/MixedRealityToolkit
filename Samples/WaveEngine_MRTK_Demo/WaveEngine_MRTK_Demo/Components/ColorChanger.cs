@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using WaveEngine.Components.Graphics3D;
 using WaveEngine.Framework;
 using WaveEngine.Framework.Graphics;
-using WaveEngine.Mathematics;
 using WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons;
+using WaveEngine_MRTK_Demo.Toolkit.Components.GUI;
 
 namespace WaveEngine_MRTK_Demo.Components
 {

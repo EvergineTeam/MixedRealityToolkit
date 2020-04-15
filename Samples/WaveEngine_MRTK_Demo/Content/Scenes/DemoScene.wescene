@@ -165,11 +165,11 @@ Items:
                       X: 1.5
                       Y: 1.5
                       Z: 1.5
-                  - !WaveEngine_MRTK_Demo.Components.ScenePrefab,WaveEngine_MRTK_Demo
+                  - !WaveEngine.MRTK.Toolkit.Prefabs.ScenePrefab,WaveEngine.MRTK
                     Id: ccb178c0-9dc3-4b27-b79f-d13ed203e5d7
+                    DuplicateMaterials: true
                     IsEnabled: true
-                    duplicateMaterials: true
-                    prefabType: PressableRoundButton
+                    PrefabId: 36cadeae-b478-4b98-a06c-72a186813083
                 Children: []
                 Id: 749cbf9a-e45d-4113-b71c-28e4d8543929
               - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
@@ -194,11 +194,11 @@ Items:
                       X: 1.5
                       Y: 1.5
                       Z: 1.5
-                  - !WaveEngine_MRTK_Demo.Components.ScenePrefab,WaveEngine_MRTK_Demo
+                  - !WaveEngine.MRTK.Toolkit.Prefabs.ScenePrefab,WaveEngine.MRTK
                     Id: 70d467ba-6531-4e23-ac22-dcd010d91596
+                    DuplicateMaterials: true
                     IsEnabled: true
-                    duplicateMaterials: true
-                    prefabType: PressableRoundButton
+                    PrefabId: 36cadeae-b478-4b98-a06c-72a186813083
                 Children: []
                 Id: c8a01bad-674e-4763-823f-018ef4eca286
               - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
@@ -223,11 +223,11 @@ Items:
                       X: 1.5
                       Y: 1.5
                       Z: 1.5
-                  - !WaveEngine_MRTK_Demo.Components.ScenePrefab,WaveEngine_MRTK_Demo
+                  - !WaveEngine.MRTK.Toolkit.Prefabs.ScenePrefab,WaveEngine.MRTK
                     Id: 4410c0e9-6146-4311-8629-ccbdb8786e65
+                    DuplicateMaterials: true
                     IsEnabled: true
-                    duplicateMaterials: true
-                    prefabType: PressableRoundButton
+                    PrefabId: 36cadeae-b478-4b98-a06c-72a186813083
                 Children: []
                 Id: 372a1494-694e-499a-8065-e291fbfcce62
             Id: 92a40ec7-7556-4edf-9e3e-3ca7b6411c94
@@ -1997,10 +1997,14 @@ Items:
                   X: 0.200000003
                   Y: 1.0
                   Z: 0.0199999996
-              - !WaveEngine_MRTK_Demo.Components.Text3D,WaveEngine_MRTK_Demo
+              - !WaveEngine_MRTK_Demo.Toolkit.Components.GUI.Text3D,WaveEngine_MRTK_Demo
                 Id: c8b43e5b-3bac-415c-aa6f-e8dd01bf5021
                 Alpha: 1.0
+                FontFamilySource: 
                 FontSize: 36
+                FontStretch: Normal
+                FontStyle: Normal
+                FontWeight: Normal
                 HorizontalAlignment: Left
                 IsEnabled: true
                 Quality: 0.5
@@ -2032,10 +2036,14 @@ Items:
                   X: 0.300000012
                   Y: 1.0
                   Z: 0.0399999991
-              - !WaveEngine_MRTK_Demo.Components.Text3D,WaveEngine_MRTK_Demo
+              - !WaveEngine_MRTK_Demo.Toolkit.Components.GUI.Text3D,WaveEngine_MRTK_Demo
                 Id: 1180496f-b689-45a3-b0d9-268f096ecbad
                 Alpha: 1.0
+                FontFamilySource: 
                 FontSize: 24
+                FontStretch: Normal
+                FontStyle: Normal
+                FontWeight: Normal
                 HorizontalAlignment: Left
                 IsEnabled: true
                 Quality: 0.5
@@ -2090,11 +2098,25 @@ Items:
                       X: 1.0
                       Y: 1.0
                       Z: 1.0
-                  - !WaveEngine_MRTK_Demo.Components.ScenePrefab,WaveEngine_MRTK_Demo
+                  - !WaveEngine.MRTK.Toolkit.Prefabs.ScenePrefab,WaveEngine.MRTK
                     Id: aa2c7380-b9da-48ca-8e77-5b77bb33ad34
+                    DuplicateMaterials: false
                     IsEnabled: true
+<<<<<<< HEAD
                     duplicateMaterials: true
                     prefabType: PressableButtonPlated32x32mm
+=======
+                    PrefabId: facc69c2-67f2-4bc3-97cd-d1ddbd42a7e5
+                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+                    Id: 5aa6a071-e17b-4571-850a-7797e8f864f2
+                    AsignedTo: Default
+                    IsEnabled: true
+                    Material: 75122a47-663c-4625-8118-ff2e2a2bcaeb
+                  - !WaveEngine_MRTK_Demo.Behaviors.CursorPosShaderUpdater,WaveEngine_MRTK_Demo
+                    Id: 6e7e860d-cfee-40f6-9625-83da7aa89abc
+                    IsEnabled: true
+                    UpdateOrder: 0.5
+>>>>>>> develop
                 Children: []
                 Id: 709ed301-96ec-484d-a53b-9945776a8986
               - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
@@ -2119,11 +2141,25 @@ Items:
                       X: 1.25
                       Y: 1.25
                       Z: 1.0
-                  - !WaveEngine_MRTK_Demo.Components.ScenePrefab,WaveEngine_MRTK_Demo
+                  - !WaveEngine.MRTK.Toolkit.Prefabs.ScenePrefab,WaveEngine.MRTK
                     Id: abea5f6c-fc23-42a7-93a2-df906b2585e3
+                    DuplicateMaterials: false
                     IsEnabled: true
+<<<<<<< HEAD
                     duplicateMaterials: true
                     prefabType: PressableButtonPlated32x32mm
+=======
+                    PrefabId: facc69c2-67f2-4bc3-97cd-d1ddbd42a7e5
+                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+                    Id: 23b34f1f-5a93-48c1-bc1e-39f24cf9bd05
+                    AsignedTo: Default
+                    IsEnabled: true
+                    Material: 75122a47-663c-4625-8118-ff2e2a2bcaeb
+                  - !WaveEngine_MRTK_Demo.Behaviors.CursorPosShaderUpdater,WaveEngine_MRTK_Demo
+                    Id: 8faff05a-d4e8-48f3-be75-7f6142e00645
+                    IsEnabled: true
+                    UpdateOrder: 0.5
+>>>>>>> develop
                 Children: []
                 Id: d70270df-f08b-4304-ba62-bcb3b7a6a13c
               - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
@@ -2148,11 +2184,25 @@ Items:
                       X: 1.5
                       Y: 1.5
                       Z: 1.0
-                  - !WaveEngine_MRTK_Demo.Components.ScenePrefab,WaveEngine_MRTK_Demo
+                  - !WaveEngine.MRTK.Toolkit.Prefabs.ScenePrefab,WaveEngine.MRTK
                     Id: 7a30d1ce-7f67-4a37-8b70-7913f2e112ad
+                    DuplicateMaterials: false
                     IsEnabled: true
+<<<<<<< HEAD
                     duplicateMaterials: true
                     prefabType: PressableButtonPlated32x32mm
+=======
+                    PrefabId: facc69c2-67f2-4bc3-97cd-d1ddbd42a7e5
+                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+                    Id: 82845a9d-2038-450c-8573-6a5b0495bf5f
+                    AsignedTo: Default
+                    IsEnabled: true
+                    Material: 75122a47-663c-4625-8118-ff2e2a2bcaeb
+                  - !WaveEngine_MRTK_Demo.Behaviors.CursorPosShaderUpdater,WaveEngine_MRTK_Demo
+                    Id: d34c8723-263d-4827-b4c9-a9c3e735c577
+                    IsEnabled: true
+                    UpdateOrder: 0.5
+>>>>>>> develop
                 Children: []
                 Id: 3e595de7-4180-4a9a-84a6-3fc1f2ce561c
               - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
@@ -2177,11 +2227,25 @@ Items:
                       X: 1.5
                       Y: 1.5
                       Z: 1.0
-                  - !WaveEngine_MRTK_Demo.Components.ScenePrefab,WaveEngine_MRTK_Demo
+                  - !WaveEngine.MRTK.Toolkit.Prefabs.ScenePrefab,WaveEngine.MRTK
                     Id: 4c0c782f-eb73-4f2a-b17c-3ee1e534ea59
+                    DuplicateMaterials: false
                     IsEnabled: true
+<<<<<<< HEAD
                     duplicateMaterials: true
                     prefabType: PressableButtonPlated32x32mm
+=======
+                    PrefabId: facc69c2-67f2-4bc3-97cd-d1ddbd42a7e5
+                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+                    Id: 1120d35c-d234-46fe-80cf-b13fdd376017
+                    AsignedTo: Default
+                    IsEnabled: true
+                    Material: 75122a47-663c-4625-8118-ff2e2a2bcaeb
+                  - !WaveEngine_MRTK_Demo.Behaviors.CursorPosShaderUpdater,WaveEngine_MRTK_Demo
+                    Id: 857a926d-6f7f-4b44-9c61-f879b9212ea8
+                    IsEnabled: true
+                    UpdateOrder: 0.5
+>>>>>>> develop
                 Children: []
                 Id: 3ec0cae7-bce5-4c25-b095-7889e95c6992
               - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
@@ -2206,11 +2270,25 @@ Items:
                       X: 1.25
                       Y: 1.25
                       Z: 1.0
-                  - !WaveEngine_MRTK_Demo.Components.ScenePrefab,WaveEngine_MRTK_Demo
+                  - !WaveEngine.MRTK.Toolkit.Prefabs.ScenePrefab,WaveEngine.MRTK
                     Id: 2b86d5c7-1af3-4998-8356-64f0cc485bd7
+                    DuplicateMaterials: false
                     IsEnabled: true
+<<<<<<< HEAD
                     duplicateMaterials: true
                     prefabType: PressableButtonPlated32x32mm
+=======
+                    PrefabId: facc69c2-67f2-4bc3-97cd-d1ddbd42a7e5
+                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+                    Id: ad3f8992-0db8-4257-bf78-83ed53865ae0
+                    AsignedTo: Default
+                    IsEnabled: true
+                    Material: 75122a47-663c-4625-8118-ff2e2a2bcaeb
+                  - !WaveEngine_MRTK_Demo.Behaviors.CursorPosShaderUpdater,WaveEngine_MRTK_Demo
+                    Id: 0f1bd3d5-8f04-4690-8c1f-cfe46a8b55f1
+                    IsEnabled: true
+                    UpdateOrder: 0.5
+>>>>>>> develop
                 Children: []
                 Id: 9e1597d5-9ed5-4ffb-b6a0-d91e78aba289
               - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
@@ -2235,11 +2313,16 @@ Items:
                       X: 1.0
                       Y: 1.0
                       Z: 1.0
-                  - !WaveEngine_MRTK_Demo.Components.ScenePrefab,WaveEngine_MRTK_Demo
+                  - !WaveEngine.MRTK.Toolkit.Prefabs.ScenePrefab,WaveEngine.MRTK
                     Id: 80d98e8d-5e19-432b-853b-30ec256c16c8
+                    DuplicateMaterials: false
                     IsEnabled: true
+<<<<<<< HEAD
                     duplicateMaterials: true
                     prefabType: PressableButtonPlated32x32mm
+=======
+                    PrefabId: facc69c2-67f2-4bc3-97cd-d1ddbd42a7e5
+>>>>>>> develop
                 Children: []
                 Id: 25be2efd-3d2c-4cfd-93fa-a2ad4ed17abf
             Id: cf260f8b-5d22-488a-98f3-c482b12c6228
@@ -2318,10 +2401,14 @@ Items:
                       X: 12.5
                       Y: 1.0
                       Z: 1.0
-                  - !WaveEngine_MRTK_Demo.Components.Text3D,WaveEngine_MRTK_Demo
+                  - !WaveEngine_MRTK_Demo.Toolkit.Components.GUI.Text3D,WaveEngine_MRTK_Demo
                     Id: 3c0fee64-b08d-4827-a137-f3aa679199bb
                     Alpha: 1.0
+                    FontFamilySource: 
                     FontSize: 16
+                    FontStretch: Normal
+                    FontStyle: Normal
+                    FontWeight: Normal
                     HorizontalAlignment: Left
                     IsEnabled: true
                     Quality: 0.5
@@ -2457,11 +2544,11 @@ Items:
                       X: 1.0
                       Y: 1.0
                       Z: 1.0
-                  - !WaveEngine_MRTK_Demo.Components.ScenePrefab,WaveEngine_MRTK_Demo
+                  - !WaveEngine.MRTK.Toolkit.Prefabs.ScenePrefab,WaveEngine.MRTK
                     Id: b7b17ac6-e7e3-4eac-ba1d-8e3f2fe9ab51
+                    DuplicateMaterials: false
                     IsEnabled: true
-                    duplicateMaterials: false
-                    prefabType: PressableButtonUnplated
+                    PrefabId: d3c78edd-e94f-4e2c-ba4b-c52b3a998cf4
                 Children: []
                 Id: 3a748b97-9655-4644-b703-99f17e10ede9
               - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
@@ -2486,11 +2573,11 @@ Items:
                       X: 1.0
                       Y: 1.0
                       Z: 1.0
-                  - !WaveEngine_MRTK_Demo.Components.ScenePrefab,WaveEngine_MRTK_Demo
+                  - !WaveEngine.MRTK.Toolkit.Prefabs.ScenePrefab,WaveEngine.MRTK
                     Id: ccc52045-bd79-4083-8a8f-c0cb9cd13335
+                    DuplicateMaterials: false
                     IsEnabled: true
-                    duplicateMaterials: false
-                    prefabType: PressableButtonUnplated
+                    PrefabId: d3c78edd-e94f-4e2c-ba4b-c52b3a998cf4
                 Children: []
                 Id: e7643ae2-3bfd-4e07-b13e-ba2dfaace5c3
               - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
@@ -2515,11 +2602,11 @@ Items:
                       X: 1.0
                       Y: 1.0
                       Z: 1.0
-                  - !WaveEngine_MRTK_Demo.Components.ScenePrefab,WaveEngine_MRTK_Demo
+                  - !WaveEngine.MRTK.Toolkit.Prefabs.ScenePrefab,WaveEngine.MRTK
                     Id: f10daa5d-6c66-4e95-9e59-04cc10a5af4c
+                    DuplicateMaterials: false
                     IsEnabled: true
-                    duplicateMaterials: false
-                    prefabType: PressableButtonUnplated
+                    PrefabId: d3c78edd-e94f-4e2c-ba4b-c52b3a998cf4
                 Children: []
                 Id: 6cc84ac5-300f-406b-b4be-0db0cc460587
               - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
@@ -2544,11 +2631,11 @@ Items:
                       X: 1.0
                       Y: 1.0
                       Z: 1.0
-                  - !WaveEngine_MRTK_Demo.Components.ScenePrefab,WaveEngine_MRTK_Demo
+                  - !WaveEngine.MRTK.Toolkit.Prefabs.ScenePrefab,WaveEngine.MRTK
                     Id: 3df0e87f-e745-47a8-af0e-d68d9cfad90b
+                    DuplicateMaterials: false
                     IsEnabled: true
-                    duplicateMaterials: false
-                    prefabType: PressableButtonUnplated
+                    PrefabId: d3c78edd-e94f-4e2c-ba4b-c52b3a998cf4
                 Children: []
                 Id: f49c89d3-460c-4efb-b808-eb8bd40b19ca
             Id: 3b5d2bca-fadf-4628-8931-9e8f5e344acb
@@ -2677,11 +2764,11 @@ Items:
                       X: 1.0
                       Y: 1.0
                       Z: 1.0
-                  - !WaveEngine_MRTK_Demo.Components.ScenePrefab,WaveEngine_MRTK_Demo
+                  - !WaveEngine.MRTK.Toolkit.Prefabs.ScenePrefab,WaveEngine.MRTK
                     Id: bb6752e9-c0e1-478e-9cb7-7042b97336fb
+                    DuplicateMaterials: false
                     IsEnabled: true
-                    duplicateMaterials: false
-                    prefabType: PressableButtonUnplated
+                    PrefabId: d3c78edd-e94f-4e2c-ba4b-c52b3a998cf4
                 Children: []
                 Id: 22ae0abc-7c93-4f87-a6db-36511057a337
               - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
@@ -2706,11 +2793,11 @@ Items:
                       X: 1.0
                       Y: 1.0
                       Z: 1.0
-                  - !WaveEngine_MRTK_Demo.Components.ScenePrefab,WaveEngine_MRTK_Demo
+                  - !WaveEngine.MRTK.Toolkit.Prefabs.ScenePrefab,WaveEngine.MRTK
                     Id: e524e6e5-ac26-4ac3-9327-077450b218f6
+                    DuplicateMaterials: false
                     IsEnabled: true
-                    duplicateMaterials: false
-                    prefabType: PressableButtonUnplated
+                    PrefabId: d3c78edd-e94f-4e2c-ba4b-c52b3a998cf4
                 Children: []
                 Id: 8d8cce64-1a14-4dc4-bf9d-9a3e32d2739c
               - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
@@ -2735,11 +2822,11 @@ Items:
                       X: 1.0
                       Y: 1.0
                       Z: 1.0
-                  - !WaveEngine_MRTK_Demo.Components.ScenePrefab,WaveEngine_MRTK_Demo
+                  - !WaveEngine.MRTK.Toolkit.Prefabs.ScenePrefab,WaveEngine.MRTK
                     Id: 93bec42b-1130-41a3-bae6-61e261bd1821
+                    DuplicateMaterials: false
                     IsEnabled: true
-                    duplicateMaterials: false
-                    prefabType: PressableButtonUnplated
+                    PrefabId: d3c78edd-e94f-4e2c-ba4b-c52b3a998cf4
                 Children: []
                 Id: 66916c86-34ad-46fc-976f-bad4fa7b69a7
             Id: 24812237-5896-4b61-acc4-a5d844be7534
@@ -2789,11 +2876,11 @@ Items:
                   X: 1.0
                   Y: 1.0
                   Z: 1.0
-              - !WaveEngine_MRTK_Demo.Components.ScenePrefab,WaveEngine_MRTK_Demo
+              - !WaveEngine.MRTK.Toolkit.Prefabs.ScenePrefab,WaveEngine.MRTK
                 Id: bb12a84d-9cc1-45d1-a6df-5d3ec71cc6e1
+                DuplicateMaterials: true
                 IsEnabled: true
-                duplicateMaterials: true
-                prefabType: Slider
+                PrefabId: ebf701c2-15f7-4a05-bfb0-946e3ac5aa06
             Children: []
             Id: 57983931-b67d-4331-8cd6-14b1213d5654
           - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
@@ -2818,11 +2905,11 @@ Items:
                   X: 1.0
                   Y: 1.0
                   Z: 1.0
-              - !WaveEngine_MRTK_Demo.Components.ScenePrefab,WaveEngine_MRTK_Demo
+              - !WaveEngine.MRTK.Toolkit.Prefabs.ScenePrefab,WaveEngine.MRTK
                 Id: 06d52a8d-a73d-48bb-9aee-128a636cf2fe
+                DuplicateMaterials: true
                 IsEnabled: true
-                duplicateMaterials: true
-                prefabType: Slider
+                PrefabId: ebf701c2-15f7-4a05-bfb0-946e3ac5aa06
             Children: []
             Id: 56ebdbd2-b3b8-40be-a348-06ebbca4bd82
           - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
@@ -2847,11 +2934,11 @@ Items:
                   X: 1.0
                   Y: 1.0
                   Z: 1.0
-              - !WaveEngine_MRTK_Demo.Components.ScenePrefab,WaveEngine_MRTK_Demo
+              - !WaveEngine.MRTK.Toolkit.Prefabs.ScenePrefab,WaveEngine.MRTK
                 Id: 18c8d9ab-2499-4bdb-9b35-18c14b8b6342
+                DuplicateMaterials: true
                 IsEnabled: true
-                duplicateMaterials: true
-                prefabType: Slider
+                PrefabId: ebf701c2-15f7-4a05-bfb0-946e3ac5aa06
             Children: []
             Id: 7686bf59-db4b-4b11-90e5-881e27417b76
           - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
@@ -2876,10 +2963,14 @@ Items:
                   X: 0.200000003
                   Y: 0.100000001
                   Z: 0.0250000004
-              - !WaveEngine_MRTK_Demo.Components.Text3D,WaveEngine_MRTK_Demo
+              - !WaveEngine_MRTK_Demo.Toolkit.Components.GUI.Text3D,WaveEngine_MRTK_Demo
                 Id: 7aae6cfc-6179-48b4-a22d-f2992eabc05b
                 Alpha: 1.0
+                FontFamilySource: 
                 FontSize: 36
+                FontStretch: Normal
+                FontStyle: Normal
+                FontWeight: Normal
                 HorizontalAlignment: Left
                 IsEnabled: true
                 Quality: 0.5
@@ -2911,10 +3002,14 @@ Items:
                   X: 0.200000003
                   Y: 1.0
                   Z: 0.0199999996
-              - !WaveEngine_MRTK_Demo.Components.Text3D,WaveEngine_MRTK_Demo
+              - !WaveEngine_MRTK_Demo.Toolkit.Components.GUI.Text3D,WaveEngine_MRTK_Demo
                 Id: 20f39854-b50a-4ee2-b592-b58f556d548a
                 Alpha: 1.0
+                FontFamilySource: 
                 FontSize: 24
+                FontStretch: Normal
+                FontStyle: Normal
+                FontWeight: Normal
                 HorizontalAlignment: Left
                 IsEnabled: true
                 Quality: 0.5
@@ -3597,10 +3692,14 @@ Items:
                   X: 0.200000003
                   Y: 1.0
                   Z: 0.0199999996
-              - !WaveEngine_MRTK_Demo.Components.Text3D,WaveEngine_MRTK_Demo
+              - !WaveEngine_MRTK_Demo.Toolkit.Components.GUI.Text3D,WaveEngine_MRTK_Demo
                 Id: 3a9ba340-3908-457b-b4cb-0bf03b798787
                 Alpha: 1.0
+                FontFamilySource: 
                 FontSize: 36
+                FontStretch: Normal
+                FontStyle: Normal
+                FontWeight: Normal
                 HorizontalAlignment: Left
                 IsEnabled: true
                 Quality: 0.5
@@ -3632,10 +3731,14 @@ Items:
                   X: 0.280000001
                   Y: 1.0
                   Z: 0.0500000007
-              - !WaveEngine_MRTK_Demo.Components.Text3D,WaveEngine_MRTK_Demo
+              - !WaveEngine_MRTK_Demo.Toolkit.Components.GUI.Text3D,WaveEngine_MRTK_Demo
                 Id: 8a685d4c-0dff-487f-acc4-1f4b0103a4eb
                 Alpha: 1.0
+                FontFamilySource: 
                 FontSize: 24
+                FontStretch: Normal
+                FontStyle: Normal
+                FontWeight: Normal
                 HorizontalAlignment: Left
                 IsEnabled: true
                 Quality: 0.5
@@ -4447,10 +4550,14 @@ Items:
                   X: 0.600000024
                   Y: 1.0
                   Z: 0.0399999991
-              - !WaveEngine_MRTK_Demo.Components.Text3D,WaveEngine_MRTK_Demo
+              - !WaveEngine_MRTK_Demo.Toolkit.Components.GUI.Text3D,WaveEngine_MRTK_Demo
                 Id: d0a2d182-2602-4f45-ae43-d202ef7ffbde
                 Alpha: 1.0
+                FontFamilySource: 
                 FontSize: 36
+                FontStretch: Normal
+                FontStyle: Normal
+                FontWeight: Normal
                 HorizontalAlignment: Left
                 IsEnabled: true
                 Quality: 0.5
@@ -4482,10 +4589,14 @@ Items:
                   X: 0.75
                   Y: 1.0
                   Z: 0.0799999982
-              - !WaveEngine_MRTK_Demo.Components.Text3D,WaveEngine_MRTK_Demo
+              - !WaveEngine_MRTK_Demo.Toolkit.Components.GUI.Text3D,WaveEngine_MRTK_Demo
                 Id: 3db179b7-16cb-4eb9-b357-3168cde586b6
                 Alpha: 1.0
+                FontFamilySource: 
                 FontSize: 24
+                FontStretch: Normal
+                FontStyle: Normal
+                FontWeight: Normal
                 HorizontalAlignment: Left
                 IsEnabled: true
                 Quality: 0.5
@@ -4831,10 +4942,14 @@ Items:
                   X: 1.0
                   Y: 1.0
                   Z: 1.0
-              - !WaveEngine_MRTK_Demo.Components.Text3D,WaveEngine_MRTK_Demo
+              - !WaveEngine_MRTK_Demo.Toolkit.Components.GUI.Text3D,WaveEngine_MRTK_Demo
                 Id: ad054e00-8418-4f5f-b3c7-26f58585b090
                 Alpha: 1.0
+                FontFamilySource: 
                 FontSize: 36
+                FontStretch: Normal
+                FontStyle: Normal
+                FontWeight: Normal
                 HorizontalAlignment: Left
                 IsEnabled: true
                 Quality: 0.5
@@ -4866,10 +4981,14 @@ Items:
                   X: 1.0
                   Y: 1.0
                   Z: 1.0
-              - !WaveEngine_MRTK_Demo.Components.Text3D,WaveEngine_MRTK_Demo
+              - !WaveEngine_MRTK_Demo.Toolkit.Components.GUI.Text3D,WaveEngine_MRTK_Demo
                 Id: 5f203229-f016-45a3-b25f-c3c3e5263eab
                 Alpha: 1.0
+                FontFamilySource: 
                 FontSize: 24
+                FontStretch: Normal
+                FontStyle: Normal
+                FontWeight: Normal
                 HorizontalAlignment: Left
                 IsEnabled: true
                 Quality: 0.5
