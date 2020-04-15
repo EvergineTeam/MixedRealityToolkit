@@ -6,7 +6,7 @@ DefaultProfile:
   Platform: Undefined
 ExportAsRaw: false
 MaterialInfo:
-  Id: 1b0abc95-3345-4dd0-a27d-beb111c40298
+  Id: a0b83bc9-b0b8-42eb-9b14-259175674dcb
   ActiveDirectives:
     - BORDER_LIGHT
     - BORDER_LIGHT_OPAQUE
@@ -18,7 +18,7 @@ MaterialInfo:
   Parameters:
     - Name: WorldViewProj
       Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
-      ValueByteArray: +KdKQPnfx79HvZu/SrmbvwAAAABcbYhAkl9wv2tZcL9knUDAcEvSv7nbo7+H16O/MwCrtNvjVDQg7ItAvhuPQA==
+      ValueByteArray: PAc6QOWKE8AH8KK/2+uivwAAAAA2MHdANqWZv0ehmb/bTXTALrLgvzskeL/hHXi/XZU1tLQRG7Uf7ItAvRuPQA==
     - Name: World
       Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
       ValueByteArray: AAAAQAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAACAPw==
@@ -37,15 +37,6 @@ MaterialInfo:
     - Name: InnerGlowPower
       Type: System.Single
       ValueByteArray: AAAgQQ==
-    - Name: MaxFingerDist
-      Type: System.Single
-      ValueByteArray: zczMPQ==
-    - Name: FingerPosLeft
-      Type: WaveEngine.Mathematics.Vector3,WaveEngine.Mathematics
-      ValueByteArray: AAAAAAAAAAAAAAAA
-    - Name: FingerPosRight
-      Type: WaveEngine.Mathematics.Vector3,WaveEngine.Mathematics
-      ValueByteArray: AAAAAAAAAAAAAAAA
     - Name: BorderWidth
       Type: System.Single
       ValueByteArray: 61G4PQ==
@@ -76,6 +67,27 @@ MaterialInfo:
     - Name: FadeMinValue
       Type: System.Single
       ValueByteArray: AAAAAA==
+    - Name: HoverColorOverride
+      Type: WaveEngine.Mathematics.Vector3,WaveEngine.Mathematics
+      ValueByteArray: j8J1Po/CdT6PwnU+
+    - Name: ProximityLightCenterColorOverride
+      Type: WaveEngine.Mathematics.Vector4,WaveEngine.Mathematics
+      ValueByteArray: PQpXPs3MDD9I4Xo/AAAAAA==
+    - Name: ProximityLightMiddleColorOverride
+      Type: WaveEngine.Mathematics.Vector4,WaveEngine.Mathematics
+      ValueByteArray: 7FE4PlyPAj8AAIA/zcxMPg==
+    - Name: ProximityLightOuterColorOverride
+      Type: WaveEngine.Mathematics.Vector4,WaveEngine.Mathematics
+      ValueByteArray: CtejPo/C9T2kcD0/AACAPw==
+    - Name: LightColor0
+      Type: WaveEngine.Mathematics.Vector4,WaveEngine.Mathematics
+      ValueByteArray: AAAAPwAAAD8AAAA/AACAPw==
+    - Name: Metallic
+      Type: System.Single
+      ValueByteArray: AAAAAA==
+    - Name: Smoothness
+      Type: System.Single
+      ValueByteArray: AAAAPw==
     - Name: HoverLightData
       Type: WaveEngine.Mathematics.Vector4,WaveEngine.Mathematics
       ValueByteArray: AAAAAAAAAAAAAAAAAAAAAA==

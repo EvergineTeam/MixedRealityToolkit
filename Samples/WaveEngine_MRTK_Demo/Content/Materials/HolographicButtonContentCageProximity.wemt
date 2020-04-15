@@ -1,63 +1,64 @@
 !WaveEngine.Assets.Exporters.MaterialMetaFile,WaveEngine.Assets
-Id: 4f32ee6e-22c9-48be-ad27-76ba638454fb
+Id: 876d9b5c-5016-4796-8473-92a19a5d244c
 DefaultProfile:
   ExcludeAsset: false
   Name: null
   Platform: Undefined
 ExportAsRaw: false
 MaterialInfo:
-  Id: 4fc61916-05fe-438c-b20f-cb722cf5aa21
+  Id: 358b33fe-8a46-48b4-a2e0-c73fda1177e3
   ActiveDirectives:
     - BORDER_LIGHT
-    - BORDER_LIGHT_REPLACES_ALBEDO
-    - HOVER_LIGHT_ON
-    - NO_FINGERS_DIST
-    - ROUND_CORNERS
+    - BORDER_LIGHT_OPAQUE
+    - HOVER_LIGHT
+    - NEAR_LIGHT_FADE
+    - PROXIMITY_LIGHT
+    - PROXIMITY_LIGHT_TWO_SIDED
   EffectID: 4f7e4c24-e83c-4350-9cd4-511fb2199cf4
-  Layer: 0db59561-b3f5-444f-b5de-e62e3a5b42bf
+  Layer: 1bfafe78-d87c-482e-8ba9-ddc18d3e9a6d
   Parameters:
     - Name: WorldViewProj
       Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
-      ValueByteArray: sz+lQLLMkMBR9yO9HvMjvXEF/LPRINM9nvf/vxDx/782V17BpjzXvxS6c7zXs3O8HIq4NXgZfrWU7utAvRvvQA==
+      ValueByteArray: x0DLQDLY9T+peag+WXWoPvsu4bPmMuw/OJfsvymR7L8w3UFAIeCAwHmiML/znTC/JzHrtRY677V++CVB2I0nQQ==
     - Name: World
       Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
       ValueByteArray: AAAAQAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAACAPw==
     - Name: Color
       Type: WaveEngine.Mathematics.Vector3,WaveEngine.Mathematics
-      ValueByteArray: AAAAAM3MTD64HgU/
+      ValueByteArray: AAAAAAAAAAAAAAAA
     - Name: Alpha
       Type: System.Single
-      ValueByteArray: AACAPw==
+      ValueByteArray: AAAAAA==
     - Name: InnerGlowColor
       Type: WaveEngine.Mathematics.Vector3,WaveEngine.Mathematics
       ValueByteArray: AACAPwAAgD8AAIA/
     - Name: InnerGlowAlpha
       Type: System.Single
-      ValueByteArray: AACAPw==
+      ValueByteArray: AABAPw==
     - Name: InnerGlowPower
       Type: System.Single
-      ValueByteArray: AAAgQQ==
+      ValueByteArray: AACAQA==
     - Name: BorderWidth
       Type: System.Single
-      ValueByteArray: zcxMPg==
+      ValueByteArray: j8J1PQ==
     - Name: BorderMinValue
       Type: System.Single
-      ValueByteArray: mpkZPw==
+      ValueByteArray: AACAPw==
     - Name: FluentLightIntensity
       Type: System.Single
       ValueByteArray: AACAPw==
     - Name: RoundCornerRadious
       Type: System.Single
-      ValueByteArray: zczMPQ==
+      ValueByteArray: AACAPg==
     - Name: RoundCornerMargin
       Type: System.Single
-      ValueByteArray: AAAAAA==
+      ValueByteArray: CtcjPA==
     - Name: Cutoff
       Type: System.Single
       ValueByteArray: AAAAPw==
     - Name: EdgeSmoothingValue
       Type: System.Single
-      ValueByteArray: AAAAAA==
+      ValueByteArray: bxIDOw==
     - Name: FadeBeginDistance
       Type: System.Single
       ValueByteArray: CtcjPA==
