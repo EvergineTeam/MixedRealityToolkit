@@ -121,7 +121,7 @@ namespace WaveEngine_MRTK_Demo
             CreateXRHandMesh(scene, assetsService, XRHandedness.LeftHand);
             CreateXRHandMesh(scene, assetsService, XRHandedness.RightHand);
 
-            scene.Managers.AddManager(new CursorPosShaderUpdatedManager());
+            scene.Managers.AddManager(new CursorPosShaderUpdater());
         }
     }
 }

@@ -10,7 +10,7 @@ using WaveEngine_MRTK_Demo.Behaviors;
 
 namespace WaveEngine_MRTK_Demo.Emulation
 {
-    public class CursorPosShaderUpdatedManager : UpdatableSceneManager
+    public class CursorPosShaderUpdater : UpdatableSceneManager
     {
         private int frameCount = 0;
         private HashSet<Material> materials = new HashSet<Material>();
