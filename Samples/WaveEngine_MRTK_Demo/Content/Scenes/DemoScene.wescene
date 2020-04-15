@@ -2095,15 +2095,6 @@ Items:
                     IsEnabled: true
                     duplicateMaterials: true
                     prefabType: PressableButtonPlated32x32mm
-                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
-                    Id: 5aa6a071-e17b-4571-850a-7797e8f864f2
-                    AsignedTo: Default
-                    IsEnabled: true
-                    Material: 75122a47-663c-4625-8118-ff2e2a2bcaeb
-                  - !WaveEngine_MRTK_Demo.Behaviors.CursorPosShaderUpdater,WaveEngine_MRTK_Demo
-                    Id: 6e7e860d-cfee-40f6-9625-83da7aa89abc
-                    IsEnabled: true
-                    UpdateOrder: 0.5
                 Children: []
                 Id: 709ed301-96ec-484d-a53b-9945776a8986
               - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
@@ -2133,15 +2124,6 @@ Items:
                     IsEnabled: true
                     duplicateMaterials: true
                     prefabType: PressableButtonPlated32x32mm
-                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
-                    Id: 23b34f1f-5a93-48c1-bc1e-39f24cf9bd05
-                    AsignedTo: Default
-                    IsEnabled: true
-                    Material: 75122a47-663c-4625-8118-ff2e2a2bcaeb
-                  - !WaveEngine_MRTK_Demo.Behaviors.CursorPosShaderUpdater,WaveEngine_MRTK_Demo
-                    Id: 8faff05a-d4e8-48f3-be75-7f6142e00645
-                    IsEnabled: true
-                    UpdateOrder: 0.5
                 Children: []
                 Id: d70270df-f08b-4304-ba62-bcb3b7a6a13c
               - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
@@ -2171,15 +2153,6 @@ Items:
                     IsEnabled: true
                     duplicateMaterials: true
                     prefabType: PressableButtonPlated32x32mm
-                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
-                    Id: 82845a9d-2038-450c-8573-6a5b0495bf5f
-                    AsignedTo: Default
-                    IsEnabled: true
-                    Material: 75122a47-663c-4625-8118-ff2e2a2bcaeb
-                  - !WaveEngine_MRTK_Demo.Behaviors.CursorPosShaderUpdater,WaveEngine_MRTK_Demo
-                    Id: d34c8723-263d-4827-b4c9-a9c3e735c577
-                    IsEnabled: true
-                    UpdateOrder: 0.5
                 Children: []
                 Id: 3e595de7-4180-4a9a-84a6-3fc1f2ce561c
               - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
@@ -2209,15 +2182,6 @@ Items:
                     IsEnabled: true
                     duplicateMaterials: true
                     prefabType: PressableButtonPlated32x32mm
-                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
-                    Id: 1120d35c-d234-46fe-80cf-b13fdd376017
-                    AsignedTo: Default
-                    IsEnabled: true
-                    Material: 75122a47-663c-4625-8118-ff2e2a2bcaeb
-                  - !WaveEngine_MRTK_Demo.Behaviors.CursorPosShaderUpdater,WaveEngine_MRTK_Demo
-                    Id: 857a926d-6f7f-4b44-9c61-f879b9212ea8
-                    IsEnabled: true
-                    UpdateOrder: 0.5
                 Children: []
                 Id: 3ec0cae7-bce5-4c25-b095-7889e95c6992
               - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
@@ -2247,15 +2211,6 @@ Items:
                     IsEnabled: true
                     duplicateMaterials: true
                     prefabType: PressableButtonPlated32x32mm
-                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
-                    Id: ad3f8992-0db8-4257-bf78-83ed53865ae0
-                    AsignedTo: Default
-                    IsEnabled: true
-                    Material: 75122a47-663c-4625-8118-ff2e2a2bcaeb
-                  - !WaveEngine_MRTK_Demo.Behaviors.CursorPosShaderUpdater,WaveEngine_MRTK_Demo
-                    Id: 0f1bd3d5-8f04-4690-8c1f-cfe46a8b55f1
-                    IsEnabled: true
-                    UpdateOrder: 0.5
                 Children: []
                 Id: 9e1597d5-9ed5-4ffb-b6a0-d91e78aba289
               - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
@@ -3039,10 +2994,6 @@ Items:
                 IsEnabled: true
                 UpdateOrder: 0.5
                 sound: f0824659-252b-4fc7-9d49-10aacab65fc6
-              - !WaveEngine_MRTK_Demo.Behaviors.CursorPosShaderUpdater,WaveEngine_MRTK_Demo
-                Id: d32633a6-43ac-4814-bf8d-4136a887f0bb
-                IsEnabled: true
-                UpdateOrder: 0.5
             Children: []
             Id: 28af444b-8d96-4107-afac-60747bce401f
           - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
@@ -3234,10 +3185,6 @@ Items:
                         FrustumCullingEnabled: true
                         IsEnabled: true
                         OrderBias: 0
-                      - !WaveEngine_MRTK_Demo.Behaviors.CursorPosShaderUpdater,WaveEngine_MRTK_Demo
-                        Id: 39492fc1-2695-4fa8-9c55-d6807634a801
-                        IsEnabled: true
-                        UpdateOrder: 0.5
                     Children: []
                     Id: c51314c2-29b0-4bdd-8655-681be1823937
                 Id: 3768048a-0378-46c6-87e1-2384939373b1
@@ -3392,10 +3339,6 @@ Items:
                     UpdateOrder: 0.5
                     sound: e911e7a0-7098-47f6-86c1-27a461c1eb24
                     speed: 3.0
-                  - !WaveEngine_MRTK_Demo.Behaviors.CursorPosShaderUpdater,WaveEngine_MRTK_Demo
-                    Id: 3dbf656d-9055-4cf5-bb7b-42a143ddf395
-                    IsEnabled: true
-                    UpdateOrder: 0.5
                 Children:
                   - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
                     Name: Platonic
@@ -3435,10 +3378,6 @@ Items:
                         FrustumCullingEnabled: true
                         IsEnabled: true
                         OrderBias: 0
-                      - !WaveEngine_MRTK_Demo.Behaviors.CursorPosShaderUpdater,WaveEngine_MRTK_Demo
-                        Id: 9823082b-98c2-493b-8c62-b52ae38e6af4
-                        IsEnabled: true
-                        UpdateOrder: 0.5
                     Children: []
                     Id: 71ab8e62-7c00-4373-aebd-80305edfb859
                 Id: 3372d141-3286-423d-b44a-c3b4fa4f6640
@@ -3632,10 +3571,6 @@ Items:
                         FrustumCullingEnabled: true
                         IsEnabled: true
                         OrderBias: 0
-                      - !WaveEngine_MRTK_Demo.Behaviors.CursorPosShaderUpdater,WaveEngine_MRTK_Demo
-                        Id: 8f859884-dd32-4b86-a93d-b7382de8404a
-                        IsEnabled: true
-                        UpdateOrder: 0.5
                     Children: []
                     Id: d9132da8-787c-4359-a13f-87465fdc9c46
                 Id: 0843c41d-3fa3-41de-ac5e-269c0f13c337

@@ -361,10 +361,6 @@ Items:
                 FrustumCullingEnabled: true
                 IsEnabled: true
                 OrderBias: 0
-              - !WaveEngine_MRTK_Demo.Behaviors.CursorPosShaderUpdater,WaveEngine_MRTK_Demo
-                Id: e891c868-4891-413f-b47d-ecbe18f6c357
-                IsEnabled: true
-                UpdateOrder: 0.5
             Children: []
             Id: df845455-77c1-4045-8d40-9324f7654c6c
         Id: bf5809d4-0569-4eac-a934-17ddd341a9c5
