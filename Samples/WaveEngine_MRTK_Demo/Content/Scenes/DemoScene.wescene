@@ -2100,7 +2100,7 @@ Items:
                       Z: 1.0
                   - !WaveEngine.MRTK.Toolkit.Prefabs.ScenePrefab,WaveEngine.MRTK
                     Id: aa2c7380-b9da-48ca-8e77-5b77bb33ad34
-                    DuplicateMaterials: false
+                    DuplicateMaterials: true
                     IsEnabled: true
                     PrefabId: facc69c2-67f2-4bc3-97cd-d1ddbd42a7e5
                 Children: []
@@ -2129,7 +2129,7 @@ Items:
                       Z: 1.0
                   - !WaveEngine.MRTK.Toolkit.Prefabs.ScenePrefab,WaveEngine.MRTK
                     Id: abea5f6c-fc23-42a7-93a2-df906b2585e3
-                    DuplicateMaterials: false
+                    DuplicateMaterials: true
                     IsEnabled: true
                     PrefabId: facc69c2-67f2-4bc3-97cd-d1ddbd42a7e5
                 Children: []
@@ -2158,7 +2158,7 @@ Items:
                       Z: 1.0
                   - !WaveEngine.MRTK.Toolkit.Prefabs.ScenePrefab,WaveEngine.MRTK
                     Id: 7a30d1ce-7f67-4a37-8b70-7913f2e112ad
-                    DuplicateMaterials: false
+                    DuplicateMaterials: true
                     IsEnabled: true
                     PrefabId: facc69c2-67f2-4bc3-97cd-d1ddbd42a7e5
                 Children: []
@@ -2187,7 +2187,7 @@ Items:
                       Z: 1.0
                   - !WaveEngine.MRTK.Toolkit.Prefabs.ScenePrefab,WaveEngine.MRTK
                     Id: 4c0c782f-eb73-4f2a-b17c-3ee1e534ea59
-                    DuplicateMaterials: false
+                    DuplicateMaterials: true
                     IsEnabled: true
                     PrefabId: facc69c2-67f2-4bc3-97cd-d1ddbd42a7e5
                 Children: []
@@ -2216,7 +2216,7 @@ Items:
                       Z: 1.0
                   - !WaveEngine.MRTK.Toolkit.Prefabs.ScenePrefab,WaveEngine.MRTK
                     Id: 2b86d5c7-1af3-4998-8356-64f0cc485bd7
-                    DuplicateMaterials: false
+                    DuplicateMaterials: true
                     IsEnabled: true
                     PrefabId: facc69c2-67f2-4bc3-97cd-d1ddbd42a7e5
                 Children: []
@@ -2245,7 +2245,7 @@ Items:
                       Z: 1.0
                   - !WaveEngine.MRTK.Toolkit.Prefabs.ScenePrefab,WaveEngine.MRTK
                     Id: 80d98e8d-5e19-432b-853b-30ec256c16c8
-                    DuplicateMaterials: false
+                    DuplicateMaterials: true
                     IsEnabled: true
                     PrefabId: facc69c2-67f2-4bc3-97cd-d1ddbd42a7e5
                 Children: []
@@ -4940,9 +4940,9 @@ Items:
           Y: 0.234569699
           Z: 0.109381631
         LocalPosition:
-          X: 0.0
-          Y: 0.0
-          Z: 0.0
+          X: -0.0670055598
+          Y: 3.99384259E-09
+          Z: -2.79568191E-08
         LocalScale:
           X: 1.0
           Y: 1.0
