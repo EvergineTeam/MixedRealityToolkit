@@ -444,7 +444,7 @@
 		
 // Blinn phong lighting.
 #if DIRECTIONAL_LIGHT
-        float3 directionalLightDirection = normalize(float3(0.0, 0.0, 1.0));//_WorldSpaceLightPos0;
+        float3 directionalLightDirection = normalize(float3(0.3, 0.8, 0.6));//_WorldSpaceLightPos0;
 
         float diffuse = max(0.0, dot(worldNormal, directionalLightDirection));
 #if SPECULAR_HIGHLIGHTS
