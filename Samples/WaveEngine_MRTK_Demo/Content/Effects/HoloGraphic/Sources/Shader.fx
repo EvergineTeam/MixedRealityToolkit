@@ -501,7 +501,7 @@
 #endif
 
 #if (NEAR_LIGHT_FADE)
-        output.a *= input.worldPosition.w;
+        output *= input.worldPosition.w;
 #endif
 
 // Hover and proximity lighting should occur after near plane fading.

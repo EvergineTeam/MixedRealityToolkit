@@ -6,7 +6,7 @@ DefaultProfile:
   Platform: Undefined
 ExportAsRaw: false
 MaterialInfo:
-  Id: 358b33fe-8a46-48b4-a2e0-c73fda1177e3
+  Id: b1367eaf-b993-43bb-9d5d-d2b2b9a85201
   ActiveDirectives:
     - BORDER_LIGHT
     - BORDER_LIGHT_OPAQUE
@@ -19,7 +19,7 @@ MaterialInfo:
   Parameters:
     - Name: WorldViewProj
       Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
-      ValueByteArray: x0DLQDLY9T+peag+WXWoPvsu4bPmMuw/OJfsvymR7L8w3UFAIeCAwHmiML/znTC/JzHrtRY677V++CVB2I0nQQ==
+      ValueByteArray: LBqCQAAAAAAAAAAAAAAAAAAAAACaMopADf9kvzD5ZL8AAAAAmjIKwA3/5L8w+eS/AAAAAAAAAAAg7ItAvhuPQA==
     - Name: World
       Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
       ValueByteArray: AAAAQAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAACAPw==

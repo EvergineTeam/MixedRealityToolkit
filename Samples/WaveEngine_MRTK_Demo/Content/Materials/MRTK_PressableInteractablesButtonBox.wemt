@@ -6,7 +6,7 @@ DefaultProfile:
   Platform: Undefined
 ExportAsRaw: false
 MaterialInfo:
-  Id: 26e7855f-67db-4a08-893e-ab23ff836dc0
+  Id: aa1a02a2-50ef-442c-88e0-234785008ea8
   ActiveDirectives:
     - BORDER_LIGHT
     - BORDER_LIGHT_OPAQUE
@@ -14,11 +14,11 @@ MaterialInfo:
     - FINGERS_DIST
     - NEAR_LIGHT_FADE
   EffectID: 4f7e4c24-e83c-4350-9cd4-511fb2199cf4
-  Layer: e35c59a9-26ab-4b4c-8210-4b1f21c31530
+  Layer: 1bfafe78-d87c-482e-8ba9-ddc18d3e9a6d
   Parameters:
     - Name: WorldViewProj
       Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
-      ValueByteArray: JEM6QOWKE8AH8KK/2+uivwAAAAA2MHdANqWZv0ehmb+HnHTALrLgvzskeL/hHXi/1s81tLQRG7Uf7ItAvRuPQA==
+      ValueByteArray: G6MdQOWKE8AH8KK/2+uivwAAAAA2MHdANqWZv0ehmb/jBE/ALrLgvzskeL/hHXi/5d4ZtLQRG7Uf7ItAvRuPQA==
     - Name: World
       Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
       ValueByteArray: AAAAQAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAACAPw==
@@ -39,7 +39,7 @@ MaterialInfo:
       ValueByteArray: AAAgQQ==
     - Name: BorderWidth
       Type: System.Single
-      ValueByteArray: 61G4PQ==
+      ValueByteArray: CtejPQ==
     - Name: BorderMinValue
       Type: System.Single
       ValueByteArray: AACAPw==
@@ -96,7 +96,7 @@ MaterialInfo:
       ValueByteArray: AAAAAAAAAAAAAAAAAAAAAA==
     - Name: MultiviewViewProj
       Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
-      ValueByteArray: kpPOPwjcv72p9ji+gfM4vnJaDrfRDxdA/yFXvlQeV77EUpu+3jP/vuj+db+2+nW/9FFXPnRC377/T5++KTRYvg==
+      ValueByteArray: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
     - Name: EyeCount
       Type: System.Int32
       ValueByteArray: AQAAAA==

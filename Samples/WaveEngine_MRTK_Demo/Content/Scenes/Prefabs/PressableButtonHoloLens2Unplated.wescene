@@ -231,6 +231,9 @@ Items:
                 FrustumCullingEnabled: true
                 IsEnabled: true
                 OrderBias: 0
+              - !WaveEngine_MRTK_Demo.Components.BatcherDisabler,WaveEngine_MRTK_Demo
+                Id: 9d8a0f84-5e8b-4077-8bfb-2d4c988ae958
+                IsEnabled: true
             Children:
               - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
                 Name: plane
@@ -283,6 +286,9 @@ Items:
                     FrustumCullingEnabled: true
                     IsEnabled: true
                     OrderBias: 0
+                  - !WaveEngine_MRTK_Demo.Components.BatcherDisabler,WaveEngine_MRTK_Demo
+                    Id: 561e76b3-da48-4f0a-aeb7-5e752346b6e8
+                    IsEnabled: true
                 Children: []
                 Id: c20b1e4f-75b0-41ba-bb8c-83c9d27a8944
             Id: df845455-77c1-4045-8d40-9324f7654c6c
