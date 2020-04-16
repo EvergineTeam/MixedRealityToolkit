@@ -1,0 +1,27 @@
+!WaveEngine.Assets.Exporters.ModelMetaFile,WaveEngine.Assets
+Id: 6ccdbf52-05bf-462c-92a6-bfb720372242
+Clips: []
+DefaultProfile:
+  ExcludeAsset: false
+  Name: null
+  Platform: Undefined
+ExportAnimations: true
+ExportAsRaw: false
+GenerateTangentSpace: false
+Profiles: {}
+Source:
+  Header:
+    Id: de06eb75-2948-44c1-96db-01f548330069
+    IsCompressed: true
+  LastModified: 0001-01-01T00:00:00.0000000
+  ModelInfo:
+    Id: 6b1afd7d-fdbc-433d-abcc-392aa7e72469
+    AnimationTracks: []
+    EmbeddedResources: null
+    Materials:
+      - Item1: DefaultMaterial
+        Item2: b31be0c1-e561-471c-8851-9bf0eb26495b
+    Nodes:
+      - RootNode
+      - shl_adjustBoxScaleWidget_16mmx2mm
+SwapWindingOrder: false

@@ -1,0 +1,43 @@
+!WaveEngine.Framework.Assets.AssetSources.Entities.SceneModel,WaveEngine.Framework
+Items:
+  - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+    Name: MRTK_BoundingBox_ScaleHandle_fbx
+    Tag: null
+    IsEnabled: true
+    IsStatic: false
+    Components:
+      - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+        Id: ad3f9650-54a1-4529-b6bd-fadf3f4a91f1
+        IsEnabled: true
+        LocalOrientation:
+          W: -1.37678725E-07
+          X: 0.707106948
+          Y: 1.37678811E-07
+          Z: -0.70710659
+        LocalPosition:
+          X: 0.0
+          Y: 0.0
+          Z: 0.0
+        LocalScale:
+          X: 1.0
+          Y: 1.0
+          Z: 1.0
+      - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+        Id: 1fc1d728-afba-4cf3-9d9c-7f369e8dde4a
+        AsignedTo: DefaultMaterial
+        IsEnabled: true
+        Material: 02181b63-5a0e-46d1-9208-d92376ae33fb
+      - !WaveEngine.Components.Graphics3D.MeshComponent,WaveEngine.Framework
+        Id: eb5b4be9-b92e-4cbd-9adb-f6763a6447e1
+        IsEnabled: true
+        Model: 6ccdbf52-05bf-462c-92a6-bfb720372242
+        ModelMeshName: shl_adjustBoxScaleWidget_16mmx2mm
+      - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+        Id: 400e8428-12d6-48f6-848c-8fc42ee520c3
+        DebugBoundingbox: true
+        FrustumCullingEnabled: true
+        IsEnabled: true
+        OrderBias: 0
+    Children: []
+    Id: 0b880019-06ee-4ba9-b64b-2ac6cd01fd98
+Managers: []
