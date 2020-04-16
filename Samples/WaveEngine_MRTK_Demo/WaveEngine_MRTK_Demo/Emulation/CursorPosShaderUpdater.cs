@@ -15,25 +15,34 @@ namespace WaveEngine_MRTK_Demo.Emulation
         private int frameCount = 0;
         private HashSet<Material> materials = new HashSet<Material>();
 
-        public override void Update(TimeSpan gameTime)
+        protected override void Start()
         {
-            frameCount++;
-            if (frameCount == 2)
+            base.Start();
+
+            foreach (MaterialComponent m in this.Managers.EntityManager.FindComponentsOfType<MaterialComponent>().ToArray())
             {
-                foreach (MaterialComponent m in this.Managers.EntityManager.FindComponentsOfType<MaterialComponent>().ToArray())
+                if (m.Material.Effect.Id == WaveContent.Effects.HoloGraphic)
                 {
-                    if (m.Material.Effect.Id == WaveContent.Effects.HoloGraphic)
+                    if (Array.IndexOf(m.Material.ActiveDirectivesNames, "BORDER_LIGHT") != -1 ||
+                        Array.IndexOf(m.Material.ActiveDirectivesNames, "INNER_GLOW") != -1)
                     {
-                        if(Array.IndexOf(m.Material.ActiveDirectivesNames, "NEAR_LIGHT_FADE") != -1  ||
-                           Array.IndexOf(m.Material.ActiveDirectivesNames, "HOVER_LIGHT") != -1 ||
-                           Array.IndexOf(m.Material.ActiveDirectivesNames, "PROXIMITY_LIGHT") != -1)
-                        {
-                            materials.Add(m.Material);
-                        }
+                        //Border Light and inner glow don't work if batching is enabled
+                        m.Material = m.Material.Clone();
+                    }
+
+                    if (Array.IndexOf(m.Material.ActiveDirectivesNames, "NEAR_LIGHT_FADE") != -1 ||
+                       Array.IndexOf(m.Material.ActiveDirectivesNames, "HOVER_LIGHT") != -1 ||
+                       Array.IndexOf(m.Material.ActiveDirectivesNames, "PROXIMITY_LIGHT") != -1)
+                    {
+                        //These materials need to be updated with the cursor positions
+                        materials.Add(m.Material);
                     }
                 }
             }
+        }
 
+        public override void Update(TimeSpan gameTime)
+        {
             foreach(Material m in materials)
             {
                 UpdateMaterial(m);

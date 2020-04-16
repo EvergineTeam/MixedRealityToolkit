@@ -347,9 +347,6 @@ Items:
                 FrustumCullingEnabled: true
                 IsEnabled: true
                 OrderBias: 0
-              - !WaveEngine_MRTK_Demo.Components.BatcherDisabler,WaveEngine_MRTK_Demo
-                Id: 76afce71-4552-4a5f-8f41-47de569ece3d
-                IsEnabled: true
             Children:
               - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
                 Name: HighlighPlate
@@ -402,9 +399,6 @@ Items:
                     FrustumCullingEnabled: true
                     IsEnabled: true
                     OrderBias: 0
-                  - !WaveEngine_MRTK_Demo.Components.BatcherDisabler,WaveEngine_MRTK_Demo
-                    Id: 1eee625e-ad79-47d3-bad2-e8460b750f97
-                    IsEnabled: true
                 Children: []
                 Id: b91b2b30-621b-4a3b-bb50-5cfb1dc04e36
             Id: df845455-77c1-4045-8d40-9324f7654c6c
