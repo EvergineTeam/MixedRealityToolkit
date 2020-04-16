@@ -34,7 +34,7 @@ Items:
       - !WaveEngine.Framework.Graphics.Camera3D,WaveEngine.Framework
         Id: e6234645-a09c-405e-b7cc-e8970277f72c
         Aperture: 1.0
-        AspectRatio: 1.52118647
+        AspectRatio: 1.53588521
         BackgroundColor:
           A: 0
           B: 0
@@ -60,10 +60,10 @@ Items:
         LayerMaskDefaultValue: true
         NearPlane: 0.100000001
         ScreenViewport:
-          Height: 236.0
+          Height: 209.0
           MaxDepth: 1.0
           MinDepth: 0.0
-          Width: 359.0
+          Width: 321.0
           X: 0.0
           Y: 0.0
         Sensitivity: 100.0
@@ -72,12 +72,6 @@ Items:
           X: 0.0
           Y: 1.0
           Z: 0.0
-      - !WaveEngine.MRTK.Services.InputSystem.GazeProvider,WaveEngine.MRTK
-        Id: 7baaeb0d-b94f-4c25-a72d-61c6665b11fd
-        Distance: 10.0
-        IsEnabled: true
-        Mask: All
-        UpdateOrder: 0.5
     Children: []
     Id: b0c3cd83-5c05-4c45-9228-c44aebdd9b4d
   - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
@@ -4878,6 +4872,35 @@ Items:
                 FrustumCullingEnabled: true
                 IsEnabled: true
                 OrderBias: 0
+              - !WaveEngine.Framework.Physics3D.BoxCollider3D,WaveEngine.Framework
+                Id: 0ff04f62-f426-4a78-910e-c5513b9412d7
+                IsEnabled: true
+                Margin: 0.0399999991
+                Offset:
+                  X: 0.0
+                  Y: 0.0
+                  Z: 0.0
+                OrientationOffset:
+                  W: 1.0
+                  X: 0.0
+                  Y: 0.0
+                  Z: 0.0
+                Size:
+                  X: 1.0
+                  Y: 1.0
+                  Z: 1.0
+              - !WaveEngine.Framework.Physics3D.StaticBody3D,WaveEngine.Framework
+                Id: d503404a-5ed3-4071-81fa-4aa7a7009d63
+                CcdMotionThreshold: 0.0
+                CcdSweptSphereRadius: 0.200000003
+                CollisionCategories: Cat1
+                Friction: 0.5
+                IsEnabled: true
+                IsSensor: false
+                MaskBits: All
+                Restitution: 0.0
+                RollingFriction: 0.0
+                UpdateOrder: 0.5
             Children: []
             Id: 26c344f0-da09-4d71-a9a1-5ce73fcb5743
         Id: 187140ba-0048-4bd5-bd10-4fc0280ad3da
