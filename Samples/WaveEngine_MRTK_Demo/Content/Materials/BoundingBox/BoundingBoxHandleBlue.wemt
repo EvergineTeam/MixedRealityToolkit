@@ -6,11 +6,11 @@ DefaultProfile:
   Platform: Undefined
 ExportAsRaw: false
 MaterialInfo:
-  Id: ad47daf7-5524-43d4-96a9-9d2ce4af3295
+  Id: 52dd33da-6cb3-40b2-b8e4-9f5c37fe9cff
   ActiveDirectives:
     - IBL
   EffectID: daa1f60a-82ad-40fc-8fbb-7b85caa6de0a
-  Layer: 0db59561-b3f5-444f-b5de-e62e3a5b42bf
+  Layer: 69451f8f-e41d-4a68-a5ad-28a08c76980a
   Parameters:
     - Name: World
       Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
