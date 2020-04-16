@@ -48,8 +48,9 @@ namespace WaveEngine_MRTK_Demo.Emulation
 
                 HoverLight light = HoverLight.activeHoverLights[i];
                 mat.CBuffers[1].SetBufferData<Vector3>(light.transform.Position, accessIdx);
-                mat.CBuffers[1].SetBufferData<float>(light.Radius, accessIdx + 12);
-                mat.CBuffers[1].SetBufferData<Vector4>(light.Color.ToVector4(), accessIdx + 16);
+                mat.CBuffers[1].SetBufferData<float>(1.0f, accessIdx + 12);
+                mat.CBuffers[1].SetBufferData<Vector3>(light.Color.ToVector3(), accessIdx + 16);
+                mat.CBuffers[1].SetBufferData<float>(1.0f / MathHelper.Clamp(light.Radius, 0.001f, 1.0f), accessIdx + 28);
             }
 
             for (int i = 0; i < ProximityLight.MaxLights; ++i)

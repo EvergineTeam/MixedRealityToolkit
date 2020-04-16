@@ -34,7 +34,7 @@ Items:
       - !WaveEngine.Framework.Graphics.Camera3D,WaveEngine.Framework
         Id: e6234645-a09c-405e-b7cc-e8970277f72c
         Aperture: 1.0
-        AspectRatio: 1.46460176
+        AspectRatio: 1.52118647
         BackgroundColor:
           A: 0
           B: 0
@@ -60,10 +60,10 @@ Items:
         LayerMaskDefaultValue: true
         NearPlane: 0.100000001
         ScreenViewport:
-          Height: 226.0
+          Height: 236.0
           MaxDepth: 1.0
           MinDepth: 0.0
-          Width: 331.0
+          Width: 359.0
           X: 0.0
           Y: 0.0
         Sensitivity: 100.0
@@ -72,6 +72,12 @@ Items:
           X: 0.0
           Y: 1.0
           Z: 0.0
+      - !WaveEngine.MRTK.Services.InputSystem.GazeProvider,WaveEngine.MRTK
+        Id: 7baaeb0d-b94f-4c25-a72d-61c6665b11fd
+        Distance: 10.0
+        IsEnabled: true
+        Mask: All
+        UpdateOrder: 0.5
     Children: []
     Id: b0c3cd83-5c05-4c45-9228-c44aebdd9b4d
   - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
@@ -4816,6 +4822,77 @@ Items:
             Children: []
             Id: 3c6c0325-dcbf-40ed-b876-95e072a18f8b
         Id: b3a7521f-f10f-4fe2-96d1-ef6a07f0b0ef
+      - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+        Name: SceneDescriptionPanel
+        Tag: null
+        IsEnabled: true
+        IsStatic: false
+        Components:
+          - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+            Id: c8dd6de0-f033-4e8c-ba0a-7e316ceb68aa
+            IsEnabled: true
+            LocalOrientation:
+              W: 1.0
+              X: 0.0
+              Y: 0.0
+              Z: 0.0
+            LocalPosition:
+              X: 0.074000001
+              Y: 0.156000003
+              Z: 0.296000004
+            LocalScale:
+              X: 1.0
+              Y: 1.0
+              Z: 1.0
+        Children:
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: BackPanel
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: c137b365-30af-4553-80b6-6b5f7dc2d9cf
+                IsEnabled: true
+                LocalOrientation:
+                  W: 0.707106829
+                  X: 0.0
+                  Y: 0.707106769
+                  Z: 0.0
+                LocalPosition:
+                  X: -0.00499999989
+                  Y: 0.00199000491
+                  Z: 0.00679236697
+                LocalScale:
+                  X: 0.00925401505
+                  Y: 0.233268097
+                  Z: 0.429457605
+              - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+                Id: 40fa1039-5e10-49ce-a483-70bf41c33d35
+                AsignedTo: Default
+                IsEnabled: true
+                Material: 95c775d7-1461-4465-beb0-84ec959e4ede
+              - !WaveEngine.Components.Graphics3D.CubeMesh,WaveEngine.Components
+                Id: 82d58aab-3fef-4eac-935b-cc094501cfeb
+                InitialU: 0.0
+                InitialV: 0.0
+                IsEnabled: true
+                Model: 00000000-0000-0000-0000-000000000000
+                ModelMeshName: cube_primitive
+                Size: 1.0
+                UTile: 1.0
+                UVHorizontalFlip: false
+                UVVerticalFlip: false
+                YTile: 1.0
+              - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+                Id: 32416ea0-9c26-419a-a607-0793647d7631
+                DebugBoundingbox: true
+                FrustumCullingEnabled: true
+                IsEnabled: true
+                OrderBias: 0
+            Children: []
+            Id: 26c344f0-da09-4d71-a9a1-5ce73fcb5743
+        Id: 187140ba-0048-4bd5-bd10-4fc0280ad3da
     Id: bf7601de-e3ee-4c6a-9ec4-717fc4c11ddd
   - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
     Name: directionalLight
