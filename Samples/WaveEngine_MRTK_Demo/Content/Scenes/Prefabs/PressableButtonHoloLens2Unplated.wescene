@@ -99,16 +99,7 @@ Items:
             IsEnabled: true
             MinCompressRatio: 0.25
             MovementScale: 0.5
-            PressedColor:
-              A: 0
-              B: 0
-              G: 0
-              R: 0
-            ReleasedColor:
-              A: 0
-              B: 0
-              G: 0
-              R: 0
+            PressedMaterial: null
         Children:
           - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
             Name: UIButtonSquareIcon
@@ -193,19 +184,10 @@ Items:
             IsEnabled: true
             MinCompressRatio: 0.25
             MovementScale: 1.0
-            PressedColor:
-              A: 0
-              B: 0
-              G: 0
-              R: 0
-            ReleasedColor:
-              A: 0
-              B: 0
-              G: 0
-              R: 0
+            PressedMaterial: null
         Children:
           - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
-            Name: cube
+            Name: FrontPlate
             Tag: null
             IsEnabled: true
             IsStatic: false
@@ -249,7 +231,60 @@ Items:
                 FrustumCullingEnabled: true
                 IsEnabled: true
                 OrderBias: 0
-            Children: []
+            Children:
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: plane
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: 09841753-9a3f-4b57-b314-09412f6adabe
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: 0.0
+                      Y: 0.0
+                      Z: -0.51110673
+                    LocalScale:
+                      X: 1.0
+                      Y: 1.0
+                      Z: 1.0
+                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+                    Id: b26c300d-0336-46c8-a4e3-ad5596d395d7
+                    AsignedTo: Default
+                    IsEnabled: true
+                    Material: 876d9b5c-5016-4796-8473-92a19a5d244c
+                  - !WaveEngine.Components.Graphics3D.PlaneMesh,WaveEngine.Components
+                    Id: d355abee-c7e6-476d-85f8-377404ddfbd6
+                    Height: 1.0
+                    InitialU: 0.0
+                    InitialV: 0.0
+                    IsEnabled: true
+                    Model: 00000000-0000-0000-0000-000000000000
+                    ModelMeshName: plane_primitive
+                    Normal:
+                      X: 0.0
+                      Y: 0.0
+                      Z: 1.0
+                    TwoSides: false
+                    UTile: 1.0
+                    UVHorizontalFlip: false
+                    UVVerticalFlip: false
+                    Width: 1.0
+                    YTile: 1.0
+                  - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+                    Id: 52713c7d-f6ab-4d68-9926-71057115a3e9
+                    DebugBoundingbox: true
+                    FrustumCullingEnabled: true
+                    IsEnabled: true
+                    OrderBias: 0
+                Children: []
+                Id: c20b1e4f-75b0-41ba-bb8c-83c9d27a8944
             Id: df845455-77c1-4045-8d40-9324f7654c6c
         Id: b8f7f801-d36a-436e-836b-63f7a9025a0c
     Id: 114ed9c5-f183-44bc-bb2f-2c3c560f19d6
