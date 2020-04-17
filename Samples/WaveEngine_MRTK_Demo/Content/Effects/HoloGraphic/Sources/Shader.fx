@@ -15,6 +15,7 @@
 [directives:PROXIMITY_LIGHT_COLOR_OVERRIDE PROXIMITY_LIGHT_COLOR_OVERRIDE_OFF PROXIMITY_LIGHT_COLOR_OVERRIDE ]
 [directives:PROXIMITY_LIGHT_SUBTRACTIVE    PROXIMITY_LIGHT_SUBTRACTIVE_OFF    PROXIMITY_LIGHT_SUBTRACTIVE    ]
 [directives:DIRECTIONAL_LIGHT              DIRECTIONAL_LIGHT_OFF              DIRECTIONAL_LIGHT              ]
+[directives:ALBEDO_MAP                     ALBEDO_MAP_OFF                     ALBEDO_MAP                     ]
 [directives:Multiview                      MULTIVIEW_OFF                      MULTIVIEW                      ]
 
 	cbuffer PerDrawCall : register(b0)
@@ -62,6 +63,9 @@
         float Metallic   : packoffset(c10.x); [Default(0.0)]
         float Smoothness : packoffset(c10.y); [Default(0.5)]
         
+        float2 Tiling           : packoffset(c11.x);   [Default(1.0, 1.0)]
+		float2 Offset           : packoffset(c11.z);   [Default(0.0, 0.0)]
+        
         float4 HoverLightData[6]     : packoffset(c20);
         float4 ProximityLightData[12] : packoffset(c26);
 	};
@@ -71,6 +75,9 @@
 		float4x4  MultiviewViewProj[2]		: packoffset(c0.x);  [StereoCameraViewProjection]
 		int       EyeCount                  : packoffset(c10.x); [StereoEyeCount]
 	};
+
+	Texture2D Texture		: register(t0);
+	SamplerState Sampler	: register(s0);
 
 [End_ResourceLayout]
 
@@ -195,7 +202,7 @@
 #endif
 #if BORDER_LIGHT
         float4 uv 		: TEXCOORD2;
-#elif INNER_GLOW || ROUND_CORNERS
+#elif INNER_GLOW || ROUND_CORNERS || ALBEDO_MAP
         float2 uv 		: TEXCOORD2;
 #endif
 
@@ -325,7 +332,7 @@
         output.uv.z = IF(output.scale.x > output.scale.y, 1.0 - (borderWidth * scaleRatio), 1.0 - borderWidth);
         output.uv.w = IF(output.scale.x > output.scale.y, 1.0 - borderWidth, 1.0 - (borderWidth * scaleRatio));
 #endif
-#elif INNER_GLOW
+#elif INNER_GLOW || ALBEDO_MAP
         output.uv = input.uv;
 #endif
 
@@ -334,7 +341,11 @@
 
 	float4 PS(PS_IN input, float facing : VFACE) : SV_Target
 	{
+#if ALBEDO_MAP
+		float4 albedo = Texture.Sample(Sampler, (input.uv * Tiling) + Offset);
+#else
 		float4 albedo = float4(Color, Alpha);
+#endif
 	
 #if BORDER_LIGHT || INNER_GLOW || ROUND_CORNERS
 		float2 distanceToEdge;

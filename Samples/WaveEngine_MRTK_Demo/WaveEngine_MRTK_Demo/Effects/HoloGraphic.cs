@@ -317,6 +317,30 @@ namespace WaveEngine_MRTK_Demo.Effects
             }
         }
         
+        public WaveEngine.Mathematics.Vector2 Parameters_Tiling
+        {
+            get
+            {
+                return this.material.CBuffers[1].GetBufferData<WaveEngine.Mathematics.Vector2>(176);
+            }
+            set
+            {
+				this.material.CBuffers[1].SetBufferData(value, 176);
+            }
+        }
+        
+        public WaveEngine.Mathematics.Vector2 Parameters_Offset
+        {
+            get
+            {
+                return this.material.CBuffers[1].GetBufferData<WaveEngine.Mathematics.Vector2>(184);
+            }
+            set
+            {
+				this.material.CBuffers[1].SetBufferData(value, 184);
+            }
+        }
+        
         public WaveEngine.Mathematics.Vector4 Parameters_HoverLightData
         {
             get
@@ -362,6 +386,30 @@ namespace WaveEngine_MRTK_Demo.Effects
             set
             {
 				this.material.CBuffers[2].SetBufferData(value, 160);
+            }
+        }
+        
+        public WaveEngine.Common.Graphics.Texture Texture
+        {
+            get
+            {
+                return this.material.TextureSlots[0].Texture;
+            }
+            set
+            {
+				this.material.SetTexture(value, 0);
+            }
+        }
+        
+        public WaveEngine.Common.Graphics.SamplerState Sampler
+        {
+            get
+            {
+                return this.material.SamplerSlots[0].Sampler;
+            }
+            set
+            {
+				this.material.SetSampler(value, 0);
             }
         }
     }

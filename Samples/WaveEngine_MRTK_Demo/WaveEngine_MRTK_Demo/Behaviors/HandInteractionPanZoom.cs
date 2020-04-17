@@ -80,7 +80,7 @@ namespace WaveEngine_MRTK_Demo.Behaviors
         public AudioBuffer PanEndedSound { get; set; }
 
         private NearInteractionTouchable nearInteractionTouchable;
-        private Slate slateDecorator;
+        private HoloGraphic slateDecorator;
         private CursorManager cursorManager;
         private Vector2 speed;
         private SoundEmitter3D soundEmitter;
@@ -111,7 +111,7 @@ namespace WaveEngine_MRTK_Demo.Behaviors
         /// <inheritdoc/>
         protected override void Start()
         {
-            this.slateDecorator = new Slate(materialComponent.Material);
+            this.slateDecorator = new HoloGraphic(materialComponent.Material);
             this.cursorManager = this.Owner.Scene.Managers.FindManager<CursorManager>();
 
             if (!Application.Current.IsEditor)
