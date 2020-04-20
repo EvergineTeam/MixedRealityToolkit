@@ -35,6 +35,8 @@ namespace WaveEngine_MRTK_Demo.UWP.MixedReality
             // Create app
             application = new MyApplication();
 
+            //application.Container.RegisterType<VoiceCommandService>();
+
             // Create Services
             xrDevice = new MixedRealityPlatform();
             application.Container.RegisterInstance(xrDevice);
