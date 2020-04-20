@@ -104,6 +104,10 @@ namespace WaveEngine.MRTK.Services.InputSystem
             if (xrPlatform != null)
             {
                 ray = xrPlatform.EyeGaze;
+                if (ray == null)
+                {
+                    ray = xrPlatform.HeadGaze;
+                }
             }
             else
             {
