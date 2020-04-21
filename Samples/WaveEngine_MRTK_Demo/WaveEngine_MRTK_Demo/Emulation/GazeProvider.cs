@@ -139,7 +139,7 @@ namespace WaveEngine.MRTK.Services.InputSystem
                 this.Managers.PhysicManager3D.RayCastAll(ref r, this.Distance, results, this.Mask);
 
 
-                Entity hitEntity = (results.Count > 0) ? ((StaticBody3D)results[0].PhysicBody.UserData).Owner : null;
+                Entity hitEntity = (results.Count > 0) ? ((PhysicBody3D)results[0].PhysicBody.UserData).Owner : null;
                 if (hitEntity != this.GazeTarget)
                 {
                     this.GazeTarget = hitEntity;
