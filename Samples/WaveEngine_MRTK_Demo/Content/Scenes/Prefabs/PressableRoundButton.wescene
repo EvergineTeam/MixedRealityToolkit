@@ -59,6 +59,7 @@ Items:
         PressPosition: 0.300000012
         ReleasePosition: 0.400000006
         RetractSpeed: 3.0
+        SpeechKeyWord: button
         StartPosition: 0.5
         UpdateOrder: 0.5
       - !WaveEngine.MRTK.Services.InputSystem.NearInteractionTouchable,WaveEngine.MRTK
@@ -212,5 +213,145 @@ Items:
                 Id: 33826060-56b5-4524-beb1-6617e704c49a
             Id: 81e0d5c7-91fa-4300-96da-22fd1aeff2dd
         Id: d939db42-6f70-4e21-abbe-abae1ddfcff2
+      - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+        Name: SeeItSayItLabel
+        Tag: null
+        IsEnabled: true
+        IsStatic: false
+        Components:
+          - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+            Id: 5fcffc21-babf-4040-baf9-ca4f11076bbd
+            IsEnabled: true
+            LocalOrientation:
+              W: 1.0
+              X: 0.0
+              Y: 0.0
+              Z: 0.0
+            LocalPosition:
+              X: 0.0
+              Y: -0.0209999997
+              Z: -0.00899999961
+            LocalScale:
+              X: 1.5
+              Y: 1.5
+              Z: 1.5
+        Children:
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: 10x32mm_Square
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: 4504ee18-5027-4907-a03d-10fc6c408d27
+                IsEnabled: true
+                LocalOrientation:
+                  W: 1.0
+                  X: 0.0
+                  Y: 0.0
+                  Z: 0.0
+                LocalPosition:
+                  X: 0.0
+                  Y: 0.0
+                  Z: 0.0
+                LocalScale:
+                  X: 1.0
+                  Y: 1.0
+                  Z: 1.0
+            Children:
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: plane
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: 734150da-772d-4982-8f61-f891387c9910
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalScale:
+                      X: 0.0320000015
+                      Y: 0.00999999978
+                      Z: 0.00999999978
+                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+                    Id: a71b226c-256d-4828-b32e-18383ddc8138
+                    AsignedTo: Default
+                    IsEnabled: true
+                    Material: 4f32ee6e-22c9-48be-ad27-76ba638454fb
+                  - !WaveEngine.Components.Graphics3D.PlaneMesh,WaveEngine.Components
+                    Id: 662671f8-4d16-42ab-99fe-177af620ef08
+                    Height: 1.0
+                    InitialU: 0.0
+                    InitialV: 0.0
+                    IsEnabled: true
+                    Model: 00000000-0000-0000-0000-000000000000
+                    ModelMeshName: plane_primitive
+                    Normal:
+                      X: 0.0
+                      Y: 0.0
+                      Z: 1.0
+                    TwoSides: false
+                    UTile: 1.0
+                    UVHorizontalFlip: false
+                    UVVerticalFlip: false
+                    Width: 1.0
+                    YTile: 1.0
+                  - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+                    Id: 2e8529b5-6ccb-4aba-8b50-79d089d40adb
+                    DebugBoundingbox: true
+                    FrustumCullingEnabled: true
+                    IsEnabled: true
+                    OrderBias: 0
+                Children: []
+                Id: 73c2f046-661f-4504-88ae-9edd81e3b898
+            Id: 8ad44454-4569-4542-a541-7c01081f0359
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: Text
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: 4a77b63d-46a5-4139-8d6f-609a0dc39ffb
+                IsEnabled: true
+                LocalOrientation:
+                  W: 4.72381771E-07
+                  X: 4.72381828E-07
+                  Y: 0.707106829
+                  Z: -0.707106709
+                LocalPosition:
+                  X: 0.0
+                  Y: 0.0
+                  Z: -0.00100000005
+                LocalScale:
+                  X: 1.0
+                  Y: 1.0
+                  Z: 1.0
+              - !WaveEngine_MRTK_Demo.Toolkit.Components.GUI.Text3D,WaveEngine_MRTK_Demo
+                Id: a61a3638-748a-4a7d-8b72-a2ac44dc7df4
+                Alpha: 1.0
+                FontFamilySource: 
+                FontSize: 24
+                FontStretch: Normal
+                FontStyle: Normal
+                FontWeight: Normal
+                HorizontalAlignment: Center
+                IsEnabled: true
+                Quality: 0.5
+                Resolution: 4000
+                Text: Say "Button"
+                TextWrapping: NoWrap
+                VerticalAlignment: Center
+            Children: []
+            Id: b4369147-a96a-4774-84f3-350e0a965c58
+        Id: 773cca91-9140-4f01-a5e9-2ee0ac86c207
     Id: 749cbf9a-e45d-4113-b71c-28e4d8543929
 Managers: []

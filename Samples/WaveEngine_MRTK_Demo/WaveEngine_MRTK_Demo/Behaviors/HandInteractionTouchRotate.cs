@@ -14,7 +14,7 @@ using WaveEngine_MRTK_Demo.Emulation;
 
 namespace WaveEngine_MRTK_Demo.Behaviors
 {
-    public class HandInteractionTouchRotate : Behavior, IMixedRealityTouchHandler, IFocusable
+    public class HandInteractionTouchRotate : Behavior, IMixedRealityTouchHandler
     {
         [BindComponent(isRequired: true, source: BindComponentSource.Children, tag: "Rotate")]
         protected Transform3D target;

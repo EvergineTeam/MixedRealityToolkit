@@ -50,7 +50,7 @@ namespace WaveEngine_MRTK_Demo.UWP.MixedReality
             application.Container.RegisterType<VoiceCommandService>();
             VoiceCommandService voiceCommandService = application.Container.Resolve<VoiceCommandService>();
             voiceCommandService.ConfigureWords(new string[] {
-                "select", "test"
+                "select", "button"
             });
         }
 
