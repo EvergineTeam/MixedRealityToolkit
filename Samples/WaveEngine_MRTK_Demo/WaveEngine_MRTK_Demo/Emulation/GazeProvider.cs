@@ -39,6 +39,8 @@ namespace WaveEngine.MRTK.Services.InputSystem
         /// </summary>
         public CollisionCategory3D Mask { get; set; } = CollisionCategory3D.All;
 
+        private XRPlatform xrPlatform;
+
         /// <summary>
         /// Gets the target aimed by the gaze or null.
         /// </summary>
@@ -88,6 +90,24 @@ namespace WaveEngine.MRTK.Services.InputSystem
                 ;
                 this.hoverLight = hoverLight.FindComponent<Transform3D>();
                 this.Managers.EntityManager.Add(hoverLight);
+
+                xrPlatform = Application.Current.Container.Resolve<XRPlatform>();
+                if (xrPlatform != null)
+                {
+                    IVoiceCommandService voiceCommandService = Application.Current.Container.Resolve<IVoiceCommandService>();
+                    if(voiceCommandService != null)
+                    {
+                        voiceCommandService.CommandRecognized += VoiceCommandService_CommandRecognized;
+                    }
+                }
+            }
+        }
+
+        private void VoiceCommandService_CommandRecognized(object sender, string e)
+        {
+            if (GazeTarget != null)
+            {
+                FindComponent<ISpeechHandler>(GazeTarget)?.OnSpeechKeywordRecognized(e);
             }
         }
 
@@ -97,9 +117,6 @@ namespace WaveEngine.MRTK.Services.InputSystem
         /// <param name="gameTime">The time.</param>
         protected override void Update(TimeSpan gameTime)
         {
-            //// TODO: in unity this is called by the focus provider
-
-            var xrPlatform = Application.Current.Container.Resolve<XRPlatform>();
             Ray? ray = null;
             if (xrPlatform != null)
             {

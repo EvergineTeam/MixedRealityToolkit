@@ -34,9 +34,7 @@ namespace WaveEngine_MRTK_Demo.UWP.MixedReality
             // resources.
             // Create app
             application = new MyApplication();
-
-            //application.Container.RegisterType<VoiceCommandService>();
-
+            
             // Create Services
             xrDevice = new MixedRealityPlatform();
             application.Container.RegisterInstance(xrDevice);
@@ -48,6 +46,12 @@ namespace WaveEngine_MRTK_Demo.UWP.MixedReality
 			// Creates XAudio device
             var xaudio = new WaveEngine.XAudio2.XAudioDevice();
             application.Container.RegisterInstance(xaudio);
+
+            application.Container.RegisterType<VoiceCommandService>();
+            VoiceCommandService voiceCommandService = application.Container.Resolve<VoiceCommandService>();
+            voiceCommandService.ConfigureWords(new string[] {
+                "select", "test"
+            });
         }
 
         /// <summary>
