@@ -18,6 +18,8 @@ namespace WaveEngine_MRTK_Demo.Emulation
         protected override void Start()
         {
             base.Start();
+            
+            HashSet<Material> unbatchMaterials = new HashSet<Material>();
 
             foreach (MaterialComponent m in this.Managers.EntityManager.FindComponentsOfType<MaterialComponent>().ToArray())
             {
@@ -27,8 +29,16 @@ namespace WaveEngine_MRTK_Demo.Emulation
                         Array.IndexOf(m.Material.ActiveDirectivesNames, "INNER_GLOW") != -1)
                     {
                         //Border Light and inner glow don't work if batching is enabled
-                        m.Material = m.Material.Clone();
+                        if (unbatchMaterials.Contains(m.Material))
+                        {               
+                            m.Material = m.Material.Clone();
+                        }
+                        else
+                        {
+                            unbatchMaterials.Add(m.Material);
+                        }
                     }
+                    
 
                     if (Array.IndexOf(m.Material.ActiveDirectivesNames, "NEAR_LIGHT_FADE") != -1 ||
                        Array.IndexOf(m.Material.ActiveDirectivesNames, "HOVER_LIGHT") != -1 ||
