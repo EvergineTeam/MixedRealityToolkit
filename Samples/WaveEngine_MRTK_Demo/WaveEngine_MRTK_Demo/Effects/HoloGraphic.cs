@@ -16,7 +16,8 @@ namespace WaveEngine_MRTK_Demo.Effects
     using WaveEngine.Mathematics;
     
     
-    public class HoloGraphic : WaveEngine.Framework.Graphics.MaterialDecorator
+    [WaveEngine.Framework.Graphics.MaterialDecoratorAttribute("4f7e4c24-e83c-4350-9cd4-511fb2199cf4")]
+    public partial class HoloGraphic : WaveEngine.Framework.Graphics.MaterialDecorator
     {
         
         public HoloGraphic(WaveEngine.Framework.Graphics.Effects.Effect effect) : 

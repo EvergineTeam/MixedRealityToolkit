@@ -487,9 +487,9 @@
 #else
     	float3 ambient = float3(0.7, 0.7, 0.7);//glstate_lightmodel_ambient + float3(0.25, 0.25, 0.25);
 #endif
-		float minProperty = min(Smoothness, Metallic);
-	
+		
 #if DIRECTIONAL_LIGHT
+		float minProperty = min(Smoothness, Metallic);
 	    float oneMinusMetallic = (1.0 - Metallic);
 	    output.rgb = lerp(output.rgb, ibl, minProperty);
 	
