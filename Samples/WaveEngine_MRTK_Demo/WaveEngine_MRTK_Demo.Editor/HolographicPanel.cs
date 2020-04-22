@@ -8,7 +8,7 @@ using WaveEngine_MRTK_Demo.Effects;
 
 namespace WaveEngine_MRTK_Demo.Editor
 {
-    //[CustomPanelEditor(typeof(HoloGraphic))]
+    [CustomPanelEditor(typeof(HoloGraphic))]
     public class HolographicPanel : PanelEditor
     {
         private HoloGraphic instance;
@@ -54,10 +54,7 @@ namespace WaveEngine_MRTK_Demo.Editor
                 this.propertyPanelContainer.Remove(nameof(HoloGraphic.Parameters_BorderWidth));
                 this.propertyPanelContainer.Remove(nameof(HoloGraphic.Parameters_BorderMinValue));
                 this.propertyPanelContainer.Remove(nameof(HoloGraphic.Parameters_FluentLightIntensity));
-                if (this.instance.ActiveDirectivesNames.Contains("ROUND_CORNERS"))
-                {
-                    this.propertyPanelContainer.Remove(nameof(HoloGraphic.Parameters_EdgeSmoothingValue));
-                }
+                this.propertyPanelContainer.Remove(nameof(HoloGraphic.Parameters_EdgeSmoothingValue));
             }
 
             if (!this.instance.ActiveDirectivesNames.Contains("ROUND_CORNERS"))
