@@ -1,4 +1,5 @@
 ﻿
+using System;
 using System.Runtime.CompilerServices;
 using WaveEngine.Common.Graphics;
 using WaveEngine.Common.Input.Keyboard;
@@ -125,6 +126,14 @@ namespace WaveEngine_MRTK_Demo
 
             //Create position updater
             scene.Managers.AddManager(new CursorPosShaderUpdater());
+
+            //Create spatial mapping
+            SpatialMapping spatialMapping = new SpatialMapping() { GenerateColliders = true/*, Material = assetsService.Load<Material>(WaveContent.Materials.DefaultMaterial)*/ };
+            spatialMapping.UpdateInterval = new TimeSpan(0, 0, 1);
+            scene.Managers.EntityManager.Add(new Entity("SpatialMapping")
+                .AddComponent(new Transform3D())
+                .AddComponent(spatialMapping)
+            );
         }
     }
 }
