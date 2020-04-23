@@ -1,6 +1,8 @@
 using WaveEngine.Bullet;
 using WaveEngine.Framework;
 using WaveEngine.Framework.Graphics;
+using WaveEngine.Framework.Services;
+using WaveEngine.MRTK.SDK.Features;
 using WaveEngine.MRTK.Services.InputSystem;
 using WaveEngine_MRTK_Demo.Emulation;
 
@@ -20,7 +22,9 @@ namespace WaveEngine_MRTK_Demo.Scenes
         {
             //this.Managers.RenderManager.DebugLines = true;
 
-            MRTKDemoTools.CreateHands(this);
+            var assetsService = Application.Current.Container.Resolve<AssetsService>();
+
+            Tools.InitHoloScene(this, assetsService.Load<Material>(WaveContent.Materials.CursorLeft), assetsService.Load<Material>(WaveContent.Materials.HoloHands), WaveContent.Effects.HoloGraphic);
         }
 
         protected override void Start()

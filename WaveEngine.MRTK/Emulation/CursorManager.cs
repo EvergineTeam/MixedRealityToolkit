@@ -1,4 +1,6 @@
-﻿using System;
+﻿// Copyright © Wave Engine S.L. All rights reserved. Use is subject to license terms.
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using WaveEngine.Framework;
@@ -11,10 +13,16 @@ using WaveEngine.MRTK.Base.Interfaces.InputSystem.Handlers;
 
 namespace WaveEngine_MRTK_Demo.Emulation
 {
+    /// <summary>
+    /// The Cursor Manager.
+    /// </summary>
     public class CursorManager : UpdatableSceneManager
     {
         private static readonly int VELOCITY_HISTORY_SIZE = 10;
 
+        /// <summary>
+        /// Gets the cursors.
+        /// </summary>
         public List<Cursor> Cursors { get; private set; } = new List<Cursor>();
 
         private Dictionary<Entity, Entity> cursorCollisions = new Dictionary<Entity, Entity>();
@@ -28,12 +36,13 @@ namespace WaveEngine_MRTK_Demo.Emulation
         private LinkedList<float> gameTimeHistory = new LinkedList<float>();
 
         /// <summary>
-        /// Call this when the cursors have been created
+        /// Adds a cursor.
         /// </summary>
+        /// <param name="cursor">The cursor.</param>
         public void AddCursor(Cursor cursor)
         {
             this.Cursors.Add(cursor);
-            
+
             cursor.StaticBody3D.BeginCollision += this.Cursor_BeginCollision;
             cursor.StaticBody3D.UpdateCollision += this.Cursor_UpdateCollision;
             cursor.StaticBody3D.EndCollision += this.Cursor_EndCollision;
@@ -42,6 +51,7 @@ namespace WaveEngine_MRTK_Demo.Emulation
             this.cursorsOrientationHistory[cursor] = new LinkedList<Quaternion>();
         }
 
+        /// <inheritdoc/>
         protected override void OnDeactivated()
         {
             base.OnDeactivated();
@@ -85,6 +95,7 @@ namespace WaveEngine_MRTK_Demo.Emulation
             this.cursorCollisions.Remove(cursorEntity);
         }
 
+        /// <inheritdoc/>
         public override void Update(TimeSpan gameTime)
         {
             // Update gameTime history
