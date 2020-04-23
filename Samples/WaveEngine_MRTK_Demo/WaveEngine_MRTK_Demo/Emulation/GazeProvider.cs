@@ -1,14 +1,14 @@
 ﻿// Copyright © Wave Engine S.L. All rights reserved. Use is subject to license terms.
 
 using System;
-using System.Collections.Generic;
-using System.Text;
+using WaveEngine.Components.Graphics3D;
 using WaveEngine.Framework;
 using WaveEngine.Framework.Graphics;
 using WaveEngine.Framework.Physics3D;
 using WaveEngine.Framework.Services;
 using WaveEngine.Mathematics;
 using WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons;
+using WaveEngine_MRTK_Demo;
 using WaveEngine_MRTK_Demo.Emulation;
 
 namespace WaveEngine.MRTK.Services.InputSystem
@@ -83,11 +83,16 @@ namespace WaveEngine.MRTK.Services.InputSystem
 
         protected override void Start()
         {
+            var assetsService = Application.Current.Container.Resolve<AssetsService>();
+
             if (!Application.Current.IsEditor)
             {
                 Entity hoverLight = new Entity("GazePointer")
-                .AddComponent(new Transform3D())
+                .AddComponent(new Transform3D() { Scale = Vector3.One * 0.01f })
                 .AddComponent(new HoverLight())
+                //.AddComponent(new MaterialComponent() { Material = assetsService.Load<Material>(WaveContent.Materials.DefaultMaterial) })
+                //.AddComponent(new SphereMesh())
+                //.AddComponent(new MeshRenderer())
                 ;
                 this.hoverLight = hoverLight.FindComponent<Transform3D>();
                 this.Managers.EntityManager.Add(hoverLight);
@@ -134,21 +139,18 @@ namespace WaveEngine.MRTK.Services.InputSystem
 
             if (ray != null)
             {
-                List<HitResult3D> results = new List<HitResult3D>();
                 Ray r = ray.Value;
-                this.Managers.PhysicManager3D.RayCastAll(ref r, this.Distance, results, this.Mask);
-
-
-                Entity hitEntity = (results.Count > 0) ? ((PhysicBody3D)results[0].PhysicBody.UserData).Owner : null;
+                HitResult3D result = this.Managers.PhysicManager3D.RayCast(ref r, this.Distance, this.Mask);
+                Entity hitEntity = (result.Succeeded) ? ((PhysicBody3D)result.PhysicBody.UserData).Owner : null;
                 if (hitEntity != this.GazeTarget)
                 {
                     this.GazeTarget = hitEntity;
                 }
 
                 // Update Hover light
-                if (results.Count > 0)
+                if (result.Succeeded)
                 {
-                    this.hoverLight.Position = results[0].Point;
+                    this.hoverLight.Position = result.Point;
                 }
             } 
             else
