@@ -22,24 +22,22 @@ namespace WaveEngine.MRTK.Scenes
     /// <summary>
     /// Base class for scenes using XR.
     /// </summary>
-    public class XRScene : Scene
+    public abstract class XRScene : Scene
     {
-        private Guid cursorMat;
-        private Guid holoHandsMat;
-        private Guid holographicEffect;
+        /// <summary>
+        /// Gets cursors material Guid.
+        /// </summary>
+        protected abstract Guid CursorMat { get; }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="XRScene"/> class.
+        /// Gets holo hands material Guid.
         /// </summary>
-        /// <param name="cursorMat">Cursor Material.</param>
-        /// <param name="holoHandsMat">Hands Material.</param>
-        /// <param name="holographicEffect">Holo Effect.</param>
-        public XRScene(Guid cursorMat, Guid holoHandsMat, Guid holographicEffect)
-        {
-            this.cursorMat = cursorMat;
-            this.holoHandsMat = holoHandsMat;
-            this.holographicEffect = holographicEffect;
-        }
+        protected abstract Guid HoloHandsMat { get; }
+
+        /// <summary>
+        /// Gets holographics effect Guid.
+        /// </summary>
+        protected abstract Guid HolographicEffect { get; }
 
         /// <inheritdoc/>
         public override void RegisterManagers()
@@ -57,7 +55,7 @@ namespace WaveEngine.MRTK.Scenes
 
             var assetsService = Application.Current.Container.Resolve<AssetsService>();
 
-            InitHoloScene(this, assetsService.Load<Material>(this.cursorMat), assetsService.Load<Material>(this.holoHandsMat), this.holographicEffect);
+            InitHoloScene(this, assetsService.Load<Material>(this.CursorMat), assetsService.Load<Material>(this.HoloHandsMat), this.HolographicEffect);
         }
 
         /// <inheritdoc/>
