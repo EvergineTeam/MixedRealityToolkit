@@ -26,7 +26,7 @@ namespace WaveEngine_MRTK_Demo.Behaviors
         /// <summary>
         /// The camera.
         /// </summary>
-        [BindComponent(isRequired: true, source: BindComponentSource.Scene, tag: "MainCamera")]
+        [BindComponent(isRequired: true, source: BindComponentSource.Scene)]
         protected Camera3D camera;
 
         /// <summary>
