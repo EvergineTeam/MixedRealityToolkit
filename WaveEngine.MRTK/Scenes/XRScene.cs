@@ -1,4 +1,6 @@
-﻿using System;
+﻿// Copyright © Wave Engine S.L. All rights reserved. Use is subject to license terms.
+
+using System;
 using WaveEngine.Bullet;
 using WaveEngine.Common.Graphics;
 using WaveEngine.Common.Input.Keyboard;
@@ -51,11 +53,11 @@ namespace WaveEngine.MRTK.Scenes
         /// <inheritdoc/>
         protected override void CreateScene()
         {
-            // this.Managers.RenderManager.DebugLines = true;
+            ////this.Managers.RenderManager.DebugLines = true;
 
             var assetsService = Application.Current.Container.Resolve<AssetsService>();
 
-            InitHoloScene(this, assetsService.Load<Material>(cursorMat), assetsService.Load<Material>(holoHandsMat), holographicEffect);
+            InitHoloScene(this, assetsService.Load<Material>(this.cursorMat), assetsService.Load<Material>(this.holoHandsMat), this.holographicEffect);
         }
 
         /// <inheritdoc/>
