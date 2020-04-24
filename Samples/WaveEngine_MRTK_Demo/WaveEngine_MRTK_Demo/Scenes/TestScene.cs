@@ -1,45 +1,11 @@
-using WaveEngine.Bullet;
-using WaveEngine.Components.XR;
-using WaveEngine.Framework;
-using WaveEngine.Framework.Services;
-using WaveEngine.Framework.XR;
-using WaveEngine.Framework.XR.Interaction;
-using WaveEngine_MRTK_Demo.Behaviors;
-using WaveEngine_MRTK_Demo.Emulation;
+using WaveEngine.MRTK.Scenes;
 
 namespace WaveEngine_MRTK_Demo.Scenes
 {
-    public class TestScene : Scene
+    public class TestScene : XRScene
     {
-        public override void RegisterManagers()
+        public TestScene() : base(WaveContent.Materials.CursorLeft, WaveContent.Materials.HoloHands, WaveContent.Effects.HoloGraphic)
         {
-            base.RegisterManagers();
-
-            this.Managers.AddManager(new BulletPhysicManager3D());
-            this.Managers.AddManager(new CursorManager());
-        }
-
-        protected override void CreateScene()
-        {
-            //this.Managers.RenderManager.DebugLines = true;
-
-            var xrPlatform = Application.Current.Container.Resolve<XRPlatform>();
-
-            var cursorLeftEntity = this.Managers.EntityManager.Find("cursors.left");
-            var cursorRightEntity = this.Managers.EntityManager.Find("cursors.right");
-
-            if (xrPlatform != null)
-            {
-                // HoloLens 2
-                cursorLeftEntity.AddComponent(new TrackXRJoint() { Handedness = XRHandedness.LeftHand, SelectionStrategy = TrackXRDevice.SelectionDeviceStrategy.ByHandedness, JointKind = XRHandJointKind.IndexTip });
-                cursorRightEntity.AddComponent(new TrackXRJoint() { Handedness = XRHandedness.RightHand, SelectionStrategy = TrackXRDevice.SelectionDeviceStrategy.ByHandedness, JointKind = XRHandJointKind.IndexTip });
-            }
-            else
-            {
-                // Windows
-                cursorLeftEntity.AddComponent(new MouseControlBehavior() { key = WaveEngine.Common.Input.Keyboard.Keys.LeftShift });
-                cursorRightEntity.AddComponent(new MouseControlBehavior() { key = WaveEngine.Common.Input.Keyboard.Keys.Space });
-            }
         }
     }
 }
