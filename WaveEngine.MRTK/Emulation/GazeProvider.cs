@@ -159,6 +159,10 @@ namespace WaveEngine.MRTK.Services.InputSystem
                 {
                     this.hoverLight.Position = result.Point;
                 }
+                else
+                {
+                    this.hoverLight.Position = r.GetPoint(100000.0f); // Far away
+                }
             }
             else
             {
