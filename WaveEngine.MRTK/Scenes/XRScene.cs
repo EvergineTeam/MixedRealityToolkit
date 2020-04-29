@@ -35,6 +35,11 @@ namespace WaveEngine.MRTK.Scenes
         protected abstract Guid HoloHandsMat { get; }
 
         /// <summary>
+        /// Gets spatial mapping material Guid.
+        /// </summary>
+        protected abstract Guid SpatialMappingMat { get; }
+
+        /// <summary>
         /// Gets holographics effect Guid.
         /// </summary>
         protected abstract Guid HolographicEffect { get; }
@@ -55,7 +60,12 @@ namespace WaveEngine.MRTK.Scenes
 
             var assetsService = Application.Current.Container.Resolve<AssetsService>();
 
-            InitHoloScene(this, assetsService.Load<Material>(this.CursorMat), assetsService.Load<Material>(this.HoloHandsMat), this.HolographicEffect);
+            InitHoloScene(
+                this,
+                assetsService.Load<Material>(this.CursorMat),
+                assetsService.Load<Material>(this.HoloHandsMat),
+                assetsService.Load<Material>(this.SpatialMappingMat),
+                this.HolographicEffect);
         }
 
         /// <inheritdoc/>
@@ -132,8 +142,9 @@ namespace WaveEngine.MRTK.Scenes
         /// <param name="scene">Scene to add components to.</param>
         /// <param name="cursorMat">Material for the cursosrs.</param>
         /// <param name="handMat">Material for the hands.</param>
+        /// <param name="spatialMappingMat">Maerial for the spatial mapping.</param>
         /// <param name="holographicsEffectId">Id for holographic effect.</param>
-        public static void InitHoloScene(Scene scene, Material cursorMat, Material handMat, Guid holographicsEffectId)
+        public static void InitHoloScene(Scene scene, Material cursorMat, Material handMat, Material spatialMappingMat, Guid holographicsEffectId)
         {
             var assetsService = Application.Current.Container.Resolve<AssetsService>();
 
@@ -149,7 +160,7 @@ namespace WaveEngine.MRTK.Scenes
             scene.Managers.AddManager(new CursorPosShaderUpdater(holographicsEffectId));
 
             // Create spatial mapping
-            SpatialMapping spatialMapping = new SpatialMapping() { GenerateColliders = true/*, Material = assetsService.Load<Material>(WaveContent.Materials.DefaultMaterial)*/ };
+            SpatialMapping spatialMapping = new SpatialMapping() { GenerateColliders = true, Material = spatialMappingMat };
             spatialMapping.UpdateInterval = new TimeSpan(0, 0, 1);
             scene.Managers.EntityManager.Add(new Entity("SpatialMapping")
                 .AddComponent(new Transform3D())
