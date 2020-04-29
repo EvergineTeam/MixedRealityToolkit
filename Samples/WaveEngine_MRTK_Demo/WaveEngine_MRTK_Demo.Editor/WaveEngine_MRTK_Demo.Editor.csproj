@@ -1,19 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-	<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
-
   <ItemGroup>
-    <PackageReference Include="WaveEngine.Common" Version="3.0.0.4879-nightly" />
-    <PackageReference Include="WaveEngine.Components" Version="3.0.0.4879-nightly" />
-    <PackageReference Include="WaveEngine.Framework" Version="3.0.0.4879-nightly" />
-    <PackageReference Include="WaveEngine.Editor.Extension" Version="3.0.0.4879-nightly" />
+    <PackageReference Include="WaveEngine.Common" Version="3.0.0.5041-nightly" />
+    <PackageReference Include="WaveEngine.Components" Version="3.0.0.5041-nightly" />
+    <PackageReference Include="WaveEngine.Framework" Version="3.0.0.5041-nightly" />
+    <PackageReference Include="WaveEngine.Editor.Extension" Version="3.0.0.5041-nightly" />
   </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\WaveEngine_MRTK_Demo\WaveEngine_MRTK_Demo.csproj" />
   </ItemGroup>
-
 </Project>

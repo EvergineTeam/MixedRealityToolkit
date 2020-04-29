@@ -46,7 +46,7 @@ MaterialInfo:
     - Name: FluentLightIntensity
       Type: System.Single
       ValueByteArray: AACAPw==
-    - Name: RoundCornerRadious
+    - Name: RoundCornerRadius
       Type: System.Single
       ValueByteArray: AACAPg==
     - Name: RoundCornerMargin
