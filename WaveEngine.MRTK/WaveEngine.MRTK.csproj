@@ -6,11 +6,11 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="WaveEngine.Bullet" Version="3.0.0.5041-nightly" />
-    <PackageReference Include="WaveEngine.Common" Version="3.0.0.5041-nightly" />
-    <PackageReference Include="WaveEngine.Components" Version="3.0.0.5041-nightly" />
-    <PackageReference Include="WaveEngine.Framework" Version="3.0.0.5041-nightly" />
-    <PackageReference Include="WaveEngine.Mathematics" Version="3.0.0.5041-nightly" />
-    <PackageReference Include="WaveEngine.Platform" Version="3.0.0.5041-nightly" />
+    <PackageReference Include="WaveEngine.Bullet" Version="3.0.0.5042-nightly" />
+    <PackageReference Include="WaveEngine.Common" Version="3.0.0.5042-nightly" />
+    <PackageReference Include="WaveEngine.Components" Version="3.0.0.5042-nightly" />
+    <PackageReference Include="WaveEngine.Framework" Version="3.0.0.5042-nightly" />
+    <PackageReference Include="WaveEngine.Mathematics" Version="3.0.0.5042-nightly" />
+    <PackageReference Include="WaveEngine.Platform" Version="3.0.0.5042-nightly" />
   </ItemGroup>
 </Project>
