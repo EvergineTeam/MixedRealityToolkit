@@ -100,9 +100,9 @@ namespace WaveEngine.MRTK.Scenes
         private static Entity CreateCursor(Scene scene, Material material, XRHandedness handedness)
         {
             Entity cursor = new Entity()
-                .AddComponent(new Transform3D() { Scale = new Vector3(0.010f, 0.010f, 0.010f) })
+                .AddComponent(new Transform3D())
                 .AddComponent(new MaterialComponent() { Material = material })
-                .AddComponent(new SphereMesh())
+                .AddComponent(new SphereMesh() { Diameter = 0.010f })
                 .AddComponent(new MeshRenderer())
                 .AddComponent(new SphereCollider3D())
                 .AddComponent(new StaticBody3D() { CollisionCategories = CollisionCategory3D.Cat1, IsSensor = true })
@@ -131,6 +131,19 @@ namespace WaveEngine.MRTK.Scenes
             }
 
             scene.Managers.EntityManager.Add(cursor);
+
+            Entity cursorDist = new Entity()
+                .AddComponent(new Transform3D())
+                .AddComponent(new MaterialComponent() { Material = material })
+                .AddComponent(new SphereMesh() { Diameter = 0.010f })
+                .AddComponent(new MeshRenderer())
+                .AddComponent(new SphereCollider3D())
+                .AddComponent(new StaticBody3D() { CollisionCategories = CollisionCategory3D.Cat1, IsSensor = true })
+                .AddComponent(new Cursor() { PressedColor = new Color(255, 173, 128), ReleasedColor = new Color(255, 93, 0), UpdateOrder = 0.3f })
+                .AddComponent(new ProximityLight())
+                .AddComponent(new CursorRay() { mainCursor = cursor.FindComponent<Cursor>() })
+                ;
+            scene.Managers.EntityManager.Add(cursorDist);
 
             return cursor;
         }
