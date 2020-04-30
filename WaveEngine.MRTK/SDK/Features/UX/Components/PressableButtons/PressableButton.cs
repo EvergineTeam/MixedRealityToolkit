@@ -37,6 +37,11 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
         public event EventHandler ButtonReleased;
 
         /// <summary>
+        /// Event fired when any button is pressed
+        /// </summary>
+        public static event EventHandler AnyButtonReleased;
+
+        /// <summary>
         ///  Gets or sets the word that will make this object be pressed.
         /// </summary>
         public string SpeechKeyWord { get; set; } = "button";
@@ -153,6 +158,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
                 }
                 else
                 {
+                    AnyButtonReleased?.Invoke(this, EventArgs.Empty);
                     this.ButtonReleased?.Invoke(this, EventArgs.Empty);
                 }
             }

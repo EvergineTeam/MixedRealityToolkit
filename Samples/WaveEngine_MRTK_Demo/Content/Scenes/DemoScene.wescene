@@ -2,7 +2,7 @@
 Items:
   - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
     Name: camera
-    Tag: MainCamera
+    Tag: 
     IsEnabled: true
     IsStatic: false
     Components:
@@ -34,7 +34,7 @@ Items:
       - !WaveEngine.Framework.Graphics.Camera3D,WaveEngine.Framework
         Id: e6234645-a09c-405e-b7cc-e8970277f72c
         Aperture: 1.0
-        AspectRatio: 1.53588521
+        AspectRatio: 1.63318777
         BackgroundColor:
           A: 0
           B: 0
@@ -50,7 +50,7 @@ Items:
           MaxDepth: 1.0
           MinDepth: 0.0
         DisplayTag: null
-        DisplayTagDirty: true
+        DisplayTagDirty: false
         Exposure: 1.00000012
         FarPlane: 1000.0
         FieldOfView: 0.785398185
@@ -60,10 +60,10 @@ Items:
         LayerMaskDefaultValue: true
         NearPlane: 0.100000001
         ScreenViewport:
-          Height: 209.0
+          Height: 229.0
           MaxDepth: 1.0
           MinDepth: 0.0
-          Width: 321.0
+          Width: 374.0
           X: 0.0
           Y: 0.0
         Sensitivity: 100.0
@@ -353,6 +353,7 @@ Items:
                     PressPosition: 0.100000001
                     ReleasePosition: 0.300000012
                     RetractSpeed: 5.0
+                    SpeechKeyWord: button
                     StartPosition: 0.5
                     UpdateOrder: 0.5
                   - !WaveEngine.MRTK.Services.InputSystem.NearInteractionTouchable,WaveEngine.MRTK
@@ -484,6 +485,7 @@ Items:
                     PressPosition: 0.100000001
                     ReleasePosition: 0.300000012
                     RetractSpeed: 5.0
+                    SpeechKeyWord: button
                     StartPosition: 0.5
                     UpdateOrder: 0.5
                   - !WaveEngine.MRTK.Services.InputSystem.NearInteractionTouchable,WaveEngine.MRTK
@@ -615,6 +617,7 @@ Items:
                     PressPosition: 0.100000001
                     ReleasePosition: 0.300000012
                     RetractSpeed: 5.0
+                    SpeechKeyWord: button
                     StartPosition: 0.5
                     UpdateOrder: 0.5
                   - !WaveEngine.MRTK.Services.InputSystem.NearInteractionTouchable,WaveEngine.MRTK
@@ -746,6 +749,7 @@ Items:
                     PressPosition: 0.100000001
                     ReleasePosition: 0.300000012
                     RetractSpeed: 5.0
+                    SpeechKeyWord: button
                     StartPosition: 0.5
                     UpdateOrder: 0.5
                   - !WaveEngine.MRTK.Services.InputSystem.NearInteractionTouchable,WaveEngine.MRTK
@@ -877,6 +881,7 @@ Items:
                     PressPosition: 0.100000001
                     ReleasePosition: 0.300000012
                     RetractSpeed: 5.0
+                    SpeechKeyWord: button
                     StartPosition: 0.5
                     UpdateOrder: 0.5
                   - !WaveEngine.MRTK.Services.InputSystem.NearInteractionTouchable,WaveEngine.MRTK
@@ -1008,6 +1013,7 @@ Items:
                     PressPosition: 0.100000001
                     ReleasePosition: 0.300000012
                     RetractSpeed: 5.0
+                    SpeechKeyWord: button
                     StartPosition: 0.5
                     UpdateOrder: 0.5
                   - !WaveEngine.MRTK.Services.InputSystem.NearInteractionTouchable,WaveEngine.MRTK
@@ -1139,6 +1145,7 @@ Items:
                     PressPosition: 0.100000001
                     ReleasePosition: 0.300000012
                     RetractSpeed: 5.0
+                    SpeechKeyWord: button
                     StartPosition: 0.5
                     UpdateOrder: 0.5
                   - !WaveEngine.MRTK.Services.InputSystem.NearInteractionTouchable,WaveEngine.MRTK
@@ -1270,6 +1277,7 @@ Items:
                     PressPosition: 0.100000001
                     ReleasePosition: 0.300000012
                     RetractSpeed: 5.0
+                    SpeechKeyWord: button
                     StartPosition: 0.5
                     UpdateOrder: 0.5
                   - !WaveEngine.MRTK.Services.InputSystem.NearInteractionTouchable,WaveEngine.MRTK
@@ -1401,6 +1409,7 @@ Items:
                     PressPosition: 0.100000001
                     ReleasePosition: 0.300000012
                     RetractSpeed: 5.0
+                    SpeechKeyWord: button
                     StartPosition: 0.5
                     UpdateOrder: 0.5
                   - !WaveEngine.MRTK.Services.InputSystem.NearInteractionTouchable,WaveEngine.MRTK
@@ -1532,6 +1541,7 @@ Items:
                     PressPosition: 0.100000001
                     ReleasePosition: 0.300000012
                     RetractSpeed: 5.0
+                    SpeechKeyWord: button
                     StartPosition: 0.5
                     UpdateOrder: 0.5
                   - !WaveEngine.MRTK.Services.InputSystem.NearInteractionTouchable,WaveEngine.MRTK
@@ -1663,6 +1673,7 @@ Items:
                     PressPosition: 0.100000001
                     ReleasePosition: 0.300000012
                     RetractSpeed: 5.0
+                    SpeechKeyWord: button
                     StartPosition: 0.5
                     UpdateOrder: 0.5
                   - !WaveEngine.MRTK.Services.InputSystem.NearInteractionTouchable,WaveEngine.MRTK
@@ -1794,6 +1805,7 @@ Items:
                     PressPosition: 0.100000001
                     ReleasePosition: 0.300000012
                     RetractSpeed: 5.0
+                    SpeechKeyWord: button
                     StartPosition: 0.5
                     UpdateOrder: 0.5
                   - !WaveEngine.MRTK.Services.InputSystem.NearInteractionTouchable,WaveEngine.MRTK

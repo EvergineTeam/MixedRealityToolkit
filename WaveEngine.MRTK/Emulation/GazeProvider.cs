@@ -1,15 +1,14 @@
 ﻿// Copyright © Wave Engine S.L. All rights reserved. Use is subject to license terms.
 
 using System;
-using System.Collections.Generic;
-using System.Text;
+using WaveEngine.Components.Graphics3D;
 using WaveEngine.Framework;
 using WaveEngine.Framework.Graphics;
 using WaveEngine.Framework.Physics3D;
 using WaveEngine.Framework.Services;
 using WaveEngine.Mathematics;
+using WaveEngine.MRTK.Emulation;
 using WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons;
-using WaveEngine_MRTK_Demo.Emulation;
 
 namespace WaveEngine.MRTK.Services.InputSystem
 {
@@ -45,60 +44,72 @@ namespace WaveEngine.MRTK.Services.InputSystem
         /// <summary>
         /// Gets the target aimed by the gaze or null.
         /// </summary>
-        public Entity GazeTarget { 
+        public Entity GazeTarget
+        {
             get
             {
-                return _gazeTarget;
+                return this.gazeTarget;
             }
+
             private set
             {
-                if (this._gazeTarget != null)
+                if (this.gazeTarget != null)
                 {
-                    IFocusable focusable = FindComponent<IFocusable>(this._gazeTarget);
+                    IFocusable focusable = this.FindComponent<IFocusable>(this.gazeTarget);
                     focusable?.OnFocusExit();
                 }
 
-                _gazeTarget = value;
+                this.gazeTarget = value;
 
-                if (_gazeTarget != null)
+                if (this.gazeTarget != null)
                 {
-                    IFocusable focusable = FindComponent<IFocusable>(this._gazeTarget);
+                    IFocusable focusable = this.FindComponent<IFocusable>(this.gazeTarget);
                     focusable?.OnFocusEnter();
                 }
             }
         }
 
         private Transform3D hoverLight;
-        private Entity _gazeTarget;
+        private Entity gazeTarget;
 
-        T FindComponent<T>(Entity entity) where T : class
+        private T FindComponent<T>(Entity entity)
+            where T : class
         {
             foreach (Component c in entity.Components)
             {
                 if (c is T)
+                {
                     return c as T;
+                }
             }
+
             return null;
         }
 
+        /// <inheritdoc/>
         protected override void Start()
         {
+            var assetsService = Application.Current.Container.Resolve<AssetsService>();
+
             if (!Application.Current.IsEditor)
             {
                 Entity hoverLight = new Entity("GazePointer")
-                .AddComponent(new Transform3D())
+                .AddComponent(new Transform3D() { Scale = Vector3.One * 0.01f })
                 .AddComponent(new HoverLight())
+                ////.AddComponent(new MaterialComponent() { Material = assetsService.Load<Material>(WaveContent.Materials.DefaultMaterial) })
+                ////.AddComponent(new SphereMesh())
+                ////.AddComponent(new MeshRenderer())
                 ;
                 this.hoverLight = hoverLight.FindComponent<Transform3D>();
                 this.Managers.EntityManager.Add(hoverLight);
 
-                xrPlatform = Application.Current.Container.Resolve<XRPlatform>();
-                if (xrPlatform != null)
+                this.xrPlatform = Application.Current.Container.Resolve<XRPlatform>();
+                if (this.xrPlatform != null)
                 {
                     IVoiceCommandService voiceCommandService = Application.Current.Container.Resolve<IVoiceCommandService>();
-                    if(voiceCommandService != null)
+                    if (voiceCommandService != null)
                     {
-                        voiceCommandService.CommandRecognized += VoiceCommandService_CommandRecognized;
+                        voiceCommandService.CommandRecognized += this.VoiceCommandService_CommandRecognized;
                     }
                 }
             }
@@ -106,9 +117,9 @@ namespace WaveEngine.MRTK.Services.InputSystem
 
         private void VoiceCommandService_CommandRecognized(object sender, string e)
         {
-            if (GazeTarget != null)
+            if (this.GazeTarget != null)
             {
-                FindComponent<ISpeechHandler>(GazeTarget)?.OnSpeechKeywordRecognized(e);
+                this.FindComponent<ISpeechHandler>(this.GazeTarget)?.OnSpeechKeywordRecognized(e);
             }
         }
 
@@ -119,12 +130,12 @@ namespace WaveEngine.MRTK.Services.InputSystem
         protected override void Update(TimeSpan gameTime)
         {
             Ray? ray = null;
-            if (xrPlatform != null)
+            if (this.xrPlatform != null)
             {
-                ray = xrPlatform.EyeGaze;
+                ray = this.xrPlatform.EyeGaze;
                 if (ray == null)
                 {
-                    ray = xrPlatform.HeadGaze;
+                    ray = this.xrPlatform.HeadGaze;
                 }
             }
             else
@@ -134,23 +145,24 @@ namespace WaveEngine.MRTK.Services.InputSystem
 
             if (ray != null)
             {
-                List<HitResult3D> results = new List<HitResult3D>();
                 Ray r = ray.Value;
-                this.Managers.PhysicManager3D.RayCastAll(ref r, this.Distance, results, this.Mask);
-
-
-                Entity hitEntity = (results.Count > 0) ? ((PhysicBody3D)results[0].PhysicBody.UserData).Owner : null;
+                HitResult3D result = this.Managers.PhysicManager3D.RayCast(ref r, this.Distance, this.Mask);
+                Entity hitEntity = result.Succeeded ? ((PhysicBody3D)result.PhysicBody.UserData).Owner : null;
                 if (hitEntity != this.GazeTarget)
                 {
                     this.GazeTarget = hitEntity;
                 }
 
                 // Update Hover light
-                if (results.Count > 0)
+                if (result.Succeeded)
                 {
-                    this.hoverLight.Position = results[0].Point;
+                    this.hoverLight.Position = result.Point;
                 }
-            } 
+                else
+                {
+                    this.hoverLight.Position = r.GetPoint(100000.0f); // Far away
+                }
+            }
             else
             {
                 this.GazeTarget = null;
