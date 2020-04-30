@@ -12,10 +12,9 @@ using WaveEngine.Framework.Physics3D;
 using WaveEngine.Framework.Services;
 using WaveEngine.Framework.XR;
 using WaveEngine.Mathematics;
-using WaveEngine.MRTK.SDK.Features;
+using WaveEngine.MRTK.Behaviors;
+using WaveEngine.MRTK.Emulation;
 using WaveEngine.MRTK.Services.InputSystem;
-using WaveEngine_MRTK_Demo.Behaviors;
-using WaveEngine_MRTK_Demo.Emulation;
 
 namespace WaveEngine.MRTK.Scenes
 {

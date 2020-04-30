@@ -4,7 +4,7 @@ using WaveEngine.Components.XR;
 using WaveEngine.Framework.XR;
 using WaveEngine.Framework.XR.Interaction;
 
-namespace WaveEngine_MRTK_Demo.Behaviors
+namespace WaveEngine.MRTK.Behaviors
 {
     /// <summary>
     /// Track an XR joint.

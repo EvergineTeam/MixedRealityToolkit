@@ -7,7 +7,7 @@ using WaveEngine.Framework;
 using WaveEngine.Framework.Graphics;
 using WaveEngine.Framework.Services;
 using WaveEngine.Mathematics;
-using WaveEngine_MRTK_Demo.Emulation;
+using WaveEngine.MRTK.Emulation;
 
 namespace WaveEngine_MRTK_Demo.Behaviors
 {

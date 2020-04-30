@@ -11,7 +11,7 @@ using WaveEngine.Mathematics;
 using WaveEngine.MRTK.Base.EventDatum.Input;
 using WaveEngine.MRTK.Base.Interfaces.InputSystem.Handlers;
 
-namespace WaveEngine_MRTK_Demo.Emulation
+namespace WaveEngine.MRTK.Emulation
 {
     /// <summary>
     /// The Cursor Manager.

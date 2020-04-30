@@ -6,11 +6,11 @@ using WaveEngine.Framework;
 using WaveEngine.Framework.Graphics;
 using WaveEngine.Framework.XR;
 using WaveEngine.Mathematics;
+using WaveEngine.MRTK.Effects;
+using WaveEngine.MRTK.Emulation;
 using WaveEngine.MRTK.Toolkit.Extensions;
-using WaveEngine_MRTK_Demo.Effects;
-using WaveEngine_MRTK_Demo.Emulation;
 
-namespace WaveEngine_MRTK_Demo.Behaviors
+namespace WaveEngine.MRTK.Behaviors
 {
     /// <summary>
     /// Updates hands shader.

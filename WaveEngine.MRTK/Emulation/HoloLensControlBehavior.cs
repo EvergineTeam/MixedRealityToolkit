@@ -5,9 +5,9 @@ using WaveEngine.Common.Attributes;
 using WaveEngine.Framework;
 using WaveEngine.Framework.Services;
 using WaveEngine.Framework.XR;
-using WaveEngine_MRTK_Demo.Emulation;
+using WaveEngine.MRTK.Emulation;
 
-namespace WaveEngine_MRTK_Demo.Behaviors
+namespace WaveEngine.MRTK.Behaviors
 {
     /// <summary>
     /// Hololens pinch.

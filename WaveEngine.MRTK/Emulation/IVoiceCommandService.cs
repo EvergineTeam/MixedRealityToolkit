@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace WaveEngine_MRTK.Emulation
+namespace WaveEngine.MRTK.Emulation
 {
     /// <summary>
     /// Interface for entities receiving command services.

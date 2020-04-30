@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WaveEngine_MRTK_Demo.Effects
+namespace WaveEngine.MRTK.Effects
 {
     using WaveEngine.Common.Graphics;
     using WaveEngine.Framework.Graphics;

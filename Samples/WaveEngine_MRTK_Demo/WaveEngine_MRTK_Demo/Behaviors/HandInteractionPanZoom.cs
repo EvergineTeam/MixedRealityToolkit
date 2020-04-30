@@ -12,10 +12,10 @@ using WaveEngine.Framework.Physics3D;
 using WaveEngine.Mathematics;
 using WaveEngine.MRTK.Base.EventDatum.Input;
 using WaveEngine.MRTK.Base.Interfaces.InputSystem.Handlers;
+using WaveEngine.MRTK.Effects;
+using WaveEngine.MRTK.Emulation;
 using WaveEngine.MRTK.SDK.Features;
 using WaveEngine.MRTK.Services.InputSystem;
-using WaveEngine_MRTK_Demo.Effects;
-using WaveEngine_MRTK_Demo.Emulation;
 
 namespace WaveEngine_MRTK_Demo.Behaviors
 {

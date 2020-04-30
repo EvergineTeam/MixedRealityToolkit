@@ -12,8 +12,6 @@ using WaveEngine.Framework.Services;
 using WaveEngine.Framework.XR;
 using WaveEngine.Mathematics;
 using WaveEngine.MRTK.Services.InputSystem;
-using WaveEngine_MRTK_Demo.Behaviors;
-using WaveEngine_MRTK_Demo.Emulation;
 
 namespace WaveEngine_MRTK_Demo
 {

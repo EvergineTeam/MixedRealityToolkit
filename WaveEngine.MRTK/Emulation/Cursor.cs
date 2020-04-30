@@ -10,7 +10,7 @@ using WaveEngine.Framework.Graphics.Materials;
 using WaveEngine.Framework.Physics3D;
 using WaveEngine.MRTK.Toolkit.Extensions;
 
-namespace WaveEngine_MRTK_Demo.Emulation
+namespace WaveEngine.MRTK.Emulation
 {
     /// <summary>
     /// Visible cursor in scene.

@@ -5,7 +5,7 @@ using WaveEngine.Common.Graphics;
 using WaveEngine.Framework;
 using WaveEngine.Framework.Graphics;
 
-namespace WaveEngine_MRTK_Demo.Emulation
+namespace WaveEngine.MRTK.Emulation
 {
     /// <summary>
     /// Hover Light for Holographic shader.

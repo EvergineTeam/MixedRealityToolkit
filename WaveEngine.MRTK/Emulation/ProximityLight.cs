@@ -5,7 +5,7 @@ using WaveEngine.Common.Graphics;
 using WaveEngine.Framework;
 using WaveEngine.Framework.Graphics;
 
-namespace WaveEngine_MRTK_Demo.Emulation
+namespace WaveEngine.MRTK.Emulation
 {
     internal class ProximityLight : WaveEngine.Framework.Component
     {

@@ -4,7 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using WaveEngine.Framework.Services;
 using WaveEngine.Framework.Threading;
-using WaveEngine_MRTK.Emulation;
+using WaveEngine.MRTK.Emulation;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Core;
 using Windows.Media.SpeechRecognition;

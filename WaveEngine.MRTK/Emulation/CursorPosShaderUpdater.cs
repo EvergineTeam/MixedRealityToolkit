@@ -9,9 +9,8 @@ using WaveEngine.Framework.Graphics;
 using WaveEngine.Framework.Managers;
 using WaveEngine.Mathematics;
 using WaveEngine.MRTK.Toolkit.Extensions;
-using WaveEngine_MRTK_Demo.Behaviors;
 
-namespace WaveEngine_MRTK_Demo.Emulation
+namespace WaveEngine.MRTK.Emulation
 {
     /// <summary>
     /// Updates the position of the cursors on all materials with shaders that required it.

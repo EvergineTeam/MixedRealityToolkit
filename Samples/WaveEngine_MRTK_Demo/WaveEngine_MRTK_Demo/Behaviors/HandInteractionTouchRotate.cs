@@ -10,7 +10,6 @@ using WaveEngine.Mathematics;
 using WaveEngine.MRTK.Base.EventDatum.Input;
 using WaveEngine.MRTK.Base.Interfaces.InputSystem.Handlers;
 using WaveEngine.MRTK.SDK.Features;
-using WaveEngine_MRTK_Demo.Emulation;
 
 namespace WaveEngine_MRTK_Demo.Behaviors
 {
