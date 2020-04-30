@@ -143,6 +143,10 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\WaveEngine.MRTK\WaveEngine.MRTK.csproj">
+      <Project>{67DE4CB4-453F-41E4-B914-34F25516DC48}</Project>
+      <Name>WaveEngine.MRTK</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WaveEngine_MRTK_Demo\WaveEngine_MRTK_Demo.csproj">
       <Project>{04070017-d150-405d-9c6b-9b313dea8f1a}</Project>
       <Name>WaveEngine_MRTK_Demo</Name>

@@ -1,5 +1,6 @@
 ﻿// Copyright © Wave Engine S.L. All rights reserved. Use is subject to license terms.
 
+using System;
 using WaveEngine.Common.Audio;
 using WaveEngine.Common.Media;
 using WaveEngine.Components.Sound;

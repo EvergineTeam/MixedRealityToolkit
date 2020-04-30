@@ -24,4 +24,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\WaveEngine.MRTK\WaveEngine.MRTK.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Emulation\" />
+  </ItemGroup>
 </Project>
