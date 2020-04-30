@@ -31,6 +31,9 @@ namespace WaveEngine.MRTK.Emulation
         /// </summary>
         public Cursor mainCursor;
 
+        private float pinchDist;
+        private Vector3 pinchPosRef;
+
         /// <inheritdoc/>
         protected override bool OnAttached()
         {
@@ -43,20 +46,35 @@ namespace WaveEngine.MRTK.Emulation
         /// <inheritdoc/>
         protected override void Update(TimeSpan gameTime)
         {
-            this.cursor.Pinch = this.mainCursor.Pinch;
-
             Ray r = new Ray(this.mainCursor.transform.Position, this.mainCursor.transform.WorldTransform.Forward);
-            Vector3 collPoint = r.GetPoint(1000.0f);
-            this.transform.Position = collPoint;
-
-            HitResult3D result = this.Managers.PhysicManager3D.RayCast(ref r, 1000.0f, CollisionCategory3D.All);
-
-            if (result.Succeeded)
+            if (this.cursor.Pinch)
             {
-                collPoint = result.Point;
+                float dFactor = (this.mainCursor.transform.Position - this.pinchPosRef).Z;
+                dFactor = (float)Math.Pow(1 - dFactor, 10);
+                this.transform.Position = r.GetPoint(this.pinchDist * dFactor);
+            }
+            else
+            {
+                Vector3 collPoint = r.GetPoint(1000.0f);
+                this.transform.Position = collPoint; // Move the cursor to avoid collisions
+                HitResult3D result = this.Managers.PhysicManager3D.RayCast(ref r, 1000.0f, CollisionCategory3D.All);
+
+                if (result.Succeeded)
+                {
+                    collPoint = result.Point;
+                }
+
+                this.transform.Position = collPoint;
+
+                if (this.mainCursor.Pinch)
+                {
+                    // Pinch is about to happen
+                    this.pinchDist = (this.transform.Position - this.mainCursor.transform.Position).Length();
+                    this.pinchPosRef = this.mainCursor.transform.Position;
+                }
             }
 
-            this.transform.Position = collPoint;
+            this.cursor.Pinch = this.mainCursor.Pinch;
         }
     }
 }
