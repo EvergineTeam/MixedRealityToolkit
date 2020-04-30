@@ -64,7 +64,7 @@ namespace WaveEngine.MRTK.Scenes
                 this,
                 assetsService.Load<Material>(this.CursorMat),
                 assetsService.Load<Material>(this.HoloHandsMat),
-                assetsService.Load<Material>(this.SpatialMappingMat),
+                this.SpatialMappingMat == Guid.Empty ? null : assetsService.Load<Material>(this.SpatialMappingMat),
                 this.HolographicEffect);
         }
 

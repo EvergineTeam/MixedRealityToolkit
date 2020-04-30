@@ -10,5 +10,7 @@ namespace WaveEngine_MRTK_Demo.Scenes
         protected override Guid HoloHandsMat => WaveContent.Materials.HoloHands;
 
         protected override Guid HolographicEffect => WaveContent.Effects.HoloGraphic;
+
+        protected override Guid SpatialMappingMat => Guid.Empty;
     }
 }
