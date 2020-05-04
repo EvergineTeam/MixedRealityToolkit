@@ -1,6 +1,8 @@
 ﻿// Copyright © Wave Engine S.L. All rights reserved. Use is subject to license terms.
 
 using System;
+using WaveEngine.Components.Graphics3D;
+using WaveEngine.Components.Primitives;
 using WaveEngine.Framework;
 using WaveEngine.Framework.Graphics;
 using WaveEngine.Framework.Physics3D;
@@ -27,9 +29,14 @@ namespace WaveEngine.MRTK.Emulation
         protected Cursor cursor;
 
         /// <summary>
-        /// The reference cursor to retrieve the Pinch from.
+        /// Gets or sets the reference cursor to retrieve the Pinch from.
         /// </summary>
-        public Cursor mainCursor;
+        public Cursor MainCursor { get; set; }
+
+        /// <summary>
+        /// Gets or sets bezier.
+        /// </summary>
+        public LineBezierMesh Bezier { get; set; }
 
         private float pinchDist;
         private Vector3 pinchPosRef;
@@ -38,7 +45,7 @@ namespace WaveEngine.MRTK.Emulation
         protected override bool OnAttached()
         {
             var attached = base.OnAttached();
-            this.UpdateOrder = this.mainCursor.UpdateOrder + 0.1f; // Ensure this is executed always after the main Cursor
+            this.UpdateOrder = this.MainCursor.UpdateOrder + 0.1f; // Ensure this is executed always after the main Cursor
 
             return attached;
         }
@@ -46,11 +53,17 @@ namespace WaveEngine.MRTK.Emulation
         /// <inheritdoc/>
         protected override void Update(TimeSpan gameTime)
         {
-            Ray r = new Ray(this.mainCursor.transform.Position, this.mainCursor.transform.WorldTransform.Forward);
+            this.Bezier.LinePoints[0].Position = this.MainCursor.transform.Position;
+            this.Bezier.LinePoints[1].Position = this.MainCursor.transform.Position + (this.MainCursor.transform.WorldTransform.Forward * (this.transform.Position - this.MainCursor.transform.Position).Length() * 0.75f);
+            this.Bezier.LinePoints[2].Position = this.transform.Position;
+            this.Bezier.RefreshItems(null);
+
+            Ray r = new Ray(this.MainCursor.transform.Position, this.MainCursor.transform.WorldTransform.Forward);
             if (this.cursor.Pinch)
             {
-                float dFactor = (this.mainCursor.transform.Position - this.pinchPosRef).Z;
+                float dFactor = (this.MainCursor.transform.Position - this.pinchPosRef).Z;
                 dFactor = (float)Math.Pow(1 - dFactor, 10);
+
                 this.transform.Position = r.GetPoint(this.pinchDist * dFactor);
             }
             else
@@ -64,17 +77,21 @@ namespace WaveEngine.MRTK.Emulation
                     collPoint = result.Point;
                 }
 
-                this.transform.Position = collPoint;
-
-                if (this.mainCursor.Pinch)
+                float dist = (this.MainCursor.transform.Position - collPoint).Length();
+                if (dist > 0.1f)
                 {
-                    // Pinch is about to happen
-                    this.pinchDist = (this.transform.Position - this.mainCursor.transform.Position).Length();
-                    this.pinchPosRef = this.mainCursor.transform.Position;
+                    this.transform.Position = collPoint;
+
+                    if (this.MainCursor.Pinch)
+                    {
+                        // Pinch is about to happen
+                        this.pinchDist = dist;
+                        this.pinchPosRef = this.MainCursor.transform.Position;
+                    }
                 }
             }
 
-            this.cursor.Pinch = this.mainCursor.Pinch;
+            this.cursor.Pinch = this.MainCursor.Pinch;
         }
     }
 }

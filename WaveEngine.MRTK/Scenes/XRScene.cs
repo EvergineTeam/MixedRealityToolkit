@@ -1,10 +1,12 @@
 ﻿// Copyright © Wave Engine S.L. All rights reserved. Use is subject to license terms.
 
 using System;
+using System.Collections.Generic;
 using WaveEngine.Bullet;
 using WaveEngine.Common.Graphics;
 using WaveEngine.Common.Input.Keyboard;
 using WaveEngine.Components.Graphics3D;
+using WaveEngine.Components.Primitives;
 using WaveEngine.Components.XR;
 using WaveEngine.Framework;
 using WaveEngine.Framework.Graphics;
@@ -132,6 +134,25 @@ namespace WaveEngine.MRTK.Scenes
 
             scene.Managers.EntityManager.Add(cursor);
 
+            LineBezierMesh bezierComp = new LineBezierMesh()
+            {
+                IsCameraAligned = true,
+                LinePoints = new List<BezierPointInfo>()
+                        {
+                            new BezierPointInfo() { Position = Vector3.Zero, Thickness = 0.003f, Color = Color.White },
+                            new BezierPointInfo() { Position = Vector3.Zero, Thickness = 0.003f, Color = Color.White },
+                            new BezierPointInfo() { Position = Vector3.One,  Thickness = 0.003f, Color = Color.White },
+                        },
+                Resolution = 10,
+            };
+
+            Entity bezier = new Entity()
+                .AddComponent(new Transform3D())
+                .AddComponent(bezierComp)
+                .AddComponent(new LineMeshRenderer3D())
+                ;
+            scene.Managers.EntityManager.Add(bezier);
+
             Entity cursorDist = new Entity()
                 .AddComponent(new Transform3D())
                 .AddComponent(new MaterialComponent() { Material = material })
@@ -140,8 +161,7 @@ namespace WaveEngine.MRTK.Scenes
                 .AddComponent(new SphereCollider3D())
                 .AddComponent(new StaticBody3D() { CollisionCategories = CollisionCategory3D.Cat1, IsSensor = true })
                 .AddComponent(new Cursor() { PressedColor = new Color(255, 173, 128), ReleasedColor = new Color(255, 93, 0), UpdateOrder = 0.3f })
-                .AddComponent(new ProximityLight())
-                .AddComponent(new CursorRay() { mainCursor = cursor.FindComponent<Cursor>() })
+                .AddComponent(new CursorRay() { MainCursor = cursor.FindComponent<Cursor>(), Bezier = bezierComp })
                 ;
             scene.Managers.EntityManager.Add(cursorDist);
 
