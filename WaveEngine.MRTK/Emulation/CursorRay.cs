@@ -48,6 +48,7 @@ namespace WaveEngine.MRTK.Emulation
 
         private float pinchDist;
         private Vector3 pinchPosRef;
+        private Camera3D cam;
 
         /// <summary>
         /// Gets or sets the TrackXRJoint.
@@ -59,6 +60,7 @@ namespace WaveEngine.MRTK.Emulation
         {
             var attached = base.OnAttached();
             this.UpdateOrder = this.MainCursor.UpdateOrder + 0.1f; // Ensure this is executed always after the main Cursor
+            this.cam = this.Managers.RenderManager.ActiveCamera3D;
 
             return attached;
         }
@@ -82,7 +84,7 @@ namespace WaveEngine.MRTK.Emulation
 
                 if (this.cursor.Pinch)
                 {
-                    float dFactor = (this.MainCursor.transform.Position - this.pinchPosRef).Z;
+                    float dFactor = (Vector3.Transform(this.MainCursor.transform.Position, this.cam.Transform.WorldInverseTransform) - this.pinchPosRef).Z;
                     dFactor = (float)Math.Pow(1 - dFactor, 10);
 
                     this.transform.Position = r.GetPoint(this.pinchDist * dFactor);
@@ -107,7 +109,7 @@ namespace WaveEngine.MRTK.Emulation
                         {
                             // Pinch is about to happen
                             this.pinchDist = dist;
-                            this.pinchPosRef = this.MainCursor.transform.Position;
+                            this.pinchPosRef = Vector3.Transform(this.MainCursor.transform.Position, this.cam.Transform.WorldInverseTransform);
                         }
                     }
                 }
