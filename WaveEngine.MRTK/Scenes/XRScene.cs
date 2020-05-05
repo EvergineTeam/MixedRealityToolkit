@@ -45,6 +45,11 @@ namespace WaveEngine.MRTK.Scenes
         /// </summary>
         protected abstract Guid HolographicEffect { get; }
 
+        /// <summary>
+        /// Gets the texture for the hand rays.
+        /// </summary>
+        protected abstract Guid HandRayTexture { get; }
+
         /// <inheritdoc/>
         public override void RegisterManagers()
         {
@@ -66,7 +71,8 @@ namespace WaveEngine.MRTK.Scenes
                 assetsService.Load<Material>(this.CursorMat),
                 assetsService.Load<Material>(this.HoloHandsMat),
                 this.SpatialMappingMat == Guid.Empty ? null : assetsService.Load<Material>(this.SpatialMappingMat),
-                this.HolographicEffect);
+                this.HolographicEffect,
+                assetsService.Load<Texture>(this.HandRayTexture));
         }
 
         /// <inheritdoc/>
@@ -99,7 +105,7 @@ namespace WaveEngine.MRTK.Scenes
             scene.Managers.EntityManager.Add(handEntity);
         }
 
-        private static Entity CreateCursor(Scene scene, Material material, XRHandedness handedness)
+        private static Entity CreateCursor(Scene scene, Material material, XRHandedness handedness, Texture dotsTexture)
         {
             Entity cursor = new Entity()
                 .AddComponent(new Transform3D())
@@ -147,6 +153,8 @@ namespace WaveEngine.MRTK.Scenes
                             new BezierPointInfo() { Position = Vector3.One,  Thickness = 0.003f, Color = Color.White },
                         },
                 Resolution = 10,
+                DiffuseTexture = dotsTexture,
+                TextureTiling = new Vector2(10.0f, 1.0f),
             };
 
             Entity bezier = new Entity()
@@ -179,13 +187,14 @@ namespace WaveEngine.MRTK.Scenes
         /// <param name="handMat">Material for the hands.</param>
         /// <param name="spatialMappingMat">Maerial for the spatial mapping.</param>
         /// <param name="holographicsEffectId">Id for holographic effect.</param>
-        public static void InitHoloScene(Scene scene, Material cursorMat, Material handMat, Material spatialMappingMat, Guid holographicsEffectId)
+        /// <param name="dotsTexture">Texture for handrays.</param>
+        public static void InitHoloScene(Scene scene, Material cursorMat, Material handMat, Material spatialMappingMat, Guid holographicsEffectId, Texture dotsTexture)
         {
             var assetsService = Application.Current.Container.Resolve<AssetsService>();
 
             // Create cursors
-            CreateCursor(scene, cursorMat, XRHandedness.LeftHand);
-            CreateCursor(scene, cursorMat, XRHandedness.RightHand);
+            CreateCursor(scene, cursorMat, XRHandedness.LeftHand, dotsTexture);
+            CreateCursor(scene, cursorMat, XRHandedness.RightHand, dotsTexture);
 
             // Create hand meshes
             CreateXRHandMesh(scene, handMat, XRHandedness.LeftHand);

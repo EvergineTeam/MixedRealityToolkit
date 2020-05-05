@@ -124,6 +124,8 @@ namespace WaveEngine.MRTK.Emulation
                     this.Bezier.LinePoints[2].Position = this.transform.Position;
                     this.Bezier.LinePoints[1].Position = r.Position + (r.Direction * (this.transform.Position - r.Position).Length() * 0.75f);
                     this.Bezier.RefreshItems(null);
+
+                    this.Bezier.TextureTiling = new Vector2((this.Bezier.LinePoints[0].Position - this.Bezier.LinePoints[2].Position).Length() * 30.0f, 1.0f);
                 }
             }
 
