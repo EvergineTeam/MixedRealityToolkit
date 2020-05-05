@@ -14,5 +14,7 @@ namespace WaveEngine_MRTK_Demo.Scenes
         protected override Guid SpatialMappingMat => Guid.Empty;
 
         protected override Guid HandRayTexture => WaveContent.Textures.line_dots_png;
+
+        protected override Guid HandRaySampler => WaveContent.Samplers.LinearWrapSampler;
     }
 }
