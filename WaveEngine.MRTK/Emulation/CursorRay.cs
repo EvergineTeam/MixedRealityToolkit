@@ -7,7 +7,10 @@ using WaveEngine.Framework;
 using WaveEngine.Framework.Graphics;
 using WaveEngine.Framework.Physics3D;
 using WaveEngine.Framework.Services;
+using WaveEngine.Framework.XR;
+using WaveEngine.Framework.XR.TrackedDevices;
 using WaveEngine.Mathematics;
+using WaveEngine.MRTK.Behaviors;
 
 namespace WaveEngine.MRTK.Emulation
 {
@@ -38,8 +41,18 @@ namespace WaveEngine.MRTK.Emulation
         /// </summary>
         public LineBezierMesh Bezier { get; set; }
 
+        /// <summary>
+        /// Gets or sets the Handedness.
+        /// </summary>
+        public XRHandedness Handedness { get; set; }
+
         private float pinchDist;
         private Vector3 pinchPosRef;
+
+        /// <summary>
+        /// Gets or sets the TrackXRJoint.
+        /// </summary>
+        public TrackXRJoint joint { get; set; }
 
         /// <inheritdoc/>
         protected override bool OnAttached()
@@ -53,41 +66,64 @@ namespace WaveEngine.MRTK.Emulation
         /// <inheritdoc/>
         protected override void Update(TimeSpan gameTime)
         {
-            this.Bezier.LinePoints[0].Position = this.MainCursor.transform.Position;
-            this.Bezier.LinePoints[1].Position = this.MainCursor.transform.Position + (this.MainCursor.transform.WorldTransform.Forward * (this.transform.Position - this.MainCursor.transform.Position).Length() * 0.75f);
-            this.Bezier.LinePoints[2].Position = this.transform.Position;
-            this.Bezier.RefreshItems(null);
-
-            Ray r = new Ray(this.MainCursor.transform.Position, this.MainCursor.transform.WorldTransform.Forward);
-            if (this.cursor.Pinch)
+            Ray? ray;
+            if (this.joint != null)
             {
-                float dFactor = (this.MainCursor.transform.Position - this.pinchPosRef).Z;
-                dFactor = (float)Math.Pow(1 - dFactor, 10);
-
-                this.transform.Position = r.GetPoint(this.pinchDist * dFactor);
+                ray = this.joint.Pointer;
             }
             else
             {
-                Vector3 collPoint = r.GetPoint(1000.0f);
-                this.transform.Position = collPoint; // Move the cursor to avoid collisions
-                HitResult3D result = this.Managers.PhysicManager3D.RayCast(ref r, 1000.0f, CollisionCategory3D.All);
+                ray = new Ray(this.MainCursor.transform.Position, this.MainCursor.transform.WorldTransform.Forward);
+            }
 
-                if (result.Succeeded)
+            if (ray != null && ray.Value.Position != Vector3.Zero)
+            {
+                Ray r = ray.Value;
+
+                if (this.cursor.Pinch)
                 {
-                    collPoint = result.Point;
+                    float dFactor = (this.MainCursor.transform.Position - this.pinchPosRef).Z;
+                    dFactor = (float)Math.Pow(1 - dFactor, 10);
+
+                    this.transform.Position = r.GetPoint(this.pinchDist * dFactor);
+                }
+                else
+                {
+                    Vector3 collPoint = r.GetPoint(1000.0f);
+                    this.transform.Position = collPoint; // Move the cursor to avoid collisions
+                    HitResult3D result = this.Managers.PhysicManager3D.RayCast(ref r, 1000.0f, CollisionCategory3D.All);
+
+                    if (result.Succeeded)
+                    {
+                        collPoint = result.Point;
+                    }
+
+                    float dist = (this.MainCursor.transform.Position - collPoint).Length();
+                    if (dist > 0.1f)
+                    {
+                        this.transform.Position = collPoint;
+
+                        if (this.MainCursor.Pinch)
+                        {
+                            // Pinch is about to happen
+                            this.pinchDist = dist;
+                            this.pinchPosRef = this.MainCursor.transform.Position;
+                        }
+                    }
                 }
 
-                float dist = (this.MainCursor.transform.Position - collPoint).Length();
-                if (dist > 0.1f)
+                // Update line
+                if (this.joint != null)
                 {
-                    this.transform.Position = collPoint;
+                    this.Bezier.Owner.IsEnabled = this.joint.TrackedDevice != null && this.joint.TrackedDevice.IsConnected && this.joint.TrackedDevice.PoseIsValid;
+                }
 
-                    if (this.MainCursor.Pinch)
-                    {
-                        // Pinch is about to happen
-                        this.pinchDist = dist;
-                        this.pinchPosRef = this.MainCursor.transform.Position;
-                    }
+                if (this.Bezier.Owner.IsEnabled)
+                {
+                    this.Bezier.LinePoints[0].Position = r.Position;
+                    this.Bezier.LinePoints[2].Position = this.transform.Position;
+                    this.Bezier.LinePoints[1].Position = r.Position + (r.Direction * (this.transform.Position - r.Position).Length() * 0.75f);
+                    this.Bezier.RefreshItems(null);
                 }
             }
 

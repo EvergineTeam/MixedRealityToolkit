@@ -112,17 +112,20 @@ namespace WaveEngine.MRTK.Scenes
                 .AddComponent(new ProximityLight())
                 ;
 
+            TrackXRJoint trackXRJoint = null;
             var xrPlatform = Application.Current.Container.Resolve<XRPlatform>();
             if (xrPlatform != null)
             {
-                // HoloLens 2
-                cursor.AddComponent(new TrackXRJoint()
+                trackXRJoint = new TrackXRJoint()
                 {
                     Handedness = handedness,
                     SelectionStrategy = TrackXRDevice.SelectionDeviceStrategy.ByHandedness,
                     JointKind = XRHandJointKind.IndexTip,
                     TrackingLostMode = TrackXRDevice.XRTrackingLostMode.KeepLastPose,
-                })
+                };
+
+                // HoloLens 2
+                cursor.AddComponent(trackXRJoint)
                     .AddComponent(new HoloLensControlBehavior())
                     ;
             }
@@ -161,7 +164,7 @@ namespace WaveEngine.MRTK.Scenes
                 .AddComponent(new SphereCollider3D())
                 .AddComponent(new StaticBody3D() { CollisionCategories = CollisionCategory3D.Cat1, IsSensor = true })
                 .AddComponent(new Cursor() { PressedColor = new Color(255, 173, 128), ReleasedColor = new Color(255, 93, 0), UpdateOrder = 0.3f })
-                .AddComponent(new CursorRay() { MainCursor = cursor.FindComponent<Cursor>(), Bezier = bezierComp })
+                .AddComponent(new CursorRay() { MainCursor = cursor.FindComponent<Cursor>(), Bezier = bezierComp, joint = trackXRJoint })
                 ;
             scene.Managers.EntityManager.Add(cursorDist);
 
