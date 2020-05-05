@@ -31,6 +31,18 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
         protected RigidBody3D rigidBody;
 
         /// <summary>
+        /// The collider.
+        /// </summary>
+        [BindComponent(isRequired: false, isExactType: false)]
+        protected Collider3D collider = null;
+
+        /// <summary>
+        /// The physicBody3D.
+        /// </summary>
+        [BindComponent(isRequired: false, isExactType: false)]
+        protected PhysicBody3D physicBody3D = null;
+
+        /// <summary>
         /// Gets or sets a value indicating whether the manipulation smoothing is enabled.
         /// </summary>
         [RenderProperty(Tooltip = "Enable manipulation smoothing")]
@@ -148,6 +160,18 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
             if (this.rigidBody != null)
             {
                 this.UpdateOrder = this.rigidBody.UpdateOrder + 0.1f;
+            }
+
+            if (this.collider == null)
+            {
+                this.collider = new BoxCollider3D();
+                this.Owner.AddComponent(this.collider);
+            }
+
+            if (this.physicBody3D == null)
+            {
+                this.physicBody3D = new StaticBody3D();
+                this.Owner.AddComponent(this.physicBody3D);
             }
         }
 
