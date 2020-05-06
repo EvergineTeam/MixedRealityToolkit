@@ -6,6 +6,7 @@ using System.Text;
 using WaveEngine.Common.Graphics;
 using WaveEngine.Editor.Extension;
 using WaveEngine.Editor.Extension.Attributes;
+using WaveEngine.MRTK.Effects;
 using WaveEngine_MRTK_Demo.Effects;
 
 namespace WaveEngine_MRTK_Demo.Editor
