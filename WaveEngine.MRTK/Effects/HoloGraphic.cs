@@ -150,7 +150,7 @@ namespace WaveEngine.MRTK.Effects
             }
         }
         
-        public float Parameters_RoundCornerRadius
+        public float Parameters_RoundCornerRadious
         {
             get
             {
@@ -186,18 +186,6 @@ namespace WaveEngine.MRTK.Effects
             }
         }
         
-        public WaveEngine.Mathematics.Vector4 Parameters_RoundCornersRadius
-        {
-            get
-            {
-                return this.material.CBuffers[1].GetBufferData<WaveEngine.Mathematics.Vector4>(64);
-            }
-            set
-            {
-				this.material.CBuffers[1].SetBufferData(value, 64);
-            }
-        }
-        
         public float Parameters_EdgeSmoothingValue
         {
             get
@@ -214,11 +202,11 @@ namespace WaveEngine.MRTK.Effects
         {
             get
             {
-                return this.material.CBuffers[1].GetBufferData<System.Single>(80);
+                return this.material.CBuffers[1].GetBufferData<System.Single>(64);
             }
             set
             {
-				this.material.CBuffers[1].SetBufferData(value, 80);
+				this.material.CBuffers[1].SetBufferData(value, 64);
             }
         }
         
@@ -226,11 +214,11 @@ namespace WaveEngine.MRTK.Effects
         {
             get
             {
-                return this.material.CBuffers[1].GetBufferData<System.Single>(84);
+                return this.material.CBuffers[1].GetBufferData<System.Single>(68);
             }
             set
             {
-				this.material.CBuffers[1].SetBufferData(value, 84);
+				this.material.CBuffers[1].SetBufferData(value, 68);
             }
         }
         
@@ -238,11 +226,11 @@ namespace WaveEngine.MRTK.Effects
         {
             get
             {
-                return this.material.CBuffers[1].GetBufferData<System.Single>(88);
+                return this.material.CBuffers[1].GetBufferData<System.Single>(72);
             }
             set
             {
-				this.material.CBuffers[1].SetBufferData(value, 88);
+				this.material.CBuffers[1].SetBufferData(value, 72);
             }
         }
         
@@ -250,7 +238,19 @@ namespace WaveEngine.MRTK.Effects
         {
             get
             {
-                return this.material.CBuffers[1].GetBufferData<WaveEngine.Mathematics.Vector3>(96);
+                return this.material.CBuffers[1].GetBufferData<WaveEngine.Mathematics.Vector3>(80);
+            }
+            set
+            {
+				this.material.CBuffers[1].SetBufferData(value, 80);
+            }
+        }
+        
+        public WaveEngine.Mathematics.Vector4 Parameters_ProximityLightCenterColorOverride
+        {
+            get
+            {
+                return this.material.CBuffers[1].GetBufferData<WaveEngine.Mathematics.Vector4>(96);
             }
             set
             {
@@ -258,7 +258,7 @@ namespace WaveEngine.MRTK.Effects
             }
         }
         
-        public WaveEngine.Mathematics.Vector4 Parameters_ProximityLightCenterColorOverride
+        public WaveEngine.Mathematics.Vector4 Parameters_ProximityLightMiddleColorOverride
         {
             get
             {
@@ -270,7 +270,7 @@ namespace WaveEngine.MRTK.Effects
             }
         }
         
-        public WaveEngine.Mathematics.Vector4 Parameters_ProximityLightMiddleColorOverride
+        public WaveEngine.Mathematics.Vector4 Parameters_ProximityLightOuterColorOverride
         {
             get
             {
@@ -282,7 +282,7 @@ namespace WaveEngine.MRTK.Effects
             }
         }
         
-        public WaveEngine.Mathematics.Vector4 Parameters_ProximityLightOuterColorOverride
+        public WaveEngine.Mathematics.Vector4 Parameters_LightColor0
         {
             get
             {
@@ -294,11 +294,11 @@ namespace WaveEngine.MRTK.Effects
             }
         }
         
-        public WaveEngine.Mathematics.Vector4 Parameters_LightColor0
+        public float Parameters_Metallic
         {
             get
             {
-                return this.material.CBuffers[1].GetBufferData<WaveEngine.Mathematics.Vector4>(160);
+                return this.material.CBuffers[1].GetBufferData<System.Single>(160);
             }
             set
             {
@@ -306,27 +306,15 @@ namespace WaveEngine.MRTK.Effects
             }
         }
         
-        public float Parameters_Metallic
-        {
-            get
-            {
-                return this.material.CBuffers[1].GetBufferData<System.Single>(176);
-            }
-            set
-            {
-				this.material.CBuffers[1].SetBufferData(value, 176);
-            }
-        }
-        
         public float Parameters_Smoothness
         {
             get
             {
-                return this.material.CBuffers[1].GetBufferData<System.Single>(180);
+                return this.material.CBuffers[1].GetBufferData<System.Single>(164);
             }
             set
             {
-				this.material.CBuffers[1].SetBufferData(value, 180);
+				this.material.CBuffers[1].SetBufferData(value, 164);
             }
         }
         
@@ -334,11 +322,11 @@ namespace WaveEngine.MRTK.Effects
         {
             get
             {
-                return this.material.CBuffers[1].GetBufferData<WaveEngine.Mathematics.Vector2>(192);
+                return this.material.CBuffers[1].GetBufferData<WaveEngine.Mathematics.Vector2>(176);
             }
             set
             {
-				this.material.CBuffers[1].SetBufferData(value, 192);
+				this.material.CBuffers[1].SetBufferData(value, 176);
             }
         }
         
@@ -346,11 +334,11 @@ namespace WaveEngine.MRTK.Effects
         {
             get
             {
-                return this.material.CBuffers[1].GetBufferData<WaveEngine.Mathematics.Vector2>(200);
+                return this.material.CBuffers[1].GetBufferData<WaveEngine.Mathematics.Vector2>(184);
             }
             set
             {
-				this.material.CBuffers[1].SetBufferData(value, 200);
+				this.material.CBuffers[1].SetBufferData(value, 184);
             }
         }
         

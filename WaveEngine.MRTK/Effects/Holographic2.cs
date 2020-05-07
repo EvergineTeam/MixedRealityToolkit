@@ -173,8 +173,8 @@ namespace WaveEngine.MRTK.Effects
         [RenderPropertyAsFInput(minLimit: 0.0f, maxLimit: 0.5f)]
         public float RoundCornerRadius
         {
-            get => this.Parameters_RoundCornerRadius;
-            set => this.Parameters_RoundCornerRadius = value;
+            get => this.Parameters_RoundCornerRadious;
+            set => this.Parameters_RoundCornerRadious = value;
         }
 
         /// <summary>
