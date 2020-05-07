@@ -5,6 +5,7 @@ using WaveEngine.Common.Audio;
 using WaveEngine.Common.Media;
 using WaveEngine.Components.Sound;
 using WaveEngine.Framework;
+using WaveEngine.MRTK.Behaviors;
 
 namespace WaveEngine.MRTK.SDK.Features
 {
@@ -71,6 +72,16 @@ namespace WaveEngine.MRTK.SDK.Features
 
                 soundEmitter.Play();
             }
+        }
+
+        /// <summary>
+        /// Check if the join is valid (hololens data can be considered valid).
+        /// </summary>
+        /// <param name="joint">The joint to check.</param>
+        /// <returns>Valid or not.</returns>
+        public static bool IsJointValid(TrackXRJoint joint)
+        {
+            return joint != null && joint.TrackedDevice != null && joint.TrackedDevice.IsConnected && joint.TrackedDevice.PoseIsValid;
         }
     }
 }

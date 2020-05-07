@@ -6,6 +6,7 @@ using WaveEngine.Framework;
 using WaveEngine.Framework.Services;
 using WaveEngine.Framework.XR;
 using WaveEngine.MRTK.Emulation;
+using WaveEngine.MRTK.SDK.Features;
 
 namespace WaveEngine.MRTK.Behaviors
 {
@@ -53,8 +54,9 @@ namespace WaveEngine.MRTK.Behaviors
         /// <inheritdoc/>
         protected override void Update(TimeSpan gameTime)
         {
-            if (this.trackXRJoint != null
-                && this.trackXRJoint.TrackedDevice != null
+            ////this.joint.TrackedDevice != null && this.joint.TrackedDevice.IsConnected && this.joint.TrackedDevice.PoseIsValid;
+
+            if (Tools.IsJointValid(this.trackXRJoint)
                 && this.trackXRJoint.TrackedDevice.TryGetArticulatedHandJoint(this.PinchJoint1, out var joint1)
                 && this.trackXRJoint.TrackedDevice.TryGetArticulatedHandJoint(this.PinchJoint2, out var joint2))
             {

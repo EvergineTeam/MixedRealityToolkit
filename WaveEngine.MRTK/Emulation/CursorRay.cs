@@ -11,6 +11,7 @@ using WaveEngine.Framework.XR;
 using WaveEngine.Framework.XR.TrackedDevices;
 using WaveEngine.Mathematics;
 using WaveEngine.MRTK.Behaviors;
+using WaveEngine.MRTK.SDK.Features;
 
 namespace WaveEngine.MRTK.Emulation
 {
@@ -117,7 +118,7 @@ namespace WaveEngine.MRTK.Emulation
                 // Update line
                 if (this.joint != null)
                 {
-                    this.Bezier.Owner.IsEnabled = this.joint.TrackedDevice != null && this.joint.TrackedDevice.IsConnected && this.joint.TrackedDevice.PoseIsValid;
+                    this.Bezier.Owner.IsEnabled = Tools.IsJointValid(this.joint);
                 }
 
                 if (this.Bezier.Owner.IsEnabled)

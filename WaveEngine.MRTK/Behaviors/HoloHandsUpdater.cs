@@ -8,6 +8,7 @@ using WaveEngine.Framework.XR;
 using WaveEngine.Mathematics;
 using WaveEngine.MRTK.Effects;
 using WaveEngine.MRTK.Emulation;
+using WaveEngine.MRTK.SDK.Features;
 using WaveEngine.MRTK.Toolkit.Extensions;
 
 namespace WaveEngine.MRTK.Behaviors
@@ -67,13 +68,13 @@ namespace WaveEngine.MRTK.Behaviors
         {
             if (this.trackXRJoint != null)
             {
-                if (this.trackXRJoint.TrackedDevice == null || !this.trackXRJoint.TrackedDevice.IsConnected || !this.trackXRJoint.TrackedDevice.PoseIsValid)
+                if (Tools.IsJointValid(this.trackXRJoint))
                 {
-                    this.time = MathHelper.Clamp(this.time - ((float)gameTime.TotalSeconds * 0.6f), 0, 1);
+                    this.time = MathHelper.Clamp(this.time + ((float)gameTime.TotalSeconds * 0.6f), 0, 1);
                 }
                 else
                 {
-                    this.time = MathHelper.Clamp(this.time + ((float)gameTime.TotalSeconds * 0.6f), 0, 1);
+                    this.time = MathHelper.Clamp(this.time - ((float)gameTime.TotalSeconds * 0.6f), 0, 1);
                 }
 
                 if (this.isAnimating)
