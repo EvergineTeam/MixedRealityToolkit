@@ -85,7 +85,7 @@ namespace WaveEngine.MRTK.Emulation
                 if (this.cursor.Pinch)
                 {
                     float dFactor = (Vector3.Transform(this.MainCursor.transform.Position, this.cam.Transform.WorldInverseTransform) - this.pinchPosRef).Z;
-                    dFactor = (float)Math.Pow(1 - dFactor, 10);
+                    dFactor = (float)Math.Pow(1 - dFactor, 4);
 
                     this.transform.Position = r.GetPoint(this.pinchDist * dFactor);
                 }
