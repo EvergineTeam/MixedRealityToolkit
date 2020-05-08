@@ -64,6 +64,62 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
         /// </summary>
         public event EventHandler ManipulationEnded;
 
+        /// <summary>
+        /// Constraints.
+        /// </summary>
+        public enum ContraintsEnum
+        {
+            /// <summary>
+            /// Constraint translation on X axis.
+            /// </summary>
+            ConstraintPosX = 1 << 0,
+
+            /// <summary>
+            /// Constraint translation on Y axis.
+            /// </summary>
+            ConstraintPosY = 1 << 1,
+
+            /// <summary>
+            /// Constraint translation on Z axis.
+            /// </summary>
+            ConstraintPosZ = 1 << 2,
+
+            /// <summary>
+            /// Constraint rotations on X axis.
+            /// </summary>
+            ConstraintRotX = 1 << 3,
+
+            /// <summary>
+            /// Constraint rotations on X axis.
+            /// </summary>
+            ConstraintRotY = 1 << 4,
+
+            /// <summary>
+            /// Constraint rotations on X axis.
+            /// </summary>
+            ConstraintRotZ = 1 << 5,
+
+            /// <summary>
+            /// Constraint scale on X axis.
+            /// </summary>
+            ConstraintScaleX = 1 << 6,
+
+            /// <summary>
+            /// Constraint scale on Y axis.
+            /// </summary>
+            ConstraintScaleY = 1 << 7,
+
+            /// <summary>
+            /// Constraint scale on Z axis.
+            /// </summary>
+            ConstraintScaleZ = 1 << 8,
+        }
+
+        /// <summary>
+        /// Gets or sets constraints.
+        /// </summary>
+        public int Constraints { get; set; }
+
         private bool lastLeftPressed;
         private bool lastRightPressed;
         private bool leftPressed;
@@ -244,6 +300,38 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
                 {
                     // Set controller transform to the right transform
                     controllerTransform = rightTransform;
+                }
+
+                if (this.Constraints != 0)
+                {
+                    Vector3 translation = controllerTransform.Translation;
+                    for (int i = 0; i < 3; ++i)
+                    {
+                        if ((this.Constraints & (1 << i)) != 0)
+                        {
+                            translation[i] = 0.0f;
+                        }
+                    }
+
+                    Vector3 rotation = controllerTransform.Rotation;
+                    for (int i = 0; i < 3; ++i)
+                    {
+                        if ((this.Constraints & (1 << (i + 3))) != 0)
+                        {
+                            rotation[i] = 0.0f;
+                        }
+                    }
+
+                    Vector3 scale = controllerTransform.Scale;
+                    for (int i = 0; i < 3; ++i)
+                    {
+                        if ((this.Constraints & (1 << (i + 6))) != 0)
+                        {
+                            scale[i] = 1.0f;
+                        }
+                    }
+
+                    controllerTransform = Matrix4x4.CreateFromTRS(translation, rotation, Vector3.One);
                 }
 
                 // Update grab transform matrix if any of the presses changed
