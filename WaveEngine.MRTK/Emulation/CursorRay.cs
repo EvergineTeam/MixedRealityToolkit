@@ -79,6 +79,7 @@ namespace WaveEngine.MRTK.Emulation
                 ray = new Ray(this.MainCursor.transform.Position, this.MainCursor.transform.WorldTransform.Forward);
             }
 
+            bool disableByProximity = false;
             if (ray != null && ray.Value.Position != Vector3.Zero)
             {
                 Ray r = ray.Value;
@@ -113,13 +114,20 @@ namespace WaveEngine.MRTK.Emulation
                             this.pinchPosRef = Vector3.Transform(this.MainCursor.transform.Position, this.cam.Transform.WorldInverseTransform);
                         }
                     }
+                    else
+                    {
+                        disableByProximity = true;
+                    }
                 }
 
                 // Update line
+                bool disableByJointInvalid = false;
                 if (this.joint != null)
                 {
-                    this.Bezier.Owner.IsEnabled = Tools.IsJointValid(this.joint);
+                    disableByJointInvalid = !Tools.IsJointValid(this.joint);
                 }
+
+                this.Bezier.Owner.IsEnabled = !disableByJointInvalid && !disableByProximity;
 
                 if (this.Bezier.Owner.IsEnabled)
                 {
