@@ -56,6 +56,11 @@ namespace WaveEngine.MRTK.Emulation
         /// </summary>
         public TrackXRJoint joint { get; set; }
 
+        /// <summary>
+        /// The mask to check collisions.
+        /// </summary>
+        public CollisionCategory3D collisionMask = CollisionCategory3D.All;
+
         /// <inheritdoc/>
         protected override bool OnAttached()
         {
@@ -95,7 +100,7 @@ namespace WaveEngine.MRTK.Emulation
                 {
                     Vector3 collPoint = r.GetPoint(1000.0f);
                     this.transform.Position = collPoint; // Move the cursor to avoid collisions
-                    HitResult3D result = this.Managers.PhysicManager3D.RayCast(ref r, 1000.0f, CollisionCategory3D.All);
+                    HitResult3D result = this.Managers.PhysicManager3D.RayCast(ref r, 1000.0f, this.collisionMask);
 
                     if (result.Succeeded)
                     {

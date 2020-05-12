@@ -113,7 +113,7 @@ namespace WaveEngine.MRTK.Scenes
 
         private static Entity CreateCursor(Scene scene, Material material, XRHandedness handedness, Texture handRayTexture, SamplerState handRaySampler)
         {
-            Entity cursor = new Entity()
+            Entity cursor = new Entity("Cursor_" + handedness)
                 .AddComponent(new Transform3D())
                 .AddComponent(new MaterialComponent() { Material = material })
                 .AddComponent(new SphereMesh() { Diameter = 0.010f })
@@ -171,7 +171,7 @@ namespace WaveEngine.MRTK.Scenes
                 ;
             scene.Managers.EntityManager.Add(bezier);
 
-            Entity cursorDist = new Entity()
+            Entity cursorDist = new Entity("CursorDist_" + handedness)
                 .AddComponent(new Transform3D())
                 .AddComponent(new MaterialComponent() { Material = material })
                 .AddComponent(new SphereMesh() { Diameter = 0.010f })
