@@ -33,7 +33,7 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
         /// <summary>
         /// The collider.
         /// </summary>
-        [BindComponent(isRequired: false, isExactType: false)]
+        [BindComponent(isRequired: false, isExactType: false, source: BindComponentSource.Children)]
         protected Collider3D collider = null;
 
         /// <summary>
@@ -174,12 +174,9 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
             }
         }
 
-        private int tmp = 0;
-
         /// <inheritdoc/>
         public void OnPointerDragged(MixedRealityPointerEventData eventData)
         {
-            Console.WriteLine("Dragging" + (this.tmp++));
             var cursor = eventData.Cursor;
 
             if (this.activeCursors.ContainsKey(cursor))
@@ -226,16 +223,19 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
                 this.UpdateOrder = this.rigidBody.UpdateOrder + 0.1f;
             }
 
-            if (this.collider == null)
+            if (!Application.Current.IsEditor)
             {
-                this.collider = new BoxCollider3D();
-                this.Owner.AddComponent(this.collider);
-            }
+                if (this.collider == null)
+                {
+                    this.collider = new BoxCollider3D();
+                    this.Owner.AddComponent(this.collider);
+                }
 
-            if (this.physicBody3D == null)
-            {
-                this.physicBody3D = new StaticBody3D();
-                this.Owner.AddComponent(this.physicBody3D);
+                if (this.physicBody3D == null)
+                {
+                    this.physicBody3D = new StaticBody3D();
+                    this.Owner.AddComponent(this.physicBody3D);
+                }
             }
         }
 
@@ -378,10 +378,10 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
                 }
                 else
                 {
-                    this.rigidBody?.ResetTransform(pos, rot, scl);
-                    this.transform.Position = pos;
+                    this.physicBody3D.ResetTransform(pos, rot, scl);
+                    /*this.transform.Position = pos;
                     this.transform.Orientation = rot;
-                    this.transform.Scale = scl;
+                    this.transform.Scale = scl;*/
                 }
             }
         }
