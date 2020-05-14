@@ -120,6 +120,11 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
         /// </summary>
         public int Constraints { get; set; }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether the rigidbody should be active while dragging it.
+        /// </summary>
+        public bool KeepRigidBodyActiveDuringDrag { get; set; } = false;
+
         private bool lastLeftPressed;
         private bool lastRightPressed;
         private bool leftPressed;
@@ -155,7 +160,7 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
 
                 if (this.activeCursors.Count == 1)
                 {
-                    if (this.rigidBody != null)
+                    if (this.rigidBody != null && !this.KeepRigidBodyActiveDuringDrag)
                     {
                         this.previousLinearFactor = this.rigidBody.LinearFactor;
                         this.previousAngularFactor = this.rigidBody.AngularFactor;
@@ -169,9 +174,12 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
             }
         }
 
+        private int tmp = 0;
+
         /// <inheritdoc/>
         public void OnPointerDragged(MixedRealityPointerEventData eventData)
         {
+            Console.WriteLine("Dragging" + (this.tmp++));
             var cursor = eventData.Cursor;
 
             if (this.activeCursors.ContainsKey(cursor))
@@ -350,10 +358,31 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
                 Quaternion rot = Quaternion.Lerp(this.transform.Orientation, finalTransform.Orientation, lerpAmount);
                 Vector3 scl = Vector3.Lerp(this.transform.Scale, finalTransform.Scale, lerpAmount);
 
-                this.rigidBody?.ResetTransform(pos, rot, scl);
-                this.transform.Position = pos;
-                this.transform.Orientation = rot;
-                this.transform.Scale = scl;
+                if (this.rigidBody != null && this.KeepRigidBodyActiveDuringDrag)
+                {
+                    if (this.transform.Scale != scl)
+                    {
+                        this.rigidBody.ResetTransform(pos, rot, scl);
+                        this.transform.Scale = scl;
+
+                        this.rigidBody.LinearVelocity = Vector3.Zero;
+                        this.rigidBody.AngularVelocity = Vector3.Zero;
+                    }
+                    else
+                    {
+                        this.rigidBody.LinearVelocity = (pos - this.transform.Position) / timeStep;
+                        this.rigidBody.AngularVelocity = Quaternion.ToEuler(rot * Quaternion.Inverse(this.transform.Orientation)) / timeStep;
+                    }
+
+                    this.rigidBody.WakeUp();
+                }
+                else
+                {
+                    this.rigidBody?.ResetTransform(pos, rot, scl);
+                    this.transform.Position = pos;
+                    this.transform.Orientation = rot;
+                    this.transform.Scale = scl;
+                }
             }
         }
 
@@ -370,7 +399,7 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
 
         private void ReleaseRigidBody(Vector3 linearVelocity, Quaternion angularVelocity)
         {
-            if (this.rigidBody != null)
+            if (this.rigidBody != null && !this.KeepRigidBodyActiveDuringDrag)
             {
                 this.rigidBody.LinearFactor = this.previousLinearFactor;
                 this.rigidBody.AngularFactor = this.previousAngularFactor;
