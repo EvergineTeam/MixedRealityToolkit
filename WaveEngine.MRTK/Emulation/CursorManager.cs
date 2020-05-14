@@ -25,7 +25,7 @@ namespace WaveEngine.MRTK.Emulation
         /// </summary>
         public List<Cursor> Cursors { get; private set; } = new List<Cursor>();
 
-        private Dictionary<Entity, Entity> cursorCollisions = new Dictionary<Entity, Entity>();
+        private Dictionary<Entity, LinkedList<Entity>> cursorCollisions = new Dictionary<Entity, LinkedList<Entity>>();
         private Dictionary<Entity, Entity> interactedEntities = new Dictionary<Entity, Entity>();
 
         private Dictionary<Entity, Vector3> cursorsLinearVelocity = new Dictionary<Entity, Vector3>();
@@ -73,8 +73,10 @@ namespace WaveEngine.MRTK.Emulation
 
             if (!this.cursorCollisions.ContainsKey(cursorEntity))
             {
-                this.cursorCollisions[cursorEntity] = interactedEntity;
+                this.cursorCollisions[cursorEntity] = new LinkedList<Entity>();
             }
+
+            this.cursorCollisions[cursorEntity].AddFirst(interactedEntity);
         }
 
         private void Cursor_UpdateCollision(object sender, CollisionInfo3D info)
@@ -92,7 +94,10 @@ namespace WaveEngine.MRTK.Emulation
 
             this.RunTouchHandlers(cursorEntity, interactedEntity, (h, e) => h?.OnTouchCompleted(e));
 
-            this.cursorCollisions.Remove(cursorEntity);
+            if (this.cursorCollisions.ContainsKey(cursorEntity))
+            {
+                this.cursorCollisions[cursorEntity].Remove(interactedEntity);
+            }
         }
 
         /// <inheritdoc/>
@@ -120,10 +125,15 @@ namespace WaveEngine.MRTK.Emulation
                 this.cursorsAngularVelocity[cursor.Owner] = angularVelocity;
             }
 
-            foreach (KeyValuePair<Entity, Entity> entry in this.cursorCollisions)
+            foreach (KeyValuePair<Entity, LinkedList<Entity>> entry in this.cursorCollisions)
             {
+                if (entry.Value.Count == 0)
+                {
+                    continue;
+                }
+
                 var cursorEntity = entry.Key;
-                var interactedEntity = entry.Value;
+                var interactedEntity = entry.Value.First.Value;
 
                 var cursorComponent = cursorEntity.FindComponent<Cursor>();
 

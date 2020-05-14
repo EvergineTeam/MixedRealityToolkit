@@ -339,7 +339,7 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
                         }
                     }
 
-                    controllerTransform = Matrix4x4.CreateFromTRS(translation, rotation, Vector3.One);
+                    controllerTransform = Matrix4x4.CreateFromTRS(translation, rotation, scale);
                 }
 
                 // Update grab transform matrix if any of the presses changed
@@ -378,10 +378,10 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
                 }
                 else
                 {
-                    this.physicBody3D.ResetTransform(pos, rot, scl);
-                    /*this.transform.Position = pos;
+                    this.rigidBody?.ResetTransform(pos, rot, scl);
+                    this.transform.Position = pos;
                     this.transform.Orientation = rot;
-                    this.transform.Scale = scl;*/
+                    this.transform.Scale = scl;
                 }
             }
         }
