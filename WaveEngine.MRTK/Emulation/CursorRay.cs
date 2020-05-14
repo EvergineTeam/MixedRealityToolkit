@@ -104,7 +104,9 @@ namespace WaveEngine.MRTK.Emulation
 
                     if (result.Succeeded)
                     {
-                        collPoint = result.Point;
+                        Vector3 dir = r.Direction;
+                        dir.Normalize();
+                        collPoint = result.Point + (dir * 0.0025f);
                     }
 
                     float dist = (r.Position - collPoint).Length();
