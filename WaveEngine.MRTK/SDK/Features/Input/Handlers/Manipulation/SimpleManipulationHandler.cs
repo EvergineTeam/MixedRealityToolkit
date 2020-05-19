@@ -310,38 +310,6 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
                     controllerTransform = rightTransform;
                 }
 
-                if (this.Constraints != 0)
-                {
-                    Vector3 translation = controllerTransform.Translation;
-                    for (int i = 0; i < 3; ++i)
-                    {
-                        if ((this.Constraints & (1 << i)) != 0)
-                        {
-                            translation[i] = 0.0f;
-                        }
-                    }
-
-                    Vector3 rotation = controllerTransform.Rotation;
-                    for (int i = 0; i < 3; ++i)
-                    {
-                        if ((this.Constraints & (1 << (i + 3))) != 0)
-                        {
-                            rotation[i] = 0.0f;
-                        }
-                    }
-
-                    Vector3 scale = controllerTransform.Scale;
-                    for (int i = 0; i < 3; ++i)
-                    {
-                        if ((this.Constraints & (1 << (i + 6))) != 0)
-                        {
-                            scale[i] = 1.0f;
-                        }
-                    }
-
-                    controllerTransform = Matrix4x4.CreateFromTRS(translation, rotation, scale);
-                }
-
                 // Update grab transform matrix if any of the presses changed
                 if (leftPressedChanged || rightPressedChanged)
                 {
@@ -353,6 +321,38 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
 
                 // Update object transform
                 float lerpAmount = this.GetLerpAmount(timeStep);
+
+                if (this.Constraints != 0)
+                {
+                    Vector3 translation = finalTransform.Translation;
+                    for (int i = 0; i < 3; ++i)
+                    {
+                        if ((this.Constraints & (1 << i)) != 0)
+                        {
+                            translation[i] = this.transform.Position[i];
+                        }
+                    }
+
+                    Vector3 rotation = finalTransform.Rotation;
+                    for (int i = 0; i < 3; ++i)
+                    {
+                        if ((this.Constraints & (1 << (i + 3))) != 0)
+                        {
+                            rotation[i] = this.transform.Rotation[i];
+                        }
+                    }
+
+                    Vector3 scale = finalTransform.Scale;
+                    for (int i = 0; i < 3; ++i)
+                    {
+                        if ((this.Constraints & (1 << (i + 6))) != 0)
+                        {
+                            scale[i] = this.transform.Scale[i];
+                        }
+                    }
+
+                    finalTransform = Matrix4x4.CreateFromTRS(translation, rotation, scale);
+                }
 
                 Vector3 pos = Vector3.Lerp(this.transform.Position, finalTransform.Translation, lerpAmount);
                 Quaternion rot = Quaternion.Lerp(this.transform.Orientation, finalTransform.Orientation, lerpAmount);
