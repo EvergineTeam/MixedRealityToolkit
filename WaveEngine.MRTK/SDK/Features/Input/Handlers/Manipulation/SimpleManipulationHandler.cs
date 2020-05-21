@@ -317,7 +317,7 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
                     {
                         if ((this.Constraints & (1 << i)) != 0)
                         {
-                            translation[i] = 0.0f;
+                            translation[i] = this.transform.Position[i];
                         }
                     }
 
@@ -326,7 +326,7 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
                     {
                         if ((this.Constraints & (1 << (i + 3))) != 0)
                         {
-                            rotation[i] = 0.0f;
+                            rotation[i] = this.transform.Rotation[i];
                         }
                     }
 
@@ -335,7 +335,7 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
                     {
                         if ((this.Constraints & (1 << (i + 6))) != 0)
                         {
-                            scale[i] = 1.0f;
+                            scale[i] = this.transform.Scale[i];
                         }
                     }
 
