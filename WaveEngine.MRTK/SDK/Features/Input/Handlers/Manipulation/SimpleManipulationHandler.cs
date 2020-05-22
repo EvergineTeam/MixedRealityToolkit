@@ -132,6 +132,7 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
 
         // Transform matrix of the grabbed object in controller space at the moment the grab is started
         private Matrix4x4 grabTransform;
+        private Matrix4x4 fullContrainedRef;
 
         // Distance between the controllers at the moment the grab is started
         private float grabDistance;
@@ -310,46 +311,50 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
                     controllerTransform = rightTransform;
                 }
 
-                if (this.Constraints != 0)
-                {
-                    Vector3 translation = controllerTransform.Translation;
-                    for (int i = 0; i < 3; ++i)
-                    {
-                        if ((this.Constraints & (1 << i)) != 0)
-                        {
-                            translation[i] = this.transform.Position[i];
-                        }
-                    }
-
-                    Vector3 rotation = controllerTransform.Rotation;
-                    for (int i = 0; i < 3; ++i)
-                    {
-                        if ((this.Constraints & (1 << (i + 3))) != 0)
-                        {
-                            rotation[i] = this.transform.Rotation[i];
-                        }
-                    }
-
-                    Vector3 scale = controllerTransform.Scale;
-                    for (int i = 0; i < 3; ++i)
-                    {
-                        if ((this.Constraints & (1 << (i + 6))) != 0)
-                        {
-                            scale[i] = this.transform.Scale[i];
-                        }
-                    }
-
-                    controllerTransform = Matrix4x4.CreateFromTRS(translation, rotation, scale);
-                }
-
                 // Update grab transform matrix if any of the presses changed
                 if (leftPressedChanged || rightPressedChanged)
                 {
+                    this.fullContrainedRef = this.transform.WorldTransform;
                     this.grabTransform = this.transform.WorldTransform * Matrix4x4.Invert(controllerTransform);
                 }
 
                 // Calculate final transformation
                 Matrix4x4 finalTransform = this.grabTransform * controllerTransform;
+
+                if (this.Constraints != 0)
+                {
+                    Matrix4x4 localTransform = finalTransform * Matrix4x4.Invert(this.transform.WorldTransform);
+
+                    Vector3 translation = localTransform.Translation;
+                    for (int i = 0; i < 3; ++i)
+                    {
+                        if ((this.Constraints & (1 << i)) != 0)
+                        {
+                            translation[i] = 0.0f;
+                        }
+                    }
+
+                    Vector3 rotation = localTransform.Rotation;
+                    for (int i = 0; i < 3; ++i)
+                    {
+                        if ((this.Constraints & (1 << (i + 3))) != 0)
+                        {
+                            rotation[i] = 0.0f;
+                        }
+                    }
+
+                    Vector3 scale = localTransform.Scale;
+                    for (int i = 0; i < 3; ++i)
+                    {
+                        if ((this.Constraints & (1 << (i + 6))) != 0)
+                        {
+                            scale[i] = 1.0f;
+                        }
+                    }
+
+                    localTransform = Matrix4x4.CreateFromTRS(translation, rotation, scale);
+                    finalTransform = localTransform * this.transform.WorldTransform;
+                }
 
                 // Update object transform
                 float lerpAmount = this.GetLerpAmount(timeStep);
