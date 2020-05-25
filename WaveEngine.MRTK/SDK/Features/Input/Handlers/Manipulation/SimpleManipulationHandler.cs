@@ -70,6 +70,11 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
         public enum ContraintsEnum
         {
             /// <summary>
+            /// No Constraints
+            /// </summary>
+            None = 0,
+
+            /// <summary>
             /// Constraint translation on X axis.
             /// </summary>
             ConstraintPosX = 1 << 0,
