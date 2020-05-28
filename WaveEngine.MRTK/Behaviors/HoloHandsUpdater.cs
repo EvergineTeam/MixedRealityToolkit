@@ -29,8 +29,8 @@ namespace WaveEngine.MRTK.Behaviors
         private TrackXRJoint trackXRJoint;
 
         private float time = 0;
-        private string[] directivesAnimating = { "PULSE" };
-        private string[] directivesNotAnimating = { "BASE" };
+        private string[] directivesAnimating = { "PULSE", "REFLECTION" };
+        private string[] directivesNotAnimating = { "BASE", "REFLECTION" };
         private bool isAnimating = true;
         private MeshRenderer meshRenderer;
         private MeshRenderer cursorMeshRenderer;
