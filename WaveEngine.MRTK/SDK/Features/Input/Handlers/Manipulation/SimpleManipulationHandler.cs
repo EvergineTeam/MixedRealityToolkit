@@ -31,6 +31,18 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
         protected RigidBody3D rigidBody;
 
         /// <summary>
+        /// The collider.
+        /// </summary>
+        [BindComponent(isRequired: false, isExactType: false, source: BindComponentSource.Children)]
+        protected Collider3D collider = null;
+
+        /// <summary>
+        /// The physicBody3D.
+        /// </summary>
+        [BindComponent(isRequired: false, isExactType: false)]
+        protected PhysicBody3D physicBody3D = null;
+
+        /// <summary>
         /// Gets or sets a value indicating whether the manipulation smoothing is enabled.
         /// </summary>
         [RenderProperty(Tooltip = "Enable manipulation smoothing")]
@@ -52,6 +64,72 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
         /// </summary>
         public event EventHandler ManipulationEnded;
 
+        /// <summary>
+        /// Constraints.
+        /// </summary>
+        public enum ContraintsEnum
+        {
+            /// <summary>
+            /// No Constraints
+            /// </summary>
+            None = 0,
+
+            /// <summary>
+            /// Constraint translation on X axis.
+            /// </summary>
+            ConstraintPosX = 1 << 0,
+
+            /// <summary>
+            /// Constraint translation on Y axis.
+            /// </summary>
+            ConstraintPosY = 1 << 1,
+
+            /// <summary>
+            /// Constraint translation on Z axis.
+            /// </summary>
+            ConstraintPosZ = 1 << 2,
+
+            /// <summary>
+            /// Constraint rotations on X axis.
+            /// </summary>
+            ConstraintRotX = 1 << 3,
+
+            /// <summary>
+            /// Constraint rotations on X axis.
+            /// </summary>
+            ConstraintRotY = 1 << 4,
+
+            /// <summary>
+            /// Constraint rotations on X axis.
+            /// </summary>
+            ConstraintRotZ = 1 << 5,
+
+            /// <summary>
+            /// Constraint scale on X axis.
+            /// </summary>
+            ConstraintScaleX = 1 << 6,
+
+            /// <summary>
+            /// Constraint scale on Y axis.
+            /// </summary>
+            ConstraintScaleY = 1 << 7,
+
+            /// <summary>
+            /// Constraint scale on Z axis.
+            /// </summary>
+            ConstraintScaleZ = 1 << 8,
+        }
+
+        /// <summary>
+        /// Gets or sets constraints.
+        /// </summary>
+        public int Constraints { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the rigidbody should be active while dragging it.
+        /// </summary>
+        public bool KeepRigidBodyActiveDuringDrag { get; set; } = false;
+
         private bool lastLeftPressed;
         private bool lastRightPressed;
         private bool leftPressed;
@@ -59,6 +137,7 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
 
         // Transform matrix of the grabbed object in controller space at the moment the grab is started
         private Matrix4x4 grabTransform;
+        private Matrix4x4 fullContrainedRef;
 
         // Distance between the controllers at the moment the grab is started
         private float grabDistance;
@@ -92,7 +171,7 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
 
                 if (this.activeCursors.Count == 1)
                 {
-                    if (this.rigidBody != null)
+                    if (this.rigidBody != null && !this.KeepRigidBodyActiveDuringDrag)
                     {
                         this.previousLinearFactor = this.rigidBody.LinearFactor;
                         this.previousAngularFactor = this.rigidBody.AngularFactor;
@@ -170,6 +249,21 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
             {
                 this.UpdateOrder = this.rigidBody.UpdateOrder + 0.1f;
             }
+
+            if (!Application.Current.IsEditor)
+            {
+                if (this.collider == null)
+                {
+                    this.collider = new BoxCollider3D();
+                    this.Owner.AddComponent(this.collider);
+                }
+
+                if (this.physicBody3D == null)
+                {
+                    this.physicBody3D = new StaticBody3D();
+                    this.Owner.AddComponent(this.physicBody3D);
+                }
+            }
         }
 
         /// <inheritdoc/>
@@ -246,11 +340,47 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
                 // Update grab transform matrix if any of the presses changed
                 if (leftPressedChanged || rightPressedChanged)
                 {
+                    this.fullContrainedRef = this.transform.WorldTransform;
                     this.grabTransform = this.transform.WorldTransform * Matrix4x4.Invert(controllerTransform);
                 }
 
                 // Calculate final transformation
                 Matrix4x4 finalTransform = this.grabTransform * controllerTransform;
+
+                if (this.Constraints != 0)
+                {
+                    Matrix4x4 localTransform = finalTransform * Matrix4x4.Invert(this.fullContrainedRef);
+
+                    Vector3 translation = localTransform.Translation / localTransform.Scale;
+                    for (int i = 0; i < 3; ++i)
+                    {
+                        if ((this.Constraints & (1 << i)) != 0)
+                        {
+                            translation[i] = 0.0f;
+                        }
+                    }
+
+                    Vector3 rotation = localTransform.Rotation;
+                    for (int i = 0; i < 3; ++i)
+                    {
+                        if ((this.Constraints & (1 << (i + 3))) != 0)
+                        {
+                            rotation[i] = 0.0f;
+                        }
+                    }
+
+                    Vector3 scale = localTransform.Scale;
+                    for (int i = 0; i < 3; ++i)
+                    {
+                        if ((this.Constraints & (1 << (i + 6))) != 0)
+                        {
+                            scale[i] = 1.0f;
+                        }
+                    }
+
+                    localTransform = Matrix4x4.CreateFromTRS(translation * scale, rotation, scale);
+                    finalTransform = localTransform * this.fullContrainedRef;
+                }
 
                 // Update object transform
                 float lerpAmount = this.GetLerpAmount(timeStep);
@@ -259,10 +389,31 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
                 Quaternion rot = Quaternion.Lerp(this.transform.Orientation, finalTransform.Orientation, lerpAmount);
                 Vector3 scl = Vector3.Lerp(this.transform.Scale, finalTransform.Scale, lerpAmount);
 
-                this.rigidBody?.ResetTransform(pos, rot, scl);
-                this.transform.Position = pos;
-                this.transform.Orientation = rot;
-                this.transform.Scale = scl;
+                if (this.rigidBody != null && this.KeepRigidBodyActiveDuringDrag)
+                {
+                    if (this.transform.Scale != scl)
+                    {
+                        this.rigidBody.ResetTransform(pos, rot, scl);
+                        this.transform.Scale = scl;
+
+                        this.rigidBody.LinearVelocity = Vector3.Zero;
+                        this.rigidBody.AngularVelocity = Vector3.Zero;
+                    }
+                    else
+                    {
+                        this.rigidBody.LinearVelocity = (pos - this.transform.Position) / timeStep;
+                        this.rigidBody.AngularVelocity = Quaternion.ToEuler(rot * Quaternion.Inverse(this.transform.Orientation)) / timeStep;
+                    }
+
+                    this.rigidBody.WakeUp();
+                }
+                else
+                {
+                    this.rigidBody?.ResetTransform(pos, rot, scl);
+                    this.transform.Position = pos;
+                    this.transform.Orientation = rot;
+                    this.transform.Scale = scl;
+                }
             }
         }
 
@@ -279,7 +430,7 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
 
         private void ReleaseRigidBody(Vector3 linearVelocity, Quaternion angularVelocity)
         {
-            if (this.rigidBody != null)
+            if (this.rigidBody != null && !this.KeepRigidBodyActiveDuringDrag)
             {
                 this.rigidBody.LinearFactor = this.previousLinearFactor;
                 this.rigidBody.AngularFactor = this.previousAngularFactor;

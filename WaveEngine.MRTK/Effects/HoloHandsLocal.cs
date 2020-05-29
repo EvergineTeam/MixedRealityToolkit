@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WaveEngine_MRTK_Demo.Effects
+namespace WaveEngine.MRTK.Effects
 {
     using WaveEngine.Common.Graphics;
     using WaveEngine.Framework.Graphics;
@@ -16,20 +16,20 @@ namespace WaveEngine_MRTK_Demo.Effects
     using WaveEngine.Mathematics;
     
     
-    public class HoloGraphic : WaveEngine.Framework.Graphics.MaterialDecorator
+    public class HoloHandsLocal : WaveEngine.Framework.Graphics.MaterialDecorator
     {
         
-        public HoloGraphic(WaveEngine.Framework.Graphics.Effects.Effect effect) : 
+        public HoloHandsLocal(WaveEngine.Framework.Graphics.Effects.Effect effect) : 
                 base(new Material(effect))
         {
         }
         
-        public HoloGraphic(WaveEngine.Framework.Graphics.Material material) : 
+        public HoloHandsLocal(WaveEngine.Framework.Graphics.Material material) : 
                 base(material)
         {
         }
         
-        public WaveEngine.Mathematics.Matrix4x4 PerDrawCall_WorldViewProj
+        public WaveEngine.Mathematics.Matrix4x4 Base_WorldViewProj
         {
             get
             {
@@ -41,7 +41,7 @@ namespace WaveEngine_MRTK_Demo.Effects
             }
         }
         
-        public WaveEngine.Mathematics.Matrix4x4 PerDrawCall_World
+        public WaveEngine.Mathematics.Matrix4x4 Base_World
         {
             get
             {
@@ -53,7 +53,19 @@ namespace WaveEngine_MRTK_Demo.Effects
             }
         }
         
-        public WaveEngine.Mathematics.Vector3 Parameters_Color
+        public float Base_Time
+        {
+            get
+            {
+                return this.material.CBuffers[0].GetBufferData<System.Single>(128);
+            }
+            set
+            {
+				this.material.CBuffers[0].SetBufferData(value, 128);
+            }
+        }
+        
+        public WaveEngine.Mathematics.Vector3 Matrices_EdgeColor
         {
             get
             {
@@ -65,7 +77,7 @@ namespace WaveEngine_MRTK_Demo.Effects
             }
         }
         
-        public float Parameters_Alpha
+        public float Matrices_EdgeWidth
         {
             get
             {
@@ -77,7 +89,7 @@ namespace WaveEngine_MRTK_Demo.Effects
             }
         }
         
-        public WaveEngine.Mathematics.Vector3 Parameters_InnerGlowColor
+        public WaveEngine.Mathematics.Vector3 Matrices_FillColor0
         {
             get
             {
@@ -89,7 +101,7 @@ namespace WaveEngine_MRTK_Demo.Effects
             }
         }
         
-        public float Parameters_InnerGlowAlpha
+        public float Matrices_EdgeSmooth
         {
             get
             {
@@ -101,31 +113,7 @@ namespace WaveEngine_MRTK_Demo.Effects
             }
         }
         
-        public float Parameters_InnerGlowPower
-        {
-            get
-            {
-                return this.material.CBuffers[1].GetBufferData<System.Single>(44);
-            }
-            set
-            {
-				this.material.CBuffers[1].SetBufferData(value, 44);
-            }
-        }
-        
-        public float Parameters_MaxFingerDist
-        {
-            get
-            {
-                return this.material.CBuffers[1].GetBufferData<System.Single>(60);
-            }
-            set
-            {
-				this.material.CBuffers[1].SetBufferData(value, 60);
-            }
-        }
-        
-        public WaveEngine.Mathematics.Vector3 Parameters_FingerPosLeft
+        public WaveEngine.Mathematics.Vector3 Matrices_FillColor1
         {
             get
             {
@@ -137,15 +125,39 @@ namespace WaveEngine_MRTK_Demo.Effects
             }
         }
         
-        public WaveEngine.Mathematics.Vector3 Parameters_FingerPosRight
+        public float Matrices_Displacement
         {
             get
             {
-                return this.material.CBuffers[1].GetBufferData<WaveEngine.Mathematics.Vector3>(48);
+                return this.material.CBuffers[1].GetBufferData<System.Single>(44);
+            }
+            set
+            {
+				this.material.CBuffers[1].SetBufferData(value, 44);
+            }
+        }
+        
+        public float Matrices_T
+        {
+            get
+            {
+                return this.material.CBuffers[1].GetBufferData<System.Single>(48);
             }
             set
             {
 				this.material.CBuffers[1].SetBufferData(value, 48);
+            }
+        }
+        
+        public float Matrices_DistorsionH
+        {
+            get
+            {
+                return this.material.CBuffers[1].GetBufferData<System.Single>(52);
+            }
+            set
+            {
+				this.material.CBuffers[1].SetBufferData(value, 52);
             }
         }
         

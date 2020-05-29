@@ -22,12 +22,12 @@ namespace WaveEngine_MRTK_Demo.Behaviors
 
         public AudioBuffer sound { get; set; }
 
-        private bool rotate;
+        private LockCounter rotate;
         private SoundEmitter3D soundEmitter;
 
         public void OnTouchCompleted(HandTrackingInputEventData eventData)
         {
-            rotate = false;
+            rotate.Unlock();
         }
 
         public void OnTouchStarted(HandTrackingInputEventData eventData)
@@ -44,7 +44,7 @@ namespace WaveEngine_MRTK_Demo.Behaviors
                 this.soundEmitter.Play();
             }
 
-            rotate = true;
+            rotate.Lock();
         }
 
         public void OnTouchUpdated(HandTrackingInputEventData eventData)
@@ -63,10 +63,20 @@ namespace WaveEngine_MRTK_Demo.Behaviors
 
         protected override void Update(TimeSpan gameTime)
         {
-            if (rotate)
+            if (rotate.IsLocked)
             {
                 target.Orientation *= Quaternion.CreateFromAxisAngle(Vector3.Down, speed * (float)gameTime.TotalSeconds);
             }
+        }
+
+        public void OnFocusEnter()
+        {
+            rotate.Lock();
+        }
+
+        public void OnFocusExit()
+        {
+            rotate.Unlock();
         }
     }
 }

@@ -2,7 +2,7 @@
 Items:
   - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
     Name: camera
-    Tag: MainCamera
+    Tag: 
     IsEnabled: true
     IsStatic: false
     Components:
@@ -34,7 +34,7 @@ Items:
       - !WaveEngine.Framework.Graphics.Camera3D,WaveEngine.Framework
         Id: e6234645-a09c-405e-b7cc-e8970277f72c
         Aperture: 1.0
-        AspectRatio: 1.46460176
+        AspectRatio: 1.63318777
         BackgroundColor:
           A: 0
           B: 0
@@ -50,7 +50,7 @@ Items:
           MaxDepth: 1.0
           MinDepth: 0.0
         DisplayTag: null
-        DisplayTagDirty: true
+        DisplayTagDirty: false
         Exposure: 1.00000012
         FarPlane: 1000.0
         FieldOfView: 0.785398185
@@ -60,10 +60,10 @@ Items:
         LayerMaskDefaultValue: true
         NearPlane: 0.100000001
         ScreenViewport:
-          Height: 226.0
+          Height: 229.0
           MaxDepth: 1.0
           MinDepth: 0.0
-          Width: 331.0
+          Width: 374.0
           X: 0.0
           Y: 0.0
         Sensitivity: 100.0
@@ -167,7 +167,7 @@ Items:
                       Z: 1.5
                   - !WaveEngine.MRTK.Toolkit.Prefabs.ScenePrefab,WaveEngine.MRTK
                     Id: ccb178c0-9dc3-4b27-b79f-d13ed203e5d7
-                    DuplicateMaterials: true
+                    DuplicateMaterials: false
                     IsEnabled: true
                     PrefabId: 36cadeae-b478-4b98-a06c-72a186813083
                 Children: []
@@ -196,7 +196,7 @@ Items:
                       Z: 1.5
                   - !WaveEngine.MRTK.Toolkit.Prefabs.ScenePrefab,WaveEngine.MRTK
                     Id: 70d467ba-6531-4e23-ac22-dcd010d91596
-                    DuplicateMaterials: true
+                    DuplicateMaterials: false
                     IsEnabled: true
                     PrefabId: 36cadeae-b478-4b98-a06c-72a186813083
                 Children: []
@@ -225,7 +225,7 @@ Items:
                       Z: 1.5
                   - !WaveEngine.MRTK.Toolkit.Prefabs.ScenePrefab,WaveEngine.MRTK
                     Id: 4410c0e9-6146-4311-8629-ccbdb8786e65
-                    DuplicateMaterials: true
+                    DuplicateMaterials: false
                     IsEnabled: true
                     PrefabId: 36cadeae-b478-4b98-a06c-72a186813083
                 Children: []
@@ -353,6 +353,7 @@ Items:
                     PressPosition: 0.100000001
                     ReleasePosition: 0.300000012
                     RetractSpeed: 5.0
+                    SpeechKeyWord: button
                     StartPosition: 0.5
                     UpdateOrder: 0.5
                   - !WaveEngine.MRTK.Services.InputSystem.NearInteractionTouchable,WaveEngine.MRTK
@@ -421,16 +422,7 @@ Items:
                         IsEnabled: true
                         MinCompressRatio: 0.25
                         MovementScale: 1.0
-                        PressedColor:
-                          A: 0
-                          B: 0
-                          G: 0
-                          R: 0
-                        ReleasedColor:
-                          A: 0
-                          B: 0
-                          G: 0
-                          R: 0
+                        PressedMaterial: null
                     Children: []
                     Id: 703f10b5-7ad9-4165-b868-234298f4d683
                 Id: a43dee2b-0830-4db9-8019-006ab796cc75
@@ -493,6 +485,7 @@ Items:
                     PressPosition: 0.100000001
                     ReleasePosition: 0.300000012
                     RetractSpeed: 5.0
+                    SpeechKeyWord: button
                     StartPosition: 0.5
                     UpdateOrder: 0.5
                   - !WaveEngine.MRTK.Services.InputSystem.NearInteractionTouchable,WaveEngine.MRTK
@@ -561,16 +554,7 @@ Items:
                         IsEnabled: true
                         MinCompressRatio: 0.25
                         MovementScale: 1.0
-                        PressedColor:
-                          A: 0
-                          B: 0
-                          G: 0
-                          R: 0
-                        ReleasedColor:
-                          A: 0
-                          B: 0
-                          G: 0
-                          R: 0
+                        PressedMaterial: null
                     Children: []
                     Id: 5a253ead-212a-41b9-ab75-54a6db499f98
                 Id: 554939df-9bdc-4632-b8b6-8bf56cbda0ba
@@ -633,6 +617,7 @@ Items:
                     PressPosition: 0.100000001
                     ReleasePosition: 0.300000012
                     RetractSpeed: 5.0
+                    SpeechKeyWord: button
                     StartPosition: 0.5
                     UpdateOrder: 0.5
                   - !WaveEngine.MRTK.Services.InputSystem.NearInteractionTouchable,WaveEngine.MRTK
@@ -701,16 +686,7 @@ Items:
                         IsEnabled: true
                         MinCompressRatio: 0.25
                         MovementScale: 1.0
-                        PressedColor:
-                          A: 0
-                          B: 0
-                          G: 0
-                          R: 0
-                        ReleasedColor:
-                          A: 0
-                          B: 0
-                          G: 0
-                          R: 0
+                        PressedMaterial: null
                     Children: []
                     Id: 512ec42f-42d7-4e16-b071-95b4346c3b38
                 Id: 53d2e5e0-ca05-481a-88fc-9aa826bdc147
@@ -773,6 +749,7 @@ Items:
                     PressPosition: 0.100000001
                     ReleasePosition: 0.300000012
                     RetractSpeed: 5.0
+                    SpeechKeyWord: button
                     StartPosition: 0.5
                     UpdateOrder: 0.5
                   - !WaveEngine.MRTK.Services.InputSystem.NearInteractionTouchable,WaveEngine.MRTK
@@ -841,16 +818,7 @@ Items:
                         IsEnabled: true
                         MinCompressRatio: 0.25
                         MovementScale: 1.0
-                        PressedColor:
-                          A: 0
-                          B: 0
-                          G: 0
-                          R: 0
-                        ReleasedColor:
-                          A: 0
-                          B: 0
-                          G: 0
-                          R: 0
+                        PressedMaterial: null
                     Children: []
                     Id: f091352c-b680-4beb-bc61-30d0b419b600
                 Id: fd8b6ee9-8ac2-460e-ab3f-065d03c249f0
@@ -913,6 +881,7 @@ Items:
                     PressPosition: 0.100000001
                     ReleasePosition: 0.300000012
                     RetractSpeed: 5.0
+                    SpeechKeyWord: button
                     StartPosition: 0.5
                     UpdateOrder: 0.5
                   - !WaveEngine.MRTK.Services.InputSystem.NearInteractionTouchable,WaveEngine.MRTK
@@ -981,16 +950,7 @@ Items:
                         IsEnabled: true
                         MinCompressRatio: 0.25
                         MovementScale: 1.0
-                        PressedColor:
-                          A: 0
-                          B: 0
-                          G: 0
-                          R: 0
-                        ReleasedColor:
-                          A: 0
-                          B: 0
-                          G: 0
-                          R: 0
+                        PressedMaterial: null
                     Children: []
                     Id: 6c373c67-d1f3-4da5-9c4f-4619d270d25f
                 Id: b44cd3a8-c8f0-4566-ad35-39fc855e5170
@@ -1053,6 +1013,7 @@ Items:
                     PressPosition: 0.100000001
                     ReleasePosition: 0.300000012
                     RetractSpeed: 5.0
+                    SpeechKeyWord: button
                     StartPosition: 0.5
                     UpdateOrder: 0.5
                   - !WaveEngine.MRTK.Services.InputSystem.NearInteractionTouchable,WaveEngine.MRTK
@@ -1121,16 +1082,7 @@ Items:
                         IsEnabled: true
                         MinCompressRatio: 0.25
                         MovementScale: 1.0
-                        PressedColor:
-                          A: 0
-                          B: 0
-                          G: 0
-                          R: 0
-                        ReleasedColor:
-                          A: 0
-                          B: 0
-                          G: 0
-                          R: 0
+                        PressedMaterial: null
                     Children: []
                     Id: 62757bf5-1d42-4209-a6ab-7b8af486b383
                 Id: 7cac88f6-54a3-4c07-8290-c146060850b6
@@ -1193,6 +1145,7 @@ Items:
                     PressPosition: 0.100000001
                     ReleasePosition: 0.300000012
                     RetractSpeed: 5.0
+                    SpeechKeyWord: button
                     StartPosition: 0.5
                     UpdateOrder: 0.5
                   - !WaveEngine.MRTK.Services.InputSystem.NearInteractionTouchable,WaveEngine.MRTK
@@ -1261,16 +1214,7 @@ Items:
                         IsEnabled: true
                         MinCompressRatio: 0.25
                         MovementScale: 1.0
-                        PressedColor:
-                          A: 0
-                          B: 0
-                          G: 0
-                          R: 0
-                        ReleasedColor:
-                          A: 0
-                          B: 0
-                          G: 0
-                          R: 0
+                        PressedMaterial: null
                     Children: []
                     Id: 33bd02bc-d5b1-4ec5-8aca-b1da26a300bc
                 Id: e10cc79f-d102-4188-8ed0-8528b37a8ea5
@@ -1333,6 +1277,7 @@ Items:
                     PressPosition: 0.100000001
                     ReleasePosition: 0.300000012
                     RetractSpeed: 5.0
+                    SpeechKeyWord: button
                     StartPosition: 0.5
                     UpdateOrder: 0.5
                   - !WaveEngine.MRTK.Services.InputSystem.NearInteractionTouchable,WaveEngine.MRTK
@@ -1401,16 +1346,7 @@ Items:
                         IsEnabled: true
                         MinCompressRatio: 0.25
                         MovementScale: 1.0
-                        PressedColor:
-                          A: 0
-                          B: 0
-                          G: 0
-                          R: 0
-                        ReleasedColor:
-                          A: 0
-                          B: 0
-                          G: 0
-                          R: 0
+                        PressedMaterial: null
                     Children: []
                     Id: 3bae8099-2b01-4a73-8976-845121e0cc1c
                 Id: 634dea54-16ea-4bb1-945d-5d4b7b52454a
@@ -1473,6 +1409,7 @@ Items:
                     PressPosition: 0.100000001
                     ReleasePosition: 0.300000012
                     RetractSpeed: 5.0
+                    SpeechKeyWord: button
                     StartPosition: 0.5
                     UpdateOrder: 0.5
                   - !WaveEngine.MRTK.Services.InputSystem.NearInteractionTouchable,WaveEngine.MRTK
@@ -1541,16 +1478,7 @@ Items:
                         IsEnabled: true
                         MinCompressRatio: 0.25
                         MovementScale: 1.0
-                        PressedColor:
-                          A: 0
-                          B: 0
-                          G: 0
-                          R: 0
-                        ReleasedColor:
-                          A: 0
-                          B: 0
-                          G: 0
-                          R: 0
+                        PressedMaterial: null
                     Children: []
                     Id: 86a32863-5da4-43cf-8d87-61c3f8f883fe
                 Id: 7d167a85-43cb-45be-b327-6026c355cf25
@@ -1613,6 +1541,7 @@ Items:
                     PressPosition: 0.100000001
                     ReleasePosition: 0.300000012
                     RetractSpeed: 5.0
+                    SpeechKeyWord: button
                     StartPosition: 0.5
                     UpdateOrder: 0.5
                   - !WaveEngine.MRTK.Services.InputSystem.NearInteractionTouchable,WaveEngine.MRTK
@@ -1681,16 +1610,7 @@ Items:
                         IsEnabled: true
                         MinCompressRatio: 0.25
                         MovementScale: 1.0
-                        PressedColor:
-                          A: 0
-                          B: 0
-                          G: 0
-                          R: 0
-                        ReleasedColor:
-                          A: 0
-                          B: 0
-                          G: 0
-                          R: 0
+                        PressedMaterial: null
                     Children: []
                     Id: efdbe4c8-1472-4ee9-ba3f-ec4e09647dac
                 Id: 243e0aae-ad41-437d-a1c0-56a5de00b77c
@@ -1753,6 +1673,7 @@ Items:
                     PressPosition: 0.100000001
                     ReleasePosition: 0.300000012
                     RetractSpeed: 5.0
+                    SpeechKeyWord: button
                     StartPosition: 0.5
                     UpdateOrder: 0.5
                   - !WaveEngine.MRTK.Services.InputSystem.NearInteractionTouchable,WaveEngine.MRTK
@@ -1821,16 +1742,7 @@ Items:
                         IsEnabled: true
                         MinCompressRatio: 0.25
                         MovementScale: 1.0
-                        PressedColor:
-                          A: 0
-                          B: 0
-                          G: 0
-                          R: 0
-                        ReleasedColor:
-                          A: 0
-                          B: 0
-                          G: 0
-                          R: 0
+                        PressedMaterial: null
                     Children: []
                     Id: d11a0ebf-d1f7-42ad-8e84-020c8063efe0
                 Id: 74be45fc-5f00-4735-99be-42b68e0a9fbe
@@ -1893,6 +1805,7 @@ Items:
                     PressPosition: 0.100000001
                     ReleasePosition: 0.300000012
                     RetractSpeed: 5.0
+                    SpeechKeyWord: button
                     StartPosition: 0.5
                     UpdateOrder: 0.5
                   - !WaveEngine.MRTK.Services.InputSystem.NearInteractionTouchable,WaveEngine.MRTK
@@ -1961,16 +1874,7 @@ Items:
                         IsEnabled: true
                         MinCompressRatio: 0.25
                         MovementScale: 1.0
-                        PressedColor:
-                          A: 0
-                          B: 0
-                          G: 0
-                          R: 0
-                        ReleasedColor:
-                          A: 0
-                          B: 0
-                          G: 0
-                          R: 0
+                        PressedMaterial: null
                     Children: []
                     Id: 2e043057-3e58-45c3-bf96-019af716d664
                 Id: 671231f6-d16e-4d72-a9b4-4b19afb97a64
@@ -2103,15 +2007,6 @@ Items:
                     DuplicateMaterials: false
                     IsEnabled: true
                     PrefabId: facc69c2-67f2-4bc3-97cd-d1ddbd42a7e5
-                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
-                    Id: 5aa6a071-e17b-4571-850a-7797e8f864f2
-                    AsignedTo: Default
-                    IsEnabled: true
-                    Material: 75122a47-663c-4625-8118-ff2e2a2bcaeb
-                  - !WaveEngine_MRTK_Demo.Behaviors.CursorPosShaderUpdater,WaveEngine_MRTK_Demo
-                    Id: 6e7e860d-cfee-40f6-9625-83da7aa89abc
-                    IsEnabled: true
-                    UpdateOrder: 0.5
                 Children: []
                 Id: 709ed301-96ec-484d-a53b-9945776a8986
               - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
@@ -2141,15 +2036,6 @@ Items:
                     DuplicateMaterials: false
                     IsEnabled: true
                     PrefabId: facc69c2-67f2-4bc3-97cd-d1ddbd42a7e5
-                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
-                    Id: 23b34f1f-5a93-48c1-bc1e-39f24cf9bd05
-                    AsignedTo: Default
-                    IsEnabled: true
-                    Material: 75122a47-663c-4625-8118-ff2e2a2bcaeb
-                  - !WaveEngine_MRTK_Demo.Behaviors.CursorPosShaderUpdater,WaveEngine_MRTK_Demo
-                    Id: 8faff05a-d4e8-48f3-be75-7f6142e00645
-                    IsEnabled: true
-                    UpdateOrder: 0.5
                 Children: []
                 Id: d70270df-f08b-4304-ba62-bcb3b7a6a13c
               - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
@@ -2179,15 +2065,6 @@ Items:
                     DuplicateMaterials: false
                     IsEnabled: true
                     PrefabId: facc69c2-67f2-4bc3-97cd-d1ddbd42a7e5
-                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
-                    Id: 82845a9d-2038-450c-8573-6a5b0495bf5f
-                    AsignedTo: Default
-                    IsEnabled: true
-                    Material: 75122a47-663c-4625-8118-ff2e2a2bcaeb
-                  - !WaveEngine_MRTK_Demo.Behaviors.CursorPosShaderUpdater,WaveEngine_MRTK_Demo
-                    Id: d34c8723-263d-4827-b4c9-a9c3e735c577
-                    IsEnabled: true
-                    UpdateOrder: 0.5
                 Children: []
                 Id: 3e595de7-4180-4a9a-84a6-3fc1f2ce561c
               - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
@@ -2217,15 +2094,6 @@ Items:
                     DuplicateMaterials: false
                     IsEnabled: true
                     PrefabId: facc69c2-67f2-4bc3-97cd-d1ddbd42a7e5
-                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
-                    Id: 1120d35c-d234-46fe-80cf-b13fdd376017
-                    AsignedTo: Default
-                    IsEnabled: true
-                    Material: 75122a47-663c-4625-8118-ff2e2a2bcaeb
-                  - !WaveEngine_MRTK_Demo.Behaviors.CursorPosShaderUpdater,WaveEngine_MRTK_Demo
-                    Id: 857a926d-6f7f-4b44-9c61-f879b9212ea8
-                    IsEnabled: true
-                    UpdateOrder: 0.5
                 Children: []
                 Id: 3ec0cae7-bce5-4c25-b095-7889e95c6992
               - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
@@ -2255,15 +2123,6 @@ Items:
                     DuplicateMaterials: false
                     IsEnabled: true
                     PrefabId: facc69c2-67f2-4bc3-97cd-d1ddbd42a7e5
-                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
-                    Id: ad3f8992-0db8-4257-bf78-83ed53865ae0
-                    AsignedTo: Default
-                    IsEnabled: true
-                    Material: 75122a47-663c-4625-8118-ff2e2a2bcaeb
-                  - !WaveEngine_MRTK_Demo.Behaviors.CursorPosShaderUpdater,WaveEngine_MRTK_Demo
-                    Id: 0f1bd3d5-8f04-4690-8c1f-cfe46a8b55f1
-                    IsEnabled: true
-                    UpdateOrder: 0.5
                 Children: []
                 Id: 9e1597d5-9ed5-4ffb-b6a0-d91e78aba289
               - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
@@ -2486,9 +2345,6 @@ Items:
                         FrustumCullingEnabled: true
                         IsEnabled: true
                         OrderBias: 0
-                      - !WaveEngine_MRTK_Demo.Components.BatcherDisabler,WaveEngine_MRTK_Demo
-                        Id: 269694f9-edd1-4cf3-9852-40ca26819985
-                        IsEnabled: true
                     Children: []
                     Id: 85c4e697-d871-4581-90d5-05aef0da7e22
                 Id: d96cf240-ab6f-461e-9104-b2f5478c4aab
@@ -2706,9 +2562,6 @@ Items:
                         FrustumCullingEnabled: true
                         IsEnabled: true
                         OrderBias: 0
-                      - !WaveEngine_MRTK_Demo.Components.BatcherDisabler,WaveEngine_MRTK_Demo
-                        Id: 534b52d5-e366-4e66-8205-4f5e1b759b97
-                        IsEnabled: true
                     Children: []
                     Id: b433a8e0-eb5f-4c8b-b49f-6685356fac9c
                 Id: 2695742b-5a94-4382-9416-c4e035027f52
@@ -2848,7 +2701,7 @@ Items:
                   Z: 1.0
               - !WaveEngine.MRTK.Toolkit.Prefabs.ScenePrefab,WaveEngine.MRTK
                 Id: bb12a84d-9cc1-45d1-a6df-5d3ec71cc6e1
-                DuplicateMaterials: true
+                DuplicateMaterials: false
                 IsEnabled: true
                 PrefabId: ebf701c2-15f7-4a05-bfb0-946e3ac5aa06
             Children: []
@@ -2877,7 +2730,7 @@ Items:
                   Z: 1.0
               - !WaveEngine.MRTK.Toolkit.Prefabs.ScenePrefab,WaveEngine.MRTK
                 Id: 06d52a8d-a73d-48bb-9aee-128a636cf2fe
-                DuplicateMaterials: true
+                DuplicateMaterials: false
                 IsEnabled: true
                 PrefabId: ebf701c2-15f7-4a05-bfb0-946e3ac5aa06
             Children: []
@@ -2906,7 +2759,7 @@ Items:
                   Z: 1.0
               - !WaveEngine.MRTK.Toolkit.Prefabs.ScenePrefab,WaveEngine.MRTK
                 Id: 18c8d9ab-2499-4bdb-9b35-18c14b8b6342
-                DuplicateMaterials: true
+                DuplicateMaterials: false
                 IsEnabled: true
                 PrefabId: ebf701c2-15f7-4a05-bfb0-946e3ac5aa06
             Children: []
@@ -3404,10 +3257,6 @@ Items:
                     UpdateOrder: 0.5
                     sound: e911e7a0-7098-47f6-86c1-27a461c1eb24
                     speed: 3.0
-                  - !WaveEngine_MRTK_Demo.Behaviors.CursorPosShaderUpdater,WaveEngine_MRTK_Demo
-                    Id: 3dbf656d-9055-4cf5-bb7b-42a143ddf395
-                    IsEnabled: true
-                    UpdateOrder: 0.5
                 Children:
                   - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
                     Name: Platonic
@@ -4701,9 +4550,6 @@ Items:
                         FrustumCullingEnabled: true
                         IsEnabled: true
                         OrderBias: 0
-                      - !WaveEngine_MRTK_Demo.Components.BatcherDisabler,WaveEngine_MRTK_Demo
-                        Id: 813ca37e-889b-4340-966d-aabd4bd270d5
-                        IsEnabled: true
                     Children: []
                     Id: fd72d7c2-62f7-4261-bf91-6fd0bd2a274e
                   - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
@@ -4782,9 +4628,6 @@ Items:
                     FrustumCullingEnabled: true
                     IsEnabled: true
                     OrderBias: 0
-                  - !WaveEngine_MRTK_Demo.Components.BatcherDisabler,WaveEngine_MRTK_Demo
-                    Id: 919f28a5-a2bf-4d0e-a61d-a16f500ce104
-                    IsEnabled: true
                 Children: []
                 Id: 1b3a5900-b124-48e7-b480-a26a16ae7668
               - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
@@ -4973,6 +4816,106 @@ Items:
             Children: []
             Id: 3c6c0325-dcbf-40ed-b876-95e072a18f8b
         Id: b3a7521f-f10f-4fe2-96d1-ef6a07f0b0ef
+      - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+        Name: SceneDescriptionPanel
+        Tag: null
+        IsEnabled: true
+        IsStatic: false
+        Components:
+          - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+            Id: c8dd6de0-f033-4e8c-ba0a-7e316ceb68aa
+            IsEnabled: true
+            LocalOrientation:
+              W: 1.0
+              X: 0.0
+              Y: 0.0
+              Z: 0.0
+            LocalPosition:
+              X: 0.074000001
+              Y: 0.156000003
+              Z: 0.296000004
+            LocalScale:
+              X: 1.0
+              Y: 1.0
+              Z: 1.0
+        Children:
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: BackPanel
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: c137b365-30af-4553-80b6-6b5f7dc2d9cf
+                IsEnabled: true
+                LocalOrientation:
+                  W: 0.707106829
+                  X: 0.0
+                  Y: 0.707106769
+                  Z: 0.0
+                LocalPosition:
+                  X: -0.00499999989
+                  Y: 0.00199000491
+                  Z: 0.00679236697
+                LocalScale:
+                  X: 0.00925401505
+                  Y: 0.233268097
+                  Z: 0.429457605
+              - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+                Id: 40fa1039-5e10-49ce-a483-70bf41c33d35
+                AsignedTo: Default
+                IsEnabled: true
+                Material: 95c775d7-1461-4465-beb0-84ec959e4ede
+              - !WaveEngine.Components.Graphics3D.CubeMesh,WaveEngine.Components
+                Id: 82d58aab-3fef-4eac-935b-cc094501cfeb
+                InitialU: 0.0
+                InitialV: 0.0
+                IsEnabled: true
+                Model: 00000000-0000-0000-0000-000000000000
+                ModelMeshName: cube_primitive
+                Size: 1.0
+                UTile: 1.0
+                UVHorizontalFlip: false
+                UVVerticalFlip: false
+                YTile: 1.0
+              - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+                Id: 32416ea0-9c26-419a-a607-0793647d7631
+                DebugBoundingbox: true
+                FrustumCullingEnabled: true
+                IsEnabled: true
+                OrderBias: 0
+              - !WaveEngine.Framework.Physics3D.BoxCollider3D,WaveEngine.Framework
+                Id: 0ff04f62-f426-4a78-910e-c5513b9412d7
+                IsEnabled: true
+                Margin: 0.0399999991
+                Offset:
+                  X: 0.0
+                  Y: 0.0
+                  Z: 0.0
+                OrientationOffset:
+                  W: 1.0
+                  X: 0.0
+                  Y: 0.0
+                  Z: 0.0
+                Size:
+                  X: 1.0
+                  Y: 1.0
+                  Z: 1.0
+              - !WaveEngine.Framework.Physics3D.StaticBody3D,WaveEngine.Framework
+                Id: d503404a-5ed3-4071-81fa-4aa7a7009d63
+                CcdMotionThreshold: 0.0
+                CcdSweptSphereRadius: 0.200000003
+                CollisionCategories: Cat1
+                Friction: 0.5
+                IsEnabled: true
+                IsSensor: false
+                MaskBits: All
+                Restitution: 0.0
+                RollingFriction: 0.0
+                UpdateOrder: 0.5
+            Children: []
+            Id: 26c344f0-da09-4d71-a9a1-5ce73fcb5743
+        Id: 187140ba-0048-4bd5-bd10-4fc0280ad3da
     Id: bf7601de-e3ee-4c6a-9ec4-717fc4c11ddd
   - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
     Name: directionalLight
@@ -4989,9 +4932,9 @@ Items:
           Y: 0.234569699
           Z: 0.109381631
         LocalPosition:
-          X: 0.0
-          Y: 0.0
-          Z: 0.0
+          X: -0.0670055598
+          Y: 3.99384259E-09
+          Z: -2.79568191E-08
         LocalScale:
           X: 1.0
           Y: 1.0

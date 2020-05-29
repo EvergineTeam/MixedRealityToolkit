@@ -1,62 +1,20 @@
-using WaveEngine.Bullet;
-using WaveEngine.Components.XR;
-using WaveEngine.Framework;
-using WaveEngine.Framework.Services;
-using WaveEngine.Framework.XR;
-using WaveEngine_MRTK_Demo.Behaviors;
-using WaveEngine_MRTK_Demo.Emulation;
+using System;
+using WaveEngine.MRTK.Scenes;
 
 namespace WaveEngine_MRTK_Demo.Scenes
 {
-    public class TestScene : Scene
+    public class TestScene : XRScene
     {
-        public override void RegisterManagers()
-        {
-            base.RegisterManagers();
+        protected override Guid CursorMat => WaveContent.Materials.CursorLeft;
 
-            this.Managers.AddManager(new BulletPhysicManager3D());
-            this.Managers.AddManager(new CursorManager());
-        }
+        protected override Guid HoloHandsMat => WaveContent.Materials.HoloHands;
 
-        protected override void CreateScene()
-        {
-            //this.Managers.RenderManager.DebugLines = true;
+        protected override Guid HolographicEffect => WaveContent.Effects.HoloGraphic;
 
-            var xrPlatform = Application.Current.Container.Resolve<XRPlatform>();
+        protected override Guid SpatialMappingMat => Guid.Empty;
 
-            var cursorLeftEntity = this.Managers.EntityManager.Find("cursors.left");
-            var cursorRightEntity = this.Managers.EntityManager.Find("cursors.right");
+        protected override Guid HandRayTexture => WaveContent.Textures.line_dots_png;
 
-            if (xrPlatform != null)
-            {
-                // HoloLens 2
-                cursorLeftEntity?
-                    .AddComponent(new TrackXRJoint()
-                    {
-                        Handedness = XRHandedness.LeftHand,
-                        SelectionStrategy = TrackXRDevice.SelectionDeviceStrategy.ByHandedness,
-                        JointKind = XRHandJointKind.IndexTip,
-                        TrackingLostMode = TrackXRDevice.XRTrackingLostMode.KeepLastPose,
-                    })
-                    .AddComponent(new HoloLensControlBehavior())
-                    ;
-                cursorRightEntity?
-                    .AddComponent(new TrackXRJoint()
-                    {
-                        Handedness = XRHandedness.RightHand,
-                        SelectionStrategy = TrackXRDevice.SelectionDeviceStrategy.ByHandedness,
-                        JointKind = XRHandJointKind.IndexTip,
-                        TrackingLostMode = TrackXRDevice.XRTrackingLostMode.KeepLastPose,
-                    })
-                    .AddComponent(new HoloLensControlBehavior())
-                    ;
-            }
-            else
-            {
-                // Windows
-                cursorLeftEntity.AddComponent(new MouseControlBehavior() { key = WaveEngine.Common.Input.Keyboard.Keys.LeftShift });
-                cursorRightEntity.AddComponent(new MouseControlBehavior() { key = WaveEngine.Common.Input.Keyboard.Keys.Space });
-            }
-        }
+        protected override Guid HandRaySampler => WaveContent.Samplers.LinearWrapSampler;
     }
 }

@@ -67,6 +67,7 @@
     <Compile Include="AppViewSource.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VoiceCommandService.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -123,25 +124,29 @@
       <Version>6.2.8</Version>
     </PackageReference>
     <PackageReference Include="WaveEngine.MixedReality">
-      <Version>3.0.0.4879-nightly</Version>
+      <Version>3.0.0.5180-nightly</Version>
     </PackageReference>
     <PackageReference Include="WaveEngine.XAudio2">
-      <Version>3.0.0.4879-nightly</Version>
+      <Version>3.0.0.5180-nightly</Version>
     </PackageReference>
     <PackageReference Include="WaveEngine.Targets">
-      <Version>3.0.0.4879-nightly</Version>
+      <Version>3.0.0.5180-nightly</Version>
     </PackageReference>
     <PackageReference Include="WaveEngine.Targets.UWP">
-      <Version>3.0.0.4879-nightly</Version>
+      <Version>3.0.0.5180-nightly</Version>
     </PackageReference>
     <PackageReference Include="WaveEngine.UWPView">
-      <Version>3.0.0.4879-nightly</Version>
+      <Version>3.0.0.5180-nightly</Version>
     </PackageReference>
     <PackageReference Include="WaveEngine.Bullet">
-      <Version>3.0.0.4879-nightly</Version>
+      <Version>3.0.0.5180-nightly</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\WaveEngine.MRTK\WaveEngine.MRTK.csproj">
+      <Project>{67DE4CB4-453F-41E4-B914-34F25516DC48}</Project>
+      <Name>WaveEngine.MRTK</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WaveEngine_MRTK_Demo\WaveEngine_MRTK_Demo.csproj">
       <Project>{04070017-d150-405d-9c6b-9b313dea8f1a}</Project>
       <Name>WaveEngine_MRTK_Demo</Name>

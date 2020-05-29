@@ -1,24 +1,20 @@
-using WaveEngine.Bullet;
-using WaveEngine.Framework;
-using WaveEngine_MRTK_Demo.Emulation;
+using System;
+using WaveEngine.MRTK.Scenes;
 
 namespace WaveEngine_MRTK_Demo.Scenes
 {
-    public class DemoScene : Scene
+    public class DemoScene : XRScene
     {
-        public override void RegisterManagers()
-        {
-            base.RegisterManagers();
+        protected override Guid CursorMat => WaveContent.Materials.CursorLeft;
 
-            this.Managers.AddManager(new BulletPhysicManager3D());
-            this.Managers.AddManager(new CursorManager());
-        }
+        protected override Guid HoloHandsMat => WaveContent.Materials.HoloHands;
 
-        protected override void CreateScene()
-        {
-            //this.Managers.RenderManager.DebugLines = true;
+        protected override Guid HolographicEffect => WaveContent.Effects.HoloGraphic;
 
-            MRTKDemoTools.CreateHands(this);
-        }
+        protected override Guid SpatialMappingMat => Guid.Empty;
+
+        protected override Guid HandRayTexture => WaveContent.Textures.line_dots_png;
+
+        protected override Guid HandRaySampler => WaveContent.Samplers.LinearWrapSampler;
     }
 }

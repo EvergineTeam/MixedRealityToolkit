@@ -32,13 +32,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
         /// Gets or sets the color that the optional MaterialComponent will be set to when the button is pressed.
         /// </summary>
         [RenderProperty(Tooltip = "The color that the optional MaterialComponent will be set to when the button is pressed")]
-        public Color PressedColor { get; set; }
-
-        /// <summary>
-        /// Gets or sets the color that the optional MaterialComponent will be set to when the button is released.
-        /// </summary>
-        [RenderProperty(Tooltip = "The color that the optional MaterialComponent will be set to when the button is released")]
-        public Color ReleasedColor { get; set; }
+        public Material PressedMaterial { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether the button visuals scale will be modified when pressed.
@@ -64,10 +58,10 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
         [RenderProperty(Tooltip = "Set whether the button visuals color will be modified when pressed")]
         public bool ChangeColor { get; set; } = false;
 
-        private StandardMaterial material;
-
         private Vector3 movingVisualsInitialLocalPosition;
         private Vector3 movingVisualsInitialLocalScale;
+
+        private Material releasedMaterial;
 
         /// <inheritdoc/>
         protected override bool OnAttached()
@@ -78,7 +72,8 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
             {
                 if (this.materialComponent?.Material != null)
                 {
-                    this.material = new StandardMaterial(this.materialComponent.Material);
+                    // Cache current material as released
+                    this.releasedMaterial = this.materialComponent.Material;
                 }
 
                 this.movingVisualsInitialLocalPosition = this.transform.LocalPosition;
@@ -86,14 +81,6 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
             }
 
             return attached;
-        }
-
-        private void SetColor(Color color)
-        {
-            if (this.material != null)
-            {
-                this.material.BaseColor = color;
-            }
         }
 
         /// <inheritdoc/>
@@ -120,7 +107,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
             if (this.ChangeColor)
             {
                 // Set MaterialComponent color
-                this.SetColor(pressed ? this.PressedColor : this.ReleasedColor);
+                this.materialComponent.Material = pressed ? this.PressedMaterial : this.releasedMaterial;
             }
         }
     }

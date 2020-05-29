@@ -12,7 +12,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
     /// <summary>
     /// Represent a pressable button.
     /// </summary>
-    public class PressableButton : PressableObject
+    public class PressableButton : PressableObject, ISpeechHandler, IFocusable
     {
         /// <summary>
         /// The button feedback.
@@ -36,11 +36,24 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
         /// </summary>
         public event EventHandler ButtonReleased;
 
+        /// <summary>
+        /// Event fired when any button is pressed
+        /// </summary>
+        public static event EventHandler AnyButtonReleased;
+
+        /// <summary>
+        ///  Gets or sets the word that will make this object be pressed.
+        /// </summary>
+        public string SpeechKeyWord { get; set; } = "button";
+
         private bool isPressing;
 
         private float currentPosition;
 
         private IPressableButtonFeedback[] feedbackVisualsComponentsArray;
+
+        private bool speechWordRecognized = false;
+        private Entity seeItSayItLabel;
 
         /// <inheritdoc/>
         protected override void OnLoaded()
@@ -58,6 +71,12 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
             if (attached)
             {
                 this.feedbackVisualsComponentsArray = this.feedbackVisualsComponents?.ToArray();
+
+                this.seeItSayItLabel = this.Owner.Find("SeeItSayItLabel");
+                if (this.seeItSayItLabel != null)
+                {
+                    this.seeItSayItLabel.IsEnabled = false;
+                }
             }
 
             return attached;
@@ -68,15 +87,30 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
         {
             float targetPosition;
 
-            if (this.IsTouching)
+            if (this.speechWordRecognized)
             {
-                // Get the farthest pushed distance from the initial position
-                var farthestPosition = this.cursorDistances.Values.Min();
-                targetPosition = MathHelper.Clamp(farthestPosition, this.EndPosition, this.StartPosition);
+                if (this.currentPosition == this.EndPosition)
+                {
+                    this.speechWordRecognized = false;
+                    targetPosition = this.StartPosition;
+                }
+                else
+                {
+                    targetPosition = this.EndPosition;
+                }
             }
             else
             {
-                targetPosition = this.StartPosition;
+                if (this.IsTouching)
+                {
+                    // Get the farthest pushed distance from the initial position
+                    var farthestPosition = this.cursorDistances.Values.Min();
+                    targetPosition = MathHelper.Clamp(farthestPosition, this.EndPosition, this.StartPosition);
+                }
+                else
+                {
+                    targetPosition = this.StartPosition;
+                }
             }
 
             if (this.currentPosition != targetPosition)
@@ -124,8 +158,33 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
                 }
                 else
                 {
+                    AnyButtonReleased?.Invoke(this, EventArgs.Empty);
                     this.ButtonReleased?.Invoke(this, EventArgs.Empty);
                 }
+            }
+        }
+
+        /// <inheritdoc/>
+        public void OnSpeechKeywordRecognized(string word)
+        {
+            this.speechWordRecognized = true;
+        }
+
+        /// <inheritdoc/>
+        public void OnFocusEnter()
+        {
+            if (this.seeItSayItLabel != null)
+            {
+                this.seeItSayItLabel.IsEnabled = true;
+            }
+        }
+
+        /// <inheritdoc/>
+        public void OnFocusExit()
+        {
+            if (this.seeItSayItLabel != null)
+            {
+                this.seeItSayItLabel.IsEnabled = false;
             }
         }
     }

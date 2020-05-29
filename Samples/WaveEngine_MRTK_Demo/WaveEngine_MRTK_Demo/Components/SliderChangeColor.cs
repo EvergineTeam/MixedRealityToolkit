@@ -1,6 +1,7 @@
 ﻿using WaveEngine.Components.Graphics3D;
 using WaveEngine.Framework;
 using WaveEngine.Mathematics;
+using WaveEngine.MRTK.Effects;
 using WaveEngine.MRTK.SDK.Features.UX.Components.Sliders;
 using WaveEngine.MRTK.Toolkit.Prefabs;
 using WaveEngine_MRTK_Demo.Effects;

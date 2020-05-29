@@ -1,4 +1,6 @@
-﻿using System;
+﻿// Copyright © Wave Engine S.L. All rights reserved. Use is subject to license terms.
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using WaveEngine.Framework;
@@ -9,15 +11,21 @@ using WaveEngine.Mathematics;
 using WaveEngine.MRTK.Base.EventDatum.Input;
 using WaveEngine.MRTK.Base.Interfaces.InputSystem.Handlers;
 
-namespace WaveEngine_MRTK_Demo.Emulation
+namespace WaveEngine.MRTK.Emulation
 {
+    /// <summary>
+    /// The Cursor Manager.
+    /// </summary>
     public class CursorManager : UpdatableSceneManager
     {
         private static readonly int VELOCITY_HISTORY_SIZE = 10;
 
+        /// <summary>
+        /// Gets the cursors.
+        /// </summary>
         public List<Cursor> Cursors { get; private set; } = new List<Cursor>();
 
-        private Dictionary<Entity, Entity> cursorCollisions = new Dictionary<Entity, Entity>();
+        private Dictionary<Entity, LinkedList<Entity>> cursorCollisions = new Dictionary<Entity, LinkedList<Entity>>();
         private Dictionary<Entity, Entity> interactedEntities = new Dictionary<Entity, Entity>();
 
         private Dictionary<Entity, Vector3> cursorsLinearVelocity = new Dictionary<Entity, Vector3>();
@@ -28,12 +36,13 @@ namespace WaveEngine_MRTK_Demo.Emulation
         private LinkedList<float> gameTimeHistory = new LinkedList<float>();
 
         /// <summary>
-        /// Call this when the cursors have been created
+        /// Adds a cursor.
         /// </summary>
+        /// <param name="cursor">The cursor.</param>
         public void AddCursor(Cursor cursor)
         {
             this.Cursors.Add(cursor);
-            
+
             cursor.StaticBody3D.BeginCollision += this.Cursor_BeginCollision;
             cursor.StaticBody3D.UpdateCollision += this.Cursor_UpdateCollision;
             cursor.StaticBody3D.EndCollision += this.Cursor_EndCollision;
@@ -42,6 +51,7 @@ namespace WaveEngine_MRTK_Demo.Emulation
             this.cursorsOrientationHistory[cursor] = new LinkedList<Quaternion>();
         }
 
+        /// <inheritdoc/>
         protected override void OnDeactivated()
         {
             base.OnDeactivated();
@@ -63,8 +73,10 @@ namespace WaveEngine_MRTK_Demo.Emulation
 
             if (!this.cursorCollisions.ContainsKey(cursorEntity))
             {
-                this.cursorCollisions[cursorEntity] = interactedEntity;
+                this.cursorCollisions[cursorEntity] = new LinkedList<Entity>();
             }
+
+            this.cursorCollisions[cursorEntity].AddFirst(interactedEntity);
         }
 
         private void Cursor_UpdateCollision(object sender, CollisionInfo3D info)
@@ -82,9 +94,13 @@ namespace WaveEngine_MRTK_Demo.Emulation
 
             this.RunTouchHandlers(cursorEntity, interactedEntity, (h, e) => h?.OnTouchCompleted(e));
 
-            this.cursorCollisions.Remove(cursorEntity);
+            if (this.cursorCollisions.ContainsKey(cursorEntity))
+            {
+                this.cursorCollisions[cursorEntity].Remove(interactedEntity);
+            }
         }
 
+        /// <inheritdoc/>
         public override void Update(TimeSpan gameTime)
         {
             // Update gameTime history
@@ -109,10 +125,15 @@ namespace WaveEngine_MRTK_Demo.Emulation
                 this.cursorsAngularVelocity[cursor.Owner] = angularVelocity;
             }
 
-            foreach (KeyValuePair<Entity, Entity> entry in this.cursorCollisions)
+            foreach (KeyValuePair<Entity, LinkedList<Entity>> entry in this.cursorCollisions)
             {
+                if (entry.Value.Count == 0)
+                {
+                    continue;
+                }
+
                 var cursorEntity = entry.Key;
-                var interactedEntity = entry.Value;
+                var interactedEntity = entry.Value.First.Value;
 
                 var cursorComponent = cursorEntity.FindComponent<Cursor>();
 
