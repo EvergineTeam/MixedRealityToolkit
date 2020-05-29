@@ -12,14 +12,14 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="WaveEngine.Bullet" Version="3.0.0.5052-nightly" />
-    <PackageReference Include="WaveEngine.Common" Version="3.0.0.5052-nightly" />
-    <PackageReference Include="WaveEngine.Components" Version="3.0.0.5052-nightly" />
-    <PackageReference Include="WaveEngine.Framework" Version="3.0.0.5052-nightly" />
-    <PackageReference Include="WaveEngine.Mathematics" Version="3.0.0.5052-nightly" />
-    <PackageReference Include="WaveEngine.NoesisGUI" Version="3.0.0.5052-nightly" />
-    <PackageReference Include="WaveEngine.Platform" Version="3.0.0.5052-nightly" />
-    <PackageReference Include="WaveEngine.Targets" Version="3.0.0.5052-nightly" />
+    <PackageReference Include="WaveEngine.Bullet" Version="3.0.0.5180-nightly" />
+    <PackageReference Include="WaveEngine.Common" Version="3.0.0.5180-nightly" />
+    <PackageReference Include="WaveEngine.Components" Version="3.0.0.5180-nightly" />
+    <PackageReference Include="WaveEngine.Framework" Version="3.0.0.5180-nightly" />
+    <PackageReference Include="WaveEngine.Mathematics" Version="3.0.0.5180-nightly" />
+    <PackageReference Include="WaveEngine.NoesisGUI" Version="3.0.0.5180-nightly" />
+    <PackageReference Include="WaveEngine.Platform" Version="3.0.0.5180-nightly" />
+    <PackageReference Include="WaveEngine.Targets" Version="3.0.0.5180-nightly" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\WaveEngine.MRTK\WaveEngine.MRTK.csproj" />
