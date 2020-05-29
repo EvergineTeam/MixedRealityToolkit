@@ -33,7 +33,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
         [BindComponent]
         private Transform3D transform = null;
 
-        [BindComponent]
+        [BindComponent(isRequired: false)]
         private BoxCollider3D boxCollider3D = null;
 
         [BindComponent(isExactType: false, isRequired: false, source: BindComponentSource.Children)]
@@ -336,6 +336,15 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
         protected override bool OnAttached()
         {
             var attached = base.OnAttached();
+
+            if (!Application.Current.IsEditor)
+            {
+                if (this.boxCollider3D == null)
+                {
+                    this.boxCollider3D = new BoxCollider3D();
+                    this.Owner.AddComponent(this.boxCollider3D);
+                }
+            }
 
             if (attached)
             {

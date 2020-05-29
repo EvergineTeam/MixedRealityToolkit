@@ -38,7 +38,7 @@ namespace WaveEngine.MRTK.Emulation
 
             foreach (MaterialComponent m in this.Managers.EntityManager.FindComponentsOfType<MaterialComponent>().ToArray())
             {
-                if (m.Material.Effect.Id == this.holographicEffectId)
+                if (m.Material != null && m.Material.Effect.Id == this.holographicEffectId)
                 {
                     if (Array.IndexOf(m.Material.ActiveDirectivesNames, "BORDER_LIGHT") != -1 ||
                         Array.IndexOf(m.Material.ActiveDirectivesNames, "INNER_GLOW") != -1)
