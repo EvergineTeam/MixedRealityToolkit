@@ -50,7 +50,7 @@ Items:
           MaxDepth: 1.0
           MinDepth: 0.0
         DisplayTag: null
-        DisplayTagDirty: false
+        DisplayTagDirty: true
         Exposure: 1.00000012
         FarPlane: 1000.0
         FieldOfView: 0.785398185
@@ -3724,7 +3724,9 @@ Items:
                 OrderBias: 0
               - !WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation.SimpleManipulationHandler,WaveEngine.MRTK
                 Id: 341fb7a3-42b8-415e-b59c-269a455e2d59
+                Constraints: 0
                 IsEnabled: true
+                KeepRigidBodyActiveDuringDrag: false
                 SmoothingActive: true
                 SmoothingAmount: 9.99999975E-05
                 UpdateOrder: 0.600000024
@@ -3836,7 +3838,9 @@ Items:
                 OrderBias: 0
               - !WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation.SimpleManipulationHandler,WaveEngine.MRTK
                 Id: 272f7dc4-b4a4-4b31-9f22-eee106510352
+                Constraints: 0
                 IsEnabled: true
+                KeepRigidBodyActiveDuringDrag: false
                 SmoothingActive: true
                 SmoothingAmount: 9.99999975E-05
                 UpdateOrder: 0.600000024
@@ -3948,7 +3952,9 @@ Items:
                 OrderBias: 0
               - !WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation.SimpleManipulationHandler,WaveEngine.MRTK
                 Id: 4369f2f3-ee5f-45f3-a370-155ab75f76da
+                Constraints: 0
                 IsEnabled: true
+                KeepRigidBodyActiveDuringDrag: false
                 SmoothingActive: true
                 SmoothingAmount: 9.99999975E-05
                 UpdateOrder: 0.600000024
@@ -4091,7 +4097,9 @@ Items:
                 UpdateOrder: 0.5
               - !WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation.SimpleManipulationHandler,WaveEngine.MRTK
                 Id: 043ea2b1-3e30-497d-916d-8aa46dc9f3cf
+                Constraints: 0
                 IsEnabled: true
+                KeepRigidBodyActiveDuringDrag: false
                 SmoothingActive: true
                 SmoothingAmount: 9.99999975E-05
                 UpdateOrder: 0.600000024
@@ -4283,7 +4291,9 @@ Items:
                 UpdateOrder: 0.5
               - !WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation.SimpleManipulationHandler,WaveEngine.MRTK
                 Id: 93b93049-b1f1-4e95-826d-2545acf10fdf
+                Constraints: 0
                 IsEnabled: true
+                KeepRigidBodyActiveDuringDrag: false
                 SmoothingActive: true
                 SmoothingAmount: 9.99999975E-05
                 UpdateOrder: 0.600000024
@@ -4916,6 +4926,300 @@ Items:
             Children: []
             Id: 26c344f0-da09-4d71-a9a1-5ce73fcb5743
         Id: 187140ba-0048-4bd5-bd10-4fc0280ad3da
+      - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+        Name: BoundingBoxExample
+        Tag: null
+        IsEnabled: true
+        IsStatic: false
+        Components:
+          - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+            Id: 813d3d55-b09c-4c5c-b836-ed02ed42166f
+            IsEnabled: true
+            LocalOrientation:
+              W: 1.0
+              X: 0.0
+              Y: 0.0
+              Z: 0.0
+            LocalPosition:
+              X: 0.54400003
+              Y: -0.524999976
+              Z: 0.108000003
+            LocalScale:
+              X: 0.606660008
+              Y: 0.606660008
+              Z: 0.606660008
+        Children:
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: HoloLens1 Style
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: 68b8d298-5e4c-4d2e-91bb-3b3dfc8d0565
+                IsEnabled: true
+                LocalOrientation:
+                  W: 0.923879564
+                  X: 0.0
+                  Y: -0.382683396
+                  Z: 0.0
+                LocalPosition:
+                  X: 0.924000025
+                  Y: 0.49000001
+                  Z: -0.370000005
+                LocalScale:
+                  X: 1.64836979
+                  Y: 1.64836979
+                  Z: 1.64836979
+            Children:
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: Platonic
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: 1486ecac-e37d-4b21-861f-1755a9e8cb74
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalScale:
+                      X: 0.100000001
+                      Y: 0.100000001
+                      Z: 0.100000001
+                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+                    Id: cd5911c3-64c3-4a63-b5b5-7f8f61d76a8f
+                    AsignedTo: DefaultMaterial
+                    IsEnabled: true
+                    Material: 78e9e4d7-711b-44b7-b673-9d2cb9f1220f
+                  - !WaveEngine.Components.Graphics3D.MeshComponent,WaveEngine.Framework
+                    Id: 0e8081dc-6c34-4401-bfdd-ac2e1807834b
+                    IsEnabled: true
+                    Model: 7eb041c5-5239-45f0-9e70-e535c0f90d27
+                    ModelMeshName: Platonic
+                  - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+                    Id: 37f41682-e58f-4454-8f55-3c66c2e9cda9
+                    DebugBoundingbox: true
+                    FrustumCullingEnabled: true
+                    IsEnabled: true
+                    OrderBias: 0
+                  - !WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox.BoundingBox,WaveEngine.MRTK
+                    Id: 57c9c2d9-31d3-4351-a4b1-8fed49fe5118
+                    BoxGrabbedMaterial: 0852af68-ed44-4dd5-bebb-05c15449d498
+                    BoxMaterial: 76254053-dba8-4ecd-8ffd-2989ae519c06
+                    BoxPadding:
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    HandleGrabbedMaterial: 7c6dfc11-0f01-4d22-bfc9-bc5ca4fae227
+                    HandleMaterial: 9adff77b-f6b6-4683-bf28-243fafea5436
+                    IsEnabled: true
+                    LinkScale: 0.00100000005
+                    RotationHandleScale: 0.0199999996
+                    ScaleHandleScale: 0.0199999996
+                    ShowWireframe: true
+                    WireframeMaterial: d04c6b19-b181-4798-8052-73388883abfe
+                    WireframeShape: Cubic
+                  - !WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation.SimpleManipulationHandler,WaveEngine.MRTK
+                    Id: 77706876-d70f-4825-ab97-88a870e8e124
+                    Constraints: 0
+                    IsEnabled: true
+                    KeepRigidBodyActiveDuringDrag: false
+                    SmoothingActive: true
+                    SmoothingAmount: 0.00100000005
+                    UpdateOrder: 0.5
+                Children: []
+                Id: 8e41fb61-2bd1-4a2e-81c2-be9b96539ffc
+            Id: 10a93be1-3592-48a8-a470-9b5c6e6300c3
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: Model_Platonic
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: ab476ba2-b5c0-474d-afe3-2565fb6668e1
+                IsEnabled: true
+                LocalOrientation:
+                  W: 0.923879564
+                  X: 0.0
+                  Y: -0.382683396
+                  Z: 0.0
+                LocalPosition:
+                  X: 0.575999975
+                  Y: 0.133253098
+                  Z: -0.718000114
+                LocalScale:
+                  X: 0.164837003
+                  Y: 0.164837003
+                  Z: 0.164837003
+              - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+                Id: 91a3c2ce-0605-4924-8b5a-b33139800bd5
+                AsignedTo: DefaultMaterial
+                IsEnabled: true
+                Material: 0867071b-476d-41cc-b072-9dd796ce98a2
+              - !WaveEngine.Components.Graphics3D.MeshComponent,WaveEngine.Framework
+                Id: 43beb092-9cc2-475b-bc32-1003354a43e0
+                IsEnabled: true
+                Model: 334fc69a-5a9e-4ab5-b4ce-96cc3a6c6144
+                ModelMeshName: Platonic
+              - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+                Id: e4473ff4-d41f-47d1-8ae2-ac452db18034
+                DebugBoundingbox: true
+                FrustumCullingEnabled: true
+                IsEnabled: true
+                OrderBias: 0
+            Children: []
+            Id: a3a5d007-0e0a-4220-9f31-cab5841a1f92
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: HoloLens1StyleActivateManuallyByAppBar
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: 95d677bf-8daa-4c64-99cd-c69464d87073
+                IsEnabled: true
+                LocalOrientation:
+                  W: 0.923879564
+                  X: 0.0
+                  Y: -0.382683396
+                  Z: 0.0
+                LocalPosition:
+                  X: 0.559000015
+                  Y: 0.497999996
+                  Z: -0.0149999997
+                LocalScale:
+                  X: 1.0
+                  Y: 1.0
+                  Z: 1.0
+            Children:
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: Platonic
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: 0681e9be-7137-4700-87e5-e51a9358633f
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: 0.00164789998
+                      Y: 6.14059985E-08
+                      Z: 0.00164789998
+                    LocalScale:
+                      X: 0.166581497
+                      Y: 0.166581497
+                      Z: 0.166581497
+                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+                    Id: 706cb991-0519-460b-888d-f38d885b8720
+                    AsignedTo: DefaultMaterial
+                    IsEnabled: true
+                    Material: c46cf687-2999-4576-a5a1-f1b6863e6d3f
+                  - !WaveEngine.Components.Graphics3D.MeshComponent,WaveEngine.Framework
+                    Id: 5dd66b7f-69ce-4e5a-b865-f29d9ca0e80f
+                    IsEnabled: true
+                    Model: fea0a9fa-7078-4742-9d9c-42ded82a82c4
+                    ModelMeshName: Platonic
+                  - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+                    Id: 18cb5305-7dd1-40e2-8f4c-f327143364d5
+                    DebugBoundingbox: true
+                    FrustumCullingEnabled: true
+                    IsEnabled: true
+                    OrderBias: 0
+                Children: []
+                Id: 014dff1a-4507-48ab-821d-e2828e57a1d0
+            Id: 2fe202b7-c59f-49d5-af31-f6dd79eeebf0
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: FlattenedBoundingBox
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: f3faf563-3263-4c38-939f-3477f283563c
+                IsEnabled: true
+                LocalOrientation:
+                  W: 1.0
+                  X: 0.0
+                  Y: 0.0
+                  Z: 0.0
+                LocalPosition:
+                  X: -0.0879999995
+                  Y: 0.527999997
+                  Z: 0.0309999995
+                LocalScale:
+                  X: 1.33410001
+                  Y: 1.33410001
+                  Z: 1.33410001
+            Children:
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: plane
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: 39f7bcc1-318f-4377-ae69-cd7f7dda4e80
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalScale:
+                      X: 0.34054029
+                      Y: 0.218011498
+                      Z: 0.0083852578
+                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+                    Id: 07b28c0d-143b-46df-af4c-7c2c8e4383e7
+                    AsignedTo: Default
+                    IsEnabled: true
+                    Material: 8e4718a1-e35c-4cfd-8cdb-166657218560
+                  - !WaveEngine.Components.Graphics3D.PlaneMesh,WaveEngine.Components
+                    Id: 293ba6af-d270-4a4c-a11c-0f2858b8746a
+                    Height: 1.0
+                    InitialU: 0.0
+                    InitialV: 0.0
+                    IsEnabled: true
+                    Model: 00000000-0000-0000-0000-000000000000
+                    ModelMeshName: plane_primitive
+                    Normal:
+                      X: 0.0
+                      Y: 0.0
+                      Z: 1.0
+                    TwoSides: false
+                    UTile: 1.0
+                    UVHorizontalFlip: false
+                    UVVerticalFlip: false
+                    Width: 1.0
+                    YTile: 1.0
+                  - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+                    Id: b44ad9ac-ac67-4bdc-9ad7-0724cdaa3465
+                    DebugBoundingbox: true
+                    FrustumCullingEnabled: true
+                    IsEnabled: true
+                    OrderBias: 0
+                Children: []
+                Id: bb4c959d-1bf1-44b4-a0d2-89e5dfbc89eb
+            Id: 138aea70-84a8-48bf-b4c0-730010413235
+        Id: aba4da0b-92d7-4554-b90c-f8c6a9c8b711
     Id: bf7601de-e3ee-4c6a-9ec4-717fc4c11ddd
   - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
     Name: directionalLight
