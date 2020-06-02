@@ -242,14 +242,8 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
         }
 
         /// <inheritdoc/>
-        protected override void Start()
+        protected override bool OnAttached()
         {
-            // Ensure this is always updated after the rigidbody
-            if (this.rigidBody != null)
-            {
-                this.UpdateOrder = this.rigidBody.UpdateOrder + 0.1f;
-            }
-
             if (!Application.Current.IsEditor)
             {
                 if (this.collider == null)
@@ -263,6 +257,18 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
                     this.physicBody3D = new StaticBody3D();
                     this.Owner.AddComponent(this.physicBody3D);
                 }
+            }
+
+            return base.OnAttached();
+        }
+
+        /// <inheritdoc/>
+        protected override void Start()
+        {
+            // Ensure this is always updated after the rigidbody
+            if (this.rigidBody != null)
+            {
+                this.UpdateOrder = this.rigidBody.UpdateOrder + 0.1f;
             }
         }
 
