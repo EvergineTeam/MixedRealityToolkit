@@ -507,6 +507,23 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
             return edgeCenters;
         }
 
+        private Vector3[] CalculateFaceCenters(Vector3[] boundsCorners)
+        {
+            var faceCenters = new Vector3[6];
+
+            Vector3 minCorner = this.boundingBoxCenter - (this.boundingBoxSize / 2);
+            Vector3 maxCorner = this.boundingBoxCenter + (this.boundingBoxSize / 2);
+
+            faceCenters[0] = new Vector3(minCorner.X, 0.0f, 0.0f);
+            faceCenters[1] = new Vector3(maxCorner.X, 0.0f, 0.0f);
+            faceCenters[2] = new Vector3(0.0f, minCorner.Y, 0.0f);
+            faceCenters[3] = new Vector3(0.0f, maxCorner.Y, 0.0f);
+            faceCenters[4] = new Vector3(0.0f, 0.0f, minCorner.Z);
+            faceCenters[5] = new Vector3(0.0f, 0.0f, maxCorner.Z);
+
+            return faceCenters;
+        }
+
         private AxisType[] CalculateAxisTypes()
         {
             var edgeAxes = new AxisType[12];
@@ -530,6 +547,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
         private void AddHelpers()
         {
             var boundsCorners = this.GetCornerPositionsFromBounds();
+            var faceCenters = this.CalculateFaceCenters(boundsCorners);
             var edgeCenters = this.CalculateEdgeCenters(boundsCorners);
             var edgeAxes = this.CalculateAxisTypes();
 
@@ -572,6 +590,47 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
                 };
 
                 this.helpers.Add(corner, cornerHelper);
+            }
+
+            // Add face balls
+            for (int i = 0; i < faceCenters.Length; ++i)
+            {
+                Transform3D faceTransform = new Transform3D()
+                {
+                    LocalPosition = faceCenters[i],
+                };
+
+                Entity face = new Entity($"face_{i}")
+                    .AddComponent(faceTransform)
+                    .AddComponent(new BoxCollider3D()
+                    {
+                        Margin = 0.0001f,
+                    })
+                    .AddComponent(new StaticBody3D() { IsSensor = true })
+                    .AddComponent(new NearInteractionGrabbable());
+
+                this.rigRootEntity.AddChild(face);
+
+                Entity faceVisual = new Entity("visuals")
+                    .AddComponent(new Transform3D())
+                    .AddComponent(new CubeMesh())
+                    .AddComponent(new MeshRenderer())
+                    .AddComponent(new MaterialComponent());
+
+                face.AddChild(faceVisual);
+
+                this.ApplyMaterialToAllComponents(faceVisual, this.handleMaterial);
+
+                var cornerHelper = new BoundingBoxHelper()
+                {
+                    Type = BoundingBoxHelperType.NonUniformScaleHandle,
+                    AxisType = AxisType.None,
+                    Entity = face,
+                    Transform = faceTransform,
+                    OppositeHandlePosition = faceCenters[((i % 2) == 0) ? (i + 1) : (i - 1)],
+                };
+
+                this.helpers.Add(face, cornerHelper);
             }
 
             // Add balls
@@ -727,22 +786,26 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
                 switch (helper.Type)
                 {
                     case BoundingBoxHelperType.WireframeLink:
+                        float scaleX = this.LinkScale;
                         float scaleY = this.transform.WorldTransform.Scale.Y;
+                        float scaleZ = this.LinkScale;
 
                         switch (helper.AxisType)
                         {
                             case AxisType.X:
                                 scaleY *= this.boundingBoxSize.X;
+                                scaleX *= this.transform.WorldTransform.Scale.X / this.transform.WorldTransform.Scale.Y;
                                 break;
                             case AxisType.Y:
                                 scaleY *= this.boundingBoxSize.Y;
                                 break;
                             case AxisType.Z:
                                 scaleY *= this.boundingBoxSize.Z;
+                                scaleZ *= this.transform.WorldTransform.Scale.Z / this.transform.WorldTransform.Scale.Y;
                                 break;
                         }
 
-                        helper.Transform.Scale = new Vector3(this.LinkScale, scaleY, this.LinkScale);
+                        helper.Transform.Scale = new Vector3(scaleX, scaleY, scaleZ);
                         break;
 
                     case BoundingBoxHelperType.RotationHandle:
@@ -750,6 +813,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
                         break;
 
                     case BoundingBoxHelperType.ScaleHandle:
+                    case BoundingBoxHelperType.NonUniformScaleHandle:
                         helper.Transform.Scale = Vector3.One * this.ScaleHandleScale;
                         break;
                 }
@@ -784,6 +848,13 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
                         break;
 
                     case BoundingBoxHelperType.ScaleHandle:
+                        this.grabOppositeCorner = Vector3.TransformCoordinate(this.currentHandle.OppositeHandlePosition, this.transform.WorldTransform);
+                        this.grabDiagonalDirection = Vector3.Normalize(this.currentHandle.Transform.Position - this.grabOppositeCorner);
+
+                        this.ScaleStarted?.Invoke(this, EventArgs.Empty);
+                        break;
+
+                    case BoundingBoxHelperType.NonUniformScaleHandle:
                         this.grabOppositeCorner = Vector3.TransformCoordinate(this.currentHandle.OppositeHandlePosition, this.transform.WorldTransform);
                         this.grabDiagonalDirection = Vector3.Normalize(this.currentHandle.Transform.Position - this.grabOppositeCorner);
 
@@ -825,16 +896,45 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
                         break;
 
                     case BoundingBoxHelperType.ScaleHandle:
+                    {
                         float initialDist = Vector3.Dot(this.initialGrabPoint - this.grabOppositeCorner, this.grabDiagonalDirection);
                         float currentDist = Vector3.Dot(currentGrabPoint - this.grabOppositeCorner, this.grabDiagonalDirection);
-                        float scaleFactor = 1 + ((currentDist - initialDist) / initialDist);
+                        float scaleFactor = 1.0f + ((currentDist - initialDist) / initialDist);
 
                         this.transform.Scale = this.transformOnGrabStart.Scale * scaleFactor;
                         this.transform.Position = this.grabOppositeCorner + (scaleFactor * (this.transformOnGrabStart.Translation - this.grabOppositeCorner));
 
                         this.UpdateRigHandles();
+                        break;
+                    }
+
+                    case BoundingBoxHelperType.NonUniformScaleHandle:
+                    {
+                        float initialDist = Vector3.Dot(this.initialGrabPoint - this.grabOppositeCorner, this.grabDiagonalDirection);
+                        float currentDist = Vector3.Dot(currentGrabPoint - this.grabOppositeCorner, this.grabDiagonalDirection);
+                        float scaleFactor = 1.0f + ((currentDist - initialDist) / initialDist);
+
+                        Vector3 localScale = this.transform.LocalScale;
+                        this.transform.Scale = this.transformOnGrabStart.Scale * scaleFactor;
+                        if (this.currentHandle.OppositeHandlePosition.X != 0.0f)
+                        {
+                            this.transform.LocalScale = new Vector3(this.transform.LocalScale.X, localScale.Y, localScale.Z);
+                        }
+                        else if (this.currentHandle.OppositeHandlePosition.Y != 0.0f)
+                        {
+                            this.transform.LocalScale = new Vector3(localScale.X, this.transform.LocalScale.Y, localScale.Z);
+                        }
+                        else if (this.currentHandle.OppositeHandlePosition.Z != 0.0f)
+                        {
+                            this.transform.LocalScale = new Vector3(localScale.X, localScale.Y, this.transform.LocalScale.Z);
+                        }
+
+                        this.transform.Position = this.grabOppositeCorner + (scaleFactor * (this.transformOnGrabStart.Translation - this.grabOppositeCorner));
+
+                        this.UpdateRigHandles();
 
                         break;
+                    }
                 }
 
                 eventData.SetHandled();

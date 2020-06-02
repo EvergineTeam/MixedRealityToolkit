@@ -11,6 +11,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
         WireframeLink = 0,
         RotationHandle,
         ScaleHandle,
+        NonUniformScaleHandle,
     }
 
     internal enum AxisType
