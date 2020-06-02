@@ -124,6 +124,8 @@ namespace WaveEngine_MRTK_Demo.Editor
             {
                 item.Name = item.Name.Replace("Parameters_", string.Empty);
             }
+
+            this.AddMember(nameof(HoloGraphic.LayerDescription));
         }
 
         private void AddMember(string memberName)
