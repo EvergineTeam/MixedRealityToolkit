@@ -201,6 +201,167 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
         private bool showWireframe = true;
 
         /// <summary>
+        /// Gets or sets a value indicating whether to show the scale handles on the corners or not.
+        /// </summary>
+        [RenderProperty(Tooltip = "Whether to show the scale handles on the corners or not")]
+        public bool ShowScaleHandles
+        {
+            get
+            {
+                return this.showScaleHandles;
+            }
+
+            set
+            {
+                if (this.showScaleHandles != value)
+                {
+                    this.showScaleHandles = value;
+                    this.CreateRig();
+                }
+            }
+        }
+
+        private bool showScaleHandles = true;
+
+        /// <summary>
+        /// Gets or sets a value indicating whether to show the rotation handle for axis X or not.
+        /// </summary>
+        [RenderProperty(Tooltip = "Whether to show the rotation handle for axis X or not")]
+        public bool ShowXScaleHandle
+        {
+            get
+            {
+                return this.showXScaleHandle;
+            }
+
+            set
+            {
+                if (this.showXScaleHandle != value)
+                {
+                    this.showXScaleHandle = value;
+                    this.CreateRig();
+                }
+            }
+        }
+
+        private bool showXScaleHandle = true;
+
+        /// <summary>
+        /// Gets or sets a value indicating whether to show the rotation handle for axis X or not.
+        /// </summary>
+        [RenderProperty(Tooltip = "Whether to show the rotation handle for axis X or not")]
+        public bool ShowYScaleHandle
+        {
+            get
+            {
+                return this.showYScaleHandle;
+            }
+
+            set
+            {
+                if (this.showYScaleHandle != value)
+                {
+                    this.showYScaleHandle = value;
+                    this.CreateRig();
+                }
+            }
+        }
+
+        private bool showYScaleHandle = true;
+
+        /// <summary>
+        /// Gets or sets a value indicating whether to show the rotation handle for axis X or not.
+        /// </summary>
+        [RenderProperty(Tooltip = "Whether to show the rotation handle for axis X or not")]
+        public bool ShowZScaleHandle
+        {
+            get
+            {
+                return this.showZScaleHandle;
+            }
+
+            set
+            {
+                if (this.showZScaleHandle != value)
+                {
+                    this.showZScaleHandle = value;
+                    this.CreateRig();
+                }
+            }
+        }
+
+        private bool showZScaleHandle = true;
+
+        /// <summary>
+        /// Gets or sets a value indicating whether to show the rotation handle for axis X or not.
+        /// </summary>
+        [RenderProperty(Tooltip = "Whether to show the rotation handle for axis X or not")]
+        public bool ShowXRotationHandle
+        {
+            get
+            {
+                return this.showXRotationHandle;
+            }
+
+            set
+            {
+                if (this.showXRotationHandle != value)
+                {
+                    this.showXRotationHandle = value;
+                    this.CreateRig();
+                }
+            }
+        }
+
+        private bool showXRotationHandle = true;
+
+        /// <summary>
+        /// Gets or sets a value indicating whether to show the rotation handle for axis X or not.
+        /// </summary>
+        [RenderProperty(Tooltip = "Whether to show the rotation handle for axis Y or not")]
+        public bool ShowYRotationHandle
+        {
+            get
+            {
+                return this.showYRotationHandle;
+            }
+
+            set
+            {
+                if (this.showYRotationHandle != value)
+                {
+                    this.showYRotationHandle = value;
+                    this.CreateRig();
+                }
+            }
+        }
+
+        private bool showYRotationHandle = true;
+
+        /// <summary>
+        /// Gets or sets a value indicating whether to show the rotation handle for axis X or not.
+        /// </summary>
+        [RenderProperty(Tooltip = "Whether to show the rotation handle for axis Z or not")]
+        public bool ShowZRotationHandle
+        {
+            get
+            {
+                return this.showZRotationHandle;
+            }
+
+            set
+            {
+                if (this.showZRotationHandle != value)
+                {
+                    this.showZRotationHandle = value;
+                    this.CreateRig();
+                }
+            }
+        }
+
+        private bool showZRotationHandle = true;
+
+        /// <summary>
         /// Gets or sets the shape of the wireframe links.
         /// </summary>
         [RenderProperty(Tooltip = "The shape of the wireframe links")]
@@ -552,49 +713,58 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
             var edgeAxes = this.CalculateAxisTypes();
 
             // Add corners
-            for (int i = 0; i < boundsCorners.Length; ++i)
+            if (this.showScaleHandles)
             {
-                Transform3D cornerTransform = new Transform3D()
+                for (int i = 0; i < boundsCorners.Length; ++i)
                 {
-                    LocalPosition = boundsCorners[i],
-                };
-
-                Entity corner = new Entity($"corner_{i}")
-                    .AddComponent(cornerTransform)
-                    .AddComponent(new BoxCollider3D()
+                    Transform3D cornerTransform = new Transform3D()
                     {
-                        Margin = 0.0001f,
-                    })
-                    .AddComponent(new StaticBody3D() { IsSensor = true })
-                    .AddComponent(new NearInteractionGrabbable());
+                        LocalPosition = boundsCorners[i],
+                    };
 
-                this.rigRootEntity.AddChild(corner);
+                    Entity corner = new Entity($"corner_{i}")
+                        .AddComponent(cornerTransform)
+                        .AddComponent(new BoxCollider3D()
+                        {
+                            Margin = 0.0001f,
+                        })
+                        .AddComponent(new StaticBody3D() { IsSensor = true })
+                        .AddComponent(new NearInteractionGrabbable());
 
-                Entity cornerVisual = new Entity("visuals")
-                    .AddComponent(new Transform3D())
-                    .AddComponent(new CubeMesh())
-                    .AddComponent(new MeshRenderer())
-                    .AddComponent(new MaterialComponent());
+                    this.rigRootEntity.AddChild(corner);
 
-                corner.AddChild(cornerVisual);
+                    Entity cornerVisual = new Entity("visuals")
+                        .AddComponent(new Transform3D())
+                        .AddComponent(new CubeMesh())
+                        .AddComponent(new MeshRenderer())
+                        .AddComponent(new MaterialComponent());
 
-                this.ApplyMaterialToAllComponents(cornerVisual, this.handleMaterial);
+                    corner.AddChild(cornerVisual);
 
-                var cornerHelper = new BoundingBoxHelper()
-                {
-                    Type = BoundingBoxHelperType.ScaleHandle,
-                    AxisType = AxisType.None,
-                    Entity = corner,
-                    Transform = cornerTransform,
-                    OppositeHandlePosition = boundsCorners[7 - i],
-                };
+                    this.ApplyMaterialToAllComponents(cornerVisual, this.handleMaterial);
 
-                this.helpers.Add(corner, cornerHelper);
+                    var cornerHelper = new BoundingBoxHelper()
+                    {
+                        Type = BoundingBoxHelperType.ScaleHandle,
+                        AxisType = AxisType.None,
+                        Entity = corner,
+                        Transform = cornerTransform,
+                        OppositeHandlePosition = boundsCorners[7 - i],
+                    };
+
+                    this.helpers.Add(corner, cornerHelper);
+                }
             }
 
             // Add face balls
+            bool[] showScaleHandle = { this.ShowXScaleHandle, this.ShowYScaleHandle, this.ShowZScaleHandle };
             for (int i = 0; i < faceCenters.Length; ++i)
             {
+                if (!showScaleHandle[i / 2])
+                {
+                    continue;
+                }
+
                 Transform3D faceTransform = new Transform3D()
                 {
                     LocalPosition = faceCenters[i],
@@ -634,8 +804,14 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
             }
 
             // Add balls
+            bool[] showRotationHandle = { this.ShowXRotationHandle, this.ShowYRotationHandle, this.ShowZRotationHandle };
             for (int i = 0; i < edgeCenters.Length; ++i)
             {
+                if (!showRotationHandle[(int)edgeAxes[i] - 1])
+                {
+                    continue;
+                }
+
                 Transform3D midpointTransform = new Transform3D()
                 {
                     LocalPosition = edgeCenters[i],
