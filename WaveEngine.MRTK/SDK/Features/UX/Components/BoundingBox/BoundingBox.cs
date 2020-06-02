@@ -813,7 +813,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
                 var cornerHelper = new BoundingBoxHelper()
                 {
                     Type = BoundingBoxHelperType.NonUniformScaleHandle,
-                    AxisType = AxisType.None,
+                    AxisType = (AxisType)((i / 2) + 1),
                     Entity = face,
                     Transform = faceTransform,
                     OppositeHandlePosition = faceCenters[((i % 2) == 0) ? (i + 1) : (i - 1)],
@@ -1113,20 +1113,21 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
 
                         Vector3 localScale = this.transform.LocalScale;
                         this.transform.Scale = this.transformOnGrabStart.Scale * scaleFactor;
-                        if (this.currentHandle.OppositeHandlePosition.X != 0.0f)
+                        if (this.currentHandle.AxisType == AxisType.X)
                         {
                             this.transform.LocalScale = new Vector3(this.transform.LocalScale.X, localScale.Y, localScale.Z);
                         }
-                        else if (this.currentHandle.OppositeHandlePosition.Y != 0.0f)
+                        else if (this.currentHandle.AxisType == AxisType.Y)
                         {
                             this.transform.LocalScale = new Vector3(localScale.X, this.transform.LocalScale.Y, localScale.Z);
                         }
-                        else if (this.currentHandle.OppositeHandlePosition.Z != 0.0f)
+                        else if (this.currentHandle.AxisType == AxisType.Z)
                         {
                             this.transform.LocalScale = new Vector3(localScale.X, localScale.Y, this.transform.LocalScale.Z);
                         }
 
-                        this.transform.Position = this.grabOppositeCorner + (scaleFactor * (this.transformOnGrabStart.Translation - this.grabOppositeCorner));
+                        Vector3 oppositeCornerPos = Vector3.TransformCoordinate(this.currentHandle.OppositeHandlePosition, this.transform.WorldTransform);
+                        this.transform.Position += this.grabOppositeCorner - oppositeCornerPos;
 
                         this.UpdateRigHandles();
 
