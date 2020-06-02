@@ -473,7 +473,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
             }
         }
 
-        private CollisionCategory3D collisionCategory3D;
+        private CollisionCategory3D collisionCategory3D = CollisionCategory3D.Cat1;
 
         /// <summary>
         /// Event fired when interaction with a rotation handle starts.
