@@ -798,6 +798,8 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
                                 break;
                             case AxisType.Y:
                                 scaleY *= this.boundingBoxSize.Y;
+                                scaleX *= this.transform.WorldTransform.Scale.X / this.transform.WorldTransform.Scale.Z;
+                                scaleZ *= this.transform.WorldTransform.Scale.Z / this.transform.WorldTransform.Scale.X;
                                 break;
                             case AxisType.Z:
                                 scaleY *= this.boundingBoxSize.Z;
