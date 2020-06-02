@@ -454,6 +454,28 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
         private Material handleGrabbedMaterial;
 
         /// <summary>
+        /// Gets or sets the collision category of the handles.
+        /// </summary>
+        public CollisionCategory3D CollisionCategory
+        {
+            get
+            {
+                return this.collisionCategory3D;
+            }
+
+            set
+            {
+                if (this.collisionCategory3D != value)
+                {
+                    this.collisionCategory3D = value;
+                    this.CreateRig();
+                }
+            }
+        }
+
+        private CollisionCategory3D collisionCategory3D;
+
+        /// <summary>
         /// Event fired when interaction with a rotation handle starts.
         /// </summary>
         public event EventHandler RotateStarted;
@@ -672,15 +694,12 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
         {
             var faceCenters = new Vector3[6];
 
-            Vector3 minCorner = this.boundingBoxCenter - (this.boundingBoxSize / 2);
-            Vector3 maxCorner = this.boundingBoxCenter + (this.boundingBoxSize / 2);
-
-            faceCenters[0] = new Vector3(minCorner.X, 0.0f, 0.0f);
-            faceCenters[1] = new Vector3(maxCorner.X, 0.0f, 0.0f);
-            faceCenters[2] = new Vector3(0.0f, minCorner.Y, 0.0f);
-            faceCenters[3] = new Vector3(0.0f, maxCorner.Y, 0.0f);
-            faceCenters[4] = new Vector3(0.0f, 0.0f, minCorner.Z);
-            faceCenters[5] = new Vector3(0.0f, 0.0f, maxCorner.Z);
+            faceCenters[0] = this.boundingBoxCenter + (Vector3.Left * this.boundingBoxSize.X / 2);
+            faceCenters[1] = this.boundingBoxCenter + (Vector3.Right * this.boundingBoxSize.X / 2);
+            faceCenters[2] = this.boundingBoxCenter + (Vector3.Up * this.boundingBoxSize.Y / 2);
+            faceCenters[3] = this.boundingBoxCenter + (Vector3.Down * this.boundingBoxSize.Y / 2);
+            faceCenters[4] = this.boundingBoxCenter + (Vector3.Backward * this.boundingBoxSize.Z / 2);
+            faceCenters[5] = this.boundingBoxCenter + (Vector3.Forward * this.boundingBoxSize.Z / 2);
 
             return faceCenters;
         }
@@ -728,7 +747,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
                         {
                             Margin = 0.0001f,
                         })
-                        .AddComponent(new StaticBody3D() { IsSensor = true })
+                        .AddComponent(new StaticBody3D() { CollisionCategories = this.CollisionCategory, IsSensor = true })
                         .AddComponent(new NearInteractionGrabbable());
 
                     this.rigRootEntity.AddChild(corner);
@@ -776,7 +795,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
                     {
                         Margin = 0.0001f,
                     })
-                    .AddComponent(new StaticBody3D() { IsSensor = true })
+                    .AddComponent(new StaticBody3D() { CollisionCategories = this.CollisionCategory, IsSensor = true })
                     .AddComponent(new NearInteractionGrabbable());
 
                 this.rigRootEntity.AddChild(face);
@@ -823,7 +842,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
                     {
                         Margin = 0.0001f,
                     })
-                    .AddComponent(new StaticBody3D() { IsSensor = true })
+                    .AddComponent(new StaticBody3D() { CollisionCategories = this.CollisionCategory, IsSensor = true })
                     .AddComponent(new NearInteractionGrabbable());
 
                 this.rigRootEntity.AddChild(midpoint);
