@@ -75,6 +75,11 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
             None = 0,
 
             /// <summary>
+            /// ALl Constraints
+            /// </summary>
+            All = 0xFFFF,
+
+            /// <summary>
             /// Constraint translation on X axis.
             /// </summary>
             ConstraintPosX = 1 << 0,
