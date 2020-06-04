@@ -36,9 +36,6 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
         [BindComponent(isRequired: false)]
         private BoxCollider3D boxCollider3D = null;
 
-        [BindComponent(isExactType: false, isRequired: false, source: BindComponentSource.Children)]
-        private MeshComponent meshComponent = null;
-
         /// <summary>
         /// Gets or sets the scale applied to the scale handles.
         /// </summary>
@@ -515,18 +512,57 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
         private Vector3 grabDiagonalDirection;
         private Vector3 currentRotationAxis;
 
+        private void AdjustBoundingToChildren()
+        {
+            Mathematics.BoundingBox? boundingBox = null;
+
+            MeshComponent[] children = this.Owner.FindComponentsInChildren<MeshComponent>(isExactType: false).ToArray();
+            foreach (MeshComponent meshComponent in children)
+            {
+                var bbox = meshComponent?.BoundingBox;
+                if (bbox != null)
+                {
+                    Transform3D meshTransform = meshComponent.Owner.FindComponent<Transform3D>();
+                    Matrix4x4 localToThis = meshTransform.WorldTransform * this.transform.WorldInverseTransform;
+                    Mathematics.BoundingBox b = bbox.Value;
+                    b.Transform(localToThis);
+                    bbox = b;
+
+                    if (boundingBox == null)
+                    {
+                        // Assign this bounding box
+                        boundingBox = bbox;
+                    }
+                    else
+                    {
+                        // Grow the boundingbox
+                        boundingBox = new WaveEngine.Mathematics.BoundingBox(Vector3.Min(boundingBox.Value.Min, bbox.Value.Min), Vector3.Max(boundingBox.Value.Max, bbox.Value.Max));
+                    }
+                }
+            }
+
+            if (boundingBox != null)
+            {
+                this.boxCollider3D.Size = boundingBox.Value.HalfExtent * 2;
+                this.boxCollider3D.Offset = boundingBox.Value.Center;
+                var bounding = this.Owner.FindComponent<MeshComponent>(isExactType: false)?.BoundingBox;
+                if (bounding != null)
+                {
+                    this.boxCollider3D.Size /= bounding.Value.HalfExtent * 2;
+                    this.boxCollider3D.Offset -= bounding.Value.Center;
+                }
+            }
+        }
+
         /// <inheritdoc/>
         protected override bool OnAttached()
         {
             var attached = base.OnAttached();
 
-            if (!Application.Current.IsEditor)
+            if (this.boxCollider3D == null)
             {
-                if (this.boxCollider3D == null)
-                {
-                    this.boxCollider3D = new BoxCollider3D();
-                    this.Owner.AddComponent(this.boxCollider3D);
-                }
+                this.boxCollider3D = new BoxCollider3D();
+                this.Owner.AddComponent(this.boxCollider3D);
             }
 
             if (attached)
@@ -632,17 +668,18 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
         private void CalculateBoundingBoxSizeAndCenter()
         {
             // Get size from child MeshComponent
-            var bbox = this.meshComponent?.Model?.BoundingBox;
+            this.AdjustBoundingToChildren();
 
-            if (bbox.HasValue)
+            this.boundingBoxCenter = this.boxCollider3D.Offset;
+            this.boundingBoxSize = this.boxCollider3D.Size;
+
+            MeshComponent meshComponent = this.Owner.FindComponent<MeshComponent>(isExactType: false);
+            var bounding = meshComponent?.BoundingBox;
+            Transform3D transform = this.Owner.FindComponent<Transform3D>();
+            if (bounding != null)
             {
-                this.boundingBoxCenter = bbox.Value.Center;
-                this.boundingBoxSize = bbox.Value.HalfExtent * 2;
-            }
-            else
-            {
-                this.boundingBoxCenter = this.boxCollider3D.Offset;
-                this.boundingBoxSize = this.boxCollider3D.Size;
+                this.boundingBoxSize *= bounding.Value.HalfExtent * 2;
+                this.boundingBoxCenter += bounding.Value.Center;
             }
 
             this.boundingBoxSize += this.boxPadding;
