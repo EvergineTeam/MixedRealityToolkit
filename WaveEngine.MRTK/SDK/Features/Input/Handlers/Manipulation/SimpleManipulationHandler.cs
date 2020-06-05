@@ -60,6 +60,11 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
         public event EventHandler ManipulationStarted;
 
         /// <summary>
+        /// The glopal manipulation started event.
+        /// </summary>
+        public static event EventHandler AnyManipulationStarted;
+
+        /// <summary>
         /// The manipulation ended event.
         /// </summary>
         public event EventHandler ManipulationEnded;
@@ -186,6 +191,7 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
                     }
 
                     this.ManipulationStarted?.Invoke(this, EventArgs.Empty);
+                    AnyManipulationStarted?.Invoke(this, EventArgs.Empty);
                 }
 
                 eventData.SetHandled();
