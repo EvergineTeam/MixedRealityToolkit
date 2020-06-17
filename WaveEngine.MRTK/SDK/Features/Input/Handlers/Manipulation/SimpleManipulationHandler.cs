@@ -357,7 +357,7 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
                 // Update grab transform matrix if any of the presses changed
                 if (leftPressedChanged || rightPressedChanged)
                 {
-                    this.fullContrainedRef = this.transform.WorldTransform;
+                    this.fullContrainedRef = this.transform.LocalTransform;
                     this.grabTransform = this.transform.WorldTransform * Matrix4x4.Invert(controllerTransform);
                 }
 
@@ -366,14 +366,14 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
 
                 if (this.Constraints != 0)
                 {
-                    Matrix4x4 localTransform = finalTransform * Matrix4x4.Invert(this.fullContrainedRef);
+                    Matrix4x4 localTransform = finalTransform * this.transform.WorldToLocalTransform;
 
                     Vector3 translation = localTransform.Translation / localTransform.Scale;
                     for (int i = 0; i < 3; ++i)
                     {
                         if ((this.Constraints & (1 << i)) != 0)
                         {
-                            translation[i] = 0.0f;
+                            translation[i] = this.fullContrainedRef.Translation[i];
                         }
                     }
 
@@ -382,7 +382,7 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
                     {
                         if ((this.Constraints & (1 << (i + 3))) != 0)
                         {
-                            rotation[i] = 0.0f;
+                            rotation[i] = this.fullContrainedRef.Rotation[i];
                         }
                     }
 
@@ -391,12 +391,12 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
                     {
                         if ((this.Constraints & (1 << (i + 6))) != 0)
                         {
-                            scale[i] = 1.0f;
+                            scale[i] = this.fullContrainedRef.Scale[i];
                         }
                     }
 
                     localTransform = Matrix4x4.CreateFromTRS(translation * scale, rotation, scale);
-                    finalTransform = localTransform * this.fullContrainedRef;
+                    finalTransform = localTransform * Matrix4x4.Invert(this.transform.WorldToLocalTransform);
                 }
 
                 // Update object transform
