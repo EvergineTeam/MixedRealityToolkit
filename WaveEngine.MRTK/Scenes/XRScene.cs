@@ -74,7 +74,7 @@ namespace WaveEngine.MRTK.Scenes
             InitHoloScene(
                 this,
                 assetsService.Load<Material>(this.CursorMat),
-                assetsService.Load<Material>(this.HoloHandsMat),
+                this.HoloHandsMat == Guid.Empty ? null : assetsService.Load<Material>(this.HoloHandsMat),
                 this.SpatialMappingMat == Guid.Empty ? null : assetsService.Load<Material>(this.SpatialMappingMat),
                 this.HolographicEffect,
                 assetsService.Load<Texture>(this.HandRayTexture),
@@ -205,8 +205,11 @@ namespace WaveEngine.MRTK.Scenes
             CreateCursor(scene, cursorMat, XRHandedness.RightHand, handRayTexture, handRaySampler);
 
             // Create hand meshes
-            CreateXRHandMesh(scene, handMat, XRHandedness.LeftHand);
-            CreateXRHandMesh(scene, handMat, XRHandedness.RightHand);
+            if (handMat != null)
+            {
+                CreateXRHandMesh(scene, handMat, XRHandedness.LeftHand);
+                CreateXRHandMesh(scene, handMat, XRHandedness.RightHand);
+            }
 
             // Create position updater
             scene.Managers.AddManager(new CursorPosShaderUpdater(holographicsEffectId));
