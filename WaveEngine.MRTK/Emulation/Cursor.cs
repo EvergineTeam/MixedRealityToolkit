@@ -36,6 +36,12 @@ namespace WaveEngine.MRTK.Emulation
         public StaticBody3D StaticBody3D;
 
         /// <summary>
+        /// The MeshRenderer.
+        /// </summary>
+        [BindComponent]
+        public MeshRenderer meshRenderer;
+
+        /// <summary>
         /// The Material component.
         /// </summary>
         [BindComponent(isRequired: false)]

@@ -110,7 +110,7 @@ namespace WaveEngine.MRTK.Emulation
                     }
 
                     float dist = (r.Position - collPoint).Length();
-                    if (dist > 0.1f)
+                    if (dist > 0.5f)
                     {
                         this.transform.Position = collPoint;
 
