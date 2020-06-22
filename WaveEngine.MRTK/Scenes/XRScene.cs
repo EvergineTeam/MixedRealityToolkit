@@ -26,9 +26,14 @@ namespace WaveEngine.MRTK.Scenes
     public abstract class XRScene : Scene
     {
         /// <summary>
-        /// Gets cursors material Guid.
+        /// Gets cursors material Guid for released state.
         /// </summary>
-        protected abstract Guid CursorMat { get; }
+        protected abstract Guid CursorMatReleased { get; }
+
+        /// <summary>
+        /// Gets cursors material Guid for pressed state.
+        /// </summary>
+        protected abstract Guid CursorMatPressed { get; }
 
         /// <summary>
         /// Gets holo hands material Guid.
@@ -73,7 +78,8 @@ namespace WaveEngine.MRTK.Scenes
 
             InitHoloScene(
                 this,
-                assetsService.Load<Material>(this.CursorMat),
+                assetsService.Load<Material>(this.CursorMatReleased),
+                assetsService.Load<Material>(this.CursorMatPressed),
                 this.HoloHandsMat == Guid.Empty ? null : assetsService.Load<Material>(this.HoloHandsMat),
                 this.SpatialMappingMat == Guid.Empty ? null : assetsService.Load<Material>(this.SpatialMappingMat),
                 this.HolographicEffect,
@@ -111,16 +117,16 @@ namespace WaveEngine.MRTK.Scenes
             scene.Managers.EntityManager.Add(handEntity);
         }
 
-        private static Entity CreateCursor(Scene scene, Material material, XRHandedness handedness, Texture handRayTexture, SamplerState handRaySampler)
+        private static Entity CreateCursor(Scene scene, Material releasedMaterial, Material pressedMaterial, XRHandedness handedness, Texture handRayTexture, SamplerState handRaySampler)
         {
             Entity cursor = new Entity("Cursor_" + handedness)
                 .AddComponent(new Transform3D())
-                .AddComponent(new MaterialComponent() { Material = material })
-                .AddComponent(new SphereMesh() { Diameter = 0.010f })
+                .AddComponent(new MaterialComponent())
+                .AddComponent(new PlaneMesh() { PlaneNormal = "-Z", Width = 0.01f, Height = 0.01f })
                 .AddComponent(new MeshRenderer())
                 .AddComponent(new SphereCollider3D())
                 .AddComponent(new StaticBody3D() { CollisionCategories = CollisionCategory3D.Cat1, IsSensor = true })
-                .AddComponent(new Cursor() { PressedColor = new Color(255, 173, 128), ReleasedColor = new Color(255, 93, 0), UpdateOrder = 0.3f })
+                .AddComponent(new Cursor() { PressedMaterial = pressedMaterial, ReleasedMaterial = releasedMaterial, UpdateOrder = 0.3f })
                 .AddComponent(new ProximityLight())
                 ;
 
@@ -173,12 +179,12 @@ namespace WaveEngine.MRTK.Scenes
 
             Entity cursorDist = new Entity("CursorDist_" + handedness)
                 .AddComponent(new Transform3D())
-                .AddComponent(new MaterialComponent() { Material = material })
-                .AddComponent(new SphereMesh() { Diameter = 0.010f })
+                .AddComponent(new MaterialComponent())
+                .AddComponent(new PlaneMesh() { PlaneNormal = "-Z", Width = 0.01f, Height = 0.01f })
                 .AddComponent(new MeshRenderer())
                 .AddComponent(new SphereCollider3D())
                 .AddComponent(new StaticBody3D() { CollisionCategories = CollisionCategory3D.Cat1, IsSensor = true })
-                .AddComponent(new Cursor() { PressedColor = new Color(255, 173, 128), ReleasedColor = new Color(255, 93, 0), UpdateOrder = 0.3f })
+                .AddComponent(new Cursor() { PressedMaterial = pressedMaterial, ReleasedMaterial = releasedMaterial, UpdateOrder = 0.3f })
                 .AddComponent(new CursorRay() { MainCursor = cursor.FindComponent<Cursor>(), Bezier = bezierComp, joint = trackXRJoint })
                 ;
             scene.Managers.EntityManager.Add(cursorDist);
@@ -190,19 +196,20 @@ namespace WaveEngine.MRTK.Scenes
         /// Initializes scene for holololens.
         /// </summary>
         /// <param name="scene">Scene to add components to.</param>
-        /// <param name="cursorMat">Material for the cursosrs.</param>
+        /// <param name="cursorMatReleased">Material for the cursor when it's released.</param>
+        /// <param name="cursorMatPressed">Material for the cursor when it's pressed.</param>
         /// <param name="handMat">Material for the hands.</param>
         /// <param name="spatialMappingMat">Maerial for the spatial mapping.</param>
         /// <param name="holographicsEffectId">Id for holographic effect.</param>
         /// <param name="handRayTexture">Texture for handrays.</param>
         /// <param name="handRaySampler">Sampler for the handrays texture.</param>
-        public static void InitHoloScene(Scene scene, Material cursorMat, Material handMat, Material spatialMappingMat, Guid holographicsEffectId, Texture handRayTexture, SamplerState handRaySampler)
+        public static void InitHoloScene(Scene scene, Material cursorMatReleased, Material cursorMatPressed, Material handMat, Material spatialMappingMat, Guid holographicsEffectId, Texture handRayTexture, SamplerState handRaySampler)
         {
             var assetsService = Application.Current.Container.Resolve<AssetsService>();
 
             // Create cursors
-            CreateCursor(scene, cursorMat, XRHandedness.LeftHand, handRayTexture, handRaySampler);
-            CreateCursor(scene, cursorMat, XRHandedness.RightHand, handRayTexture, handRaySampler);
+            CreateCursor(scene, cursorMatReleased, cursorMatPressed, XRHandedness.LeftHand, handRayTexture, handRaySampler);
+            CreateCursor(scene, cursorMatReleased, cursorMatPressed, XRHandedness.RightHand, handRayTexture, handRaySampler);
 
             // Create hand meshes
             if (handMat != null)

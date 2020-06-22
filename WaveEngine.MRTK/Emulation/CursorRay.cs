@@ -1,6 +1,7 @@
 ﻿// Copyright © Wave Engine S.L. All rights reserved. Use is subject to license terms.
 
 using System;
+using WaveEngine.Common.Graphics;
 using WaveEngine.Components.Graphics3D;
 using WaveEngine.Components.Primitives;
 using WaveEngine.Framework;
@@ -50,6 +51,7 @@ namespace WaveEngine.MRTK.Emulation
         private float pinchDist;
         private Vector3 pinchPosRef;
         private Camera3D cam;
+        private Texture handrayTexture;
 
         /// <summary>
         /// Gets or sets the TrackXRJoint.
@@ -67,6 +69,8 @@ namespace WaveEngine.MRTK.Emulation
             var attached = base.OnAttached();
             this.UpdateOrder = this.MainCursor.UpdateOrder + 0.1f; // Ensure this is executed always after the main Cursor
             this.cam = this.Managers.RenderManager.ActiveCamera3D;
+
+            this.handrayTexture = this.Bezier.DiffuseTexture;
 
             return attached;
         }
@@ -159,6 +163,10 @@ namespace WaveEngine.MRTK.Emulation
             this.MainCursor.meshRenderer.IsEnabled = !this.Bezier.Owner.IsEnabled;
 
             this.cursor.Pinch = this.Bezier.Owner.IsEnabled && this.MainCursor.Pinch;
+            if (this.cursor.Pinch != this.cursor.PreviousPinch)
+            {
+                this.Bezier.DiffuseTexture = this.cursor.Pinch ? null : this.handrayTexture;
+            }
         }
     }
 }

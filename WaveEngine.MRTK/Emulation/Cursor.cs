@@ -48,16 +48,16 @@ namespace WaveEngine.MRTK.Emulation
         protected MaterialComponent materialComponent;
 
         /// <summary>
-        /// Gets or sets the color when the cursos is pressed.
+        /// Gets or sets the material when the cursos is pressed.
         /// </summary>
-        [RenderProperty(Tooltip = "The color to be set to the material when the cursor is pressed")]
-        public Color PressedColor { get; set; }
+        [RenderProperty(Tooltip = "The material to be set when the cursor is pressed")]
+        public Material PressedMaterial { get; set; }
 
         /// <summary>
-        /// Gets or sets the color when the cursos is released.
+        /// Gets or sets the material when the cursos is released.
         /// </summary>
-        [RenderProperty(Tooltip = "The color to be set to the material when the cursor is released")]
-        public Color ReleasedColor { get; set; }
+        [RenderProperty(Tooltip = "The material to be set when the cursor is released")]
+        public Material ReleasedMaterial { get; set; }
 
         private bool pinch;
 
@@ -90,8 +90,6 @@ namespace WaveEngine.MRTK.Emulation
         [DontRenderProperty]
         public bool PreviousPinch { get; private set; }
 
-        private StandardMaterial material;
-
         /// <inheritdoc/>
         protected override bool OnAttached()
         {
@@ -105,12 +103,12 @@ namespace WaveEngine.MRTK.Emulation
             {
                 if (!Application.Current.IsEditor)
                 {
-                    this.materialComponent.Material = this.materialComponent.Material.Clone();
+                    ////this.materialComponent.Material = this.materialComponent.Material.Clone();
 
                     this.Managers.FindManager<CursorManager>().AddCursor(this);
                 }
 
-                this.material = new StandardMaterial(this.materialComponent.Material);
+                this.materialComponent.Material = this.ReleasedMaterial;
             }
         }
 
@@ -122,10 +120,7 @@ namespace WaveEngine.MRTK.Emulation
 
         private void UpdateColor()
         {
-            if (this.material != null)
-            {
-                this.material.BaseColor = this.Pinch ? this.PressedColor : this.ReleasedColor;
-            }
+            this.materialComponent.Material = this.Pinch ? this.PressedMaterial : this.ReleasedMaterial;
         }
     }
 }
