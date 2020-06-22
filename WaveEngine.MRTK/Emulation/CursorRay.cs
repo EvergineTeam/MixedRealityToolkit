@@ -98,32 +98,41 @@ namespace WaveEngine.MRTK.Emulation
                 }
                 else
                 {
-                    Vector3 collPoint = r.GetPoint(1000.0f);
-                    this.transform.Position = collPoint; // Move the cursor to avoid collisions
-                    HitResult3D result = this.Managers.PhysicManager3D.RayCast(ref r, 1000.0f, this.collisionMask);
-
-                    if (result.Succeeded)
+                    if (this.MainCursor.Pinch && !this.Bezier.Owner.IsEnabled)
                     {
-                        Vector3 dir = r.Direction;
-                        dir.Normalize();
-                        collPoint = result.Point + (dir * 0.0025f);
-                    }
-
-                    float dist = (r.Position - collPoint).Length();
-                    if (dist > 0.5f)
-                    {
-                        this.transform.Position = collPoint;
-
-                        if (this.MainCursor.Pinch)
-                        {
-                            // Pinch is about to happen
-                            this.pinchDist = dist;
-                            this.pinchPosRef = Vector3.Transform(this.MainCursor.transform.Position, this.cam.Transform.WorldInverseTransform);
-                        }
+                        disableByProximity = true;
                     }
                     else
                     {
-                        disableByProximity = true;
+                        Vector3 collPoint = r.GetPoint(1000.0f);
+                        this.transform.Position = collPoint; // Move the cursor to avoid collisions
+                        Vector3 from = r.GetPoint(-0.1f);
+                        Vector3 to = r.GetPoint(1000.0f);
+                        HitResult3D result = this.Managers.PhysicManager3D.RayCast(ref from, ref to, this.collisionMask);
+
+                        if (result.Succeeded)
+                        {
+                            Vector3 dir = r.Direction;
+                            dir.Normalize();
+                            collPoint = result.Point + (dir * 0.0025f);
+                        }
+
+                        float dist = (r.Position - collPoint).Length();
+                        if (dist > 0.5f)
+                        {
+                            this.transform.Position = collPoint;
+
+                            if (this.MainCursor.Pinch)
+                            {
+                                // Pinch is about to happen
+                                this.pinchDist = dist;
+                                this.pinchPosRef = Vector3.Transform(this.MainCursor.transform.Position, this.cam.Transform.WorldInverseTransform);
+                            }
+                        }
+                        else
+                        {
+                            disableByProximity = true;
+                        }
                     }
                 }
 
@@ -147,7 +156,9 @@ namespace WaveEngine.MRTK.Emulation
                 }
             }
 
-            this.cursor.Pinch = this.MainCursor.Pinch;
+            this.MainCursor.meshRenderer.IsEnabled = !this.Bezier.Owner.IsEnabled;
+
+            this.cursor.Pinch = this.Bezier.Owner.IsEnabled && this.MainCursor.Pinch;
         }
     }
 }
