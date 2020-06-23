@@ -160,7 +160,7 @@ namespace WaveEngine.MRTK.Emulation
                 }
             }
 
-            this.MainCursor.meshRenderer.IsEnabled = !this.Bezier.Owner.IsEnabled;
+            ////this.MainCursor.meshRenderer.IsEnabled = !this.Bezier.Owner.IsEnabled;
 
             this.cursor.Pinch = this.Bezier.Owner.IsEnabled && this.MainCursor.Pinch;
             if (this.cursor.Pinch != this.cursor.PreviousPinch)
