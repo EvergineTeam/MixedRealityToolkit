@@ -17,6 +17,7 @@ using WaveEngine.Mathematics;
 using WaveEngine.MRTK.Behaviors;
 using WaveEngine.MRTK.Emulation;
 using WaveEngine.MRTK.Services.InputSystem;
+using Billboard = WaveEngine.MRTK.Behaviors.Billboard;
 
 namespace WaveEngine.MRTK.Scenes
 {
@@ -186,6 +187,7 @@ namespace WaveEngine.MRTK.Scenes
                 .AddComponent(new StaticBody3D() { CollisionCategories = CollisionCategory3D.Cat1, IsSensor = true })
                 .AddComponent(new Cursor() { PressedMaterial = pressedMaterial, ReleasedMaterial = releasedMaterial, UpdateOrder = 0.3f })
                 .AddComponent(new CursorRay() { MainCursor = cursor.FindComponent<Cursor>(), Bezier = bezierComp, joint = trackXRJoint })
+                .AddComponent(new Billboard())
                 ;
             scene.Managers.EntityManager.Add(cursorDist);
 
