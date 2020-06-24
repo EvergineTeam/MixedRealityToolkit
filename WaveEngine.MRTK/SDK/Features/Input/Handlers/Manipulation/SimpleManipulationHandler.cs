@@ -337,7 +337,14 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
                         }
 
                         // Calculate target scale
-                        var scale = currentDistance / this.grabDistance;
+                        var scale = Vector3.One * currentDistance / this.grabDistance;
+                        for (int i = 0; i < 3; ++i)
+                        {
+                            if ((this.Constraints & (1 << (i + 6))) != 0)
+                            {
+                                scale[i] = 1.0f;
+                            }
+                        }
 
                         // Final controller transform
                         controllerTransform = Matrix4x4.CreateScale(scale) * controllerTransform;
@@ -368,7 +375,7 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
                 {
                     Matrix4x4 localTransform = finalTransform * this.transform.WorldToLocalTransform;
 
-                    Vector3 translation = localTransform.Translation / localTransform.Scale;
+                    Vector3 translation = localTransform.Translation;
                     for (int i = 0; i < 3; ++i)
                     {
                         if ((this.Constraints & (1 << i)) != 0)
@@ -386,16 +393,7 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
                         }
                     }
 
-                    Vector3 scale = localTransform.Scale;
-                    for (int i = 0; i < 3; ++i)
-                    {
-                        if ((this.Constraints & (1 << (i + 6))) != 0)
-                        {
-                            scale[i] = this.fullContrainedRef.Scale[i];
-                        }
-                    }
-
-                    localTransform = Matrix4x4.CreateFromTRS(translation * scale, rotation, scale);
+                    localTransform = Matrix4x4.CreateFromTRS(translation, rotation, localTransform.Scale);
                     finalTransform = localTransform * Matrix4x4.Invert(this.transform.WorldToLocalTransform);
                 }
 
