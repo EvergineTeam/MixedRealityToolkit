@@ -342,7 +342,7 @@
 	float4 PS(PS_IN input) : SV_Target
 	{
 #if ALBEDO_MAP
-		float4 albedo = Texture.Sample(Sampler, (input.uv * Tiling) + Offset);
+		float4 albedo = Texture.Sample(Sampler, (input.uv * Tiling) + Offset) * float4(Color, Alpha);
 #else
 		float4 albedo = float4(Color, Alpha);
 #endif

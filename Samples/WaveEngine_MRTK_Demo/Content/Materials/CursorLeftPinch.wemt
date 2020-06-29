@@ -1,12 +1,12 @@
 !WaveEngine.Assets.Exporters.MaterialMetaFile,WaveEngine.Assets
-Id: b65fb622-f2bc-42ef-a797-3a98cd7df438
+Id: d12dec8a-90fd-410d-acc6-078da8c70bb4
 DefaultProfile:
   ExcludeAsset: false
   Name: null
   Platform: Undefined
 ExportAsRaw: false
 MaterialInfo:
-  Id: 9d0b6db6-0c1e-4c77-bb0f-5eb609a5b305
+  Id: 04b86439-806a-49c8-8fc8-b9eca1e18bc3
   ActiveDirectives:
     - ALBEDO_MAP
     - IBL
@@ -15,7 +15,7 @@ MaterialInfo:
   Parameters:
     - Name: WorldViewProj
       Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
-      ValueByteArray: VGhZQNy3D8BeMSC/RC0gvwAAAABJeixAfm/Uvw5q1L9pJRPAxFdUwBmvbL8KqWy/P0+GNPTpfzQg7ItAvhuPQA==
+      ValueByteArray: qw13QP/v0D8oUpq8NU6avEvkRLI9sAm+Ie3/v5Tm/7+AkbE/TlmRwHm1Vj36r1Y9aY+zM6U24DQg7ItAvhuPQA==
     - Name: World
       Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
       ValueByteArray: AAAAQAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAACAPw==
@@ -107,6 +107,6 @@ MaterialInfo:
     - ID: 00000000-0000-0000-0000-000000000000
       Name: null
   Textures:
-    - ID: e7e7f039-add5-4d9d-8e42-6707db2593c0
+    - ID: 15a7f06a-9bd2-4121-b865-b6b032e87cf4
       Name: Texture
 Profiles: {}

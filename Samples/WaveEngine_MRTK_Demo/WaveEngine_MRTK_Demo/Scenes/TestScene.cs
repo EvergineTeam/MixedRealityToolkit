@@ -5,7 +5,9 @@ namespace WaveEngine_MRTK_Demo.Scenes
 {
     public class TestScene : XRScene
     {
-        protected override Guid CursorMat => WaveContent.Materials.CursorLeft;
+        protected override Guid CursorMatPressed => WaveContent.Materials.CursorLeftPinch;
+
+        protected override Guid CursorMatReleased => WaveContent.Materials.CursorLeft;
 
         protected override Guid HoloHandsMat => WaveContent.Materials.HoloHands;
 

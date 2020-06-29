@@ -126,7 +126,7 @@ namespace WaveEngine.MRTK.Scenes
                 .AddComponent(new PlaneMesh() { PlaneNormal = "-Z", Width = 0.01f, Height = 0.01f })
                 .AddComponent(new MeshRenderer())
                 .AddComponent(new SphereCollider3D())
-                .AddComponent(new StaticBody3D() { CollisionCategories = CollisionCategory3D.Cat1, IsSensor = true })
+                .AddComponent(new StaticBody3D() { CollisionCategories = CollisionCategory3D.Cat2, IsSensor = true, MaskBits = CollisionCategory3D.Cat1 })
                 .AddComponent(new Cursor() { PressedMaterial = pressedMaterial, ReleasedMaterial = releasedMaterial, UpdateOrder = 0.3f })
                 .AddComponent(new ProximityLight())
                 ;
@@ -184,9 +184,9 @@ namespace WaveEngine.MRTK.Scenes
                 .AddComponent(new PlaneMesh() { PlaneNormal = "-Z", Width = 0.01f, Height = 0.01f })
                 .AddComponent(new MeshRenderer())
                 .AddComponent(new SphereCollider3D())
-                .AddComponent(new StaticBody3D() { CollisionCategories = CollisionCategory3D.Cat1, IsSensor = true })
+                .AddComponent(new StaticBody3D() { CollisionCategories = CollisionCategory3D.Cat2, IsSensor = true, MaskBits = CollisionCategory3D.Cat1 })
                 .AddComponent(new Cursor() { PressedMaterial = pressedMaterial, ReleasedMaterial = releasedMaterial, UpdateOrder = 0.3f })
-                .AddComponent(new CursorRay() { MainCursor = cursor.FindComponent<Cursor>(), Bezier = bezierComp, joint = trackXRJoint })
+                .AddComponent(new CursorRay() { MainCursor = cursor.FindComponent<Cursor>(), Bezier = bezierComp, joint = trackXRJoint, collisionMask = CollisionCategory3D.Cat1 })
                 .AddComponent(new Billboard())
                 ;
             scene.Managers.EntityManager.Add(cursorDist);
