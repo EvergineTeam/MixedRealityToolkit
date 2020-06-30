@@ -4859,9 +4859,9 @@ Items:
                 Id: c137b365-30af-4553-80b6-6b5f7dc2d9cf
                 IsEnabled: true
                 LocalOrientation:
-                  W: 0.707106829
+                  W: 0.707106888
                   X: 0.0
-                  Y: 0.707106769
+                  Y: 0.70710665
                   Z: 0.0
                 LocalPosition:
                   X: -0.00499999989
@@ -4925,6 +4925,296 @@ Items:
                 UpdateOrder: 0.5
             Children: []
             Id: 26c344f0-da09-4d71-a9a1-5ce73fcb5743
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: WaveMRTK logo
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: 27c87259-087a-4aa0-9b69-98e216d837a4
+                IsEnabled: true
+                LocalOrientation:
+                  W: 1.0
+                  X: 0.0
+                  Y: 0.0
+                  Z: 0.0
+                LocalPosition:
+                  X: 0.163840905
+                  Y: 0.0763002038
+                  Z: 1.34706497E-05
+                LocalScale:
+                  X: 0.0500000007
+                  Y: 0.0500000007
+                  Z: 0.0500000007
+              - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+                Id: adfe5dea-e983-4873-9292-039a7b33cb29
+                AsignedTo: Default
+                IsEnabled: true
+                Material: c29e3e3b-a18d-4f8e-981c-cb6438f9adc4
+              - !WaveEngine.Components.Graphics3D.PlaneMesh,WaveEngine.Components
+                Id: 7fa4984a-ad9e-41a7-9dad-f13179c1baa3
+                Height: 0.910000026
+                InitialU: 0.0
+                InitialV: 0.0
+                IsEnabled: true
+                Model: 00000000-0000-0000-0000-000000000000
+                ModelMeshName: plane_primitive
+                Normal:
+                  X: 0.0
+                  Y: 0.0
+                  Z: 1.0
+                TwoSides: false
+                UTile: 1.0
+                UVHorizontalFlip: false
+                UVVerticalFlip: false
+                Width: 0.910000026
+                YTile: 1.0
+              - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+                Id: 8ba00ca7-dd81-4708-8ff1-f1bf5961c339
+                DebugBoundingbox: true
+                FrustumCullingEnabled: true
+                IsEnabled: true
+                OrderBias: 0
+            Children: []
+            Id: ac94b44a-4898-4652-b31a-dd39b6c8536e
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: Wave MRTK
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: 2c9d69a3-58a7-4ffd-9a7d-984f3acc6a35
+                IsEnabled: true
+                LocalOrientation:
+                  W: 1.0
+                  X: 0.0
+                  Y: 0.0
+                  Z: 0.0
+                LocalPosition:
+                  X: 0.0761950761
+                  Y: 0.0763002038
+                  Z: 1.60932541E-05
+                LocalScale:
+                  X: 0.5
+                  Y: 0.5
+                  Z: 0.5
+              - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+                Id: ab6f933e-0b1a-44cb-a8b3-61b4c369092c
+                AsignedTo: Default
+                IsEnabled: true
+                Material: 7566d83a-0cd7-412d-9c48-9dd38e64d91f
+              - !WaveEngine.Components.Graphics3D.PlaneMesh,WaveEngine.Components
+                Id: ded1cbf2-f6e1-428c-b193-51e28cad0560
+                Height: 0.0560000017
+                InitialU: 0.0
+                InitialV: 0.0
+                IsEnabled: true
+                Model: 00000000-0000-0000-0000-000000000000
+                ModelMeshName: plane_primitive
+                Normal:
+                  X: 0.0
+                  Y: 0.0
+                  Z: 1.0
+                TwoSides: false
+                UTile: 1.0
+                UVHorizontalFlip: false
+                UVVerticalFlip: false
+                Width: 0.186000004
+                YTile: 1.0
+              - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+                Id: 569bab81-6923-4295-9d9f-f4cb7e1212a9
+                DebugBoundingbox: true
+                FrustumCullingEnabled: true
+                IsEnabled: true
+                OrderBias: 0
+            Children: []
+            Id: 93d04829-8ab1-4236-a93f-f03ccde2a4e8
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: Plain Concepts logo
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: c7346e7c-20a3-4a96-90e3-4dc857fd59ca
+                IsEnabled: true
+                LocalOrientation:
+                  W: 1.0
+                  X: 0.0
+                  Y: 0.0
+                  Z: 0.0
+                LocalPosition:
+                  X: -0.150389358
+                  Y: 0.0763002038
+                  Z: 3.12328339E-05
+                LocalScale:
+                  X: 0.818897486
+                  Y: 0.818897486
+                  Z: 0.818897486
+              - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+                Id: 8161433b-2aca-4775-af7b-7f0046238c3a
+                AsignedTo: Default
+                IsEnabled: true
+                Material: 95235db6-8277-4f3e-b9ef-7daf58f6a955
+              - !WaveEngine.Components.Graphics3D.PlaneMesh,WaveEngine.Components
+                Id: 1e0c8a46-fec7-45c0-baf0-38cbf209a0e8
+                Height: 0.0500000007
+                InitialU: 0.0
+                InitialV: 0.0
+                IsEnabled: true
+                Model: 00000000-0000-0000-0000-000000000000
+                ModelMeshName: plane_primitive
+                Normal:
+                  X: 0.0
+                  Y: 0.0
+                  Z: 1.0
+                TwoSides: false
+                UTile: 1.0
+                UVHorizontalFlip: false
+                UVVerticalFlip: false
+                Width: 0.135000005
+                YTile: 1.0
+              - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+                Id: 10ed2546-798b-42b3-a59c-4f202d2f8dbc
+                DebugBoundingbox: true
+                FrustumCullingEnabled: true
+                IsEnabled: true
+                OrderBias: 0
+            Children: []
+            Id: 065ca34c-6371-4ceb-a2d2-ce62ba9ac8c6
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: Rule
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: 7e0b897e-e1d5-4819-a71c-cb8fc36d8cbf
+                IsEnabled: true
+                LocalOrientation:
+                  W: 1.0
+                  X: 0.0
+                  Y: 0.0
+                  Z: 0.0
+                LocalPosition:
+                  X: -0.00591000216
+                  Y: 0.0322999805
+                  Z: 0.0
+                LocalScale:
+                  X: 0.384821296
+                  Y: 0.002150852
+                  Z: 0.699999988
+              - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+                Id: 3e48ad9e-a4b7-4ebb-b388-6bad85739cad
+                AsignedTo: Default
+                IsEnabled: true
+                Material: 9733ded4-830a-4004-877d-43ec3740ce42
+              - !WaveEngine.Components.Graphics3D.PlaneMesh,WaveEngine.Components
+                Id: 58cce684-9eaf-492f-b75d-99aca7f0c63f
+                Height: 1.0
+                InitialU: 0.0
+                InitialV: 0.0
+                IsEnabled: true
+                Model: 00000000-0000-0000-0000-000000000000
+                ModelMeshName: plane_primitive
+                Normal:
+                  X: 0.0
+                  Y: 0.0
+                  Z: 1.0
+                TwoSides: false
+                UTile: 1.0
+                UVHorizontalFlip: false
+                UVVerticalFlip: false
+                Width: 1.0
+                YTile: 1.0
+              - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+                Id: e2e9228d-e766-4375-8a11-7a5ba9384e60
+                DebugBoundingbox: true
+                FrustumCullingEnabled: true
+                IsEnabled: true
+                OrderBias: 0
+            Children: []
+            Id: 45f33ea5-f5f8-4390-87ef-a22172cd57a7
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: SectionTitle
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: ee7f562f-e914-4fee-b53d-31edb8f3281d
+                IsEnabled: true
+                LocalOrientation:
+                  W: 1.37678782E-07
+                  X: 1.37678754E-07
+                  Y: 0.707106829
+                  Z: -0.707106709
+                LocalPosition:
+                  X: 0.0476919487
+                  Y: 0.0137111545
+                  Z: -0.000322341919
+                LocalScale:
+                  X: 0.279999942
+                  Y: 1.0
+                  Z: 0.0199999996
+              - !WaveEngine_MRTK_Demo.Toolkit.Components.GUI.Text3D,WaveEngine_MRTK_Demo
+                Id: f0357e23-c4d6-4a80-9295-14834b208e48
+                Alpha: 1.0
+                FontFamilySource: 
+                FontSize: 36
+                FontStretch: Normal
+                FontStyle: Normal
+                FontWeight: Normal
+                HorizontalAlignment: Left
+                IsEnabled: true
+                Quality: 0.5
+                Resolution: 2000
+                Text: Hand Interaction Examples
+                TextWrapping: NoWrap
+                VerticalAlignment: Center
+            Children: []
+            Id: fba2f6e9-2da1-4e47-b288-3e13bf0764cb
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: SectionSubtitle
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: 3deb7c68-504c-425e-8b78-2abc924a65e0
+                IsEnabled: true
+                LocalOrientation:
+                  W: 1.37678782E-07
+                  X: 1.37678754E-07
+                  Y: 0.707106829
+                  Z: -0.707106709
+                LocalPosition:
+                  X: -0.0115070026
+                  Y: -0.0445992947
+                  Z: -0.0173245668
+                LocalScale:
+                  X: 0.399999917
+                  Y: 1.0
+                  Z: 0.110000022
+              - !WaveEngine_MRTK_Demo.Toolkit.Components.GUI.Text3D,WaveEngine_MRTK_Demo
+                Id: f3f9836d-830d-4cbd-94ad-86c26e8de0f8
+                Alpha: 1.0
+                FontFamilySource: 
+                FontSize: 24
+                FontStretch: Normal
+                FontStyle: Normal
+                FontWeight: Normal
+                HorizontalAlignment: Left
+                IsEnabled: true
+                Quality: 0.5
+                Resolution: 2000
+                Text: This example scene demonstrates various types of hand tracking interactions such as Press, Touch, Grab, Scroll, Move, Rotate, and Scale. You can find common UI and interaction building blocks that are part of HoloLens shell.
+                TextWrapping: Wrap
+                VerticalAlignment: Center
+            Children: []
+            Id: dbb3473f-cd04-45d6-84c6-0c23b8ea43bb
         Id: 187140ba-0048-4bd5-bd10-4fc0280ad3da
       - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
         Name: BoundingBoxExample
@@ -5018,13 +5308,21 @@ Items:
                       X: 0.0
                       Y: 0.0
                       Z: 0.0
+                    CollisionCategory: Cat1
                     HandleGrabbedMaterial: 7c6dfc11-0f01-4d22-bfc9-bc5ca4fae227
                     HandleMaterial: 9adff77b-f6b6-4683-bf28-243fafea5436
                     IsEnabled: true
                     LinkScale: 0.00100000005
                     RotationHandleScale: 0.0199999996
                     ScaleHandleScale: 0.0199999996
+                    ShowScaleHandles: true
                     ShowWireframe: true
+                    ShowXRotationHandle: true
+                    ShowXScaleHandle: true
+                    ShowYRotationHandle: true
+                    ShowYScaleHandle: true
+                    ShowZRotationHandle: true
+                    ShowZScaleHandle: true
                     WireframeMaterial: d04c6b19-b181-4798-8052-73388883abfe
                     WireframeShape: Cubic
                   - !WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation.SimpleManipulationHandler,WaveEngine.MRTK
@@ -5035,6 +5333,23 @@ Items:
                     SmoothingActive: true
                     SmoothingAmount: 0.00100000005
                     UpdateOrder: 0.5
+                  - !WaveEngine.Framework.Physics3D.BoxCollider3D,WaveEngine.Framework
+                    Id: 6b81b143-aa7b-4c7e-be6c-690e213fc8df
+                    IsEnabled: true
+                    Margin: 0.0399999991
+                    Offset:
+                      X: 0.0
+                      Y: 0.0
+                      Z: -2.38418579E-07
+                    OrientationOffset:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    Size:
+                      X: 1.0
+                      Y: 0.99999994
+                      Z: 1.0
                 Children: []
                 Id: 8e41fb61-2bd1-4a2e-81c2-be9b96539ffc
             Id: 10a93be1-3592-48a8-a470-9b5c6e6300c3

@@ -1,26 +1,19 @@
 !WaveEngine.Assets.Exporters.MaterialMetaFile,WaveEngine.Assets
-Id: 9ca041f7-ffef-4c3e-b349-e19cf446979a
+Id: 9733ded4-830a-4004-877d-43ec3740ce42
 DefaultProfile:
   ExcludeAsset: false
   Name: null
   Platform: Undefined
 ExportAsRaw: false
 MaterialInfo:
-  Id: 5af197a6-4a74-4e58-b95f-2b6a974de0b0
-  ActiveDirectives:
-    - ALBEDO_MAP
-    - DIFF
-    - HOVER_LIGHT
-    - PROXIMITY_LIGHT
-    - PROXIMITY_LIGHT_COLOR_OVERRIDE
-    - PROXIMITY_LIGHT_SUBTRACTIVE
-    - PROXIMITY_LIGHT_TWO_SIDED
+  Id: bede0e6a-1658-42d6-be9b-f9dd3f145b01
+  ActiveDirectives: []
   EffectID: 4f7e4c24-e83c-4350-9cd4-511fb2199cf4
   Layer: 0db59561-b3f5-444f-b5de-e62e3a5b42bf
   Parameters:
     - Name: WorldViewProj
       Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
-      ValueByteArray: b/W4QK20yb1Axuy8MMDsvAAAAADroTJAO+rQv+Lk0L+Z/xO+IhR8wNvzk78R8JO/I/CAstMwdy8f7ItAvRuPQA==
+      ValueByteArray: PAS5QAAAAAAAAAAAAAAAAAAAAACYMopADf9kvzD5ZL8AAAAAmjIKwAv/5L8u+eS/AAAAAHmCGjUf7ItAvRuPQA==
     - Name: World
       Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
       ValueByteArray: AAAAQAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAACAPw==
@@ -74,13 +67,13 @@ MaterialInfo:
       ValueByteArray: j8J1Po/CdT6PwnU+
     - Name: ProximityLightCenterColorOverride
       Type: WaveEngine.Mathematics.Vector4,WaveEngine.Mathematics
-      ValueByteArray: AAAAAAAAAAAAAAAAAAAAAA==
+      ValueByteArray: PQpXPs3MDD9I4Xo/AAAAAA==
     - Name: ProximityLightMiddleColorOverride
       Type: WaveEngine.Mathematics.Vector4,WaveEngine.Mathematics
-      ValueByteArray: ysjIPsrIyD7KyMg+AAAAPw==
+      ValueByteArray: 7FE4PlyPAj8AAIA/zcxMPg==
     - Name: ProximityLightOuterColorOverride
       Type: WaveEngine.Mathematics.Vector4,WaveEngine.Mathematics
-      ValueByteArray: ysjIPsrIyD7KyMg+AACAPw==
+      ValueByteArray: CtejPo/C9T2kcD0/AACAPw==
     - Name: LightColor0
       Type: WaveEngine.Mathematics.Vector4,WaveEngine.Mathematics
       ValueByteArray: AAAAPwAAAD8AAAA/AACAPw==
@@ -104,14 +97,14 @@ MaterialInfo:
       ValueByteArray: AAAAAAAAAAAAAAAAAAAAAA==
     - Name: MultiviewViewProj
       Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
-      ValueByteArray: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
+      ValueByteArray: kpPOPwjcv72p9ji+gfM4vnJaDrfRDxdA/yFXvlQeV77EUpu+3jP/vuj+db+2+nW/9FFXPnRC377/T5++KTRYvg==
     - Name: EyeCount
       Type: System.Int32
       ValueByteArray: AQAAAA==
   Samplers:
-    - ID: 9018edf8-ea96-4721-bf83-5561942432e0
-      Name: Sampler
+    - ID: 00000000-0000-0000-0000-000000000000
+      Name: null
   Textures:
-    - ID: fdc10e79-2a87-42f1-a5b1-78f968cec18f
-      Name: Texture
+    - ID: 00000000-0000-0000-0000-000000000000
+      Name: null
 Profiles: {}
