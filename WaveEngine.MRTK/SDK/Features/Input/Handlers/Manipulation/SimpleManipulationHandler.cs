@@ -140,6 +140,11 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
         /// </summary>
         public bool KeepRigidBodyActiveDuringDrag { get; set; } = false;
 
+        /// <summary>
+        /// Gets or sets a value indicating whether the children colliders should be taken into account.
+        /// </summary>
+        public bool IncludeChildrenColliders { get; set; } = true;
+
         private bool lastLeftPressed;
         private bool lastRightPressed;
         private bool leftPressed;
@@ -168,7 +173,7 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
         /// <inheritdoc/>
         public void OnPointerDown(MixedRealityPointerEventData eventData)
         {
-            if (eventData.EventHandled)
+            if (eventData.EventHandled || (!this.IncludeChildrenColliders && eventData.CurrentTarget != this.Owner))
             {
                 return;
             }
@@ -201,7 +206,7 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
         /// <inheritdoc/>
         public void OnPointerDragged(MixedRealityPointerEventData eventData)
         {
-            if (eventData.EventHandled)
+            if (eventData.EventHandled || (!this.IncludeChildrenColliders && eventData.CurrentTarget != this.Owner))
             {
                 return;
             }
@@ -219,7 +224,7 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
         /// <inheritdoc/>
         public void OnPointerUp(MixedRealityPointerEventData eventData)
         {
-            if (eventData.EventHandled)
+            if (eventData.EventHandled || (!this.IncludeChildrenColliders && eventData.CurrentTarget != this.Owner))
             {
                 return;
             }
@@ -257,16 +262,16 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
         {
             if (!Application.Current.IsEditor)
             {
-                if (this.collider == null)
-                {
-                    this.collider = new BoxCollider3D();
-                    this.Owner.AddComponent(this.collider);
-                }
-
                 if (this.physicBody3D == null)
                 {
                     this.physicBody3D = new StaticBody3D();
                     this.Owner.AddComponent(this.physicBody3D);
+                }
+
+                if (this.collider == null)
+                {
+                    this.collider = new BoxCollider3D();
+                    this.Owner.AddComponent(this.collider);
                 }
             }
 
