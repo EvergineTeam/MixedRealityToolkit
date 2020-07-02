@@ -20,13 +20,22 @@ namespace WaveEngine.MRTK.Behaviors
         [BindComponent]
         public Transform3D transform;
 
+        /// <summary>
+        /// Whether to scale or not.
+        /// </summary>
+        public bool scale = true;
+
         /// <inheritdoc/>
         protected override void Update(TimeSpan gameTime)
         {
             Camera3D cam = this.Managers.RenderManager.ActiveCamera3D;
             this.transform.Orientation = cam.Transform.Orientation;
-            float t = Math.Abs(Vector3.TransformCoordinate(this.transform.Position, cam.Transform.WorldInverseTransform).Z);
-            this.transform.Scale = Vector3.One * t * 1.0f;
+
+            if (this.scale)
+            {
+                float t = Math.Abs(Vector3.TransformCoordinate(this.transform.Position, cam.Transform.WorldInverseTransform).Z);
+                this.transform.Scale = Vector3.One * t * 1.0f;
+            }
         }
     }
 }
