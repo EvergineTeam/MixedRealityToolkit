@@ -3725,6 +3725,7 @@ Items:
               - !WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation.SimpleManipulationHandler,WaveEngine.MRTK
                 Id: 341fb7a3-42b8-415e-b59c-269a455e2d59
                 Constraints: 0
+                IncludeChildrenColliders: true
                 IsEnabled: true
                 KeepRigidBodyActiveDuringDrag: false
                 SmoothingActive: true
@@ -3839,6 +3840,7 @@ Items:
               - !WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation.SimpleManipulationHandler,WaveEngine.MRTK
                 Id: 272f7dc4-b4a4-4b31-9f22-eee106510352
                 Constraints: 0
+                IncludeChildrenColliders: true
                 IsEnabled: true
                 KeepRigidBodyActiveDuringDrag: false
                 SmoothingActive: true
@@ -3953,6 +3955,7 @@ Items:
               - !WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation.SimpleManipulationHandler,WaveEngine.MRTK
                 Id: 4369f2f3-ee5f-45f3-a370-155ab75f76da
                 Constraints: 0
+                IncludeChildrenColliders: true
                 IsEnabled: true
                 KeepRigidBodyActiveDuringDrag: false
                 SmoothingActive: true
@@ -4098,6 +4101,7 @@ Items:
               - !WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation.SimpleManipulationHandler,WaveEngine.MRTK
                 Id: 043ea2b1-3e30-497d-916d-8aa46dc9f3cf
                 Constraints: 0
+                IncludeChildrenColliders: true
                 IsEnabled: true
                 KeepRigidBodyActiveDuringDrag: false
                 SmoothingActive: true
@@ -4292,6 +4296,7 @@ Items:
               - !WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation.SimpleManipulationHandler,WaveEngine.MRTK
                 Id: 93b93049-b1f1-4e95-826d-2545acf10fdf
                 Constraints: 0
+                IncludeChildrenColliders: true
                 IsEnabled: true
                 KeepRigidBodyActiveDuringDrag: false
                 SmoothingActive: true
@@ -5328,6 +5333,7 @@ Items:
                   - !WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation.SimpleManipulationHandler,WaveEngine.MRTK
                     Id: 77706876-d70f-4825-ab97-88a870e8e124
                     Constraints: 0
+                    IncludeChildrenColliders: true
                     IsEnabled: true
                     KeepRigidBodyActiveDuringDrag: false
                     SmoothingActive: true
@@ -5368,9 +5374,9 @@ Items:
                   Y: -0.382683396
                   Z: 0.0
                 LocalPosition:
-                  X: 0.575999975
-                  Y: 0.133253098
-                  Z: -0.718000114
+                  X: 0.394975245
+                  Y: 0.133253127
+                  Z: -0.536981583
                 LocalScale:
                   X: 0.164837003
                   Y: 0.164837003
@@ -5391,6 +5397,57 @@ Items:
                 FrustumCullingEnabled: true
                 IsEnabled: true
                 OrderBias: 0
+              - !WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox.BoundingBox,WaveEngine.MRTK
+                Id: e5b18d5f-4bd1-453c-bb55-3e44a7845933
+                BoxGrabbedMaterial: 0852af68-ed44-4dd5-bebb-05c15449d498
+                BoxMaterial: 76254053-dba8-4ecd-8ffd-2989ae519c06
+                BoxPadding:
+                  X: 0.0
+                  Y: 0.0
+                  Z: 0.0
+                CollisionCategory: Cat1
+                HandleGrabbedMaterial: 7c6dfc11-0f01-4d22-bfc9-bc5ca4fae227
+                HandleMaterial: 9adff77b-f6b6-4683-bf28-243fafea5436
+                IsEnabled: true
+                LinkScale: 0.00100000005
+                RotationHandleScale: 0.0199999996
+                ScaleHandleScale: 0.0199999996
+                ShowScaleHandles: true
+                ShowWireframe: true
+                ShowXRotationHandle: false
+                ShowXScaleHandle: false
+                ShowYRotationHandle: false
+                ShowYScaleHandle: false
+                ShowZRotationHandle: false
+                ShowZScaleHandle: false
+                WireframeMaterial: d04c6b19-b181-4798-8052-73388883abfe
+                WireframeShape: Cubic
+              - !WaveEngine.Framework.Physics3D.BoxCollider3D,WaveEngine.Framework
+                Id: 8ff73f77-f295-4e17-8474-67a85c7657e9
+                IsEnabled: true
+                Margin: 0.0399999991
+                Offset:
+                  X: 0.0
+                  Y: 0.0
+                  Z: 1.78813934E-07
+                OrientationOffset:
+                  W: 1.0
+                  X: 0.0
+                  Y: 0.0
+                  Z: 0.0
+                Size:
+                  X: 1.0
+                  Y: 1.00000012
+                  Z: 1.0
+              - !WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation.SimpleManipulationHandler,WaveEngine.MRTK
+                Id: ae59e2b5-8187-4661-a970-d7cc645d51a7
+                Constraints: 0
+                IncludeChildrenColliders: true
+                IsEnabled: true
+                KeepRigidBodyActiveDuringDrag: false
+                SmoothingActive: true
+                SmoothingAmount: 0.00100000005
+                UpdateOrder: 0.5
             Children: []
             Id: a3a5d007-0e0a-4220-9f31-cab5841a1f92
           - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
@@ -5454,6 +5511,60 @@ Items:
                     FrustumCullingEnabled: true
                     IsEnabled: true
                     OrderBias: 0
+                  - !WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox.BoundingBox,WaveEngine.MRTK
+                    Id: 2e64bfc9-2248-46d9-bb3d-7d7b591d6372
+                    BoxGrabbedMaterial: 0852af68-ed44-4dd5-bebb-05c15449d498
+                    BoxMaterial: 76254053-dba8-4ecd-8ffd-2989ae519c06
+                    BoxPadding:
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    CollisionCategory: Cat1
+                    HandleGrabbedMaterial: 7c6dfc11-0f01-4d22-bfc9-bc5ca4fae227
+                    HandleMaterial: 9adff77b-f6b6-4683-bf28-243fafea5436
+                    IsEnabled: true
+                    LinkScale: 0.00100000005
+                    RotationHandleScale: 0.0199999996
+                    ScaleHandleScale: 0.0199999996
+                    ShowScaleHandles: false
+                    ShowWireframe: true
+                    ShowXRotationHandle: true
+                    ShowXScaleHandle: false
+                    ShowYRotationHandle: true
+                    ShowYScaleHandle: false
+                    ShowZRotationHandle: true
+                    ShowZScaleHandle: false
+                    WireframeMaterial: d04c6b19-b181-4798-8052-73388883abfe
+                    WireframeShape: Cubic
+                  - !WaveEngine.Framework.Physics3D.BoxCollider3D,WaveEngine.Framework
+                    Id: c89505af-0abf-42e0-9759-e00deecb7867
+                    IsEnabled: true
+                    Margin: 0.0399999991
+                    Offset:
+                      X: 0.0
+                      Y: 0.0
+                      Z: -3.57627869E-07
+                    OrientationOffset:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    Size:
+                      X: 1.0
+                      Y: 0.99999994
+                      Z: 1.0
+                  - !WaveEngine.Framework.Physics3D.StaticBody3D,WaveEngine.Framework
+                    Id: 0f82c4a8-cd83-4b66-b4d9-ce7d24650042
+                    CcdMotionThreshold: 0.0
+                    CcdSweptSphereRadius: 0.200000003
+                    CollisionCategories: Cat1
+                    Friction: 0.5
+                    IsEnabled: true
+                    IsSensor: false
+                    MaskBits: All
+                    Restitution: 0.0
+                    RollingFriction: 0.0
+                    UpdateOrder: 0.5
                 Children: []
                 Id: 014dff1a-4507-48ab-821d-e2828e57a1d0
             Id: 2fe202b7-c59f-49d5-af31-f6dd79eeebf0
@@ -5479,6 +5590,57 @@ Items:
                   X: 1.33410001
                   Y: 1.33410001
                   Z: 1.33410001
+              - !WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox.BoundingBox,WaveEngine.MRTK
+                Id: d7f0823f-63ac-48a7-a97b-469f1c5a5704
+                BoxGrabbedMaterial: 0852af68-ed44-4dd5-bebb-05c15449d498
+                BoxMaterial: null
+                BoxPadding:
+                  X: 0.0
+                  Y: 0.0
+                  Z: 0.0
+                CollisionCategory: Cat1
+                HandleGrabbedMaterial: 7c6dfc11-0f01-4d22-bfc9-bc5ca4fae227
+                HandleMaterial: 9adff77b-f6b6-4683-bf28-243fafea5436
+                IsEnabled: true
+                LinkScale: 0.00499999989
+                RotationHandleScale: 0.0199999996
+                ScaleHandleScale: 0.0199999996
+                ShowScaleHandles: false
+                ShowWireframe: false
+                ShowXRotationHandle: false
+                ShowXScaleHandle: true
+                ShowYRotationHandle: false
+                ShowYScaleHandle: true
+                ShowZRotationHandle: false
+                ShowZScaleHandle: false
+                WireframeMaterial: d04c6b19-b181-4798-8052-73388883abfe
+                WireframeShape: Cubic
+              - !WaveEngine.Framework.Physics3D.BoxCollider3D,WaveEngine.Framework
+                Id: b3c9d17a-26c2-4c3c-92e1-659671773a36
+                IsEnabled: true
+                Margin: 0.0399999991
+                Offset:
+                  X: 0.0
+                  Y: 0.0
+                  Z: -0.000986874104
+                OrientationOffset:
+                  W: 1.0
+                  X: 0.0
+                  Y: 0.0
+                  Z: 0.0
+                Size:
+                  X: 0.34054029
+                  Y: 0.218011498
+                  Z: 0.00197398663
+              - !WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation.SimpleManipulationHandler,WaveEngine.MRTK
+                Id: 95f434a0-e25a-4eca-bf78-9e746b0e9281
+                Constraints: 56
+                IncludeChildrenColliders: true
+                IsEnabled: true
+                KeepRigidBodyActiveDuringDrag: false
+                SmoothingActive: true
+                SmoothingAmount: 0.00100000005
+                UpdateOrder: 0.5
             Children:
               - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
                 Name: plane
@@ -5531,9 +5693,310 @@ Items:
                     FrustumCullingEnabled: true
                     IsEnabled: true
                     OrderBias: 0
-                Children: []
+                Children:
+                  - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                    Name: WaveMRTK logo
+                    Tag: null
+                    IsEnabled: true
+                    IsStatic: false
+                    Components:
+                      - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                        Id: 154bba29-c90a-4626-851f-b1ae68d7ce95
+                        IsEnabled: true
+                        LocalOrientation:
+                          W: 1.0
+                          X: 0.0
+                          Y: 2.84217094E-14
+                          Z: 0.0
+                        LocalPosition:
+                          X: 0.298651576
+                          Y: 0.135103449
+                          Z: -0.235015869
+                        LocalScale:
+                          X: 0.293651044
+                          Y: 0.458691418
+                          Z: 11.9256926
+                      - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+                        Id: a8751517-3cc3-44ad-bcae-c3044e75dcda
+                        AsignedTo: Default
+                        IsEnabled: true
+                        Material: c29e3e3b-a18d-4f8e-981c-cb6438f9adc4
+                      - !WaveEngine.Components.Graphics3D.PlaneMesh,WaveEngine.Components
+                        Id: ca44184a-60f0-4677-85fb-e6c82cf37b6a
+                        Height: 0.910000026
+                        InitialU: 0.0
+                        InitialV: 0.0
+                        IsEnabled: true
+                        Model: 00000000-0000-0000-0000-000000000000
+                        ModelMeshName: plane_primitive
+                        Normal:
+                          X: 0.0
+                          Y: 0.0
+                          Z: 1.0
+                        TwoSides: false
+                        UTile: 1.0
+                        UVHorizontalFlip: false
+                        UVVerticalFlip: false
+                        Width: 0.910000026
+                        YTile: 1.0
+                      - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+                        Id: 60634c93-00ab-4e4b-9f1e-37ab00cf2cda
+                        DebugBoundingbox: true
+                        FrustumCullingEnabled: true
+                        IsEnabled: true
+                        OrderBias: 0
+                    Children: []
+                    Id: 9d7b301c-3ef3-4f9e-b752-ab26d5dfdb1d
+                  - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                    Name: Wave MRTK
+                    Tag: null
+                    IsEnabled: true
+                    IsStatic: false
+                    Components:
+                      - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                        Id: 2bc225b0-cf08-4198-a388-a3b07263d433
+                        IsEnabled: true
+                        LocalOrientation:
+                          W: 1.0
+                          X: 0.0
+                          Y: 2.84217094E-14
+                          Z: 0.0
+                        LocalPosition:
+                          X: -0.146650553
+                          Y: 0.1547077
+                          Z: -0.235427856
+                        LocalScale:
+                          X: 2.34920835
+                          Y: 3.66953135
+                          Z: 95.4055405
+                      - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+                        Id: 4d771cb9-feee-44ef-ac6d-12a85d0d0e88
+                        AsignedTo: Default
+                        IsEnabled: true
+                        Material: 7566d83a-0cd7-412d-9c48-9dd38e64d91f
+                      - !WaveEngine.Components.Graphics3D.PlaneMesh,WaveEngine.Components
+                        Id: 18dcf373-198e-4cee-8160-9c8be0852443
+                        Height: 0.0560000017
+                        InitialU: 0.0
+                        InitialV: 0.0
+                        IsEnabled: true
+                        Model: 00000000-0000-0000-0000-000000000000
+                        ModelMeshName: plane_primitive
+                        Normal:
+                          X: 0.0
+                          Y: 0.0
+                          Z: 1.0
+                        TwoSides: false
+                        UTile: 1.0
+                        UVHorizontalFlip: false
+                        UVVerticalFlip: false
+                        Width: 0.186000004
+                        YTile: 1.0
+                      - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+                        Id: 1baf8892-044e-4d67-94f2-3227a462b0dd
+                        DebugBoundingbox: true
+                        FrustumCullingEnabled: true
+                        IsEnabled: true
+                        OrderBias: 0
+                    Children: []
+                    Id: ecef3a41-0bc2-44e5-9865-a8b031b9c39e
                 Id: bb4c959d-1bf1-44b4-a0d2-89e5dfbc89eb
             Id: 138aea70-84a8-48bf-b4c0-730010413235
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: SectionTitle
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: d0c8f2bb-0b97-4736-aafd-56b9e4685368
+                IsEnabled: true
+                LocalOrientation:
+                  W: 1.37678782E-07
+                  X: 1.37678754E-07
+                  Y: 0.707106829
+                  Z: -0.707106709
+                LocalPosition:
+                  X: 0.0127290487
+                  Y: 0.855312824
+                  Z: 0.0349814892
+                LocalScale:
+                  X: 0.279999942
+                  Y: 1.0
+                  Z: 0.0349999964
+              - !WaveEngine_MRTK_Demo.Toolkit.Components.GUI.Text3D,WaveEngine_MRTK_Demo
+                Id: 433a4e95-f3ee-4d6f-a2c9-55c583d0d83d
+                Alpha: 1.0
+                FontFamilySource: 
+                FontSize: 36
+                FontStretch: Normal
+                FontStyle: Normal
+                FontWeight: Normal
+                HorizontalAlignment: Left
+                IsEnabled: true
+                Quality: 0.5
+                Resolution: 2000
+                Text: Bounding Box
+                TextWrapping: NoWrap
+                VerticalAlignment: Center
+            Children: []
+            Id: 4527982a-f677-44ce-877b-36268a2bb107
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: SectionSubtitle
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: f2bd53f6-6ed9-41ec-b6d0-e1f468a386ed
+                IsEnabled: true
+                LocalOrientation:
+                  W: 1.37678782E-07
+                  X: 1.37678754E-07
+                  Y: 0.707106829
+                  Z: -0.707106709
+                LocalPosition:
+                  X: -0.0426849723
+                  Y: 0.80945909
+                  Z: 0.0349982977
+                LocalScale:
+                  X: 0.399999917
+                  Y: 1.0
+                  Z: 0.0549999997
+              - !WaveEngine_MRTK_Demo.Toolkit.Components.GUI.Text3D,WaveEngine_MRTK_Demo
+                Id: a339ab87-b412-4120-9c24-67f15b23e85d
+                Alpha: 1.0
+                FontFamilySource: 
+                FontSize: 24
+                FontStretch: Normal
+                FontStyle: Normal
+                FontWeight: Normal
+                HorizontalAlignment: Left
+                IsEnabled: true
+                Quality: 0.5
+                Resolution: 2000
+                Text: Standard UI for resizing and rotating an object
+                TextWrapping: Wrap
+                VerticalAlignment: Center
+            Children: []
+            Id: b705a5ae-a252-421e-842a-5a6cfeec082d
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: AllHandles
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: 270ef978-6c18-470e-8e9c-b6267776cb23
+                IsEnabled: true
+                LocalOrientation:
+                  W: 0.270598143
+                  X: 0.270598114
+                  Y: -0.653281391
+                  Z: 0.65328151
+                LocalPosition:
+                  X: 1.02701998
+                  Y: 0.80945909
+                  Z: -0.29221046
+                LocalScale:
+                  X: 0.399999917
+                  Y: 1.0
+                  Z: 0.0549999997
+              - !WaveEngine_MRTK_Demo.Toolkit.Components.GUI.Text3D,WaveEngine_MRTK_Demo
+                Id: 47f14463-38aa-497e-ba09-6a0d61472808
+                Alpha: 1.0
+                FontFamilySource: 
+                FontSize: 24
+                FontStretch: Normal
+                FontStyle: Normal
+                FontWeight: Normal
+                HorizontalAlignment: Left
+                IsEnabled: true
+                Quality: 0.5
+                Resolution: 2000
+                Text: Bounding box with all handles
+                TextWrapping: Wrap
+                VerticalAlignment: Center
+            Children: []
+            Id: c150ba97-0caa-4ea5-b51f-032d0bfccbbc
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: RotationHandles
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: 5712bd73-19d4-4396-9ea0-d601a71a8ef1
+                IsEnabled: true
+                LocalOrientation:
+                  W: 0.270598143
+                  X: 0.270598114
+                  Y: -0.653281391
+                  Z: 0.65328151
+                LocalPosition:
+                  X: 0.64406389
+                  Y: 0.80945909
+                  Z: 0.0907405615
+                LocalScale:
+                  X: 0.399999917
+                  Y: 1.0
+                  Z: 0.0549999997
+              - !WaveEngine_MRTK_Demo.Toolkit.Components.GUI.Text3D,WaveEngine_MRTK_Demo
+                Id: d57f32da-2221-4989-8446-ac3f8569c180
+                Alpha: 1.0
+                FontFamilySource: 
+                FontSize: 24
+                FontStretch: Normal
+                FontStyle: Normal
+                FontWeight: Normal
+                HorizontalAlignment: Left
+                IsEnabled: true
+                Quality: 0.5
+                Resolution: 2000
+                Text: Bounding box with rotation handles
+                TextWrapping: Wrap
+                VerticalAlignment: Center
+            Children: []
+            Id: cf31e4bf-dd7f-4327-8ac3-fda935ce099a
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: ScaleHandles
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: e3da6c39-3e1f-42f6-bc10-5a125ef5d08b
+                IsEnabled: true
+                LocalOrientation:
+                  W: 0.270598143
+                  X: 0.270598114
+                  Y: -0.653281391
+                  Z: 0.65328151
+                LocalPosition:
+                  X: 0.180037141
+                  Y: -0.0478203893
+                  Z: -0.692138731
+                LocalScale:
+                  X: 0.399999917
+                  Y: 1.0
+                  Z: 0.0549999997
+              - !WaveEngine_MRTK_Demo.Toolkit.Components.GUI.Text3D,WaveEngine_MRTK_Demo
+                Id: 052b04d5-fb18-4e5f-bb8a-b618f075b3f2
+                Alpha: 1.0
+                FontFamilySource: 
+                FontSize: 24
+                FontStretch: Normal
+                FontStyle: Normal
+                FontWeight: Normal
+                HorizontalAlignment: Left
+                IsEnabled: true
+                Quality: 0.5
+                Resolution: 2000
+                Text: Bounding box with uniform scale handles
+                TextWrapping: Wrap
+                VerticalAlignment: Center
+            Children: []
+            Id: 53bd849b-f7b1-4aa9-b9fb-beed03172436
         Id: aba4da0b-92d7-4554-b90c-f8c6a9c8b711
     Id: bf7601de-e3ee-4c6a-9ec4-717fc4c11ddd
   - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
