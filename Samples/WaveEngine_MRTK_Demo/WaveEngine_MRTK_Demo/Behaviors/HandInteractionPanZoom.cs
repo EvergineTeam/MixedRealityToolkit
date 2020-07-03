@@ -19,7 +19,7 @@ using WaveEngine.MRTK.Services.InputSystem;
 
 namespace WaveEngine_MRTK_Demo.Behaviors
 {
-    public class HandInteractionPanZoom : Behavior, IMixedRealityTouchHandler
+    public class HandInteractionPanZoom : Behavior, IMixedRealityTouchHandler, IMixedRealityPointerHandler
     {
         /// <summary>
         /// The transform.
@@ -199,8 +199,11 @@ namespace WaveEngine_MRTK_Demo.Behaviors
         /// <inheritdoc/>
         public void OnTouchStarted(HandTrackingInputEventData eventData)
         {
-            this.touchInfos.Add(new TouchInfo { Cursor = eventData.Cursor, Transform = eventData.Cursor.FindComponent< Transform3D >(), UV = GetUVPos(eventData.Position)});
-            Tools.PlaySound(soundEmitter, PanStartedSound);
+            if (eventData.Cursor.FindComponent<CursorRay>() == null)
+            {
+                this.touchInfos.Add(new TouchInfo { Cursor = eventData.Cursor, Transform = eventData.Cursor.FindComponent<Transform3D>(), UV = GetUVPos(eventData.Position) });
+                Tools.PlaySound(soundEmitter, PanStartedSound);
+            }
         }
 
         /// <inheritdoc/>
@@ -212,8 +215,6 @@ namespace WaveEngine_MRTK_Demo.Behaviors
         /// <inheritdoc/>
         public void OnTouchCompleted(HandTrackingInputEventData eventData)
         {
-            var node = this.touchInfos[0];
-            
             for(int i = 0; i < touchInfos.Count; ++ i)
             {
                 if (this.touchInfos[i].Cursor == eventData.Cursor)
@@ -226,6 +227,39 @@ namespace WaveEngine_MRTK_Demo.Behaviors
             RemapTouches();
 
             Tools.PlaySound(soundEmitter, PanEndedSound);
+        }
+
+        public void OnPointerDown(MixedRealityPointerEventData eventData)
+        {
+            if (eventData.Cursor.FindComponent<CursorRay>() != null)
+            {
+                this.touchInfos.Add(new TouchInfo { Cursor = eventData.Cursor, Transform = eventData.Cursor.FindComponent<Transform3D>(), UV = GetUVPos(eventData.Position) });
+                Tools.PlaySound(soundEmitter, PanStartedSound);
+            }
+        }
+
+        public void OnPointerDragged(MixedRealityPointerEventData eventData)
+        {
+        }
+
+        public void OnPointerUp(MixedRealityPointerEventData eventData)
+        {
+            for (int i = 0; i < touchInfos.Count; ++i)
+            {
+                if (this.touchInfos[i].Cursor == eventData.Cursor)
+                {
+                    this.touchInfos.RemoveAt(i);
+                    break;
+                }
+            }
+
+            RemapTouches();
+
+            Tools.PlaySound(soundEmitter, PanEndedSound);
+        }
+
+        public void OnPointerClicked(MixedRealityPointerEventData eventData)
+        {
         }
     }
 }
