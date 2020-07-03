@@ -18,7 +18,7 @@ Examples of the button prefabs under ``Scenes/Prefabs`` folder
 
 **Using ScenePrefab**
 
-Create a new Entity and add the Component ScenePrefab. Select any of the next options in the dropdown list and reload the scene:
+Create a new Entity and add the Component ScenePrefab. Select any of the next options in the dropdown list:
 - **PressableRoundButton**
 - **PressableButtonPlated32x32**
 - **PressableButtonUnplated**
