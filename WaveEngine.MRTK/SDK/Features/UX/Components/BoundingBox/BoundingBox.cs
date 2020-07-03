@@ -998,7 +998,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
 
         private void ApplyMaterialToAllComponents(Entity root, Material material)
         {
-            if (material != null)
+            if (material != null && root != null)
             {
                 MaterialComponent[] components = root.FindComponentsInChildren<MaterialComponent>().ToArray();
 
