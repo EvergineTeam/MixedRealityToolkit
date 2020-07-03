@@ -3385,9 +3385,9 @@ Items:
                       Y: 0.0
                       Z: 0.0
                     LocalPosition:
-                      X: -3.7252903E-07
+                      X: -3.87430191E-07
                       Y: 0.0
-                      Z: -0.0530000031
+                      Z: -0.0529999733
                     LocalScale:
                       X: 0.0700000003
                       Y: 0.0700000003
@@ -4444,6 +4444,270 @@ Items:
                 VerticalAlignment: Center
             Children: []
             Id: 0d595e45-1439-4a2d-be3d-1ee061ffccef
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: Platonic
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: 8e43cb0b-2098-499e-997d-07d0bc3e3880
+                IsEnabled: true
+                LocalOrientation:
+                  W: 0.923879623
+                  X: 0.0
+                  Y: -0.382683069
+                  Z: 0.0
+                LocalPosition:
+                  X: -0.660784781
+                  Y: 0.447554201
+                  Z: -0.751999974
+                LocalScale:
+                  X: 0.159324393
+                  Y: 0.159324393
+                  Z: 0.159324393
+              - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+                Id: f4d9a0de-6851-4770-9588-97bda4feff0c
+                AsignedTo: DefaultMaterial
+                IsEnabled: true
+                Material: 0867071b-476d-41cc-b072-9dd796ce98a2
+              - !WaveEngine.Components.Graphics3D.MeshComponent,WaveEngine.Framework
+                Id: 0d19aa52-7c1e-4ce3-af4f-e4a6a709c8e8
+                IsEnabled: true
+                Model: 334fc69a-5a9e-4ab5-b4ce-96cc3a6c6144
+                ModelMeshName: Platonic
+              - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+                Id: af068ce1-13d8-4b86-9473-49d5b4daaf80
+                DebugBoundingbox: true
+                FrustumCullingEnabled: true
+                IsEnabled: true
+                OrderBias: 0
+              - !WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation.SimpleManipulationHandler,WaveEngine.MRTK
+                Id: d495d95c-55e8-44a1-815f-5d6b7ca6a5b1
+                Constraints: 56
+                IncludeChildrenColliders: true
+                IsEnabled: true
+                KeepRigidBodyActiveDuringDrag: false
+                SmoothingActive: true
+                SmoothingAmount: 0.00100000005
+                UpdateOrder: 0.5
+            Children: []
+            Id: 4130293d-cbfd-4679-ad16-66c50adc264a
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: Platonic2
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: 1f65dadb-0e05-43a6-9bc5-1f46ea2138c0
+                IsEnabled: true
+                LocalOrientation:
+                  W: 1.0
+                  X: 0.0
+                  Y: 0.0
+                  Z: 0.0
+                LocalPosition:
+                  X: -0.158066332
+                  Y: 0.448000133
+                  Z: -0.751999617
+                LocalScale:
+                  X: 0.158999994
+                  Y: 0.158999994
+                  Z: 0.158999994
+              - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+                Id: 6bb3f137-51a0-41f6-b73d-8d5aee78bd79
+                AsignedTo: DefaultMaterial
+                IsEnabled: true
+                Material: b5810cca-0555-4aab-86b8-b591766234a5
+              - !WaveEngine.Components.Graphics3D.MeshComponent,WaveEngine.Framework
+                Id: 14150bae-a1d8-416a-96d2-aacd3793bccc
+                IsEnabled: true
+                Model: 7eb041c5-5239-45f0-9e70-e535c0f90d27
+                ModelMeshName: Platonic
+              - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+                Id: 226a1e5f-63cd-40f9-90ce-4e2dd701c93f
+                DebugBoundingbox: true
+                FrustumCullingEnabled: true
+                IsEnabled: true
+                OrderBias: 0
+              - !WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation.SimpleManipulationHandler,WaveEngine.MRTK
+                Id: cb26fa94-4b73-4ee2-9050-708c8534f9f6
+                Constraints: 448
+                IncludeChildrenColliders: true
+                IsEnabled: true
+                KeepRigidBodyActiveDuringDrag: false
+                SmoothingActive: true
+                SmoothingAmount: 0.00100000005
+                UpdateOrder: 0.5
+            Children: []
+            Id: 0a5f9247-1905-4219-9429-38237f7c08ea
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: Subtitle1
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: f3a31b80-c7fa-47ad-9074-515f41c39b9d
+                IsEnabled: true
+                LocalOrientation:
+                  W: 0.707106829
+                  X: 0.707106709
+                  Y: 0.0
+                  Z: 0.0
+                LocalPosition:
+                  X: -0.651748836
+                  Y: 0.219555423
+                  Z: -0.761346817
+                LocalScale:
+                  X: 0.435000539
+                  Y: 5.0
+                  Z: 5.0
+              - !WaveEngine_MRTK_Demo.Toolkit.Components.GUI.Text3D,WaveEngine_MRTK_Demo
+                Id: e97a707c-58c5-45bb-9b9b-77f5e39ed625
+                Alpha: 1.0
+                FontFamilySource: 
+                FontSize: 24
+                FontStretch: Normal
+                FontStyle: Normal
+                FontWeight: Normal
+                HorizontalAlignment: Left
+                IsEnabled: true
+                Quality: 0.5
+                Resolution: 2002
+                Text: One/Two Handed     Maintain original rotation
+                TextWrapping: Wrap
+                VerticalAlignment: Center
+            Children: []
+            Id: 84c149f2-3849-482e-b435-e41ea12d3b2b
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: Platonic3
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: b4c6d746-116f-4fa0-ab27-8d7725354a9c
+                IsEnabled: true
+                LocalOrientation:
+                  W: 1.0
+                  X: 0.0
+                  Y: 0.0
+                  Z: 0.0
+                LocalPosition:
+                  X: 0.347137988
+                  Y: 0.447999895
+                  Z: -0.751998901
+                LocalScale:
+                  X: 0.158999994
+                  Y: 0.158999994
+                  Z: 0.158999994
+              - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+                Id: 44c28ec4-9fed-48d5-ab89-53399e9e00d8
+                AsignedTo: DefaultMaterial
+                IsEnabled: true
+                Material: ed39fa14-3237-4c87-b295-9b890cb6c171
+              - !WaveEngine.Components.Graphics3D.MeshComponent,WaveEngine.Framework
+                Id: bb5a1d6f-0aae-419c-8779-d2f4bf140e7e
+                IsEnabled: true
+                Model: fea0a9fa-7078-4742-9d9c-42ded82a82c4
+                ModelMeshName: Platonic
+              - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+                Id: d65368ab-5f0c-4457-9c0f-732e530690d3
+                DebugBoundingbox: true
+                FrustumCullingEnabled: true
+                IsEnabled: true
+                OrderBias: 0
+              - !WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation.SimpleManipulationHandler,WaveEngine.MRTK
+                Id: 055841ea-5689-4e45-9a1d-2cb3d7fcf495
+                Constraints: 7
+                IncludeChildrenColliders: true
+                IsEnabled: true
+                KeepRigidBodyActiveDuringDrag: false
+                SmoothingActive: true
+                SmoothingAmount: 0.00100000005
+                UpdateOrder: 0.5
+            Children: []
+            Id: 068eaa9f-a2a0-4ac8-921f-2d2354c398e9
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: Subtitle2
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: c893c6b6-0054-46a0-97ee-92caf0bdc4f3
+                IsEnabled: true
+                LocalOrientation:
+                  W: 0.707106829
+                  X: 0.707106709
+                  Y: 0.0
+                  Z: 0.0
+                LocalPosition:
+                  X: -0.130373776
+                  Y: 0.219555259
+                  Z: -0.761340618
+                LocalScale:
+                  X: 0.435000539
+                  Y: 5.0
+                  Z: 5.0
+              - !WaveEngine_MRTK_Demo.Toolkit.Components.GUI.Text3D,WaveEngine_MRTK_Demo
+                Id: d3ffcc6c-bf3c-48cb-84db-8ecf5009061e
+                Alpha: 1.0
+                FontFamilySource: 
+                FontSize: 24
+                FontStretch: Normal
+                FontStyle: Normal
+                FontWeight: Normal
+                HorizontalAlignment: Left
+                IsEnabled: true
+                Quality: 0.5
+                Resolution: 2002
+                Text: One/Two Handed     Maintain original scale
+                TextWrapping: Wrap
+                VerticalAlignment: Center
+            Children: []
+            Id: 31b67b51-554c-49bd-bb79-dc2b0223a28c
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: Subtitle3
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: d527809c-56f2-4ace-8d06-49870d423e54
+                IsEnabled: true
+                LocalOrientation:
+                  W: 0.707106829
+                  X: 0.707106709
+                  Y: 0.0
+                  Z: 0.0
+                LocalPosition:
+                  X: 0.388245642
+                  Y: 0.219555333
+                  Z: -0.761327982
+                LocalScale:
+                  X: 0.435000539
+                  Y: 5.0
+                  Z: 5.0
+              - !WaveEngine_MRTK_Demo.Toolkit.Components.GUI.Text3D,WaveEngine_MRTK_Demo
+                Id: b1bebd81-7ecd-4f22-8dba-cc512e7af7b7
+                Alpha: 1.0
+                FontFamilySource: 
+                FontSize: 24
+                FontStretch: Normal
+                FontStyle: Normal
+                FontWeight: Normal
+                HorizontalAlignment: Left
+                IsEnabled: true
+                Quality: 0.5
+                Resolution: 2002
+                Text: One/Two Handed     Maintain original position
+                TextWrapping: Wrap
+                VerticalAlignment: Center
+            Children: []
+            Id: 2a503780-7850-4c7e-96cb-623c28a93ad5
         Id: aa1c9d33-1751-44b9-9925-d93b76042bce
       - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
         Name: PanExamples
