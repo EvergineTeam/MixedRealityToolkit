@@ -8,8 +8,8 @@
   IgnorableNamespaces="uap uap2 mp">
 
   <Identity Name="WaveEngineMRTKDemo.UWP.MixedReality"
-            Publisher="CN=WaveEngine"
-            Version="1.0.0.0" />
+            Publisher="CN=gsantos"
+            Version="0.2.1.0" />
 
   <mp:PhoneIdentity PhoneProductId="f36d3c81-8988-48b3-a348-e10d93830306" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
