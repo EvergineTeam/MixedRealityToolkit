@@ -9,7 +9,7 @@ DefaultProfile:
   ScaledHeight: 512
   ScaledPercentage: 1.0
   ScaledWidth: 512
-  ScalingType: Original
+  ScalingType: Freeform
 ExportAsRaw: false
 GenerateMipMaps: true
 NinePatchType: None
