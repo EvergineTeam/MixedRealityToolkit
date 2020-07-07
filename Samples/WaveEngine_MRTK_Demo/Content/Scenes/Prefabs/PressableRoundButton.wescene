@@ -332,9 +332,9 @@ Items:
                   Y: 0.0
                   Z: -0.00100000005
                 LocalScale:
-                  X: 1.0
-                  Y: 1.0
-                  Z: 1.0
+                  X: 0.0320000015
+                  Y: 0.0320000015
+                  Z: 0.0120000048
               - !WaveEngine_MRTK_Demo.Toolkit.Components.GUI.Text3D,WaveEngine_MRTK_Demo
                 Id: a61a3638-748a-4a7d-8b72-a2ac44dc7df4
                 Alpha: 1.0
