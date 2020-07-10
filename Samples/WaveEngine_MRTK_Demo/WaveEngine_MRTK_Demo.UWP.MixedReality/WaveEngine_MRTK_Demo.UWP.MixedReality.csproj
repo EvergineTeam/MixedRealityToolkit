@@ -70,11 +70,20 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AppView.cs" />
     <Compile Include="AppViewSource.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="MainMenu.xaml.cs">
+      <DependentUpon>MainMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MixedRealityApplication.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="VoiceCommandService.cs" />
+    <Compile Include="Services\VoiceCommandService.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -129,25 +138,25 @@
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
-      <Version>6.2.8</Version>
+      <Version>6.2.9</Version>
     </PackageReference>
     <PackageReference Include="WaveEngine.MixedReality">
-      <Version>3.0.0.5382-prefabsFix</Version>
+      <Version>3.0.0.5180-nightly</Version>
     </PackageReference>
     <PackageReference Include="WaveEngine.XAudio2">
-      <Version>3.0.0.5382-prefabsFix</Version>
+      <Version>3.0.0.5180-nightly</Version>
     </PackageReference>
     <PackageReference Include="WaveEngine.Targets">
-      <Version>3.0.0.5382-prefabsFix</Version>
+      <Version>3.0.0.5180-nightly</Version>
     </PackageReference>
     <PackageReference Include="WaveEngine.Targets.UWP">
-      <Version>3.0.0.5382-prefabsFix</Version>
+      <Version>3.0.0.5180-nightly</Version>
     </PackageReference>
     <PackageReference Include="WaveEngine.UWPView">
-      <Version>3.0.0.5382-prefabsFix</Version>
+      <Version>3.0.0.5180-nightly</Version>
     </PackageReference>
     <PackageReference Include="WaveEngine.Bullet">
-      <Version>3.0.0.5382-prefabsFix</Version>
+      <Version>3.0.0.5180-nightly</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
@@ -155,10 +164,32 @@
       <Project>{67DE4CB4-453F-41E4-B914-34F25516DC48}</Project>
       <Name>WaveEngine.MRTK</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WaveEngine_MRTK_Demo.Common\WaveEngine_MRTK_Demo.Common.csproj">
+      <Project>{D430DB43-36C7-4E66-8849-8FF29AF92606}</Project>
+      <Name>WaveEngine_MRTK_Demo.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WaveEngine_MRTK_Demo\WaveEngine_MRTK_Demo.csproj">
       <Project>{04070017-d150-405d-9c6b-9b313dea8f1a}</Project>
       <Name>WaveEngine_MRTK_Demo</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </ApplicationDefinition>
+    <Page Include="MainMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\Style.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

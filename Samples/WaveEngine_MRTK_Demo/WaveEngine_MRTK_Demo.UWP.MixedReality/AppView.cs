@@ -4,6 +4,7 @@ using WaveEngine.Common.Graphics;
 using WaveEngine.DirectX11;
 using WaveEngine.Framework.Services;
 using WaveEngine.MixedReality;
+using WaveEngine_MRTK_Demo.UWP.MixedReality.Services;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.ApplicationModel.Core;
@@ -17,7 +18,10 @@ namespace WaveEngine_MRTK_Demo.UWP.MixedReality
         private MyApplication application;
         private MixedRealityWindowsSystem windowsSystem;
 
-        private bool isApplicationInitilized;
+        public AppView(MyApplication app)
+        {
+            this.application = app;
+        }
 
         public void Initialize(CoreApplicationView applicationView)
         {
@@ -30,11 +34,6 @@ namespace WaveEngine_MRTK_Demo.UWP.MixedReality
 
         public void SetWindow(CoreWindow window)
         {
-            // At this point we have access to the device and we can create device-dependent
-            // resources.
-            // Create app
-            application = new MyApplication();
-            
             // Create Services
             xrDevice = new MixedRealityPlatform();
             application.Container.RegisterInstance(xrDevice);
@@ -44,14 +43,14 @@ namespace WaveEngine_MRTK_Demo.UWP.MixedReality
             ConfigureGraphicsContext(application);
 			
 			// Creates XAudio device
-            var xaudio = new WaveEngine.XAudio2.XAudioDevice();
+            /*var xaudio = new WaveEngine.XAudio2.XAudioDevice();
             application.Container.RegisterInstance(xaudio);
 
             application.Container.RegisterType<VoiceCommandService>();
             VoiceCommandService voiceCommandService = application.Container.Resolve<VoiceCommandService>();
             voiceCommandService.ConfigureWords(new string[] {
                 "select", "button"
-            });
+            });*/
         }
 
         /// <summary>
@@ -60,12 +59,6 @@ namespace WaveEngine_MRTK_Demo.UWP.MixedReality
         /// </summary>
         public void Load(string entryPoint)
         {
-            if (!isApplicationInitilized)
-            {
-                isApplicationInitilized = true;
-                application.Initialize();
-                ConfigureMixedRealityDisplay(application, xrDevice);
-            }
         }
 
         /// <summary>
@@ -151,7 +144,7 @@ namespace WaveEngine_MRTK_Demo.UWP.MixedReality
             application.Container.RegisterInstance(graphicsContext);
         }
 
-        private static void ConfigureMixedRealityDisplay(MyApplication application, MixedRealityPlatform xrDevice)
+        public void ConfigureMixedRealityDisplay()
         {
             var graphicsPresenter = application.Container.Resolve<GraphicsPresenter>();
             graphicsPresenter.AddDisplay("DefaultDisplay", xrDevice.Display);

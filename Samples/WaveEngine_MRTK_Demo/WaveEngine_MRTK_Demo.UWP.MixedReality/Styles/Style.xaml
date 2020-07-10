@@ -1,0 +1,20 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WaveEngine_MRTK_Demo.UWP.MixedReality.Styles">
+
+    <!--  Colors  -->
+    <Color x:Key="ThemeBlue">#FF007CA2</Color>
+    <Color x:Key="PlainConceptsBlue">#50c2ef</Color>
+    <Color x:Key="PlainConceptsBlack">#16202D</Color>
+    <Color x:Key="PlainConceptsGray">#404040</Color>
+    <Color x:Key="PlainConceptsWhite">#FFFFFF</Color>
+    
+    <!-- Brushes -->
+    <SolidColorBrush x:Key="ThemeBlueBrush" Color="{StaticResource ThemeBlue}"/>
+    <SolidColorBrush x:Key="PlainConceptsBlueBrush" Color="{StaticResource PlainConceptsBlue}"/>
+    <SolidColorBrush x:Key="PlainConceptsBlackBrush" Color="{StaticResource PlainConceptsBlack}"/>
+    <SolidColorBrush x:Key="PlainConceptsGrayBrush" Color="{StaticResource PlainConceptsGray}"/>
+    <SolidColorBrush x:Key="PlainConceptsWhiteBrush" Color="{StaticResource PlainConceptsWhite}"/>
+    
+</ResourceDictionary>

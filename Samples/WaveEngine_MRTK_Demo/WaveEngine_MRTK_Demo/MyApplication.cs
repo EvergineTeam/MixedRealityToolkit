@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using WaveEngine.Framework;
 using WaveEngine.Framework.Services;
 using WaveEngine.Framework.Threading;
@@ -9,6 +10,8 @@ namespace WaveEngine_MRTK_Demo
 {
     public class MyApplication : Application
     {
+        private TaskCompletionSource<bool> applicationGotFocusTCS = new TaskCompletionSource<bool>();
+
         public MyApplication()
         {
             this.Container.RegisterType<Clock>();
@@ -27,19 +30,51 @@ namespace WaveEngine_MRTK_Demo
             BackgroundTaskScheduler.Background.Configure(this.Container);
         }
 
-        public override void Initialize()
+        public async override void Initialize()
+        {
+            await this.InitializeAsync(forceCreateContextInWaveThread: true);
+        }
+
+        protected async Task InitializeAsync(bool forceCreateContextInWaveThread)
         {
             base.Initialize();
 
             // Get ScreenContextManager
             var screenContextManager = this.Container.Resolve<ScreenContextManager>();
-            var assetsService = this.Container.Resolve<AssetsService>();
+
+            ScreenContext screenContext;
+            if (forceCreateContextInWaveThread)
+            {
+                screenContext = await WaveForegroundTask.Run(() => this.CreateScreenContext());
+            }
+            else
+            {
+                screenContext = this.CreateScreenContext();
+            }
 
             // Navigate to scene
+            screenContextManager.To(screenContext, false);
+        }
+
+        private ScreenContext CreateScreenContext()
+        {
+            var assetsService = this.Container.Resolve<AssetsService>();
+
             var scene = assetsService.Load<DemoScene>(WaveContent.Scenes.DemoScene_wescene);
             //var scene = assetsService.Load<TestScene>(WaveContent.Scenes.TestScene_wescene);
-            ScreenContext screenContext = new ScreenContext(scene);
-            screenContextManager.To(screenContext);
+            scene.Initialize();
+
+            return new ScreenContext(scene);
+        }
+
+        public Task WaitFocusAsync()
+        {
+            return this.applicationGotFocusTCS.Task;
+        }
+
+        public void GetFocus()
+        {
+            this.applicationGotFocusTCS.SetResult(true);
         }
     }
 }

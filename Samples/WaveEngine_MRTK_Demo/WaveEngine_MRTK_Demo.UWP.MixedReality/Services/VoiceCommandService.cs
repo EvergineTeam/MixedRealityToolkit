@@ -9,7 +9,7 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Core;
 using Windows.Media.SpeechRecognition;
 
-namespace WaveEngine_MRTK_Demo.UWP.MixedReality
+namespace WaveEngine_MRTK_Demo.UWP.MixedReality.Services
 {
     class VoiceCommandService : Service, IVoiceCommandService
     {
