@@ -493,7 +493,12 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
         public event EventHandler ScaleStopped;
 
         // Rig
-        private Entity rigRootEntity;
+
+        /// <summary>
+        /// Gets the gizmos root.
+        /// </summary>
+        public Entity rigRootEntity { get; private set; }
+
         private Dictionary<Entity, BoundingBoxHelper> helpers;
         private List<BoundingBoxHelper> helpersList;
         private Entity boxDisplay;
