@@ -214,7 +214,7 @@ namespace WaveEngine.MRTK.Emulation
 
             var interactables = this.GatherComponents(other)
                 .Select(c => c as IMixedRealityPointerHandler)
-                .Where(c => c != null);
+                .Where(c => c != null && (c as Component).IsEnabled);
 
             foreach (var touchHandler in interactables)
             {
