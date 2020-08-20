@@ -7,7 +7,7 @@ pool:
 variables:
   - group: Versions
   - name: 'nugetConfigPath'
-    value: '$(Build.StagingDirectory)/WaveEngine.MRTK/NuGet.config'
+    value: '$(Build.SourcesDirectory)/WaveEngine.MRTK/NuGet.config'
   - name: 'nugetOutputPath'
     value: '$(Build.StagingDirectory)/nupkgs'
 
