@@ -19,16 +19,6 @@ steps:
 - task: PowerShell@2
   inputs:
     targetType: 'inline'
-    script: '"<configuration></configuration>" > $(nugetConfigPath)'
-
-- task: NuGetCommand@2
-  inputs:
-    command: 'custom'
-    arguments: 'sources add -Name "WaveNightlyFeed" -Source "https://waveengineteam.pkgs.visualstudio.com/_packaging/WaveEngine-nightly/nuget/v3/index.json" -Username "vsts" -Password "$(WaveNightlyToken)" -StorePasswordInClearText -ConfigFile $(nugetConfigPath)'
-
-- task: PowerShell@2
-  inputs:
-    targetType: 'inline'
     script: |
       $TimestampEpoch = Get-Date -Date '2018-01-01'
           $DaysSinceEpoch = (New-TimeSpan -Start $TimestampEpoch -End $(Get-Date)).Days
@@ -56,6 +46,16 @@ steps:
   inputs:
     versionSpec: '$(NuGetVersion)'
     checkLatest: true
+
+- task: PowerShell@2
+  inputs:
+    targetType: 'inline'
+    script: '"<configuration></configuration>" > $(nugetConfigPath)'
+
+- task: NuGetCommand@2
+  inputs:
+    command: 'custom'
+    arguments: 'sources add -Name "WaveNightlyFeed" -Source "https://waveengineteam.pkgs.visualstudio.com/_packaging/WaveEngine-nightly/nuget/v3/index.json" -Username "vsts" -Password "$(WaveNightlyToken)" -StorePasswordInClearText -ConfigFile $(nugetConfigPath)'
 
 - task: PowerShell@2
   displayName: 'Generate NuGet packages'
