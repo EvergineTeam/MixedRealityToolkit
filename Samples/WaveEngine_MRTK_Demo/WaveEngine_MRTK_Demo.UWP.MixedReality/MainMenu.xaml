@@ -36,7 +36,7 @@
                     </Grid.ColumnDefinitions>
                     <!-- Start text -->
                     <TextBlock
-                                   Text="EMPEZAR"
+                                   Text="START"
                                    FontFamily="Noto Sans" 
                                    VerticalAlignment="Center"
                                    FontSize="16" FontWeight="Bold"/>
@@ -94,7 +94,7 @@
         <TextBlock
                 x:Name="versionText"
                 Margin="0,0,20,20"
-            Text="aasdasd"
+                Text="version"
                 HorizontalAlignment="Right"
                 VerticalAlignment="Bottom"
                 Foreground="White" Grid.Row="1"/>
