@@ -1,8 +1,11 @@
 [Begin_ResourceLayout]
 
+[directives:Multiview MULTIVIEW_OFF MULTIVIEW]
+
 	cbuffer Matrices : register(b0)
 	{
-	    float4x4	World : packoffset(c0); [World]
+	    float4x4	World					: packoffset(c0); [World]
+		float4x4    WorldViewProjection		: packoffset(c4.x); [WorldViewProjection]
 	};
 
 	cbuffer PerCamera : register(b1)
@@ -29,20 +32,27 @@
 	{
 	    float4 Position : SV_POSITION;
 	    float4 Color 	: COLOR;
-		uint ArrayIndex : SV_RenderTargetArrayIndex;
+
+#if MULTIVIEW
+		uint ViewId     : SV_RenderTargetArrayIndex;
+#endif
 	};
 
 	VS_OUT_COLOR VS( VS_IN_COLOR input )
 	{
 	    VS_OUT_COLOR output = (VS_OUT_COLOR)0;
 
+#if MULTIVIEW
 		int vid = input.InstanceID % EyeCount;
+		float4x4 viewProjecton = ViewProj[vid];
+		float4x4 worldViewProjection = mul(World, viewProjecton);
+		output.ViewId = vid;
+#else
+		float4x4 worldViewProjection = WorldViewProjection;
+#endif
 
-		float4x4 WorldViewProj = mul(World, ViewProj[vid]);
-
-	    output.Position = mul(input.Position, WorldViewProj);
+	    output.Position = mul(input.Position, worldViewProjection);
 	    output.Color = input.Color;
-		output.ArrayIndex = vid;
 
 	    return output;
 	}

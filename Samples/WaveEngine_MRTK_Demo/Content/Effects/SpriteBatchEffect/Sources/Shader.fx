@@ -16,7 +16,7 @@ Texture3D Texture3				: register(t2);
 
 [Begin_Pass:Default]
 
-[profile 11_0]
+[profile 10_0]
 [entrypoints VS = VS PS = PS]
 
 struct VS_IN_COLOR

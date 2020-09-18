@@ -1,5 +1,5 @@
 !WaveEngine.Assets.Exporters.SamplerMetaFile,WaveEngine.Assets
-Id: cb80d2ef-6bcc-4dd3-8e62-636465021fba
+Id: 9018edf8-ea96-4721-bf83-5561942432e0
 DefaultProfile:
   ExcludeAsset: false
   Name: null
@@ -17,5 +17,4 @@ DefaultProfile:
       MaxLOD: 1000.0
       MinLOD: -1000.0
       MipLODBias: 0.0
-ExportAsRaw: false
 Profiles: {}

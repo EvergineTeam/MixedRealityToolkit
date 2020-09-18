@@ -8,9 +8,16 @@ namespace WaveEngine_MRTK_Demo.Editor
 {
     public static class WaveContentUtils
     {
+        private static IEnumerable<TypeInfo> WaveContentTypes;
+
+        static WaveContentUtils()
+        {
+            WaveContentTypes = GetWaveContentTypes().ToList();
+        }
+
         public static Dictionary<string, string> FindFonts()
         {
-            return GetWaveContentTypes()
+            return WaveContentTypes
                     .SelectMany(x => GetClasses(x, string.Empty))
                     .SelectMany(x => GetFontFamilyNameFields(x.type, x.basePath))
                     .ToDictionary(x => x.name, x => x.sourcePath);
@@ -18,7 +25,7 @@ namespace WaveEngine_MRTK_Demo.Editor
 
         public static Dictionary<string, Guid> FindPrefabs()
         {
-            return GetWaveContentTypes()
+            return WaveContentTypes
                     .SelectMany(x => GetClasses(x, filter: (t) => t.Name.ToLowerInvariant().Contains("prefab")))
                     .SelectMany(x => GetScenePrefabsFields(x.type))
                     .ToDictionary(x => x.name, x => x.id);

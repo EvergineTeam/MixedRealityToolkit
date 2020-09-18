@@ -5,10 +5,10 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="WaveEngine.Common" Version="3.0.0.5700-nightly" />
-    <PackageReference Include="WaveEngine.Components" Version="3.0.0.5700-nightly" />
-    <PackageReference Include="WaveEngine.Framework" Version="3.0.0.5700-nightly" />
-    <PackageReference Include="WaveEngine.Editor.Extension" Version="3.0.0.5700-nightly" />
+    <PackageReference Include="WaveEngine.Common" Version="3.0.0.5947-preview4" />
+    <PackageReference Include="WaveEngine.Components" Version="3.0.0.5947-preview4" />
+    <PackageReference Include="WaveEngine.Framework" Version="3.0.0.5947-preview4" />
+    <PackageReference Include="WaveEngine.Editor.Extension" Version="3.0.0.5947-preview4" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WaveEngine_MRTK_Demo\WaveEngine_MRTK_Demo.csproj" />

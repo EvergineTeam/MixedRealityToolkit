@@ -276,7 +276,8 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
                         Id = this.Id,
                         LightingEnabled = false,
                         IBLEnabled = false,
-                        LayerDescription = this.assetsService.Load<RenderLayerDescription>(DefaultResourcesIDs.AlphaRenderLayerID)
+                        LayerDescription = this.assetsService.Load<RenderLayerDescription>(DefaultResourcesIDs.AlphaRenderLayerID),
+                        BaseColorSampler = this.assetsService.Load<SamplerState>(DefaultResourcesIDs.LinearClampSamplerID),
                     };
 
                     this.materialComponent.Material = this.standardMaterial.Material;
