@@ -22,8 +22,11 @@ namespace WaveEngine.MRTK.Toolkit.Prefabs
         [BindService]
         private AssetsDirectory assetsDirectory = null;
 
+        /// <summary>
+        /// Gets or sets the asset service.
+        /// </summary>
         [BindService]
-        internal AssetsService AssetsService;
+        public AssetsService AssetsService;
 
         private Guid prefabId;
 
@@ -91,7 +94,11 @@ namespace WaveEngine.MRTK.Toolkit.Prefabs
             }
         }
 
-        internal void RefreshEntity(bool checkIsAttached = true)
+        /// <summary>
+        /// Refresh the entity.
+        /// </summary>
+        /// <param name="checkIsAttached">Check if it's attached.</param>
+        public void RefreshEntity(bool checkIsAttached = true)
         {
             if (checkIsAttached &&
                 !this.IsAttached)
