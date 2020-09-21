@@ -142,6 +142,7 @@ namespace WaveEngine_MRTK_Demo.Editor
             this.propertyPanelContainer.AddBoolean(
                             directiveOn,
                             name,
+                            false,
                             () => this.Instance.ActiveDirectivesNames.Contains(directiveOn),
                             (val) =>
                             {

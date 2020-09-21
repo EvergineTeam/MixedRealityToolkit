@@ -135,13 +135,13 @@
       <Version>6.2.9</Version>
     </PackageReference>
     <PackageReference Include="WaveEngine.DirectX11">
-      <Version>3.0.0.5453-nightly</Version>
+      <Version>3.0.0.5947-preview4</Version>
     </PackageReference>
     <PackageReference Include="WaveEngine.UWPView">
-      <Version>3.0.0.5453-nightly</Version>
+      <Version>3.0.0.5947-preview4</Version>
     </PackageReference>
     <PackageReference Include="WaveEngine.XAudio2">
-      <Version>3.0.0.5453-nightly</Version>
+      <Version>3.0.0.5947-preview4</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>

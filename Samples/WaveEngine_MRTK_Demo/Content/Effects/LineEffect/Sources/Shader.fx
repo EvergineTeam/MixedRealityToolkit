@@ -70,7 +70,8 @@ PS_IN VertexFunction(VS_IN input)
 	float3 directionVector = normalize(axisSize.xyz);
 	float3 rightVector = normalize(cross(directionVector, forwardVector));
 
-	float size = axisSize.w;
+	// Workaround for #6688
+	float size = -axisSize.w;
 	position += (rightVector * size);
 #endif
 	
