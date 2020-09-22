@@ -37,6 +37,12 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
         private BoxCollider3D boxCollider3D = null;
 
         /// <summary>
+        /// Gets or sets a value indicating whether the bounding collider should be calculated automatically
+        /// based on <see cref="MeshComponent"/> components found in from owner's hierarchy.
+        /// </summary>
+        public bool AutoCalculate { get; set; } = true;
+
+        /// <summary>
         /// Gets or sets the scale applied to the scale handles.
         /// </summary>
         [RenderProperty(Tooltip = "Scale applied to the scale handles")]
@@ -673,14 +679,16 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
         private void CalculateBoundingBoxSizeAndCenter()
         {
             // Get size from child MeshComponent
-            this.AdjustBoundingToChildren();
+            if (this.AutoCalculate)
+            {
+                this.AdjustBoundingToChildren();
+            }
 
             this.boundingBoxCenter = this.boxCollider3D.Offset;
             this.boundingBoxSize = this.boxCollider3D.Size;
 
             MeshComponent meshComponent = this.Owner.FindComponent<MeshComponent>(isExactType: false);
             var bounding = meshComponent?.BoundingBox;
-            Transform3D transform = this.Owner.FindComponent<Transform3D>();
             if (bounding != null)
             {
                 this.boundingBoxSize *= bounding.Value.HalfExtent * 2;
@@ -1135,46 +1143,46 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
                         break;
 
                     case BoundingBoxHelperType.ScaleHandle:
-                    {
-                        float initialDist = Vector3.Dot(this.initialGrabPoint - this.grabOppositeCorner, this.grabDiagonalDirection);
-                        float currentDist = Vector3.Dot(currentGrabPoint - this.grabOppositeCorner, this.grabDiagonalDirection);
-                        float scaleFactor = 1.0f + ((currentDist - initialDist) / initialDist);
+                        {
+                            float initialDist = Vector3.Dot(this.initialGrabPoint - this.grabOppositeCorner, this.grabDiagonalDirection);
+                            float currentDist = Vector3.Dot(currentGrabPoint - this.grabOppositeCorner, this.grabDiagonalDirection);
+                            float scaleFactor = 1.0f + ((currentDist - initialDist) / initialDist);
 
-                        this.transform.Scale = this.transformOnGrabStart.Scale * scaleFactor;
-                        this.transform.Position = this.grabOppositeCorner + (scaleFactor * (this.transformOnGrabStart.Translation - this.grabOppositeCorner));
+                            this.transform.Scale = this.transformOnGrabStart.Scale * scaleFactor;
+                            this.transform.Position = this.grabOppositeCorner + (scaleFactor * (this.transformOnGrabStart.Translation - this.grabOppositeCorner));
 
-                        this.UpdateRigHandles();
-                        break;
-                    }
+                            this.UpdateRigHandles();
+                            break;
+                        }
 
                     case BoundingBoxHelperType.NonUniformScaleHandle:
-                    {
-                        float initialDist = Vector3.Dot(this.initialGrabPoint - this.grabOppositeCorner, this.grabDiagonalDirection);
-                        float currentDist = Vector3.Dot(currentGrabPoint - this.grabOppositeCorner, this.grabDiagonalDirection);
-                        float scaleFactor = 1.0f + ((currentDist - initialDist) / initialDist);
-
-                        Vector3 localScale = this.transform.LocalScale;
-                        this.transform.Scale = this.transformOnGrabStart.Scale * scaleFactor;
-                        if (this.currentHandle.AxisType == AxisType.X)
                         {
-                            this.transform.LocalScale = new Vector3(this.transform.LocalScale.X, localScale.Y, localScale.Z);
-                        }
-                        else if (this.currentHandle.AxisType == AxisType.Y)
-                        {
-                            this.transform.LocalScale = new Vector3(localScale.X, this.transform.LocalScale.Y, localScale.Z);
-                        }
-                        else if (this.currentHandle.AxisType == AxisType.Z)
-                        {
-                            this.transform.LocalScale = new Vector3(localScale.X, localScale.Y, this.transform.LocalScale.Z);
-                        }
+                            float initialDist = Vector3.Dot(this.initialGrabPoint - this.grabOppositeCorner, this.grabDiagonalDirection);
+                            float currentDist = Vector3.Dot(currentGrabPoint - this.grabOppositeCorner, this.grabDiagonalDirection);
+                            float scaleFactor = 1.0f + ((currentDist - initialDist) / initialDist);
 
-                        Vector3 oppositeCornerPos = Vector3.TransformCoordinate(this.currentHandle.OppositeHandlePosition, this.transform.WorldTransform);
-                        this.transform.Position += this.grabOppositeCorner - oppositeCornerPos;
+                            Vector3 localScale = this.transform.LocalScale;
+                            this.transform.Scale = this.transformOnGrabStart.Scale * scaleFactor;
+                            if (this.currentHandle.AxisType == AxisType.X)
+                            {
+                                this.transform.LocalScale = new Vector3(this.transform.LocalScale.X, localScale.Y, localScale.Z);
+                            }
+                            else if (this.currentHandle.AxisType == AxisType.Y)
+                            {
+                                this.transform.LocalScale = new Vector3(localScale.X, this.transform.LocalScale.Y, localScale.Z);
+                            }
+                            else if (this.currentHandle.AxisType == AxisType.Z)
+                            {
+                                this.transform.LocalScale = new Vector3(localScale.X, localScale.Y, this.transform.LocalScale.Z);
+                            }
 
-                        this.UpdateRigHandles();
+                            Vector3 oppositeCornerPos = Vector3.TransformCoordinate(this.currentHandle.OppositeHandlePosition, this.transform.WorldTransform);
+                            this.transform.Position += this.grabOppositeCorner - oppositeCornerPos;
 
-                        break;
-                    }
+                            this.UpdateRigHandles();
+
+                            break;
+                        }
                 }
 
                 eventData.SetHandled();

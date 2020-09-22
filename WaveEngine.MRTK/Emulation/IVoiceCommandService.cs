@@ -1,8 +1,6 @@
 ﻿// Copyright © Wave Engine S.L. All rights reserved. Use is subject to license terms.
 
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace WaveEngine.MRTK.Emulation
 {
@@ -11,6 +9,12 @@ namespace WaveEngine.MRTK.Emulation
     /// </summary>
     public interface IVoiceCommandService
     {
+        /// <summary>
+        /// Configure a set of commands to be used by the service for recognition.
+        /// </summary>
+        /// <param name="voiceCommands">A sets of voice commands to be used by the service for recognition.</param>
+        void ConfigureVoiceCommands(string[] voiceCommands);
+
         /// <summary>
         /// Fired when an speech word has been recognized.
         /// </summary>
