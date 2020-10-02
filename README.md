@@ -13,9 +13,6 @@ WaveEngine.MRTK provides a set of **basic building blocks for Wave Engine develo
 
 WaveEngine.MRTK is heavily based on Microsoft's [Mixed Reality Toolkit for Unity](https://github.com/microsoft/MixedRealityToolkit-Unity).<br><br>
 
-# Nuget Packages
-- WaveEngine.MRTK: https://www.nuget.org/packages/WaveEngine.MRTK
-
 # Required software
 [![Windows SDK](Documentation/Images/Requirements_WindowsSDK.png)](https://developer.microsoft.com/windows/downloads/windows-10-sdk) [Windows SDK](https://developer.microsoft.com/windows/downloads/windows-10-sdk) | [![Wave Engine](Documentation/Images/Requirements_WaveEngine.png)](https://waveengine.net/Downloads) [Wave Engine](https://waveengine.net/Downloads) | [![Visual Studio 2019](Documentation/Images/Requirements_VisualStudio.png)](http://dev.windows.com/downloads) [Visual Studio 2019](http://dev.windows.com/downloads) | [![Emulators (optional)](Documentation/Images/Requirements_Emulators.png)](https://docs.microsoft.com/windows/mixed-reality/using-the-hololens-emulator) [Emulators (optional)](https://docs.microsoft.com/windows/mixed-reality/using-the-hololens-emulator)|
 | :--- | :--- | :--- | :--- |
