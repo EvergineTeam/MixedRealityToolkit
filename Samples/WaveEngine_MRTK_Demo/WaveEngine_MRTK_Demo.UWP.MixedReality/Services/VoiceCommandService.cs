@@ -199,7 +199,7 @@ namespace WaveEngine_MRTK_Demo.UWP.MixedReality.Services
             Debug.WriteLine($"VoiceCommand: HypothesisGenerated: {args.Hypothesis.Text}");
         }
 
-        public void ConfigureWords(string[] words)
+        public void ConfigureVoiceCommands(string[] words)
         {
             this.keywords = words;
             this.CustomInitialize();

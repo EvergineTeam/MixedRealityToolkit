@@ -12,7 +12,7 @@ namespace WaveEngine_MRTK_Demo.UWP.MixedReality
             // Add services specific to Mixed Reality
             this.Container.RegisterType<VoiceCommandService>();
             VoiceCommandService voiceCommandService = this.Container.Resolve<VoiceCommandService>();
-            voiceCommandService.ConfigureWords(new string[] {
+            voiceCommandService.ConfigureVoiceCommands(new string[] {
                 "select", "button"
             });
         }
