@@ -8,12 +8,12 @@ using WaveEngine.MRTK.Base.Interfaces.InputSystem.Handlers;
 namespace WaveEngine.MRTK.SDK.Features.Input.Handlers
 {
     /// <summary>
-    /// Script used to raise events in response to pointer events.
+    /// Component used to raise events in response to pointer events.
     /// </summary>
     public class PointerHandler : Component, IMixedRealityPointerHandler
     {
         /// <summary>
-        /// Unity event raised on pointer clicked.
+        /// Event raised on pointer clicked.
         /// </summary>
         public event EventHandler<MixedRealityPointerEventData> OnPointerClicked;
 
@@ -23,12 +23,12 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers
         public event EventHandler<MixedRealityPointerEventData> OnPointerDown;
 
         /// <summary>
-        /// Unity event raised every frame the pointer is down.
+        /// Event raised every frame the pointer is down.
         /// </summary>
         public event EventHandler<MixedRealityPointerEventData> OnPointerDragged;
 
         /// <summary>
-        /// Unity event raised on pointer up.
+        /// Event raised on pointer up.
         /// </summary>
         public event EventHandler<MixedRealityPointerEventData> OnPointerUp;
 
