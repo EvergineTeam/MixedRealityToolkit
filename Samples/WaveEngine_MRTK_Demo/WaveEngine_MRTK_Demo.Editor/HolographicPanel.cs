@@ -59,12 +59,17 @@ namespace WaveEngine_MRTK_Demo.Editor
             }
 
             var proximityLight = this.AddDirectiveCheckbox("Proximity Light", "PROXIMITY_LIGHT");
-            if (proximityLight &&
-                this.AddDirectiveCheckbox("Override Color", "PROXIMITY_LIGHT_COLOR_OVERRIDE"))
+            if (proximityLight)
             {
-                this.AddMember(nameof(HoloGraphic.ProximityLightCenterColorOverride));
-                this.AddMember(nameof(HoloGraphic.ProximityLightMiddleColorOverride));
-                this.AddMember(nameof(HoloGraphic.ProximityLightOuterColorOverride));
+                this.AddDirectiveCheckbox("Two Sided", "PROXIMITY_LIGHT_TWO_SIDED");
+                this.AddDirectiveCheckbox("Substractive", "PROXIMITY_LIGHT_SUBTRACTIVE");
+
+                if (this.AddDirectiveCheckbox("Override Color", "PROXIMITY_LIGHT_COLOR_OVERRIDE"))
+                {
+                    this.AddMember(nameof(HoloGraphic.ProximityLightCenterColorOverride));
+                    this.AddMember(nameof(HoloGraphic.ProximityLightMiddleColorOverride));
+                    this.AddMember(nameof(HoloGraphic.ProximityLightOuterColorOverride));
+                }
             }
 
             var borderLight = this.AddDirectiveCheckbox("Border Light", "BORDER_LIGHT");
