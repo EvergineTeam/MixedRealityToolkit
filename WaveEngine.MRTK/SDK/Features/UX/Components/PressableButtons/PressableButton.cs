@@ -44,7 +44,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
         /// <summary>
         ///  Gets or sets the word that will make this object be pressed.
         /// </summary>
-        public string SpeechKeyWord { get; set; } = "";
+        public string SpeechKeyWord { get; set; } = string.Empty;
 
         private bool isPressing;
 
