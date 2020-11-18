@@ -1,8 +1,8 @@
-﻿using WaveEngine.Framework;
+﻿using WaveEngine.Common.Graphics;
+using WaveEngine.Framework;
 using WaveEngine.Framework.Graphics;
 using WaveEngine.Framework.Physics3D;
 using WaveEngine.Mathematics;
-using WaveEngine.Common.Graphics;
 
 namespace WaveEngine_MRTK_Demo.Drawables
 {

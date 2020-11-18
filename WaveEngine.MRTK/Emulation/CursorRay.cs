@@ -2,14 +2,11 @@
 
 using System;
 using WaveEngine.Common.Graphics;
-using WaveEngine.Components.Graphics3D;
 using WaveEngine.Components.Primitives;
 using WaveEngine.Framework;
 using WaveEngine.Framework.Graphics;
 using WaveEngine.Framework.Physics3D;
-using WaveEngine.Framework.Services;
 using WaveEngine.Framework.XR;
-using WaveEngine.Framework.XR.TrackedDevices;
 using WaveEngine.Mathematics;
 using WaveEngine.MRTK.Behaviors;
 using WaveEngine.MRTK.SDK.Features;

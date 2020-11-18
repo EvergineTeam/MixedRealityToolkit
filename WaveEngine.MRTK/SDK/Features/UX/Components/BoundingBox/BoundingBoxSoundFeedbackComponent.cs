@@ -1,10 +1,10 @@
 ﻿// Copyright © Wave Engine S.L. All rights reserved. Use is subject to license terms.
 
 using System;
-using WaveEngine.Framework;
-using WaveEngine.Components.Sound;
-using WaveEngine.Common.Audio;
 using WaveEngine.Common.Attributes;
+using WaveEngine.Common.Audio;
+using WaveEngine.Components.Sound;
+using WaveEngine.Framework;
 
 namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
 {

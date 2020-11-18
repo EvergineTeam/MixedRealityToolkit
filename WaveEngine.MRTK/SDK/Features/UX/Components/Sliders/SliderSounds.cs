@@ -3,7 +3,6 @@
 using System;
 using WaveEngine.Common.Attributes;
 using WaveEngine.Common.Audio;
-using WaveEngine.Common.Media;
 using WaveEngine.Components.Sound;
 using WaveEngine.Framework;
 using WaveEngine.Mathematics;

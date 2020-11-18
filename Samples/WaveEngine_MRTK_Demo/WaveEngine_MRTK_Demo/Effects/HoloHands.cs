@@ -10,12 +10,9 @@
 
 namespace WaveEngine_MRTK_Demo.Effects
 {
-    using WaveEngine.Common.Graphics;
     using WaveEngine.Framework.Graphics;
-    using WaveEngine.Framework.Graphics.Effects;
-    using WaveEngine.Mathematics;
-    
-    
+
+
     public class HoloHands : WaveEngine.Framework.Graphics.MaterialDecorator
     {
         

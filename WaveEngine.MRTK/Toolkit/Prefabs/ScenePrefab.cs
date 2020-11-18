@@ -10,7 +10,6 @@ using WaveEngine.Framework.Assets;
 using WaveEngine.Framework.Assets.Importers;
 using WaveEngine.Framework.Services;
 using WaveEngine.Platform;
-using WaveEngine.MRTK.Toolkit.Extensions;
 
 namespace WaveEngine.MRTK.Toolkit.Prefabs
 {
@@ -142,7 +141,7 @@ namespace WaveEngine.MRTK.Toolkit.Prefabs
                 if (this.DuplicateMaterials &&
                     component is MaterialComponent materialComponent)
                 {
-                    materialComponent.Material = materialComponent.Material.Clone();
+                    materialComponent.Material = materialComponent.Material?.Clone();
                 }
             }
 
