@@ -141,7 +141,7 @@ namespace WaveEngine.MRTK.Toolkit.Prefabs
                 if (this.DuplicateMaterials &&
                     component is MaterialComponent materialComponent)
                 {
-                    materialComponent.Material = materialComponent.Material.Clone();
+                    materialComponent.Material = materialComponent.Material?.Clone();
                 }
             }
 
