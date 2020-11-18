@@ -89,7 +89,7 @@ namespace WaveEngine_MRTK_Demo.Editor
             {
                 if (this.AddDirectiveCheckbox("Independent Corners", "INDEPENDENT_CORNERS"))
                 {
-                    this.AddMember(nameof(HoloGraphic.Parameters_RoundCornerRadious));
+                    this.AddMember(nameof(HoloGraphic.Parameters_RoundCornersRadious));
                 }
                 else
                 {

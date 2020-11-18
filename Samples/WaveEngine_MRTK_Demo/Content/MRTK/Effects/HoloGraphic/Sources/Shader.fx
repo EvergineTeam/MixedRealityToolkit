@@ -5,6 +5,7 @@
 [directives:BORDER_LIGHT_OPAQUE            BORDER_LIGHT_OPAQUE_OFF            BORDER_LIGHT_OPAQUE            ]
 [directives:INNER_GLOW                     INNER_GLOW_OFF                     INNER_GLOW                     ]
 [directives:ROUND_CORNERS                  ROUND_CORNERS_OFF                  ROUND_CORNERS                  ]
+[directives:INDEPENDENT_CORNERS			   INDEPENDENT_CORNERS_OFF			  INDEPENDENT_CORNERS			 ]
 [directives:IGNORE_Z_SCALE                 IGNORE_Z_SCALE_OFF                 IGNORE_Z_SCALE                 ]
 [directives:NEAR_LIGHT_FADE                NEAR_LIGHT_FADE_OFF                NEAR_LIGHT_FADE                ]
 [directives:HOVER_LIGHT                    HOVER_LIGHT_OFF                    HOVER_LIGHT                    ]
@@ -41,30 +42,33 @@
 		float RoundCornerMargin 	: packoffset(c3.y); [Default(0.01)]  //Range(0.0, 0.5)
 		float Cutoff				: packoffset(c3.z); [Default(0.5)]	 //Range(0.0, 0.5)
 
+		// INDEPENDENT_CORNERS
+		float4 RoundCornersRadious 	: packoffset(c4);   [Default(0.5 ,0.5, 0.5, 0.5)]
+
 		// BORDER_LIGHT OR ROUND_CORNERS
 		float EdgeSmoothingValue	: packoffset(c3.w); [Default(0.002)] //Range(0.0, 0.2)
 		
 		//NEAR_LIGHT_FADE
-		float FadeBeginDistance     : packoffset(c4.x); [Default(0.01)] //Range(0.0, 10.0)
-        float FadeCompleteDistance  : packoffset(c4.y); [Default(0.1)]  //Range(0.0, 10.0)
-        float FadeMinValue          : packoffset(c4.z); [Default(0.0)]  //Range(0.0, 1.0)
+		float FadeBeginDistance     : packoffset(c5.x); [Default(0.01)] //Range(0.0, 10.0)
+        float FadeCompleteDistance  : packoffset(c5.y); [Default(0.1)]  //Range(0.0, 10.0)
+        float FadeMinValue          : packoffset(c5.z); [Default(0.0)]  //Range(0.0, 1.0)
         
         //HOVER_LIGHT
-        float3 HoverColorOverride   : packoffset(c5);   [Default(0.24, 0.24, 0.24)]
+        float3 HoverColorOverride   : packoffset(c6);   [Default(0.24, 0.24, 0.24)]
         
         //PROXIMITY_LIGHT
-        float4 ProximityLightCenterColorOverride : packoffset(c6); [Default(0.21, 0.55, 0.98, 0.0)]
-		float4 ProximityLightMiddleColorOverride : packoffset(c7); [Default(0.18, 0.51, 1.00, 0.2)]
-		float4 ProximityLightOuterColorOverride  : packoffset(c8); [Default(0.32, 0.12, 0.74, 1.0)]
+        float4 ProximityLightCenterColorOverride : packoffset(c7); [Default(0.21, 0.55, 0.98, 0.0)]
+		float4 ProximityLightMiddleColorOverride : packoffset(c8); [Default(0.18, 0.51, 1.00, 0.2)]
+		float4 ProximityLightOuterColorOverride  : packoffset(c9); [Default(0.32, 0.12, 0.74, 1.0)]
 		
 		//DIRECTIONAL_LIGHT
-        float4 LightColor0 : packoffset(c9); [Default(0.5, 0.5, 0.5, 1)]
+        float4 LightColor0 : packoffset(c10); [Default(0.5, 0.5, 0.5, 1)]
         
-        float Metallic   : packoffset(c10.x); [Default(0.0)]
-        float Smoothness : packoffset(c10.y); [Default(0.5)]
+        float Metallic   : packoffset(c11.x); [Default(0.0)]
+        float Smoothness : packoffset(c11.y); [Default(0.5)]
         
-        float2 Tiling           : packoffset(c11.x);   [Default(1.0, 1.0)]
-		float2 Offset           : packoffset(c11.z);   [Default(0.0, 0.0)]
+        float2 Tiling           : packoffset(c12.x);   [Default(1.0, 1.0)]
+		float2 Offset           : packoffset(c12.z);   [Default(0.0, 0.0)]
         
         float4 HoverLightData[6]     : packoffset(c20);
         float4 ProximityLightData[12] : packoffset(c26);
@@ -356,7 +360,37 @@
 #if ROUND_CORNERS
         float2 halfScale = input.scale.xy * 0.5;
         float2 roundCornerPosition = distanceToEdge * halfScale;
-        float cornerCircleRadius = saturate(max(RoundCornerRadious - RoundCornerMargin, 0.01)) * input.scale.z;
+        
+        float currentCornerRadious;
+        
+#if INDEPENDENT_CORNERS
+        if (input.uv.x < 0.5)
+        {
+            if (input.uv.y > 0.5)
+            {
+                currentCornerRadious = RoundCornersRadious.x;
+            }
+            else
+            {
+                currentCornerRadious = RoundCornersRadious.w;
+            }
+        }
+        else
+        {
+            if (input.uv.y > 0.5)
+            {
+                currentCornerRadious = RoundCornersRadious.y;
+            }
+            else
+            {
+                currentCornerRadious = RoundCornersRadious.z;
+            }
+        }
+#else
+		currentCornerRadious = RoundCornerRadious;
+#endif
+        currentCornerRadious = clamp(currentCornerRadious, 0, 0.5);
+        float cornerCircleRadius = saturate(max(currentCornerRadious - RoundCornerMargin, 0.01)) * input.scale.z;
         float2 cornerCircleDistance = halfScale - (RoundCornerMargin * input.scale.z) - cornerCircleRadius;
         float roundCornerClip = RoundCornersF(roundCornerPosition, cornerCircleDistance, cornerCircleRadius);
 #endif
@@ -419,7 +453,7 @@
 		float borderValue;
 #if ROUND_CORNERS
 		float borderMargin = RoundCornerMargin + BorderWidth * 0.5;
-		cornerCircleRadius = saturate(max(RoundCornerRadious - borderMargin, 0.01)) * input.scale.z;
+		cornerCircleRadius = saturate(max(currentCornerRadious - borderMargin, 0.01)) * input.scale.z;
         cornerCircleDistance = halfScale - (borderMargin * input.scale.z) - cornerCircleRadius;
         borderValue =  1.0 - RoundCornersSmooth(roundCornerPosition, cornerCircleDistance, cornerCircleRadius);
 #else
