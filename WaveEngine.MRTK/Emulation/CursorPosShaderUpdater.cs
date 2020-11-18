@@ -3,12 +3,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using WaveEngine.Components.Graphics3D;
 using WaveEngine.Framework.Graphics;
 using WaveEngine.Framework.Managers;
 using WaveEngine.Mathematics;
-using WaveEngine.MRTK.Toolkit.Extensions;
 
 namespace WaveEngine.MRTK.Emulation
 {

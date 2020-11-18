@@ -1,10 +1,6 @@
 ﻿// Copyright © Wave Engine S.L. All rights reserved. Use is subject to license terms.
 
-using System;
-using System.Collections.Generic;
-using System.Text;
 using WaveEngine.Common.Attributes;
-using WaveEngine.Common.Graphics;
 using Color = WaveEngine.Common.Graphics.Color;
 
 namespace WaveEngine.MRTK.Effects

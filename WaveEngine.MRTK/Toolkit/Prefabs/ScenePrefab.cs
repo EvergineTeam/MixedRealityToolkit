@@ -10,7 +10,6 @@ using WaveEngine.Framework.Assets;
 using WaveEngine.Framework.Assets.Importers;
 using WaveEngine.Framework.Services;
 using WaveEngine.Platform;
-using WaveEngine.MRTK.Toolkit.Extensions;
 
 namespace WaveEngine.MRTK.Toolkit.Prefabs
 {

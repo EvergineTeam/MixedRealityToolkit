@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace WaveEngine_MRTK_Demo
+﻿namespace WaveEngine_MRTK_Demo
 {
     public struct LockCounter
     {

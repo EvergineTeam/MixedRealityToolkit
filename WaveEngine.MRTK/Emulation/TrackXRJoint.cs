@@ -2,7 +2,6 @@
 
 using WaveEngine.Components.XR;
 using WaveEngine.Framework.XR;
-using WaveEngine.Framework.XR.Interaction;
 
 namespace WaveEngine.MRTK.Behaviors
 {

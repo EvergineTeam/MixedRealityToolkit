@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using WaveEngine.Common.Audio;
 using WaveEngine.Common.Media;
 using WaveEngine.Components.Sound;

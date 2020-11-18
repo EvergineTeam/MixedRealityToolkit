@@ -9,7 +9,6 @@ using WaveEngine.Mathematics;
 using WaveEngine.MRTK.Effects;
 using WaveEngine.MRTK.Emulation;
 using WaveEngine.MRTK.SDK.Features;
-using WaveEngine.MRTK.Toolkit.Extensions;
 
 namespace WaveEngine.MRTK.Behaviors
 {

@@ -9,10 +9,7 @@
 
 namespace WaveEngine.MRTK.Effects
 {
-    using WaveEngine.Common.Graphics;
     using WaveEngine.Framework.Graphics;
-    using WaveEngine.Framework.Graphics.Effects;
-    using WaveEngine.Mathematics;
 
 
     [WaveEngine.Framework.Graphics.MaterialDecoratorAttribute("4f7e4c24-e83c-4350-9cd4-511fb2199cf4")]

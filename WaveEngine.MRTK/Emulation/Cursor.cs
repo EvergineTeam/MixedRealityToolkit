@@ -2,13 +2,10 @@
 
 using System;
 using WaveEngine.Common.Attributes;
-using WaveEngine.Common.Graphics;
 using WaveEngine.Components.Graphics3D;
 using WaveEngine.Framework;
 using WaveEngine.Framework.Graphics;
-using WaveEngine.Framework.Graphics.Materials;
 using WaveEngine.Framework.Physics3D;
-using WaveEngine.MRTK.Toolkit.Extensions;
 
 namespace WaveEngine.MRTK.Emulation
 {

@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using WaveEngine.Common.Audio;
 using WaveEngine.Common.Media;
 using WaveEngine.Components.Graphics3D;
@@ -12,7 +10,6 @@ using WaveEngine.MRTK.Base.EventDatum.Input;
 using WaveEngine.MRTK.Base.Interfaces.InputSystem.Handlers;
 using WaveEngine.MRTK.Effects;
 using WaveEngine.MRTK.SDK.Features;
-using WaveEngine_MRTK_Demo.Effects;
 
 namespace WaveEngine_MRTK_Demo.Behaviors
 {

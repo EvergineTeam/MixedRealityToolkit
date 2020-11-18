@@ -9,7 +9,6 @@ using WaveEngine.Components.Graphics3D;
 using WaveEngine.Framework;
 using WaveEngine.Framework.Graphics;
 using WaveEngine.Framework.Graphics.Effects;
-using WaveEngine.Framework.Graphics.Materials;
 using WaveEngine.Framework.Physics3D;
 using WaveEngine.Framework.Services;
 using WaveEngine.Mathematics;
