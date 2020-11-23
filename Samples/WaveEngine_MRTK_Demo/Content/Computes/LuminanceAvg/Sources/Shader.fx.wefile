@@ -1,0 +1,12 @@
+!WaveEngine.Assets.Exporters.FileMetaFile,WaveEngine.Assets
+Id: cc416e4d-8457-4e69-b22e-2529eede1080
+DefaultProfile:
+  ExcludeAsset: false
+  Name: null
+  Platform: Undefined
+Profiles: {}
+Source:
+  Header:
+    Id: 4f748150-8559-4ccc-a2b7-1fce813d110f
+    IsCompressed: true
+  LastModified: 0001-01-01T00:00:00.0000000

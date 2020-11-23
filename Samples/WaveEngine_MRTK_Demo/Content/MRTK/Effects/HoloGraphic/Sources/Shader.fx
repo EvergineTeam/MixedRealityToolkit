@@ -27,7 +27,7 @@
 
 	cbuffer Parameters : register(b1)
 	{
-		float3 Color				: packoffset(c0);   [Default(0.3, 0.3, 1.0)]
+		float3 Color				: packoffset(c0);   [Default(0.070740278, 0.070740278, 1.0)]
 		float Alpha             	: packoffset(c0.w); [Default(1.0)]
 
 		float3 InnerGlowColor   	: packoffset(c1);   [Default(1.0, 1.0, 1.0)]
@@ -54,15 +54,15 @@
         float FadeMinValue          : packoffset(c5.z); [Default(0.0)]  //Range(0.0, 1.0)
         
         //HOVER_LIGHT
-        float3 HoverColorOverride   : packoffset(c6);   [Default(0.24, 0.24, 0.24)]
+        float3 HoverColorOverride   : packoffset(c6);   [Default(0.043297691, 0.043297691, 0.043297691)]
         
         //PROXIMITY_LIGHT
-        float4 ProximityLightCenterColorOverride : packoffset(c7); [Default(0.21, 0.55, 0.98, 0.0)]
-		float4 ProximityLightMiddleColorOverride : packoffset(c8); [Default(0.18, 0.51, 1.00, 0.2)]
-		float4 ProximityLightOuterColorOverride  : packoffset(c9); [Default(0.32, 0.12, 0.74, 1.0)]
+        float4 ProximityLightCenterColorOverride : packoffset(c7); [Default(0.032276204, 0.268409521, 0.956527293, 0.0)]
+		float4 ProximityLightMiddleColorOverride : packoffset(c8); [Default(0.022993205, 0.227328762, 1.00, 0.2)]
+		float4 ProximityLightOuterColorOverride  : packoffset(c9); [Default(0.081532349, 0.009423207, 0.51559629, 1.0)]
 		
 		//DIRECTIONAL_LIGHT
-        float4 LightColor0 : packoffset(c10); [Default(0.5, 0.5, 0.5, 1)]
+        float4 LightColor0 : packoffset(c10); [Default(0.217637641, 0.217637641, 0.217637641, 1)]
         
         float Metallic   : packoffset(c11.x); [Default(0.0)]
         float Smoothness : packoffset(c11.y); [Default(0.5)]
@@ -76,8 +76,8 @@
 	
 	cbuffer PerCamera : register(b2)
 	{
-		float4x4  MultiviewViewProj[2]		: packoffset(c0.x);  [StereoCameraViewProjection]
-		int       EyeCount                  : packoffset(c10.x); [StereoEyeCount]
+		float4x4  MultiviewViewProj[6]		: packoffset(c0.x);  [MultiviewViewProjection]
+		int       EyeCount                  : packoffset(c10.x); [MultiviewCount]
 	};
 
 	Texture2D Texture		: register(t0);
@@ -109,6 +109,11 @@
 
 	[profile 11_0]
 	[entrypoints VS=VS PS=PS]
+	
+	float4 GammaToLinear(const float4 color)
+	{
+		return float4(pow(color.rgb, 2.2), color.a);
+	}
 
 #if HOVER_LIGHT || NEAR_LIGHT_FADE
 	#if MULTI_HOVER_LIGHT
@@ -346,7 +351,7 @@
 	float4 PS(PS_IN input) : SV_Target
 	{
 #if ALBEDO_MAP
-		float4 albedo = Texture.Sample(Sampler, (input.uv * Tiling) + Offset) * float4(Color, Alpha);
+		float4 albedo = GammaToLinear(Texture.Sample(Sampler, (input.uv * Tiling) + Offset) * float4(Color, Alpha));
 #else
 		float4 albedo = float4(Color, Alpha);
 #endif

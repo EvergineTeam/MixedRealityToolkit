@@ -1,5 +1,6 @@
 ﻿using System;
 using WaveEngine.Common.Audio;
+using WaveEngine.Common.Graphics;
 using WaveEngine.Common.Media;
 using WaveEngine.Components.Graphics3D;
 using WaveEngine.Components.Sound;
@@ -78,11 +79,11 @@ namespace WaveEngine_MRTK_Demo.Behaviors
             {
                 animation_time += (float)gameTime.TotalSeconds;
 
-                Vector3 c = materialDecorator.Parameters_Color;
-                c[0] = 0.5f + (float)Math.Sin(animation_time * 2.0f) * 0.5f;
-                c[1] = 1.0f - c[0];
-                c[2] = 0.0f;
-                materialDecorator.Parameters_Color = c;
+                LinearColor c = new LinearColor(materialDecorator.Parameters_Color);
+                c.R = 0.5f + (float)Math.Sin(animation_time * 2.0f) * 0.5f;
+                c.G = 1.0f - c.R;
+                c.B = 0.0f;
+                materialDecorator.Parameters_Color = c.AsVector3;
             }
         }
     }

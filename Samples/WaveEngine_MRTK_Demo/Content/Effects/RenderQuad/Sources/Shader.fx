@@ -32,10 +32,15 @@ SamplerState Sampler			 	: register(s0);
 		return vertex[input.id % 3];
 	}
 
+	inline float4 LinearToGamma(const float4 color)
+	{
+		return float4(pow(abs(color.rgb), 1.0 / 2.2), color.a);
+	}
+
 	float4 PS(PS_IN input) : SV_Target
 	{
 		float4 color = DiffuseTexture.Sample(Sampler, input.tex);
-		return color;
+		return LinearToGamma(color);
 	}
 
 [End_Pass]

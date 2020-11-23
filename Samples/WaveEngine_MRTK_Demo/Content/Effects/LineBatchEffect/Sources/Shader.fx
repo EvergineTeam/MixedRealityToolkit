@@ -10,8 +10,8 @@
 
 	cbuffer PerCamera : register(b1)
 	{
-		float4x4	ViewProj[2]	: packoffset(c0); [StereoCameraViewProjection]
-		int			EyeCount	: packoffset(c8); [StereoEyeCount]
+		float4x4	ViewProj[6]	: packoffset(c0); [MultiviewViewProjection]
+		int			EyeCount	: packoffset(c24); [MultiviewCount]
 	};
 
 [End_ResourceLayout]

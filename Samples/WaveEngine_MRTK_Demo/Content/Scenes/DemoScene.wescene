@@ -1,6 +1,35 @@
 !WaveEngine.Framework.Assets.AssetSources.Entities.SceneModel,WaveEngine.Framework
 Items:
   - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+    Name: EnvironmentManager
+    Tag: null
+    IsEnabled: true
+    IsStatic: false
+    Components:
+      - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+        Id: d91a504c-b26f-47e8-8763-def1f58bf0c1
+        IsEnabled: true
+        LocalOrientation:
+          W: 1.0
+          X: 0.0
+          Y: 0.0
+          Z: 0.0
+        LocalPosition:
+          X: 0.999729156
+          Y: 1.580235
+          Z: 0.843612909
+        LocalScale:
+          X: 1.0
+          Y: 1.0
+          Z: 1.0
+      - !WaveEngine.Components.Graphics3D.EnvironmentComponent,WaveEngine.Framework
+        Id: 123f9559-4071-45e5-9708-ea09bae31c5f
+        IntensityMultiplier: 1.0
+        IsEnabled: true
+        ReflectionProbe: 85585adc-bd58-416d-8b80-4a7e5bb6b2ab
+    Children: []
+    Id: ad8017e0-08ed-427c-97ed-a9c055150ae7
+  - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
     Name: camera
     Tag: 
     IsEnabled: true
@@ -34,12 +63,8 @@ Items:
       - !WaveEngine.Framework.Graphics.Camera3D,WaveEngine.Framework
         Id: e6234645-a09c-405e-b7cc-e8970277f72c
         Aperture: 1.0
-        AspectRatio: 1.5
-        BackgroundColor:
-          A: 0
-          B: 0
-          G: 0
-          R: 0
+        AspectRatio: 1.70403588
+        AutoExposureEnabled: false
         CameraOrder: 0.0
         ClearDepth: 1.0
         ClearFlags: All
@@ -49,30 +74,90 @@ Items:
           MaxDepth: 1.0
           MinDepth: 0.0
         DisplayTag: null
-        DisplayTagDirty: false
+        DisplayTagDirty: true
         Exposure: 1.00000012
         FarPlane: 1000.0
         FieldOfView: 0.785398185
         FieldOfViewAxis: Vertical
+        FocalDistance: 1.0
+        FocalLength: 50.0
         FrustumCullingEnabled: true
+        HDREnabled: true
         IsEnabled: true
         LayerMaskDefaultValue: true
+        LinearBackgroundColor:
+          A: 0.0
+          B: 0.0
+          G: 0.0
+          R: 0.0
+        LogLuminanceRange: 12.0
+        MinLogLuminance: -10.0
         NearPlane: 0.100000001
         ScreenViewport:
-          Height: 206.0
+          Height: 223.0
           MaxDepth: 1.0
           MinDepth: 0.0
-          Width: 309.0
+          Width: 380.0
           X: 0.0
           Y: 0.0
         Sensitivity: 100.0
+        SensorSize:
+          X: 36.0
+          Y: 24.0
         ShutterSpeed: 1.20000005
+        TAU: 1.10000002
+        TagFilter: null
         UpVector:
           X: 0.0
           Y: 1.0
           Z: 0.0
+        UsePhysicalParameters: false
     Children: []
     Id: b0c3cd83-5c05-4c45-9228-c44aebdd9b4d
+  - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+    Name: SunLight
+    Tag: null
+    IsEnabled: true
+    IsStatic: false
+    Components:
+      - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+        Id: 8d406dae-3d2b-4fae-a5ce-58ad678dc67e
+        IsEnabled: true
+        LocalOrientation:
+          W: 0.582563519
+          X: -0.271654308
+          Y: 0.694271922
+          Z: 0.323743761
+        LocalPosition:
+          X: 4.0
+          Y: 4.0
+          Z: 4.0
+        LocalScale:
+          X: 1.0
+          Y: 1.0
+          Z: 1.0
+      - !WaveEngine.Framework.Graphics.PhotometricDirectionalLight,WaveEngine.Framework
+        Id: d9abdcf3-5231-4fa2-bb59-f1a9ba6e555c
+        Color:
+          A: 0
+          B: 228
+          G: 240
+          R: 249
+        ColorByTemperature: true
+        Illuminance: 10.0
+        Intensity: 10.0
+        IsEnabled: true
+        LinearColor:
+          A: 0.0
+          B: 0.77908951
+          G: 0.874792635
+          R: 0.9453125
+        Temperature: 6500.0
+      - !WaveEngine.Framework.Graphics.SunComponent,WaveEngine.Framework
+        Id: 1fc05b9d-1327-4a98-ac14-4be2affda7df
+        IsEnabled: true
+    Children: []
+    Id: 2b2e4c3f-bffd-4554-a412-9437605b8e3a
   - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
     Name: sceneContent
     Tag: null
@@ -288,7 +373,7 @@ Items:
                   - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                     Id: e91b9fa4-344c-476f-96d8-0a3b6d6b0ecb
                     DebugBoundingbox: true
-                    FrustumCullingEnabled: true
+                    IsCullingEnabled: true
                     IsEnabled: true
                     OrderBias: 0
                 Children: []
@@ -411,7 +496,7 @@ Items:
                       - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                         Id: 75083352-c4fe-445c-b957-21faca035300
                         DebugBoundingbox: true
-                        FrustumCullingEnabled: true
+                        IsCullingEnabled: true
                         IsEnabled: true
                         OrderBias: 0
                       - !WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButtonVisualFeedbackComponent,WaveEngine.MRTK
@@ -543,7 +628,7 @@ Items:
                       - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                         Id: adbd983d-3d01-4529-ad25-bed78389f041
                         DebugBoundingbox: true
-                        FrustumCullingEnabled: true
+                        IsCullingEnabled: true
                         IsEnabled: true
                         OrderBias: 0
                       - !WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButtonVisualFeedbackComponent,WaveEngine.MRTK
@@ -675,7 +760,7 @@ Items:
                       - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                         Id: d6b10fd0-3bda-4cce-b2eb-98f4df2e2478
                         DebugBoundingbox: true
-                        FrustumCullingEnabled: true
+                        IsCullingEnabled: true
                         IsEnabled: true
                         OrderBias: 0
                       - !WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButtonVisualFeedbackComponent,WaveEngine.MRTK
@@ -807,7 +892,7 @@ Items:
                       - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                         Id: b144faba-0af4-4ea6-b16e-5b0986d67ded
                         DebugBoundingbox: true
-                        FrustumCullingEnabled: true
+                        IsCullingEnabled: true
                         IsEnabled: true
                         OrderBias: 0
                       - !WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButtonVisualFeedbackComponent,WaveEngine.MRTK
@@ -939,7 +1024,7 @@ Items:
                       - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                         Id: 10cba3a3-0abc-4784-823e-8f8d3e319666
                         DebugBoundingbox: true
-                        FrustumCullingEnabled: true
+                        IsCullingEnabled: true
                         IsEnabled: true
                         OrderBias: 0
                       - !WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButtonVisualFeedbackComponent,WaveEngine.MRTK
@@ -1046,18 +1131,18 @@ Items:
                         Id: 7a9adf26-201a-4895-ab37-59fc23b4a086
                         IsEnabled: true
                         LocalOrientation:
-                          W: 0.99999994
-                          X: -5.96046448E-08
-                          Y: 1.56452273E-09
-                          Z: 3.55271368E-14
+                          W: 1.0
+                          X: 0.0
+                          Y: 0.0
+                          Z: 0.0
                         LocalPosition:
                           X: -0.000174216926
                           Y: -0.069966197
                           Z: -0.00288123637
                         LocalScale:
-                          X: 0.999999821
-                          Y: 1.00000012
-                          Z: 1.00000012
+                          X: 1.0
+                          Y: 1.0
+                          Z: 1.0
                       - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
                         Id: 9373a074-611c-47d9-a8bc-bd507d116f47
                         AsignedTo: PianoOctave
@@ -1071,7 +1156,7 @@ Items:
                       - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                         Id: 8ec16e3f-4958-4061-bb41-7d5bb66ca46b
                         DebugBoundingbox: true
-                        FrustumCullingEnabled: true
+                        IsCullingEnabled: true
                         IsEnabled: true
                         OrderBias: 0
                       - !WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButtonVisualFeedbackComponent,WaveEngine.MRTK
@@ -1178,18 +1263,18 @@ Items:
                         Id: 3032005d-18d1-4fbc-a037-4b1369f5ef99
                         IsEnabled: true
                         LocalOrientation:
-                          W: 0.99999994
-                          X: -5.96046448E-08
-                          Y: 1.56452273E-09
-                          Z: 3.55271368E-14
+                          W: 1.0
+                          X: 0.0
+                          Y: 0.0
+                          Z: 0.0
                         LocalPosition:
                           X: -0.00096283108
                           Y: -0.0699658692
                           Z: -0.00288123637
                         LocalScale:
-                          X: 0.999999821
-                          Y: 1.00000012
-                          Z: 1.00000012
+                          X: 1.0
+                          Y: 1.0
+                          Z: 1.0
                       - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
                         Id: b57cd935-e0b9-4c7c-8d71-9f64af8fc413
                         AsignedTo: PianoOctave
@@ -1203,7 +1288,7 @@ Items:
                       - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                         Id: 9a911e34-438a-46fd-9ef5-5081b0b83c2e
                         DebugBoundingbox: true
-                        FrustumCullingEnabled: true
+                        IsCullingEnabled: true
                         IsEnabled: true
                         OrderBias: 0
                       - !WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButtonVisualFeedbackComponent,WaveEngine.MRTK
@@ -1310,18 +1395,18 @@ Items:
                         Id: dd78f7ea-1af1-41bf-a8f7-c25a863ab9b7
                         IsEnabled: true
                         LocalOrientation:
-                          W: 0.99999994
-                          X: -5.96046448E-08
-                          Y: 1.56452273E-09
-                          Z: 3.55271368E-14
+                          W: 1.0
+                          X: 0.0
+                          Y: 0.0
+                          Z: 0.0
                         LocalPosition:
                           X: -0.00295967981
                           Y: -0.0699610263
                           Z: -0.00288123637
                         LocalScale:
-                          X: 0.999999821
-                          Y: 1.00000012
-                          Z: 1.00000012
+                          X: 1.0
+                          Y: 1.0
+                          Z: 1.0
                       - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
                         Id: e4afcf1c-8a3c-4d38-a23f-de418ec3763b
                         AsignedTo: PianoOctave
@@ -1335,7 +1420,7 @@ Items:
                       - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                         Id: a5d54439-e714-4d8e-8732-cd2f0a25ec81
                         DebugBoundingbox: true
-                        FrustumCullingEnabled: true
+                        IsCullingEnabled: true
                         IsEnabled: true
                         OrderBias: 0
                       - !WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButtonVisualFeedbackComponent,WaveEngine.MRTK
@@ -1442,18 +1527,18 @@ Items:
                         Id: a223d3af-57d7-47f4-b1d7-bade699a00cd
                         IsEnabled: true
                         LocalOrientation:
-                          W: 0.99999994
-                          X: -5.96046448E-08
-                          Y: 1.56452273E-09
-                          Z: 3.55271368E-14
+                          W: 1.0
+                          X: 0.0
+                          Y: 0.0
+                          Z: 0.0
                         LocalPosition:
                           X: 0.00892716646
                           Y: -0.0699603409
                           Z: -0.00288122892
                         LocalScale:
-                          X: 0.999999821
-                          Y: 1.00000012
-                          Z: 1.00000012
+                          X: 1.0
+                          Y: 1.0
+                          Z: 1.0
                       - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
                         Id: 399b02ad-2870-4460-a31c-c84e230f988f
                         AsignedTo: PianoOctave
@@ -1467,7 +1552,7 @@ Items:
                       - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                         Id: 05b59da7-a664-45d8-a087-f0f5fc34aa5c
                         DebugBoundingbox: true
-                        FrustumCullingEnabled: true
+                        IsCullingEnabled: true
                         IsEnabled: true
                         OrderBias: 0
                       - !WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButtonVisualFeedbackComponent,WaveEngine.MRTK
@@ -1574,18 +1659,18 @@ Items:
                         Id: 6b1c6b52-a2a0-43ea-844b-c92632523ac2
                         IsEnabled: true
                         LocalOrientation:
-                          W: 0.99999994
-                          X: -5.96046448E-08
-                          Y: 1.56452273E-09
-                          Z: 3.55271368E-14
+                          W: 1.0
+                          X: 0.0
+                          Y: 0.0
+                          Z: 0.0
                         LocalPosition:
                           X: 0.00394294783
                           Y: -0.069960162
                           Z: -0.00288124382
                         LocalScale:
-                          X: 0.999999821
-                          Y: 1.00000012
-                          Z: 1.00000012
+                          X: 1.0
+                          Y: 1.0
+                          Z: 1.0
                       - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
                         Id: 38e5567f-1ff6-4e25-ac5e-eae2d0d2ba9a
                         AsignedTo: PianoOctave
@@ -1599,7 +1684,7 @@ Items:
                       - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                         Id: 3c019356-448a-452f-b122-c433a6068e2d
                         DebugBoundingbox: true
-                        FrustumCullingEnabled: true
+                        IsCullingEnabled: true
                         IsEnabled: true
                         OrderBias: 0
                       - !WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButtonVisualFeedbackComponent,WaveEngine.MRTK
@@ -1706,10 +1791,10 @@ Items:
                         Id: a9068f58-a425-447b-b2d0-af170f89124e
                         IsEnabled: true
                         LocalOrientation:
-                          W: 0.99999994
-                          X: -5.96046448E-08
-                          Y: 1.56452273E-09
-                          Z: 3.55271368E-14
+                          W: 1.0
+                          X: 0.0
+                          Y: 0.0
+                          Z: 0.0
                         LocalPosition:
                           X: 0.00129013509
                           Y: -0.0699601173
@@ -1731,7 +1816,7 @@ Items:
                       - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                         Id: 4309a324-499d-4577-8676-e7cb26b908df
                         DebugBoundingbox: true
-                        FrustumCullingEnabled: true
+                        IsCullingEnabled: true
                         IsEnabled: true
                         OrderBias: 0
                       - !WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButtonVisualFeedbackComponent,WaveEngine.MRTK
@@ -1839,8 +1924,8 @@ Items:
                         IsEnabled: true
                         LocalOrientation:
                           W: 1.0
-                          X: -1.69406589E-21
-                          Y: -7.10542736E-15
+                          X: 0.0
+                          Y: 0.0
                           Z: 0.0
                         LocalPosition:
                           X: -0.000332207419
@@ -1848,8 +1933,8 @@ Items:
                           Z: -0.00288062543
                         LocalScale:
                           X: 1.0
-                          Y: 0.99999994
-                          Z: 0.99999994
+                          Y: 1.0
+                          Z: 1.0
                       - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
                         Id: 2f5cc5d0-2d31-4e78-890c-22fe34993e55
                         AsignedTo: PianoOctave
@@ -1863,7 +1948,7 @@ Items:
                       - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                         Id: 4a275202-bce9-459b-b79c-6cfb617c22ac
                         DebugBoundingbox: true
-                        FrustumCullingEnabled: true
+                        IsCullingEnabled: true
                         IsEnabled: true
                         OrderBias: 0
                       - !WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButtonVisualFeedbackComponent,WaveEngine.MRTK
@@ -2196,7 +2281,7 @@ Items:
               - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                 Id: 00a2d303-9988-474f-9d57-b71cc0fba872
                 DebugBoundingbox: true
-                FrustumCullingEnabled: true
+                IsCullingEnabled: true
                 IsEnabled: true
                 OrderBias: 0
               - !WaveEngine_MRTK_Demo.Components.ColorChanger,WaveEngine_MRTK_Demo
@@ -2341,7 +2426,7 @@ Items:
                       - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                         Id: 671ce878-787b-44de-aae1-192d9deed5a2
                         DebugBoundingbox: true
-                        FrustumCullingEnabled: true
+                        IsCullingEnabled: true
                         IsEnabled: true
                         OrderBias: 0
                     Children: []
@@ -2420,7 +2505,7 @@ Items:
                       Y: 0.0
                       Z: 0.0
                     LocalPosition:
-                      X: -1.86264504E-09
+                      X: 0.0
                       Y: 0.0
                       Z: 0.0
                     LocalScale:
@@ -2558,7 +2643,7 @@ Items:
                       - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                         Id: 00430708-135a-4733-b464-c9c426433bbc
                         DebugBoundingbox: true
-                        FrustumCullingEnabled: true
+                        IsCullingEnabled: true
                         IsEnabled: true
                         OrderBias: 0
                     Children: []
@@ -2637,7 +2722,7 @@ Items:
                       Y: 0.0
                       Z: 0.0
                     LocalPosition:
-                      X: -1.86264504E-09
+                      X: 0.0
                       Y: 0.0
                       Z: 0.0
                     LocalScale:
@@ -2900,7 +2985,7 @@ Items:
               - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                 Id: 9d15d3a5-721c-484c-9e5f-9fc763771f0a
                 DebugBoundingbox: true
-                FrustumCullingEnabled: true
+                IsCullingEnabled: true
                 IsEnabled: true
                 OrderBias: 0
               - !WaveEngine_MRTK_Demo.Components.SliderChangeColor,WaveEngine_MRTK_Demo
@@ -2978,7 +3063,7 @@ Items:
                   - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                     Id: edfe1be5-49b2-4566-aad4-2004576c2ec0
                     DebugBoundingbox: true
-                    FrustumCullingEnabled: true
+                    IsCullingEnabled: true
                     IsEnabled: true
                     OrderBias: 0
                 Children: []
@@ -3025,7 +3110,7 @@ Items:
                   - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                     Id: cb2a58cd-637b-4aed-bd5a-c92e58c71ed7
                     DebugBoundingbox: true
-                    FrustumCullingEnabled: true
+                    IsCullingEnabled: true
                     IsEnabled: true
                     OrderBias: 0
                   - !WaveEngine_MRTK_Demo.Behaviors.HandInteractionTouchRotate,WaveEngine_MRTK_Demo
@@ -3099,7 +3184,7 @@ Items:
                       - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                         Id: 899e037a-039b-4067-90c5-363475069d15
                         DebugBoundingbox: true
-                        FrustumCullingEnabled: true
+                        IsCullingEnabled: true
                         IsEnabled: true
                         OrderBias: 0
                     Children: []
@@ -3171,7 +3256,7 @@ Items:
                   - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                     Id: 1cffd19c-b9a4-4ec6-8ef0-9c3e8f512085
                     DebugBoundingbox: true
-                    FrustumCullingEnabled: true
+                    IsCullingEnabled: true
                     IsEnabled: true
                     OrderBias: 0
                 Children: []
@@ -3218,7 +3303,7 @@ Items:
                   - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                     Id: c9d72a86-9397-4a01-87b0-c9462bf75621
                     DebugBoundingbox: true
-                    FrustumCullingEnabled: true
+                    IsCullingEnabled: true
                     IsEnabled: true
                     OrderBias: 0
                   - !WaveEngine.Framework.Physics3D.BoxCollider3D,WaveEngine.Framework
@@ -3292,7 +3377,7 @@ Items:
                       - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                         Id: aeee9d15-360d-47c9-900b-069753c475c4
                         DebugBoundingbox: true
-                        FrustumCullingEnabled: true
+                        IsCullingEnabled: true
                         IsEnabled: true
                         OrderBias: 0
                     Children: []
@@ -3364,7 +3449,7 @@ Items:
                   - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                     Id: 824c4b23-d43c-4342-b9ea-3352ff37dfc5
                     DebugBoundingbox: true
-                    FrustumCullingEnabled: true
+                    IsCullingEnabled: true
                     IsEnabled: true
                     OrderBias: 0
                 Children: []
@@ -3411,7 +3496,7 @@ Items:
                   - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                     Id: 4b10495b-e40b-4d1a-be66-d78badd66d16
                     DebugBoundingbox: true
-                    FrustumCullingEnabled: true
+                    IsCullingEnabled: true
                     IsEnabled: true
                     OrderBias: 0
                   - !WaveEngine.Framework.Physics3D.BoxCollider3D,WaveEngine.Framework
@@ -3485,7 +3570,7 @@ Items:
                       - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                         Id: 98d023e5-a9e5-4775-a83b-2185c2479c57
                         DebugBoundingbox: true
-                        FrustumCullingEnabled: true
+                        IsCullingEnabled: true
                         IsEnabled: true
                         OrderBias: 0
                     Children: []
@@ -3642,7 +3727,7 @@ Items:
               - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                 Id: 3ef16b6f-28e9-417f-a5ff-a8565d283ab0
                 DebugBoundingbox: true
-                FrustumCullingEnabled: true
+                IsCullingEnabled: true
                 IsEnabled: true
                 OrderBias: 0
               - !WaveEngine.Framework.Physics3D.BoxCollider3D,WaveEngine.Framework
@@ -3718,7 +3803,7 @@ Items:
               - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                 Id: 43b36986-9d1f-4d9f-8b83-910e6ebf99b8
                 DebugBoundingbox: true
-                FrustumCullingEnabled: true
+                IsCullingEnabled: true
                 IsEnabled: true
                 OrderBias: 0
               - !WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation.SimpleManipulationHandler,WaveEngine.MRTK
@@ -3833,7 +3918,7 @@ Items:
               - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                 Id: 4430b1e7-7da6-4ad4-91a5-ca49441e82a6
                 DebugBoundingbox: true
-                FrustumCullingEnabled: true
+                IsCullingEnabled: true
                 IsEnabled: true
                 OrderBias: 0
               - !WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation.SimpleManipulationHandler,WaveEngine.MRTK
@@ -3948,7 +4033,7 @@ Items:
               - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                 Id: ca44f3bc-5276-481b-9230-c089c005bf86
                 DebugBoundingbox: true
-                FrustumCullingEnabled: true
+                IsCullingEnabled: true
                 IsEnabled: true
                 OrderBias: 0
               - !WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation.SimpleManipulationHandler,WaveEngine.MRTK
@@ -4147,7 +4232,7 @@ Items:
                   - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                     Id: adb88232-4a9e-487b-a9a1-ba16d394b930
                     DebugBoundingbox: true
-                    FrustumCullingEnabled: true
+                    IsCullingEnabled: true
                     IsEnabled: true
                     OrderBias: 0
                 Children: []
@@ -4187,7 +4272,7 @@ Items:
                   - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                     Id: 14a70d9e-e186-4445-9bc6-38c0475a5260
                     DebugBoundingbox: true
-                    FrustumCullingEnabled: true
+                    IsCullingEnabled: true
                     IsEnabled: true
                     OrderBias: 0
                 Children: []
@@ -4227,7 +4312,7 @@ Items:
                   - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                     Id: 65c39886-ee14-4def-9e8d-b66677d0f6b8
                     DebugBoundingbox: true
-                    FrustumCullingEnabled: true
+                    IsCullingEnabled: true
                     IsEnabled: true
                     OrderBias: 0
                 Children: []
@@ -4327,8 +4412,8 @@ Items:
                       Z: 19.3122406
                     LocalScale:
                       X: 1.0
-                      Y: 0.999999821
-                      Z: 0.999999821
+                      Y: 1.0
+                      Z: 1.0
                   - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
                     Id: 541c5022-f528-43b3-9d83-e654e231cefe
                     AsignedTo: Piggy_Bot_Complete
@@ -4342,7 +4427,7 @@ Items:
                   - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                     Id: 70011cb7-3fe5-41c7-bf59-53e45223ae1e
                     DebugBoundingbox: true
-                    FrustumCullingEnabled: true
+                    IsCullingEnabled: true
                     IsEnabled: true
                     OrderBias: 0
                   - !WaveEngine.Framework.Physics3D.BoxCollider3D,WaveEngine.Framework
@@ -4478,7 +4563,7 @@ Items:
               - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                 Id: af068ce1-13d8-4b86-9473-49d5b4daaf80
                 DebugBoundingbox: true
-                FrustumCullingEnabled: true
+                IsCullingEnabled: true
                 IsEnabled: true
                 OrderBias: 0
               - !WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation.SimpleManipulationHandler,WaveEngine.MRTK
@@ -4527,7 +4612,7 @@ Items:
               - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                 Id: 226a1e5f-63cd-40f9-90ce-4e2dd701c93f
                 DebugBoundingbox: true
-                FrustumCullingEnabled: true
+                IsCullingEnabled: true
                 IsEnabled: true
                 OrderBias: 0
               - !WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation.SimpleManipulationHandler,WaveEngine.MRTK
@@ -4615,7 +4700,7 @@ Items:
               - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                 Id: d65368ab-5f0c-4457-9c0f-732e530690d3
                 DebugBoundingbox: true
-                FrustumCullingEnabled: true
+                IsCullingEnabled: true
                 IsEnabled: true
                 OrderBias: 0
               - !WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation.SimpleManipulationHandler,WaveEngine.MRTK
@@ -4825,7 +4910,7 @@ Items:
                       - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                         Id: a3876da2-1e76-4fa8-b295-448add9a2785
                         DebugBoundingbox: true
-                        FrustumCullingEnabled: true
+                        IsCullingEnabled: true
                         IsEnabled: true
                         OrderBias: 0
                     Children: []
@@ -4903,7 +4988,7 @@ Items:
                   - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                     Id: aeda1a95-10f7-4844-93b9-eccd22b43e13
                     DebugBoundingbox: true
-                    FrustumCullingEnabled: true
+                    IsCullingEnabled: true
                     IsEnabled: true
                     OrderBias: 0
                 Children: []
@@ -4956,7 +5041,7 @@ Items:
                   - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                     Id: 45fe23f6-0ad7-4c50-93d0-f475d286a88d
                     DebugBoundingbox: true
-                    FrustumCullingEnabled: true
+                    IsCullingEnabled: true
                     IsEnabled: true
                     OrderBias: 0
                   - !WaveEngine_MRTK_Demo.Behaviors.HandInteractionPanZoom,WaveEngine_MRTK_Demo
@@ -5159,7 +5244,7 @@ Items:
               - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                 Id: 32416ea0-9c26-419a-a607-0793647d7631
                 DebugBoundingbox: true
-                FrustumCullingEnabled: true
+                IsCullingEnabled: true
                 IsEnabled: true
                 OrderBias: 0
               - !WaveEngine.Framework.Physics3D.BoxCollider3D,WaveEngine.Framework
@@ -5241,7 +5326,7 @@ Items:
               - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                 Id: 8ba00ca7-dd81-4708-8ff1-f1bf5961c339
                 DebugBoundingbox: true
-                FrustumCullingEnabled: true
+                IsCullingEnabled: true
                 IsEnabled: true
                 OrderBias: 0
             Children: []
@@ -5294,7 +5379,7 @@ Items:
               - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                 Id: 569bab81-6923-4295-9d9f-f4cb7e1212a9
                 DebugBoundingbox: true
-                FrustumCullingEnabled: true
+                IsCullingEnabled: true
                 IsEnabled: true
                 OrderBias: 0
             Children: []
@@ -5347,7 +5432,7 @@ Items:
               - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                 Id: 10ed2546-798b-42b3-a59c-4f202d2f8dbc
                 DebugBoundingbox: true
-                FrustumCullingEnabled: true
+                IsCullingEnabled: true
                 IsEnabled: true
                 OrderBias: 0
             Children: []
@@ -5400,7 +5485,7 @@ Items:
               - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                 Id: e2e9228d-e766-4375-8a11-7a5ba9384e60
                 DebugBoundingbox: true
-                FrustumCullingEnabled: true
+                IsCullingEnabled: true
                 IsEnabled: true
                 OrderBias: 0
             Children: []
@@ -5565,11 +5650,12 @@ Items:
                   - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                     Id: 37f41682-e58f-4454-8f55-3c66c2e9cda9
                     DebugBoundingbox: true
-                    FrustumCullingEnabled: true
+                    IsCullingEnabled: true
                     IsEnabled: true
                     OrderBias: 0
                   - !WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox.BoundingBox,WaveEngine.MRTK
                     Id: 57c9c2d9-31d3-4351-a4b1-8fed49fe5118
+                    AutoCalculate: true
                     BoxGrabbedMaterial: 0852af68-ed44-4dd5-bebb-05c15449d498
                     BoxMaterial: 76254053-dba8-4ecd-8ffd-2989ae519c06
                     BoxPadding:
@@ -5657,11 +5743,12 @@ Items:
               - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                 Id: e4473ff4-d41f-47d1-8ae2-ac452db18034
                 DebugBoundingbox: true
-                FrustumCullingEnabled: true
+                IsCullingEnabled: true
                 IsEnabled: true
                 OrderBias: 0
               - !WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox.BoundingBox,WaveEngine.MRTK
                 Id: e5b18d5f-4bd1-453c-bb55-3e44a7845933
+                AutoCalculate: true
                 BoxGrabbedMaterial: 0852af68-ed44-4dd5-bebb-05c15449d498
                 BoxMaterial: 76254053-dba8-4ecd-8ffd-2989ae519c06
                 BoxPadding:
@@ -5771,11 +5858,12 @@ Items:
                   - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                     Id: 18cb5305-7dd1-40e2-8f4c-f327143364d5
                     DebugBoundingbox: true
-                    FrustumCullingEnabled: true
+                    IsCullingEnabled: true
                     IsEnabled: true
                     OrderBias: 0
                   - !WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox.BoundingBox,WaveEngine.MRTK
                     Id: 2e64bfc9-2248-46d9-bb3d-7d7b591d6372
+                    AutoCalculate: true
                     BoxGrabbedMaterial: 0852af68-ed44-4dd5-bebb-05c15449d498
                     BoxMaterial: 76254053-dba8-4ecd-8ffd-2989ae519c06
                     BoxPadding:
@@ -5855,6 +5943,7 @@ Items:
                   Z: 1.33410001
               - !WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox.BoundingBox,WaveEngine.MRTK
                 Id: d7f0823f-63ac-48a7-a97b-469f1c5a5704
+                AutoCalculate: true
                 BoxGrabbedMaterial: 0852af68-ed44-4dd5-bebb-05c15449d498
                 BoxMaterial: null
                 BoxPadding:
@@ -5953,7 +6042,7 @@ Items:
                   - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                     Id: b44ad9ac-ac67-4bdc-9ad7-0724cdaa3465
                     DebugBoundingbox: true
-                    FrustumCullingEnabled: true
+                    IsCullingEnabled: true
                     IsEnabled: true
                     OrderBias: 0
                 Children:
@@ -5969,7 +6058,7 @@ Items:
                         LocalOrientation:
                           W: 1.0
                           X: 0.0
-                          Y: 2.84217094E-14
+                          Y: 0.0
                           Z: 0.0
                         LocalPosition:
                           X: 0.298651576
@@ -6005,7 +6094,7 @@ Items:
                       - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                         Id: 60634c93-00ab-4e4b-9f1e-37ab00cf2cda
                         DebugBoundingbox: true
-                        FrustumCullingEnabled: true
+                        IsCullingEnabled: true
                         IsEnabled: true
                         OrderBias: 0
                     Children: []
@@ -6022,7 +6111,7 @@ Items:
                         LocalOrientation:
                           W: 1.0
                           X: 0.0
-                          Y: 2.84217094E-14
+                          Y: 0.0
                           Z: 0.0
                         LocalPosition:
                           X: -0.146650553
@@ -6058,7 +6147,7 @@ Items:
                       - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                         Id: 1baf8892-044e-4d67-94f2-3227a462b0dd
                         DebugBoundingbox: true
-                        FrustumCullingEnabled: true
+                        IsCullingEnabled: true
                         IsEnabled: true
                         OrderBias: 0
                     Children: []
@@ -6262,37 +6351,4 @@ Items:
             Id: 53bd849b-f7b1-4aa9-b9fb-beed03172436
         Id: aba4da0b-92d7-4554-b90c-f8c6a9c8b711
     Id: bf7601de-e3ee-4c6a-9ec4-717fc4c11ddd
-  - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
-    Name: directionalLight
-    Tag: null
-    IsEnabled: true
-    IsStatic: false
-    Components:
-      - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
-        Id: d5281573-e916-406d-800d-baae42e75b3f
-        IsEnabled: true
-        LocalOrientation:
-          W: 0.875426114
-          X: -0.408217847
-          Y: 0.234569699
-          Z: 0.109381631
-        LocalPosition:
-          X: -0.0670055598
-          Y: 3.99384259E-09
-          Z: -2.79568191E-08
-        LocalScale:
-          X: 1.0
-          Y: 1.0
-          Z: 1.0
-      - !WaveEngine.Framework.Graphics.DirectionalLight,WaveEngine.Framework
-        Id: a2354a1e-bca4-489d-ac3c-55bb5ed2bf07
-        Color:
-          A: 255
-          B: 214
-          G: 244
-          R: 255
-        Intensity: 6.0
-        IsEnabled: true
-    Children: []
-    Id: 384f3ab7-279e-4cf5-a4f8-25a35ef5d8af
 Managers: []

@@ -19,6 +19,11 @@ Texture3D Texture3				: register(t2);
 [profile 10_0]
 [entrypoints VS = VS PS = PS]
 
+float4 GammaToLinear(const float4 color)
+{
+	return float4(pow(color.rgb, 2.2), color.a);
+}
+
 struct VS_IN_COLOR
 {
 	float2 Corners			: POSITION;
@@ -83,12 +88,13 @@ VS_OUT_COLOR VS(VS_IN_COLOR input)
 float4 PS(VS_OUT_COLOR input) : SV_Target0
 {
 #if TEXTURE3D
-		return Texture3.Sample(Sampler, float3(input.TexCoord, input.SliceIndex)) * input.Color;
+		float4 color = Texture3.Sample(Sampler, float3(input.TexCoord, input.SliceIndex)) * input.Color;
 #elif TEXTURE2DARRAY
-		return Texture2Array.Sample(Sampler, float3(input.TexCoord, input.SliceIndex)) * input.Color;
+		float4 color = Texture2Array.Sample(Sampler, float3(input.TexCoord, input.SliceIndex)) * input.Color;
 #else
-		return Texture.Sample(Sampler, input.TexCoord) * input.Color;
+		float4 color = Texture.Sample(Sampler, input.TexCoord) * input.Color;
 #endif
+	return GammaToLinear(color);
 }
 
 [End_Pass]

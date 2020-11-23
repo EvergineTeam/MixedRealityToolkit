@@ -1,16 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <TargetFramework>net5.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="WaveEngine.DirectX11" Version="3.0.0.5947-preview4" />
-    <PackageReference Include="WaveEngine.XAudio2" Version="3.0.0.5947-preview4" />
-    <PackageReference Include="WaveEngine.Forms" Version="3.0.0.5947-preview4" />
-    <PackageReference Include="WaveEngine.Targets" Version="3.0.0.5947-preview4" />
-    <PackageReference Include="WaveEngine.Targets.Windows" Version="3.0.0.5947-preview4" />
+    <PackageReference Include="WaveEngine.DirectX11" Version="3.1.0.6468-preview" />
+    <PackageReference Include="WaveEngine.XAudio2" Version="3.1.0.6468-preview" />
+    <PackageReference Include="WaveEngine.Forms" Version="3.1.0.6468-preview" />
+    <PackageReference Include="WaveEngine.Targets" Version="3.1.0.6468-preview" />
+    <PackageReference Include="WaveEngine.Targets.Windows" Version="3.1.0.6468-preview" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WaveEngine_MRTK_Demo\WaveEngine_MRTK_Demo.csproj" />

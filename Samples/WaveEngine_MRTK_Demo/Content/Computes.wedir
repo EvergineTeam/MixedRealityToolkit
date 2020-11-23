@@ -1,0 +1,26 @@
+!WaveEngine.Assets.Exporters.DirectoryMetaFile,WaveEngine.Assets
+Id: fcd4d7d0-b7e8-4155-93e0-52ce3eca11e4
+DefaultProfile:
+  ExcludeAsset: false
+  Name: null
+  OutputName: null
+  Platform: Undefined
+ExportAsRaw: false
+Profiles:
+  Web:
+    Compile: Yes
+    ExcludeAsset: true
+    GraphicsBackend: WebGL2
+    MandatoryCombinations:
+    Name: Web
+    Platform: Web
+  Web1:
+    Compile: Yes
+    ExcludeAsset: true
+    GraphicsBackend: WebGL1
+    MandatoryCombinations:
+    Name: Web1
+    Platform: Web
+  UWP.MixedReality:
+    ExcludeAsset: true
+    Name: UWP.MixedReality

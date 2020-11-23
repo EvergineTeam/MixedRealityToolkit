@@ -8,4 +8,11 @@ DefaultProfile:
   Name: null
   Platform: Undefined
 ExportAsRaw: false
-Profiles: {}
+Profiles:
+  Web1:
+    Compile: Yes
+    ExcludeAsset: true
+    GraphicsBackend: WebGL1
+    MandatoryCombinations: 
+    Name: Web1
+    Platform: Web
