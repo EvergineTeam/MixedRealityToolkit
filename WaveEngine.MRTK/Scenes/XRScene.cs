@@ -73,7 +73,7 @@ namespace WaveEngine.MRTK.Scenes
         /// <inheritdoc/>
         protected override void CreateScene()
         {
-            ////this.Managers.RenderManager.DebugLines = true;
+            this.Managers.EntityManager.FindFirstComponentOfType<MeshRenderer>(tag: "Skybox").IsEnabled = false;
 
             var assetsService = Application.Current.Container.Resolve<AssetsService>();
 
@@ -123,7 +123,7 @@ namespace WaveEngine.MRTK.Scenes
             Entity cursor = new Entity("Cursor_" + handedness)
                 .AddComponent(new Transform3D())
                 .AddComponent(new MaterialComponent())
-                .AddComponent(new PlaneMesh() { PlaneNormal = "-Z", Width = 0.01f, Height = 0.01f })
+                .AddComponent(new PlaneMesh() { TwoSides = true, Normal = Vector3.Forward, Width = 0.01f, Height = 0.01f })
                 .AddComponent(new MeshRenderer())
                 .AddComponent(new SphereCollider3D())
                 .AddComponent(new StaticBody3D() { CollisionCategories = CollisionCategory3D.Cat2, IsSensor = true, MaskBits = CollisionCategory3D.Cat1 })
@@ -181,7 +181,7 @@ namespace WaveEngine.MRTK.Scenes
             Entity cursorDist = new Entity("CursorDist_" + handedness)
                 .AddComponent(new Transform3D())
                 .AddComponent(new MaterialComponent())
-                .AddComponent(new PlaneMesh() { PlaneNormal = "-Z", Width = 0.01f, Height = 0.01f })
+                .AddComponent(new PlaneMesh() { Normal = Vector3.Forward, Width = 0.01f, Height = 0.01f })
                 .AddComponent(new MeshRenderer())
                 .AddComponent(new SphereCollider3D())
                 .AddComponent(new StaticBody3D() { CollisionCategories = CollisionCategory3D.Cat2, IsSensor = true, MaskBits = CollisionCategory3D.Cat1 })

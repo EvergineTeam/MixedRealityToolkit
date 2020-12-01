@@ -2,15 +2,14 @@
 
 using WaveEngine.Common.Attributes;
 using Color = WaveEngine.Common.Graphics.Color;
-using LinearColor = WaveEngine.Common.Graphics.LinearColor;
 
 namespace WaveEngine.MRTK.Effects
 {
     /// <summary>
     /// Partial class for Holographic, needed for Custom Editor.
     /// </summary>
-    [WaveEngine.Framework.Graphics.MaterialDecoratorAttribute("4f7e4c24-e83c-4350-9cd4-511fb2199cf4")]
-    public partial class HoloGraphic : WaveEngine.Framework.Graphics.MaterialDecorator
+    [Framework.Graphics.MaterialDecoratorAttribute("4f7e4c24-e83c-4350-9cd4-511fb2199cf4")]
+    public partial class HoloGraphic : Framework.Graphics.MaterialDecorator
     {
         /// <summary>
         /// Gets or sets the Albedo.
@@ -19,17 +18,13 @@ namespace WaveEngine.MRTK.Effects
         {
             get
             {
-                LinearColor linearColor = default;
-                linearColor.A = this.Parameters_Alpha;
-                linearColor.AsVector3 = this.Parameters_Color;
-                return linearColor.ToColor();
+                return new Color(this.Parameters_Color.X, this.Parameters_Color.Y, this.Parameters_Color.Z, this.Parameters_Alpha);
             }
 
             set
             {
-                var linearColor = new LinearColor(ref value);
-                this.Parameters_Color = linearColor.AsVector3;
-                this.Parameters_Alpha = linearColor.A / 255.0f;
+                this.Parameters_Color = value.ToVector3();
+                this.Parameters_Alpha = value.A / 255.0f;
             }
         }
 
@@ -54,41 +49,19 @@ namespace WaveEngine.MRTK.Effects
         }
 
         /// <summary>
-        /// Gets or sets the light color.
-        /// </summary>
-        public Color LightColor
-        {
-            get
-            {
-                LinearColor linearColor = default;
-                linearColor.AsVector4 = this.Parameters_LightColor0;
-                return linearColor.ToColor();
-            }
-
-            set
-            {
-                var linearColor = new LinearColor(ref value);
-                this.Parameters_LightColor0 = linearColor.AsVector4;
-            }
-        }
-
-        /// <summary>
         /// Gets or sets the HoverColorOverride.
         /// </summary>
         public Color HoverColorOverride
         {
             get
             {
-                LinearColor linearColor = default;
-                linearColor.A = 1;
-                linearColor.AsVector3 = this.Parameters_HoverColorOverride;
-                return linearColor.ToColor();
+                var colorVector = this.Parameters_HoverColorOverride;
+                return Color.FromVector3(ref colorVector);
             }
 
             set
             {
-                var linearColor = new LinearColor(ref value);
-                this.Parameters_HoverColorOverride = linearColor.AsVector3;
+                this.Parameters_HoverColorOverride = value.ToVector3();
             }
         }
 
@@ -99,15 +72,13 @@ namespace WaveEngine.MRTK.Effects
         {
             get
             {
-                LinearColor linearColor = default;
-                linearColor.AsVector4 = this.Parameters_ProximityLightCenterColorOverride;
-                return linearColor.ToColor();
+                var colorVector = this.Parameters_ProximityLightCenterColorOverride;
+                return Color.FromVector4(ref colorVector);
             }
 
             set
             {
-                var linearColor = new LinearColor(ref value);
-                this.Parameters_ProximityLightCenterColorOverride = linearColor.AsVector4;
+                this.Parameters_ProximityLightCenterColorOverride = value.ToVector4();
             }
         }
 
@@ -118,15 +89,13 @@ namespace WaveEngine.MRTK.Effects
         {
             get
             {
-                LinearColor linearColor = default;
-                linearColor.AsVector4 = this.Parameters_ProximityLightMiddleColorOverride;
-                return linearColor.ToColor();
+                var colorVector = this.Parameters_ProximityLightMiddleColorOverride;
+                return Color.FromVector4(ref colorVector);
             }
 
             set
             {
-                var linearColor = new LinearColor(ref value);
-                this.Parameters_ProximityLightMiddleColorOverride = linearColor.AsVector4;
+                this.Parameters_ProximityLightMiddleColorOverride = value.ToVector4();
             }
         }
 
@@ -137,15 +106,13 @@ namespace WaveEngine.MRTK.Effects
         {
             get
             {
-                LinearColor linearColor = default;
-                linearColor.AsVector4 = this.Parameters_ProximityLightOuterColorOverride;
-                return linearColor.ToColor();
+                var colorVector = this.Parameters_ProximityLightOuterColorOverride;
+                return Color.FromVector4(ref colorVector);
             }
 
             set
             {
-                var linearColor = new LinearColor(ref value);
-                this.Parameters_ProximityLightOuterColorOverride = linearColor.AsVector4;
+                this.Parameters_ProximityLightOuterColorOverride = value.ToVector4();
             }
         }
 
@@ -226,17 +193,13 @@ namespace WaveEngine.MRTK.Effects
         {
             get
             {
-                LinearColor linearColor = default;
-                linearColor.A = this.Parameters_InnerGlowAlpha;
-                linearColor.AsVector3 = this.Parameters_InnerGlowColor;
-                return linearColor.ToColor();
+                return new Color(this.Parameters_InnerGlowColor.X, this.Parameters_InnerGlowColor.Y, this.Parameters_InnerGlowColor.Z, this.Parameters_InnerGlowAlpha);
             }
 
             set
             {
-                var linearColor = new LinearColor(ref value);
-                this.Parameters_InnerGlowColor = linearColor.AsVector3;
-                this.Parameters_InnerGlowAlpha = linearColor.A / 255.0f;
+                this.Parameters_InnerGlowColor = value.ToVector3();
+                this.Parameters_InnerGlowAlpha = value.A / 255.0f;
             }
         }
 

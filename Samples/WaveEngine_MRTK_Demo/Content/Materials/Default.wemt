@@ -6,14 +6,17 @@ DefaultProfile:
   Platform: Undefined
 ExportAsRaw: false
 MaterialInfo:
-  Id: bede0e6a-1658-42d6-be9b-f9dd3f145b01
-  ActiveDirectives: []
+  Id: 966a45e6-9df0-4d32-b6cb-c34f5789622c
+  ActiveDirectives:
+    - DIRECTIONAL_LIGHT
+  AllowInstancing: false
   EffectID: 4f7e4c24-e83c-4350-9cd4-511fb2199cf4
   Layer: 0db59561-b3f5-444f-b5de-e62e3a5b42bf
+  OrderBias: 0
   Parameters:
     - Name: WorldViewProj
       Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
-      ValueByteArray: PAS5QAAAAAAAAAAAAAAAAAAAAACYMopADf9kvzD5ZL8AAAAAmjIKwAv/5L8u+eS/AAAAAHmCGjUf7ItAvRuPQA==
+      ValueByteArray: JHpVQAAAAAAAAAAAAAAAAAAAAACYMopADf9kvzD5ZL8AAAAAmjIKwAv/5L8u+eS/AAAAAHmCGjUf7ItAvRuPQA==
     - Name: World
       Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
       ValueByteArray: AAAAQAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAACAPw==
@@ -50,6 +53,9 @@ MaterialInfo:
     - Name: Cutoff
       Type: System.Single
       ValueByteArray: AAAAPw==
+    - Name: RoundCornersRadious
+      Type: WaveEngine.Mathematics.Vector4,WaveEngine.Mathematics
+      ValueByteArray: AAAAPwAAAD8AAAA/AAAAPw==
     - Name: EdgeSmoothingValue
       Type: System.Single
       ValueByteArray: bxIDOw==
@@ -101,6 +107,15 @@ MaterialInfo:
     - Name: EyeCount
       Type: System.Int32
       ValueByteArray: AQAAAA==
+    - Name: SunDirection
+      Type: WaveEngine.Mathematics.Vector3,WaveEngine.Mathematics
+      ValueByteArray: AAAAAAAAAAAAAIA/
+    - Name: SunColor
+      Type: WaveEngine.Mathematics.Vector3,WaveEngine.Mathematics
+      ValueByteArray: AACAPwAAgD8AAIA/
+    - Name: SunIntensity
+      Type: System.Single
+      ValueByteArray: AACAPw==
   Samplers:
     - ID: 00000000-0000-0000-0000-000000000000
       Name: null

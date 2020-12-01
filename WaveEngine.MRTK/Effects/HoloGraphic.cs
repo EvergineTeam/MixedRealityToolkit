@@ -26,30 +26,6 @@ namespace WaveEngine.MRTK.Effects
         {
         }
 
-        public WaveEngine.Mathematics.Matrix4x4 PerDrawCall_WorldViewProj
-        {
-            get
-            {
-                return this.material.CBuffers[0].GetBufferData<WaveEngine.Mathematics.Matrix4x4>(0);
-            }
-            set
-            {
-                this.material.CBuffers[0].SetBufferData(value, 0);
-            }
-        }
-
-        public WaveEngine.Mathematics.Matrix4x4 PerDrawCall_World
-        {
-            get
-            {
-                return this.material.CBuffers[0].GetBufferData<WaveEngine.Mathematics.Matrix4x4>(64);
-            }
-            set
-            {
-                this.material.CBuffers[0].SetBufferData(value, 64);
-            }
-        }
-
         public WaveEngine.Mathematics.Vector3 Parameters_Color
         {
             get
@@ -290,11 +266,11 @@ namespace WaveEngine.MRTK.Effects
             }
         }
 
-        public WaveEngine.Mathematics.Vector4 Parameters_LightColor0
+        public float Parameters_Metallic
         {
             get
             {
-                return this.material.CBuffers[1].GetBufferData<WaveEngine.Mathematics.Vector4>(160);
+                return this.material.CBuffers[1].GetBufferData<System.Single>(160);
             }
             set
             {
@@ -302,27 +278,15 @@ namespace WaveEngine.MRTK.Effects
             }
         }
 
-        public float Parameters_Metallic
-        {
-            get
-            {
-                return this.material.CBuffers[1].GetBufferData<System.Single>(176);
-            }
-            set
-            {
-                this.material.CBuffers[1].SetBufferData(value, 176);
-            }
-        }
-
         public float Parameters_Smoothness
         {
             get
             {
-                return this.material.CBuffers[1].GetBufferData<System.Single>(180);
+                return this.material.CBuffers[1].GetBufferData<System.Single>(164);
             }
             set
             {
-                this.material.CBuffers[1].SetBufferData(value, 180);
+                this.material.CBuffers[1].SetBufferData(value, 164);
             }
         }
 
@@ -330,11 +294,11 @@ namespace WaveEngine.MRTK.Effects
         {
             get
             {
-                return this.material.CBuffers[1].GetBufferData<WaveEngine.Mathematics.Vector2>(192);
+                return this.material.CBuffers[1].GetBufferData<WaveEngine.Mathematics.Vector2>(176);
             }
             set
             {
-                this.material.CBuffers[1].SetBufferData(value, 192);
+                this.material.CBuffers[1].SetBufferData(value, 176);
             }
         }
 
@@ -342,11 +306,11 @@ namespace WaveEngine.MRTK.Effects
         {
             get
             {
-                return this.material.CBuffers[1].GetBufferData<WaveEngine.Mathematics.Vector2>(200);
+                return this.material.CBuffers[1].GetBufferData<WaveEngine.Mathematics.Vector2>(184);
             }
             set
             {
-                this.material.CBuffers[1].SetBufferData(value, 200);
+                this.material.CBuffers[1].SetBufferData(value, 184);
             }
         }
 
@@ -371,30 +335,6 @@ namespace WaveEngine.MRTK.Effects
             set
             {
                 this.material.CBuffers[1].SetBufferData(value, 416);
-            }
-        }
-
-        public WaveEngine.Mathematics.Matrix4x4 PerCamera_MultiviewViewProj
-        {
-            get
-            {
-                return this.material.CBuffers[2].GetBufferData<WaveEngine.Mathematics.Matrix4x4>(0);
-            }
-            set
-            {
-                this.material.CBuffers[2].SetBufferData(value, 0);
-            }
-        }
-
-        public int PerCamera_EyeCount
-        {
-            get
-            {
-                return this.material.CBuffers[2].GetBufferData<System.Int32>(160);
-            }
-            set
-            {
-                this.material.CBuffers[2].SetBufferData(value, 160);
             }
         }
 

@@ -47,7 +47,6 @@ namespace WaveEngine_MRTK_Demo.Editor
             {
                 this.AddMember(nameof(HoloGraphic.Metallic));
                 this.AddMember(nameof(HoloGraphic.Smoothness));
-                this.AddMember(nameof(HoloGraphic.LightColor));
             }
 
             // Fluent Options

@@ -13,9 +13,9 @@ DefaultProfile:
 ExportAsRaw: false
 GenerateMipMaps: true
 NinePatchType: None
-PremultipliedAlpha: true
+PremultipliedAlpha: false
 Profiles: {}
-SamplerID: 00000000-0000-0000-0000-000000000000
+SamplerID: a6f09f12-0f97-4b8e-a872-3f8dbe5bd249
 Source:
   Header:
     Id: 78c91c32-884d-4235-9a99-df312c3c7520
