@@ -314,30 +314,6 @@ namespace WaveEngine.MRTK.Effects
             }
         }
 
-        public WaveEngine.Mathematics.Vector4 Parameters_HoverLightData
-        {
-            get
-            {
-                return this.material.CBuffers[1].GetBufferData<WaveEngine.Mathematics.Vector4>(320);
-            }
-            set
-            {
-                this.material.CBuffers[1].SetBufferData(value, 320);
-            }
-        }
-
-        public WaveEngine.Mathematics.Vector4 Parameters_ProximityLightData
-        {
-            get
-            {
-                return this.material.CBuffers[1].GetBufferData<WaveEngine.Mathematics.Vector4>(416);
-            }
-            set
-            {
-                this.material.CBuffers[1].SetBufferData(value, 416);
-            }
-        }
-
         public WaveEngine.Common.Graphics.Texture Texture
         {
             get

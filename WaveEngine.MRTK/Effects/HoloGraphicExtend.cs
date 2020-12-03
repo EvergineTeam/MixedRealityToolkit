@@ -1,5 +1,6 @@
 ﻿// Copyright © Wave Engine S.L. All rights reserved. Use is subject to license terms.
 
+using System.Linq;
 using WaveEngine.Common.Attributes;
 using Color = WaveEngine.Common.Graphics.Color;
 
@@ -11,6 +12,97 @@ namespace WaveEngine.MRTK.Effects
     [Framework.Graphics.MaterialDecoratorAttribute("4f7e4c24-e83c-4350-9cd4-511fb2199cf4")]
     public partial class HoloGraphic : Framework.Graphics.MaterialDecorator
     {
+        /// <summary>
+        /// The BorderLight feature directive.
+        /// </summary>
+        public const string BorderLightDirective = "BORDER_LIGHT";
+
+        /// <summary>
+        /// The BorderLightReplacesAlbedo feature directive.
+        /// </summary>
+        public const string BorderLightReplacesAlbedoDirective = "BORDER_LIGHT_REPLACES_ALBEDO";
+
+        /// <summary>
+        /// The BorderLightOpaque feature directive.
+        /// </summary>
+        public const string BorderLightOpaqueDirective = "BORDER_LIGHT_OPAQUE";
+
+        /// <summary>
+        /// The InnerGlow feature directive.
+        /// </summary>
+        public const string InnerGlowDirective = "INNER_GLOW";
+
+        /// <summary>
+        /// The RoundCorners feature directive.
+        /// </summary>
+        public const string RoundCornersDirective = "ROUND_CORNERS";
+
+        /// <summary>
+        /// The IndependentCorners feature directive.
+        /// </summary>
+        public const string IndependentCornersDirective = "INDEPENDENT_CORNERS";
+
+        /// <summary>
+        /// The IgnoreZScale feature directive.
+        /// </summary>
+        public const string IgnoreZScaleDirective = "IGNORE_Z_SCALE";
+
+        /// <summary>
+        /// The NearLightFade feature directive.
+        /// </summary>
+        public const string NearLightFadeDirective = "NEAR_LIGHT_FADE";
+
+        /// <summary>
+        /// The HoverLight feature directive.
+        /// </summary>
+        public const string HoverLightDirective = "HOVER_LIGHT";
+
+        /// <summary>
+        /// The MultiHoverLight feature directive.
+        /// </summary>
+        public const string MultiHoverLightDirective = "MULTI_HOVER_LIGHT";
+
+        /// <summary>
+        /// The HoverColorOverride feature directive.
+        /// </summary>
+        public const string HoverColorOverrideDirective = "HOVER_COLOR_OVERRIDE";
+
+        /// <summary>
+        /// The ProximityLight feature directive.
+        /// </summary>
+        public const string ProximityLightDirective = "PROXIMITY_LIGHT";
+
+        /// <summary>
+        /// The ProximityLightTwoSided feature directive.
+        /// </summary>
+        public const string ProximityLightTwoSidedDirective = "PROXIMITY_LIGHT_TWO_SIDED";
+
+        /// <summary>
+        /// The ProximityLightColorOverride feature directive.
+        /// </summary>
+        public const string ProximityLightColorOverrideDirective = "PROXIMITY_LIGHT_COLOR_OVERRIDE";
+
+        /// <summary>
+        /// The ProximityLightSubtractive feature directive.
+        /// </summary>
+        public const string ProximityLightSubtractiveDirective = "PROXIMITY_LIGHT_SUBTRACTIVE";
+
+        /// <summary>
+        /// The DirectionalLight feature directive.
+        /// </summary>
+        public const string DirectionalLightDirective = "DIRECTIONAL_LIGHT";
+
+        /// <summary>
+        /// The AlbedoMap feature directive.
+        /// </summary>
+        public const string AlbedoMapDirective = "ALBEDO_MAP";
+
+        /// <summary>
+        /// Gets a value indicating whether the current material configuration allows mesh batching.
+        /// </summary>
+        public bool AllowBatching => !this.material.ActiveDirectivesNames.Contains(BorderLightDirective) &&
+                                     !this.material.ActiveDirectivesNames.Contains(InnerGlowDirective);
+
         /// <summary>
         /// Gets or sets the Albedo.
         /// </summary>

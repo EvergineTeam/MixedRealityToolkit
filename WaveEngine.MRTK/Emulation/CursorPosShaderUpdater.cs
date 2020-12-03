@@ -1,12 +1,15 @@
 ﻿// Copyright © Wave Engine S.L. All rights reserved. Use is subject to license terms.
 
 using System;
-using System.Collections.Generic;
 using System.Linq;
+using WaveEngine.Common.Graphics;
 using WaveEngine.Components.Graphics3D;
 using WaveEngine.Framework.Graphics;
+using WaveEngine.Framework.Graphics.Effects;
+using WaveEngine.Framework.Graphics.Effects.Analyzer;
 using WaveEngine.Framework.Managers;
 using WaveEngine.Mathematics;
+using WaveEngine.MRTK.Effects;
 
 namespace WaveEngine.MRTK.Emulation
 {
@@ -15,8 +18,34 @@ namespace WaveEngine.MRTK.Emulation
     /// </summary>
     public class CursorPosShaderUpdater : UpdatableSceneManager
     {
-        private HashSet<Material> materials = new HashSet<Material>();
+        private struct HoverLightParam
+        {
+            public Vector4 Position;
+            public Vector3 Color;
+            public float InverseRadius;
+        }
+
+        private struct ProximityLightParam
+        {
+            public Vector4 Position;
+            public float NearRadius;
+            public float FarRadius;
+            public float NearDistance;
+            public float MinNearSizePercentage;
+            public float PulseRadius;
+            public float PulseFade;
+            private float Reserved0;
+            private float Reserved1;
+            public GammaColor CenterColor;
+            public GammaColor MiddleColor;
+            public GammaColor OuterColor;
+        }
+
         private Guid holographicEffectId;
+
+        private ConstantBuffer perFrameCB;
+        private ParameterInfo hoverLightsParamInfo;
+        private ParameterInfo proximityLightsParamInfo;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CursorPosShaderUpdater"/> class.
@@ -32,33 +61,41 @@ namespace WaveEngine.MRTK.Emulation
         {
             base.Start();
 
-            HashSet<Material> unbatchMaterials = new HashSet<Material>();
+            var effect = this.Managers.AssetSceneManager.Load<Effect>(this.holographicEffectId);
+            this.perFrameCB = effect.SharedCBufferBySlot.Values.FirstOrDefault(x => x.UpdatePolicy == ConstantBufferInfo.UpdatePolicies.PerFrame);
+            this.hoverLightsParamInfo = this.perFrameCB.CBufferInfo.Parameters[2];
+            this.proximityLightsParamInfo = this.perFrameCB.CBufferInfo.Parameters[3];
 
-            foreach (MaterialComponent m in this.Managers.EntityManager.FindComponentsOfType<MaterialComponent>().ToArray())
+            this.DisableBatchingOnRequiredHolographicMaterials();
+        }
+
+        /// <summary>
+        /// Disables batching feature on meshes that uses <see cref="HoloGraphic"/> materials that does not allows batching.
+        /// </summary>
+        public void DisableBatchingOnRequiredHolographicMaterials()
+        {
+            var holographicEffectsByOwner = this.Managers.EntityManager
+                                                         .FindComponentsOfType<MaterialComponent>()
+                                                         .Where(m => m.Material?.Effect?.Id == this.holographicEffectId)
+                                                         .ToDictionary(m => m.Owner, m => new HoloGraphic(m.Material));
+
+            foreach (var pair in holographicEffectsByOwner)
             {
-                if (m.Material != null && m.Material.Effect.Id == this.holographicEffectId)
+                if (pair.Value.AllowBatching)
                 {
-                    if (Array.IndexOf(m.Material.ActiveDirectivesNames, "BORDER_LIGHT") != -1 ||
-                        Array.IndexOf(m.Material.ActiveDirectivesNames, "INNER_GLOW") != -1)
-                    {
-                        // Border Light and inner glow don't work if batching is enabled
-                        if (unbatchMaterials.Contains(m.Material))
-                        {
-                            m.Material = m.Material.Clone();
-                        }
-                        else
-                        {
-                            unbatchMaterials.Add(m.Material);
-                        }
-                    }
+                    continue;
+                }
 
-                    if (Array.IndexOf(m.Material.ActiveDirectivesNames, "NEAR_LIGHT_FADE") != -1 ||
-                       Array.IndexOf(m.Material.ActiveDirectivesNames, "HOVER_LIGHT") != -1 ||
-                       Array.IndexOf(m.Material.ActiveDirectivesNames, "PROXIMITY_LIGHT") != -1)
-                    {
-                        // These materials need to be updated with the cursor positions
-                        this.materials.Add(m.Material);
-                    }
+                // Border Light and inner glow don't work if batching is enabled
+                var meshComponent = pair.Key.FindComponent<MeshComponent>(isExactType: false);
+                if (meshComponent == null)
+                {
+                    continue;
+                }
+
+                foreach (var mesh in meshComponent.Meshes)
+                {
+                    mesh.AllowBatching = false;
                 }
             }
         }
@@ -66,65 +103,59 @@ namespace WaveEngine.MRTK.Emulation
         /// <inheritdoc/>
         public override void Update(TimeSpan gameTime)
         {
-            foreach (Material m in this.materials)
-            {
-                this.UpdateMaterial(m);
-            }
+            this.UpdateHoverLights();
+            this.UpdateProximityLights();
         }
 
-        /// <summary>
-        /// Update specific material.
-        /// </summary>
-        /// <param name="mat">The material to update.</param>
-        protected void UpdateMaterial(Material mat)
+        private unsafe void UpdateHoverLights()
         {
-            for (int i = 0; i < HoverLight.activeHoverLights.Count && i < HoverLight.MaxLights; ++i)
+            var hoverLightParameters = stackalloc HoverLightParam[HoverLight.MaxLights];
+            int i;
+            for (i = 0; i < HoverLight.activeHoverLights.Count; i++)
             {
-                int accessIdx = 320 + (32 * i);
-
-                HoverLight light = HoverLight.activeHoverLights[i];
-                mat.CBuffers[1].SetBufferData<Vector3>(light.transform.Position, accessIdx);
-                mat.CBuffers[1].SetBufferData<float>(1.0f, accessIdx + 12);
-                mat.CBuffers[1].SetBufferData<Vector3>(light.Color.ToVector3(), accessIdx + 16);
-                mat.CBuffers[1].SetBufferData<float>(1.0f / MathHelper.Clamp(light.Radius, 0.001f, 1.0f), accessIdx + 28);
+                ref var param = ref hoverLightParameters[i];
+                var light = HoverLight.activeHoverLights[i];
+                param.Position = light.transform.Position.ToVector4();
+                param.Color = light.Color.ToVector3();
+                param.InverseRadius = 1.0f / MathHelper.Clamp(light.Radius, 0.001f, 1.0f);
             }
 
-            for (int i = 0; i < ProximityLight.MaxLights; ++i)
+            for (; i < HoverLight.MaxLights; i++)
             {
-                int accessIdx = 416 + (96 * i);
-
-                ProximityLight light = i < ProximityLight.activeProximityLights.Count ? ProximityLight.activeProximityLights[i] : null;
-                if (light != null)
-                {
-                    mat.CBuffers[1].SetBufferData<Vector3>(light.transform.Position, accessIdx);
-                    mat.CBuffers[1].SetBufferData<float>(1.0f, accessIdx + 12);
-
-                    float pulseScaler = 1.0f; // + light.pulseTime;
-                    Vector4 v4 = new Vector4(
-                            light.NearRadius * pulseScaler,
-                            1.0f / MathHelper.Clamp(light.FarRadius * pulseScaler, 0.001f, 1.0f),
-                            1.0f / MathHelper.Clamp(light.NearDistance * pulseScaler, 0.001f, 1.0f),
-                            MathHelper.Clamp(light.MinNearSizePercentage, 0.0f, 1.0f));
-                    mat.CBuffers[1].SetBufferData<Vector4>(
-                        v4,
-                        accessIdx + 16);
-                    v4 = new Vector4(
-                            light.NearDistance * light.pulseTime,
-                            MathHelper.Clamp(1.0f - light.pulseFade, 0.0f, 1.0f),
-                            0.0f,
-                            0.0f);
-                    mat.CBuffers[1].SetBufferData<Vector4>(
-                        v4,
-                        accessIdx + 32);
-                    mat.CBuffers[1].SetBufferData<Vector4>(light.CenterColor.ToVector4(), accessIdx + 48);
-                    mat.CBuffers[1].SetBufferData<Vector4>(light.MiddleColor.ToVector4(), accessIdx + 64);
-                    mat.CBuffers[1].SetBufferData<Vector4>(light.OuterColor.ToVector4(), accessIdx + 80);
-                }
-                else
-                {
-                    mat.CBuffers[1].SetBufferData<Vector4>(Vector4.Zero, accessIdx);
-                }
+                hoverLightParameters[i] = new HoverLightParam();
             }
+
+            this.perFrameCB.SetBufferData(hoverLightParameters, (uint)(HoverLight.MaxLights * sizeof(HoverLightParam)), this.hoverLightsParamInfo.Offset);
+        }
+
+        private unsafe void UpdateProximityLights()
+        {
+            var proximityLightParameters = stackalloc ProximityLightParam[ProximityLight.MaxLights];
+            int i;
+            for (i = 0; i < ProximityLight.activeProximityLights.Count; i++)
+            {
+                ref var param = ref proximityLightParameters[i];
+                var light = ProximityLight.activeProximityLights[i];
+
+                float pulseScaler = 1.0f; // + light.pulseTime;
+                param.Position = light.transform.Position.ToVector4();
+                param.NearRadius = light.NearRadius * pulseScaler;
+                param.FarRadius = 1.0f / MathHelper.Clamp(light.FarRadius * pulseScaler, 0.001f, 1.0f);
+                param.NearDistance = 1.0f / MathHelper.Clamp(light.NearDistance * pulseScaler, 0.001f, 1.0f);
+                param.MinNearSizePercentage = MathHelper.Clamp(light.MinNearSizePercentage, 0.0f, 1.0f);
+                param.PulseRadius = light.NearDistance * light.pulseTime;
+                param.PulseFade = MathHelper.Clamp(1.0f - light.pulseFade, 0.0f, 1.0f);
+                param.CenterColor.AsVector4 = light.CenterColor.ToVector4();
+                param.MiddleColor.AsVector4 = light.MiddleColor.ToVector4();
+                param.OuterColor.AsVector4 = light.OuterColor.ToVector4();
+            }
+
+            for (; i < ProximityLight.MaxLights; i++)
+            {
+                proximityLightParameters[i] = new ProximityLightParam();
+            }
+
+            this.perFrameCB.SetBufferData(proximityLightParameters, (uint)(ProximityLight.MaxLights * sizeof(ProximityLightParam)), this.proximityLightsParamInfo.Offset);
         }
     }
 }
