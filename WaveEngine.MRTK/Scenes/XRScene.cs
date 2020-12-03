@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using WaveEngine.Bullet;
 using WaveEngine.Common.Graphics;
 using WaveEngine.Common.Input.Keyboard;
@@ -73,7 +74,11 @@ namespace WaveEngine.MRTK.Scenes
         /// <inheritdoc/>
         protected override void CreateScene()
         {
-            this.Managers.EntityManager.FindFirstComponentOfType<MeshRenderer>(tag: "Skybox").IsEnabled = false;
+            var skyboxEntities = this.Managers.EntityManager.FindAllByTag(tag: "Skybox").ToArray();
+            foreach (var entity in skyboxEntities)
+            {
+                this.Managers.EntityManager.Remove(entity);
+            }
 
             var assetsService = Application.Current.Container.Resolve<AssetsService>();
 

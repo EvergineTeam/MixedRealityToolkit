@@ -21,6 +21,3 @@ Profiles:
     MandatoryCombinations:
     Name: Web1
     Platform: Web
-  UWP.MixedReality:
-    ExcludeAsset: true
-    Name: UWP.MixedReality

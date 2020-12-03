@@ -15,6 +15,7 @@ cbuffer PerCamera : register(b1)
 	int       EyeCount					: packoffset(c5.y); [MultiviewCount]
 	float     IblLuminance				: packoffset(c5.z); [IBLLuminance]
 	float4x4  MultiviewViewProj[6]		: packoffset(c6.x); [MultiviewViewProjection]	
+	float4    MultiviewPosition[6]		: packoffset(c30.x); [MultiviewPosition]	
 };
 
 cbuffer Parameters : register(b2)
@@ -53,23 +54,24 @@ VSOutputPbr VertexFunction(VSInputPbr input)
 {
 	VSOutputPbr output = (VSOutputPbr)0;
 	
-	float4x4 world = World;
-	world._m30_m31_m32 = CameraPosition;
-
 #if MULTIVIEW
 	const int vid = input.InstId % EyeCount;
 	const float4x4 viewProj = MultiviewViewProj[vid];	
+	const float4 cameraPosition = MultiviewPosition[vid];
 
 	// Note which view this vertex has been sent to. Used for matrix lookup.
 	// Taking the modulo of the instance ID allows geometry instancing to be used
 	// along with stereo instanced drawing; in that case, two copies of each 
 	// instance would be drawn, one for left and one for right.
-
+	
 	output.ViewId = vid;
 #else
 	float4x4 viewProj = ViewProj;	
+	float4 cameraPosition = CameraPosition;
 #endif
 
+	float4x4 world = World;
+	world._m30_m31_m32 = cameraPosition;
 	float4x4 worldViewProj = mul(world, viewProj);
 
 	output.Position = mul(float4(input.Position, 1), worldViewProj);

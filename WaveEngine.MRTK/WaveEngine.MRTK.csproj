@@ -15,12 +15,12 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="WaveEngine.Bullet" Version="3.1.0.6468-preview" />
-    <PackageReference Include="WaveEngine.Common" Version="3.1.0.6468-preview" />
-    <PackageReference Include="WaveEngine.Components" Version="3.1.0.6468-preview" />
-    <PackageReference Include="WaveEngine.Framework" Version="3.1.0.6468-preview" />
-    <PackageReference Include="WaveEngine.Mathematics" Version="3.1.0.6468-preview" />
-    <PackageReference Include="WaveEngine.Platform" Version="3.1.0.6468-preview" />
+    <PackageReference Include="WaveEngine.Bullet" Version="3.1.0.6580-nightly" />
+    <PackageReference Include="WaveEngine.Common" Version="3.1.0.6580-nightly" />
+    <PackageReference Include="WaveEngine.Components" Version="3.1.0.6580-nightly" />
+    <PackageReference Include="WaveEngine.Framework" Version="3.1.0.6580-nightly" />
+    <PackageReference Include="WaveEngine.Mathematics" Version="3.1.0.6580-nightly" />
+    <PackageReference Include="WaveEngine.Platform" Version="3.1.0.6580-nightly" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\LICENSE">
