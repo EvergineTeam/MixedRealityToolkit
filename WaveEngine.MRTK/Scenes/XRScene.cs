@@ -161,12 +161,11 @@ namespace WaveEngine.MRTK.Scenes
 
             scene.Managers.EntityManager.Add(cursor);
 
-            LineBezierMesh bezierComp = new LineBezierMesh()
+            var lineComp = new LineBezierMesh()
             {
                 IsCameraAligned = true,
                 LinePoints = new List<BezierPointInfo>()
                         {
-                            new BezierPointInfo() { Position = Vector3.Zero, Thickness = 0.003f, Color = Color.White },
                             new BezierPointInfo() { Position = Vector3.Zero, Thickness = 0.003f, Color = Color.White },
                             new BezierPointInfo() { Position = Vector3.One,  Thickness = 0.003f, Color = Color.White },
                         },
@@ -175,10 +174,13 @@ namespace WaveEngine.MRTK.Scenes
                 DiffuseSampler = handRaySampler,
                 TextureTiling = new Vector2(10.0f, 1.0f),
             };
+            lineComp.ChangedMesh += (s, e) =>
+            {
+            };
 
             Entity bezier = new Entity()
                 .AddComponent(new Transform3D())
-                .AddComponent(bezierComp)
+                .AddComponent(lineComp)
                 .AddComponent(new LineMeshRenderer3D())
                 ;
             scene.Managers.EntityManager.Add(bezier);
@@ -191,7 +193,7 @@ namespace WaveEngine.MRTK.Scenes
                 .AddComponent(new SphereCollider3D())
                 .AddComponent(new StaticBody3D() { CollisionCategories = CollisionCategory3D.Cat2, IsSensor = true, MaskBits = CollisionCategory3D.Cat1 })
                 .AddComponent(new Cursor() { PressedMaterial = pressedMaterial, ReleasedMaterial = releasedMaterial, UpdateOrder = 0.3f })
-                .AddComponent(new CursorRay() { MainCursor = cursor.FindComponent<Cursor>(), Bezier = bezierComp, joint = trackXRJoint, collisionMask = CollisionCategory3D.Cat1 })
+                .AddComponent(new CursorRay() { MainCursor = cursor.FindComponent<Cursor>(), LineMesh = lineComp, joint = trackXRJoint, collisionMask = CollisionCategory3D.Cat1 })
                 .AddComponent(new Billboard())
                 ;
             scene.Managers.EntityManager.Add(cursorDist);

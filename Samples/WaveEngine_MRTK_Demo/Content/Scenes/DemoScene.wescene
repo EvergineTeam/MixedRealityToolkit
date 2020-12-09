@@ -6377,7 +6377,7 @@ Items:
         Id: 88e25e58-d6ca-4934-a280-294f805c26bd
         AsignedTo: Default
         IsEnabled: true
-        Material: 9628e8d2-05e6-489e-9148-7d82fe54add0
+        Material: 7daaf345-a378-47f0-8671-7a00b5df9966
       - !WaveEngine.Components.Graphics3D.SphereMesh,WaveEngine.Components
         Id: 9369593f-c243-4632-b7c2-8b3e94abc256
         Diameter: 1.0

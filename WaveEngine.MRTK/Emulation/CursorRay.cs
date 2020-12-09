@@ -36,9 +36,9 @@ namespace WaveEngine.MRTK.Emulation
         public Cursor MainCursor { get; set; }
 
         /// <summary>
-        /// Gets or sets bezier.
+        /// Gets or sets line mesh component.
         /// </summary>
-        public LineBezierMesh Bezier { get; set; }
+        public LineBezierMesh LineMesh { get; set; }
 
         /// <summary>
         /// Gets or sets the Handedness.
@@ -67,7 +67,7 @@ namespace WaveEngine.MRTK.Emulation
             this.UpdateOrder = this.MainCursor.UpdateOrder + 0.1f; // Ensure this is executed always after the main Cursor
             this.cam = this.Managers.RenderManager.ActiveCamera3D;
 
-            this.handrayTexture = this.Bezier.DiffuseTexture;
+            this.handrayTexture = this.LineMesh.DiffuseTexture;
 
             return attached;
         }
@@ -76,6 +76,7 @@ namespace WaveEngine.MRTK.Emulation
         protected override void Update(TimeSpan gameTime)
         {
             Ray? ray;
+            bool disableByJointInvalid = false;
             if (this.joint != null)
             {
                 ray = this.joint.Pointer;
@@ -99,7 +100,7 @@ namespace WaveEngine.MRTK.Emulation
                 }
                 else
                 {
-                    if (this.MainCursor.Pinch && !this.Bezier.Owner.IsEnabled)
+                    if (this.MainCursor.Pinch && !this.LineMesh.Owner.IsEnabled)
                     {
                         disableByProximity = true;
                     }
@@ -138,31 +139,32 @@ namespace WaveEngine.MRTK.Emulation
                 }
 
                 // Update line
-                bool disableByJointInvalid = false;
                 if (this.joint != null)
                 {
                     disableByJointInvalid = !Tools.IsJointValid(this.joint);
                 }
 
-                this.Bezier.Owner.IsEnabled = !disableByJointInvalid && !disableByProximity;
+                this.LineMesh.Owner.IsEnabled = !disableByJointInvalid && !disableByProximity;
 
-                if (this.Bezier.Owner.IsEnabled)
+                if (this.LineMesh.Owner.IsEnabled)
                 {
-                    this.Bezier.LinePoints[0].Position = r.Position;
-                    this.Bezier.LinePoints[2].Position = this.transform.Position;
-                    this.Bezier.LinePoints[1].Position = r.Position + (r.Direction * (this.transform.Position - r.Position).Length() * 0.75f);
-                    this.Bezier.RefreshItems(null);
+                    var distance = (this.transform.Position - r.Position).Length() * 0.5f;
 
-                    this.Bezier.TextureTiling = new Vector2((this.Bezier.LinePoints[0].Position - this.Bezier.LinePoints[2].Position).Length() * 30.0f, 1.0f);
+                    this.LineMesh.LinePoints[0].Position = r.Position;
+                    this.LineMesh.LinePoints[1].Position = this.transform.Position;
+                    this.LineMesh.RefreshItems(null);
+
+                    this.LineMesh.TextureTiling = new Vector2(distance * 30.0f, 1.0f);
                 }
             }
 
-            ////this.MainCursor.meshRenderer.IsEnabled = !this.Bezier.Owner.IsEnabled;
+            this.MainCursor.meshRenderer.IsEnabled = !disableByJointInvalid && !this.LineMesh.Owner.IsEnabled;
+            this.cursor.meshRenderer.IsEnabled = !disableByJointInvalid && this.LineMesh.Owner.IsEnabled;
 
-            this.cursor.Pinch = this.Bezier.Owner.IsEnabled && this.MainCursor.Pinch;
+            this.cursor.Pinch = this.LineMesh.Owner.IsEnabled && this.MainCursor.Pinch;
             if (this.cursor.Pinch != this.cursor.PreviousPinch)
             {
-                this.Bezier.DiffuseTexture = this.cursor.Pinch ? null : this.handrayTexture;
+                this.LineMesh.DiffuseTexture = this.cursor.Pinch ? null : this.handrayTexture;
             }
         }
     }

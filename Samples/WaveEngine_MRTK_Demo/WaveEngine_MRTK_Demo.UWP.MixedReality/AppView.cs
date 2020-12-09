@@ -4,7 +4,6 @@ using WaveEngine.Common.Graphics;
 using WaveEngine.DirectX11;
 using WaveEngine.Framework.Services;
 using WaveEngine.MixedReality;
-using WaveEngine_MRTK_Demo.UWP.MixedReality.Services;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.ApplicationModel.Core;

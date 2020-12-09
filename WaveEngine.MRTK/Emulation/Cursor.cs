@@ -45,13 +45,19 @@ namespace WaveEngine.MRTK.Emulation
         protected MaterialComponent materialComponent;
 
         /// <summary>
-        /// Gets or sets the material when the cursos is pressed.
+        /// The cursor manager.
+        /// </summary>
+        [BindSceneManager]
+        protected CursorManager cursorManager;
+
+        /// <summary>
+        /// Gets or sets the material when the cursor is pressed.
         /// </summary>
         [RenderProperty(Tooltip = "The material to be set when the cursor is pressed")]
         public Material PressedMaterial { get; set; }
 
         /// <summary>
-        /// Gets or sets the material when the cursos is released.
+        /// Gets or sets the material when the cursor is released.
         /// </summary>
         [RenderProperty(Tooltip = "The material to be set when the cursor is released")]
         public Material ReleasedMaterial { get; set; }
@@ -59,7 +65,7 @@ namespace WaveEngine.MRTK.Emulation
         private bool pinch;
 
         /// <summary>
-        /// Gets or sets a value indicating whether the cursor is pinched or not.
+        /// Gets or sets a value indicating whether the cursor is pinched.
         /// </summary>
         [WaveIgnore]
         [DontRenderProperty]
@@ -72,7 +78,7 @@ namespace WaveEngine.MRTK.Emulation
 
             set
             {
-                if (value != this.pinch)
+                if (this.pinch != value)
                 {
                     this.pinch = value;
                     this.UpdateColor();
@@ -88,25 +94,18 @@ namespace WaveEngine.MRTK.Emulation
         public bool PreviousPinch { get; private set; }
 
         /// <inheritdoc/>
-        protected override bool OnAttached()
+        protected override void OnActivated()
         {
-            return base.OnAttached();
+            base.OnActivated();
+            this.cursorManager.AddCursor(this);
+            this.UpdateColor();
         }
 
         /// <inheritdoc/>
-        protected override void Start()
+        protected override void OnDeactivated()
         {
-            if (this.materialComponent != null)
-            {
-                if (!Application.Current.IsEditor)
-                {
-                    ////this.materialComponent.Material = this.materialComponent.Material.Clone();
-
-                    this.Managers.FindManager<CursorManager>().AddCursor(this);
-                }
-
-                this.materialComponent.Material = this.ReleasedMaterial;
-            }
+            base.OnDeactivated();
+            this.cursorManager.RemoveCursor(this);
         }
 
         /// <inheritdoc/>
@@ -117,6 +116,11 @@ namespace WaveEngine.MRTK.Emulation
 
         private void UpdateColor()
         {
+            if (this.materialComponent == null)
+            {
+                return;
+            }
+
             this.materialComponent.Material = this.Pinch ? this.PressedMaterial : this.ReleasedMaterial;
         }
     }

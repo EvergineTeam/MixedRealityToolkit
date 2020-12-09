@@ -51,6 +51,22 @@ namespace WaveEngine.MRTK.Emulation
             this.cursorsOrientationHistory[cursor] = new LinkedList<Quaternion>();
         }
 
+        /// <summary>
+        /// Removes a cursor.
+        /// </summary>
+        /// <param name="cursor">The cursor.</param>
+        public void RemoveCursor(Cursor cursor)
+        {
+            this.Cursors.Remove(cursor);
+
+            cursor.StaticBody3D.BeginCollision -= this.Cursor_BeginCollision;
+            cursor.StaticBody3D.UpdateCollision -= this.Cursor_UpdateCollision;
+            cursor.StaticBody3D.EndCollision -= this.Cursor_EndCollision;
+
+            this.cursorsPositionHistory.Remove(cursor);
+            this.cursorsOrientationHistory.Remove(cursor);
+        }
+
         /// <inheritdoc/>
         protected override void OnDeactivated()
         {
