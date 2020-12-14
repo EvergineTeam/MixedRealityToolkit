@@ -111,7 +111,8 @@ namespace WaveEngine.MRTK.Emulation
         {
             var hoverLightParameters = stackalloc HoverLightParam[HoverLight.MaxLights];
             int i;
-            for (i = 0; i < HoverLight.activeHoverLights.Count; i++)
+            int count = Math.Min(HoverLight.activeHoverLights.Count, HoverLight.MaxLights);
+            for (i = 0; i < count; i++)
             {
                 ref var param = ref hoverLightParameters[i];
                 var light = HoverLight.activeHoverLights[i];
@@ -132,7 +133,8 @@ namespace WaveEngine.MRTK.Emulation
         {
             var proximityLightParameters = stackalloc ProximityLightParam[ProximityLight.MaxLights];
             int i;
-            for (i = 0; i < ProximityLight.activeProximityLights.Count; i++)
+            int count = Math.Min(ProximityLight.activeProximityLights.Count, ProximityLight.MaxLights);
+            for (i = 0; i < count; i++)
             {
                 ref var param = ref proximityLightParameters[i];
                 var light = ProximityLight.activeProximityLights[i];
