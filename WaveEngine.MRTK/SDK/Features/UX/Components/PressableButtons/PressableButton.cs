@@ -6,6 +6,7 @@ using System.Linq;
 using WaveEngine.Common.Attributes;
 using WaveEngine.Framework;
 using WaveEngine.Mathematics;
+using WaveEngine.MRTK.Emulation;
 
 namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
 {
@@ -19,6 +20,12 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
         /// </summary>
         [BindComponent(isExactType: false, isRequired: false, source: BindComponentSource.Children)]
         protected List<IPressableButtonFeedback> feedbackVisualsComponents;
+
+        /// <summary>
+        /// The "See It Say It" label entity. It should be marked with the tag "SeeItSayItLabel".
+        /// </summary>
+        [BindEntity(tag: "SeeItSayItLabel", isRequired: false, source: BindEntitySource.Children)]
+        protected Entity seeItSayItLabel;
 
         /// <summary>
         /// Gets or sets the speed for retracting the moving button visuals on release.
@@ -53,7 +60,6 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
         private IPressableButtonFeedback[] feedbackVisualsComponentsArray;
 
         private bool speechWordRecognized = false;
-        private Entity seeItSayItLabel;
 
         /// <inheritdoc/>
         protected override void OnLoaded()
@@ -72,7 +78,6 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
             {
                 this.feedbackVisualsComponentsArray = this.feedbackVisualsComponents?.ToArray();
 
-                this.seeItSayItLabel = this.Owner.Find("SeeItSayItLabel");
                 if (this.seeItSayItLabel != null)
                 {
                     this.seeItSayItLabel.IsEnabled = false;
@@ -155,11 +160,28 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
                 if (newPressedState)
                 {
                     this.ButtonPressed?.Invoke(this, EventArgs.Empty);
+                    this.PulseProximityLight();
                 }
                 else
                 {
                     AnyButtonReleased?.Invoke(this, EventArgs.Empty);
                     this.ButtonReleased?.Invoke(this, EventArgs.Empty);
+                }
+            }
+        }
+
+        private void PulseProximityLight()
+        {
+            // Pulse each proximity light on pointer cursors' interacting with this button.
+            if (this.cursorDistances.Keys.Count != 0)
+            {
+                foreach (var pointer in this.cursorDistances.Keys)
+                {
+                    var proximityLights = pointer.FindComponentsInChildren<ProximityLight>();
+                    foreach (var proximityLight in proximityLights)
+                    {
+                        proximityLight.Pulse();
+                    }
                 }
             }
         }

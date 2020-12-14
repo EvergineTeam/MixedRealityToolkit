@@ -1,53 +1,64 @@
 ﻿// Copyright © Wave Engine S.L. All rights reserved. Use is subject to license terms.
 
 using System.Collections.Generic;
+using WaveEngine.Common.Attributes;
 using WaveEngine.Common.Graphics;
 using WaveEngine.Framework;
 using WaveEngine.Framework.Graphics;
+using WaveEngine.Mathematics;
+using WaveEngine.MRTK.Effects;
 
 namespace WaveEngine.MRTK.Emulation
 {
     /// <summary>
-    /// Hover Light for Holographic shader.
+    /// Utility component to animate and visualize a light that can be used with
+    /// the <see cref="HoloGraphic"/> shader <see cref="HoloGraphic.HoverLightDirective"/> feature.
     /// </summary>
     public class HoverLight : Component
     {
         /// <summary>
         /// Maximum number of Hover Lights allowed.
         /// </summary>
-        public const int MaxLights = 3;
+        internal const int MaxLights = 3;
 
         /// <summary>
         /// Active Hover lights.
         /// </summary>
-        public static List<HoverLight> activeHoverLights = new List<HoverLight>(MaxLights);
+        internal static List<HoverLight> ActiveHoverLights = new List<HoverLight>(MaxLights);
 
         /// <summary>
-        /// The transform.
+        /// The <see cref="Transform3D"/> component dependency.
         /// </summary>
         [BindComponent]
-        public Transform3D transform = null;
+        protected Transform3D transform;
 
         /// <summary>
-        /// Gets or sets the radisu.
+        /// Gets the position of the <see cref="HoverLight"/>.
         /// </summary>
+        public Vector3 Position => this.transform.Position;
+
+        /// <summary>
+        /// Gets or sets the radius of the <see cref="HoverLight"/> effect.
+        /// </summary>
+        [RenderPropertyAsFInput(minLimit: 0, maxLimit: 1, Tooltip = "Specifies the radius of the HoverLight effect.")]
         public float Radius { get; set; } = 0.15f;
 
         /// <summary>
-        /// Gets or sets the color.
+        /// Gets or sets the highlight color.
         /// </summary>
+        [RenderProperty(Tooltip = "Specifies the highlight color.")]
         public Color Color { get; set; } = new Color(63, 63, 63, 255);
 
         /// <inheritdoc/>
         protected override void OnActivated()
         {
-            activeHoverLights.Add(this);
+            ActiveHoverLights.Add(this);
         }
 
         /// <inheritdoc/>
         protected override void OnDeactivated()
         {
-            activeHoverLights.Remove(this);
+            ActiveHoverLights.Remove(this);
         }
     }
 }

@@ -111,12 +111,12 @@ namespace WaveEngine.MRTK.Emulation
         {
             var hoverLightParameters = stackalloc HoverLightParam[HoverLight.MaxLights];
             int i;
-            int count = Math.Min(HoverLight.activeHoverLights.Count, HoverLight.MaxLights);
+            int count = Math.Min(HoverLight.ActiveHoverLights.Count, HoverLight.MaxLights);
             for (i = 0; i < count; i++)
             {
                 ref var param = ref hoverLightParameters[i];
-                var light = HoverLight.activeHoverLights[i];
-                param.Position = light.transform.Position.ToVector4();
+                var light = HoverLight.ActiveHoverLights[i];
+                param.Position = light.Position.ToVector4();
                 param.Color = light.Color.ToVector3();
                 param.InverseRadius = 1.0f / MathHelper.Clamp(light.Radius, 0.001f, 1.0f);
             }
@@ -133,20 +133,20 @@ namespace WaveEngine.MRTK.Emulation
         {
             var proximityLightParameters = stackalloc ProximityLightParam[ProximityLight.MaxLights];
             int i;
-            int count = Math.Min(ProximityLight.activeProximityLights.Count, ProximityLight.MaxLights);
+            int count = Math.Min(ProximityLight.ActiveProximityLights.Count, ProximityLight.MaxLights);
             for (i = 0; i < count; i++)
             {
                 ref var param = ref proximityLightParameters[i];
-                var light = ProximityLight.activeProximityLights[i];
+                var light = ProximityLight.ActiveProximityLights[i];
 
-                float pulseScaler = 1.0f; // + light.pulseTime;
-                param.Position = light.transform.Position.ToVector4();
+                float pulseScaler = 1.0f + light.PulseTime;
+                param.Position = light.Position.ToVector4();
                 param.NearRadius = light.NearRadius * pulseScaler;
                 param.FarRadius = 1.0f / MathHelper.Clamp(light.FarRadius * pulseScaler, 0.001f, 1.0f);
                 param.NearDistance = 1.0f / MathHelper.Clamp(light.NearDistance * pulseScaler, 0.001f, 1.0f);
                 param.MinNearSizePercentage = MathHelper.Clamp(light.MinNearSizePercentage, 0.0f, 1.0f);
-                param.PulseRadius = light.NearDistance * light.pulseTime;
-                param.PulseFade = MathHelper.Clamp(1.0f - light.pulseFade, 0.0f, 1.0f);
+                param.PulseRadius = light.NearDistance * light.PulseTime;
+                param.PulseFade = MathHelper.Clamp(1.0f - light.PulseFade, 0.0f, 1.0f);
                 param.CenterColor.AsVector4 = light.CenterColor.ToVector4();
                 param.MiddleColor.AsVector4 = light.MiddleColor.ToVector4();
                 param.OuterColor.AsVector4 = light.OuterColor.ToVector4();
