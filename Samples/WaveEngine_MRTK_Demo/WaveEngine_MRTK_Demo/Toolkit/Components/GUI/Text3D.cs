@@ -1,6 +1,7 @@
 ﻿using Noesis;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using WaveEngine.Common.Attributes;
 using WaveEngine.Common.Graphics;
 using WaveEngine.Components.Graphics3D;
@@ -9,20 +10,33 @@ using WaveEngine.Framework.Graphics;
 using WaveEngine.Framework.Graphics.Effects;
 using WaveEngine.Framework.Graphics.Materials;
 using WaveEngine.Framework.Services;
+using WaveEngine.Mathematics;
 using WaveEngine.NoesisGUI;
+using Color = WaveEngine.Common.Graphics.Color;
+using Vector3 = WaveEngine.Mathematics.Vector3;
 
 namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
 {
-    public class Text3D : Component
+    public class Text3D : Behavior
     {
+        public enum PlaneNormal
+        {
+            X,
+            XNegative,
+            Y,
+            YNegative,
+            Z,
+            ZNegative,
+        };
+
         [BindService]
         protected GraphicsContext graphicsContext;
 
         [BindService]
         protected AssetsService assetsService;
 
-        [BindComponent]
-        protected Transform3D transform;
+        [BindService]
+        protected NoesisService noesisService;
 
         [RenderProperty(Tooltip = "The text that will be shown")]
         public string Text
@@ -36,12 +50,13 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
                 if (this.SetProperty(ref this.text, value, this.textBlock))
                 {
                     this.textBlock.Text = value;
+                    this.isFrameBufferDirty = !this.customWidth || !this.customHeight;
                 };
             }
         }
         private string text = string.Empty;
 
-        [RenderProperty(Tooltip = "The font size used to render the text")]
+        [RenderPropertyAsInput(minLimit: 1, Tooltip = "The font size used to render the text")]
         public int FontSize
         {
             get
@@ -53,10 +68,11 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
                 if (this.SetProperty(ref this.fontSize, value, this.textBlock))
                 {
                     this.textBlock.FontSize = value;
+                    this.isFrameBufferDirty = !this.customWidth || !this.customHeight;
                 }
             }
         }
-        private int fontSize = 12;
+        private int fontSize = 36;
 
         [RenderPropertyAsFInput(Tooltip = "The alpha value for the text component", MinLimit = 0, MaxLimit = 1)]
         public float Alpha
@@ -75,25 +91,40 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
         }
         private float alpha = 1.0f;
 
-        [RenderProperty(Tooltip = "The panel resolution per unit of Scale. The panel resolution Width and Height are affected by the values of Scale X and Z components respectively")]
-        public int Resolution
+        /// <summary>
+        /// Gets or sets a value indicating whether the width of the text block will be predefined or auto-calculated based on text.
+        /// </summary>
+        [RenderProperty(Tooltip = "Indicates whether the width of the text block will be predefined or auto-calculated based on text.")]
+        public bool CustomWidth
         {
-            get
-            {
-                return this.resolution;
-            }
+            get => this.customWidth;
             set
             {
-                if (this.SetProperty(ref this.resolution, value, this.noesisFramebufferPanel))
+                if (this.customWidth != value)
                 {
-                    this.UpdateNoesisPanelFramebuffer();
+                    this.customWidth = value;
+                    this.isFrameBufferDirty = true;
                 }
             }
         }
-        private int resolution = 1000;
+        private bool customWidth = false;
 
-        [RenderPropertyAsFInput(Tooltip = "The panel tessellation quality", MinLimit = 0, MaxLimit = 1)]
-        public float Quality { get; set; } = 0.5f;
+        [RenderProperty(Tooltip = "The text block width in meters.")]
+        public float Width
+        {
+            get
+            {
+                return this.width;
+            }
+            set
+            {
+                if (this.SetProperty(ref this.width, value, this.noesisFramebufferPanel))
+                {
+                    this.isFrameBufferDirty = true;
+                }
+            }
+        }
+        private float width = 0.3f;
 
         [RenderProperty(Tooltip = "The text horizontal alignment")]
         public HorizontalAlignment HorizontalAlignment
@@ -110,9 +141,44 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
                 }
             }
         }
-        private HorizontalAlignment horizontalAlignment = HorizontalAlignment.Center;
+        private HorizontalAlignment horizontalAlignment = HorizontalAlignment.Left;
 
-        [RenderProperty(Tooltip = "The text vertical alignment")]
+        /// <summary>
+        /// Gets or sets a value indicating whether the height of the text block will be predefined or auto-calculated based on text.
+        /// </summary>
+        [RenderProperty(Tooltip = "Indicates whether the height of the text block will be predefined or auto-calculated based on text.")]
+        public bool CustomHeight
+        {
+            get => this.customHeight;
+            set
+            {
+                if (this.customHeight != value)
+                {
+                    this.customHeight = value;
+                    this.isFrameBufferDirty = true;
+                }
+            }
+        }
+        private bool customHeight = false;
+
+        [RenderProperty(Tooltip = "The text block height in meters.")]
+        public float Height
+        {
+            get
+            {
+                return this.height;
+            }
+            set
+            {
+                if (this.SetProperty(ref this.height, value, this.noesisFramebufferPanel))
+                {
+                    this.isFrameBufferDirty = true;
+                }
+            }
+        }
+        private float height = 0.1f;
+
+        [RenderProperty(Tooltip = "The text vertical alignment.")]
         public VerticalAlignment VerticalAlignment
         {
             get
@@ -127,9 +193,127 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
                 }
             }
         }
-        private VerticalAlignment verticalAlignment = VerticalAlignment.Center;
+        private VerticalAlignment verticalAlignment = VerticalAlignment.Top;
 
-        [RenderProperty(Tooltip = "The text wrapping to use")]
+        [RenderProperty(Tooltip = "The origin (also known as pivot) from where the text block scales, rotates and translates. Its values are included in [0, 1] where (0, 0) indicates the top left corner. Such values are percentages where 1 means the 100% of the rectangle's width/height.")]
+        public Vector2 Origin
+        {
+            get
+            {
+                return this.origin;
+            }
+            set
+            {
+                if (this.SetProperty(ref this.origin, value, this.noesisFramebufferPanel))
+                {
+                    this.isFrameBufferDirty = true;
+                }
+            }
+        }
+        private Vector2 origin = Vector2.Center;
+
+        [RenderProperty(Tooltip = "The pixel density expressed as pixels/meter.")]
+        public int PixelDensity
+        {
+            get
+            {
+                return this.pixelDensity;
+            }
+
+            set
+            {
+                if (this.SetProperty(ref this.pixelDensity, value, this.noesisFramebufferPanel))
+                {
+                    this.isFrameBufferDirty = true;
+                }
+
+                this.resolutionScaleFactor = (float)this.pixelDensity / referencePixelDensity;
+            }
+        }
+        private const int referencePixelDensity = 3780;
+
+        private int pixelDensity = referencePixelDensity;
+
+        [RenderProperty(Tooltip = "The text block foreground color.")]
+        public Color Background
+        {
+            get
+            {
+                return this.background;
+            }
+            set
+            {
+                if (this.SetProperty(ref this.background, value, this.backgroundBrush))
+                {
+                    var color = this.backgroundBrush.Color;
+                    color.R = this.background.R;
+                    color.G = this.background.G;
+                    color.B = this.background.B;
+                    color.A = this.background.A;
+                    this.backgroundBrush.Color = color;
+                }
+            }
+        }
+        private Color background = Color.Transparent;
+
+        [RenderProperty(Tooltip = "The text block foreground color.")]
+        public Color Foreground
+        {
+            get
+            {
+                return this.foreground;
+            }
+            set
+            {
+                if (this.SetProperty(ref this.foreground, value, this.foregroundBrush))
+                {
+                    var color = this.foregroundBrush.Color;
+                    color.R = this.foreground.R;
+                    color.G = this.foreground.G;
+                    color.B = this.foreground.B;
+                    color.A = this.foreground.A;
+                    this.foregroundBrush.Color = color;
+                }
+            }
+        }
+        private Color foreground = Color.White;
+
+        [RenderProperty(Tooltip = "The text block plane normal direction.")]
+        public PlaneNormal Normal
+        {
+            get
+            {
+                return this.normal;
+            }
+            set
+            {
+                if (this.SetProperty(ref this.normal, value, this.planeMesh))
+                {
+                    this.UpdatePlaneNormal();
+                }
+            }
+        }
+        private PlaneNormal normal = PlaneNormal.ZNegative;
+
+        [RenderProperty(Tooltip = "The text alignment to use.")]
+        public TextAlignment TextAlignment
+        {
+            get
+            {
+                return this.textAlignment;
+            }
+            set
+            {
+                if (this.SetProperty(ref this.textAlignment, value, this.textBlock))
+                {
+                    this.textBlock.TextAlignment = value;
+                    this.isFrameBufferDirty = !this.customWidth || !this.customHeight;
+                }
+            }
+        }
+        private TextAlignment textAlignment = TextAlignment.Left;
+
+        [RenderProperty(Tooltip = "The text wrapping to use.")]
         public TextWrapping TextWrapping
         {
             get
@@ -141,12 +325,13 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
                 if (this.SetProperty(ref this.textWrapping, value, this.textBlock))
                 {
                     this.textBlock.TextWrapping = value;
+                    this.isFrameBufferDirty = !this.customWidth || !this.customHeight;
                 }
             }
         }
         private TextWrapping textWrapping = TextWrapping.NoWrap;
 
-        [RenderProperty(Tooltip = "The text font family source to use")]
+        [RenderProperty(Tooltip = "The text font family source to use.")]
         public string FontFamilySource
         {
             get
@@ -158,12 +343,13 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
                 if (this.SetProperty(ref this.fontFamilySource, value, this.textBlock))
                 {
                     this.textBlock.FontFamily = this.GetFontFamily(this.fontFamilySource);
+                    this.isFrameBufferDirty = !this.customWidth || !this.customHeight;
                 }
             }
         }
         private string fontFamilySource = string.Empty;
 
-        [RenderProperty(Tooltip = "The text font weight to use")]
+        [RenderProperty(Tooltip = "The text font weight to use.")]
         public FontWeight FontWeight
         {
             get
@@ -175,12 +361,13 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
                 if (this.SetProperty(ref this.fontWeight, value, this.textBlock))
                 {
                     this.textBlock.FontWeight = value;
+                    this.isFrameBufferDirty = !this.customWidth || !this.customHeight;
                 }
             }
         }
         private FontWeight fontWeight = FontWeight.Normal;
 
-        [RenderProperty(Tooltip = "The text font stretch to use")]
+        [RenderProperty(Tooltip = "The text font stretch to use.")]
         public FontStretch FontStretch
         {
             get
@@ -192,12 +379,13 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
                 if (this.SetProperty(ref this.fontStretch, value, this.textBlock))
                 {
                     this.textBlock.FontStretch = value;
+                    this.isFrameBufferDirty = !this.customWidth || !this.customHeight;
                 }
             }
         }
         private FontStretch fontStretch = FontStretch.Normal;
 
-        [RenderProperty(Tooltip = "The text font style to use")]
+        [RenderProperty(Tooltip = "The text font style to use.")]
         public FontStyle FontStyle
         {
             get
@@ -209,11 +397,17 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
                 if (this.SetProperty(ref this.fontStyle, value, this.textBlock))
                 {
                     this.textBlock.FontStyle = value;
+                    this.isFrameBufferDirty = !this.customWidth || !this.customHeight;
                 }
             }
         }
         private FontStyle fontStyle = FontStyle.Normal;
 
+        private string containerEntityName => $"Text3D_{this.Id}";
+
+        public InlineCollection Inlines => this.textBlock.Inlines;
+
+        private Transform3D planeTransform;
         private MaterialComponent materialComponent;
         private MeshRenderer meshRenderer;
         private PlaneMesh planeMesh;
@@ -224,116 +418,161 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
 
         private FrameworkElement frameworkElement;
         private TextBlock textBlock;
+        private SolidColorBrush backgroundBrush;
+        private SolidColorBrush foregroundBrush;
 
-        protected override bool OnAttached()
+        private bool isContainerEntityAdded = false;
+        private bool isFrameBufferDirty = true;
+        private float resolutionScaleFactor = 1;
+
+        protected override void OnLoaded()
         {
-            var attached = base.OnAttached();
+            base.OnLoaded();
 
-            if (attached)
+            if (Application.Current.IsEditor)
             {
-                this.transform.ScaleChanged += this.Transform_ScaleChanged;
-
-                // Add components to owner entity
-                this.materialComponent = new MaterialComponent();
-
-                this.meshRenderer = new MeshRenderer();
-
-                this.planeMesh = new PlaneMesh();
-
-                this.noesisFramebufferPanel = new NoesisFramebufferPanel()
-                {
-                    BackgroundColor = WaveEngine.Common.Graphics.Color.Transparent,
-                    PPAAEnabled = true,
-                    EnableKeyboard = false,
-                    EnableMouse = false,
-                    EnableTouch = false,
-                };
-
-                // Set property values
-                this.planeMesh.Width = 1f;
-                this.planeMesh.Height = 1f;
-                this.noesisFramebufferPanel.TessellationQuality = this.Quality;
-
-                // Build FrameworkElement
-                this.textBlock = this.BuildTextBlock();
-                this.frameworkElement = this.BuildFrameworkElement(this.textBlock);
-
-                this.noesisFramebufferPanel.FrameworkElement = this.frameworkElement;
-
-                // Noesis framebuffer configuration
-                if (this.noesisFramebufferPanel.FrameBuffer == null)
-                {
-                    this.noesisFramebuffer = this.graphicsContext.Factory.CreateFrameBuffer(this.noesisFramebufferPanel.Width, this.noesisFramebufferPanel.Height);
-                    this.noesisFramebufferPanel.FrameBuffer = this.noesisFramebuffer;
-                }
-
-                // Material initialization
-                if (this.materialComponent.Material == null)
-                {
-                    var effect = this.assetsService.Load<Effect>(DefaultResourcesIDs.StandardEffectID);
-                    this.standardMaterial = new StandardMaterial(effect)
-                    {
-                        Id = this.Id,
-                        LightingEnabled = false,
-                        IBLEnabled = false,
-                        LayerDescription = this.assetsService.Load<RenderLayerDescription>(DefaultResourcesIDs.AlphaRenderLayerID),
-                        BaseColorSampler = this.assetsService.Load<SamplerState>(DefaultResourcesIDs.LinearClampSamplerID),
-                    };
-
-                    this.materialComponent.Material = this.standardMaterial.Material;
-                }
-                else
-                {
-                    this.standardMaterial = new StandardMaterial(this.materialComponent.Material);
-                }
-
-                this.standardMaterial.Alpha = this.Alpha;
-
-                // Update Noesis panel framebuffer
-                this.UpdateNoesisPanelFramebuffer();
-
-                // Add container entity and components (bug workaround)
-                var containerEntity = new Entity("components")
-                {
-                    Flags = HideFlags.DontSave | HideFlags.DontShow,
-                }
-                .AddComponent(new Transform3D())
-                .AddComponent(this.materialComponent)
-                .AddComponent(this.meshRenderer)
-                .AddComponent(this.planeMesh)
-                .AddComponent(this.noesisFramebufferPanel)
-                ;
-
-                this.Owner.AddChild(containerEntity);
+                this.Family = FamilyType.PriorityBehavior;
             }
-
-            return attached;
         }
 
         protected override void OnDetach()
         {
-            this.transform.ScaleChanged -= this.Transform_ScaleChanged;
+            this.RemoveContainerEntity();
+            base.OnDetach();
+        }
 
+        protected override void Update(TimeSpan gameTime)
+        {
+            this.UpdateNoesisPanelFrameBuffer();
+        }
+
+        private bool CanUpdateFrameBuffer()
+        {
+            if (this.customWidth && this.width <= 0)
+            {
+                return false;
+            }
+
+            if (this.customHeight && this.height <= 0)
+            {
+                return false;
+            }
+
+            if (!this.customWidth || !this.CustomHeight)
+            {
+                var isFontFamilyLoaded = string.IsNullOrEmpty(this.fontFamilySource) ||
+                                         this.noesisService.StyleValid;
+                return isFontFamilyLoaded && !string.IsNullOrEmpty(this.text);
+            }
+
+            return true;
+        }
+
+        private void AddContainerEntity()
+        {
+            // Add components to owner entity
+            this.planeTransform = new Transform3D();
+
+            this.materialComponent = new MaterialComponent();
+
+            this.meshRenderer = new MeshRenderer();
+
+            this.planeMesh = new PlaneMesh();
+
+            this.noesisFramebufferPanel = new NoesisFramebufferPanel()
+            {
+                BackgroundColor = this.background,
+                PPAAEnabled = true,
+                EnableKeyboard = false,
+                EnableMouse = false,
+                EnableTouch = false,
+                Width = 1,
+                Height = 1
+            };
+
+            // Set property values
+            this.UpdatePlaneNormal();
+
+            // Build FrameworkElement
+            this.textBlock = this.BuildTextBlock();
+            this.frameworkElement = this.BuildFrameworkElement(this.textBlock);
+
+            this.noesisFramebufferPanel.FrameworkElement = this.frameworkElement;
+
+            // Material initialization
+            if (this.materialComponent.Material == null)
+            {
+                var effect = this.assetsService.Load<Effect>(DefaultResourcesIDs.StandardEffectID);
+                this.standardMaterial = new StandardMaterial(effect)
+                {
+                    Id = this.Id,
+                    LightingEnabled = false,
+                    IBLEnabled = false,
+                    LayerDescription = this.assetsService.Load<RenderLayerDescription>(DefaultResourcesIDs.AlphaRenderLayerID),
+                    BaseColorSampler = this.assetsService.Load<SamplerState>(DefaultResourcesIDs.LinearClampSamplerID),
+                };
+
+                this.materialComponent.Material = this.standardMaterial.Material;
+            }
+            else
+            {
+                this.standardMaterial = new StandardMaterial(this.materialComponent.Material);
+            }
+
+            this.standardMaterial.Alpha = this.Alpha;
+
+            // Add container entity and components
+            var containerEntity = new Entity(this.containerEntityName)
+            {
+                Flags = HideFlags.DontSave | HideFlags.DontShow,
+            }
+            .AddComponent(this.planeTransform)
+            .AddComponent(this.materialComponent)
+            .AddComponent(this.meshRenderer)
+            .AddComponent(this.planeMesh)
+            .AddComponent(this.noesisFramebufferPanel)
+            ;
+
+            this.Owner.AddChild(containerEntity);
+
+            this.isContainerEntityAdded = true;
+        }
+
+        private void RemoveContainerEntity()
+        {
             if (this.noesisFramebuffer != null)
             {
                 this.noesisFramebuffer.Dispose();
                 this.noesisFramebufferPanel.FrameBuffer = null;
                 this.materialComponent.Material?.SetTexture(null, 0);
             }
-            base.OnDetach();
-        }
 
-        private void Transform_ScaleChanged(object sender, System.EventArgs e)
-        {
-            this.UpdateNoesisPanelFramebuffer();
+            this.planeTransform = null;
+            this.materialComponent = null;
+            this.meshRenderer = null;
+            this.planeMesh = null;
+            this.noesisFramebufferPanel = null;
+            this.textBlock = null;
+            this.frameworkElement = null;
+            this.standardMaterial = null;
+
+            this.Owner.RemoveChild(this.containerEntityName);
+
+            this.isContainerEntityAdded = false;
         }
 
         protected virtual TextBlock BuildTextBlock()
         {
+            var noesisColor = new Noesis.Color();
+            noesisColor.R = this.foreground.R;
+            noesisColor.G = this.foreground.G;
+            noesisColor.B = this.foreground.B;
+            noesisColor.A = this.foreground.A;
+            this.foregroundBrush = new SolidColorBrush(noesisColor);
+
             return new TextBlock()
             {
-                Foreground = Brushes.White,
-                Background = Brushes.Transparent,
+                Foreground = this.foregroundBrush,
                 HorizontalAlignment = this.HorizontalAlignment,
                 VerticalAlignment = this.VerticalAlignment,
                 Text = this.Text,
@@ -348,9 +587,16 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
 
         protected virtual FrameworkElement BuildFrameworkElement(TextBlock textBlock)
         {
+            var noesisColor = new Noesis.Color();
+            noesisColor.R = this.background.R;
+            noesisColor.G = this.background.G;
+            noesisColor.B = this.background.B;
+            noesisColor.A = this.background.A;
+            this.backgroundBrush = new SolidColorBrush(noesisColor);
+
             var frameworkElement = new Grid()
             {
-                Background = Brushes.Transparent,
+                Background = this.backgroundBrush,
             };
 
             frameworkElement.Children.Add(textBlock);
@@ -358,31 +604,165 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
             return frameworkElement;
         }
 
+        private void UpdatePlaneNormal()
+        {
+            if (this.planeMesh == null)
+            {
+                return;
+            }
+
+            switch (this.normal)
+            {
+                case PlaneNormal.X:
+                    this.planeMesh.Normal = Vector3.UnitX;
+                    break;
+                case PlaneNormal.XNegative:
+                    this.planeMesh.Normal = -Vector3.UnitX;
+                    break;
+                case PlaneNormal.Y:
+                    this.planeMesh.Normal = Vector3.UnitY;
+                    break;
+                case PlaneNormal.YNegative:
+                    this.planeMesh.Normal = -Vector3.UnitY;
+                    break;
+                case PlaneNormal.Z:
+                    this.planeMesh.Normal = -Vector3.UnitZ;
+                    break;
+                case PlaneNormal.ZNegative:
+                    this.planeMesh.Normal = Vector3.UnitZ;
+                    break;
+            }
+        }
+
         protected FontFamily GetFontFamily(string fontFamilySource)
         {
             return string.IsNullOrEmpty(fontFamilySource) ? null : new FontFamily(fontFamilySource);
         }
 
-        private void UpdateNoesisPanelFramebuffer()
+        private void UpdateNoesisPanelFrameBuffer()
         {
-            this.noesisFramebufferPanel.Width = Math.Max(1, (uint)(this.Resolution * this.transform.Scale.X));
-            this.noesisFramebufferPanel.Height = Math.Max(1, (uint)(this.Resolution * this.transform.Scale.Z));
-
-            if (this.noesisFramebufferPanel.FrameBuffer != null)
+            var needUpdate = !this.isContainerEntityAdded || this.isFrameBufferDirty;
+            if (!needUpdate || !this.CanUpdateFrameBuffer())
             {
-                this.noesisFramebuffer.Dispose();
-                this.noesisFramebuffer = null;
-                this.noesisFramebufferPanel.FrameBuffer = null;
+                return;
             }
 
-            if (this.noesisFramebufferPanel.FrameBuffer == null)
+            if (!this.isContainerEntityAdded)
             {
-                this.noesisFramebuffer = this.graphicsContext.Factory.CreateFrameBuffer(this.noesisFramebufferPanel.Width, this.noesisFramebufferPanel.Height);
+                this.AddContainerEntity();
+            }
+
+            uint pixelWidth;
+            uint pixelHeight;
+            var planeTiling = Vector2.One;
+            if (!this.customWidth || !this.customHeight)
+            {
+                var maxPixelSize = this.ClampPixelSize(float.MaxValue);
+                var availableSize = new Size(maxPixelSize, maxPixelSize);
+
+                if (this.customWidth)
+                {
+                    availableSize.Width = this.GetPixelSize(this.width, referencePixelDensity);
+                }
+
+                if (this.customHeight)
+                {
+                    availableSize.Height = this.GetPixelSize(this.height, referencePixelDensity);
+                }
+
+                this.textBlock.Measure(availableSize);
+                var desiredSize = this.textBlock.DesiredSize * resolutionScaleFactor;
+                desiredSize.Width = (float)Math.Ceiling(desiredSize.Width);
+                desiredSize.Height = (float)Math.Ceiling(desiredSize.Height);
+
+                if (!this.customWidth)
+                {
+                    pixelWidth = (uint)desiredSize.Width;
+                    this.width = this.GetPhysicalSize(desiredSize.Width);
+                }
+                else
+                {
+                    pixelWidth = (uint)this.GetPixelSize(this.width, this.pixelDensity);
+                    var unclampedPixelWidth = this.GetPixelSize(this.width, this.pixelDensity, clamped: false);
+                    if (unclampedPixelWidth > pixelWidth)
+                    {
+                        planeTiling.X = unclampedPixelWidth / pixelWidth;
+                    }
+                }
+
+                if (!this.customHeight)
+                {
+                    pixelHeight = (uint)desiredSize.Height;
+                    this.height = this.GetPhysicalSize(desiredSize.Height);
+                }
+                else
+                {
+                    pixelHeight = (uint)this.GetPixelSize(this.height, this.pixelDensity);
+                    var unclampedPixelHeight = this.GetPixelSize(this.height, this.pixelDensity, clamped: false);
+                    if (unclampedPixelHeight > pixelHeight)
+                    {
+                        planeTiling.Y = unclampedPixelHeight / pixelHeight;
+                    }
+                }
+            }
+            else
+            {
+                pixelWidth = (uint)this.GetPixelSize(this.width, this.pixelDensity);
+                pixelHeight = (uint)this.GetPixelSize(this.height, this.pixelDensity);
+            }
+
+            this.planeTransform.LocalPosition = new Vector3((this.origin.X - 0.5f) * this.width, (this.origin.Y - 0.5f) * this.height, 0);
+
+            this.frameworkElement.LayoutTransform = new MatrixTransform(Transform2.Scale(this.resolutionScaleFactor, this.resolutionScaleFactor));
+
+            if (this.planeMesh.Width != this.width ||
+                this.planeMesh.Height != this.height ||
+                this.planeMesh.UTile != planeTiling.X ||
+                this.planeMesh.YTile != planeTiling.Y)
+            {
+                this.planeMesh.Width = this.width;
+                this.planeMesh.Height = this.height;
+                this.planeMesh.UTile = planeTiling.X;
+                this.planeMesh.YTile = planeTiling.Y;
+            }
+
+            if (this.noesisFramebufferPanel.Width != pixelWidth ||
+                this.noesisFramebufferPanel.Height != pixelHeight)
+            {
+                this.noesisFramebufferPanel.Width = pixelWidth;
+                this.noesisFramebufferPanel.Height = pixelHeight;
+
+                if (this.noesisFramebufferPanel.FrameBuffer != null)
+                {
+                    this.noesisFramebuffer.Dispose();
+                    this.noesisFramebuffer = null;
+                    this.noesisFramebufferPanel.FrameBuffer = null;
+                }
+
+                this.noesisFramebuffer = this.graphicsContext.Factory.CreateFrameBuffer(pixelWidth, pixelHeight);
                 this.noesisFramebufferPanel.FrameBuffer = this.noesisFramebuffer;
+
+                // Set material texture to use Noesis framebuffer texture
+                this.standardMaterial.BaseColorTexture = this.noesisFramebuffer.ColorTargets[0].Texture;
             }
 
-            // Set material texture to use Noesis framebuffer texture
-            this.standardMaterial.BaseColorTexture = this.noesisFramebufferPanel.FrameBuffer.ColorTargets[0].Texture;
+            this.isFrameBufferDirty = false;
+        }
+
+        private float GetPhysicalSize(float pixelSize)
+        {
+            return (float)Math.Ceiling(pixelSize) / this.pixelDensity;
+        }
+
+        private float GetPixelSize(float physicalSize, float pixelDensity, bool clamped = true)
+        {
+            var pixelSize = physicalSize * pixelDensity;
+            return clamped ? this.ClampPixelSize(pixelSize) : pixelSize;
+        }
+
+        private float ClampPixelSize(float pixelSize)
+        {
+            return MathHelper.Clamp(pixelSize, 1, 4096);
         }
 
         private bool SetProperty<T>(ref T property, T value, object checkNotNull)

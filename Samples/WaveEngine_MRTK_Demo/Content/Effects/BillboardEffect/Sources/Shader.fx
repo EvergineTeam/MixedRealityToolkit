@@ -1,8 +1,10 @@
 [Begin_ResourceLayout]
 
+[directives:ColorSpace GAMMA_COLORSPACE_OFF GAMMA_COLORSPACE]
+
 	cbuffer CameraData : register(b0)
 	{
-		float4x4 ViewProjection	 : packoffset(c0); [ViewProjection]
+		float4x4 ViewProjection	 : packoffset(c0); [UnjitteredViewProjection]
 	};
 
 	Texture2D Texture		: register(t0);
@@ -14,6 +16,11 @@
 
 	[profile 10_0]
 	[entrypoints VS=VS PS=PS]
+
+	float4 GammaToLinear(const float4 color)
+	{
+		return float4(pow(color.rgb, 2.2), color.a);
+	}
 
 	struct VS_IN_COLOR
 	{
@@ -55,7 +62,13 @@
 
 	float4 PS( VS_OUT_COLOR input ) : SV_Target0
 	{
-		return Texture.Sample(Sampler, input.TexCoord) * input.Color;
+		float4 color = Texture.Sample(Sampler, input.TexCoord) * input.Color;
+
+#if !GAMMA_COLORSPACE
+		color = GammaToLinear(color);
+#endif
+
+		return color;
 	}
 
 [End_Pass]

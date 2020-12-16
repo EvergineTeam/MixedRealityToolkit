@@ -18,6 +18,7 @@
 [directives:DIRECTIONAL_LIGHT              DIRECTIONAL_LIGHT_OFF              DIRECTIONAL_LIGHT              ]
 [directives:ALBEDO_MAP                     ALBEDO_MAP_OFF                     ALBEDO_MAP                     ]
 [directives:Multiview                      MULTIVIEW_OFF                      MULTIVIEW                      ]
+[directives:ColorSpace 					   GAMMA_COLORSPACE_OFF 			  GAMMA_COLORSPACE				 ]
 
 	cbuffer PerDrawCall : register(b0)
 	{
@@ -566,7 +567,10 @@
 
 	
 		output.rgb *= clamp(output.a, 0, 1);
+		
+#if !GAMMA_COLORSPACE
 		output.rgb = GammaToLinear(output.rgb);
+#endif
 	
 		return output;
 	}

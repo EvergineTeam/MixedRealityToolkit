@@ -14,6 +14,7 @@
 [directives:AmbientOcclusion AO_OFF AO]
 [directives:Multiview MULTIVIEW_OFF MULTIVIEW]
 [directives:LowProfile LOW_PROFILE_OFF LOW_PROFILE]
+[directives:ColorSpace GAMMA_COLORSPACE_OFF GAMMA_COLORSPACE]
 
 struct LightProperties
 {
@@ -120,9 +121,13 @@ SamplerState IBLIrradianceSampler			: register(s9);
 struct VSInputPbr
 {
 	float3      Position            : POSITION;
+#if NORMAL || MT_RG_TEXTURED
 	float2      TexCoord0           : TEXCOORD0;
+#endif
 	float3      Normal              : NORMAL;
+#if NORMAL
 	float4      Tangent             : TANGENT;
+#endif
 	uint        InstId              : SV_InstanceID;
 };
 
@@ -130,9 +135,13 @@ struct VSOutputPbr
 {
 	float4 PositionProj : SV_POSITION;
 	float3 NormalWS		: NORMAL;
+#if NORMAL
 	float3 TangentWS	: TANGENT;
 	float3 BitangentWS	: BINORMAL;
+#endif
+#if NORMAL || MT_RG_TEXTURED
 	float2 TexCoord0    : TEXCOORD0;
+#endif
 	
 	#if MULTIVIEW
 	uint ViewId         : SV_RenderTargetArrayIndex;
@@ -163,10 +172,14 @@ VSOutputPbr VertexFunction(VSInputPbr input)
 	output.PositionProj = mul(transformedPosWorld, viewProj);	
 	
 	output.NormalWS = mul(float4(input.Normal, 0), World).xyz;
+	#if NORMAL
 	output.TangentWS = normalize(mul(float4(input.Tangent.xyz, 0), World).xyz);
 	output.BitangentWS = normalize(cross(output.NormalWS, output.TangentWS) * input.Tangent.w);
+	#endif
 
+#if NORMAL || MT_RG_TEXTURED
 	output.TexCoord0 = input.TexCoord0 + TextureOffset0;
+#endif
 
 	return output;
 }
@@ -287,22 +300,22 @@ struct VSOutputPbr
 #endif
 };
 
-float4 LinearToSrgb(const float4 color)
+float4 LinearToGamma(const float4 color)
 {
 	return float4(pow(abs(color.rgb), 1.0 / 2.2), color.a);
 }
 
-float4 SrgbToLinear(const float4 color)
+float4 GammaToLinear(const float4 color)
 {
 	return float4(pow(color.rgb, 2.2), color.a);
 }
 
-float3 LinearToSrgb(const float3 color)
+float3 LinearToGamma(const float3 color)
 {
 	return pow(color, 1 / 2.2);
 }
 
-float3 SrgbToLinear(const float3 color)
+float3 GammaToLinear(const float3 color)
 {
 	return pow(color, 2.2);
 }
@@ -346,7 +359,7 @@ VSOutputPbr VertexFunction(VSInputPbr input)
 #endif
 
 #if VCOLOR
-	output.Color = SrgbToLinear(input.Color);
+	output.Color = GammaToLinear(input.Color);
 #endif
 
 	return output;
@@ -531,7 +544,7 @@ void InitMaterial(const VSOutputPbr input, inout MaterialInputs material)
 	material.baseColor = float4(BaseColor, Alpha);
 #if DIFF
 	float4 baseColorTexture = BaseColorTexture.Sample(BaseColorSampler, input.TexCoord0);
-	baseColorTexture.rgb = SrgbToLinear(baseColorTexture.rgb);
+	baseColorTexture.rgb = GammaToLinear(baseColorTexture.rgb);
 	material.baseColor *= baseColorTexture;
 #endif
 
@@ -1630,6 +1643,11 @@ float4 PixelFunction(VSOutputPbr input) : SV_Target
 
 	float4 color = EvaluateMaterial(shading, material);
 	color.rgb *= Alpha;
+
+#if GAMMA_COLORSPACE
+	color = LinearToGamma(color);
+#endif
+
 	return color;
 }
 [End_Pass]

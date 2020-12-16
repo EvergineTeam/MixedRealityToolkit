@@ -7,6 +7,7 @@
 [directives:Chromatic CHRO_OFF CHRO]
 [directives:Grain GRAIN_OFF GRAIN]
 [directives:Vignette VIG_OFF VIG]
+[directives:Distortion DIST_OFF DIST]
 
 cbuffer ParamsBuffer : register(b0)
 {
@@ -24,6 +25,7 @@ cbuffer PerFrameBuffer : register(b1)
 
 Texture2D input : register(t0);
 Texture2D lookuptable	: register(t1);
+Texture2D distortion : register(t2); [DistortionPass]
 RWTexture2D<float4> Output : register(u0);
 
 SamplerState Sampler : register(s0);
@@ -96,15 +98,43 @@ inline float3 RomBinDaHouse(float3 x)
 	return exp(-1.0 / (2.75 * x + 0.15));
 }
 
-inline float3 ACES(float3 x)
+// sRGB => XYZ => D65_2_D60 => AP1 => RRT_SAT
+static const float3x3 ACESInputMat =
 {
-	// Narkowicz 2015, "ACES Filmic Tone Mapping Curve"
-    const float a = 2.51;
-    const float b = 0.03;
-    const float c = 2.43;
-    const float d = 0.59;
-    const float e = 0.14;
-    return (x * (a * x + b)) / (x * (c * x + d) + e);
+    {0.59719, 0.35458, 0.04823},
+    {0.07600, 0.90834, 0.01566},
+    {0.02840, 0.13383, 0.83777}
+};
+
+// ODT_SAT => XYZ => D60_2_D65 => sRGB
+static const float3x3 ACESOutputMat =
+{
+    { 1.60475, -0.53108, -0.07367},
+    {-0.10208,  1.10813, -0.00605},
+    {-0.00327, -0.07276,  1.07602}
+};
+
+float3 RRTAndODTFit(float3 v)
+{
+    float3 a = v * (v + 0.0245786f) - 0.000090537f;
+    float3 b = v * (0.983729f * v + 0.4329510f) + 0.238081f;
+    return a / b;
+}
+
+// From: https://github.com/TheRealMJP/BakingLab/blob/master/BakingLab/ACES.hlsl
+float3 ACESFitted(float3 color)
+{
+    color = mul(ACESInputMat, color);
+
+    // Apply RRT and ODT
+    color = RRTAndODTFit(color);
+
+    color = mul(ACESOutputMat, color);
+
+    // Clamp to [0, 1]
+    color = saturate(color);
+
+    return color;
 }
 
 inline float3 Tonemap(float3 x)
@@ -118,7 +148,7 @@ inline float3 Tonemap(float3 x)
 #elif FILMIC
 	return Filmic(x);
 #elif ACES
-	return ACES(x);
+	return ACESFitted(x);
 #elif ROMBINDAHOUSE
 	return RomBinDaHouse(x);
 #endif
@@ -144,16 +174,22 @@ void CS(uint3 threadID : SV_DispatchThreadID)
 	float2 outputSize;
 	Output.GetDimensions(outputSize.x, outputSize.y);
 	float2 uv = (threadID.xy + 0.5) / outputSize;
+	
+	float2 coords = uv;
+#if DIST
+	float2 distortionOffset = distortion.SampleLevel(Sampler, uv, 0) .rg;
+	coords += distortionOffset;
+#endif
 
 #if CHRO
-	float2 coords = (uv - 0.5) * 2.0;
-	float coordDot = dot(coords, coords); 
-	float2 compute = TexcoordOffset.xy * AberrationStrength * coordDot * coords;
-	float2 uvR = uv - compute;
-	float2 uvB = uv + compute;
+	float2 offset = (coords - 0.5) * 2.0;
+	float coordDot = dot(offset, offset); 
+	float2 compute = TexcoordOffset.xy * AberrationStrength * coordDot * offset;
+	float2 uvR = coords - compute;
+	float2 uvB = coords + compute;
 
 	float r = input.SampleLevel(Sampler, uvR, 0).r;
-	float g = input.SampleLevel(Sampler, uv, 0).g;
+	float g = input.SampleLevel(Sampler, coords, 0).g;
 	float b = input.SampleLevel(Sampler, uvB, 0).b;	
 	float3 chromatic = float3(r, g, b);
 #endif
@@ -162,7 +198,7 @@ void CS(uint3 threadID : SV_DispatchThreadID)
 	#if CHRO
 		float3 hdr = chromatic;
 	#else
-		float3 hdr = input.SampleLevel(Sampler, uv, 0).rgb;
+		float3 hdr = input.SampleLevel(Sampler, coords, 0).rgb;
 	#endif
 	
 	float3 ldr = saturate(Tonemap(hdr.rgb));
@@ -170,7 +206,7 @@ void CS(uint3 threadID : SV_DispatchThreadID)
 	#if CHRO
 		float3 ldr = chromatic;
 	#else
-		float3 ldr = input.SampleLevel(Sampler, uv, 0).rgb;
+		float3 ldr = input.SampleLevel(Sampler, coords, 0).rgb;
 	#endif
 #endif
 

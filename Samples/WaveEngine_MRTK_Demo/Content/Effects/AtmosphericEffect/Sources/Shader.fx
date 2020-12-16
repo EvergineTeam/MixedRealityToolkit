@@ -2,6 +2,7 @@
 	
 	[directives:SunDisk SUNDISK_OFF SUNDISK]
 	[directives:Multiview MULTIVIEW_OFF MULTIVIEW]
+	[directives:ColorSpace GAMMA_COLORSPACE_OFF GAMMA_COLORSPACE]
 
 	cbuffer PerCamera : register(b0)
 	{
@@ -43,7 +44,12 @@
     #define MIE_G2 0.9801
 
     #define SKY_GROUND_THRESHOLD -0.0075
-    
+
+	float3 LinearToGamma(const float3 color)
+	{
+		return pow(color.rgb, 1 / 2.2);
+	}
+
 	struct VS_IN
 	{
 		float4 vertex 	: POSITION;
@@ -146,7 +152,11 @@
         #endif
 
 		col *= IblLuminance * Exposure;
-			
+
+#if GAMMA_COLORSPACE
+		col = LinearToGamma(col);
+#endif
+
         return float4(col ,1.0);
 	}
 

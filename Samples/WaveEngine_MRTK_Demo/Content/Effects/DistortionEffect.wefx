@@ -1,0 +1,11 @@
+!WaveEngine.Assets.Exporters.EffectMetaFile,WaveEngine.Assets
+Id: d672019c-2887-4056-a0e7-2141d2fe5f78
+DefaultProfile:
+  Compile: ByPlatform
+  ExcludeAsset: false
+  GraphicsBackend: ByPlatform
+  MandatoryCombinations: null
+  Name: null
+  Platform: Undefined
+ExportAsRaw: false
+Profiles: {}

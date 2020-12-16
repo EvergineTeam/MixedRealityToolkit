@@ -81,6 +81,8 @@ namespace WaveEngine.MRTK.Emulation
 
         internal float PulseTime { get; private set; } = 0.0f;
 
+        private float deltaTime;
+
         private IEnumerator routine;
 
         /// <inheritdoc />
@@ -126,8 +128,6 @@ namespace WaveEngine.MRTK.Emulation
                 this.routine = this.PulseRoutine(pulseDuration, fadeBegin, fadeSpeed);
             }
         }
-
-        private float deltaTime;
 
         private IEnumerator PulseRoutine(float pulseDuration, float fadeBegin, float fadeSpeed)
         {

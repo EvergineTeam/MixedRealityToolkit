@@ -2,6 +2,7 @@
 
 [directives:Kind BASE PULSE]
 [directives:Multiview MULTIVIEW_OFF MULTIVIEW]
+[directives:ColorSpace GAMMA_COLORSPACE_OFF GAMMA_COLORSPACE]
 
 	cbuffer Base : register(b0)
 	{
@@ -82,6 +83,11 @@
 	float RandomFloat(inout uint state)
 	{
 		return XorShift(state) * (1.f / 4294967296.f);
+	}
+	
+	float3 GammaToLinear(const float3 color)
+	{
+		return pow(color.rgb, 2.2);
 	}
 	
 #if PULSE
@@ -195,6 +201,10 @@
 		alpha = saturate(alpha - input.extra);
 #endif
 		color *= alpha;
+		
+#if !GAMMA_COLORSPACE
+		color = GammaToLinear(color);
+#endif
 		
 		return float4(color, alpha);
 	}

@@ -1,0 +1,40 @@
+!WaveEngine.Assets.Exporters.TextureMetaFile,WaveEngine.Assets
+Id: 518c3b9a-d2bd-49ec-945f-bf8021c8b07e
+DefaultProfile:
+  ExcludeAsset: false
+  ExportedItem: null
+  Name: default
+  PixelFormat: R11G11B10_Float
+  Platform: Undefined
+  ScaledHeight: 128
+  ScaledPercentage: 1.0
+  ScaledWidth: 128
+  ScalingType: Original
+ExportAsRaw: false
+GenerateMipMaps: true
+NinePatchType: None
+PremultipliedAlpha: true
+Profiles: {}
+SamplerID: 00000000-0000-0000-0000-000000000000
+Source:
+  Header:
+    Id: 6581c392-04b1-4ab2-afaf-afeae7024b48
+    IsCompressed: true
+  LastModified: 0001-01-01T00:00:00.0000000
+  TextureInfo:
+    Id: 1948c39f-e83d-4cb9-bfbc-f57ca18cf4c7
+    Description:
+      ArraySize: 1
+      CpuAccess: None
+      Depth: 1
+      Faces: 6
+      Flags: ShaderResource, UnorderedAccess
+      Format: R11G11B10_Float
+      Height: 128
+      MipLevels: 5
+      SampleCount: None
+      Type: TextureCube
+      Usage: Default
+      Width: 128
+    HasData: true
+    SamplerID: 9018edf8-ea96-4721-bf83-5561942432e0

@@ -15,11 +15,12 @@ namespace WaveEngine_MRTK_Demo.Editor
             WaveContentTypes = GetWaveContentTypes().ToList();
         }
 
-        public static Dictionary<string, string> FindFonts()
+        public static Dictionary<string, string> FindFonts(string assetsRootPath)
         {
             return WaveContentTypes
                     .SelectMany(x => GetClasses(x, string.Empty))
-                    .SelectMany(x => GetFontFamilyNameFields(x.type, x.basePath))
+                    .SelectMany(x => GetFontFamilyNameFields(x.type, x.basePath, assetsRootPath))
+                    .Distinct()
                     .ToDictionary(x => x.name, x => x.sourcePath);
         }
 
@@ -54,12 +55,20 @@ namespace WaveEngine_MRTK_Demo.Editor
             }
         }
 
-        private static IEnumerable<(string name, string sourcePath)> GetFontFamilyNameFields(TypeInfo type, string basePath)
+        private static IEnumerable<(string name, string sourcePath)> GetFontFamilyNameFields(TypeInfo type, string basePath, string assetsRootPath)
         {
-            return type.DeclaredFields.Where(field => field.Name.EndsWith("_ttf"))
-                                      .Select(field => field.Name.Remove(field.Name.IndexOf('_')))
+            return type.DeclaredFields.Where(field => field.Name.ToLowerInvariant().EndsWith("_ttf"))
+                                      .Select(field => field.Name.Remove(field.Name.LastIndexOf('_')))
                                       .Distinct()
-                                      .Select(name => (name, $"{basePath}/#{name}"));
+                                      .Select(name =>
+                                      {
+                                          using (var fontCollection = new System.Drawing.Text.PrivateFontCollection())
+                                          {
+                                              fontCollection.AddFontFile($"{assetsRootPath}{basePath}/{name}.ttf");
+                                              var fontFamilyName = fontCollection.Families[0].Name;
+                                              return (fontFamilyName, $"{basePath}/#{fontFamilyName}");
+                                          }
+                                      });
         }
 
         private static IEnumerable<(string name, Guid id)> GetScenePrefabsFields(TypeInfo type)

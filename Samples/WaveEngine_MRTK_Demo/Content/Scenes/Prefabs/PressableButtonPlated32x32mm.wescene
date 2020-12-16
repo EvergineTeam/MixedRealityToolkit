@@ -17,7 +17,7 @@ Items:
         LocalPosition:
           X: 0.0
           Y: 0.0
-          Z: 5.96046448E-07
+          Z: 0.0
         LocalScale:
           X: 1.0
           Y: 1.0
@@ -59,6 +59,7 @@ Items:
         PressPosition: 0.100000001
         ReleasePosition: 0.300000012
         RetractSpeed: 10.0
+        SpeechKeyWord: 
         StartPosition: 0.5
         UpdateOrder: 0.5
       - !WaveEngine.MRTK.Services.InputSystem.NearInteractionTouchable,WaveEngine.MRTK
@@ -86,12 +87,12 @@ Items:
               Z: 0.0
             LocalPosition:
               X: 0.0
-              Y: 4.26325641E-13
-              Z: -1.78813923E-06
+              Y: 0.0
+              Z: 0.0
             LocalScale:
               X: 1.0
-              Y: 0.99999994
-              Z: 0.99999994
+              Y: 1.0
+              Z: 1.0
         Children:
           - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
             Name: Quad
@@ -110,7 +111,7 @@ Items:
                 LocalPosition:
                   X: 0.0
                   Y: 0.0
-                  Z: -5.96046448E-07
+                  Z: 0.0
                 LocalScale:
                   X: 0.0320000015
                   Y: 0.0320000015
@@ -141,7 +142,7 @@ Items:
               - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                 Id: ef7755d7-22dc-48de-a216-df8737aaa58d
                 DebugBoundingbox: true
-                FrustumCullingEnabled: true
+                IsCullingEnabled: true
                 IsEnabled: true
                 OrderBias: 0
             Children: []
@@ -157,8 +158,8 @@ Items:
             Id: 3285a976-4ce8-4b39-a9e7-203308e91cbd
             IsEnabled: true
             LocalOrientation:
-              W: 0.707106888
-              X: -0.70710665
+              W: 1.0
+              X: 0.0
               Y: 0.0
               Z: 0.0
             LocalPosition:
@@ -195,7 +196,7 @@ Items:
                 LocalPosition:
                   X: 0.0
                   Y: 0.0
-                  Z: -2.68533178E-08
+                  Z: 0.0
                 LocalScale:
                   X: 0.0149999997
                   Y: 0.0149999997
@@ -214,9 +215,9 @@ Items:
                 Model: 00000000-0000-0000-0000-000000000000
                 ModelMeshName: plane_primitive
                 Normal:
-                  X: 0.0
-                  Y: 1.0
-                  Z: 0.0
+                  X: -0.0
+                  Y: -0.0
+                  Z: -1.0
                 TwoSides: false
                 UTile: 1.0
                 UVHorizontalFlip: false
@@ -226,7 +227,7 @@ Items:
               - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                 Id: 4fee1d52-e879-4831-86d5-8ef795ce0eeb
                 DebugBoundingbox: true
-                FrustumCullingEnabled: true
+                IsCullingEnabled: true
                 IsEnabled: true
                 OrderBias: 0
             Children: []
@@ -241,33 +242,52 @@ Items:
                 Id: 52c45d68-3f2d-44f9-8b9f-27648cd61529
                 IsEnabled: true
                 LocalOrientation:
-                  W: 1.94707184E-07
-                  X: 3.79108806E-14
-                  Y: 1.0
-                  Z: -1.94707141E-07
-                LocalPosition:
+                  W: 1.0
                   X: 0.0
                   Y: 0.0
-                  Z: -0.00999987032
+                  Z: 0.0
+                LocalPosition:
+                  X: 3.31211014E-09
+                  Y: -0.0101032658
+                  Z: 0.0
                 LocalScale:
-                  X: 0.0320000015
+                  X: 1.0
                   Y: 1.0
-                  Z: 0.0320000015
+                  Z: 1.0
               - !WaveEngine_MRTK_Demo.Toolkit.Components.GUI.Text3D,WaveEngine_MRTK_Demo
                 Id: 0c3534a2-de82-4170-9ce7-41a75c558902
                 Alpha: 1.0
-                FontFamilySource: 
-                FontSize: 24
+                Background:
+                  A: 0
+                  B: 0
+                  G: 0
+                  R: 0
+                CustomHeight: false
+                CustomWidth: false
+                FontFamilySource: /Fonts/#Segoe UI
+                FontSize: 20
                 FontStretch: Normal
                 FontStyle: Normal
                 FontWeight: Normal
+                Foreground:
+                  A: 255
+                  B: 255
+                  G: 255
+                  R: 255
+                Height: 0.00719999988
                 HorizontalAlignment: Center
                 IsEnabled: true
-                Quality: 0.5
-                Resolution: 4000
+                Normal: ZNegative
+                Origin:
+                  X: 0.5
+                  Y: 0.539999962
+                PixelDensity: 10000
                 Text: 32x32mm
+                TextAlignment: Center
                 TextWrapping: NoWrap
+                UpdateOrder: 0.5
                 VerticalAlignment: Center
+                Width: 0.0230999999
             Children: []
             Id: ba8b2d64-89d0-40f8-bbd2-86eefe4deea5
         Id: 00bbb74d-e74c-4115-9560-28ee316bcdac
@@ -344,7 +364,7 @@ Items:
               - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                 Id: 742aa151-4b53-4797-97a8-8dd1821e9094
                 DebugBoundingbox: true
-                FrustumCullingEnabled: true
+                IsCullingEnabled: true
                 IsEnabled: true
                 OrderBias: 0
             Children:
@@ -396,7 +416,7 @@ Items:
                   - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                     Id: 0fd70c3f-920c-4b92-aed2-426130d410d7
                     DebugBoundingbox: true
-                    FrustumCullingEnabled: true
+                    IsCullingEnabled: true
                     IsEnabled: true
                     OrderBias: 0
                 Children: []

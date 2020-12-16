@@ -141,22 +141,22 @@
       <Version>6.2.9</Version>
     </PackageReference>
     <PackageReference Include="WaveEngine.MixedReality">
-      <Version>3.1.0.6580-nightly</Version>
+      <Version>3.1.0.6753-nightly</Version>
     </PackageReference>
     <PackageReference Include="WaveEngine.XAudio2">
-      <Version>3.1.0.6580-nightly</Version>
+      <Version>3.1.0.6753-nightly</Version>
     </PackageReference>
     <PackageReference Include="WaveEngine.Targets">
-      <Version>3.1.0.6580-nightly</Version>
+      <Version>3.1.0.6753-nightly</Version>
     </PackageReference>
     <PackageReference Include="WaveEngine.Targets.UWP">
-      <Version>3.1.0.6580-nightly</Version>
+      <Version>3.1.0.6753-nightly</Version>
     </PackageReference>
     <PackageReference Include="WaveEngine.UWPView">
-      <Version>3.1.0.6580-nightly</Version>
+      <Version>3.1.0.6753-nightly</Version>
     </PackageReference>
     <PackageReference Include="WaveEngine.Bullet">
-      <Version>3.1.0.6580-nightly</Version>
+      <Version>3.1.0.6753-nightly</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>

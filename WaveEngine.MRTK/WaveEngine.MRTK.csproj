@@ -15,17 +15,17 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-	<IncludeSymbols>true</IncludeSymbols>
+    <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <DefineConstants>TRACE</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="WaveEngine.Bullet" Version="3.1.0.6580-nightly" />
-    <PackageReference Include="WaveEngine.Common" Version="3.1.0.6580-nightly" />
-    <PackageReference Include="WaveEngine.Components" Version="3.1.0.6580-nightly" />
-    <PackageReference Include="WaveEngine.Framework" Version="3.1.0.6580-nightly" />
-    <PackageReference Include="WaveEngine.Mathematics" Version="3.1.0.6580-nightly" />
-    <PackageReference Include="WaveEngine.Platform" Version="3.1.0.6580-nightly" />
+    <PackageReference Include="WaveEngine.Bullet" Version="3.1.0.6753-nightly" />
+    <PackageReference Include="WaveEngine.Common" Version="3.1.0.6753-nightly" />
+    <PackageReference Include="WaveEngine.Components" Version="3.1.0.6753-nightly" />
+    <PackageReference Include="WaveEngine.Framework" Version="3.1.0.6753-nightly" />
+    <PackageReference Include="WaveEngine.Mathematics" Version="3.1.0.6753-nightly" />
+    <PackageReference Include="WaveEngine.Platform" Version="3.1.0.6753-nightly" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\LICENSE">

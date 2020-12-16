@@ -3,6 +3,7 @@
 [directives:Diffuse DIFF_OFF DIFF]
 [directives:Align ALIGN_OFF ALIGN]
 [directives:Multiview MULTIVIEW_OFF MULTIVIEW]
+[directives:ColorSpace GAMMA_COLORSPACE_OFF GAMMA_COLORSPACE]
 
 cbuffer PerDrawCall : register(b0)
 {
@@ -35,6 +36,11 @@ SamplerState DiffuseSampler	: register(s0);
 [profile 10_0]
 [entrypoints VS = VertexFunction PS = PixelFunction]
 
+float4 GammaToLinear(const float4 color)
+{
+	return float4(pow(color.rgb, 2.2), color.a);
+}
+
 struct VS_IN
 {
 	float4 Position 	: POSITION;
@@ -54,13 +60,6 @@ struct PS_IN
 	uint ViewId		: SV_RenderTargetArrayIndex;
 #endif
 };
-
-float4 GammaToLinear(const float4 color)
-{
-	return float4(pow(color.rgb, 2.2), color.a);
-}
-
-
 PS_IN VertexFunction(VS_IN input)
 {
 	PS_IN output = (PS_IN)0;
@@ -103,9 +102,18 @@ PS_IN VertexFunction(VS_IN input)
 float4 PixelFunction(PS_IN input) : SV_Target
 {
 	float4 baseColor = input.Color;
+
 #if DIFF
-	baseColor *= GammaToLinear(DiffuseTexture.Sample(DiffuseSampler, input.TexCoord));
+	float4 diffuseColor = DiffuseTexture.Sample(DiffuseSampler, input.TexCoord);
+	
+#if !GAMMA_COLORSPACE
+	diffuseColor = GammaToLinear(diffuseColor);
 #endif
+
+	baseColor *= diffuseColor;
+#endif
+
+
 	return baseColor;
 }
 [End_Pass]

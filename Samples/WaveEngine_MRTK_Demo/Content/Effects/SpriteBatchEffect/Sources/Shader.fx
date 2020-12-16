@@ -1,6 +1,7 @@
 [Begin_ResourceLayout]
 
 [directives TEXTURE2D TEXTURE2DARRAY TEXTURE3D]
+[directives:ColorSpace GAMMA_COLORSPACE_OFF GAMMA_COLORSPACE]
 
 cbuffer CameraData : register(b0)
 {
@@ -88,13 +89,19 @@ VS_OUT_COLOR VS(VS_IN_COLOR input)
 float4 PS(VS_OUT_COLOR input) : SV_Target0
 {
 #if TEXTURE3D
-		float4 color = Texture3.Sample(Sampler, float3(input.TexCoord, input.SliceIndex)) * input.Color;
+	float4 color = Texture3.Sample(Sampler, float3(input.TexCoord, input.SliceIndex)) * input.Color;
 #elif TEXTURE2DARRAY
-		float4 color = Texture2Array.Sample(Sampler, float3(input.TexCoord, input.SliceIndex)) * input.Color;
+	float4 color = Texture2Array.Sample(Sampler, float3(input.TexCoord, input.SliceIndex)) * input.Color;
 #else
-		float4 color = Texture.Sample(Sampler, input.TexCoord) * input.Color;
+	float4 color = Texture.Sample(Sampler, input.TexCoord) * input.Color;
 #endif
-	return GammaToLinear(color);
+	
+#if !GAMMA_COLORSPACE
+	color = GammaToLinear(color);
+#endif
+
+	return color;
+
 }
 
 [End_Pass]

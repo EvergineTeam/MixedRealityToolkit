@@ -1,6 +1,7 @@
 [Begin_ResourceLayout]
 
 [directives:Multiview MULTIVIEW_OFF MULTIVIEW]
+[directives:ColorSpace GAMMA_COLORSPACE_OFF GAMMA_COLORSPACE]
 
 cbuffer PerObject : register(b0)
 {
@@ -33,6 +34,11 @@ SamplerState TextureSampler		: register(s0);
 
 [profile 10_0]
 [entrypoints VS = VertexFunction PS = PixelFunction]
+
+float4 LinearToGamma(const float4 color)
+{
+	return float4(pow(color.rgb, 1/2.2), color.a);
+}
 
 struct VSInputPbr
 {
@@ -85,6 +91,10 @@ float4 PixelFunction(VSOutputPbr input) : SV_Target
 	float4 color = Texture.Sample(TextureSampler, input.TexCoord0);
 	
 	color.rgb *= Exposure * Intensity * IblLuminance;
+
+#if GAMMA_COLORSPACE
+	color = LinearToGamma(color);
+#endif
 
 	return color;
 }

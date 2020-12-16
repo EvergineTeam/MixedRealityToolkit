@@ -15,7 +15,7 @@ Items:
           Y: 1.0
           Z: 0.0
         LocalPosition:
-          X: -3.08833918E-08
+          X: 0.0
           Y: 0.0
           Z: 0.0
         LocalScale:
@@ -102,7 +102,7 @@ Items:
               - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                 Id: d953b076-53f1-4daf-977d-ddfc4820de88
                 DebugBoundingbox: true
-                FrustumCullingEnabled: true
+                IsCullingEnabled: true
                 IsEnabled: true
                 OrderBias: 0
             Children: []
@@ -182,8 +182,8 @@ Items:
                   Y: 0.0
                   Z: -0.0123416819
                 LocalScale:
-                  X: 0.999999881
-                  Y: 0.999999881
+                  X: 1.0
+                  Y: 1.0
                   Z: 1.0
               - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
                 Id: e2cd7596-1a8b-4819-8457-0c7b0c8a2b1f
@@ -198,7 +198,7 @@ Items:
               - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                 Id: db42ed51-5196-4465-8023-45dd97b09526
                 DebugBoundingbox: true
-                FrustumCullingEnabled: true
+                IsCullingEnabled: true
                 IsEnabled: true
                 OrderBias: 0
             Children: []
@@ -213,33 +213,57 @@ Items:
                 Id: f4a22c88-f69c-4f4f-864b-a20fa676a96d
                 IsEnabled: true
                 LocalOrientation:
-                  W: 0.707106829
-                  X: 0.707106709
-                  Y: 0.0
-                  Z: 0.0
+                  W: 1.94707184E-07
+                  X: 0.0
+                  Y: 1.0
+                  Z: -0.0
                 LocalPosition:
-                  X: -0.0545182526
-                  Y: 0.0149999997
-                  Z: -9.22009524E-10
+                  X: -0.0261000004
+                  Y: 0.00548836868
+                  Z: 8.81039242E-10
                 LocalScale:
-                  X: 0.0500000007
-                  Y: 0.100000001
-                  Z: 0.0199999996
+                  X: 1.0
+                  Y: 1.0
+                  Z: 1.0
               - !WaveEngine_MRTK_Demo.Toolkit.Components.GUI.Text3D,WaveEngine_MRTK_Demo
                 Id: 2d146da0-dc69-4713-96f6-02f27aa3f6e4
                 Alpha: 1.0
-                FontFamilySource: 
-                FontSize: 24
+                Background:
+                  A: 0
+                  B: 0
+                  G: 0
+                  R: 0
+                CustomHeight: false
+                CustomWidth: false
+                FontFamilySource: /Fonts/#Segoe UI
+                FontSize: 32
                 FontStretch: Normal
                 FontStyle: Normal
                 FontWeight: Normal
+                Foreground:
+                  A: 255
+                  B: 255
+                  G: 255
+                  R: 255
+                Height: 0.00851249974
+                Highlight:
+                  A: 0
+                  B: 0
+                  G: 0
+                  R: 0
                 HorizontalAlignment: Right
                 IsEnabled: true
-                Quality: 0.5
-                Resolution: 2000
+                Normal: ZNegative
+                Origin:
+                  X: 1.0
+                  Y: 0.5
+                PixelDensity: 5000
                 Text: Title
+                TextAlignment: Right
                 TextWrapping: NoWrap
+                UpdateOrder: 0.5
                 VerticalAlignment: Center
+                Width: 0.0119687496
             Children: []
             Id: f822d1fd-a540-4f1f-a1c5-b2a97dc7b151
           - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
@@ -252,33 +276,57 @@ Items:
                 Id: 67f0cc20-fe0a-4ed6-a5c6-b88a639011f9
                 IsEnabled: true
                 LocalOrientation:
-                  W: 0.707106829
-                  X: 0.707106709
-                  Y: 0.0
-                  Z: 0.0
+                  W: 1.94707184E-07
+                  X: 0.0
+                  Y: 1.0
+                  Z: -0.0
                 LocalPosition:
-                  X: -0.0779834539
-                  Y: 0.0
-                  Z: 1.88554727E-09
+                  X: -0.0260678064
+                  Y: -0.00433111843
+                  Z: 3.78102705E-09
                 LocalScale:
-                  X: 0.100000001
-                  Y: 0.100000001
-                  Z: 0.0199999996
+                  X: 1.0
+                  Y: 1.0
+                  Z: 1.0
               - !WaveEngine_MRTK_Demo.Toolkit.Components.GUI.Text3D,WaveEngine_MRTK_Demo
                 Id: a1cc0b39-c06b-4e2b-8f45-cfc2236572f7
                 Alpha: 1.0
-                FontFamilySource: 
-                FontSize: 36
+                Background:
+                  A: 0
+                  B: 0
+                  G: 0
+                  R: 0
+                CustomHeight: false
+                CustomWidth: false
+                FontFamilySource: /Fonts/#Segoe UI
+                FontSize: 42
                 FontStretch: Normal
                 FontStyle: Normal
                 FontWeight: Normal
+                Foreground:
+                  A: 255
+                  B: 255
+                  G: 255
+                  R: 255
+                Height: 0.011172656
+                Highlight:
+                  A: 0
+                  B: 0
+                  G: 0
+                  R: 0
                 HorizontalAlignment: Right
                 IsEnabled: true
-                Quality: 0.5
-                Resolution: 2000
+                Normal: ZNegative
+                Origin:
+                  X: 1.0
+                  Y: 0.5
+                PixelDensity: 5000
                 Text: value
+                TextAlignment: Right
                 TextWrapping: NoWrap
+                UpdateOrder: 0.5
                 VerticalAlignment: Center
+                Width: 0.0193265621
               - !WaveEngine_MRTK_Demo.Components.ShowSliderValue,WaveEngine_MRTK_Demo
                 Id: a5c9ddb0-e967-41ba-b350-5035ea53a5f5
                 IsEnabled: true
