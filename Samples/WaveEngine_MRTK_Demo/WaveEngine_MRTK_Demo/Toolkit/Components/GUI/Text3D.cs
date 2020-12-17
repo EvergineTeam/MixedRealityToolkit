@@ -50,7 +50,7 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
                 if (this.SetProperty(ref this.text, value, this.textBlock))
                 {
                     this.textBlock.Text = value;
-                    this.isFrameBufferDirty = !this.customWidth || !this.customHeight;
+                    this.Invalidate();
                 };
             }
         }
@@ -68,7 +68,7 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
                 if (this.SetProperty(ref this.fontSize, value, this.textBlock))
                 {
                     this.textBlock.FontSize = value;
-                    this.isFrameBufferDirty = !this.customWidth || !this.customHeight;
+                    this.Invalidate();
                 }
             }
         }
@@ -100,10 +100,9 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
             get => this.customWidth;
             set
             {
-                if (this.customWidth != value)
+                if (this.SetProperty(ref this.customWidth, value, this.noesisFramebufferPanel))
                 {
-                    this.customWidth = value;
-                    this.isFrameBufferDirty = true;
+                    this.Invalidate(ifAutoSizeOnly: false);
                 }
             }
         }
@@ -120,7 +119,7 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
             {
                 if (this.SetProperty(ref this.width, value, this.noesisFramebufferPanel))
                 {
-                    this.isFrameBufferDirty = true;
+                    this.Invalidate(ifAutoSizeOnly: false);
                 }
             }
         }
@@ -137,7 +136,7 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
             {
                 if (this.SetProperty(ref this.horizontalAlignment, value, this.textBlock))
                 {
-                    this.textBlock.HorizontalAlignment = value;
+                    this.Invalidate(ifAutoSizeOnly: false);
                 }
             }
         }
@@ -152,10 +151,9 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
             get => this.customHeight;
             set
             {
-                if (this.customHeight != value)
+                if (this.SetProperty(ref this.customHeight, value, this.noesisFramebufferPanel))
                 {
-                    this.customHeight = value;
-                    this.isFrameBufferDirty = true;
+                    this.Invalidate(ifAutoSizeOnly: false);
                 }
             }
         }
@@ -172,7 +170,7 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
             {
                 if (this.SetProperty(ref this.height, value, this.noesisFramebufferPanel))
                 {
-                    this.isFrameBufferDirty = true;
+                    this.Invalidate(ifAutoSizeOnly: false);
                 }
             }
         }
@@ -204,9 +202,9 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
             }
             set
             {
-                if (this.SetProperty(ref this.origin, value, this.noesisFramebufferPanel))
+                if (this.SetProperty(ref this.origin, value, this.planeTransform))
                 {
-                    this.isFrameBufferDirty = true;
+                    this.UpdateOrigin(this.planeTransform);
                 }
             }
         }
@@ -224,7 +222,7 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
             {
                 if (this.SetProperty(ref this.pixelDensity, value, this.noesisFramebufferPanel))
                 {
-                    this.isFrameBufferDirty = true;
+                    this.Invalidate(ifAutoSizeOnly: false);
                 }
 
                 this.resolutionScaleFactor = (float)this.pixelDensity / referencePixelDensity;
@@ -307,7 +305,7 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
                 if (this.SetProperty(ref this.textAlignment, value, this.textBlock))
                 {
                     this.textBlock.TextAlignment = value;
-                    this.isFrameBufferDirty = !this.customWidth || !this.customHeight;
+                    this.Invalidate();
                 }
             }
         }
@@ -325,7 +323,7 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
                 if (this.SetProperty(ref this.textWrapping, value, this.textBlock))
                 {
                     this.textBlock.TextWrapping = value;
-                    this.isFrameBufferDirty = !this.customWidth || !this.customHeight;
+                    this.Invalidate();
                 }
             }
         }
@@ -343,7 +341,7 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
                 if (this.SetProperty(ref this.fontFamilySource, value, this.textBlock))
                 {
                     this.textBlock.FontFamily = this.GetFontFamily(this.fontFamilySource);
-                    this.isFrameBufferDirty = !this.customWidth || !this.customHeight;
+                    this.Invalidate();
                 }
             }
         }
@@ -361,7 +359,7 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
                 if (this.SetProperty(ref this.fontWeight, value, this.textBlock))
                 {
                     this.textBlock.FontWeight = value;
-                    this.isFrameBufferDirty = !this.customWidth || !this.customHeight;
+                    this.Invalidate();
                 }
             }
         }
@@ -379,7 +377,7 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
                 if (this.SetProperty(ref this.fontStretch, value, this.textBlock))
                 {
                     this.textBlock.FontStretch = value;
-                    this.isFrameBufferDirty = !this.customWidth || !this.customHeight;
+                    this.Invalidate();
                 }
             }
         }
@@ -397,7 +395,7 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
                 if (this.SetProperty(ref this.fontStyle, value, this.textBlock))
                 {
                     this.textBlock.FontStyle = value;
-                    this.isFrameBufferDirty = !this.customWidth || !this.customHeight;
+                    this.Invalidate();
                 }
             }
         }
@@ -405,7 +403,7 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
 
         private string containerEntityName => $"Text3D_{this.Id}";
 
-        public InlineCollection Inlines => this.textBlock.Inlines;
+        public InlineCollection Inlines => this.textBlock?.Inlines;
 
         private Transform3D planeTransform;
         private MaterialComponent materialComponent;
@@ -435,15 +433,43 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
             }
         }
 
+        protected override bool OnAttached()
+        {
+            if (!base.OnAttached())
+            {
+                return false;
+            }
+
+            // Build FrameworkElement
+            this.textBlock = this.BuildTextBlock();
+
+            return true;
+        }
+
         protected override void OnDetach()
         {
             this.RemoveContainerEntity();
+
+            this.textBlock = null;
+
             base.OnDetach();
         }
 
         protected override void Update(TimeSpan gameTime)
         {
             this.UpdateNoesisPanelFrameBuffer();
+        }
+
+        /// <summary>
+        /// Invalidates the text control and forces an internal frameBuffer update.
+        /// </summary>
+        /// <param name="ifAutoSizeOnly">Indicates whether the invalidation operation should be done only if auto-size is active.</param>
+        public void Invalidate(bool ifAutoSizeOnly = true)
+        {
+            if (!ifAutoSizeOnly || !this.customWidth || !this.customHeight)
+            {
+                this.isFrameBufferDirty = true;
+            }
         }
 
         private bool CanUpdateFrameBuffer()
@@ -462,7 +488,8 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
             {
                 var isFontFamilyLoaded = string.IsNullOrEmpty(this.fontFamilySource) ||
                                          this.noesisService.StyleValid;
-                return isFontFamilyLoaded && !string.IsNullOrEmpty(this.text);
+                var hasContent = (!string.IsNullOrEmpty(this.text) || this.Inlines?.Count > 0);
+                return isFontFamilyLoaded && hasContent;
             }
 
             return true;
@@ -494,7 +521,6 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
             this.UpdatePlaneNormal();
 
             // Build FrameworkElement
-            this.textBlock = this.BuildTextBlock();
             this.frameworkElement = this.BuildFrameworkElement(this.textBlock);
 
             this.noesisFramebufferPanel.FrameworkElement = this.frameworkElement;
@@ -544,6 +570,7 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
             {
                 this.noesisFramebuffer.Dispose();
                 this.noesisFramebufferPanel.FrameBuffer = null;
+                this.noesisFramebufferPanel.FrameworkElement = null;
                 this.materialComponent.Material?.SetTexture(null, 0);
             }
 
@@ -552,8 +579,6 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
             this.meshRenderer = null;
             this.planeMesh = null;
             this.noesisFramebufferPanel = null;
-            this.textBlock = null;
-            this.frameworkElement = null;
             this.standardMaterial = null;
 
             this.Owner.RemoveChild(this.containerEntityName);
@@ -639,6 +664,11 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
             return string.IsNullOrEmpty(fontFamilySource) ? null : new FontFamily(fontFamilySource);
         }
 
+        private void UpdateOrigin(Transform3D planeTransform)
+        {
+            planeTransform.LocalPosition = new Vector3((this.origin.X - 0.5f) * this.width, (this.origin.Y - 0.5f) * this.height, 0);
+        }
+
         private void UpdateNoesisPanelFrameBuffer()
         {
             var needUpdate = !this.isContainerEntityAdded || this.isFrameBufferDirty;
@@ -711,7 +741,7 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
                 pixelHeight = (uint)this.GetPixelSize(this.height, this.pixelDensity);
             }
 
-            this.planeTransform.LocalPosition = new Vector3((this.origin.X - 0.5f) * this.width, (this.origin.Y - 0.5f) * this.height, 0);
+            this.UpdateOrigin(this.planeTransform);
 
             this.frameworkElement.LayoutTransform = new MatrixTransform(Transform2.Scale(this.resolutionScaleFactor, this.resolutionScaleFactor));
 
