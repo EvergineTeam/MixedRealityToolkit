@@ -1,6 +1,6 @@
 !WaveEngine.Common.ProjectModel,WaveEngine.Common
 Profiles:
-  - AdditionalEffectTechniqueCombinations: null
+  - AdditionalEffectTechniqueCombinations: GAMMA_COLORSPACE
     AlphaCompressionFormat: BC3_UNorm
     CompileEffects: false
     GraphicsBackend: DirectX11
@@ -8,7 +8,7 @@ Profiles:
     Name: Windows
     NonAlphaCompressionFormat: BC3_UNorm
     Platform: Windows
-  - AdditionalEffectTechniqueCombinations: MULTIVIEW
+  - AdditionalEffectTechniqueCombinations: MULTIVIEW-GAMMA_COLORSPACE
     AlphaCompressionFormat: BC3_UNorm
     CompileEffects: true
     GraphicsBackend: DirectX11
