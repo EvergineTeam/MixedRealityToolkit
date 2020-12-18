@@ -11,7 +11,7 @@ variables:
   - name: 'nugetOutputPath'
     value: '$(Build.StagingDirectory)/nupkgs'
   - name: 'appversion'
-    value: '$(version.major).$(version.minor).$(version.patch).$(Build.BuildID)-$(version.suffix)'
+    value: '$(version.major).$(version.minor).$(version.patch).$(Build.BuildID)-$(version.previewSuffix)'
 
 workspace:
   clean: all
