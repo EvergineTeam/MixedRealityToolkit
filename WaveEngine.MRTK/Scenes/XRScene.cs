@@ -74,6 +74,12 @@ namespace WaveEngine.MRTK.Scenes
         /// <inheritdoc/>
         protected override void CreateScene()
         {
+            var forwardRenderPass = this.Managers.RenderManager.RenderPipeline.DefaultRenderPath as ForwardRenderPath;
+            if (forwardRenderPass != null)
+            {
+                forwardRenderPass.ZPrePassIsEnabled = false;
+            }
+
             var skyboxEntities = this.Managers.EntityManager.FindAllByTag(tag: "Skybox").ToArray();
             foreach (var entity in skyboxEntities)
             {
