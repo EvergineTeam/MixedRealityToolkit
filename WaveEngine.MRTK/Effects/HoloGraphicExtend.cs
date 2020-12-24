@@ -13,6 +13,11 @@ namespace WaveEngine.MRTK.Effects
     public partial class HoloGraphic : Framework.Graphics.MaterialDecorator
     {
         /// <summary>
+        /// The AlphaClip feature directive.
+        /// </summary>
+        public const string AlphaClipDirective = "ALPHA_CLIP";
+
+        /// <summary>
         /// The BorderLight feature directive.
         /// </summary>
         public const string BorderLightDirective = "BORDER_LIGHT";
@@ -46,6 +51,11 @@ namespace WaveEngine.MRTK.Effects
         /// The IgnoreZScale feature directive.
         /// </summary>
         public const string IgnoreZScaleDirective = "IGNORE_Z_SCALE";
+
+        /// <summary>
+        /// The Iridescence feature directive.
+        /// </summary>
+        public const string IridescenceDirective = "IRIDESCENCE";
 
         /// <summary>
         /// The NearLightFade feature directive.
@@ -249,6 +259,16 @@ namespace WaveEngine.MRTK.Effects
         }
 
         /// <summary>
+        /// Gets or sets the RoundCornerRadius.
+        /// </summary>
+        ////[RenderPropertyAsVector4Input(minLimit: Mathematics.Vector4.Zero, maxLimit: new Mathematics.Vector4(0.5f))]
+        public Mathematics.Vector4 RoundCornersRadius
+        {
+            get => this.Parameters_RoundCornersRadious;
+            set => this.Parameters_RoundCornersRadious = value;
+        }
+
+        /// <summary>
         /// Gets or sets the RoundCornerMargin.
         /// </summary>
         [RenderPropertyAsFInput(minLimit: 0.0f, maxLimit: 0.5f)]
@@ -261,8 +281,8 @@ namespace WaveEngine.MRTK.Effects
         /// <summary>
         /// Gets or sets the Cutoff.
         /// </summary>
-        [RenderPropertyAsFInput(minLimit: 0.0f, maxLimit: 0.5f)]
-        public float Cutoff
+        [RenderPropertyAsFInput(minLimit: 0.0f, maxLimit: 1f)]
+        public float AlphaCutoff
         {
             get => this.Parameters_Cutoff;
             set => this.Parameters_Cutoff = value;
@@ -333,6 +353,36 @@ namespace WaveEngine.MRTK.Effects
         {
             get => this.Parameters_FadeMinValue;
             set => this.Parameters_FadeMinValue = value;
+        }
+
+        /// <summary>
+        /// Gets or sets the IridescenceIntensity.
+        /// </summary>
+        [RenderPropertyAsFInput(minLimit: 0.0f, maxLimit: 1.0f)]
+        public float IridescenceIntensity
+        {
+            get => this.Parameters_IridescenceIntensity;
+            set => this.Parameters_IridescenceIntensity = value;
+        }
+
+        /// <summary>
+        /// Gets or sets the IridescenceThreshold.
+        /// </summary>
+        [RenderPropertyAsFInput(minLimit: 0.0f, maxLimit: 1.0f)]
+        public float IridescenceThreshold
+        {
+            get => this.Parameters_IridescenceThreshold;
+            set => this.Parameters_IridescenceThreshold = value;
+        }
+
+        /// <summary>
+        /// Gets or sets the IridescenceAngle.
+        /// </summary>
+        [RenderPropertyAsFInput(minLimit: -0.78f, maxLimit: 0.78f)]
+        public float IridescenceAngle
+        {
+            get => this.Parameters_IridescenceAngle;
+            set => this.Parameters_IridescenceAngle = value;
         }
     }
 }

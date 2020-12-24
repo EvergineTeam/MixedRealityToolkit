@@ -191,4 +191,10 @@ _InstallerOutput/
 src/.idea/
 .waveengine
 
+# WaveEngine
+.waveengine/
 WaveContent.cs
+!**/Content/**/*.obj
+
+Environment.wedir
+**/Environment/
