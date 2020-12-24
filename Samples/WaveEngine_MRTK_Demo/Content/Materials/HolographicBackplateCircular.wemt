@@ -1,16 +1,20 @@
 !WaveEngine.Assets.Exporters.MaterialMetaFile,WaveEngine.Assets
-Id: 69efcf10-45b8-4d22-8ab3-b4e309f49eb7
+Id: 3ea22f6a-babb-4f87-aa60-e5a4f0d43d91
 DefaultProfile:
   ExcludeAsset: false
   Name: null
   Platform: Undefined
 ExportAsRaw: false
 MaterialInfo:
-  Id: 23173b15-a590-44c5-8704-4dd30aca69a1
+  Id: 64b7a859-b1e6-4ef1-9ce3-35d7fbdf0ada
   ActiveDirectives:
+    - BORDER_LIGHT
+    - BORDER_LIGHT_REPLACES_ALBEDO
+    - HOVER_LIGHT_ON
+    - IGNORE_Z_SCALE
     - IRIDESCENCE
-    - LIT
-    - PROXIMITY_LIGHT
+    - NO_FINGERS_DIST
+    - ROUND_CORNERS
   AllowInstancing: false
   EffectID: 4f7e4c24-e83c-4350-9cd4-511fb2199cf4
   Layer: 0db59561-b3f5-444f-b5de-e62e3a5b42bf
@@ -18,7 +22,7 @@ MaterialInfo:
   Parameters:
     - Name: WorldViewProj
       Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
-      ValueByteArray: uTeJQOijSz0/Wo0/oVaNP1gDkDOYe5pA9cQYvQzBGL3VxDVAerqZvSNq1b+sZNW/v+SlLnMC6TQe7ItAvBuPQA==
+      ValueByteArray: Yjb0PKkRl8C81da+PNDWvhuWpDBMp4E/HVT6v7RN+r9nlaTAwSjgvGBjH7tLXx+7ZfW6LwwkQTUg7ItAvhuPQA==
     - Name: World
       Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
       ValueByteArray: AAAAQAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAACAPw==
@@ -33,25 +37,25 @@ MaterialInfo:
       ValueByteArray: AACAPwAAgD8AAIA/
     - Name: InnerGlowAlpha
       Type: System.Single
-      ValueByteArray: AABAPw==
+      ValueByteArray: AACAPw==
     - Name: InnerGlowPower
       Type: System.Single
-      ValueByteArray: AACAQA==
+      ValueByteArray: AAAgQQ==
     - Name: BorderWidth
       Type: System.Single
-      ValueByteArray: zczMPQ==
+      ValueByteArray: CtcjPQ==
     - Name: BorderMinValue
       Type: System.Single
-      ValueByteArray: zczMPQ==
+      ValueByteArray: mpkZPw==
     - Name: FluentLightIntensity
       Type: System.Single
       ValueByteArray: AACAPw==
     - Name: RoundCornerRadious
       Type: System.Single
-      ValueByteArray: AACAPg==
+      ValueByteArray: +P//Pg==
     - Name: RoundCornerMargin
       Type: System.Single
-      ValueByteArray: CtcjPA==
+      ValueByteArray: AAAAAA==
     - Name: Cutoff
       Type: System.Single
       ValueByteArray: AAAAPw==
@@ -60,13 +64,13 @@ MaterialInfo:
       ValueByteArray: AAAAPwAAAD8AAAA/AAAAPw==
     - Name: EdgeSmoothingValue
       Type: System.Single
-      ValueByteArray: bxIDOw==
+      ValueByteArray: AAAAAA==
     - Name: FadeBeginDistance
       Type: System.Single
       ValueByteArray: CtcjPA==
     - Name: FadeCompleteDistance
       Type: System.Single
-      ValueByteArray: zczMPQ==
+      ValueByteArray: zcxMPQ==
     - Name: FadeMinValue
       Type: System.Single
       ValueByteArray: AAAAAA==
@@ -105,13 +109,13 @@ MaterialInfo:
       ValueByteArray: FK5Hvw==
     - Name: EyePosition
       Type: WaveEngine.Mathematics.Vector3,WaveEngine.Mathematics
-      ValueByteArray: aAUewKDIqj21lG5A
+      ValueByteArray: MitwP4bsi0ACL7I7
     - Name: EyeCount
       Type: System.Int32
       ValueByteArray: AQAAAA==
     - Name: MultiviewViewProj
       Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
-      ValueByteArray: uTcJQOijyzw/Wg0/oVYNP1gDEDOYexpA9cSYvAzBmLzVxLU/eroZvSNqVb+sZFW/v+SlLnMC6TQe7ItAvBuPQA==
+      ValueByteArray: YjZ0PKkRF8C81Va+PNBWvhuWJDBMpwE/HVR6v7RNer9nlSTAwShgvGBjn7pLX5+6ZfW6LwwkQTUg7ItAvhuPQA==
     - Name: SunDirection
       Type: WaveEngine.Mathematics.Vector3,WaveEngine.Mathematics
       ValueByteArray: AAAAAAAAAAAAAIA/

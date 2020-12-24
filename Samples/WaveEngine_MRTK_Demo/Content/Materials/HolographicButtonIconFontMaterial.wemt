@@ -6,18 +6,19 @@ DefaultProfile:
   Platform: Undefined
 ExportAsRaw: false
 MaterialInfo:
-  Id: 6ecf3151-9a92-4d09-90a0-8919926893b8
+  Id: b0a31d31-4e86-400a-9d8c-f29d5123c769
   ActiveDirectives:
     - ALBEDO_MAP
+    - ALPHA_CLIP
     - DIFF
   AllowInstancing: false
   EffectID: 4f7e4c24-e83c-4350-9cd4-511fb2199cf4
-  Layer: e35c59a9-26ab-4b4c-8210-4b1f21c31530
+  Layer: 0db59561-b3f5-444f-b5de-e62e3a5b42bf
   OrderBias: 0
   Parameters:
     - Name: WorldViewProj
       Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
-      ValueByteArray: xbCMPxu6Nb8Lx+4/7sDuP50bILP8n5hAI3ifPg50nz7WjUlAi7N9Pm+sJr8rqCa//yF2sV9xSTUf7ItAvRuPQA==
+      ValueByteArray: Unl3QHcLjz/tE54/4Q+ePwAAAAC3rZBA9rszv1y3M78wDVlAIBijv/07tL9gN7S/xVFbs8QPijUg7ItAvhuPQA==
     - Name: World
       Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
       ValueByteArray: AAAAQAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAACAPw==
@@ -81,9 +82,6 @@ MaterialInfo:
     - Name: ProximityLightOuterColorOverride
       Type: WaveEngine.Mathematics.Vector4,WaveEngine.Mathematics
       ValueByteArray: b/qmPctjGjwe/gM/AACAPw==
-    - Name: LightColor0
-      Type: WaveEngine.Mathematics.Vector4,WaveEngine.Mathematics
-      ValueByteArray: Z9xePmfcXj5n3F4+AACAPw==
     - Name: Metallic
       Type: System.Single
       ValueByteArray: AAAAAA==
@@ -96,21 +94,27 @@ MaterialInfo:
     - Name: Offset
       Type: WaveEngine.Mathematics.Vector2,WaveEngine.Mathematics
       ValueByteArray: AAAAAAAAAAA=
-    - Name: HoverLightData
-      Type: WaveEngine.Mathematics.Vector4,WaveEngine.Mathematics
-      ValueByteArray: AAAAAAAAAAAAAAAAAAAAAA==
-    - Name: ProximityLightData
-      Type: WaveEngine.Mathematics.Vector4,WaveEngine.Mathematics
-      ValueByteArray: AAAAAAAAAAAAAAAAAAAAAA==
     - Name: MultiviewViewProj
       Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
       ValueByteArray: VlS+P0ch1D45m9Y+upXWPgAAAACZ/A5ACAnCvhAEwr6YXEE/q81Qv6s9U79DOFO/n/INMzG7zzQf7ItAvRuPQA==
     - Name: EyeCount
       Type: System.Int32
       ValueByteArray: AQAAAA==
+    - Name: SunDirection
+      Type: WaveEngine.Mathematics.Vector3,WaveEngine.Mathematics
+      ValueByteArray: vI2kPnobRD/3gQ4/
+    - Name: SunColor
+      Type: WaveEngine.Mathematics.Vector3,WaveEngine.Mathematics
+      ValueByteArray: AAByP2jyXz9ockc/
+    - Name: HoverLightData
+      Type: WaveEngine.Mathematics.Vector4,WaveEngine.Mathematics
+      ValueByteArray: AAAAAAAAAAAAAAAAAAAAAA==
+    - Name: ProximityLightData
+      Type: WaveEngine.Mathematics.Vector4,WaveEngine.Mathematics
+      ValueByteArray: AAAAAAAAAAAAAAAAAAAAAA==
   Samplers:
-    - ID: 00000000-0000-0000-0000-000000000000
-      Name: null
+    - ID: a6f09f12-0f97-4b8e-a872-3f8dbe5bd249
+      Name: Sampler
   Textures:
     - ID: b738c3da-30ed-4e99-a009-0cb4c5aeae02
       Name: Texture

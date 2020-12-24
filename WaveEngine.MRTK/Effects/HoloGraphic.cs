@@ -314,6 +314,42 @@ namespace WaveEngine.MRTK.Effects
             }
         }
 
+        public float Parameters_IridescenceIntensity
+        {
+            get
+            {
+                return this.material.CBuffers[1].GetBufferData<System.Single>(192);
+            }
+            set
+            {
+                this.material.CBuffers[1].SetBufferData(value, 192);
+            }
+        }
+
+        public float Parameters_IridescenceThreshold
+        {
+            get
+            {
+                return this.material.CBuffers[1].GetBufferData<System.Single>(196);
+            }
+            set
+            {
+                this.material.CBuffers[1].SetBufferData(value, 196);
+            }
+        }
+
+        public float Parameters_IridescenceAngle
+        {
+            get
+            {
+                return this.material.CBuffers[1].GetBufferData<System.Single>(200);
+            }
+            set
+            {
+                this.material.CBuffers[1].SetBufferData(value, 200);
+            }
+        }
+
         public WaveEngine.Common.Graphics.Texture Texture
         {
             get
@@ -326,6 +362,18 @@ namespace WaveEngine.MRTK.Effects
             }
         }
 
+        public WaveEngine.Common.Graphics.Texture IridescentSpectrumMap
+        {
+            get
+            {
+                return this.material.TextureSlots[1].Texture;
+            }
+            set
+            {
+                this.material.SetTexture(value, 1);
+            }
+        }
+
         public WaveEngine.Common.Graphics.SamplerState Sampler
         {
             get
@@ -335,6 +383,18 @@ namespace WaveEngine.MRTK.Effects
             set
             {
                 this.material.SetSampler(value, 0);
+            }
+        }
+
+        public WaveEngine.Common.Graphics.SamplerState IridescentSpectrumMapSampler
+        {
+            get
+            {
+                return this.material.SamplerSlots[1].Sampler;
+            }
+            set
+            {
+                this.material.SetSampler(value, 1);
             }
         }
     }

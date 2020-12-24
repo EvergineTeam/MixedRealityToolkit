@@ -1,24 +1,29 @@
 !WaveEngine.Assets.Exporters.MaterialMetaFile,WaveEngine.Assets
-Id: 69efcf10-45b8-4d22-8ab3-b4e309f49eb7
+Id: 63d36daa-5a7c-4214-aaa5-54209ad8e041
 DefaultProfile:
   ExcludeAsset: false
   Name: null
   Platform: Undefined
 ExportAsRaw: false
 MaterialInfo:
-  Id: 23173b15-a590-44c5-8704-4dd30aca69a1
+  Id: cc7c3a02-e589-4a25-8ce5-d6ba92cdab21
   ActiveDirectives:
-    - IRIDESCENCE
-    - LIT
+    - BORDER_LIGHT
+    - BORDER_LIGHT_OPAQUE
+    - HOVER_LIGHT
+    - IGNORE_Z_SCALE
+    - NEAR_LIGHT_FADE
     - PROXIMITY_LIGHT
+    - PROXIMITY_LIGHT_TWO_SIDED
+    - ROUND_CORNERS
   AllowInstancing: false
   EffectID: 4f7e4c24-e83c-4350-9cd4-511fb2199cf4
-  Layer: 0db59561-b3f5-444f-b5de-e62e3a5b42bf
+  Layer: 1bfafe78-d87c-482e-8ba9-ddc18d3e9a6d
   OrderBias: 0
   Parameters:
     - Name: WorldViewProj
       Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
-      ValueByteArray: uTeJQOijSz0/Wo0/oVaNP1gDkDOYe5pA9cQYvQzBGL3VxDVAerqZvSNq1b+sZNW/v+SlLnMC6TQe7ItAvBuPQA==
+      ValueByteArray: qh+kQJQOSb6f5wC+UuQAvgAAAADexoFA6fGKv1ruir+MUcW+sTsnwDNw1r+2ata/Xh4QMoTMmjUf7ItAvRuPQA==
     - Name: World
       Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
       ValueByteArray: AAAAQAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAACAPw==
@@ -39,19 +44,19 @@ MaterialInfo:
       ValueByteArray: AACAQA==
     - Name: BorderWidth
       Type: System.Single
-      ValueByteArray: zczMPQ==
+      ValueByteArray: CtejPA==
     - Name: BorderMinValue
       Type: System.Single
-      ValueByteArray: zczMPQ==
+      ValueByteArray: AACAPw==
     - Name: FluentLightIntensity
       Type: System.Single
       ValueByteArray: AACAPw==
     - Name: RoundCornerRadious
       Type: System.Single
-      ValueByteArray: AACAPg==
+      ValueByteArray: AAAAPw==
     - Name: RoundCornerMargin
       Type: System.Single
-      ValueByteArray: CtcjPA==
+      ValueByteArray: j8J1PA==
     - Name: Cutoff
       Type: System.Single
       ValueByteArray: AAAAPw==
@@ -66,7 +71,7 @@ MaterialInfo:
       ValueByteArray: CtcjPA==
     - Name: FadeCompleteDistance
       Type: System.Single
-      ValueByteArray: zczMPQ==
+      ValueByteArray: zcxMPQ==
     - Name: FadeMinValue
       Type: System.Single
       ValueByteArray: AAAAAA==
@@ -94,24 +99,12 @@ MaterialInfo:
     - Name: Offset
       Type: WaveEngine.Mathematics.Vector2,WaveEngine.Mathematics
       ValueByteArray: AAAAAAAAAAA=
-    - Name: IridescenceIntensity
-      Type: System.Single
-      ValueByteArray: AABAPw==
-    - Name: IridescenceThreshold
-      Type: System.Single
-      ValueByteArray: zcxMPQ==
-    - Name: IridescenceAngle
-      Type: System.Single
-      ValueByteArray: FK5Hvw==
-    - Name: EyePosition
-      Type: WaveEngine.Mathematics.Vector3,WaveEngine.Mathematics
-      ValueByteArray: aAUewKDIqj21lG5A
+    - Name: MultiviewViewProj
+      Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
+      ValueByteArray: kpPOPwjcv72p9ji+gfM4vnJaDrfRDxdA/yFXvlQeV77EUpu+3jP/vuj+db+2+nW/9FFXPnRC377/T5++KTRYvg==
     - Name: EyeCount
       Type: System.Int32
       ValueByteArray: AQAAAA==
-    - Name: MultiviewViewProj
-      Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
-      ValueByteArray: uTcJQOijyzw/Wg0/oVYNP1gDEDOYexpA9cSYvAzBmLzVxLU/eroZvSNqVb+sZFW/v+SlLnMC6TQe7ItAvBuPQA==
     - Name: SunDirection
       Type: WaveEngine.Mathematics.Vector3,WaveEngine.Mathematics
       ValueByteArray: AAAAAAAAAAAAAIA/
@@ -127,11 +120,7 @@ MaterialInfo:
   Samplers:
     - ID: 00000000-0000-0000-0000-000000000000
       Name: null
-    - ID: 00000000-0000-0000-0000-000000000000
-      Name: null
   Textures:
     - ID: 00000000-0000-0000-0000-000000000000
       Name: null
-    - ID: 93738f86-b58f-45fe-9fed-4520abc4b755
-      Name: IridescentSpectrumMap
 Profiles: {}

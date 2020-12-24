@@ -1,5 +1,6 @@
 [Begin_ResourceLayout]
 
+[directives:ALPHA_CLIP					   ALPHA_CLIP_OFF					  ALPHA_CLIP					 ]
 [directives:BORDER_LIGHT                   BORDER_LIGHT_OFF                   BORDER_LIGHT                   ]
 [directives:BORDER_LIGHT_REPLACES_ALBEDO   BORDER_LIGHT_REPLACES_ALBEDO_OFF   BORDER_LIGHT_REPLACES_ALBEDO   ]
 [directives:BORDER_LIGHT_OPAQUE            BORDER_LIGHT_OPAQUE_OFF            BORDER_LIGHT_OPAQUE            ]
@@ -17,6 +18,7 @@
 [directives:PROXIMITY_LIGHT_SUBTRACTIVE    PROXIMITY_LIGHT_SUBTRACTIVE_OFF    PROXIMITY_LIGHT_SUBTRACTIVE    ]
 [directives:DIRECTIONAL_LIGHT              DIRECTIONAL_LIGHT_OFF              DIRECTIONAL_LIGHT              ]
 [directives:ALBEDO_MAP                     ALBEDO_MAP_OFF                     ALBEDO_MAP                     ]
+[directives:IRIDESCENCE					   IRIDESCENCE_OFF					  IRIDESCENCE					 ]
 [directives:Multiview                      MULTIVIEW_OFF                      MULTIVIEW                      ]
 [directives:ColorSpace 					   GAMMA_COLORSPACE_OFF 			  GAMMA_COLORSPACE				 ]
 
@@ -68,12 +70,18 @@
         
         float2 Tiling           : packoffset(c11.x);   [Default(1.0, 1.0)]
 		float2 Offset           : packoffset(c11.z);   [Default(0.0, 0.0)]
+		
+		// IRIDESCENCE
+		float IridescenceIntensity  : packoffset(c12.x); [Default(0.5)] //Range(0.0, 1.0)
+		float IridescenceThreshold  : packoffset(c12.y); [Default(0.05)] //Range(0.0, 1.0)
+		float IridescenceAngle  	: packoffset(c12.z); [Default(-0.78)] //Range(-0.78, 0.78)
 	};
 	
 	cbuffer PerCamera : register(b2)
 	{
-		float4x4  MultiviewViewProj[6]		: packoffset(c0.x);  [MultiviewViewProjection]
-		int       EyeCount                  : packoffset(c10.x); [MultiviewCount]
+		float3    EyePosition				: packoffset(c4.x); [CameraPosition]
+		int       EyeCount					: packoffset(c4.w); [MultiviewCount]
+		float4x4  MultiviewViewProj[6]		: packoffset(c5.x); [MultiviewViewProjection]
 	};
 	
 	cbuffer PerScene : register(b3)
@@ -87,6 +95,9 @@
 
 	Texture2D Texture		: register(t0);
 	SamplerState Sampler	: register(s0);
+	
+	Texture2D IridescentSpectrumMap 			: register(t1);
+	SamplerState IridescentSpectrumMapSampler 	: register(s1);
 
 [End_ResourceLayout]
 
@@ -109,6 +120,19 @@
     {
     	//return RoundCornersSmooth(position, cornerCircleDistance, cornerCircleRadius);
         return PointVsRoundedBox(position, cornerCircleDistance, cornerCircleRadius) < 0.0;
+    }
+#endif
+
+#if IRIDESCENCE
+    float3 Iridescence(float tangentDotIncident, Texture2D spectrumMap, SamplerState spectrumMapSampler, float threshold, float2 uv, float angle, float intensity)
+    {
+        float k = tangentDotIncident * 0.5 + 0.5;
+        float4 left = spectrumMap.SampleLevel(spectrumMapSampler, float2(lerp(0.0, 1.0 - threshold, k), 0.5), 0);
+        float4 right = spectrumMap.SampleLevel(spectrumMapSampler, float2(lerp(threshold, 1.0, k), 0.5), 0);
+
+        float2 XY = uv - float2(0.5, 0.5);
+        float s = (cos(angle) * XY.x - sin(angle) * XY.y) / cos(angle);
+        return (left.rgb + s * (right.rgb - left.rgb)) * intensity;
     }
 #endif
 
@@ -216,8 +240,12 @@
 #endif
 #if BORDER_LIGHT
         float4 uv 		: TEXCOORD2;
-#elif INNER_GLOW || ROUND_CORNERS || ALBEDO_MAP
+#elif INNER_GLOW || ROUND_CORNERS || ALBEDO_MAP || IRIDESCENCE
         float2 uv 		: TEXCOORD2;
+#endif
+
+#if IRIDESCENCE
+		float3 iridescentColor : COLOR0;
 #endif
 
 #if BORDER_LIGHT || ROUND_CORNERS
@@ -350,6 +378,13 @@
         output.uv = input.uv;
 #endif
 
+#if IRIDESCENCE
+		float3 rightTangent = normalize(mul(float3(1.0, 0.0, 0.0), (float3x3)World));
+        float3 incidentWithCenter = normalize(mul(float4(0.0, 0.0, 0.0, 1.0), World).xyz - EyePosition);
+        float tangentDotIncident = dot(rightTangent, incidentWithCenter);
+        output.iridescentColor = Iridescence(tangentDotIncident, IridescentSpectrumMap, IridescentSpectrumMapSampler, IridescenceThreshold, input.uv, IridescenceAngle, IridescenceIntensity);
+#endif
+
 		return output;
 	}
 
@@ -410,6 +445,9 @@
 		float3 worldNormal = normalize(input.worldNormal);
 #endif
 
+#if IRIDESCENCE
+        albedo.rgb += input.iridescentColor;
+#endif
 
         float pointToLight = 1.0;
         float3 fluentLightColor = float3(0.0, 0.0, 0.0);
@@ -494,8 +532,11 @@
 
 #if ROUND_CORNERS
 		albedo *= roundCornerClip;
-        clip(albedo.a - Cutoff);
-        albedo.a = Alpha;
+#endif
+
+#if ALPHA_CLIP || ROUND_CORNERS
+	clip(albedo.a - Cutoff);
+    albedo.a = 1.0;
 #endif
 		
 // Blinn phong lighting.
