@@ -86,7 +86,7 @@ namespace WaveEngine_MRTK_Demo.Editor
             {
                 if (this.AddDirectiveCheckbox("Independent Corners", HoloGraphic.IndependentCornersDirective))
                 {
-                    this.AddMember(nameof(HoloGraphic.Parameters_RoundCornersRadious));
+                    this.AddMember(nameof(HoloGraphic.RoundCornersRadius));
                 }
                 else
                 {
@@ -94,15 +94,18 @@ namespace WaveEngine_MRTK_Demo.Editor
                 }
 
                 this.AddMember(nameof(HoloGraphic.RoundCornerMargin));
-
-                // TODO: Cutoff property is at different position in Unity. For now, we put Cutoff here because
-                // it is only used by ROUND_CORNERS directive
-                this.AddMember(nameof(HoloGraphic.Cutoff));
             }
 
             if (roundCorners || borderLight)
             {
                 this.AddMember(nameof(HoloGraphic.EdgeSmoothingValue));
+                this.AddDirectiveCheckbox("Ignore Z Scale", HoloGraphic.IgnoreZScaleDirective);
+            }
+
+            var alphaClip = this.AddDirectiveCheckbox("Alpha Clip", HoloGraphic.AlphaClipDirective);
+            if (alphaClip || roundCorners)
+            {
+                this.AddMember(nameof(HoloGraphic.AlphaCutoff));
             }
 
             if (this.AddDirectiveCheckbox("Inner Glow", HoloGraphic.InnerGlowDirective))
@@ -111,16 +114,22 @@ namespace WaveEngine_MRTK_Demo.Editor
                 this.AddMember(nameof(HoloGraphic.InnerGlowPower));
             }
 
+            if (this.AddDirectiveCheckbox("Iridescence", HoloGraphic.IridescenceDirective))
+            {
+                this.AddMember(nameof(HoloGraphic.IridescentSpectrumMap));
+                this.AddMember(nameof(HoloGraphic.IridescentSpectrumMapSampler));
+                this.AddMember(nameof(HoloGraphic.IridescenceIntensity));
+                this.AddMember(nameof(HoloGraphic.IridescenceThreshold));
+                this.AddMember(nameof(HoloGraphic.IridescenceAngle));
+            }
+
             // TODO: In Unity this is related to nearPlaneFade.
-            // if (this.AddDirectiveCheckbox("Near Plane Fade", "NEAR_PLANE_FADE"))
             if (this.AddDirectiveCheckbox("Near Light Fade", HoloGraphic.NearLightFadeDirective))
             {
-                // if (this.AddDirectiveCheckbox("Near Light Fade", "NEAR_LIGHT_FADE"))
                 this.AddMember(nameof(HoloGraphic.FadeBeginDistance));
                 this.AddMember(nameof(HoloGraphic.FadeCompleteDistance));
                 this.AddMember(nameof(HoloGraphic.FadeMinValue));
             }
-
 
             foreach (var item in this.propertyPanelContainer.Properties)
             {
