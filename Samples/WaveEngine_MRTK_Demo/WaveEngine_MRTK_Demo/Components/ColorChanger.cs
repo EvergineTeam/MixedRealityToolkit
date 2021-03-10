@@ -24,13 +24,13 @@ namespace WaveEngine_MRTK_Demo.Components
         {
             if (!Application.Current.IsEditor)
             {
-                materials = new Material[]{material0, material1, material2, material3};
+                materials = new Material[] { material0, material1, material2, material3 };
                 materialComponent.Material = material0;
 
                 string[] nodesWithButtons = { "PressableButtons", "PressableButtonsSharedPlate", "PressableButtonsSharedPlate40x40mm" };
                 foreach (string nodeName in nodesWithButtons)
                 {
-                    Entity buttonsParent = this.Owner.Parent.Find(nodeName);
+                    Entity buttonsParent = this.Owner.Parent.FindChild(nodeName);
                     foreach (PressableButton b in buttonsParent.FindComponentsInChildren<PressableButton>())
                     {
                         b.ButtonPressed += OnButtonPressed;
@@ -48,7 +48,7 @@ namespace WaveEngine_MRTK_Demo.Components
 
         private void OnButtonPressed(object sender, EventArgs e)
         {
-            materialComponent.Material = materials[(currentMaterialIdx ++) % materials.Length];
+            materialComponent.Material = materials[(currentMaterialIdx++) % materials.Length];
         }
     }
 }
