@@ -48,11 +48,6 @@ namespace WaveEngine.MRTK.Scenes
         protected abstract Guid SpatialMappingMat { get; }
 
         /// <summary>
-        /// Gets holographics effect Guid.
-        /// </summary>
-        protected abstract Guid HolographicEffect { get; }
-
-        /// <summary>
         /// Gets the texture for the hand rays.
         /// </summary>
         protected abstract Guid HandRayTexture { get; }
@@ -94,7 +89,6 @@ namespace WaveEngine.MRTK.Scenes
                 assetsService.Load<Material>(this.CursorMatPressed),
                 this.HoloHandsMat == Guid.Empty ? null : assetsService.Load<Material>(this.HoloHandsMat),
                 this.SpatialMappingMat == Guid.Empty ? null : assetsService.Load<Material>(this.SpatialMappingMat),
-                this.HolographicEffect,
                 assetsService.Load<Texture>(this.HandRayTexture),
                 assetsService.Load<SamplerState>(this.HandRaySampler));
         }
@@ -208,20 +202,17 @@ namespace WaveEngine.MRTK.Scenes
         }
 
         /// <summary>
-        /// Initializes scene for holololens.
+        /// Initializes scene for HoloLens.
         /// </summary>
         /// <param name="scene">Scene to add components to.</param>
         /// <param name="cursorMatReleased">Material for the cursor when it's released.</param>
         /// <param name="cursorMatPressed">Material for the cursor when it's pressed.</param>
         /// <param name="handMat">Material for the hands.</param>
-        /// <param name="spatialMappingMat">Maerial for the spatial mapping.</param>
-        /// <param name="holographicsEffectId">Id for holographic effect.</param>
+        /// <param name="spatialMappingMat">Material for the spatial mapping.</param>
         /// <param name="handRayTexture">Texture for handrays.</param>
         /// <param name="handRaySampler">Sampler for the handrays texture.</param>
-        public static void InitHoloScene(Scene scene, Material cursorMatReleased, Material cursorMatPressed, Material handMat, Material spatialMappingMat, Guid holographicsEffectId, Texture handRayTexture, SamplerState handRaySampler)
+        public static void InitHoloScene(Scene scene, Material cursorMatReleased, Material cursorMatPressed, Material handMat, Material spatialMappingMat, Texture handRayTexture, SamplerState handRaySampler)
         {
-            var assetsService = Application.Current.Container.Resolve<AssetsService>();
-
             // Create cursors
             CreateCursor(scene, cursorMatReleased, cursorMatPressed, XRHandedness.LeftHand, handRayTexture, handRaySampler);
             CreateCursor(scene, cursorMatReleased, cursorMatPressed, XRHandedness.RightHand, handRayTexture, handRaySampler);
@@ -233,14 +224,26 @@ namespace WaveEngine.MRTK.Scenes
                 CreateXRHandMesh(scene, handMat, XRHandedness.RightHand);
             }
 
-            // Create position updater
-            scene.Managers.AddManager(new CursorPosShaderUpdater(holographicsEffectId));
+            var entityManager = scene.Managers.EntityManager;
+
+            // Create cursor position updater
+            if (entityManager.FindFirstComponentOfType<CursorPosShaderUpdater>() == null)
+            {
+                entityManager.Add(new Entity(nameof(CursorPosShaderUpdater))
+                    .AddComponent(new CursorPosShaderUpdater()));
+            }
+
+            // Create Holographic batching disabler
+            if (entityManager.FindFirstComponentOfType<HolographicBatching>() == null)
+            {
+                entityManager.Add(new Entity(nameof(HolographicBatching))
+                    .AddComponent(new HolographicBatching()));
+            }
 
             // Create spatial mapping
-            SpatialMapping spatialMapping = new SpatialMapping() { GenerateColliders = true, Material = spatialMappingMat };
-            spatialMapping.UpdateInterval = new TimeSpan(0, 0, 1);
-            scene.Managers.EntityManager.Add(new Entity("SpatialMapping")
-                .AddComponent(new Transform3D())
+            var spatialMapping = new SpatialMapping() { GenerateColliders = true, Material = spatialMappingMat };
+            spatialMapping.UpdateInterval = TimeSpan.FromSeconds(1);
+            entityManager.Add(new Entity(nameof(SpatialMapping))
                 .AddComponent(spatialMapping));
         }
     }

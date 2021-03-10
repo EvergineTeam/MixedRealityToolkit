@@ -1,7 +1,9 @@
 ﻿// Copyright © Wave Engine S.L. All rights reserved. Use is subject to license terms.
 
+using System;
 using System.Linq;
 using WaveEngine.Common.Attributes;
+using WaveEngine.Framework.Graphics;
 using Color = WaveEngine.Common.Graphics.Color;
 
 namespace WaveEngine.MRTK.Effects
@@ -10,8 +12,17 @@ namespace WaveEngine.MRTK.Effects
     /// Partial class for Holographic, needed for Custom Editor.
     /// </summary>
     [Framework.Graphics.MaterialDecoratorAttribute("4f7e4c24-e83c-4350-9cd4-511fb2199cf4")]
-    public partial class HoloGraphic : Framework.Graphics.MaterialDecorator
+    public partial class HoloGraphic : MaterialDecorator
     {
+        /// <summary>
+        /// The effect id.
+        /// </summary>
+        public static Guid EffectId = Guid.Parse((string)typeof(HoloGraphic)
+                                           .CustomAttributes
+                                           .First(x => x.AttributeType == typeof(MaterialDecoratorAttribute))
+                                           .ConstructorArguments[0]
+                                           .Value);
+
         /// <summary>
         /// The AlphaClip feature directive.
         /// </summary>
