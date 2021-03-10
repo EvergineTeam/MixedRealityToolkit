@@ -1,6 +1,6 @@
 [Begin_ResourceLayout]
 
-[directives:ColorSpace GAMMA_COLORSPACE_OFF GAMMA_COLORSPACE]
+	[Directives:ColorSpace GAMMA_COLORSPACE_OFF GAMMA_COLORSPACE]
 
 	cbuffer CameraData : register(b0)
 	{
@@ -14,8 +14,8 @@
 
 [Begin_Pass:Default]
 
-	[profile 10_0]
-	[entrypoints VS=VS PS=PS]
+	[Profile 10_0]
+	[Entrypoints VS=VS PS=PS]
 
 	float4 GammaToLinear(const float4 color)
 	{

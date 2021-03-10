@@ -1,0 +1,25 @@
+!WaveEngine.Assets.Exporters.EffectMetaFile,WaveEngine.Assets
+Id: 5d0ed39b-6526-4c39-8de0-d00d78ba5de0
+DefaultProfile:
+  Compile: ByPlatform
+  ExcludeAsset: false
+  GraphicsBackend: ByPlatform
+  MandatoryCombinations: null
+  Name: null
+  Platform: Undefined
+ExportAsRaw: false
+Profiles:
+  Web:
+    Compile: Yes
+    ExcludeAsset: false
+    GraphicsBackend: ByPlatform
+    MandatoryCombinations: DIFF,  DIFF-ANGLE, DIFF-ANGLE-WORLD, DIFF-WORLD,  ANGLE, WORLD, ANGLE-WORLD
+    Name: Web
+    Platform: Web
+  Web1:
+    Compile: Yes
+    ExcludeAsset: false
+    GraphicsBackend: ByPlatform
+    MandatoryCombinations: DIFF, DIFF-ANGLE, DIFF-ANGLE-LOCAL, DIFF-LOCAL, ANGLE, ANGLE-LOCAL, LOCAL,  HIGHLIGHTS-DIFF, HIGHLIGHTS-DIFF-ANGLE, HIGHLIGHTS-DIFF-ANGLE-LOCAL, HIGHLIGHTS-DIFF-LOCAL
+    Name: WebGL1
+    Platform: Web

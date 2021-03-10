@@ -1,8 +1,8 @@
 [Begin_ResourceLayout]
 
-[directives:Kind BASE PULSE]
-[directives:Multiview MULTIVIEW_OFF MULTIVIEW]
-[directives:ColorSpace GAMMA_COLORSPACE_OFF GAMMA_COLORSPACE]
+	[Directives:Kind BASE PULSE]
+	[Directives:Multiview MULTIVIEW_OFF MULTIVIEW]
+	[Directives:ColorSpace GAMMA_COLORSPACE_OFF GAMMA_COLORSPACE]
 
 	cbuffer Base : register(b0)
 	{
@@ -38,8 +38,8 @@
 
 [Begin_Pass:Default]
 
-	[profile 11_0]
-	[entrypoints VS=VS GS=GS PS=PS]
+	[Profile 11_0]
+	[Entrypoints VS=VS GS=GS PS=PS]
 
 	struct VS_IN
 	{

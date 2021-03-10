@@ -1,0 +1,25 @@
+!WaveEngine.Assets.Exporters.EffectMetaFile,WaveEngine.Assets
+Id: f79873b0-80c4-49ef-b7ae-2044b59c5324
+DefaultProfile:
+  Compile: ByPlatform
+  ExcludeAsset: false
+  GraphicsBackend: ByPlatform
+  MandatoryCombinations: null
+  Name: null
+  Platform: Undefined
+ExportAsRaw: false
+Profiles:
+  Web:
+    Compile: ByPlatform
+    ExcludeAsset: true
+    GraphicsBackend: ByPlatform
+    MandatoryCombinations: null
+    Name: Web
+    Platform: Web
+  Web.ExperimentalWebGL1:
+    Compile: ByPlatform
+    ExcludeAsset: true
+    GraphicsBackend: ByPlatform
+    MandatoryCombinations: null
+    Name: Web.ExperimentalWebGL1
+    Platform: Web

@@ -1,0 +1,34 @@
+!WaveEngine.Assets.Exporters.MaterialMetaFile,WaveEngine.Assets
+Id: 5f795365-07f5-4b56-83df-043eb40a7457
+DefaultProfile:
+  ExcludeAsset: false
+  Name: null
+  Platform: Undefined
+ExportAsRaw: false
+MaterialInfo:
+  Id: d8636c98-0774-466a-b400-911d5284048b
+  ActiveDirectives: []
+  AllowInstancing: false
+  EffectID: d672019c-2887-4056-a0e7-2141d2fe5f78
+  Layer: e35c59a9-26ab-4b4c-8210-4b1f21c31530
+  OrderBias: 0
+  Parameters:
+    - Name: World
+      Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
+      ValueByteArray: AAAAQAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAACAPw==
+    - Name: View
+      Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
+      ValueByteArray: AACAPwAAAIAAAAAAAAAAgAAAAIAu+WQ/MPnkPgAAAAAAAAAAMPnkvi75ZD8AAACAAAAAgAAAgDS9G4/AAACAPw==
+    - Name: Projection
+      Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
+      ValueByteArray: FqwSQAAAAAAAAAAAAAAAAAAAAAB5ghpAAAAAAAAAAAAAAAAAAAAAAEcDgL8AAIC/AAAAAAAAAAAL0sy9AAAAAA==
+    - Name: Intensity
+      Type: System.Single
+      ValueByteArray: zczMPQ==
+  Samplers:
+    - ID: 9018edf8-ea96-4721-bf83-5561942432e0
+      Name: Sampler
+  Textures:
+    - ID: 34b16253-37ce-457a-bd5b-3ed27bb51738
+      Name: DistortionTexture
+Profiles: {}

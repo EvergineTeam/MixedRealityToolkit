@@ -1,10 +1,10 @@
 !WaveEngine.Assets.Exporters.EffectMetaFile,WaveEngine.Assets
 Id: daa1f60a-82ad-40fc-8fbb-7b85caa6de0a
 DefaultProfile:
-  Compile: Yes
+  Compile: ByPlatform
   ExcludeAsset: false
   GraphicsBackend: ByPlatform
-  MandatoryCombinations: ",IBL,DIFF-IBL-LIT-MT_RG_TEXTURED-NORMAL,IBL-LIT,DIFF-EMIS-IBL-LIT-MT_RG_TEXTURED-NORMAL,DIFF-IBL-LIT-NORMAL,LIT,DIFF"
+  MandatoryCombinations: 
   Name: null
   Platform: Undefined
 ExportAsRaw: false

@@ -1,16 +1,16 @@
 [Begin_ResourceLayout]
 
-[directives:Multiview MULTIVIEW_OFF MULTIVIEW]
+	[Directives:Multiview MULTIVIEW_OFF MULTIVIEW]
 
-Texture2D DiffuseTexture 			: register(t0);
-Texture2DArray DiffuseTextureArray	: register(t1);
-SamplerState Sampler			 	: register(s0);
+	Texture2D DiffuseTexture 			: register(t0);
+	Texture2DArray DiffuseTextureArray	: register(t1);
+	SamplerState Sampler			 	: register(s0);
 
 [End_ResourceLayout]
 
 [Begin_Pass:Default]
-	[profile 10_0]
-	[entrypoints VS=VS PS=PS]
+	[Profile 10_0]
+	[Entrypoints VS=VS PS=PS]
 
 	struct VS_IN
 	{

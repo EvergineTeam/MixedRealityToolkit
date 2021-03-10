@@ -16,8 +16,8 @@
 [End_ResourceLayout]
 
 [Begin_Pass:Distortion]
-	[profile 10_0]
-	[entrypoints VS=VS PS=PS]
+	[Profile 10_0]
+	[Entrypoints VS=VS PS=PS]
 
 	struct VS_IN
 	{

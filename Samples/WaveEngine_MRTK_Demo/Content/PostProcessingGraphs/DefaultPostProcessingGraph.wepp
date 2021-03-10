@@ -2379,203 +2379,6 @@ PostProcessingGraphInfo:
             ReferencedInput: 
             ScaleFactor: 0.0
             pixelFormat: Unknown
-      - Name: LensFlare
-        Id: 062bf6fc-b2e1-4a58-acc7-8bc2f5d3cebc
-        Position:
-          X: 9626.35156
-          Y: 1053.57874
-        EffectID: 120f7347-14bc-423c-8d37-65ee4e32e0dd
-        Inputs:
-          - Name: GhostTint
-            Id: e072eb05-7d2a-492a-8eea-15312901c848
-            Type: !WaveEngine.Framework.Graphics.PostProcessingNodePortDirectiveType,WaveEngine.Framework
-              Offset: 0
-              ResourceType: ConstantBuffer
-              Slot: 0
-              Value: Tint_On
-            Hidden: false
-            ConnectedWith: null
-          - Name: Chromatic
-            Id: c51deecc-ee7b-4824-8888-5bb04f17ed99
-            Type: !WaveEngine.Framework.Graphics.PostProcessingNodePortDirectiveType,WaveEngine.Framework
-              Offset: 0
-              ResourceType: ConstantBuffer
-              Slot: 0
-              Value: Chro_On
-            Hidden: false
-            ConnectedWith: null
-          - Name: uGhostCount
-            Id: 25008a1c-c9c9-40ed-af3e-02bac6e8af74
-            Type: !WaveEngine.Framework.Graphics.PostProcessingNodePortParameterType%601[[System.Int32]],WaveEngine.Framework
-              Offset: 0
-              ResourceType: ConstantBuffer
-              Slot: 0
-              Value: 8
-            Hidden: false
-            ConnectedWith: null
-          - Name: uGhostSpacing
-            Id: 3241db93-78e1-4a17-8ff6-997f118e5082
-            Type: !WaveEngine.Framework.Graphics.PostProcessingNodePortParameterType%601[[System.Single]],WaveEngine.Framework
-              Offset: 4
-              ResourceType: ConstantBuffer
-              Slot: 0
-              Value: 0.270000011
-            Hidden: false
-            ConnectedWith: null
-          - Name: uGhostThreshold
-            Id: 8a1ed0d9-cf25-4b18-83bb-61ea95b04abc
-            Type: !WaveEngine.Framework.Graphics.PostProcessingNodePortParameterType%601[[System.Single]],WaveEngine.Framework
-              Offset: 8
-              ResourceType: ConstantBuffer
-              Slot: 0
-              Value: 0.939999998
-            Hidden: false
-            ConnectedWith: null
-          - Name: uHaloRadius
-            Id: 74fe2cd9-b512-4a04-be14-2e416cb0c2fd
-            Type: !WaveEngine.Framework.Graphics.PostProcessingNodePortParameterType%601[[System.Single]],WaveEngine.Framework
-              Offset: 12
-              ResourceType: ConstantBuffer
-              Slot: 0
-              Value: 0.899999976
-            Hidden: false
-            ConnectedWith: null
-          - Name: uHaloThickness
-            Id: 7e25d2ee-6c59-469a-84a1-365f91b147d0
-            Type: !WaveEngine.Framework.Graphics.PostProcessingNodePortParameterType%601[[System.Single]],WaveEngine.Framework
-              Offset: 16
-              ResourceType: ConstantBuffer
-              Slot: 0
-              Value: 0.185000002
-            Hidden: false
-            ConnectedWith: null
-          - Name: uHaloThreshold
-            Id: 73de2788-de3e-498a-919d-6b1040bd1087
-            Type: !WaveEngine.Framework.Graphics.PostProcessingNodePortParameterType%601[[System.Single]],WaveEngine.Framework
-              Offset: 20
-              ResourceType: ConstantBuffer
-              Slot: 0
-              Value: 1.04499996
-            Hidden: false
-            ConnectedWith: null
-          - Name: uChromaticAberration
-            Id: 66e934ea-291d-418c-8525-82b7a8f24661
-            Type: !WaveEngine.Framework.Graphics.PostProcessingNodePortParameterType%601[[System.Single]],WaveEngine.Framework
-              Offset: 24
-              ResourceType: ConstantBuffer
-              Slot: 0
-              Value: 0.00800000038
-            Hidden: false
-            ConnectedWith: null
-          - Name: View
-            Id: 23676463-deb6-46f6-991c-02fb697c4129
-            Type: !WaveEngine.Framework.Graphics.PostProcessingNodePortParameterType%601[[WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics]],WaveEngine.Framework
-              Offset: 0
-              ResourceType: ConstantBuffer
-              Slot: 1
-              Value:
-                M11: 0.36024031
-                M12: -0.155847698
-                M13: 0.9197492
-                M14: -0.0
-                M21: -0.000117793694
-                M22: 0.985938549
-                M23: 0.167109296
-                M24: 0.0
-                M31: -0.9328596
-                M32: -0.0603078566
-                M33: 0.355156422
-                M34: -0.0
-                M41: -3.88325334
-                M42: -1.27574611
-                M43: -12.4745388
-                M44: 1.0
-            Hidden: true
-            ConnectedWith: null
-          - Name: Projection
-            Id: f6a9e324-70ab-453b-a44a-d072a80904c4
-            Type: !WaveEngine.Framework.Graphics.PostProcessingNodePortParameterType%601[[WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics]],WaveEngine.Framework
-              Offset: 64
-              ResourceType: ConstantBuffer
-              Slot: 1
-              Value:
-                M11: 0.70949173
-                M12: 0.0
-                M13: 0.0
-                M14: 0.0
-                M21: 0.0
-                M22: 2.4142158
-                M23: 0.0
-                M24: 0.0
-                M31: -0.000339673919
-                M32: -0.00109363557
-                M33: -1.001001
-                M34: -1.0
-                M41: 0.0
-                M42: 0.0
-                M43: -0.1001001
-                M44: 0.0
-            Hidden: true
-            ConnectedWith: null
-          - Name: lightDirection
-            Id: f94f3318-dfb7-48f8-9528-239f91f2d06c
-            Type: !WaveEngine.Framework.Graphics.PostProcessingNodePortParameterType%601[[WaveEngine.Mathematics.Vector3,WaveEngine.Mathematics]],WaveEngine.Framework
-              Offset: 128
-              ResourceType: ConstantBuffer
-              Slot: 1
-              Value:
-                X: -0.989477634
-                Y: 0.0920608342
-                Z: -0.111619115
-            Hidden: true
-            ConnectedWith: null
-          - Name: Input
-            Id: d2bb1ce4-b635-4b6e-b295-7ab0f6ccfd61
-            Type: !WaveEngine.Framework.Graphics.PostProcessingNodePortLoadableType%601[[WaveEngine.Common.Graphics.Texture,WaveEngine.Common]],WaveEngine.Framework
-              Offset: 0
-              ResourceType: Texture
-              Slot: 0
-              ValueID: 00000000-0000-0000-0000-000000000000
-            Hidden: false
-            ConnectedWith:
-              nodeId: 3294b13c-436e-44b5-9630-22e17e622f8f
-              portId: 492063bd-07cf-4e24-9884-ae431c9a2ffe
-          - Name: ColorGradient
-            Id: 252f26cc-c5dc-48d6-8af0-c32aa9b572a0
-            Type: !WaveEngine.Framework.Graphics.PostProcessingNodePortLoadableType%601[[WaveEngine.Common.Graphics.Texture,WaveEngine.Common]],WaveEngine.Framework
-              Offset: 0
-              ResourceType: Texture
-              Slot: 1
-              ValueID: 1104127f-8a0e-4a1c-9b8c-b8832362a809
-            Hidden: false
-            ConnectedWith: null
-          - Name: Sampler
-            Id: 46431030-e840-4495-8902-5ce0a33456fa
-            Type: !WaveEngine.Framework.Graphics.PostProcessingNodePortLoadableType%601[[WaveEngine.Common.Graphics.SamplerState,WaveEngine.Common]],WaveEngine.Framework
-              Offset: 0
-              ResourceType: Sampler
-              Slot: 0
-              ValueID: 7d1e2792-2031-42bb-a67c-0dbd282be12a
-            Hidden: false
-            ConnectedWith: null
-        Outputs:
-          - Name: Output
-            Id: b4e20950-e1fb-4a5b-b5a0-43172be459e0
-            Type: !WaveEngine.Framework.Graphics.PostProcessingNodePortLoadableType%601[[WaveEngine.Common.Graphics.Texture,WaveEngine.Common]],WaveEngine.Framework
-              Offset: 0
-              ResourceType: UnorderedAccessBuffer
-              Slot: 0
-              ValueID: 00000000-0000-0000-0000-000000000000
-            Hidden: false
-            ConnectedWith:
-              - nodeId: 96b03c24-ee97-48cf-bb99-aeb783fde10d
-                portId: 752f510c-4135-4191-b672-23283cd79d20
-            FixedSize:
-              X: 0.0
-              Y: 0.0
-            ReferencedInput: 
-            ScaleFactor: 0.0
-            pixelFormat: Unknown
       - Name: Gaussian
         Id: 9f42ea4f-9e27-43c9-8a3b-db7daa5184c1
         Position:
@@ -3169,6 +2972,150 @@ PostProcessingGraphInfo:
             ConnectedWith:
               - nodeId: bef4a5d3-2d07-4dda-ab37-143df23f165d
                 portId: 18bf88a3-8c19-45e6-b61d-e376077bc825
+            FixedSize:
+              X: 0.0
+              Y: 0.0
+            ReferencedInput: 
+            ScaleFactor: 0.0
+            pixelFormat: Unknown
+      - Name: LensFlare
+        Id: 062bf6fc-b2e1-4a58-acc7-8bc2f5d3cebc
+        Position:
+          X: 9633.55273
+          Y: 1088.18176
+        EffectID: 120f7347-14bc-423c-8d37-65ee4e32e0dd
+        Inputs:
+          - Name: GhostTint
+            Id: 1b18e91a-998e-4385-b32e-57b9c4919b04
+            Type: !WaveEngine.Framework.Graphics.PostProcessingNodePortDirectiveType,WaveEngine.Framework
+              Offset: 0
+              ResourceType: ConstantBuffer
+              Slot: 0
+              Value: Tint_On
+            Hidden: false
+            ConnectedWith: null
+          - Name: Chromatic
+            Id: db386231-59f7-4589-b4e7-35017dbd9ebe
+            Type: !WaveEngine.Framework.Graphics.PostProcessingNodePortDirectiveType,WaveEngine.Framework
+              Offset: 0
+              ResourceType: ConstantBuffer
+              Slot: 0
+              Value: Chro_On
+            Hidden: false
+            ConnectedWith: null
+          - Name: uGhostCount
+            Id: cbb6e572-a2ea-4f68-ae80-742bafc13aea
+            Type: !WaveEngine.Framework.Graphics.PostProcessingNodePortParameterType%601[[System.Int32]],WaveEngine.Framework
+              Offset: 0
+              ResourceType: ConstantBuffer
+              Slot: 0
+              Value: 8
+            Hidden: false
+            ConnectedWith: null
+          - Name: uGhostSpacing
+            Id: 9c541f5f-c4e2-4a77-9bf7-d496fd45348d
+            Type: !WaveEngine.Framework.Graphics.PostProcessingNodePortParameterType%601[[System.Single]],WaveEngine.Framework
+              Offset: 4
+              ResourceType: ConstantBuffer
+              Slot: 0
+              Value: 0.300000012
+            Hidden: false
+            ConnectedWith: null
+          - Name: uGhostThreshold
+            Id: 385e839c-1209-48cb-88e9-c80e9f54f132
+            Type: !WaveEngine.Framework.Graphics.PostProcessingNodePortParameterType%601[[System.Single]],WaveEngine.Framework
+              Offset: 8
+              ResourceType: ConstantBuffer
+              Slot: 0
+              Value: 12.0
+            Hidden: false
+            ConnectedWith: null
+          - Name: uGhostChromaticAberration
+            Id: af490f32-5b68-41d9-a811-87a45330cb8e
+            Type: !WaveEngine.Framework.Graphics.PostProcessingNodePortParameterType%601[[System.Single]],WaveEngine.Framework
+              Offset: 12
+              ResourceType: ConstantBuffer
+              Slot: 0
+              Value: 0.00200000009
+            Hidden: false
+            ConnectedWith: null
+          - Name: uHaloRadius
+            Id: 3adc4655-3d86-4117-8087-8c191b4b1aea
+            Type: !WaveEngine.Framework.Graphics.PostProcessingNodePortParameterType%601[[System.Single]],WaveEngine.Framework
+              Offset: 16
+              ResourceType: ConstantBuffer
+              Slot: 0
+              Value: 0.5
+            Hidden: false
+            ConnectedWith: null
+          - Name: uHaloThickness
+            Id: 27bf6fd8-2a3c-40de-9748-108b6d5f781f
+            Type: !WaveEngine.Framework.Graphics.PostProcessingNodePortParameterType%601[[System.Single]],WaveEngine.Framework
+              Offset: 20
+              ResourceType: ConstantBuffer
+              Slot: 0
+              Value: 0.0500000007
+            Hidden: false
+            ConnectedWith: null
+          - Name: uHaloThreshold
+            Id: d80da86f-a0b6-496e-975a-77df5752d61c
+            Type: !WaveEngine.Framework.Graphics.PostProcessingNodePortParameterType%601[[System.Single]],WaveEngine.Framework
+              Offset: 24
+              ResourceType: ConstantBuffer
+              Slot: 0
+              Value: 20.0
+            Hidden: false
+            ConnectedWith: null
+          - Name: uHaloChromaticAberration
+            Id: 30ba780c-b6c2-4e1a-b9ea-5d4e6f53fabe
+            Type: !WaveEngine.Framework.Graphics.PostProcessingNodePortParameterType%601[[System.Single]],WaveEngine.Framework
+              Offset: 28
+              ResourceType: ConstantBuffer
+              Slot: 0
+              Value: 0.00200000009
+            Hidden: false
+            ConnectedWith: null
+          - Name: Input
+            Id: d2bb1ce4-b635-4b6e-b295-7ab0f6ccfd61
+            Type: !WaveEngine.Framework.Graphics.PostProcessingNodePortLoadableType%601[[WaveEngine.Common.Graphics.Texture,WaveEngine.Common]],WaveEngine.Framework
+              Offset: 0
+              ResourceType: Texture
+              Slot: 0
+              ValueID: 00000000-0000-0000-0000-000000000000
+            Hidden: false
+            ConnectedWith:
+              nodeId: 3294b13c-436e-44b5-9630-22e17e622f8f
+              portId: 492063bd-07cf-4e24-9884-ae431c9a2ffe
+          - Name: ColorGradient
+            Id: 2987fbdb-a25b-447e-91d7-24a5faea938f
+            Type: !WaveEngine.Framework.Graphics.PostProcessingNodePortLoadableType%601[[WaveEngine.Common.Graphics.Texture,WaveEngine.Common]],WaveEngine.Framework
+              Offset: 0
+              ResourceType: Texture
+              Slot: 1
+              ValueID: 1104127f-8a0e-4a1c-9b8c-b8832362a809
+            Hidden: false
+            ConnectedWith: null
+          - Name: Sampler
+            Id: 066e5cee-d066-4765-9d9e-6f4a298e7737
+            Type: !WaveEngine.Framework.Graphics.PostProcessingNodePortLoadableType%601[[WaveEngine.Common.Graphics.SamplerState,WaveEngine.Common]],WaveEngine.Framework
+              Offset: 0
+              ResourceType: Sampler
+              Slot: 0
+              ValueID: 7d1e2792-2031-42bb-a67c-0dbd282be12a
+            Hidden: false
+            ConnectedWith: null
+        Outputs:
+          - Name: Output
+            Id: b4e20950-e1fb-4a5b-b5a0-43172be459e0
+            Type: !WaveEngine.Framework.Graphics.PostProcessingNodePortLoadableType%601[[WaveEngine.Common.Graphics.Texture,WaveEngine.Common]],WaveEngine.Framework
+              Offset: 0
+              ResourceType: UnorderedAccessBuffer
+              Slot: 0
+              ValueID: 00000000-0000-0000-0000-000000000000
+            Hidden: false
+            ConnectedWith:
+              - nodeId: 96b03c24-ee97-48cf-bb99-aeb783fde10d
+                portId: 752f510c-4135-4191-b672-23283cd79d20
             FixedSize:
               X: 0.0
               Y: 0.0

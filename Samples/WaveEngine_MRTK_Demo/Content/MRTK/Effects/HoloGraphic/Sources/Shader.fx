@@ -1,26 +1,26 @@
 [Begin_ResourceLayout]
 
-[directives:ALPHA_CLIP					   ALPHA_CLIP_OFF					  ALPHA_CLIP					 ]
-[directives:BORDER_LIGHT                   BORDER_LIGHT_OFF                   BORDER_LIGHT                   ]
-[directives:BORDER_LIGHT_REPLACES_ALBEDO   BORDER_LIGHT_REPLACES_ALBEDO_OFF   BORDER_LIGHT_REPLACES_ALBEDO   ]
-[directives:BORDER_LIGHT_OPAQUE            BORDER_LIGHT_OPAQUE_OFF            BORDER_LIGHT_OPAQUE            ]
-[directives:INNER_GLOW                     INNER_GLOW_OFF                     INNER_GLOW                     ]
-[directives:ROUND_CORNERS                  ROUND_CORNERS_OFF                  ROUND_CORNERS                  ]
-[directives:INDEPENDENT_CORNERS			   INDEPENDENT_CORNERS_OFF			  INDEPENDENT_CORNERS			 ]
-[directives:IGNORE_Z_SCALE                 IGNORE_Z_SCALE_OFF                 IGNORE_Z_SCALE                 ]
-[directives:NEAR_LIGHT_FADE                NEAR_LIGHT_FADE_OFF                NEAR_LIGHT_FADE                ]
-[directives:HOVER_LIGHT                    HOVER_LIGHT_OFF                    HOVER_LIGHT                    ]
-[directives:MULTI_HOVER_LIGHT              MULTI_HOVER_LIGHT_OFF              MULTI_HOVER_LIGHT              ]
-[directives:HOVER_COLOR_OVERRIDE           HOVER_COLOR_OVERRIDE_OFF           HOVER_COLOR_OVERRIDE           ]
-[directives:PROXIMITY_LIGHT                PROXIMITY_LIGHT_OFF                PROXIMITY_LIGHT                ]
-[directives:PROXIMITY_LIGHT_TWO_SIDED      PROXIMITY_LIGHT_TWO_SIDED_OFF      PROXIMITY_LIGHT_TWO_SIDED      ]
-[directives:PROXIMITY_LIGHT_COLOR_OVERRIDE PROXIMITY_LIGHT_COLOR_OVERRIDE_OFF PROXIMITY_LIGHT_COLOR_OVERRIDE ]
-[directives:PROXIMITY_LIGHT_SUBTRACTIVE    PROXIMITY_LIGHT_SUBTRACTIVE_OFF    PROXIMITY_LIGHT_SUBTRACTIVE    ]
-[directives:DIRECTIONAL_LIGHT              DIRECTIONAL_LIGHT_OFF              DIRECTIONAL_LIGHT              ]
-[directives:ALBEDO_MAP                     ALBEDO_MAP_OFF                     ALBEDO_MAP                     ]
-[directives:IRIDESCENCE					   IRIDESCENCE_OFF					  IRIDESCENCE					 ]
-[directives:Multiview                      MULTIVIEW_OFF                      MULTIVIEW                      ]
-[directives:ColorSpace 					   GAMMA_COLORSPACE_OFF 			  GAMMA_COLORSPACE				 ]
+	[Directives:ALPHA_CLIP					   ALPHA_CLIP_OFF					  ALPHA_CLIP					 ]
+	[Directives:BORDER_LIGHT                   BORDER_LIGHT_OFF                   BORDER_LIGHT                   ]
+	[Directives:BORDER_LIGHT_REPLACES_ALBEDO   BORDER_LIGHT_REPLACES_ALBEDO_OFF   BORDER_LIGHT_REPLACES_ALBEDO   ]
+	[Directives:BORDER_LIGHT_OPAQUE            BORDER_LIGHT_OPAQUE_OFF            BORDER_LIGHT_OPAQUE            ]
+	[Directives:INNER_GLOW                     INNER_GLOW_OFF                     INNER_GLOW                     ]
+	[Directives:ROUND_CORNERS                  ROUND_CORNERS_OFF                  ROUND_CORNERS                  ]
+	[Directives:INDEPENDENT_CORNERS			   INDEPENDENT_CORNERS_OFF			  INDEPENDENT_CORNERS			 ]
+	[Directives:IGNORE_Z_SCALE                 IGNORE_Z_SCALE_OFF                 IGNORE_Z_SCALE                 ]
+	[Directives:NEAR_LIGHT_FADE                NEAR_LIGHT_FADE_OFF                NEAR_LIGHT_FADE                ]
+	[Directives:HOVER_LIGHT                    HOVER_LIGHT_OFF                    HOVER_LIGHT                    ]
+	[Directives:MULTI_HOVER_LIGHT              MULTI_HOVER_LIGHT_OFF              MULTI_HOVER_LIGHT              ]
+	[Directives:HOVER_COLOR_OVERRIDE           HOVER_COLOR_OVERRIDE_OFF           HOVER_COLOR_OVERRIDE           ]
+	[Directives:PROXIMITY_LIGHT                PROXIMITY_LIGHT_OFF                PROXIMITY_LIGHT                ]
+	[Directives:PROXIMITY_LIGHT_TWO_SIDED      PROXIMITY_LIGHT_TWO_SIDED_OFF      PROXIMITY_LIGHT_TWO_SIDED      ]
+	[Directives:PROXIMITY_LIGHT_COLOR_OVERRIDE PROXIMITY_LIGHT_COLOR_OVERRIDE_OFF PROXIMITY_LIGHT_COLOR_OVERRIDE ]
+	[Directives:PROXIMITY_LIGHT_SUBTRACTIVE    PROXIMITY_LIGHT_SUBTRACTIVE_OFF    PROXIMITY_LIGHT_SUBTRACTIVE    ]
+	[Directives:DIRECTIONAL_LIGHT              DIRECTIONAL_LIGHT_OFF              DIRECTIONAL_LIGHT              ]
+	[Directives:ALBEDO_MAP                     ALBEDO_MAP_OFF                     ALBEDO_MAP                     ]
+	[Directives:IRIDESCENCE					   IRIDESCENCE_OFF					  IRIDESCENCE					 ]
+	[Directives:Multiview                      MULTIVIEW_OFF                      MULTIVIEW                      ]
+	[Directives:ColorSpace 					   GAMMA_COLORSPACE_OFF 			  GAMMA_COLORSPACE				 ]
 
 	cbuffer PerDrawCall : register(b0)
 	{
@@ -136,8 +136,8 @@
     }
 #endif
 
-	[profile 11_0]
-	[entrypoints VS=VS PS=PS]	
+	[Profile 11_0]
+	[Entrypoints VS=VS PS=PS]	
 
 	float3 GammaToLinear(const float3 color)
 	{
