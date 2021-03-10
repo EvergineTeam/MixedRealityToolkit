@@ -136,6 +136,33 @@ Items:
     Children: []
     Id: d2fdca18-3c13-46e5-b7b6-5ba46051c1f4
   - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+    Name: HolographicBatching
+    Tag: null
+    IsEnabled: true
+    IsStatic: false
+    Components:
+      - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+        Id: 2e3f3259-2278-4277-9006-db6a8794ea48
+        IsEnabled: true
+        LocalOrientation:
+          W: 1.0
+          X: 0.0
+          Y: 0.0
+          Z: 0.0
+        LocalPosition:
+          X: 0.0
+          Y: 0.0
+          Z: 0.0
+        LocalScale:
+          X: 1.0
+          Y: 1.0
+          Z: 1.0
+      - !WaveEngine.MRTK.Emulation.HolographicBatching,WaveEngine.MRTK
+        Id: 4caa8f96-2f69-49bf-8e47-f006251cc2f7
+        IsEnabled: true
+    Children: []
+    Id: 80c974d1-ac28-449a-bd2a-1fe248766773
+  - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
     Name: camera
     Tag: 
     IsEnabled: true

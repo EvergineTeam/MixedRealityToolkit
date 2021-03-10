@@ -3,11 +3,10 @@
 using System;
 using System.Linq;
 using WaveEngine.Common.Graphics;
-using WaveEngine.Components.Graphics3D;
+using WaveEngine.Framework;
 using WaveEngine.Framework.Graphics;
 using WaveEngine.Framework.Graphics.Effects;
 using WaveEngine.Framework.Graphics.Effects.Analyzer;
-using WaveEngine.Framework.Managers;
 using WaveEngine.Mathematics;
 using WaveEngine.MRTK.Effects;
 
@@ -16,7 +15,7 @@ namespace WaveEngine.MRTK.Emulation
     /// <summary>
     /// Updates the position of the cursors on all materials with shaders that required it.
     /// </summary>
-    public class CursorPosShaderUpdater : UpdatableSceneManager
+    public class CursorPosShaderUpdater : Behavior
     {
         private struct HoverLightParam
         {
@@ -41,67 +40,23 @@ namespace WaveEngine.MRTK.Emulation
             public GammaColor OuterColor;
         }
 
-        private Guid holographicEffectId;
-
         private ConstantBuffer perFrameCB;
         private ParameterInfo hoverLightsParamInfo;
         private ParameterInfo proximityLightsParamInfo;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="CursorPosShaderUpdater"/> class.
-        /// </summary>
-        /// <param name="holographicEffectId">Id of holographic effect.</param>
-        public CursorPosShaderUpdater(Guid holographicEffectId)
-        {
-            this.holographicEffectId = holographicEffectId;
-        }
 
         /// <inheritdoc/>
         protected override void Start()
         {
             base.Start();
 
-            var effect = this.Managers.AssetSceneManager.Load<Effect>(this.holographicEffectId);
+            var effect = this.Managers.AssetSceneManager.Load<Effect>(HoloGraphic.EffectId);
             this.perFrameCB = effect.SharedCBufferBySlot.Values.FirstOrDefault(x => x.UpdatePolicy == ConstantBufferInfo.UpdatePolicies.PerFrame);
             this.hoverLightsParamInfo = this.perFrameCB.CBufferInfo.Parameters[2];
             this.proximityLightsParamInfo = this.perFrameCB.CBufferInfo.Parameters[3];
-
-            this.DisableBatchingOnRequiredHolographicMaterials();
-        }
-
-        /// <summary>
-        /// Disables batching feature on meshes that uses <see cref="HoloGraphic"/> materials that does not allows batching.
-        /// </summary>
-        public void DisableBatchingOnRequiredHolographicMaterials()
-        {
-            var holographicEffectsByOwner = this.Managers.EntityManager
-                                                         .FindComponentsOfType<MaterialComponent>()
-                                                         .Where(m => m.Material?.Effect?.Id == this.holographicEffectId)
-                                                         .ToDictionary(m => m.Owner, m => new HoloGraphic(m.Material));
-
-            foreach (var pair in holographicEffectsByOwner)
-            {
-                if (pair.Value.AllowBatching)
-                {
-                    continue;
-                }
-
-                // Border Light and inner glow don't work if batching is enabled
-                var meshComponent = pair.Key.FindComponent<MeshComponent>(isExactType: false);
-                if (meshComponent == null)
-                {
-                    continue;
-                }
-
-                foreach (var mesh in meshComponent.Meshes)
-                {
-                    mesh.AllowBatching = false;
-                }
-            }
         }
 
         /// <inheritdoc/>
-        public override void Update(TimeSpan gameTime)
+        protected override void Update(TimeSpan gameTime)
         {
             this.UpdateHoverLights();
             this.UpdateProximityLights();
