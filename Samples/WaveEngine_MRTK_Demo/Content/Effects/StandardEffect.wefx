@@ -9,6 +9,13 @@ DefaultProfile:
   Platform: Undefined
 ExportAsRaw: false
 Profiles:
+  UWP.MixedReality:
+    Compile: ByPlatform
+    ExcludeAsset: false
+    GraphicsBackend: ByPlatform
+    MandatoryCombinations: DIFF
+    Name: UWP.MixedReality
+    Platform: UWP
   Web1:
     Compile: Yes
     ExcludeAsset: true

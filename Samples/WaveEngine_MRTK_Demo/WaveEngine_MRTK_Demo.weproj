@@ -2,13 +2,13 @@
 Profiles:
   - AdditionalEffectTechniqueCombinations: GAMMA_COLORSPACE-SHADOW_SUPPORTED
     AlphaCompressionFormat: BC3_UNorm
-    CompileEffects: true
+    CompileEffects: false
     GraphicsBackend: DirectX11
     LauncherType: Default
     Name: Windows
     NonAlphaCompressionFormat: BC3_UNorm
     Platform: Windows
-  - AdditionalEffectTechniqueCombinations: MULTIVIEW-GAMMA_COLORSPACE
+  - AdditionalEffectTechniqueCombinations: MULTIVIEW-GAMMA_COLORSPACE-SHADOW_SUPPORTED
     AlphaCompressionFormat: BC3_UNorm
     CompileEffects: true
     GraphicsBackend: DirectX11
