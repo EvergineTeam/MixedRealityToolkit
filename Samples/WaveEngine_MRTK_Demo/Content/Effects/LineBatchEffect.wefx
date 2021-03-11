@@ -4,7 +4,7 @@ DefaultProfile:
   Compile: ByPlatform
   ExcludeAsset: false
   GraphicsBackend: ByPlatform
-  MandatoryCombinations:
+  MandatoryCombinations: All
   Name: null
   Platform: Undefined
 ExportAsRaw: false
@@ -13,6 +13,6 @@ Profiles:
     Compile: Yes
     ExcludeAsset: true
     GraphicsBackend: WebGL1
-    MandatoryCombinations:
+    MandatoryCombinations: 
     Name: Web1
     Platform: Web

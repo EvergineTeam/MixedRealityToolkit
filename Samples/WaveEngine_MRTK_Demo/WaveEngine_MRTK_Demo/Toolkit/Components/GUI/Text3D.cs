@@ -503,6 +503,7 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
             this.materialComponent = new MaterialComponent();
 
             this.meshRenderer = new MeshRenderer();
+            this.meshRenderer.CastShadows = false;
 
             this.planeMesh = new PlaneMesh();
 

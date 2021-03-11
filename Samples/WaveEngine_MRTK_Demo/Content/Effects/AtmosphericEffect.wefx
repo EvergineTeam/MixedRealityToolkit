@@ -4,7 +4,7 @@ DefaultProfile:
   Compile: ByPlatform
   ExcludeAsset: false
   GraphicsBackend: ByPlatform
-  MandatoryCombinations:
+  MandatoryCombinations: All
   Name: null
   Platform: Undefined
 ExportAsRaw: false

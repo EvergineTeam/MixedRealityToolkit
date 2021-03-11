@@ -1,8 +1,8 @@
 !WaveEngine.Common.ProjectModel,WaveEngine.Common
 Profiles:
-  - AdditionalEffectTechniqueCombinations: GAMMA_COLORSPACE
+  - AdditionalEffectTechniqueCombinations: GAMMA_COLORSPACE-SHADOW_SUPPORTED
     AlphaCompressionFormat: BC3_UNorm
-    CompileEffects: false
+    CompileEffects: true
     GraphicsBackend: DirectX11
     LauncherType: Default
     Name: Windows
