@@ -1,6 +1,7 @@
 ﻿// Copyright © Wave Engine S.L. All rights reserved. Use is subject to license terms.
 
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using WaveEngine.Common.Attributes;
@@ -18,9 +19,6 @@ namespace WaveEngine.MRTK.Toolkit.Prefabs
     /// </summary>
     public class ScenePrefab : Component
     {
-        [BindService]
-        private AssetsDirectory assetsDirectory = null;
-
         /// <summary>
         /// Gets or sets the asset service.
         /// </summary>
@@ -112,22 +110,16 @@ namespace WaveEngine.MRTK.Toolkit.Prefabs
                 return;
             }
 
-            var importer = new WaveSceneImporter();
-            var source = new SceneSource();
-
-            string path = this.GetAssetPath(this.prefabId);
-            using (var stream = this.assetsDirectory.Open(path))
-            {
-                importer.ImportHeader(stream, out source);
-                importer.ImportData(stream, source, false);
-            }
-
+            var st = Stopwatch.StartNew();
+            var source = this.AssetsService.GetAssetSource<SceneSource>(this.prefabId);
             foreach (var item in source.SceneData.Items)
             {
                 var child = item.Entity;
                 this.PrepareEntity(child);
                 this.Owner.AddChild(child);
             }
+
+            Trace.WriteLine($"Prefab with id '{this.prefabId}' created in {st.ElapsedMilliseconds}ms");
         }
 
         private void PrepareEntity(Entity entity)
@@ -149,11 +141,6 @@ namespace WaveEngine.MRTK.Toolkit.Prefabs
             {
                 this.PrepareEntity(child);
             }
-        }
-
-        private string GetAssetPath(Guid id)
-        {
-            return this.assetsDirectory.EnumerateFiles(string.Empty, $"{id}.*", SearchOption.AllDirectories).FirstOrDefault();
         }
     }
 }
