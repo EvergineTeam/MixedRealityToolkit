@@ -6110,6 +6110,7 @@ Items:
                     HandleMaterial: 9adff77b-f6b6-4683-bf28-243fafea5436
                     IsEnabled: true
                     LinkScale: 0.00100000005
+                    MaintainHandlesApparentSize: false
                     RotationHandleScale: 0.0199999996
                     ScaleHandleScale: 0.0199999996
                     ShowScaleHandles: true
@@ -6204,6 +6205,7 @@ Items:
                 HandleMaterial: 9adff77b-f6b6-4683-bf28-243fafea5436
                 IsEnabled: true
                 LinkScale: 0.00100000005
+                MaintainHandlesApparentSize: false
                 RotationHandleScale: 0.0199999996
                 ScaleHandleScale: 0.0199999996
                 ShowScaleHandles: true
@@ -6320,6 +6322,7 @@ Items:
                     HandleMaterial: 9adff77b-f6b6-4683-bf28-243fafea5436
                     IsEnabled: true
                     LinkScale: 0.00100000005
+                    MaintainHandlesApparentSize: false
                     RotationHandleScale: 0.0199999996
                     ScaleHandleScale: 0.0199999996
                     ShowScaleHandles: false
@@ -6400,6 +6403,7 @@ Items:
                 HandleMaterial: 9adff77b-f6b6-4683-bf28-243fafea5436
                 IsEnabled: true
                 LinkScale: 0.00499999989
+                MaintainHandlesApparentSize: false
                 RotationHandleScale: 0.0199999996
                 ScaleHandleScale: 0.0199999996
                 ShowScaleHandles: false

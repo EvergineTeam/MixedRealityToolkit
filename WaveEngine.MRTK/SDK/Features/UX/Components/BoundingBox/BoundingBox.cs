@@ -22,7 +22,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
     /// BoundingBox allows to transform objects (rotate and scale) and draws a cube around the object to visualize
     /// the possibility of user triggered transform manipulation.
     /// </summary>
-    public class BoundingBox : Component
+    public class BoundingBox : Behavior
     {
         private static readonly string RIG_ROOT_NAME = "rigRoot";
 
@@ -47,10 +47,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
         [RenderProperty(Tooltip = "Scale applied to the scale handles")]
         public float ScaleHandleScale
         {
-            get
-            {
-                return this.scaleHandleScale;
-            }
+            get => this.scaleHandleScale;
 
             set
             {
@@ -70,10 +67,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
         [RenderProperty(Tooltip = "Scale applied to the rotation handles")]
         public float RotationHandleScale
         {
-            get
-            {
-                return this.rotationHandleScale;
-            }
+            get => this.rotationHandleScale;
 
             set
             {
@@ -93,10 +87,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
         [RenderProperty(Tooltip = "Scale applied to the wireframe links")]
         public float LinkScale
         {
-            get
-            {
-                return this.linkScale;
-            }
+            get => this.linkScale;
 
             set
             {
@@ -116,10 +107,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
         [RenderProperty(Tooltip = "Extra padding added to the actual bounds.")]
         public Vector3 BoxPadding
         {
-            get
-            {
-                return this.boxPadding;
-            }
+            get => this.boxPadding;
 
             set
             {
@@ -139,10 +127,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
         [RenderProperty(Tooltip = "The material applied to the box when not in a grabbed state. If set to null, no box will be displayed.")]
         public Material BoxMaterial
         {
-            get
-            {
-                return this.boxMaterial;
-            }
+            get => this.boxMaterial;
 
             set
             {
@@ -162,10 +147,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
         [RenderProperty(Tooltip = "The material applied to the box when in a grabbed state. If set to null, no change will occur when grabbed.")]
         public Material BoxGrabbedMaterial
         {
-            get
-            {
-                return this.boxGrabbedMaterial;
-            }
+            get => this.boxGrabbedMaterial;
 
             set
             {
@@ -185,10 +167,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
         [RenderProperty(Tooltip = "Whether to show the wireframe links around the box or not")]
         public bool ShowWireframe
         {
-            get
-            {
-                return this.showWireframe;
-            }
+            get => this.showWireframe;
 
             set
             {
@@ -208,10 +187,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
         [RenderProperty(Tooltip = "Whether to show the scale handles on the corners or not")]
         public bool ShowScaleHandles
         {
-            get
-            {
-                return this.showScaleHandles;
-            }
+            get => this.showScaleHandles;
 
             set
             {
@@ -231,10 +207,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
         [RenderProperty(Tooltip = "Whether to show the rotation handle for axis X or not")]
         public bool ShowXScaleHandle
         {
-            get
-            {
-                return this.showXScaleHandle;
-            }
+            get => this.showXScaleHandle;
 
             set
             {
@@ -254,10 +227,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
         [RenderProperty(Tooltip = "Whether to show the rotation handle for axis X or not")]
         public bool ShowYScaleHandle
         {
-            get
-            {
-                return this.showYScaleHandle;
-            }
+            get => this.showYScaleHandle;
 
             set
             {
@@ -277,10 +247,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
         [RenderProperty(Tooltip = "Whether to show the rotation handle for axis X or not")]
         public bool ShowZScaleHandle
         {
-            get
-            {
-                return this.showZScaleHandle;
-            }
+            get => this.showZScaleHandle;
 
             set
             {
@@ -300,10 +267,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
         [RenderProperty(Tooltip = "Whether to show the rotation handle for axis X or not")]
         public bool ShowXRotationHandle
         {
-            get
-            {
-                return this.showXRotationHandle;
-            }
+            get => this.showXRotationHandle;
 
             set
             {
@@ -323,10 +287,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
         [RenderProperty(Tooltip = "Whether to show the rotation handle for axis Y or not")]
         public bool ShowYRotationHandle
         {
-            get
-            {
-                return this.showYRotationHandle;
-            }
+            get => this.showYRotationHandle;
 
             set
             {
@@ -346,10 +307,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
         [RenderProperty(Tooltip = "Whether to show the rotation handle for axis Z or not")]
         public bool ShowZRotationHandle
         {
-            get
-            {
-                return this.showZRotationHandle;
-            }
+            get => this.showZRotationHandle;
 
             set
             {
@@ -369,10 +327,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
         [RenderProperty(Tooltip = "The shape of the wireframe links")]
         public WireframeType WireframeShape
         {
-            get
-            {
-                return this.wireframeShape;
-            }
+            get => this.wireframeShape;
 
             set
             {
@@ -392,10 +347,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
         [RenderProperty(Tooltip = "The material applied to the wireframe links")]
         public Material WireframeMaterial
         {
-            get
-            {
-                return this.wireframeMaterial;
-            }
+            get => this.wireframeMaterial;
 
             set
             {
@@ -415,10 +367,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
         [RenderProperty(Tooltip = "The material applied to the handles when not in a grabbed state")]
         public Material HandleMaterial
         {
-            get
-            {
-                return this.handleMaterial;
-            }
+            get => this.handleMaterial;
 
             set
             {
@@ -438,10 +387,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
         [RenderProperty(Tooltip = "The material applied to the handles when in a grabbed state")]
         public Material HandleGrabbedMaterial
         {
-            get
-            {
-                return this.handleGrabbedMaterial;
-            }
+            get => this.handleGrabbedMaterial;
 
             set
             {
@@ -460,10 +406,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
         /// </summary>
         public CollisionCategory3D CollisionCategory
         {
-            get
-            {
-                return this.collisionCategory3D;
-            }
+            get => this.collisionCategory3D;
 
             set
             {
@@ -476,6 +419,25 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
         }
 
         private CollisionCategory3D collisionCategory3D = CollisionCategory3D.Cat1;
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the handles should keep their apparent size with respect to the camera.
+        /// </summary>
+        public bool MaintainHandlesApparentSize
+        {
+            get => this.maintainHandlesApparentSize;
+
+            set
+            {
+                if (this.maintainHandlesApparentSize != value)
+                {
+                    this.maintainHandlesApparentSize = value;
+                    this.CreateRig();
+                }
+            }
+        }
+
+        private bool maintainHandlesApparentSize = false;
 
         /// <summary>
         /// Event fired when interaction with a rotation handle starts.
@@ -615,6 +577,15 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
             base.OnDeactivated();
 
             this.DestroyRig();
+        }
+
+        /// <inheritdoc/>
+        protected override void Update(TimeSpan gameTime)
+        {
+            if (this.maintainHandlesApparentSize)
+            {
+                this.UpdateRigHandles();
+            }
         }
 
         /// <summary>
@@ -859,7 +830,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
 
                 this.ApplyMaterialToAllComponents(faceVisual, this.handleMaterial);
 
-                var cornerHelper = new BoundingBoxHelper()
+                var faceHelper = new BoundingBoxHelper()
                 {
                     Type = BoundingBoxHelperType.NonUniformScaleHandle,
                     AxisType = (AxisType)((i / 2) + 1),
@@ -868,7 +839,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
                     OppositeHandlePosition = faceCenters[((i % 2) == 0) ? (i + 1) : (i - 1)],
                 };
 
-                this.helpers.Add(face, cornerHelper);
+                this.helpers.Add(face, faceHelper);
             }
 
             // Add balls
@@ -1023,16 +994,24 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
 
         private void UpdateRigHandles()
         {
+            var activeCamera = this.Managers.RenderManager.ActiveCamera3D;
+
             for (int i = 0; i < this.helpersList.Count; i++)
             {
                 var helper = this.helpersList[i];
 
+                var scaleFactorDueToCameraPosition = 1.0f;
+                if (this.maintainHandlesApparentSize && activeCamera != null)
+                {
+                    scaleFactorDueToCameraPosition = (activeCamera.Position - helper.Transform.Position).Length() * activeCamera.FieldOfView;
+                }
+
                 switch (helper.Type)
                 {
                     case BoundingBoxHelperType.WireframeLink:
-                        float scaleX = this.LinkScale;
+                        float scaleX = this.LinkScale * scaleFactorDueToCameraPosition;
                         float scaleY = this.transform.WorldTransform.Scale.Y;
-                        float scaleZ = this.LinkScale;
+                        float scaleZ = this.LinkScale * scaleFactorDueToCameraPosition;
 
                         switch (helper.AxisType)
                         {
@@ -1055,12 +1034,12 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
                         break;
 
                     case BoundingBoxHelperType.RotationHandle:
-                        helper.Transform.Scale = Vector3.One * this.RotationHandleScale;
+                        helper.Transform.Scale = Vector3.One * this.RotationHandleScale * scaleFactorDueToCameraPosition;
                         break;
 
                     case BoundingBoxHelperType.ScaleHandle:
                     case BoundingBoxHelperType.NonUniformScaleHandle:
-                        helper.Transform.Scale = Vector3.One * this.ScaleHandleScale;
+                        helper.Transform.Scale = Vector3.One * this.ScaleHandleScale * scaleFactorDueToCameraPosition;
                         break;
                 }
             }
