@@ -103,7 +103,7 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
             /// <summary>
             /// Constraint position on all axes.
             /// </summary>
-            ContraintPosAll = ConstraintPosX | ConstraintPosY | ConstraintPosZ,
+            ConstraintPosAll = ConstraintPosX | ConstraintPosY | ConstraintPosZ,
 
             /// <summary>
             /// Constraint rotation on X axis.

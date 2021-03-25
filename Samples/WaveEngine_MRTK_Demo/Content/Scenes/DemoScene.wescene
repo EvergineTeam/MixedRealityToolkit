@@ -4967,7 +4967,7 @@ Items:
                 OrderBias: 0
               - !WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation.SimpleManipulationHandler,WaveEngine.MRTK
                 Id: 055841ea-5689-4e45-9a1d-2cb3d7fcf495
-                Constraints: ContraintPosAll
+                Constraints: ConstraintPosAll
                 IncludeChildrenColliders: true
                 IsEnabled: true
                 KeepRigidBodyActiveDuringDrag: false
