@@ -11,6 +11,7 @@ using WaveEngine.Framework.Graphics.Effects;
 using WaveEngine.Framework.Graphics.Materials;
 using WaveEngine.Framework.Services;
 using WaveEngine.Mathematics;
+using WaveEngine.MRTK.Effects;
 using WaveEngine.NoesisGUI;
 using Color = WaveEngine.Common.Graphics.Color;
 using Vector3 = WaveEngine.Mathematics.Vector3;
@@ -83,9 +84,9 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
             }
             set
             {
-                if (this.SetProperty(ref this.alpha, value, this.standardMaterial))
+                if (this.SetProperty(ref this.alpha, value, this.holographicMaterial))
                 {
-                    this.standardMaterial.Alpha = value;
+                    this.holographicMaterial.Parameters_Alpha = value;
                 }
             }
         }
@@ -411,7 +412,7 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
         private PlaneMesh planeMesh;
         private NoesisFramebufferPanel noesisFramebufferPanel;
 
-        private StandardMaterial standardMaterial;
+        private HoloGraphic holographicMaterial;
         private FrameBuffer noesisFramebuffer;
 
         private FrameworkElement frameworkElement;
@@ -528,24 +529,23 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
             // Material initialization
             if (this.materialComponent.Material == null)
             {
-                var effect = this.assetsService.Load<Effect>(DefaultResourcesIDs.StandardEffectID);
-                this.standardMaterial = new StandardMaterial(effect)
+                var effect = this.assetsService.Load<Effect>(HoloGraphic.EffectId);
+                this.holographicMaterial = new HoloGraphic(effect)
                 {
                     Id = this.Id,
-                    LightingEnabled = false,
-                    IBLEnabled = false,
+                    Albedo = Color.White,
                     LayerDescription = this.assetsService.Load<RenderLayerDescription>(DefaultResourcesIDs.AlphaRenderLayerID),
-                    BaseColorSampler = this.assetsService.Load<SamplerState>(DefaultResourcesIDs.LinearClampSamplerID),
+                    Sampler = this.assetsService.Load<SamplerState>(DefaultResourcesIDs.LinearClampSamplerID),
                 };
 
-                this.materialComponent.Material = this.standardMaterial.Material;
+                this.materialComponent.Material = this.holographicMaterial.Material;
             }
             else
             {
-                this.standardMaterial = new StandardMaterial(this.materialComponent.Material);
+                this.holographicMaterial = new HoloGraphic(this.materialComponent.Material);
             }
 
-            this.standardMaterial.Alpha = this.Alpha;
+            this.holographicMaterial.Parameters_Alpha = this.Alpha;
 
             // Add container entity and components
             var containerEntity = new Entity(this.containerEntityName)
@@ -571,7 +571,7 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
                 this.noesisFramebuffer.Dispose();
                 this.noesisFramebufferPanel.FrameBuffer = null;
                 this.noesisFramebufferPanel.FrameworkElement = null;
-                this.materialComponent.Material?.SetTexture(null, 0);
+                this.holographicMaterial.Texture = null;
             }
 
             this.planeTransform = null;
@@ -579,7 +579,7 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
             this.meshRenderer = null;
             this.planeMesh = null;
             this.noesisFramebufferPanel = null;
-            this.standardMaterial = null;
+            this.holographicMaterial = null;
 
             this.Owner.RemoveChild(this.containerEntityName);
 
@@ -773,7 +773,7 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
                 this.noesisFramebufferPanel.FrameBuffer = this.noesisFramebuffer;
 
                 // Set material texture to use Noesis framebuffer texture
-                this.standardMaterial.BaseColorTexture = this.noesisFramebuffer.ColorTargets[0].Texture;
+                this.holographicMaterial.Texture = this.noesisFramebuffer.ColorTargets[0].Texture;
             }
 
             this.isFrameBufferDirty = false;

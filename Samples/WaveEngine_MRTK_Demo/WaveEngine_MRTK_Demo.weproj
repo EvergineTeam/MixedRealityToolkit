@@ -2,7 +2,7 @@
 Profiles:
   - AdditionalEffectTechniqueCombinations: GAMMA_COLORSPACE
     AlphaCompressionFormat: BC3_UNorm
-    CompileEffects: false
+    CompileEffects: true
     GraphicsBackend: DirectX11
     LauncherType: Default
     Name: Windows

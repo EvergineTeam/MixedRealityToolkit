@@ -26,7 +26,7 @@ Items:
         Id: 123f9559-4071-45e5-9708-ea09bae31c5f
         IntensityMultiplier: 1.0
         IsEnabled: true
-        ReflectionProbe: 85585adc-bd58-416d-8b80-4a7e5bb6b2ab
+        ReflectionProbe: a988e067-5c7c-47ec-9fad-454523d68c88
     Children: []
     Id: ad8017e0-08ed-427c-97ed-a9c055150ae7
   - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
@@ -59,14 +59,17 @@ Items:
           G: 240
           R: 249
         ColorByTemperature: true
+        DepthBias: 0.0
         Illuminance: 10.0
         Intensity: 10.0
         IsEnabled: true
+        IsShadowEnabled: false
         LinearColor:
           A: 0.0
           B: 0.779089451
           G: 0.874792576
           R: 0.9453125
+        ShadowsOpacity: 0.0
         Temperature: 6500.0
       - !WaveEngine.Framework.Graphics.SunComponent,WaveEngine.Framework
         Id: 1fc05b9d-1327-4a98-ac14-4be2affda7df
@@ -99,7 +102,7 @@ Items:
         Id: 88e25e58-d6ca-4934-a280-294f805c26bd
         AsignedTo: Default
         IsEnabled: true
-        Material: 63849ad5-e4a2-4087-8cdd-48a1e399c57a
+        Material: 29bd1f5a-e185-4b22-b9ca-8037d0b4a6b8
       - !WaveEngine.Components.Graphics3D.SphereMesh,WaveEngine.Components
         Id: 9369593f-c243-4632-b7c2-8b3e94abc256
         Diameter: 1.0
@@ -112,6 +115,7 @@ Items:
       - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
         Id: 06c2bb0d-d53f-4f56-9d16-a75495d7cf9e
         DebugBoundingbox: true
+        IsCastShadows: false
         IsCullingEnabled: false
         IsEnabled: true
         OrderBias: 0
@@ -462,6 +466,7 @@ Items:
                   - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                     Id: e91b9fa4-344c-476f-96d8-0a3b6d6b0ecb
                     DebugBoundingbox: true
+                    IsCastShadows: false
                     IsCullingEnabled: true
                     IsEnabled: true
                     OrderBias: 0
@@ -585,6 +590,7 @@ Items:
                       - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                         Id: 75083352-c4fe-445c-b957-21faca035300
                         DebugBoundingbox: true
+                        IsCastShadows: false
                         IsCullingEnabled: true
                         IsEnabled: true
                         OrderBias: 0
@@ -717,6 +723,7 @@ Items:
                       - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                         Id: adbd983d-3d01-4529-ad25-bed78389f041
                         DebugBoundingbox: true
+                        IsCastShadows: false
                         IsCullingEnabled: true
                         IsEnabled: true
                         OrderBias: 0
@@ -849,6 +856,7 @@ Items:
                       - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                         Id: d6b10fd0-3bda-4cce-b2eb-98f4df2e2478
                         DebugBoundingbox: true
+                        IsCastShadows: false
                         IsCullingEnabled: true
                         IsEnabled: true
                         OrderBias: 0
@@ -981,6 +989,7 @@ Items:
                       - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                         Id: b144faba-0af4-4ea6-b16e-5b0986d67ded
                         DebugBoundingbox: true
+                        IsCastShadows: false
                         IsCullingEnabled: true
                         IsEnabled: true
                         OrderBias: 0
@@ -1113,6 +1122,7 @@ Items:
                       - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                         Id: 10cba3a3-0abc-4784-823e-8f8d3e319666
                         DebugBoundingbox: true
+                        IsCastShadows: false
                         IsCullingEnabled: true
                         IsEnabled: true
                         OrderBias: 0
@@ -1245,6 +1255,7 @@ Items:
                       - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                         Id: 8ec16e3f-4958-4061-bb41-7d5bb66ca46b
                         DebugBoundingbox: true
+                        IsCastShadows: false
                         IsCullingEnabled: true
                         IsEnabled: true
                         OrderBias: 0
@@ -1377,6 +1388,7 @@ Items:
                       - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                         Id: 9a911e34-438a-46fd-9ef5-5081b0b83c2e
                         DebugBoundingbox: true
+                        IsCastShadows: false
                         IsCullingEnabled: true
                         IsEnabled: true
                         OrderBias: 0
@@ -1509,6 +1521,7 @@ Items:
                       - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                         Id: a5d54439-e714-4d8e-8732-cd2f0a25ec81
                         DebugBoundingbox: true
+                        IsCastShadows: false
                         IsCullingEnabled: true
                         IsEnabled: true
                         OrderBias: 0
@@ -1641,6 +1654,7 @@ Items:
                       - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                         Id: 05b59da7-a664-45d8-a087-f0f5fc34aa5c
                         DebugBoundingbox: true
+                        IsCastShadows: false
                         IsCullingEnabled: true
                         IsEnabled: true
                         OrderBias: 0
@@ -1773,6 +1787,7 @@ Items:
                       - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                         Id: 3c019356-448a-452f-b122-c433a6068e2d
                         DebugBoundingbox: true
+                        IsCastShadows: false
                         IsCullingEnabled: true
                         IsEnabled: true
                         OrderBias: 0
@@ -1905,6 +1920,7 @@ Items:
                       - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                         Id: 4309a324-499d-4577-8676-e7cb26b908df
                         DebugBoundingbox: true
+                        IsCastShadows: false
                         IsCullingEnabled: true
                         IsEnabled: true
                         OrderBias: 0
@@ -2037,6 +2053,7 @@ Items:
                       - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                         Id: 4a275202-bce9-459b-b79c-6cfb617c22ac
                         DebugBoundingbox: true
+                        IsCastShadows: false
                         IsCullingEnabled: true
                         IsEnabled: true
                         OrderBias: 0
@@ -2408,6 +2425,7 @@ Items:
               - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                 Id: 00a2d303-9988-474f-9d57-b71cc0fba872
                 DebugBoundingbox: true
+                IsCastShadows: false
                 IsCullingEnabled: true
                 IsEnabled: true
                 OrderBias: 0
@@ -2572,6 +2590,7 @@ Items:
                       - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                         Id: 671ce878-787b-44de-aae1-192d9deed5a2
                         DebugBoundingbox: true
+                        IsCastShadows: false
                         IsCullingEnabled: true
                         IsEnabled: true
                         OrderBias: 0
@@ -2789,6 +2808,7 @@ Items:
                       - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                         Id: 00430708-135a-4733-b464-c9c426433bbc
                         DebugBoundingbox: true
+                        IsCastShadows: false
                         IsCullingEnabled: true
                         IsEnabled: true
                         OrderBias: 0
@@ -3169,6 +3189,7 @@ Items:
               - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                 Id: 9d15d3a5-721c-484c-9e5f-9fc763771f0a
                 DebugBoundingbox: true
+                IsCastShadows: false
                 IsCullingEnabled: true
                 IsEnabled: true
                 OrderBias: 0
@@ -3247,6 +3268,7 @@ Items:
                   - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                     Id: edfe1be5-49b2-4566-aad4-2004576c2ec0
                     DebugBoundingbox: true
+                    IsCastShadows: false
                     IsCullingEnabled: true
                     IsEnabled: true
                     OrderBias: 0
@@ -3294,6 +3316,7 @@ Items:
                   - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                     Id: cb2a58cd-637b-4aed-bd5a-c92e58c71ed7
                     DebugBoundingbox: true
+                    IsCastShadows: false
                     IsCullingEnabled: true
                     IsEnabled: true
                     OrderBias: 0
@@ -3368,6 +3391,7 @@ Items:
                       - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                         Id: 899e037a-039b-4067-90c5-363475069d15
                         DebugBoundingbox: true
+                        IsCastShadows: false
                         IsCullingEnabled: true
                         IsEnabled: true
                         OrderBias: 0
@@ -3440,6 +3464,7 @@ Items:
                   - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                     Id: 1cffd19c-b9a4-4ec6-8ef0-9c3e8f512085
                     DebugBoundingbox: true
+                    IsCastShadows: false
                     IsCullingEnabled: true
                     IsEnabled: true
                     OrderBias: 0
@@ -3487,6 +3512,7 @@ Items:
                   - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                     Id: c9d72a86-9397-4a01-87b0-c9462bf75621
                     DebugBoundingbox: true
+                    IsCastShadows: false
                     IsCullingEnabled: true
                     IsEnabled: true
                     OrderBias: 0
@@ -3561,6 +3587,7 @@ Items:
                       - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                         Id: aeee9d15-360d-47c9-900b-069753c475c4
                         DebugBoundingbox: true
+                        IsCastShadows: false
                         IsCullingEnabled: true
                         IsEnabled: true
                         OrderBias: 0
@@ -3633,6 +3660,7 @@ Items:
                   - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                     Id: 824c4b23-d43c-4342-b9ea-3352ff37dfc5
                     DebugBoundingbox: true
+                    IsCastShadows: false
                     IsCullingEnabled: true
                     IsEnabled: true
                     OrderBias: 0
@@ -3680,6 +3708,7 @@ Items:
                   - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                     Id: 4b10495b-e40b-4d1a-be66-d78badd66d16
                     DebugBoundingbox: true
+                    IsCastShadows: false
                     IsCullingEnabled: true
                     IsEnabled: true
                     OrderBias: 0
@@ -3754,6 +3783,7 @@ Items:
                       - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                         Id: 98d023e5-a9e5-4775-a83b-2185c2479c57
                         DebugBoundingbox: true
+                        IsCastShadows: false
                         IsCullingEnabled: true
                         IsEnabled: true
                         OrderBias: 0
@@ -3949,6 +3979,7 @@ Items:
               - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                 Id: 3ef16b6f-28e9-417f-a5ff-a8565d283ab0
                 DebugBoundingbox: true
+                IsCastShadows: false
                 IsCullingEnabled: true
                 IsEnabled: true
                 OrderBias: 0
@@ -4025,12 +4056,13 @@ Items:
               - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                 Id: 43b36986-9d1f-4d9f-8b83-910e6ebf99b8
                 DebugBoundingbox: true
+                IsCastShadows: false
                 IsCullingEnabled: true
                 IsEnabled: true
                 OrderBias: 0
               - !WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation.SimpleManipulationHandler,WaveEngine.MRTK
                 Id: 341fb7a3-42b8-415e-b59c-269a455e2d59
-                Constraints: 0
+                Constraints: None
                 IncludeChildrenColliders: true
                 IsEnabled: true
                 KeepRigidBodyActiveDuringDrag: false
@@ -4140,12 +4172,13 @@ Items:
               - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                 Id: 4430b1e7-7da6-4ad4-91a5-ca49441e82a6
                 DebugBoundingbox: true
+                IsCastShadows: false
                 IsCullingEnabled: true
                 IsEnabled: true
                 OrderBias: 0
               - !WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation.SimpleManipulationHandler,WaveEngine.MRTK
                 Id: 272f7dc4-b4a4-4b31-9f22-eee106510352
-                Constraints: 0
+                Constraints: None
                 IncludeChildrenColliders: true
                 IsEnabled: true
                 KeepRigidBodyActiveDuringDrag: false
@@ -4255,12 +4288,13 @@ Items:
               - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                 Id: ca44f3bc-5276-481b-9230-c089c005bf86
                 DebugBoundingbox: true
+                IsCastShadows: false
                 IsCullingEnabled: true
                 IsEnabled: true
                 OrderBias: 0
               - !WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation.SimpleManipulationHandler,WaveEngine.MRTK
                 Id: 4369f2f3-ee5f-45f3-a370-155ab75f76da
-                Constraints: 0
+                Constraints: None
                 IncludeChildrenColliders: true
                 IsEnabled: true
                 KeepRigidBodyActiveDuringDrag: false
@@ -4406,7 +4440,7 @@ Items:
                 UpdateOrder: 0.5
               - !WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation.SimpleManipulationHandler,WaveEngine.MRTK
                 Id: 043ea2b1-3e30-497d-916d-8aa46dc9f3cf
-                Constraints: 0
+                Constraints: None
                 IncludeChildrenColliders: true
                 IsEnabled: true
                 KeepRigidBodyActiveDuringDrag: false
@@ -4454,6 +4488,7 @@ Items:
                   - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                     Id: adb88232-4a9e-487b-a9a1-ba16d394b930
                     DebugBoundingbox: true
+                    IsCastShadows: false
                     IsCullingEnabled: true
                     IsEnabled: true
                     OrderBias: 0
@@ -4494,6 +4529,7 @@ Items:
                   - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                     Id: 14a70d9e-e186-4445-9bc6-38c0475a5260
                     DebugBoundingbox: true
+                    IsCastShadows: false
                     IsCullingEnabled: true
                     IsEnabled: true
                     OrderBias: 0
@@ -4534,6 +4570,7 @@ Items:
                   - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                     Id: 65c39886-ee14-4def-9e8d-b66677d0f6b8
                     DebugBoundingbox: true
+                    IsCastShadows: false
                     IsCullingEnabled: true
                     IsEnabled: true
                     OrderBias: 0
@@ -4601,7 +4638,7 @@ Items:
                 UpdateOrder: 0.5
               - !WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation.SimpleManipulationHandler,WaveEngine.MRTK
                 Id: 93b93049-b1f1-4e95-826d-2545acf10fdf
-                Constraints: 0
+                Constraints: None
                 IncludeChildrenColliders: true
                 IsEnabled: true
                 KeepRigidBodyActiveDuringDrag: false
@@ -4649,6 +4686,7 @@ Items:
                   - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                     Id: 70011cb7-3fe5-41c7-bf59-53e45223ae1e
                     DebugBoundingbox: true
+                    IsCastShadows: false
                     IsCullingEnabled: true
                     IsEnabled: true
                     OrderBias: 0
@@ -4823,12 +4861,13 @@ Items:
               - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                 Id: af068ce1-13d8-4b86-9473-49d5b4daaf80
                 DebugBoundingbox: true
+                IsCastShadows: false
                 IsCullingEnabled: true
                 IsEnabled: true
                 OrderBias: 0
               - !WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation.SimpleManipulationHandler,WaveEngine.MRTK
                 Id: d495d95c-55e8-44a1-815f-5d6b7ca6a5b1
-                Constraints: 56
+                Constraints: ConstraintRotAll
                 IncludeChildrenColliders: true
                 IsEnabled: true
                 KeepRigidBodyActiveDuringDrag: false
@@ -4872,12 +4911,13 @@ Items:
               - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                 Id: 226a1e5f-63cd-40f9-90ce-4e2dd701c93f
                 DebugBoundingbox: true
+                IsCastShadows: false
                 IsCullingEnabled: true
                 IsEnabled: true
                 OrderBias: 0
               - !WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation.SimpleManipulationHandler,WaveEngine.MRTK
                 Id: cb26fa94-4b73-4ee2-9050-708c8534f9f6
-                Constraints: 448
+                Constraints: ConstraintScaleAll
                 IncludeChildrenColliders: true
                 IsEnabled: true
                 KeepRigidBodyActiveDuringDrag: false
@@ -4921,12 +4961,13 @@ Items:
               - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                 Id: d65368ab-5f0c-4457-9c0f-732e530690d3
                 DebugBoundingbox: true
+                IsCastShadows: false
                 IsCullingEnabled: true
                 IsEnabled: true
                 OrderBias: 0
               - !WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation.SimpleManipulationHandler,WaveEngine.MRTK
                 Id: 055841ea-5689-4e45-9a1d-2cb3d7fcf495
-                Constraints: 7
+                Constraints: ContraintPosAll
                 IncludeChildrenColliders: true
                 IsEnabled: true
                 KeepRigidBodyActiveDuringDrag: false
@@ -5227,6 +5268,7 @@ Items:
                       - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                         Id: a3876da2-1e76-4fa8-b295-448add9a2785
                         DebugBoundingbox: true
+                        IsCastShadows: false
                         IsCullingEnabled: true
                         IsEnabled: true
                         OrderBias: 0
@@ -5305,6 +5347,7 @@ Items:
                   - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                     Id: aeda1a95-10f7-4844-93b9-eccd22b43e13
                     DebugBoundingbox: true
+                    IsCastShadows: false
                     IsCullingEnabled: true
                     IsEnabled: true
                     OrderBias: 0
@@ -5358,6 +5401,7 @@ Items:
                   - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                     Id: 45fe23f6-0ad7-4c50-93d0-f475d286a88d
                     DebugBoundingbox: true
+                    IsCastShadows: false
                     IsCullingEnabled: true
                     IsEnabled: true
                     OrderBias: 0
@@ -5599,6 +5643,7 @@ Items:
               - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                 Id: 32416ea0-9c26-419a-a607-0793647d7631
                 DebugBoundingbox: true
+                IsCastShadows: false
                 IsCullingEnabled: true
                 IsEnabled: true
                 OrderBias: 0
@@ -5681,6 +5726,7 @@ Items:
               - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                 Id: 8ba00ca7-dd81-4708-8ff1-f1bf5961c339
                 DebugBoundingbox: true
+                IsCastShadows: false
                 IsCullingEnabled: true
                 IsEnabled: true
                 OrderBias: 0
@@ -5734,6 +5780,7 @@ Items:
               - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                 Id: 569bab81-6923-4295-9d9f-f4cb7e1212a9
                 DebugBoundingbox: true
+                IsCastShadows: false
                 IsCullingEnabled: true
                 IsEnabled: true
                 OrderBias: 0
@@ -5787,6 +5834,7 @@ Items:
               - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                 Id: 10ed2546-798b-42b3-a59c-4f202d2f8dbc
                 DebugBoundingbox: true
+                IsCastShadows: false
                 IsCullingEnabled: true
                 IsEnabled: true
                 OrderBias: 0
@@ -5840,6 +5888,7 @@ Items:
               - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                 Id: e2e9228d-e766-4375-8a11-7a5ba9384e60
                 DebugBoundingbox: true
+                IsCastShadows: false
                 IsCullingEnabled: true
                 IsEnabled: true
                 OrderBias: 0
@@ -6043,6 +6092,7 @@ Items:
                   - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                     Id: 37f41682-e58f-4454-8f55-3c66c2e9cda9
                     DebugBoundingbox: true
+                    IsCastShadows: false
                     IsCullingEnabled: true
                     IsEnabled: true
                     OrderBias: 0
@@ -6074,7 +6124,7 @@ Items:
                     WireframeShape: Cubic
                   - !WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation.SimpleManipulationHandler,WaveEngine.MRTK
                     Id: 77706876-d70f-4825-ab97-88a870e8e124
-                    Constraints: 0
+                    Constraints: None
                     IncludeChildrenColliders: true
                     IsEnabled: true
                     KeepRigidBodyActiveDuringDrag: false
@@ -6136,6 +6186,7 @@ Items:
               - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                 Id: e4473ff4-d41f-47d1-8ae2-ac452db18034
                 DebugBoundingbox: true
+                IsCastShadows: false
                 IsCullingEnabled: true
                 IsEnabled: true
                 OrderBias: 0
@@ -6184,7 +6235,7 @@ Items:
                   Z: 1.0
               - !WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation.SimpleManipulationHandler,WaveEngine.MRTK
                 Id: ae59e2b5-8187-4661-a970-d7cc645d51a7
-                Constraints: 0
+                Constraints: None
                 IncludeChildrenColliders: true
                 IsEnabled: true
                 KeepRigidBodyActiveDuringDrag: false
@@ -6251,6 +6302,7 @@ Items:
                   - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                     Id: 18cb5305-7dd1-40e2-8f4c-f327143364d5
                     DebugBoundingbox: true
+                    IsCastShadows: false
                     IsCullingEnabled: true
                     IsEnabled: true
                     OrderBias: 0
@@ -6379,7 +6431,7 @@ Items:
                   Z: 0.00197398663
               - !WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation.SimpleManipulationHandler,WaveEngine.MRTK
                 Id: 95f434a0-e25a-4eca-bf78-9e746b0e9281
-                Constraints: 56
+                Constraints: ConstraintRotAll
                 IncludeChildrenColliders: true
                 IsEnabled: true
                 KeepRigidBodyActiveDuringDrag: false
@@ -6435,6 +6487,7 @@ Items:
                   - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                     Id: b44ad9ac-ac67-4bdc-9ad7-0724cdaa3465
                     DebugBoundingbox: true
+                    IsCastShadows: false
                     IsCullingEnabled: true
                     IsEnabled: true
                     OrderBias: 0
@@ -6487,6 +6540,7 @@ Items:
                       - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                         Id: 60634c93-00ab-4e4b-9f1e-37ab00cf2cda
                         DebugBoundingbox: true
+                        IsCastShadows: false
                         IsCullingEnabled: true
                         IsEnabled: true
                         OrderBias: 0
@@ -6540,6 +6594,7 @@ Items:
                       - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                         Id: 1baf8892-044e-4d67-94f2-3227a462b0dd
                         DebugBoundingbox: true
+                        IsCastShadows: false
                         IsCullingEnabled: true
                         IsEnabled: true
                         OrderBias: 0

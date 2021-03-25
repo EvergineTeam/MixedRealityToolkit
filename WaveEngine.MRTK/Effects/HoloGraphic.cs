@@ -19,11 +19,13 @@ namespace WaveEngine.MRTK.Effects
         public HoloGraphic(WaveEngine.Framework.Graphics.Effects.Effect effect) :
                 base(new Material(effect))
         {
+            this.EnsureIsHolographic(effect);
         }
 
         public HoloGraphic(WaveEngine.Framework.Graphics.Material material) :
                 base(material)
         {
+            this.EnsureIsHolographic(material?.Effect);
         }
 
         public WaveEngine.Mathematics.Vector3 Parameters_Color
@@ -350,7 +352,7 @@ namespace WaveEngine.MRTK.Effects
             }
         }
 
-        public WaveEngine.Common.Graphics.Texture Texture
+        protected WaveEngine.Common.Graphics.Texture Internal_Texture
         {
             get
             {
@@ -362,7 +364,7 @@ namespace WaveEngine.MRTK.Effects
             }
         }
 
-        public WaveEngine.Common.Graphics.Texture IridescentSpectrumMap
+        protected WaveEngine.Common.Graphics.Texture Internal_IridescentSpectrumMap
         {
             get
             {

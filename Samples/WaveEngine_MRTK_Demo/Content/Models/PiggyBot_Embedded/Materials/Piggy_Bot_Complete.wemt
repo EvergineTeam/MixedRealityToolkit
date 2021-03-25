@@ -6,43 +6,137 @@ DefaultProfile:
   Platform: Undefined
 ExportAsRaw: false
 MaterialInfo:
-  Id: 3ba0482a-0cd0-43bb-ba41-a5a59cc5ff5c
+  Id: b96a6acf-7897-4e2e-94de-c34da5826e55
   ActiveDirectives:
-    - LIT
-    - IBL
+    - ALBEDO_MAP
     - DIFF
-    - NORMAL
+    - DIRECTIONAL_LIGHT
     - EMIS
+    - IBL
+    - LIT
     - MT_RG_TEXTURED
-  EffectID: daa1f60a-82ad-40fc-8fbb-7b85caa6de0a
+    - NORMAL
+  AllowInstancing: false
+  EffectID: 4f7e4c24-e83c-4350-9cd4-511fb2199cf4
   Layer: 0db59561-b3f5-444f-b5de-e62e3a5b42bf
+  OrderBias: 0
   Parameters:
-    - Name: BaseColor
-      Type: WaveEngine.Mathematics.Vector3,WaveEngine.Mathematics
-      ValueByteArray: AACAPwAAgD8AAIA/
-    - Name: EmissiveColor
+    - Name: WorldViewProj
+      Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
+      ValueByteArray: V7eLQAAAAAAAAAAAAAAAAAAAAACYMopADf9kvzD5ZL8AAAAAmjIKwAv/5L8u+eS/AAAAAHmCGjUf7ItAvRuPQA==
+    - Name: World
+      Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
+      ValueByteArray: AAAAQAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAACAPw==
+    - Name: Color
       Type: WaveEngine.Mathematics.Vector3,WaveEngine.Mathematics
       ValueByteArray: AACAPwAAgD8AAIA/
     - Name: Alpha
       Type: System.Single
       ValueByteArray: AACAPw==
+    - Name: InnerGlowColor
+      Type: WaveEngine.Mathematics.Vector3,WaveEngine.Mathematics
+      ValueByteArray: AACAPwAAgD8AAIA/
+    - Name: InnerGlowAlpha
+      Type: System.Single
+      ValueByteArray: AABAPw==
+    - Name: InnerGlowPower
+      Type: System.Single
+      ValueByteArray: AACAQA==
+    - Name: BorderWidth
+      Type: System.Single
+      ValueByteArray: zczMPQ==
+    - Name: BorderMinValue
+      Type: System.Single
+      ValueByteArray: zczMPQ==
+    - Name: FluentLightIntensity
+      Type: System.Single
+      ValueByteArray: AACAPw==
+    - Name: RoundCornerRadious
+      Type: System.Single
+      ValueByteArray: AACAPg==
+    - Name: RoundCornerMargin
+      Type: System.Single
+      ValueByteArray: CtcjPA==
+    - Name: Cutoff
+      Type: System.Single
+      ValueByteArray: AAAAPw==
+    - Name: RoundCornersRadious
+      Type: WaveEngine.Mathematics.Vector4,WaveEngine.Mathematics
+      ValueByteArray: AAAAPwAAAD8AAAA/AAAAPw==
+    - Name: EdgeSmoothingValue
+      Type: System.Single
+      ValueByteArray: bxIDOw==
+    - Name: FadeBeginDistance
+      Type: System.Single
+      ValueByteArray: CtcjPA==
+    - Name: FadeCompleteDistance
+      Type: System.Single
+      ValueByteArray: zczMPQ==
+    - Name: FadeMinValue
+      Type: System.Single
+      ValueByteArray: AAAAAA==
+    - Name: HoverColorOverride
+      Type: WaveEngine.Mathematics.Vector3,WaveEngine.Mathematics
+      ValueByteArray: 61gxPetYMT3rWDE9
+    - Name: ProximityLightCenterColorOverride
+      Type: WaveEngine.Mathematics.Vector4,WaveEngine.Mathematics
+      ValueByteArray: DjQEPflsiT753nQ/AAAAAA==
+    - Name: ProximityLightMiddleColorOverride
+      Type: WaveEngine.Mathematics.Vector4,WaveEngine.Mathematics
+      ValueByteArray: P1y8PN/IaD4AAIA/zcxMPg==
+    - Name: ProximityLightOuterColorOverride
+      Type: WaveEngine.Mathematics.Vector4,WaveEngine.Mathematics
+      ValueByteArray: b/qmPctjGjwe/gM/AACAPw==
     - Name: Metallic
       Type: System.Single
       ValueByteArray: AACAPw==
-    - Name: Roughness
+    - Name: Smoothness
       Type: System.Single
-      ValueByteArray: 52MyPw==
-    - Name: ReferenceAlpha
+      ValueByteArray: AAAAPw==
+    - Name: Tiling
+      Type: WaveEngine.Mathematics.Vector2,WaveEngine.Mathematics
+      ValueByteArray: AACAPwAAgD8=
+    - Name: Offset
+      Type: WaveEngine.Mathematics.Vector2,WaveEngine.Mathematics
+      ValueByteArray: AAAAAAAAAAA=
+    - Name: IridescenceIntensity
       Type: System.Single
-      ValueByteArray: AAAAAA==
-  Samplers: []
+      ValueByteArray: AAAAPw==
+    - Name: IridescenceThreshold
+      Type: System.Single
+      ValueByteArray: zcxMPQ==
+    - Name: IridescenceAngle
+      Type: System.Single
+      ValueByteArray: FK5Hvw==
+    - Name: EyePosition
+      Type: WaveEngine.Mathematics.Vector3,WaveEngine.Mathematics
+      ValueByteArray: Qd8JP0Tw5T2NQMs+
+    - Name: EyeCount
+      Type: System.Int32
+      ValueByteArray: AQAAAA==
+    - Name: MultiviewViewProj
+      Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
+      ValueByteArray: 31y2Pzszgj7JYIY+fl6GPqiXjjNFZA9A2ri+vpm1vr4aD9c+i89cv2jlY7+F4WO/Rx1vv9vPPL0+jh0++viBPg==
+    - Name: SunDirection
+      Type: WaveEngine.Mathematics.Vector3,WaveEngine.Mathematics
+      ValueByteArray: AAAAAAAAAAAAAIA/
+    - Name: SunColor
+      Type: WaveEngine.Mathematics.Vector3,WaveEngine.Mathematics
+      ValueByteArray: AACAPwAAgD8AAIA/
+    - Name: HoverLightData
+      Type: WaveEngine.Mathematics.Vector4,WaveEngine.Mathematics
+      ValueByteArray: AAAAAAAAAAAAAAAAAAAAAA==
+    - Name: ProximityLightData
+      Type: WaveEngine.Mathematics.Vector4,WaveEngine.Mathematics
+      ValueByteArray: AAAAAAAAAAAAAAAAAAAAAA==
+  Samplers:
+    - ID: b79d2686-7408-44ee-ac47-47302bcb3aaf
+      Name: Sampler
+    - ID: 00000000-0000-0000-0000-000000000000
+      Name: null
   Textures:
     - ID: 709910cd-a6f1-489f-9631-42f733796987
-      Name: BaseColorTexture
-    - ID: f02bc837-2f15-417e-b172-a5608b65e5a8
-      Name: NormalTexture
-    - ID: 6b4f4acf-ea24-48f7-8ac2-4b2b45fbd184
-      Name: EmissiveTexture
-    - ID: 9c8bde48-b47e-4cde-9efa-e885fd13ffaf
-      Name: MetallicRoughnessTexture
+      Name: Texture
+    - ID: 00000000-0000-0000-0000-000000000000
+      Name: null
 Profiles: {}
