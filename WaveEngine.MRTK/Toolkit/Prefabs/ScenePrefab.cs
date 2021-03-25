@@ -8,7 +8,6 @@ using WaveEngine.Components.Graphics3D;
 using WaveEngine.Framework;
 using WaveEngine.Framework.Assets;
 using WaveEngine.Framework.Assets.Importers;
-using WaveEngine.Framework.Services;
 using WaveEngine.Platform;
 
 namespace WaveEngine.MRTK.Toolkit.Prefabs
@@ -21,15 +20,13 @@ namespace WaveEngine.MRTK.Toolkit.Prefabs
         [BindService]
         private AssetsDirectory assetsDirectory = null;
 
-        /// <summary>
-        /// Gets or sets the asset service.
-        /// </summary>
-        [BindService]
-        public AssetsService AssetsService;
-
-        private Guid prefabId;
-
         private bool duplicateMaterials;
+
+        /// <summary>
+        /// Gets the scene prefab ID that will be used.
+        /// </summary>
+        [RenderProperty(CustomPropertyName = "Prefab")]
+        public ScenePrefabProperty ScenePrefabProperty = new ScenePrefabProperty();
 
         /// <summary>
         /// Gets or sets a value indicating whether the materials that this prefab uses will be duplicated.
@@ -48,23 +45,6 @@ namespace WaveEngine.MRTK.Toolkit.Prefabs
             }
         }
 
-        /// <summary>
-        /// Gets or sets the prefab to use.
-        /// </summary>
-        [RenderProperty(Tooltip = "The prefab to use.")]
-        public Guid PrefabId
-        {
-            get => this.prefabId;
-            set
-            {
-                if (this.prefabId != value)
-                {
-                    this.prefabId = value;
-                    this.RefreshEntity();
-                }
-            }
-        }
-
         /// <inheritdoc/>
         protected override bool OnAttached()
         {
@@ -72,6 +52,8 @@ namespace WaveEngine.MRTK.Toolkit.Prefabs
             {
                 return false;
             }
+
+            this.ScenePrefabProperty.OnScenePrefabChanged += this.ScenePrefab_OnScenePrefabChanged;
 
             this.RefreshEntity(false);
 
@@ -82,7 +64,15 @@ namespace WaveEngine.MRTK.Toolkit.Prefabs
         protected override void OnDetach()
         {
             this.ClearEntity();
+
+            this.ScenePrefabProperty.OnScenePrefabChanged -= this.ScenePrefab_OnScenePrefabChanged;
+
             base.OnDetach();
+        }
+
+        private void ScenePrefab_OnScenePrefabChanged(object sender, EventArgs e)
+        {
+            this.RefreshEntity();
         }
 
         private void ClearEntity()
@@ -94,7 +84,7 @@ namespace WaveEngine.MRTK.Toolkit.Prefabs
         }
 
         /// <summary>
-        /// Refresh the entity.
+        /// Refresh the entity, reinstancing the prefab.
         /// </summary>
         /// <param name="checkIsAttached">Check if it's attached.</param>
         public void RefreshEntity(bool checkIsAttached = true)
@@ -107,7 +97,7 @@ namespace WaveEngine.MRTK.Toolkit.Prefabs
 
             this.ClearEntity();
 
-            if (this.prefabId == Guid.Empty)
+            if (!this.ScenePrefabProperty.IsPrefabIdValid)
             {
                 return;
             }
@@ -115,7 +105,7 @@ namespace WaveEngine.MRTK.Toolkit.Prefabs
             var importer = new WaveSceneImporter();
             var source = new SceneSource();
 
-            string path = this.GetAssetPath(this.prefabId);
+            string path = this.GetAssetPath(this.ScenePrefabProperty.PrefabId);
             using (var stream = this.assetsDirectory.Open(path))
             {
                 importer.ImportHeader(stream, out source);

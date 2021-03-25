@@ -9,11 +9,9 @@ using WaveEngine.MRTK.Toolkit.Prefabs;
 
 namespace WaveEngine_MRTK_Demo.Editor
 {
-    [CustomPanelEditor(typeof(ScenePrefab))]
-    public class ScenePrefabPanel : PanelEditor
+    [CustomPropertyEditor(typeof(ScenePrefabProperty))]
+    public class ScenePrefabPropertyEditor : PropertyEditor<ScenePrefabProperty>
     {
-        public new ScenePrefab Instance => (ScenePrefab)base.Instance;
-
         private Dictionary<string, Guid> prefabsIdByName;
 
         private AssetsService assetsService;
@@ -23,20 +21,20 @@ namespace WaveEngine_MRTK_Demo.Editor
         protected override void Loaded()
         {
             base.Loaded();
-            this.assetsService = this.Instance.AssetsService;
+            this.assetsService = Application.Current.Container.Resolve<AssetsService>();
             this.prefabsIdByName = WaveContentUtils.FindPrefabs();
             this.PrefabSetValue(this.PrefabGetValue());
         }
 
         public override void GenerateUI()
         {
-            base.GenerateUI();
-            this.propertyPanelContainer.AddSelector(nameof(ScenePrefab.PrefabId), "Prefab", prefabsIdByName.Keys, this.PrefabGetValue, this.PrefabSetValue);
+            this.propertyPanelContainer.AddSelector(this.Id, this.Name, prefabsIdByName.Keys, this.PrefabGetValue, this.PrefabSetValue);
         }
 
         private string PrefabGetValue()
         {
-            return this.prefabsIdByName.FirstOrDefault(x => x.Value == Instance.PrefabId).Key;
+            var instance = this.GetMemberValue();
+            return this.prefabsIdByName.FirstOrDefault(x => x.Value == instance.PrefabId).Key;
         }
 
         private void PrefabSetValue(string x)
@@ -46,12 +44,16 @@ namespace WaveEngine_MRTK_Demo.Editor
                 return;
             }
 
-            var previousPrefabId = this.Instance.PrefabId;
-            this.Instance.PrefabId = this.prefabsIdByName[x];
+            var instance = this.GetMemberValue();
 
-            this.UpdatePrefabScene(this.assetsService.Load<Scene>(this.Instance.PrefabId));
+            var previousPrefabId = instance.PrefabId;
 
-            if (previousPrefabId != this.Instance.PrefabId)
+            this.prefabsIdByName.TryGetValue(x, out var id);
+            instance.PrefabId = id;
+
+            this.UpdatePrefabScene(this.assetsService.Load<Scene>(instance.PrefabId));
+
+            if (previousPrefabId != instance.PrefabId)
             {
                 this.assetsService.Unload(previousPrefabId);
             }
@@ -65,7 +67,9 @@ namespace WaveEngine_MRTK_Demo.Editor
                 this.prefabScene = null;
             }
 
-            if (this.Instance.PrefabId != Guid.Empty)
+            var instance = this.GetMemberValue();
+
+            if (instance.IsPrefabIdValid)
             {
                 this.prefabScene = scene;
 
@@ -78,7 +82,9 @@ namespace WaveEngine_MRTK_Demo.Editor
 
         private void PrefabScene_Invalidated(object sender, WaveEngine.Common.ILoadable e)
         {
-            this.Instance.RefreshEntity();
+            var instance = this.GetMemberValue();
+
+            instance.Refresh();
             this.UpdatePrefabScene(e as Scene);
         }
     }
