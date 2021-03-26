@@ -331,11 +331,18 @@ Items:
               Y: 0.200000003
               Z: 0.200000003
             CollisionCategory: Cat1
+            FaceScaleHandlePrefab:
+              PrefabId: 7dc30238-5a85-4f41-b0b8-a5baa67ec465
             HandleGrabbedMaterial: 7c6dfc11-0f01-4d22-bfc9-bc5ca4fae227
             HandleMaterial: 9adff77b-f6b6-4683-bf28-243fafea5436
             IsEnabled: true
             LinkScale: 0.00200000009
+            MaintainHandlesApparentSize: false
+            RotationHandlePrefab:
+              PrefabId: 91581f1c-7c41-4c43-bc53-5fdb064a90f7
             RotationHandleScale: 0.0199999996
+            ScaleHandlePrefab:
+              PrefabId: 92d409e4-15d4-432c-be90-e57aaece73a5
             ScaleHandleScale: 0.0199999996
             ShowScaleHandles: true
             ShowWireframe: true
@@ -345,11 +352,12 @@ Items:
             ShowYScaleHandle: true
             ShowZRotationHandle: true
             ShowZScaleHandle: true
+            UpdateOrder: 0.5
             WireframeMaterial: d04c6b19-b181-4798-8052-73388883abfe
             WireframeShape: Cylindrical
           - !WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation.SimpleManipulationHandler,WaveEngine.MRTK
             Id: 25b5c124-3f29-4d6f-8ef0-e0bff4d51bcb
-            Constraints: 0
+            Constraints: None
             IncludeChildrenColliders: true
             IsEnabled: true
             KeepRigidBodyActiveDuringDrag: false

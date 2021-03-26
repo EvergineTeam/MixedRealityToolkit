@@ -6140,6 +6140,7 @@ Items:
                     ShowYScaleHandle: true
                     ShowZRotationHandle: true
                     ShowZScaleHandle: true
+                    UpdateOrder: 0.5
                     WireframeMaterial: d04c6b19-b181-4798-8052-73388883abfe
                     WireframeShape: Cubic
                   - !WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation.SimpleManipulationHandler,WaveEngine.MRTK
@@ -6235,6 +6236,7 @@ Items:
                 ShowYScaleHandle: false
                 ShowZRotationHandle: false
                 ShowZScaleHandle: false
+                UpdateOrder: 0.5
                 WireframeMaterial: d04c6b19-b181-4798-8052-73388883abfe
                 WireframeShape: Cubic
               - !WaveEngine.Framework.Physics3D.BoxCollider3D,WaveEngine.Framework
@@ -6352,6 +6354,7 @@ Items:
                     ShowYScaleHandle: false
                     ShowZRotationHandle: true
                     ShowZScaleHandle: false
+                    UpdateOrder: 0.5
                     WireframeMaterial: d04c6b19-b181-4798-8052-73388883abfe
                     WireframeShape: Cubic
                   - !WaveEngine.Framework.Physics3D.BoxCollider3D,WaveEngine.Framework
@@ -6433,6 +6436,7 @@ Items:
                 ShowYScaleHandle: true
                 ShowZRotationHandle: false
                 ShowZScaleHandle: false
+                UpdateOrder: 0.5
                 WireframeMaterial: d04c6b19-b181-4798-8052-73388883abfe
                 WireframeShape: Cubic
               - !WaveEngine.Framework.Physics3D.BoxCollider3D,WaveEngine.Framework
