@@ -23,6 +23,7 @@ namespace WaveEngine_MRTK_Demo.Editor
             base.Loaded();
             this.assetsService = Application.Current.Container.Resolve<AssetsService>();
             this.prefabsIdByName = WaveContentUtils.FindPrefabs();
+            this.prefabsIdByName.Add("None", Guid.Empty);
             this.PrefabSetValue(this.PrefabGetValue());
         }
 
