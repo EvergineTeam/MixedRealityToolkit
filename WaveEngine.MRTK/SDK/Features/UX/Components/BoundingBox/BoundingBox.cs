@@ -40,12 +40,13 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
         /// Gets or sets a value indicating whether the bounding collider should be calculated automatically
         /// based on <see cref="MeshComponent"/> components found in from owner's hierarchy.
         /// </summary>
+        [RenderProperty(Tooltip = "Whether the bounding collider should be calculated automatically based on MeshComponent components found in from owner's hierarchy.")]
         public bool AutoCalculate { get; set; } = true;
 
         /// <summary>
         /// Gets or sets the scale applied to the scale handles.
         /// </summary>
-        [RenderProperty(Tooltip = "Scale applied to the scale handles")]
+        [RenderProperty(Tooltip = "Scale applied to the scale handles.")]
         public float ScaleHandleScale
         {
             get => this.scaleHandleScale;
@@ -65,7 +66,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
         /// <summary>
         /// Gets or sets the scale applied to the rotation handles.
         /// </summary>
-        [RenderProperty(Tooltip = "Scale applied to the rotation handles")]
+        [RenderProperty(Tooltip = "Scale applied to the rotation handles.")]
         public float RotationHandleScale
         {
             get => this.rotationHandleScale;
@@ -85,7 +86,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
         /// <summary>
         /// Gets or sets the scale applied to the wireframe links.
         /// </summary>
-        [RenderProperty(Tooltip = "Scale applied to the wireframe links")]
+        [RenderProperty(Tooltip = "Scale applied to the wireframe links.")]
         public float LinkScale
         {
             get => this.linkScale;
@@ -165,7 +166,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
         /// <summary>
         /// Gets or sets a value indicating whether to show the wireframe links around the box or not.
         /// </summary>
-        [RenderProperty(Tooltip = "Whether to show the wireframe links around the box or not")]
+        [RenderProperty(Tooltip = "Whether to show the wireframe links around the box or not.")]
         public bool ShowWireframe
         {
             get => this.showWireframe;
@@ -183,9 +184,9 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
         private bool showWireframe = true;
 
         /// <summary>
-        /// Gets or sets a value indicating whether to show the scale handles on the corners or not.
+        /// Gets or sets a value indicating whether to show the uniform scale handles on the corners or not.
         /// </summary>
-        [RenderProperty(Tooltip = "Whether to show the scale handles on the corners or not")]
+        [RenderProperty(Tooltip = "Whether to show the uniform scale handles on the corners or not.")]
         public bool ShowScaleHandles
         {
             get => this.showScaleHandles;
@@ -203,9 +204,9 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
         private bool showScaleHandles = true;
 
         /// <summary>
-        /// Gets or sets a value indicating whether to show the rotation handle for axis X or not.
+        /// Gets or sets a value indicating whether to show the scale handles on the faces for axis X or not.
         /// </summary>
-        [RenderProperty(Tooltip = "Whether to show the rotation handle for axis X or not")]
+        [RenderProperty(Tooltip = "Whether to show the scale handles on the faces for axis X or not.")]
         public bool ShowXScaleHandle
         {
             get => this.showXScaleHandle;
@@ -223,9 +224,9 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
         private bool showXScaleHandle = true;
 
         /// <summary>
-        /// Gets or sets a value indicating whether to show the rotation handle for axis X or not.
+        /// Gets or sets a value indicating whether to show the scale handles on the faces for axis Y or not.
         /// </summary>
-        [RenderProperty(Tooltip = "Whether to show the rotation handle for axis X or not")]
+        [RenderProperty(Tooltip = "Whether to show the scale handles on the faces for axis Y or not.")]
         public bool ShowYScaleHandle
         {
             get => this.showYScaleHandle;
@@ -243,9 +244,9 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
         private bool showYScaleHandle = true;
 
         /// <summary>
-        /// Gets or sets a value indicating whether to show the rotation handle for axis X or not.
+        /// Gets or sets a value indicating whether to show the scale handles on the faces for axis Z or not.
         /// </summary>
-        [RenderProperty(Tooltip = "Whether to show the rotation handle for axis X or not")]
+        [RenderProperty(Tooltip = "Whether to show the scale handles on the faces for axis Z or not.")]
         public bool ShowZScaleHandle
         {
             get => this.showZScaleHandle;
@@ -263,9 +264,9 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
         private bool showZScaleHandle = true;
 
         /// <summary>
-        /// Gets or sets a value indicating whether to show the rotation handle for axis X or not.
+        /// Gets or sets a value indicating whether to show the rotation handle on the edges for axis X or not.
         /// </summary>
-        [RenderProperty(Tooltip = "Whether to show the rotation handle for axis X or not")]
+        [RenderProperty(Tooltip = "Whether to show the rotation handle on the edges for axis X or not.")]
         public bool ShowXRotationHandle
         {
             get => this.showXRotationHandle;
@@ -283,9 +284,9 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
         private bool showXRotationHandle = true;
 
         /// <summary>
-        /// Gets or sets a value indicating whether to show the rotation handle for axis X or not.
+        /// Gets or sets a value indicating whether to show the rotation handle on the edges for axis X or not.
         /// </summary>
-        [RenderProperty(Tooltip = "Whether to show the rotation handle for axis Y or not")]
+        [RenderProperty(Tooltip = "Whether to show the rotation handle on the edges for axis Y or not.")]
         public bool ShowYRotationHandle
         {
             get => this.showYRotationHandle;
@@ -303,9 +304,9 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
         private bool showYRotationHandle = true;
 
         /// <summary>
-        /// Gets or sets a value indicating whether to show the rotation handle for axis X or not.
+        /// Gets or sets a value indicating whether to show the rotation handle on the edges for axis Z or not.
         /// </summary>
-        [RenderProperty(Tooltip = "Whether to show the rotation handle for axis Z or not")]
+        [RenderProperty(Tooltip = "Whether to show the rotation handle on the edges for axis Z or not.")]
         public bool ShowZRotationHandle
         {
             get => this.showZRotationHandle;
@@ -325,7 +326,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
         /// <summary>
         /// Gets or sets the shape of the wireframe links.
         /// </summary>
-        [RenderProperty(Tooltip = "The shape of the wireframe links")]
+        [RenderProperty(Tooltip = "The shape of the wireframe links.")]
         public WireframeType WireframeShape
         {
             get => this.wireframeShape;
@@ -345,7 +346,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
         /// <summary>
         /// Gets or sets the material applied to the wireframe links.
         /// </summary>
-        [RenderProperty(Tooltip = "The material applied to the wireframe links")]
+        [RenderProperty(Tooltip = "The material applied to the wireframe links.")]
         public Material WireframeMaterial
         {
             get => this.wireframeMaterial;
@@ -365,7 +366,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
         /// <summary>
         /// Gets or sets the material applied to the handles when not in a grabbed state.
         /// </summary>
-        [RenderProperty(Tooltip = "The material applied to the handles when not in a grabbed state")]
+        [RenderProperty(Tooltip = "The material applied to the handles when not in a grabbed state.")]
         public Material HandleMaterial
         {
             get => this.handleMaterial;
@@ -385,7 +386,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
         /// <summary>
         /// Gets or sets the material applied to the handles when in a grabbed state.
         /// </summary>
-        [RenderProperty(Tooltip = "The material applied to the handles when in a grabbed state")]
+        [RenderProperty(Tooltip = "The material applied to the handles when in a grabbed state.")]
         public Material HandleGrabbedMaterial
         {
             get => this.handleGrabbedMaterial;
@@ -423,6 +424,8 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
         /// <summary>
         /// Gets or sets the collision category of the handles.
         /// </summary>
+        [RenderProperty(Tooltip = "The collision category of the handles")]
+
         public CollisionCategory3D CollisionCategory
         {
             get => this.collisionCategory3D;
@@ -442,6 +445,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
         /// <summary>
         /// Gets or sets a value indicating whether the handles should keep their apparent size with respect to the camera.
         /// </summary>
+        [RenderProperty(Tooltip = "Whether the handles should keep their apparent size with respect to the camera.")]
         public bool MaintainHandlesApparentSize
         {
             get => this.maintainHandlesApparentSize;
@@ -1093,6 +1097,8 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
                 {
                     scaleFactorDueToCameraPosition = (activeCamera.Position - helper.Transform.Position).Length() * activeCamera.FieldOfView;
                 }
+
+                scaleFactorDueToCameraPosition = MathHelper.Max(scaleFactorDueToCameraPosition, 0.01f);
 
                 switch (helper.Type)
                 {
