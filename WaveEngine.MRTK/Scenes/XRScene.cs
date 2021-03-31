@@ -195,6 +195,7 @@ namespace WaveEngine.MRTK.Scenes
                 .AddComponent(new Cursor() { PressedMaterial = pressedMaterial, ReleasedMaterial = releasedMaterial, UpdateOrder = 0.3f })
                 .AddComponent(new CursorRay() { MainCursor = cursor.FindComponent<Cursor>(), LineMesh = lineComp, joint = trackXRJoint, collisionMask = CollisionCategory3D.Cat1 })
                 .AddComponent(new Billboard())
+                .AddComponent(new HoverLight())
                 ;
             scene.Managers.EntityManager.Add(cursorDist);
 

@@ -3,8 +3,8 @@ using WaveEngine.Common.Graphics;
 using WaveEngine.Components.Graphics3D;
 using WaveEngine.Framework;
 using WaveEngine.Framework.Graphics;
-using WaveEngine.Framework.Graphics.Materials;
 using WaveEngine.Mathematics;
+using WaveEngine.MRTK.Effects;
 using WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation;
 using WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons;
 using WaveEngine.MRTK.SDK.Features.UX.Components.Sliders;
@@ -17,7 +17,7 @@ namespace WaveEngine_MRTK_Demo.Components
         [BindComponent]
         protected Transform3D transform;
 
-        [BindComponent(isRequired: false)]
+        [BindComponent]
         protected MaterialComponent materialComponent;
 
         [BindComponent(isRequired: false, source: BindComponentSource.Scene)]
@@ -32,7 +32,7 @@ namespace WaveEngine_MRTK_Demo.Components
         [BindComponent(isRequired: false)]
         protected BoxColliderRenderer boxColliderRenderer;
 
-        private StandardMaterial material;
+        private HoloGraphic material;
 
         private Color initialColor;
         private Color colorBeforePressing;
@@ -40,41 +40,42 @@ namespace WaveEngine_MRTK_Demo.Components
 
         protected override bool OnAttached()
         {
-            var attached = base.OnAttached();
-
-            if (attached)
+            if (!base.OnAttached())
             {
-                if (this.materialComponent != null)
-                {
-                    this.material = new StandardMaterial(this.materialComponent.Material);
-                }
-
-                if (this.pressableButton != null)
-                {
-                    this.pressableButton.ButtonPressed += this.PressableButton_ButtonPressed;
-                    this.pressableButton.ButtonReleased += this.PressableButton_ButtonReleased;
-                }
-
-                if (this.pinchSlider != null)
-                {
-                    this.pinchSlider.ValueUpdated += this.PinchSlider_ValueUpdated;
-                }
-
-                if (this.simpleManipulationHandler != null)
-                {
-                    this.simpleManipulationHandler.ManipulationStarted += SimpleManipulationHandler_ManipulationStarted;
-                    this.simpleManipulationHandler.ManipulationEnded += SimpleManipulationHandler_ManipulationEnded;
-                }
-
-                if (this.boxColliderRenderer != null)
-                {
-                    this.boxColliderRenderer.IsEnabled = false;
-                }
-
-                this.initialColor = this.material.BaseColor;
+                return false;
             }
 
-            return attached;
+            if (!HoloGraphic.IsHolographicMaterial(this.materialComponent.Material))
+            {
+                throw new InvalidOperationException($"Material component material should be {nameof(HoloGraphic)}.");
+            }
+
+            this.material = new HoloGraphic(this.materialComponent.Material);
+            this.initialColor = this.material.Albedo;
+
+            if (this.pressableButton != null)
+            {
+                this.pressableButton.ButtonPressed += this.PressableButton_ButtonPressed;
+                this.pressableButton.ButtonReleased += this.PressableButton_ButtonReleased;
+            }
+
+            if (this.pinchSlider != null)
+            {
+                this.pinchSlider.ValueUpdated += this.PinchSlider_ValueUpdated;
+            }
+
+            if (this.simpleManipulationHandler != null)
+            {
+                this.simpleManipulationHandler.ManipulationStarted += SimpleManipulationHandler_ManipulationStarted;
+                this.simpleManipulationHandler.ManipulationEnded += SimpleManipulationHandler_ManipulationEnded;
+            }
+
+            if (this.boxColliderRenderer != null)
+            {
+                this.boxColliderRenderer.IsEnabled = false;
+            }
+
+            return true;
         }
 
         protected override void OnDetach()
@@ -101,8 +102,8 @@ namespace WaveEngine_MRTK_Demo.Components
 
         private void PressableButton_ButtonPressed(object sender, EventArgs e)
         {
-            this.colorBeforePressing = this.material.BaseColor;
-            this.material.BaseColor = Color.Red;
+            this.colorBeforePressing = this.material.Albedo;
+            this.material.Albedo = Color.Red;
 
             this.scaleBeforePressing = this.transform.LocalScale;
             this.transform.LocalScale *= 0.9f;
@@ -110,7 +111,7 @@ namespace WaveEngine_MRTK_Demo.Components
 
         private void PressableButton_ButtonReleased(object sender, EventArgs e)
         {
-            this.material.BaseColor = this.colorBeforePressing;
+            this.material.Albedo = this.colorBeforePressing;
             this.transform.LocalScale = this.scaleBeforePressing;
         }
 
@@ -118,7 +119,7 @@ namespace WaveEngine_MRTK_Demo.Components
         {
             if (this.material != null)
             {
-                this.material.BaseColor = this.initialColor * eventData.NewValue;
+                this.material.Albedo = this.initialColor * eventData.NewValue;
             }
         }
 

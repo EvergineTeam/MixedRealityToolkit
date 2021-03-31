@@ -3,7 +3,9 @@
 using System;
 using System.Linq;
 using WaveEngine.Common.Attributes;
+using WaveEngine.Common.Graphics;
 using WaveEngine.Framework.Graphics;
+using WaveEngine.Framework.Graphics.Effects;
 using Color = WaveEngine.Common.Graphics.Color;
 
 namespace WaveEngine.MRTK.Effects
@@ -11,7 +13,7 @@ namespace WaveEngine.MRTK.Effects
     /// <summary>
     /// Partial class for Holographic, needed for Custom Editor.
     /// </summary>
-    [Framework.Graphics.MaterialDecoratorAttribute("4f7e4c24-e83c-4350-9cd4-511fb2199cf4")]
+    [MaterialDecorator("4f7e4c24-e83c-4350-9cd4-511fb2199cf4")]
     public partial class HoloGraphic : MaterialDecorator
     {
         /// <summary>
@@ -121,8 +123,9 @@ namespace WaveEngine.MRTK.Effects
         /// <summary>
         /// Gets a value indicating whether the current material configuration allows mesh batching.
         /// </summary>
-        public bool AllowBatching => !this.material.ActiveDirectivesNames.Contains(BorderLightDirective) &&
-                                     !this.material.ActiveDirectivesNames.Contains(InnerGlowDirective);
+        public bool AllowBatching => this.material.ActiveDirectivesNames == null ||
+                                     (!this.material.ActiveDirectivesNames.Contains(BorderLightDirective) &&
+                                      !this.material.ActiveDirectivesNames.Contains(InnerGlowDirective));
 
         /// <summary>
         /// Gets or sets the Albedo.
@@ -138,6 +141,23 @@ namespace WaveEngine.MRTK.Effects
             {
                 this.Parameters_Color = value.ToVector3();
                 this.Parameters_Alpha = value.A / 255.0f;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the Albedo Map texture.
+        /// </summary>
+        public Texture Texture
+        {
+            get
+            {
+                return this.Internal_Texture;
+            }
+
+            set
+            {
+                this.EnsureDirectiveIsActive(AlbedoMapDirective, value != null);
+                this.Internal_Texture = value;
             }
         }
 
@@ -394,6 +414,71 @@ namespace WaveEngine.MRTK.Effects
         {
             get => this.Parameters_IridescenceAngle;
             set => this.Parameters_IridescenceAngle = value;
+        }
+
+        /// <summary>
+        /// Gets or sets the Iridescent Spectrum Map texture.
+        /// </summary>
+        public Texture IridescentSpectrumMap
+        {
+            get
+            {
+                return this.Internal_IridescentSpectrumMap;
+            }
+
+            set
+            {
+                this.EnsureDirectiveIsActive(IridescenceDirective, value != null);
+                this.Internal_IridescentSpectrumMap = value;
+            }
+        }
+
+        /// <summary>
+        /// Checks if a given effect is <see cref="HoloGraphic"/>.
+        /// </summary>
+        /// <param name="effect">The effect to check.</param>
+        /// <returns>
+        /// <see langword="true"/> if the effect is <see cref="HoloGraphic"/>; otherwise, <see langword="false"/>.
+        /// </returns>
+        public static bool IsHolographicEffect(Effect effect)
+        {
+            return effect?.Id == EffectId;
+        }
+
+        /// <summary>
+        /// Checks if a given material is <see cref="HoloGraphic"/>.
+        /// </summary>
+        /// <param name="material">The material to check.</param>
+        /// <returns>
+        /// <see langword="true"/> if the material is <see cref="HoloGraphic"/>; otherwise, <see langword="false"/>.
+        /// </returns>
+        public static bool IsHolographicMaterial(Material material)
+        {
+            return IsHolographicEffect(material?.Effect);
+        }
+
+        /// <summary>
+        /// Ensures that a given directive name is active or not.
+        /// </summary>
+        /// <param name="directiveName">The directive name to check.</param>
+        /// <param name="shouldBeActive">A value indicating whether the directive should be active.</param>
+        public void EnsureDirectiveIsActive(string directiveName, bool shouldBeActive)
+        {
+            var currentlyActive = this.ActiveDirectivesNames?.Contains(directiveName) ?? false;
+            if (shouldBeActive != currentlyActive)
+            {
+                this.ActiveDirectivesNames = shouldBeActive ?
+                    this.ActiveDirectivesNames?.Append(directiveName).ToArray() ?? new[] { directiveName } :
+                    this.ActiveDirectivesNames?.Except(new[] { directiveName }).ToArray() ?? null;
+            }
+        }
+
+        private void EnsureIsHolographic(Effect effect)
+        {
+            if (!IsHolographicEffect(effect))
+            {
+                throw new InvalidOperationException($"Material component material should be {nameof(HoloGraphic)}.");
+            }
         }
     }
 }

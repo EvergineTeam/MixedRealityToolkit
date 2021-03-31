@@ -72,15 +72,16 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
         /// <summary>
         /// Constraints.
         /// </summary>
-        public enum ContraintsEnum
+        [Flags]
+        public enum ConstraintsEnum : int
         {
             /// <summary>
-            /// No Constraints
+            /// No constraints.
             /// </summary>
             None = 0,
 
             /// <summary>
-            /// ALl Constraints
+            /// All constraints.
             /// </summary>
             All = 0xFFFF,
 
@@ -100,19 +101,29 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
             ConstraintPosZ = 1 << 2,
 
             /// <summary>
-            /// Constraint rotations on X axis.
+            /// Constraint position on all axes.
+            /// </summary>
+            ConstraintPosAll = ConstraintPosX | ConstraintPosY | ConstraintPosZ,
+
+            /// <summary>
+            /// Constraint rotation on X axis.
             /// </summary>
             ConstraintRotX = 1 << 3,
 
             /// <summary>
-            /// Constraint rotations on X axis.
+            /// Constraint rotation on Y axis.
             /// </summary>
             ConstraintRotY = 1 << 4,
 
             /// <summary>
-            /// Constraint rotations on X axis.
+            /// Constraint rotation on Z axis.
             /// </summary>
             ConstraintRotZ = 1 << 5,
+
+            /// <summary>
+            /// Constraint rotation on all axes.
+            /// </summary>
+            ConstraintRotAll = ConstraintRotX | ConstraintRotY | ConstraintRotZ,
 
             /// <summary>
             /// Constraint scale on X axis.
@@ -128,12 +139,17 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
             /// Constraint scale on Z axis.
             /// </summary>
             ConstraintScaleZ = 1 << 8,
+
+            /// <summary>
+            /// Constraint scale on all axes.
+            /// </summary>
+            ConstraintScaleAll = ConstraintScaleX | ConstraintScaleY | ConstraintScaleZ,
         }
 
         /// <summary>
         /// Gets or sets constraints.
         /// </summary>
-        public int Constraints { get; set; }
+        public ConstraintsEnum Constraints { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether the rigidbody should be active while dragging it.
@@ -152,7 +168,7 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
 
         // Transform matrix of the grabbed object in controller space at the moment the grab is started
         private Matrix4x4 grabTransform;
-        private Matrix4x4 fullContrainedRef;
+        private Matrix4x4 fullConstrainedRef;
 
         // Distance between the controllers at the moment the grab is started
         private float grabDistance;
@@ -294,8 +310,8 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
             var values = this.activeCursors.Values;
             var leftPressed = values.Count > 0;
             var rightPressed = values.Count > 1;
-            var leftTransform = values.FirstOrDefault();
-            var rightTransform = values.Skip(1).FirstOrDefault();
+            var leftTransform = leftPressed ? values.ElementAt(0) : default;
+            var rightTransform = rightPressed ? values.ElementAt(1) : default;
 
             this.DoTransform(leftPressed, rightPressed, leftTransform, rightTransform, (float)gameTime.TotalSeconds);
         }
@@ -317,6 +333,7 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
 
                 // Current manipulation controller transform
                 Matrix4x4 controllerTransform = Matrix4x4.Identity;
+                var constraintsMask = (int)this.Constraints;
 
                 if (this.leftPressed)
                 {
@@ -343,11 +360,14 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
 
                         // Calculate target scale
                         var scale = Vector3.One * currentDistance / this.grabDistance;
-                        for (int i = 0; i < 3; ++i)
+                        if ((constraintsMask & (int)ConstraintsEnum.ConstraintScaleAll) != 0)
                         {
-                            if ((this.Constraints & (1 << (i + 6))) != 0)
+                            for (int i = 0; i < 3; ++i)
                             {
-                                scale[i] = 1.0f;
+                                if ((constraintsMask & (1 << (i + 6))) != 0)
+                                {
+                                    scale[i] = 1.0f;
+                                }
                             }
                         }
 
@@ -366,40 +386,42 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
                     controllerTransform = rightTransform;
                 }
 
+                if ((constraintsMask & (int)ConstraintsEnum.ConstraintRotAll) != 0)
+                {
+                    Vector3 rotation = controllerTransform.Rotation;
+                    for (int i = 0; i < 3; ++i)
+                    {
+                        if ((constraintsMask & (1 << (i + 3))) != 0)
+                        {
+                            rotation[i] = 0;
+                        }
+                    }
+
+                    controllerTransform = Matrix4x4.CreateFromTRS(controllerTransform.Translation, rotation, controllerTransform.Scale);
+                }
+
                 // Update grab transform matrix if any of the presses changed
                 if (leftPressedChanged || rightPressedChanged)
                 {
-                    this.fullContrainedRef = this.transform.LocalTransform;
+                    this.fullConstrainedRef = this.transform.WorldTransform;
                     this.grabTransform = this.transform.WorldTransform * Matrix4x4.Invert(controllerTransform);
                 }
 
                 // Calculate final transformation
-                Matrix4x4 finalTransform = this.grabTransform * controllerTransform;
+                var finalTransform = this.grabTransform * controllerTransform;
 
-                if (this.Constraints != 0)
+                if ((constraintsMask & (int)ConstraintsEnum.ConstraintPosAll) != 0)
                 {
-                    Matrix4x4 localTransform = finalTransform * this.transform.WorldToLocalTransform;
-
-                    Vector3 translation = localTransform.Translation;
+                    var translation = finalTransform.Translation;
                     for (int i = 0; i < 3; ++i)
                     {
-                        if ((this.Constraints & (1 << i)) != 0)
+                        if ((constraintsMask & (1 << i)) != 0)
                         {
-                            translation[i] = this.fullContrainedRef.Translation[i];
+                            translation[i] = this.fullConstrainedRef.Translation[i];
                         }
                     }
 
-                    Vector3 rotation = localTransform.Rotation;
-                    for (int i = 0; i < 3; ++i)
-                    {
-                        if ((this.Constraints & (1 << (i + 3))) != 0)
-                        {
-                            rotation[i] = this.fullContrainedRef.Rotation[i];
-                        }
-                    }
-
-                    localTransform = Matrix4x4.CreateFromTRS(translation, rotation, localTransform.Scale);
-                    finalTransform = localTransform * Matrix4x4.Invert(this.transform.WorldToLocalTransform);
+                    finalTransform.Translation = translation;
                 }
 
                 // Update object transform

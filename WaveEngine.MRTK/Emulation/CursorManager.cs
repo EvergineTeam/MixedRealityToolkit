@@ -141,7 +141,7 @@ namespace WaveEngine.MRTK.Emulation
                 this.cursorsAngularVelocity[cursor.Owner] = angularVelocity;
             }
 
-            foreach (KeyValuePair<Entity, LinkedList<Entity>> entry in this.cursorCollisions)
+            foreach (var entry in this.cursorCollisions)
             {
                 if (entry.Value.Count == 0)
                 {
@@ -161,12 +161,11 @@ namespace WaveEngine.MRTK.Emulation
                 }
             }
 
-            LinkedList<Entity> finishedInteractions = new LinkedList<Entity>();
-
-            var cursors = this.interactedEntities.Keys.ToArray();
-            foreach (Entity cursorEntity in cursors)
+            var finishedInteractions = new List<Entity>();
+            foreach (var entry in this.interactedEntities)
             {
-                var interactedEntity = this.interactedEntities[cursorEntity];
+                var cursorEntity = entry.Key;
+                var interactedEntity = entry.Value;
 
                 var cursorComponent = cursorEntity.FindComponent<Cursor>();
 
@@ -182,13 +181,13 @@ namespace WaveEngine.MRTK.Emulation
                         // PointerUp when the cursor is unpinched
                         this.RunPointerHandlers(cursorEntity, interactedEntity, (h, e) => h?.OnPointerUp(e));
 
-                        finishedInteractions.AddLast(cursorEntity);
+                        finishedInteractions.Add(cursorEntity);
                     }
                 }
             }
 
             // Remove finished interactions
-            foreach (Entity cursor in finishedInteractions)
+            foreach (var cursor in finishedInteractions)
             {
                 this.interactedEntities.Remove(cursor);
             }
@@ -205,8 +204,8 @@ namespace WaveEngine.MRTK.Emulation
             };
 
             var interactables = this.GatherComponents(other)
-                .Select(c => c as IMixedRealityTouchHandler)
-                .Where(c => c != null);
+                                    .Where(x => x.IsActivated)
+                                    .OfType<IMixedRealityTouchHandler>();
 
             foreach (var touchHandler in interactables)
             {
@@ -229,8 +228,8 @@ namespace WaveEngine.MRTK.Emulation
             };
 
             var interactables = this.GatherComponents(other)
-                .Select(c => c as IMixedRealityPointerHandler)
-                .Where(c => c != null && (c as Component).IsEnabled);
+                                    .Where(x => x.IsActivated)
+                                    .OfType<IMixedRealityPointerHandler>();
 
             foreach (var touchHandler in interactables)
             {

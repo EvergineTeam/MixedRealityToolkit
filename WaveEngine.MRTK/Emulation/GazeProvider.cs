@@ -36,15 +36,21 @@ namespace WaveEngine.MRTK.Services.InputSystem
         public float Distance { get; set; } = 1000.0f;
 
         /// <summary>
-        /// Gets or sets the radius of the gaze hover light.
+        /// Gets or sets a value indicating whether the gaze pointer should have an hover light.
         /// </summary>
-        [RenderPropertyAsFInput(minLimit: 0, maxLimit: 1, Tooltip = "Specifies the radius of the gaze hover light.")]
+        [RenderProperty(Tooltip = "Whether the gaze pointer should have an hover light.")]
+        public bool HasHoverLight { get; set; }
+
+        /// <summary>
+        /// Gets or sets the radius of the gaze pointer.
+        /// </summary>
+        [RenderPropertyAsFInput(minLimit: 0, maxLimit: 1, Tooltip = "Specifies the radius of the gaze pointer.")]
         public float Radius { get; set; } = 0.15f;
 
         /// <summary>
-        /// Gets or sets the highlight color.
+        /// Gets or sets the hover light color.
         /// </summary>
-        [RenderProperty(Tooltip = "Specifies the highlight color.")]
+        [RenderProperty(Tooltip = "Specifies the hover light color.")]
         public Color Color { get; set; } = new Color(63, 63, 63, 255);
 
         /// <summary>
@@ -82,8 +88,8 @@ namespace WaveEngine.MRTK.Services.InputSystem
             }
         }
 
-        private Transform3D hoverLightTransform;
-        private Collider3D hoverLightCollider;
+        private Transform3D gazePointerTransform;
+        private Collider3D gazePointerCollider;
         private Entity gazeTarget;
 
         private T FindComponent<T>(Entity entity)
@@ -107,13 +113,18 @@ namespace WaveEngine.MRTK.Services.InputSystem
 
             if (!Application.Current.IsEditor)
             {
-                this.hoverLightTransform = new Transform3D();
-                this.hoverLightCollider = new SphereCollider3D() { Radius = this.Radius };
-                var hoverLightEntity = new Entity("GazePointer")
-                    .AddComponent(this.hoverLightTransform)
-                    .AddComponent(this.hoverLightCollider)
-                    .AddComponent(new HoverLight() { Radius = this.Radius, Color = this.Color });
-                this.Managers.EntityManager.Add(hoverLightEntity);
+                this.gazePointerTransform = new Transform3D();
+                this.gazePointerCollider = new SphereCollider3D() { Radius = this.Radius };
+                var gazePointerEntity = new Entity("GazePointer")
+                    .AddComponent(this.gazePointerTransform)
+                    .AddComponent(this.gazePointerCollider);
+
+                if (this.HasHoverLight)
+                {
+                    gazePointerEntity.AddComponent(new HoverLight() { Radius = this.Radius, Color = this.Color });
+                }
+
+                this.Managers.EntityManager.Add(gazePointerEntity);
 
                 this.xrPlatform = Application.Current.Container.Resolve<XRPlatform>();
                 if (this.xrPlatform != null)
@@ -144,7 +155,7 @@ namespace WaveEngine.MRTK.Services.InputSystem
             Ray? ray;
             if (this.xrPlatform != null)
             {
-                ray = this.xrPlatform.IsEyeGazeValid ? this.xrPlatform.EyeGaze : null;
+                ray = this.xrPlatform.EyeGaze;
                 if (ray == null)
                 {
                     ray = this.xrPlatform.HeadGaze;
@@ -157,19 +168,22 @@ namespace WaveEngine.MRTK.Services.InputSystem
 
             if (ray.HasValue)
             {
-                Ray r = ray.Value;
-                var from = Matrix4x4.CreateTranslation(r.Position);
-                var to = Matrix4x4.CreateTranslation(r.GetPoint(this.Distance));
-                var result = this.Managers.PhysicManager3D.ConvexSweepTest(this.hoverLightCollider.InternalColliderShape, from, to, this.Mask);
-                Entity hitEntity = result.Succeeded ? ((PhysicBody3D)result.PhysicBody.UserData).Owner : null;
+                var r = ray.Value;
+                var fromPosition = r.Position;
+                var toPosition = r.GetPoint(this.Distance);
+                Matrix4x4.CreateTranslation(ref fromPosition, out var from);
+                Matrix4x4.CreateTranslation(ref toPosition, out var to);
+                var result = this.Managers.PhysicManager3D.ConvexSweepTest(this.gazePointerCollider.InternalColliderShape, from, to, this.Mask);
+
+                var hitEntity = result.Succeeded ? ((PhysicBody3D)result.PhysicBody.UserData).Owner : null;
                 if (hitEntity != this.GazeTarget)
                 {
                     this.GazeTarget = hitEntity;
                 }
 
-                // Update Hover light
-                var position = result.Succeeded ? Vector3.Project(result.Point - r.Position, r.Direction) + r.Position : r.GetPoint(100000.0f);
-                this.hoverLightTransform.Position = position;
+                // Update gaze pointer
+                var targetPosition = result.Succeeded ? Vector3.Project(result.Point - r.Position, r.Direction) + r.Position : r.GetPoint(100000.0f);
+                this.gazePointerTransform.Position = targetPosition;
             }
             else
             {
