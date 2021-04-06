@@ -2,7 +2,6 @@
 
 using System;
 using System.Diagnostics;
-using System.IO;
 using System.Linq;
 using WaveEngine.Common.Attributes;
 using WaveEngine.Components.Graphics3D;
@@ -22,8 +21,6 @@ namespace WaveEngine.MRTK.Toolkit.Prefabs
         /// </summary>
         [BindService]
         public AssetsService AssetsService;
-
-        private Guid prefabId;
 
         private bool duplicateMaterials;
 
@@ -45,23 +42,6 @@ namespace WaveEngine.MRTK.Toolkit.Prefabs
                 if (this.duplicateMaterials != value)
                 {
                     this.duplicateMaterials = value;
-                    this.RefreshEntity();
-                }
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets the prefab to use.
-        /// </summary>
-        [RenderProperty(Tooltip = "The prefab to use.")]
-        public Guid PrefabId
-        {
-            get => this.prefabId;
-            set
-            {
-                if (this.prefabId != value)
-                {
-                    this.prefabId = value;
                     this.RefreshEntity();
                 }
             }
@@ -124,13 +104,8 @@ namespace WaveEngine.MRTK.Toolkit.Prefabs
                 return;
             }
 
-            if (this.prefabId == Guid.Empty)
-            {
-                return;
-            }
-
             var st = Stopwatch.StartNew();
-            var source = this.AssetsService.GetAssetSource<SceneSource>(this.prefabId);
+            var source = this.AssetsService.GetAssetSource<SceneSource>(this.ScenePrefabProperty.PrefabId);
             foreach (var item in source.SceneData.Items)
             {
                 var child = item.Entity;
@@ -138,7 +113,7 @@ namespace WaveEngine.MRTK.Toolkit.Prefabs
                 this.Owner.AddChild(child);
             }
 
-            Trace.WriteLine($"Prefab with id '{this.prefabId}' created in {st.ElapsedMilliseconds}ms");
+            Trace.WriteLine($"Prefab with id '{this.ScenePrefabProperty.PrefabId}' created in {st.ElapsedMilliseconds}ms");
         }
 
         private void PrepareEntity(Entity entity)
