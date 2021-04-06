@@ -48,13 +48,18 @@ namespace WaveEngine_MRTK_Demo.Editor
             var instance = this.GetMemberValue();
 
             var previousPrefabId = instance.PrefabId;
+            var previousIsValid = instance.IsPrefabIdValid;
 
             this.prefabsIdByName.TryGetValue(x, out var id);
             instance.PrefabId = id;
 
-            this.UpdatePrefabScene(this.assetsService.Load<Scene>(instance.PrefabId));
+            if (instance.IsPrefabIdValid)
+            {
+                this.UpdatePrefabScene(this.assetsService.Load<Scene>(instance.PrefabId));
+            }
 
-            if (previousPrefabId != instance.PrefabId)
+            if (previousPrefabId != instance.PrefabId &&
+                previousIsValid)
             {
                 this.assetsService.Unload(previousPrefabId);
             }
