@@ -43,8 +43,8 @@ namespace WaveEngine_MRTK_Demo.Editor
             // Rendering Options
             if (this.AddDirectiveCheckbox("Directional Light", HoloGraphic.DirectionalLightDirective))
             {
-                this.AddMember(nameof(HoloGraphic.Metallic));
-                this.AddMember(nameof(HoloGraphic.Smoothness));
+                this.AddRange(nameof(HoloGraphic.Metallic), 0, 1, 0);
+                this.AddRange(nameof(HoloGraphic.Smoothness), 0, 1, 0.5f);
             }
 
             // Fluent Options
@@ -72,8 +72,10 @@ namespace WaveEngine_MRTK_Demo.Editor
             var borderLight = this.AddDirectiveCheckbox("Border Light", HoloGraphic.BorderLightDirective);
             if (borderLight)
             {
-                this.AddMember(nameof(HoloGraphic.BorderWidth));
-                this.AddMember(nameof(HoloGraphic.BorderMinValue));
+                this.AddDirectiveCheckbox("Border Light Uses Hover Color", HoloGraphic.BorderLightUsesHoverColorDirective);
+                this.AddDirectiveCheckbox("Border Light Replaces Albedo", HoloGraphic.BorderLightReplacesAlbedoDirective);
+                this.AddRange(nameof(HoloGraphic.BorderWidth), 0.0f, 1.0f, 0.1f);
+                this.AddRange(nameof(HoloGraphic.BorderMinValue), 0.0f, 1.0f, 0.1f);
             }
 
             if (hoverLight || proximityLight || borderLight)
@@ -90,44 +92,44 @@ namespace WaveEngine_MRTK_Demo.Editor
                 }
                 else
                 {
-                    this.AddMember(nameof(HoloGraphic.RoundCornerRadius));
+                    this.AddRange(nameof(HoloGraphic.RoundCornerRadius), 0, 0.5f, 0.25f);
                 }
 
-                this.AddMember(nameof(HoloGraphic.RoundCornerMargin));
+                this.AddRange(nameof(HoloGraphic.RoundCornerMargin), 0, 0.5f, 0.01f);
             }
 
             if (roundCorners || borderLight)
             {
-                this.AddMember(nameof(HoloGraphic.EdgeSmoothingValue));
+                this.AddRange(nameof(HoloGraphic.EdgeSmoothingValue), 0.0001f, 0.2f, 0.002f);
                 this.AddDirectiveCheckbox("Ignore Z Scale", HoloGraphic.IgnoreZScaleDirective);
             }
 
             var alphaClip = this.AddDirectiveCheckbox("Alpha Clip", HoloGraphic.AlphaClipDirective);
             if (alphaClip || roundCorners)
             {
-                this.AddMember(nameof(HoloGraphic.AlphaCutoff));
+                this.AddRange(nameof(HoloGraphic.AlphaCutoff), 0, 1, 0.5f);
             }
 
             if (this.AddDirectiveCheckbox("Inner Glow", HoloGraphic.InnerGlowDirective))
             {
                 this.AddMember(nameof(HoloGraphic.InnerGlowColor));
-                this.AddMember(nameof(HoloGraphic.InnerGlowPower));
+                this.AddRange(nameof(HoloGraphic.InnerGlowPower), 2, 32, 4);
             }
 
             if (this.AddDirectiveCheckbox("Iridescence", HoloGraphic.IridescenceDirective))
             {
                 this.AddMember(nameof(HoloGraphic.IridescentSpectrumMap));
                 this.AddMember(nameof(HoloGraphic.IridescentSpectrumMapSampler));
-                this.AddMember(nameof(HoloGraphic.IridescenceIntensity));
-                this.AddMember(nameof(HoloGraphic.IridescenceThreshold));
-                this.AddMember(nameof(HoloGraphic.IridescenceAngle));
+                this.AddRange(nameof(HoloGraphic.IridescenceIntensity), 0, 1, 0.5f);
+                this.AddRange(nameof(HoloGraphic.IridescenceThreshold), 0, 1, 0.05f);
+                this.AddRange(nameof(HoloGraphic.IridescenceAngle), -0.78f, 0.78f, -0.78f);
             }
 
             // TODO: In Unity this is related to nearPlaneFade.
             if (this.AddDirectiveCheckbox("Near Light Fade", HoloGraphic.NearLightFadeDirective))
             {
-                this.AddMember(nameof(HoloGraphic.FadeBeginDistance));
-                this.AddMember(nameof(HoloGraphic.FadeCompleteDistance));
+                this.AddRange(nameof(HoloGraphic.FadeBeginDistance), 0.01f, 10f, 0.85f);
+                this.AddRange(nameof(HoloGraphic.FadeCompleteDistance), 0.01f, 10f, 0.5f);
                 this.AddMember(nameof(HoloGraphic.FadeMinValue));
             }
 
@@ -144,6 +146,17 @@ namespace WaveEngine_MRTK_Demo.Editor
             if (this.members.TryGetValue(memberName, out var memberInfo))
             {
                 this.propertyPanelContainer.Add(memberInfo);
+            }
+        }
+
+        private void AddRange(string memberName, float min, float max, float defaultValue)
+        {
+            if (this.members.TryGetValue(memberName, out var memberInfo))
+            {
+                this.propertyPanelContainer.AddNumeric(memberName, memberName, min, max, max - min / 100, max - min / 10, defaultValue,
+                                                getValue: () => (float)((PropertyInfo)memberInfo).GetValue(this.Instance),
+                                                setValue: (x) => ((PropertyInfo)memberInfo).SetValue(this.Instance, x),
+                                                true);
             }
         }
 

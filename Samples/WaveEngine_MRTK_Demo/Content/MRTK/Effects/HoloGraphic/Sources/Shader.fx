@@ -2,6 +2,7 @@
 
 	[Directives:ALPHA_CLIP					   ALPHA_CLIP_OFF					  ALPHA_CLIP					 ]
 	[Directives:BORDER_LIGHT                   BORDER_LIGHT_OFF                   BORDER_LIGHT                   ]
+	[Directives:BORDER_LIGHT_USES_HOVER_COLOR  BORDER_LIGHT_USES_HOVER_COLOR_OFF  BORDER_LIGHT_USES_HOVER_COLOR  ]
 	[Directives:BORDER_LIGHT_REPLACES_ALBEDO   BORDER_LIGHT_REPLACES_ALBEDO_OFF   BORDER_LIGHT_REPLACES_ALBEDO   ]
 	[Directives:BORDER_LIGHT_OPAQUE            BORDER_LIGHT_OPAQUE_OFF            BORDER_LIGHT_OPAQUE            ]
 	[Directives:INNER_GLOW                     INNER_GLOW_OFF                     INNER_GLOW                     ]
@@ -103,6 +104,9 @@
 
 [Begin_Pass:Default]
 	
+	[Profile 11_0]
+	[Entrypoints VS=VS PS=PS]	
+	
 #define IF(a, b, c) lerp(b, c, step((float) (a), 0.0));
 	
 #if ROUND_CORNERS
@@ -135,9 +139,6 @@
         return (left.rgb + s * (right.rgb - left.rgb)) * intensity;
     }
 #endif
-
-	[Profile 11_0]
-	[Entrypoints VS=VS PS=PS]	
 
 	float3 GammaToLinear(const float3 color)
 	{
@@ -509,7 +510,7 @@
                           smoothstep(input.uv.w - EdgeSmoothingValue, input.uv.w + EdgeSmoothingValue, distanceToEdge.y));
 #endif
 #if HOVER_LIGHT && BORDER_LIGHT_USES_HOVER_COLOR && HOVER_COLOR_OVERRIDE
-        float3 borderColor = _HoverColorOverride.rgb;
+        float3 borderColor = HoverColorOverride.rgb;
 #else
 		float3 borderColor = float3(1.0, 1.0, 1.0);
 #endif
@@ -536,7 +537,7 @@
 
 #if ALPHA_CLIP || ROUND_CORNERS
 	clip(albedo.a - Cutoff);
-    albedo.a = 1.0;
+    albedo.a = Alpha;
 #endif
 		
 // Blinn phong lighting.

@@ -36,6 +36,11 @@ namespace WaveEngine.MRTK.Effects
         public const string BorderLightDirective = "BORDER_LIGHT";
 
         /// <summary>
+        /// The BorderLightUseHoverColor feature directive.
+        /// </summary>
+        public const string BorderLightUsesHoverColorDirective = "BORDER_LIGHT_USES_HOVER_COLOR";
+
+        /// <summary>
         /// The BorderLightReplacesAlbedo feature directive.
         /// </summary>
         public const string BorderLightReplacesAlbedoDirective = "BORDER_LIGHT_REPLACES_ALBEDO";
