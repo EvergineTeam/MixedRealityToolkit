@@ -239,10 +239,13 @@ namespace WaveEngine.MRTK.Scenes
             }
 
             // Create spatial mapping
-            var spatialMapping = new SpatialMapping() { GenerateColliders = true, Material = spatialMappingMat };
-            spatialMapping.UpdateInterval = TimeSpan.FromSeconds(1);
             entityManager.Add(new Entity(nameof(SpatialMapping))
-                .AddComponent(spatialMapping));
+                         .AddComponent(new SpatialMapping()
+                         {
+                             GenerateColliders = true,
+                             UpdateInterval = TimeSpan.FromSeconds(4),
+                             Material = spatialMappingMat,
+                         }));
         }
     }
 }
