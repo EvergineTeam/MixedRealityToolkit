@@ -41,7 +41,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
         /// based on <see cref="MeshComponent"/> components found in from owner's hierarchy.
         /// </summary>
         [RenderProperty(Tooltip = "Whether the bounding collider should be calculated automatically based on MeshComponent components found in from owner's hierarchy.")]
-        public bool AutoCalculate { get; set; } = true;
+        public bool AutoCalculate { get; set; } = false;
 
         /// <summary>
         /// Gets or sets the scale applied to the scale handles.
