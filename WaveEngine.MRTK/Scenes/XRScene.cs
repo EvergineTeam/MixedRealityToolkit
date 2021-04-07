@@ -167,15 +167,12 @@ namespace WaveEngine.MRTK.Scenes
                 LinePoints = new List<BezierPointInfo>()
                         {
                             new BezierPointInfo() { Position = Vector3.Zero, Thickness = 0.003f, Color = Color.White },
-                            new BezierPointInfo() { Position = Vector3.One,  Thickness = 0.003f, Color = Color.White },
+                            new BezierPointInfo() { Position = -Vector3.UnitZ,  Thickness = 0.003f, Color = Color.White },
                         },
                 Resolution = 10,
                 DiffuseTexture = handRayTexture,
                 DiffuseSampler = handRaySampler,
                 TextureTiling = new Vector2(10.0f, 1.0f),
-            };
-            lineComp.ChangedMesh += (s, e) =>
-            {
             };
 
             Entity bezier = new Entity()
@@ -193,7 +190,7 @@ namespace WaveEngine.MRTK.Scenes
                 .AddComponent(new SphereCollider3D())
                 .AddComponent(new StaticBody3D() { CollisionCategories = CollisionCategory3D.Cat2, IsSensor = true, MaskBits = CollisionCategory3D.Cat1 })
                 .AddComponent(new Cursor() { PressedMaterial = pressedMaterial, ReleasedMaterial = releasedMaterial, UpdateOrder = 0.3f })
-                .AddComponent(new CursorRay() { MainCursor = cursor.FindComponent<Cursor>(), LineMesh = lineComp, joint = trackXRJoint, collisionMask = CollisionCategory3D.Cat1 })
+                .AddComponent(new CursorRay() { MainCursor = cursor.FindComponent<Cursor>(), LineMesh = lineComp, Joint = trackXRJoint, collisionMask = CollisionCategory3D.Cat1 })
                 .AddComponent(new Billboard())
                 .AddComponent(new HoverLight())
                 ;

@@ -49,11 +49,17 @@ namespace WaveEngine.MRTK.Emulation
         private Vector3 pinchPosRef;
         private Camera3D cam;
         private Texture handrayTexture;
+        private Transform3D lineMeshTransform;
+
+        // Smoothing factor for ray stabilization.
+        private const float StabilizedRayHalfLife = 0.01f;
+
+        private readonly StabilizedRay stabilizedRay = new StabilizedRay(StabilizedRayHalfLife);
 
         /// <summary>
         /// Gets or sets the TrackXRJoint.
         /// </summary>
-        public TrackXRJoint joint { get; set; }
+        public TrackXRJoint Joint { get; set; }
 
         /// <summary>
         /// The mask to check collisions.
@@ -64,33 +70,91 @@ namespace WaveEngine.MRTK.Emulation
         protected override bool OnAttached()
         {
             var attached = base.OnAttached();
+
             this.UpdateOrder = this.MainCursor.UpdateOrder + 0.1f; // Ensure this is executed always after the main Cursor
             this.cam = this.Managers.RenderManager.ActiveCamera3D;
 
             this.handrayTexture = this.LineMesh.DiffuseTexture;
 
+            this.lineMeshTransform = this.LineMesh.Owner.FindComponent<Transform3D>();
+
             return attached;
+        }
+
+        private readonly float CursorBeamBackwardTolerance = 0.5f;
+        private readonly float CursorBeamUpTolerance = 0.8f;
+
+        /// <summary>
+        /// Check whether hand palm is angled in a way that hand rays should be used.
+        /// </summary>
+        /// <returns>Return true is the palm is not up.</returns>
+        private bool ShouldShowRay(Vector3 headForward, Vector3 palmNormal)
+        {
+            if (headForward.Length() < MathHelper.Epsilon)
+            {
+                return false;
+            }
+
+            bool valid = true;
+            if (this.CursorBeamBackwardTolerance >= 0)
+            {
+                Vector3 cameraBackward = -headForward;
+                if (Vector3.Dot(Vector3.Normalize(palmNormal), cameraBackward) > this.CursorBeamBackwardTolerance)
+                {
+                    valid = false;
+                }
+            }
+
+            if (valid && this.CursorBeamUpTolerance >= 0)
+            {
+                if (Vector3.Dot(palmNormal, Vector3.Up) > this.CursorBeamUpTolerance)
+                {
+                    valid = false;
+                }
+            }
+
+            return valid;
         }
 
         /// <inheritdoc/>
         protected override void Update(TimeSpan gameTime)
         {
-            Ray? ray;
-            bool disableByJointInvalid = false;
-            if (this.joint != null)
+            Ray? ray = null;
+            var disableByPalmUp = false;
+            if (this.Joint != null)
             {
-                ray = this.joint.Pointer;
+                if (this.Joint.PoseIsValid)
+                {
+                    this.Joint.TrackedDevice.TryGetArticulatedHandJoint(XRHandJointKind.IndexProximal, out var handJoint);
+                    var handPosition = handJoint.Pose.Position;
+                    var measuredRayPosition = handPosition;
+                    var measuredDirection = this.Joint.Pointer.Direction;
+
+                    this.stabilizedRay.AddSample(new Ray(measuredRayPosition, measuredDirection));
+                    ray = new Ray(this.stabilizedRay.StabilizedPosition, this.stabilizedRay.StabilizedDirection);
+                }
             }
             else
             {
                 ray = new Ray(this.MainCursor.transform.Position, this.MainCursor.transform.WorldTransform.Forward);
             }
 
-            bool disableByProximity = false;
+            if (this.Joint?.PoseIsValid == true)
+            {
+                var jointOrientation = Matrix4x4.CreateFromQuaternion(this.Joint.Pose.Orientation);
+                var jointNormal = -jointOrientation.Up;
+
+                var headForward = this.cam.Transform.WorldTransform.Forward;
+                disableByPalmUp = !this.ShouldShowRay(headForward, jointNormal);
+            }
+
+            var disableByJointInvalid = true;
+            var lineMeshVisible = false;
             if (ray != null && ray.Value.Position != Vector3.Zero)
             {
-                Ray r = ray.Value;
+                var r = ray.Value;
 
+                var disableByProximity = false;
                 if (this.cursor.Pinch)
                 {
                     float dFactor = (Vector3.Transform(this.MainCursor.transform.Position, this.cam.Transform.WorldInverseTransform) - this.pinchPosRef).Z;
@@ -139,29 +203,26 @@ namespace WaveEngine.MRTK.Emulation
                 }
 
                 // Update line
-                if (this.joint != null)
+                disableByJointInvalid = this.Joint != null && !Tools.IsJointValid(this.Joint);
+
+                lineMeshVisible = !disableByJointInvalid && !disableByProximity && !disableByPalmUp;
+                if (lineMeshVisible)
                 {
-                    disableByJointInvalid = !Tools.IsJointValid(this.joint);
-                }
+                    var distance = (this.transform.Position - r.Position).Length();
 
-                this.LineMesh.Owner.IsEnabled = !disableByJointInvalid && !disableByProximity;
+                    this.lineMeshTransform.Position = r.Position;
+                    this.lineMeshTransform.Scale = new Vector3(1, 1, distance);
+                    this.lineMeshTransform.LocalLookAt(this.transform.Position, Vector3.Up);
 
-                if (this.LineMesh.Owner.IsEnabled)
-                {
-                    var distance = (this.transform.Position - r.Position).Length() * 0.5f;
-
-                    this.LineMesh.LinePoints[0].Position = r.Position;
-                    this.LineMesh.LinePoints[1].Position = this.transform.Position;
-                    this.LineMesh.RefreshItems(null);
-
-                    this.LineMesh.TextureTiling = new Vector2(distance * 30.0f, 1.0f);
+                    this.LineMesh.TextureTiling = new Vector2(distance * 0.5f * 30.0f, 1.0f);
                 }
             }
 
-            this.MainCursor.meshRenderer.IsEnabled = !disableByJointInvalid && !this.LineMesh.Owner.IsEnabled;
-            this.cursor.meshRenderer.IsEnabled = !disableByJointInvalid && this.LineMesh.Owner.IsEnabled;
+            this.LineMesh.Owner.IsEnabled = lineMeshVisible;
+            this.cursor.meshRenderer.IsEnabled = lineMeshVisible;
+            this.MainCursor.meshRenderer.IsEnabled = !disableByJointInvalid && !disableByPalmUp && !lineMeshVisible;
 
-            this.cursor.Pinch = this.LineMesh.Owner.IsEnabled && this.MainCursor.Pinch;
+            this.cursor.Pinch = lineMeshVisible && this.MainCursor.Pinch;
             if (this.cursor.Pinch != this.cursor.PreviousPinch)
             {
                 this.LineMesh.DiffuseTexture = this.cursor.Pinch ? null : this.handrayTexture;

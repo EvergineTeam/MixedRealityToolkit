@@ -10,7 +10,6 @@
 [directives:IGNORE_Z_SCALE                 IGNORE_Z_SCALE_OFF                 IGNORE_Z_SCALE                 ]
 [directives:NEAR_LIGHT_FADE                NEAR_LIGHT_FADE_OFF                NEAR_LIGHT_FADE                ]
 [directives:HOVER_LIGHT                    HOVER_LIGHT_OFF                    HOVER_LIGHT                    ]
-[directives:MULTI_HOVER_LIGHT              MULTI_HOVER_LIGHT_OFF              MULTI_HOVER_LIGHT              ]
 [directives:HOVER_COLOR_OVERRIDE           HOVER_COLOR_OVERRIDE_OFF           HOVER_COLOR_OVERRIDE           ]
 [directives:PROXIMITY_LIGHT                PROXIMITY_LIGHT_OFF                PROXIMITY_LIGHT                ]
 [directives:PROXIMITY_LIGHT_TWO_SIDED      PROXIMITY_LIGHT_TWO_SIDED_OFF      PROXIMITY_LIGHT_TWO_SIDED      ]
@@ -102,7 +101,7 @@
 [End_ResourceLayout]
 
 [Begin_Pass:Default]
-	
+
 #define IF(a, b, c) lerp(b, c, step((float) (a), 0.0));
 	
 #if ROUND_CORNERS
@@ -145,11 +144,11 @@
 	}
 
 #if HOVER_LIGHT || NEAR_LIGHT_FADE
-	#if MULTI_HOVER_LIGHT
+	//#if MULTI_HOVER_LIGHT
 		#define HOVER_LIGHT_COUNT 3
-	#else
-		#define HOVER_LIGHT_COUNT 1
-	#endif
+	//#else
+	//	#define HOVER_LIGHT_COUNT 1
+	//#endif
 	#define HOVER_LIGHT_DATA_SIZE 2
 		//float4 HoverLightData[HOVER_LIGHT_COUNT * HOVER_LIGHT_DATA_SIZE];
 	#if HOVER_COLOR_OVERRIDE

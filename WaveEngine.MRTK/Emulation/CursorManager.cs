@@ -153,7 +153,7 @@ namespace WaveEngine.MRTK.Emulation
 
                 var cursorComponent = cursorEntity.FindComponent<Cursor>();
 
-                if (!cursorComponent.PreviousPinch && cursorComponent.Pinch)
+                if (!cursorComponent.PreviousPinch && cursorComponent.Pinch && cursorComponent.IsActivated)
                 {
                     // PointerDown when the cursor transitions to pinched while inside a collider
                     this.RunPointerHandlers(cursorEntity, interactedEntity, (h, e) => h?.OnPointerDown(e));
