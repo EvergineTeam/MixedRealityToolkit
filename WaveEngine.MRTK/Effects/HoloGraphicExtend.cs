@@ -26,14 +26,24 @@ namespace WaveEngine.MRTK.Effects
                                            .Value);
 
         /// <summary>
-        /// The AlphaClip feature directive.
+        /// The AlphaTest feature directive.
         /// </summary>
-        public const string AlphaClipDirective = "ALPHA_CLIP";
+        public const string AlphaTestDirective = "ALPHATEST";
+
+        /// <summary>
+        /// The AlphaBlend feature directive.
+        /// </summary>
+        public const string AlphaBlendDirective = "ALPHABLEND";
 
         /// <summary>
         /// The BorderLight feature directive.
         /// </summary>
         public const string BorderLightDirective = "BORDER_LIGHT";
+
+        /// <summary>
+        /// The BorderLightUseHoverColor feature directive.
+        /// </summary>
+        public const string BorderLightUsesHoverColorDirective = "BORDER_LIGHT_USES_HOVER_COLOR";
 
         /// <summary>
         /// The BorderLightReplacesAlbedo feature directive.

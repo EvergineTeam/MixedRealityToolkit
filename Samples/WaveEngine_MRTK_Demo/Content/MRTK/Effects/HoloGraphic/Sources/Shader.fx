@@ -1,25 +1,28 @@
 [Begin_ResourceLayout]
 
-[directives:ALPHA_CLIP					   ALPHA_CLIP_OFF					  ALPHA_CLIP					 ]
-[directives:BORDER_LIGHT                   BORDER_LIGHT_OFF                   BORDER_LIGHT                   ]
-[directives:BORDER_LIGHT_REPLACES_ALBEDO   BORDER_LIGHT_REPLACES_ALBEDO_OFF   BORDER_LIGHT_REPLACES_ALBEDO   ]
-[directives:BORDER_LIGHT_OPAQUE            BORDER_LIGHT_OPAQUE_OFF            BORDER_LIGHT_OPAQUE            ]
-[directives:INNER_GLOW                     INNER_GLOW_OFF                     INNER_GLOW                     ]
-[directives:ROUND_CORNERS                  ROUND_CORNERS_OFF                  ROUND_CORNERS                  ]
-[directives:INDEPENDENT_CORNERS			   INDEPENDENT_CORNERS_OFF			  INDEPENDENT_CORNERS			 ]
-[directives:IGNORE_Z_SCALE                 IGNORE_Z_SCALE_OFF                 IGNORE_Z_SCALE                 ]
-[directives:NEAR_LIGHT_FADE                NEAR_LIGHT_FADE_OFF                NEAR_LIGHT_FADE                ]
-[directives:HOVER_LIGHT                    HOVER_LIGHT_OFF                    HOVER_LIGHT                    ]
-[directives:HOVER_COLOR_OVERRIDE           HOVER_COLOR_OVERRIDE_OFF           HOVER_COLOR_OVERRIDE           ]
-[directives:PROXIMITY_LIGHT                PROXIMITY_LIGHT_OFF                PROXIMITY_LIGHT                ]
-[directives:PROXIMITY_LIGHT_TWO_SIDED      PROXIMITY_LIGHT_TWO_SIDED_OFF      PROXIMITY_LIGHT_TWO_SIDED      ]
-[directives:PROXIMITY_LIGHT_COLOR_OVERRIDE PROXIMITY_LIGHT_COLOR_OVERRIDE_OFF PROXIMITY_LIGHT_COLOR_OVERRIDE ]
-[directives:PROXIMITY_LIGHT_SUBTRACTIVE    PROXIMITY_LIGHT_SUBTRACTIVE_OFF    PROXIMITY_LIGHT_SUBTRACTIVE    ]
-[directives:DIRECTIONAL_LIGHT              DIRECTIONAL_LIGHT_OFF              DIRECTIONAL_LIGHT              ]
-[directives:ALBEDO_MAP                     ALBEDO_MAP_OFF                     ALBEDO_MAP                     ]
-[directives:IRIDESCENCE					   IRIDESCENCE_OFF					  IRIDESCENCE					 ]
-[directives:Multiview                      MULTIVIEW_OFF                      MULTIVIEW                      ]
-[directives:ColorSpace 					   GAMMA_COLORSPACE_OFF 			  GAMMA_COLORSPACE				 ]
+	[directives:ALPHATEST					   ALPHATEST_OFF					  ALPHATEST					 ]
+	[directives:ALPHABLEND					   ALPHABLEND_OFF					  ALPHABLEND					 ]
+	[directives:BORDER_LIGHT                   BORDER_LIGHT_OFF                   BORDER_LIGHT                   ]
+	[directives:BORDER_LIGHT_USES_HOVER_COLOR  BORDER_LIGHT_USES_HOVER_COLOR_OFF  BORDER_LIGHT_USES_HOVER_COLOR  ]
+	[directives:BORDER_LIGHT_REPLACES_ALBEDO   BORDER_LIGHT_REPLACES_ALBEDO_OFF   BORDER_LIGHT_REPLACES_ALBEDO   ]
+	[directives:BORDER_LIGHT_OPAQUE            BORDER_LIGHT_OPAQUE_OFF            BORDER_LIGHT_OPAQUE            ]
+	[directives:INNER_GLOW                     INNER_GLOW_OFF                     INNER_GLOW                     ]
+	[directives:ROUND_CORNERS                  ROUND_CORNERS_OFF                  ROUND_CORNERS                  ]
+	[directives:INDEPENDENT_CORNERS			   INDEPENDENT_CORNERS_OFF			  INDEPENDENT_CORNERS			 ]
+	[directives:IGNORE_Z_SCALE                 IGNORE_Z_SCALE_OFF                 IGNORE_Z_SCALE                 ]
+	[directives:NEAR_LIGHT_FADE                NEAR_LIGHT_FADE_OFF                NEAR_LIGHT_FADE                ]
+	[directives:HOVER_LIGHT                    HOVER_LIGHT_OFF                    HOVER_LIGHT                    ]
+	[directives:HOVER_COLOR_OVERRIDE           HOVER_COLOR_OVERRIDE_OFF           HOVER_COLOR_OVERRIDE           ]
+	[directives:PROXIMITY_LIGHT                PROXIMITY_LIGHT_OFF                PROXIMITY_LIGHT                ]
+	[directives:PROXIMITY_LIGHT_TWO_SIDED      PROXIMITY_LIGHT_TWO_SIDED_OFF      PROXIMITY_LIGHT_TWO_SIDED      ]
+	[directives:PROXIMITY_LIGHT_COLOR_OVERRIDE PROXIMITY_LIGHT_COLOR_OVERRIDE_OFF PROXIMITY_LIGHT_COLOR_OVERRIDE ]
+	[directives:PROXIMITY_LIGHT_SUBTRACTIVE    PROXIMITY_LIGHT_SUBTRACTIVE_OFF    PROXIMITY_LIGHT_SUBTRACTIVE    ]
+	[directives:DIRECTIONAL_LIGHT              DIRECTIONAL_LIGHT_OFF              DIRECTIONAL_LIGHT              ]
+	[directives:SPECULAR_HIGHLIGHTS			   SPECULAR_HIGHLIGHTS_OFF			  SPECULAR_HIGHLIGHTS			 ]
+	[directives:ALBEDO_MAP                     ALBEDO_MAP_OFF                     ALBEDO_MAP                     ]
+	[directives:IRIDESCENCE					   IRIDESCENCE_OFF					  IRIDESCENCE					 ]
+	[directives:Multiview                      MULTIVIEW_OFF                      MULTIVIEW                      ]
+	[directives:ColorSpace 					   GAMMA_COLORSPACE_OFF 			  GAMMA_COLORSPACE				 ]
 
 	cbuffer PerDrawCall : register(b0)
 	{
@@ -101,7 +104,10 @@
 [End_ResourceLayout]
 
 [Begin_Pass:Default]
-
+	
+	[Profile 11_0]
+	[Entrypoints VS=VS PS=PS]	
+	
 #define IF(a, b, c) lerp(b, c, step((float) (a), 0.0));
 	
 #if ROUND_CORNERS
@@ -117,8 +123,11 @@
 
     inline float RoundCornersF(float2 position, float2 cornerCircleDistance, float cornerCircleRadius)
     {
-    	//return RoundCornersSmooth(position, cornerCircleDistance, cornerCircleRadius);
+#if ALPHABLEND
+    	return RoundCornersSmooth(position, cornerCircleDistance, cornerCircleRadius);
+#else
         return PointVsRoundedBox(position, cornerCircleDistance, cornerCircleRadius) < 0.0;
+#endif
     }
 #endif
 
@@ -134,9 +143,6 @@
         return (left.rgb + s * (right.rgb - left.rgb)) * intensity;
     }
 #endif
-
-	[profile 11_0]
-	[entrypoints VS=VS PS=PS]	
 
 	float3 GammaToLinear(const float3 color)
 	{
@@ -314,7 +320,7 @@
         output.scale.z = length(mul(float4(0.0, 0.0, 1.0, 0.0), World));
 #endif
         
-        output.uv.xy = input.uv;
+        output.uv.xy = (input.uv * Tiling) + Offset;
 
         float minScale = min(min(output.scale.x, output.scale.y), output.scale.z);
 
@@ -374,7 +380,7 @@
         output.uv.w = IF(output.scale.x > output.scale.y, 1.0 - borderWidth, 1.0 - (borderWidth * scaleRatio));
 #endif
 #elif INNER_GLOW || ALBEDO_MAP
-        output.uv = input.uv;
+        output.uv = (input.uv * Tiling) + Offset;
 #endif
 
 #if IRIDESCENCE
@@ -390,7 +396,7 @@
 	float4 PS(PS_IN input) : SV_Target
 	{
 #if ALBEDO_MAP
-		float4 albedo = Texture.Sample(Sampler, (input.uv * Tiling) + Offset) * float4(Color, Alpha);
+		float4 albedo = Texture.Sample(Sampler, input.uv) * float4(Color, Alpha);
 #else
 		float4 albedo = float4(Color, Alpha);
 #endif
@@ -508,7 +514,7 @@
                           smoothstep(input.uv.w - EdgeSmoothingValue, input.uv.w + EdgeSmoothingValue, distanceToEdge.y));
 #endif
 #if HOVER_LIGHT && BORDER_LIGHT_USES_HOVER_COLOR && HOVER_COLOR_OVERRIDE
-        float3 borderColor = _HoverColorOverride.rgb;
+        float3 borderColor = HoverColorOverride.rgb;
 #else
 		float3 borderColor = float3(1.0, 1.0, 1.0);
 #endif
@@ -533,9 +539,9 @@
 		albedo *= roundCornerClip;
 #endif
 
-#if ALPHA_CLIP || ROUND_CORNERS
+#if (ALPHATEST || ROUND_CORNERS) && !ALPHABLEND
 	clip(albedo.a - Cutoff);
-    albedo.a = 1.0;
+    //albedo.a = 1.0;
 #endif
 		
 // Blinn phong lighting.
