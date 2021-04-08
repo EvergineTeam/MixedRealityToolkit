@@ -1,14 +1,12 @@
 ﻿using Noesis;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using WaveEngine.Common.Attributes;
 using WaveEngine.Common.Graphics;
 using WaveEngine.Components.Graphics3D;
 using WaveEngine.Framework;
 using WaveEngine.Framework.Graphics;
 using WaveEngine.Framework.Graphics.Effects;
-using WaveEngine.Framework.Graphics.Materials;
 using WaveEngine.Framework.Services;
 using WaveEngine.Mathematics;
 using WaveEngine.MRTK.Effects;
@@ -42,15 +40,13 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
         [RenderProperty(Tooltip = "The text that will be shown")]
         public string Text
         {
-            get
-            {
-                return this.text;
-            }
+            get => this.text;
             set
             {
                 if (this.SetProperty(ref this.text, value, this.textBlock))
                 {
                     this.textBlock.Text = value;
+                    this.textBlock.TextTrimming = this.TextTrimming; // Noesis workaround
                     this.Invalidate();
                 };
             }
@@ -60,10 +56,7 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
         [RenderPropertyAsInput(minLimit: 1, Tooltip = "The font size used to render the text")]
         public int FontSize
         {
-            get
-            {
-                return this.fontSize;
-            }
+            get => this.fontSize;
             set
             {
                 if (this.SetProperty(ref this.fontSize, value, this.textBlock))
@@ -78,10 +71,7 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
         [RenderPropertyAsFInput(Tooltip = "The alpha value for the text component", MinLimit = 0, MaxLimit = 1)]
         public float Alpha
         {
-            get
-            {
-                return this.alpha;
-            }
+            get => this.alpha;
             set
             {
                 if (this.SetProperty(ref this.alpha, value, this.holographicMaterial))
@@ -112,10 +102,7 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
         [RenderProperty(Tooltip = "The text block width in meters.")]
         public float Width
         {
-            get
-            {
-                return this.width;
-            }
+            get => this.width;
             set
             {
                 if (this.SetProperty(ref this.width, value, this.noesisFramebufferPanel))
@@ -129,15 +116,12 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
         [RenderProperty(Tooltip = "The text horizontal alignment")]
         public HorizontalAlignment HorizontalAlignment
         {
-            get
-            {
-                return this.horizontalAlignment;
-            }
+            get => this.horizontalAlignment;
             set
             {
                 if (this.SetProperty(ref this.horizontalAlignment, value, this.textBlock))
                 {
-                    this.Invalidate(ifAutoSizeOnly: false);
+                    this.textBlock.HorizontalAlignment = value;
                 }
             }
         }
@@ -163,10 +147,7 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
         [RenderProperty(Tooltip = "The text block height in meters.")]
         public float Height
         {
-            get
-            {
-                return this.height;
-            }
+            get => this.height;
             set
             {
                 if (this.SetProperty(ref this.height, value, this.noesisFramebufferPanel))
@@ -180,10 +161,7 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
         [RenderProperty(Tooltip = "The text vertical alignment.")]
         public VerticalAlignment VerticalAlignment
         {
-            get
-            {
-                return this.verticalAlignment;
-            }
+            get => this.verticalAlignment;
             set
             {
                 if (this.SetProperty(ref this.verticalAlignment, value, this.textBlock))
@@ -197,10 +175,7 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
         [RenderProperty(Tooltip = "The origin (also known as pivot) from where the text block scales, rotates and translates. Its values are included in [0, 1] where (0, 0) indicates the top left corner. Such values are percentages where 1 means the 100% of the rectangle's width/height.")]
         public Vector2 Origin
         {
-            get
-            {
-                return this.origin;
-            }
+            get => this.origin;
             set
             {
                 if (this.SetProperty(ref this.origin, value, this.planeTransform))
@@ -214,11 +189,7 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
         [RenderProperty(Tooltip = "The pixel density expressed as pixels/meter.")]
         public int PixelDensity
         {
-            get
-            {
-                return this.pixelDensity;
-            }
-
+            get => this.pixelDensity;
             set
             {
                 if (this.SetProperty(ref this.pixelDensity, value, this.noesisFramebufferPanel))
@@ -236,10 +207,7 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
         [RenderProperty(Tooltip = "The text block foreground color.")]
         public Color Background
         {
-            get
-            {
-                return this.background;
-            }
+            get => this.background;
             set
             {
                 if (this.SetProperty(ref this.background, value, this.backgroundBrush))
@@ -258,10 +226,7 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
         [RenderProperty(Tooltip = "The text block foreground color.")]
         public Color Foreground
         {
-            get
-            {
-                return this.foreground;
-            }
+            get => this.foreground;
             set
             {
                 if (this.SetProperty(ref this.foreground, value, this.foregroundBrush))
@@ -280,10 +245,7 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
         [RenderProperty(Tooltip = "The text block plane normal direction.")]
         public PlaneNormal Normal
         {
-            get
-            {
-                return this.normal;
-            }
+            get => this.normal;
             set
             {
                 if (this.SetProperty(ref this.normal, value, this.planeMesh))
@@ -297,10 +259,7 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
         [RenderProperty(Tooltip = "The text alignment to use.")]
         public TextAlignment TextAlignment
         {
-            get
-            {
-                return this.textAlignment;
-            }
+            get => this.textAlignment;
             set
             {
                 if (this.SetProperty(ref this.textAlignment, value, this.textBlock))
@@ -315,10 +274,7 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
         [RenderProperty(Tooltip = "The text wrapping to use.")]
         public TextWrapping TextWrapping
         {
-            get
-            {
-                return this.textWrapping;
-            }
+            get => this.textWrapping;
             set
             {
                 if (this.SetProperty(ref this.textWrapping, value, this.textBlock))
@@ -333,10 +289,7 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
         [RenderProperty(Tooltip = "The text font family source to use.")]
         public string FontFamilySource
         {
-            get
-            {
-                return this.fontFamilySource;
-            }
+            get => this.fontFamilySource;
             set
             {
                 if (this.SetProperty(ref this.fontFamilySource, value, this.textBlock))
@@ -351,10 +304,7 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
         [RenderProperty(Tooltip = "The text font weight to use.")]
         public FontWeight FontWeight
         {
-            get
-            {
-                return this.fontWeight;
-            }
+            get => this.fontWeight;
             set
             {
                 if (this.SetProperty(ref this.fontWeight, value, this.textBlock))
@@ -369,10 +319,7 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
         [RenderProperty(Tooltip = "The text font stretch to use.")]
         public FontStretch FontStretch
         {
-            get
-            {
-                return this.fontStretch;
-            }
+            get => this.fontStretch;
             set
             {
                 if (this.SetProperty(ref this.fontStretch, value, this.textBlock))
@@ -387,10 +334,7 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
         [RenderProperty(Tooltip = "The text font style to use.")]
         public FontStyle FontStyle
         {
-            get
-            {
-                return this.fontStyle;
-            }
+            get => this.fontStyle;
             set
             {
                 if (this.SetProperty(ref this.fontStyle, value, this.textBlock))
@@ -401,6 +345,21 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
             }
         }
         private FontStyle fontStyle = FontStyle.Normal;
+
+        [RenderProperty(Tooltip = "The text trimming to use when the text width is longer than the available width")]
+        public TextTrimming TextTrimming
+        {
+            get => string.IsNullOrEmpty(this.Text) ? TextTrimming.None : this.textTrimming;
+            set
+            {
+                if (this.SetProperty(ref this.textTrimming, value, this.textBlock))
+                {
+                    this.textBlock.TextTrimming = this.TextTrimming;
+                    this.Invalidate();
+                }
+            }
+        }
+        private TextTrimming textTrimming = TextTrimming.None;
 
         private string containerEntityName => $"Text3D_{this.Id}";
 
@@ -606,7 +565,8 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
                 FontSize = this.FontSize,
                 FontStretch = this.FontStretch,
                 FontStyle = this.FontStyle,
-                FontFamily = this.GetFontFamily(this.FontFamilySource)
+                FontFamily = this.GetFontFamily(this.FontFamilySource),
+                TextTrimming = this.TextTrimming,
             };
         }
 
@@ -740,6 +700,9 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
                 pixelWidth = (uint)this.GetPixelSize(this.width, this.pixelDensity);
                 pixelHeight = (uint)this.GetPixelSize(this.height, this.pixelDensity);
             }
+
+            pixelWidth = (uint)this.ClampPixelSize(pixelWidth);
+            pixelHeight = (uint)this.ClampPixelSize(pixelHeight);
 
             this.UpdateOrigin(this.planeTransform);
 
