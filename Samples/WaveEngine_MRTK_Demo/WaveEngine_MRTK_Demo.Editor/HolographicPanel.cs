@@ -93,6 +93,8 @@ namespace WaveEngine_MRTK_Demo.Editor
                 {
                     this.AddDirectiveCheckbox("Use Hover Color", HoloGraphic.BorderLightUsesHoverColorDirective, indent: 1);
                 }
+
+                this.AddDirectiveCheckbox("Opaque Borders", HoloGraphic.BorderLightOpaqueDirective, indent: 1);
             }
 
             if (hoverLight || proximityLight || borderLight)
