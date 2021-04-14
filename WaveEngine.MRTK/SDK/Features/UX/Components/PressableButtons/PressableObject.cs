@@ -157,7 +157,9 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
         /// <inheritdoc/>
         void IMixedRealityPointerHandler.OnPointerDown(MixedRealityPointerEventData eventData)
         {
-            if (!this.SimulateTouchWithPointers)
+            if (!this.SimulateTouchWithPointers ||
+                eventData.EventHandled ||
+                eventData.CurrentTarget != this.Owner)
             {
                 return;
             }
@@ -165,7 +167,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
             var cursor = eventData.Cursor.FindComponent<Cursor>();
             if (cursor.IsTouch ||
                 (this.simulatePressState != PressSimulationState.None &&
-                 this.simulatedPointerEventData.Cursor != eventData.Cursor))
+                 this.simulatedPointerEventData?.Cursor != eventData.Cursor))
             {
                 return;
             }
@@ -179,17 +181,30 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
         /// <inheritdoc/>
         void IMixedRealityPointerHandler.OnPointerDragged(MixedRealityPointerEventData eventData)
         {
+            if (!this.SimulateTouchWithPointers ||
+                eventData.EventHandled ||
+                eventData.CurrentTarget != this.Owner ||
+                this.simulatedPointerEventData?.Cursor != eventData.Cursor)
+            {
+                return;
+            }
+
             this.simulatedPointerEventData = eventData;
         }
 
         /// <inheritdoc/>
         void IMixedRealityPointerHandler.OnPointerUp(MixedRealityPointerEventData eventData)
         {
-            if (this.simulatedPointerEventData.Cursor == eventData.Cursor)
+            if (!this.SimulateTouchWithPointers ||
+                eventData.EventHandled ||
+                eventData.CurrentTarget != this.Owner ||
+                this.simulatedPointerEventData?.Cursor != eventData.Cursor)
             {
-                this.simulatedPointerEventData = eventData;
-                this.simulatePressState = PressSimulationState.Releasing;
+                return;
             }
+
+            this.simulatedPointerEventData = eventData;
+            this.simulatePressState = PressSimulationState.Releasing;
         }
 
         /// <inheritdoc/>
@@ -288,14 +303,14 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
         {
             var worldToLocalTransform = this.GetWorldToLocalTransform();
             var localCursorPosition = Vector3.TransformCoordinate(cursorPosition, worldToLocalTransform);
+            var cursorPositionZeroPlane = this.ProjectOnZeroPlane(localCursorPosition);
+
             var pressDirection = this.nearInteractionTouchable.LocalPressDirection;
-            var cursorPositionZeroPlane = localCursorPosition - Vector3.Multiply(localCursorPosition, Vector3.Abs(pressDirection));
+            var startPressPosition = cursorPositionZeroPlane + (pressDirection * this.StartPosition);
+            var endPressPosition = cursorPositionZeroPlane + (pressDirection * this.EndPosition);
+            var pressStepPosition = Vector3.SmoothStep(startPressPosition, endPressPosition, amount);
 
-            var startPos = cursorPositionZeroPlane + (pressDirection * this.StartPosition);
-            var endPos = cursorPositionZeroPlane + (pressDirection * this.EndPosition);
-            var pressPosition = Vector3.SmoothStep(startPos, endPos, amount);
-
-            return pressPosition;
+            return pressStepPosition;
         }
 
         /// <summary>
@@ -328,14 +343,33 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
             return MathHelper.FloatEquals(projectionOnCurrentPressDirection, longestProjection.Length());
         }
 
-        private Matrix4x4 GetWorldToLocalTransform()
+        /// <summary>
+        /// Gets the world to local transform matrix.
+        /// </summary>
+        /// <returns>The world to local transform matrix.</returns>
+        protected Matrix4x4 GetWorldToLocalTransform()
         {
             return this.transform.WorldInverseTransform * this.nearInteractionTouchable.BoxCollider3DTransformInverse;
         }
 
-        private Matrix4x4 GetLocalToWorldTransform()
+        /// <summary>
+        /// Gets the local to world transform matrix.
+        /// </summary>
+        /// <returns>The local to world transform matrix.</returns>
+        protected Matrix4x4 GetLocalToWorldTransform()
         {
             return this.nearInteractionTouchable.BoxCollider3DTransform * this.transform.WorldTransform;
+        }
+
+        /// <summary>
+        /// Projects a local point onto the plane perpendicular to press direction at zero point.
+        /// </summary>
+        /// <param name="localPosition">The local position to project.</param>
+        /// <returns>The projected vector position.</returns>
+        protected Vector3 ProjectOnZeroPlane(Vector3 localPosition)
+        {
+            var pressDirection = this.nearInteractionTouchable.LocalPressDirection;
+            return localPosition - Vector3.Multiply(localPosition, Vector3.Abs(pressDirection));
         }
 
         private float ProjectOnPressDirection(Vector3 position)

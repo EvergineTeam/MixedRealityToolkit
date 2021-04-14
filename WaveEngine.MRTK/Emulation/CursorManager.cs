@@ -154,7 +154,7 @@ namespace WaveEngine.MRTK.Emulation
                 this.cursorCollisions[cursorEntity] = collisions;
             }
 
-            collisions.Add(interactedEntity);
+            collisions.Insert(0, interactedEntity);
         }
 
         private void PointerCursor_EndCollision(object sender, CollisionInfo3D info)
@@ -210,7 +210,7 @@ namespace WaveEngine.MRTK.Emulation
                 var interactedEntity = entry.Value[0];
 
                 var cursorComponent = cursorEntity.FindComponent<Cursor>();
-                if (!cursorComponent.PreviousPinch && cursorComponent.Pinch && cursorComponent.IsActivated)
+                if (!cursorComponent.PreviousPinch && cursorComponent.Pinch)
                 {
                     // PointerDown when the cursor transitions to pinched while inside a collider
                     this.RunPointerHandlers(cursorEntity, interactedEntity, (h, e) => h?.OnPointerDown(e));
