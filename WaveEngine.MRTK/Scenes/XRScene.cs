@@ -18,7 +18,6 @@ using WaveEngine.Mathematics;
 using WaveEngine.MRTK.Behaviors;
 using WaveEngine.MRTK.Emulation;
 using WaveEngine.MRTK.Services.InputSystem;
-using Billboard = WaveEngine.MRTK.Behaviors.Billboard;
 
 namespace WaveEngine.MRTK.Scenes
 {
@@ -125,76 +124,76 @@ namespace WaveEngine.MRTK.Scenes
 
         private static Entity CreateCursor(Scene scene, Material releasedMaterial, Material pressedMaterial, XRHandedness handedness, Texture handRayTexture, SamplerState handRaySampler)
         {
-            Entity cursor = new Entity("Cursor_" + handedness)
+            var mainCursor = new Entity("Cursor_" + handedness)
                 .AddComponent(new Transform3D())
-                .AddComponent(new MaterialComponent())
-                .AddComponent(new PlaneMesh() { TwoSides = true, Normal = Vector3.Forward, Width = 0.01f, Height = 0.01f })
-                .AddComponent(new MeshRenderer())
-                .AddComponent(new SphereCollider3D())
-                .AddComponent(new StaticBody3D() { CollisionCategories = CollisionCategory3D.Cat2, IsSensor = true, MaskBits = CollisionCategory3D.Cat1 })
                 .AddComponent(new Cursor() { IsTouch = true, PressedMaterial = pressedMaterial, ReleasedMaterial = releasedMaterial, UpdateOrder = 0.3f })
-                .AddComponent(new ProximityLight())
-                ;
+                .AddComponent(new SphereCollider3D() { Radius = 0.005f })
+                .AddComponent(new StaticBody3D() { CollisionCategories = CollisionCategory3D.Cat2, IsSensor = true, MaskBits = CollisionCategory3D.Cat1 })
+                .AddChild(new Entity("visual")
+                    .AddComponent(new Transform3D())
+                    .AddComponent(new MaterialComponent())
+                    .AddComponent(new PlaneMesh() { TwoSides = true, Normal = Vector3.Forward, Width = 0.01f, Height = 0.01f })
+                    .AddComponent(new MeshRenderer())
+                    .AddComponent(new ProximityLight()));
 
-            TrackXRJoint trackXRJoint = null;
             if (Application.Current.Container.IsRegistered<XRPlatform>())
             {
-                trackXRJoint = new TrackXRJoint()
+                // HoloLens 2
+                mainCursor.AddComponent(new TrackXRJoint()
                 {
                     Handedness = handedness,
                     SelectionStrategy = TrackXRDevice.SelectionDeviceStrategy.ByHandedness,
                     JointKind = XRHandJointKind.IndexTip,
                     TrackingLostMode = TrackXRDevice.XRTrackingLostMode.KeepLastPose,
-                };
-
-                // HoloLens 2
-                cursor.AddComponent(trackXRJoint)
-                    .AddComponent(new HoloLensControlBehavior())
-                    ;
+                })
+                          .AddComponent(new HoloLensControlBehavior());
             }
             else
             {
                 // Windows
-                cursor.AddComponent(new MouseControlBehavior() { key = handedness == XRHandedness.RightHand ? Keys.LeftShift : Keys.Space });
+                var key = handedness == XRHandedness.RightHand ? Keys.LeftShift : Keys.Space;
+                mainCursor.AddComponent(new MouseControlBehavior() { Key = key });
             }
 
-            scene.Managers.EntityManager.Add(cursor);
-
-            var lineComp = new LineBezierMesh()
-            {
-                IsCameraAligned = true,
-                LinePoints = new List<BezierPointInfo>()
+            var ray = new Entity()
+                .AddComponent(new Transform3D())
+                .AddComponent(new LineMesh()
+                {
+                    IsCameraAligned = true,
+                    LinePoints = new List<LinePointInfo>()
                         {
-                            new BezierPointInfo() { Position = Vector3.Zero, Thickness = 0.003f, Color = Color.White },
-                            new BezierPointInfo() { Position = -Vector3.UnitZ,  Thickness = 0.003f, Color = Color.White },
+                            new LinePointInfo() { Position = Vector3.Zero, Thickness = 0.003f, Color = Color.White },
+                            new LinePointInfo() { Position = -Vector3.UnitZ, Thickness = 0.003f, Color = Color.White },
                         },
-                Resolution = 1,
-                DiffuseTexture = handRayTexture,
-                DiffuseSampler = handRaySampler,
-            };
+                    DiffuseTexture = handRayTexture,
+                    DiffuseSampler = handRaySampler,
+                })
+                .AddComponent(new LineMeshRenderer3D());
 
-            Entity bezier = new Entity()
+            var farCursor = new Entity("FarCursor_" + handedness)
                 .AddComponent(new Transform3D())
-                .AddComponent(lineComp)
-                .AddComponent(new LineMeshRenderer3D())
-                ;
-            scene.Managers.EntityManager.Add(bezier);
+                .AddComponent(new CursorRay()
+                {
+                    TouchCursorEntity = mainCursor,
+                    CollisionMask = CollisionCategory3D.Cat1,
+                })
+                .AddChild(ray)
+                .AddChild(new Entity("visual")
+                    .AddComponent(new Transform3D())
+                    .AddComponent(new MaterialComponent())
+                    .AddComponent(new PlaneMesh() { Normal = -Vector3.Forward, Width = 0.01f, Height = 0.01f })
+                    .AddComponent(new MeshRenderer())
+                    .AddComponent(new SphereCollider3D())
+                    .AddComponent(new StaticBody3D() { CollisionCategories = CollisionCategory3D.Cat2, IsSensor = true, MaskBits = CollisionCategory3D.Cat1 })
+                    .AddComponent(new Cursor() { PressedMaterial = pressedMaterial, ReleasedMaterial = releasedMaterial, UpdateOrder = 0.3f })
+                    .AddComponent(new CameraDistanceScale())
+                    .AddComponent(new HoverLight()));
 
-            Entity cursorDist = new Entity("CursorFar_" + handedness)
-                .AddComponent(new Transform3D())
-                .AddComponent(new MaterialComponent())
-                .AddComponent(new PlaneMesh() { Normal = Vector3.Forward, Width = 0.01f, Height = 0.01f })
-                .AddComponent(new MeshRenderer())
-                .AddComponent(new SphereCollider3D())
-                .AddComponent(new StaticBody3D() { CollisionCategories = CollisionCategory3D.Cat2, IsSensor = true, MaskBits = CollisionCategory3D.Cat1 })
-                .AddComponent(new Cursor() { PressedMaterial = pressedMaterial, ReleasedMaterial = releasedMaterial, UpdateOrder = 0.3f })
-                .AddComponent(new CursorRay() { MainCursor = cursor.FindComponent<Cursor>(), LineMesh = lineComp, Joint = trackXRJoint, collisionMask = CollisionCategory3D.Cat1 })
-                .AddComponent(new Billboard())
-                .AddComponent(new HoverLight())
-                ;
-            scene.Managers.EntityManager.Add(cursorDist);
+            var entityManager = scene.Managers.EntityManager;
+            entityManager.Add(mainCursor);
+            entityManager.Add(farCursor);
 
-            return cursor;
+            return mainCursor;
         }
 
         /// <summary>

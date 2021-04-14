@@ -25,6 +25,7 @@ namespace WaveEngine.MRTK.Emulation
         private Dictionary<Entity, List<Entity>> cursorCollisions = new Dictionary<Entity, List<Entity>>();
         private Dictionary<Entity, Entity> interactedEntities = new Dictionary<Entity, Entity>();
 
+        private Dictionary<Entity, Cursor> cursorsByEntities = new Dictionary<Entity, Cursor>();
         private Dictionary<Entity, Vector3> cursorsLinearVelocity = new Dictionary<Entity, Vector3>();
         private Dictionary<Entity, Quaternion> cursorsAngularVelocity = new Dictionary<Entity, Quaternion>();
 
@@ -34,7 +35,7 @@ namespace WaveEngine.MRTK.Emulation
         /// <summary>
         /// Gets the cursors.
         /// </summary>
-        public List<Cursor> Cursors { get; private set; } = new List<Cursor>();
+        public IEnumerable<Cursor> Cursors => this.cursorsByEntities.Values;
 
         /// <summary>
         /// Adds a cursor.
@@ -42,7 +43,7 @@ namespace WaveEngine.MRTK.Emulation
         /// <param name="cursor">The cursor.</param>
         public void AddCursor(Cursor cursor)
         {
-            this.Cursors.Add(cursor);
+            this.cursorsByEntities.Add(cursor.Owner, cursor);
 
             if (this.IsActivated)
             {
@@ -56,7 +57,7 @@ namespace WaveEngine.MRTK.Emulation
         /// <param name="cursor">The cursor.</param>
         public void RemoveCursor(Cursor cursor)
         {
-            this.Cursors.Remove(cursor);
+            this.cursorsByEntities.Remove(cursor.Owner);
 
             if (this.IsActivated)
             {
@@ -119,7 +120,11 @@ namespace WaveEngine.MRTK.Emulation
             var cursorEntity = info.ThisBody.Owner;
             var interactedEntity = info.OtherBody.Owner;
 
-            this.RunTouchHandlers(cursorEntity, interactedEntity, (h, e) => h?.OnTouchStarted(e));
+            this.RunTouchHandlers(cursorEntity, interactedEntity, (h, e) =>
+            {
+                this.cursorsByEntities[cursorEntity].IsTouching = true;
+                h?.OnTouchStarted(e);
+            });
         }
 
         private void TouchCursor_UpdateCollision(object sender, CollisionInfo3D info)
@@ -135,6 +140,7 @@ namespace WaveEngine.MRTK.Emulation
             var cursorEntity = info.ThisBody.Owner;
             var interactedEntity = info.OtherBody.Owner;
 
+            this.cursorsByEntities[cursorEntity].IsTouching = false;
             this.RunTouchHandlers(cursorEntity, interactedEntity, (h, e) => h?.OnTouchCompleted(e));
         }
 
@@ -176,20 +182,21 @@ namespace WaveEngine.MRTK.Emulation
             }
 
             // Update cursors velocities
-            for (int i = 0; i < this.Cursors.Count; i++)
+            foreach (var entry in this.cursorsByEntities)
             {
-                var cursor = this.Cursors[i];
+                var cursorEntity = entry.Key;
+                var cursor = entry.Value;
                 var positionHistory = this.cursorsPositionHistory[cursor];
                 var orientationHistory = this.cursorsOrientationHistory[cursor];
 
-                this.AddToHistoryList(positionHistory, cursor.transform.Position);
-                this.AddToHistoryList(orientationHistory, cursor.transform.Orientation);
+                this.AddToHistoryList(positionHistory, cursor.Transform.Position);
+                this.AddToHistoryList(orientationHistory, cursor.Transform.Orientation);
 
                 var linearVelocity = (positionHistory[positionHistory.Count - 1] - positionHistory[0]) / this.historyElapsedTime;
                 var angularVelocity = (orientationHistory[orientationHistory.Count - 1] * Quaternion.Inverse(orientationHistory[0])) * (1 / this.historyElapsedTime);
 
-                this.cursorsLinearVelocity[cursor.Owner] = linearVelocity;
-                this.cursorsAngularVelocity[cursor.Owner] = angularVelocity;
+                this.cursorsLinearVelocity[cursorEntity] = linearVelocity;
+                this.cursorsAngularVelocity[cursorEntity] = angularVelocity;
             }
 
             foreach (var entry in this.cursorCollisions)

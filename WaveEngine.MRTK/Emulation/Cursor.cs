@@ -6,6 +6,7 @@ using WaveEngine.Components.Graphics3D;
 using WaveEngine.Framework;
 using WaveEngine.Framework.Graphics;
 using WaveEngine.Framework.Physics3D;
+using WaveEngine.MRTK.Base.Interfaces.InputSystem.Handlers;
 
 namespace WaveEngine.MRTK.Emulation
 {
@@ -14,34 +15,16 @@ namespace WaveEngine.MRTK.Emulation
     /// </summary>
     public class Cursor : Behavior
     {
-        /// <summary>
-        /// The transform.
-        /// </summary>
         [BindComponent]
-        public Transform3D transform = null;
+        internal Transform3D Transform { get; private set; }
 
-        /// <summary>
-        /// The collider.
-        /// </summary>
-        [BindComponent(isExactType: false)]
-        public Collider3D Collider3D;
-
-        /// <summary>
-        /// The StaticBody3D.
-        /// </summary>
         [BindComponent]
-        public StaticBody3D StaticBody3D;
-
-        /// <summary>
-        /// The MeshRenderer.
-        /// </summary>
-        [BindComponent]
-        public MeshRenderer meshRenderer;
+        internal StaticBody3D StaticBody3D { get; private set; }
 
         /// <summary>
         /// The Material component.
         /// </summary>
-        [BindComponent(isRequired: false)]
+        [BindComponent(isRequired: false, source: BindComponentSource.Children)]
         protected MaterialComponent materialComponent;
 
         /// <summary>
@@ -96,7 +79,8 @@ namespace WaveEngine.MRTK.Emulation
         private bool isTouch;
 
         /// <summary>
-        /// Gets or sets a value indicating whether the cursor should be treated as touch.
+        /// Gets or sets a value indicating whether the cursor should
+        /// produce <see cref="IMixedRealityPointerHandler"/> events.
         /// <para>
         /// This property cannot be changed while <see cref="Cursor"/> is activated.</para>
         /// </summary>
@@ -111,6 +95,29 @@ namespace WaveEngine.MRTK.Emulation
                 }
 
                 this.isTouch = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets a value indicating whether the cursor is colliding with a <see cref="IMixedRealityPointerHandler"/>.
+        /// </summary>
+        [WaveIgnore]
+        [DontRenderProperty]
+        public bool IsTouching { get; internal set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the cursor visible.
+        /// </summary>
+        [WaveIgnore]
+        public bool IsVisible
+        {
+            get => this.materialComponent?.Owner.IsEnabled == true;
+            set
+            {
+                if (this.materialComponent != null)
+                {
+                    this.materialComponent.Owner.IsEnabled = value;
+                }
             }
         }
 

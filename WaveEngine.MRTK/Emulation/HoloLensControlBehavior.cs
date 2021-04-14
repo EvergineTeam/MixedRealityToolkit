@@ -30,7 +30,7 @@ namespace WaveEngine.MRTK.Behaviors
         /// <summary>
         /// The cursor.
         /// </summary>
-        [BindComponent]
+        [BindComponent(source: BindComponentSource.Children)]
         protected Cursor cursor;
 
         /// <summary>
@@ -54,8 +54,6 @@ namespace WaveEngine.MRTK.Behaviors
         /// <inheritdoc/>
         protected override void Update(TimeSpan gameTime)
         {
-            ////this.joint.TrackedDevice != null && this.joint.TrackedDevice.IsConnected && this.joint.TrackedDevice.PoseIsValid;
-
             if (Tools.IsJointValid(this.trackXRJoint)
                 && this.trackXRJoint.TrackedDevice.TryGetArticulatedHandJoint(this.PinchJoint1, out var joint1)
                 && this.trackXRJoint.TrackedDevice.TryGetArticulatedHandJoint(this.PinchJoint2, out var joint2))

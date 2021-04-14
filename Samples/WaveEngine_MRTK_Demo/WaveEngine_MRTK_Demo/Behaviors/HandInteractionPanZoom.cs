@@ -132,7 +132,7 @@ namespace WaveEngine_MRTK_Demo.Behaviors
         {
             // Local postion
             var matrix = this.transform.WorldInverseTransform * this.nearInteractionTouchable.BoxCollider3DTransformInverse;
-            Vector3 localPos =  Vector3.TransformCoordinate(position, matrix);
+            Vector3 localPos = Vector3.TransformCoordinate(position, matrix);
 
             // Corners
             Vector2 uv0 = this.slateDecorator.Parameters_Offset;
@@ -155,13 +155,13 @@ namespace WaveEngine_MRTK_Demo.Behaviors
             if (touchInfos.Count > 0)
             {
                 //Scale
-                if(this.EnableZoom && this.touchInfos.Count > 1)
+                if (this.EnableZoom && this.touchInfos.Count > 1)
                 {
                     float d0 = (touchInfos[0].UV - touchInfos[1].UV).Length();
                     float d1 = (GetUVPos(touchInfos[0].Transform.Position) - GetUVPos(touchInfos[1].Transform.Position)).Length();
 
                     float scale = this.slateDecorator.Parameters_Tiling.X * d0 / d1;
-                    if(scale < MinZoom || scale > MaxZoom)
+                    if (scale < MinZoom || scale > MaxZoom)
                     {
                         scale = MathHelper.Clamp(scale, MinZoom, MaxZoom);
                         RemapTouches();
@@ -197,11 +197,8 @@ namespace WaveEngine_MRTK_Demo.Behaviors
         /// <inheritdoc/>
         public void OnTouchStarted(HandTrackingInputEventData eventData)
         {
-            if (eventData.Cursor.FindComponent<CursorRay>() == null)
-            {
-                this.touchInfos.Add(new TouchInfo { Cursor = eventData.Cursor, Transform = eventData.Cursor.FindComponent<Transform3D>(), UV = GetUVPos(eventData.Position) });
-                Tools.PlaySound(soundEmitter, PanStartedSound);
-            }
+            this.touchInfos.Add(new TouchInfo { Cursor = eventData.Cursor, Transform = eventData.Cursor.FindComponent<Transform3D>(), UV = GetUVPos(eventData.Position) });
+            Tools.PlaySound(soundEmitter, PanStartedSound);
         }
 
         /// <inheritdoc/>
@@ -213,7 +210,7 @@ namespace WaveEngine_MRTK_Demo.Behaviors
         /// <inheritdoc/>
         public void OnTouchCompleted(HandTrackingInputEventData eventData)
         {
-            for(int i = 0; i < touchInfos.Count; ++ i)
+            for (int i = 0; i < touchInfos.Count; ++i)
             {
                 if (this.touchInfos[i].Cursor == eventData.Cursor)
                 {
@@ -229,7 +226,7 @@ namespace WaveEngine_MRTK_Demo.Behaviors
 
         public void OnPointerDown(MixedRealityPointerEventData eventData)
         {
-            if (eventData.Cursor.FindComponent<CursorRay>() != null)
+            if (eventData.Cursor.FindComponent<Cursor>()?.IsTouch == false)
             {
                 this.touchInfos.Add(new TouchInfo { Cursor = eventData.Cursor, Transform = eventData.Cursor.FindComponent<Transform3D>(), UV = GetUVPos(eventData.Position) });
                 Tools.PlaySound(soundEmitter, PanStartedSound);
