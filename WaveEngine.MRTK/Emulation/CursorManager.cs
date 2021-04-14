@@ -2,7 +2,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using WaveEngine.Framework;
 using WaveEngine.Framework.Graphics;
 using WaveEngine.Framework.Managers;
@@ -20,20 +19,22 @@ namespace WaveEngine.MRTK.Emulation
     {
         private static readonly int VELOCITY_HISTORY_SIZE = 10;
 
-        /// <summary>
-        /// Gets the cursors.
-        /// </summary>
-        public List<Cursor> Cursors { get; private set; } = new List<Cursor>();
+        private float historyElapsedTime;
+        private List<float> gameTimeHistory = new List<float>(VELOCITY_HISTORY_SIZE);
 
-        private Dictionary<Entity, LinkedList<Entity>> cursorCollisions = new Dictionary<Entity, LinkedList<Entity>>();
+        private Dictionary<Entity, List<Entity>> cursorCollisions = new Dictionary<Entity, List<Entity>>();
         private Dictionary<Entity, Entity> interactedEntities = new Dictionary<Entity, Entity>();
 
         private Dictionary<Entity, Vector3> cursorsLinearVelocity = new Dictionary<Entity, Vector3>();
         private Dictionary<Entity, Quaternion> cursorsAngularVelocity = new Dictionary<Entity, Quaternion>();
 
-        private Dictionary<Cursor, LinkedList<Vector3>> cursorsPositionHistory = new Dictionary<Cursor, LinkedList<Vector3>>();
-        private Dictionary<Cursor, LinkedList<Quaternion>> cursorsOrientationHistory = new Dictionary<Cursor, LinkedList<Quaternion>>();
-        private LinkedList<float> gameTimeHistory = new LinkedList<float>();
+        private Dictionary<Cursor, List<Vector3>> cursorsPositionHistory = new Dictionary<Cursor, List<Vector3>>();
+        private Dictionary<Cursor, List<Quaternion>> cursorsOrientationHistory = new Dictionary<Cursor, List<Quaternion>>();
+
+        /// <summary>
+        /// Gets the cursors.
+        /// </summary>
+        public List<Cursor> Cursors { get; private set; } = new List<Cursor>();
 
         /// <summary>
         /// Adds a cursor.
@@ -43,12 +44,10 @@ namespace WaveEngine.MRTK.Emulation
         {
             this.Cursors.Add(cursor);
 
-            cursor.StaticBody3D.BeginCollision += this.Cursor_BeginCollision;
-            cursor.StaticBody3D.UpdateCollision += this.Cursor_UpdateCollision;
-            cursor.StaticBody3D.EndCollision += this.Cursor_EndCollision;
-
-            this.cursorsPositionHistory[cursor] = new LinkedList<Vector3>();
-            this.cursorsOrientationHistory[cursor] = new LinkedList<Quaternion>();
+            if (this.IsActivated)
+            {
+                this.RegisterCursor(cursor);
+            }
         }
 
         /// <summary>
@@ -59,12 +58,21 @@ namespace WaveEngine.MRTK.Emulation
         {
             this.Cursors.Remove(cursor);
 
-            cursor.StaticBody3D.BeginCollision -= this.Cursor_BeginCollision;
-            cursor.StaticBody3D.UpdateCollision -= this.Cursor_UpdateCollision;
-            cursor.StaticBody3D.EndCollision -= this.Cursor_EndCollision;
+            if (this.IsActivated)
+            {
+                this.UnregisterCursor(cursor);
+            }
+        }
 
-            this.cursorsPositionHistory.Remove(cursor);
-            this.cursorsOrientationHistory.Remove(cursor);
+        /// <inheritdoc/>
+        protected override void OnActivated()
+        {
+            base.OnActivated();
+
+            foreach (var cursor in this.Cursors)
+            {
+                this.RegisterCursor(cursor);
+            }
         }
 
         /// <inheritdoc/>
@@ -74,28 +82,47 @@ namespace WaveEngine.MRTK.Emulation
 
             foreach (var cursor in this.Cursors)
             {
-                cursor.StaticBody3D.BeginCollision -= this.Cursor_BeginCollision;
-                cursor.StaticBody3D.UpdateCollision -= this.Cursor_UpdateCollision;
-                cursor.StaticBody3D.EndCollision -= this.Cursor_EndCollision;
+                this.UnregisterCursor(cursor);
             }
         }
 
-        private void Cursor_BeginCollision(object sender, CollisionInfo3D info)
+        private void RegisterCursor(Cursor cursor)
+        {
+            if (cursor.IsTouch)
+            {
+                cursor.StaticBody3D.BeginCollision += this.TouchCursor_BeginCollision;
+                cursor.StaticBody3D.UpdateCollision += this.TouchCursor_UpdateCollision;
+                cursor.StaticBody3D.EndCollision += this.TouchCursor_EndCollision;
+            }
+
+            cursor.StaticBody3D.BeginCollision += this.PointerCursor_BeginCollision;
+            cursor.StaticBody3D.EndCollision += this.PointerCursor_EndCollision;
+
+            this.cursorsPositionHistory[cursor] = new List<Vector3>(VELOCITY_HISTORY_SIZE);
+            this.cursorsOrientationHistory[cursor] = new List<Quaternion>(VELOCITY_HISTORY_SIZE);
+        }
+
+        private void UnregisterCursor(Cursor cursor)
+        {
+            cursor.StaticBody3D.UpdateCollision -= this.TouchCursor_UpdateCollision;
+            cursor.StaticBody3D.EndCollision -= this.TouchCursor_EndCollision;
+            cursor.StaticBody3D.BeginCollision -= this.PointerCursor_BeginCollision;
+            cursor.StaticBody3D.EndCollision -= this.PointerCursor_EndCollision;
+            cursor.StaticBody3D.BeginCollision -= this.TouchCursor_BeginCollision;
+
+            this.cursorsPositionHistory.Remove(cursor);
+            this.cursorsOrientationHistory.Remove(cursor);
+        }
+
+        private void TouchCursor_BeginCollision(object sender, CollisionInfo3D info)
         {
             var cursorEntity = info.ThisBody.Owner;
             var interactedEntity = info.OtherBody.Owner;
 
             this.RunTouchHandlers(cursorEntity, interactedEntity, (h, e) => h?.OnTouchStarted(e));
-
-            if (!this.cursorCollisions.ContainsKey(cursorEntity))
-            {
-                this.cursorCollisions[cursorEntity] = new LinkedList<Entity>();
-            }
-
-            this.cursorCollisions[cursorEntity].AddFirst(interactedEntity);
         }
 
-        private void Cursor_UpdateCollision(object sender, CollisionInfo3D info)
+        private void TouchCursor_UpdateCollision(object sender, CollisionInfo3D info)
         {
             var cursorEntity = info.ThisBody.Owner;
             var interactedEntity = info.OtherBody.Owner;
@@ -103,39 +130,63 @@ namespace WaveEngine.MRTK.Emulation
             this.RunTouchHandlers(cursorEntity, interactedEntity, (h, e) => h?.OnTouchUpdated(e));
         }
 
-        private void Cursor_EndCollision(object sender, CollisionInfo3D info)
+        private void TouchCursor_EndCollision(object sender, CollisionInfo3D info)
         {
             var cursorEntity = info.ThisBody.Owner;
             var interactedEntity = info.OtherBody.Owner;
 
             this.RunTouchHandlers(cursorEntity, interactedEntity, (h, e) => h?.OnTouchCompleted(e));
+        }
 
-            if (this.cursorCollisions.ContainsKey(cursorEntity))
+        private void PointerCursor_BeginCollision(object sender, CollisionInfo3D info)
+        {
+            var cursorEntity = info.ThisBody.Owner;
+            var interactedEntity = info.OtherBody.Owner;
+            if (!this.cursorCollisions.TryGetValue(cursorEntity, out var collisions))
             {
-                this.cursorCollisions[cursorEntity].Remove(interactedEntity);
+                collisions = new List<Entity>();
+                this.cursorCollisions[cursorEntity] = collisions;
+            }
+
+            collisions.Add(interactedEntity);
+        }
+
+        private void PointerCursor_EndCollision(object sender, CollisionInfo3D info)
+        {
+            var cursorEntity = info.ThisBody.Owner;
+            var interactedEntity = info.OtherBody.Owner;
+            if (this.cursorCollisions.TryGetValue(cursorEntity, out var collisions))
+            {
+                collisions.Remove(interactedEntity);
             }
         }
 
         /// <inheritdoc/>
         public override void Update(TimeSpan gameTime)
         {
-            // Update gameTime history
-            this.AddToHistoryList(this.gameTimeHistory, (float)gameTime.TotalSeconds);
+            // Update gameTime history and compute history elapsed time
+            var elapsed = (float)gameTime.TotalSeconds;
+            this.gameTimeHistory.Add(elapsed);
+            this.historyElapsedTime += elapsed;
 
-            // Compute history elapsed time
-            float historyElapsedTime = this.gameTimeHistory.Sum();
+            if (this.gameTimeHistory.Count > VELOCITY_HISTORY_SIZE)
+            {
+                this.historyElapsedTime -= this.gameTimeHistory[0];
+                this.gameTimeHistory.RemoveAt(0);
+            }
 
             // Update cursors velocities
-            foreach (var cursor in this.Cursors)
+            for (int i = 0; i < this.Cursors.Count; i++)
             {
+                var cursor = this.Cursors[i];
                 var positionHistory = this.cursorsPositionHistory[cursor];
                 var orientationHistory = this.cursorsOrientationHistory[cursor];
 
                 this.AddToHistoryList(positionHistory, cursor.transform.Position);
                 this.AddToHistoryList(orientationHistory, cursor.transform.Orientation);
 
-                var linearVelocity = (positionHistory.Last.Value - positionHistory.First.Value) / historyElapsedTime;
-                var angularVelocity = (orientationHistory.Last.Value * Quaternion.Inverse(orientationHistory.First.Value)) * (1 / historyElapsedTime);
+                var linearVelocity = (positionHistory[positionHistory.Count - 1] - positionHistory[0]) / this.historyElapsedTime;
+                var angularVelocity = (orientationHistory[orientationHistory.Count - 1] * Quaternion.Inverse(orientationHistory[0])) * (1 / this.historyElapsedTime);
 
                 this.cursorsLinearVelocity[cursor.Owner] = linearVelocity;
                 this.cursorsAngularVelocity[cursor.Owner] = angularVelocity;
@@ -149,10 +200,9 @@ namespace WaveEngine.MRTK.Emulation
                 }
 
                 var cursorEntity = entry.Key;
-                var interactedEntity = entry.Value.First.Value;
+                var interactedEntity = entry.Value[0];
 
                 var cursorComponent = cursorEntity.FindComponent<Cursor>();
-
                 if (!cursorComponent.PreviousPinch && cursorComponent.Pinch && cursorComponent.IsActivated)
                 {
                     // PointerDown when the cursor transitions to pinched while inside a collider
@@ -187,30 +237,22 @@ namespace WaveEngine.MRTK.Emulation
             }
 
             // Remove finished interactions
-            foreach (var cursor in finishedInteractions)
+            for (int i = 0; i < finishedInteractions.Count; i++)
             {
-                this.interactedEntities.Remove(cursor);
+                this.interactedEntities.Remove(finishedInteractions[i]);
             }
         }
 
         private void RunTouchHandlers(Entity cursor, Entity other, Action<IMixedRealityTouchHandler, HandTrackingInputEventData> action)
         {
             var position = cursor.FindComponent<Transform3D>().Position;
-
             var eventArgs = new HandTrackingInputEventData()
             {
                 Cursor = cursor,
                 Position = position,
             };
 
-            var interactables = this.GatherComponents(other)
-                                    .Where(x => x.IsActivated)
-                                    .OfType<IMixedRealityTouchHandler>();
-
-            foreach (var touchHandler in interactables)
-            {
-                action(touchHandler, eventArgs);
-            }
+            this.RunOnComponents<IMixedRealityTouchHandler>(other, (x) => action(x, eventArgs));
         }
 
         private void RunPointerHandlers(Entity cursor, Entity other, Action<IMixedRealityPointerHandler, MixedRealityPointerEventData> action)
@@ -227,38 +269,33 @@ namespace WaveEngine.MRTK.Emulation
                 AngularVelocity = this.cursorsAngularVelocity[cursor],
             };
 
-            var interactables = this.GatherComponents(other)
-                                    .Where(x => x.IsActivated)
-                                    .OfType<IMixedRealityPointerHandler>();
-
-            foreach (var touchHandler in interactables)
-            {
-                action(touchHandler, eventArgs);
-            }
+            this.RunOnComponents<IMixedRealityPointerHandler>(other, (x) => action(x, eventArgs));
         }
 
-        private IEnumerable<Component> GatherComponents(Entity entity)
+        private void RunOnComponents<T>(Entity entity, Action<T> action)
         {
-            List<Component> result = new List<Component>();
-
-            Entity current = entity;
-
+            var current = entity;
             while (current != null)
             {
-                result.AddRange(current.Components);
+                foreach (var c in current.Components)
+                {
+                    if (c.IsActivated && c is T interactable)
+                    {
+                        action(interactable);
+                    }
+                }
+
                 current = current.Parent;
             }
-
-            return result;
         }
 
-        private void AddToHistoryList<T>(LinkedList<T> list, T newItem)
+        private void AddToHistoryList<T>(List<T> list, T newItem)
         {
-            list.AddLast(newItem);
+            list.Add(newItem);
 
             if (list.Count > VELOCITY_HISTORY_SIZE)
             {
-                list.RemoveFirst();
+                list.RemoveAt(0);
             }
         }
     }

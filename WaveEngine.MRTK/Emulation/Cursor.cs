@@ -93,6 +93,27 @@ namespace WaveEngine.MRTK.Emulation
         [DontRenderProperty]
         public bool PreviousPinch { get; private set; }
 
+        private bool isTouch;
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the cursor should be treated as touch.
+        /// <para>
+        /// This property cannot be changed while <see cref="Cursor"/> is activated.</para>
+        /// </summary>
+        public bool IsTouch
+        {
+            get => this.isTouch;
+            set
+            {
+                if (this.IsActivated)
+                {
+                    throw new InvalidOperationException($"{nameof(this.IsTouch)} property cannot be changed while {nameof(Cursor)} is activated.");
+                }
+
+                this.isTouch = value;
+            }
+        }
+
         /// <inheritdoc/>
         protected override void OnActivated()
         {

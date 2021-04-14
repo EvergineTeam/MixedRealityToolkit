@@ -83,7 +83,6 @@ namespace WaveEngine_MRTK_Demo.Behaviors
 
         private NearInteractionTouchable nearInteractionTouchable;
         private HoloGraphic slateDecorator;
-        private CursorManager cursorManager;
         private Vector2 speed;
         private SoundEmitter3D soundEmitter;
 
@@ -114,7 +113,6 @@ namespace WaveEngine_MRTK_Demo.Behaviors
         protected override void Start()
         {
             this.slateDecorator = new HoloGraphic(materialComponent.Material);
-            this.cursorManager = this.Owner.Scene.Managers.FindManager<CursorManager>();
 
             if (!Application.Current.IsEditor)
             {

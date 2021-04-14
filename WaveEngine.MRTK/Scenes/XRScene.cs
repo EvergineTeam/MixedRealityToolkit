@@ -132,13 +132,12 @@ namespace WaveEngine.MRTK.Scenes
                 .AddComponent(new MeshRenderer())
                 .AddComponent(new SphereCollider3D())
                 .AddComponent(new StaticBody3D() { CollisionCategories = CollisionCategory3D.Cat2, IsSensor = true, MaskBits = CollisionCategory3D.Cat1 })
-                .AddComponent(new Cursor() { PressedMaterial = pressedMaterial, ReleasedMaterial = releasedMaterial, UpdateOrder = 0.3f })
+                .AddComponent(new Cursor() { IsTouch = true, PressedMaterial = pressedMaterial, ReleasedMaterial = releasedMaterial, UpdateOrder = 0.3f })
                 .AddComponent(new ProximityLight())
                 ;
 
             TrackXRJoint trackXRJoint = null;
-            var xrPlatform = Application.Current.Container.Resolve<XRPlatform>();
-            if (xrPlatform != null)
+            if (Application.Current.Container.IsRegistered<XRPlatform>())
             {
                 trackXRJoint = new TrackXRJoint()
                 {
@@ -169,10 +168,9 @@ namespace WaveEngine.MRTK.Scenes
                             new BezierPointInfo() { Position = Vector3.Zero, Thickness = 0.003f, Color = Color.White },
                             new BezierPointInfo() { Position = -Vector3.UnitZ,  Thickness = 0.003f, Color = Color.White },
                         },
-                Resolution = 10,
+                Resolution = 1,
                 DiffuseTexture = handRayTexture,
                 DiffuseSampler = handRaySampler,
-                TextureTiling = new Vector2(10.0f, 1.0f),
             };
 
             Entity bezier = new Entity()
@@ -182,7 +180,7 @@ namespace WaveEngine.MRTK.Scenes
                 ;
             scene.Managers.EntityManager.Add(bezier);
 
-            Entity cursorDist = new Entity("CursorDist_" + handedness)
+            Entity cursorDist = new Entity("CursorFar_" + handedness)
                 .AddComponent(new Transform3D())
                 .AddComponent(new MaterialComponent())
                 .AddComponent(new PlaneMesh() { Normal = Vector3.Forward, Width = 0.01f, Height = 0.01f })
