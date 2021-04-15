@@ -31,8 +31,9 @@ namespace WaveEngine.MRTK.Behaviors
 
             if (this.scale)
             {
-                float t = Math.Abs(Vector3.TransformCoordinate(this.transform.Position, cam.Transform.WorldInverseTransform).Z);
-                this.transform.Scale = Vector3.One * t * 1.0f;
+                Vector3 direction = this.transform.Position - cam.Transform.Position;
+                float t = Math.Max(1, direction.Length());
+                this.transform.Scale = Vector3.One * (t / 1f);
             }
         }
     }

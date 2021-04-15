@@ -17,9 +17,8 @@ namespace WaveEngine.MRTK.Effects
     {
 
         public HoloGraphic(WaveEngine.Framework.Graphics.Effects.Effect effect) :
-                base(new Material(effect))
+                this(new Material(effect))
         {
-            this.EnsureIsHolographic(effect);
         }
 
         public HoloGraphic(WaveEngine.Framework.Graphics.Material material) :

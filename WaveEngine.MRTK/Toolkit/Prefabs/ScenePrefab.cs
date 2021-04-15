@@ -131,9 +131,11 @@ namespace WaveEngine.MRTK.Toolkit.Prefabs
                 }
             }
 
-            foreach (var child in entity.ChildEntities)
+            foreach (var child in entity.ChildEntities.ToArray())
             {
+                entity.DetachChild(child);
                 this.PrepareEntity(child);
+                entity.AddChild(child);
             }
         }
     }

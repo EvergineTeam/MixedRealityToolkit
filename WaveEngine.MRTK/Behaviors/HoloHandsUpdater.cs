@@ -23,7 +23,6 @@ namespace WaveEngine.MRTK.Behaviors
         public XRHandedness Handedness { get; set; }
 
         private HoloHandsLocal holoHandsDecorator;
-        private Camera3D camera;
         private Material material;
         private TrackXRJoint trackXRJoint;
 
@@ -46,8 +45,6 @@ namespace WaveEngine.MRTK.Behaviors
                 this.material.ActiveDirectivesNames = this.directivesAnimating;
                 this.meshRenderer = this.Owner.FindComponent<MeshRenderer>();
 
-                this.camera = this.Managers.RenderManager.ActiveCamera3D;
-
                 CursorManager cursorManager = this.Owner.Scene.Managers.FindManager<CursorManager>();
                 foreach (Cursor c in cursorManager.Cursors)
                 {
@@ -55,7 +52,7 @@ namespace WaveEngine.MRTK.Behaviors
                     if (joint != null && joint.Handedness == this.Handedness)
                     {
                         this.trackXRJoint = joint;
-                        this.cursorMeshRenderer = c.Owner.FindComponent<MeshRenderer>();
+                        this.cursorMeshRenderer = c.Owner.FindComponentInChildren<MeshRenderer>();
                         break;
                     }
                 }

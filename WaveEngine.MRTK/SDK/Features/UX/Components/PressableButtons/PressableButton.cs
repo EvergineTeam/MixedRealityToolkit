@@ -90,6 +90,8 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
         /// <inheritdoc/>
         protected override void Update(TimeSpan gameTime)
         {
+            base.Update(gameTime);
+
             float targetPosition;
 
             if (this.speechWordRecognized)
@@ -136,13 +138,11 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
                 // Call feedback function for feedback visuals
                 if (this.feedbackVisualsComponentsArray != null && this.feedbackVisualsComponentsArray.Length > 0)
                 {
-                    Vector3 pushVector = this.nearInteractionTouchable.LocalPressDirection * (this.currentPosition - 0.5f);
-                    var colliderTransform = this.nearInteractionTouchable.BoxCollider3DTransform;
+                    var colliderWorldTransform = this.nearInteractionTouchable.BoxCollider3DTransform * this.transform.WorldTransform;
+                    var pushVector = this.nearInteractionTouchable.LocalPressDirection * (this.currentPosition - 0.5f);
+                    var pushVectorWorld = Vector3.TransformNormal(pushVector, colliderWorldTransform);
+
                     var pressRatio = (this.StartPosition - this.currentPosition) / (this.StartPosition - this.EndPosition);
-
-                    Vector3 pushVectorCollider = Vector3.TransformNormal(pushVector, colliderTransform);
-                    Vector3 pushVectorWorld = Vector3.TransformNormal(pushVectorCollider, this.transform.WorldTransform);
-
                     for (int i = 0; i < this.feedbackVisualsComponentsArray.Length; i++)
                     {
                         this.feedbackVisualsComponentsArray[i].Feedback(pushVectorWorld, pressRatio, this.isPressing);
