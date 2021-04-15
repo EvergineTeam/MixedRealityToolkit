@@ -944,6 +944,7 @@ Items:
                         PixelDensity: 5000
                         Text: Value
                         TextAlignment: Left
+                        TextTrimming: None
                         TextWrapping: NoWrap
                         UpdateOrder: 0.5
                         VerticalAlignment: Center
@@ -1002,6 +1003,7 @@ Items:
                         PixelDensity: 5000
                         Text: 0.50
                         TextAlignment: Left
+                        TextTrimming: None
                         TextWrapping: NoWrap
                         UpdateOrder: 0.5
                         VerticalAlignment: Center

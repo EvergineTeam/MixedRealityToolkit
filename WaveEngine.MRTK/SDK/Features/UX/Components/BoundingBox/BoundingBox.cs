@@ -41,7 +41,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
         /// based on <see cref="MeshComponent"/> components found in from owner's hierarchy.
         /// </summary>
         [RenderProperty(Tooltip = "Whether the bounding collider should be calculated automatically based on MeshComponent components found in from owner's hierarchy.")]
-        public bool AutoCalculate { get; set; } = true;
+        public bool AutoCalculate { get; set; } = false;
 
         /// <summary>
         /// Gets or sets the scale applied to the scale handles.
@@ -465,22 +465,32 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
         /// <summary>
         /// Event fired when interaction with a rotation handle starts.
         /// </summary>
-        public event EventHandler RotateStarted;
+        public event EventHandler<BoundingBoxManipulationEventArgs> RotateStarted;
+
+        /// <summary>
+        /// Event fired when interaction with a rotation handle is updated.
+        /// </summary>
+        public event EventHandler<BoundingBoxManipulationEventArgs> RotateUpdated;
 
         /// <summary>
         /// Event fired when interaction with a rotation handle stops.
         /// </summary>
-        public event EventHandler RotateStopped;
+        public event EventHandler<BoundingBoxManipulationEventArgs> RotateStopped;
 
         /// <summary>
         /// Event fired when interaction with a scale handle starts.
         /// </summary>
-        public event EventHandler ScaleStarted;
+        public event EventHandler<BoundingBoxManipulationEventArgs> ScaleStarted;
+
+        /// <summary>
+        /// Event fired when interaction with a scale handle is updated.
+        /// </summary>
+        public event EventHandler<BoundingBoxManipulationEventArgs> ScaleUpdated;
 
         /// <summary>
         /// Event fired when interaction with a scale handle stops.
         /// </summary>
-        public event EventHandler ScaleStopped;
+        public event EventHandler<BoundingBoxManipulationEventArgs> ScaleStopped;
 
         // Rig
 
@@ -1165,21 +1175,30 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
                             var axis = this.currentHandle.GetRotationAxis(this.transform.WorldTransform);
                             this.currentRotationAxis = Vector3.Normalize(axis);
 
-                            this.RotateStarted?.Invoke(this, EventArgs.Empty);
+                            this.RotateStarted?.Invoke(this, new BoundingBoxManipulationEventArgs()
+                            {
+                                Handle = this.currentHandle,
+                            });
                             break;
 
                         case BoundingBoxHelperType.ScaleHandle:
                             this.grabOppositeCorner = Vector3.TransformCoordinate(this.currentHandle.OppositeHandlePosition, this.transform.WorldTransform);
                             this.grabDiagonalDirection = Vector3.Normalize(this.currentHandle.Transform.Position - this.grabOppositeCorner);
 
-                            this.ScaleStarted?.Invoke(this, EventArgs.Empty);
+                            this.ScaleStarted?.Invoke(this, new BoundingBoxManipulationEventArgs()
+                            {
+                                Handle = this.currentHandle,
+                            });
                             break;
 
                         case BoundingBoxHelperType.NonUniformScaleHandle:
                             this.grabOppositeCorner = Vector3.TransformCoordinate(this.currentHandle.OppositeHandlePosition, this.transform.WorldTransform);
                             this.grabDiagonalDirection = Vector3.Normalize(this.currentHandle.Transform.Position - this.grabOppositeCorner);
 
-                            this.ScaleStarted?.Invoke(this, EventArgs.Empty);
+                            this.ScaleStarted?.Invoke(this, new BoundingBoxManipulationEventArgs()
+                            {
+                                Handle = this.currentHandle,
+                            });
                             break;
                     }
 
@@ -1202,34 +1221,33 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
                 switch (this.currentHandle.Type)
                 {
                     case BoundingBoxHelperType.RotationHandle:
-                        var initialDir = this.ProjectOnPlane(this.transform.Position, this.currentRotationAxis, this.initialGrabPoint);
-                        var currentDir = this.ProjectOnPlane(this.transform.Position, this.currentRotationAxis, currentGrabPoint);
-
-                        var dir1 = Vector3.Normalize(initialDir - this.transform.Position);
-                        var dir2 = Vector3.Normalize(currentDir - this.transform.Position);
-
-                        // Check that the two vectors are not the same, workaround for a bug in Quaternion.CreateFromTwoVectors
-                        if (Vector3.DistanceSquared(dir1, dir2) > MathHelper.Epsilon)
                         {
-                            var rotation = Quaternion.CreateFromTwoVectors(dir1, dir2);
-                            this.transform.Orientation = rotation * this.transformOnGrabStart.Orientation;
-                        }
+                            var initialDir = this.ProjectOnPlane(this.transform.Position, this.currentRotationAxis, this.initialGrabPoint);
+                            var currentDir = this.ProjectOnPlane(this.transform.Position, this.currentRotationAxis, currentGrabPoint);
 
-                        break;
+                            var dir1 = Vector3.Normalize(initialDir - this.transform.Position);
+                            var dir2 = Vector3.Normalize(currentDir - this.transform.Position);
 
-                    case BoundingBoxHelperType.ScaleHandle:
-                        {
-                            float initialDist = Vector3.Dot(this.initialGrabPoint - this.grabOppositeCorner, this.grabDiagonalDirection);
-                            float currentDist = Vector3.Dot(currentGrabPoint - this.grabOppositeCorner, this.grabDiagonalDirection);
-                            float scaleFactor = 1.0f + ((currentDist - initialDist) / initialDist);
+                            // Check that the two vectors are not the same, workaround for a bug in Quaternion.CreateFromTwoVectors
+                            if (Vector3.DistanceSquared(dir1, dir2) > MathHelper.Epsilon)
+                            {
+                                var rotation = Quaternion.CreateFromTwoVectors(dir1, dir2);
+                                this.transform.Orientation = rotation * this.transformOnGrabStart.Orientation;
 
-                            this.transform.Scale = this.transformOnGrabStart.Scale * scaleFactor;
-                            this.transform.Position = this.grabOppositeCorner + (scaleFactor * (this.transformOnGrabStart.Translation - this.grabOppositeCorner));
+                                var cross = Vector3.Cross(dir1, dir2);
+                                var dir = Vector3.Dot(cross, this.currentRotationAxis);
 
-                            this.UpdateRigHandles();
+                                this.RotateUpdated?.Invoke(this, new BoundingBoxManipulationEventArgs()
+                                {
+                                    Handle = this.currentHandle,
+                                    Value = Vector3.Angle(dir1, dir2) * Math.Sign(dir),
+                                });
+                            }
+
                             break;
                         }
 
+                    case BoundingBoxHelperType.ScaleHandle:
                     case BoundingBoxHelperType.NonUniformScaleHandle:
                         {
                             float initialDist = Vector3.Dot(this.initialGrabPoint - this.grabOppositeCorner, this.grabDiagonalDirection);
@@ -1237,24 +1255,39 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
                             float scaleFactor = 1.0f + ((currentDist - initialDist) / initialDist);
 
                             Vector3 localScale = this.transform.LocalScale;
-                            this.transform.Scale = this.transformOnGrabStart.Scale * scaleFactor;
-                            if (this.currentHandle.AxisType == AxisType.X)
-                            {
-                                this.transform.LocalScale = new Vector3(this.transform.LocalScale.X, localScale.Y, localScale.Z);
-                            }
-                            else if (this.currentHandle.AxisType == AxisType.Y)
-                            {
-                                this.transform.LocalScale = new Vector3(localScale.X, this.transform.LocalScale.Y, localScale.Z);
-                            }
-                            else if (this.currentHandle.AxisType == AxisType.Z)
-                            {
-                                this.transform.LocalScale = new Vector3(localScale.X, localScale.Y, this.transform.LocalScale.Z);
-                            }
 
-                            Vector3 oppositeCornerPos = Vector3.TransformCoordinate(this.currentHandle.OppositeHandlePosition, this.transform.WorldTransform);
-                            this.transform.Position += this.grabOppositeCorner - oppositeCornerPos;
+                            this.transform.Scale = this.transformOnGrabStart.Scale * scaleFactor;
+
+                            if (this.currentHandle.Type == BoundingBoxHelperType.ScaleHandle)
+                            {
+                                this.transform.Position = this.grabOppositeCorner + (scaleFactor * (this.transformOnGrabStart.Translation - this.grabOppositeCorner));
+                            }
+                            else
+                            {
+                                if (this.currentHandle.AxisType == AxisType.X)
+                                {
+                                    this.transform.LocalScale = new Vector3(this.transform.LocalScale.X, localScale.Y, localScale.Z);
+                                }
+                                else if (this.currentHandle.AxisType == AxisType.Y)
+                                {
+                                    this.transform.LocalScale = new Vector3(localScale.X, this.transform.LocalScale.Y, localScale.Z);
+                                }
+                                else if (this.currentHandle.AxisType == AxisType.Z)
+                                {
+                                    this.transform.LocalScale = new Vector3(localScale.X, localScale.Y, this.transform.LocalScale.Z);
+                                }
+
+                                Vector3 oppositeCornerPos = Vector3.TransformCoordinate(this.currentHandle.OppositeHandlePosition, this.transform.WorldTransform);
+                                this.transform.Position += this.grabOppositeCorner - oppositeCornerPos;
+                            }
 
                             this.UpdateRigHandles();
+
+                            this.ScaleUpdated?.Invoke(this, new BoundingBoxManipulationEventArgs()
+                            {
+                                Handle = this.currentHandle,
+                                Value = scaleFactor,
+                            });
 
                             break;
                         }
@@ -1274,10 +1307,17 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
                 switch (this.currentHandle.Type)
                 {
                     case BoundingBoxHelperType.RotationHandle:
-                        this.RotateStopped?.Invoke(this, EventArgs.Empty);
+                        this.RotateStopped?.Invoke(this, new BoundingBoxManipulationEventArgs()
+                        {
+                            Handle = this.currentHandle,
+                        });
                         break;
                     case BoundingBoxHelperType.ScaleHandle:
-                        this.ScaleStopped?.Invoke(this, EventArgs.Empty);
+                    case BoundingBoxHelperType.NonUniformScaleHandle:
+                        this.ScaleStopped?.Invoke(this, new BoundingBoxManipulationEventArgs()
+                        {
+                            Handle = this.currentHandle,
+                        });
                         break;
                 }
 

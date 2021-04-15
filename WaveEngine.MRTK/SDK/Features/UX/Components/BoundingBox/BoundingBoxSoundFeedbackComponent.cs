@@ -77,22 +77,22 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
             this.boundingBox.ScaleStopped -= this.BoundingBox_ScaleStopped;
         }
 
-        private void BoundingBox_RotateStarted(object sender, EventArgs e)
+        private void BoundingBox_RotateStarted(object sender, BoundingBoxManipulationEventArgs e)
         {
             Tools.PlaySound(this.soundEmitter, this.RotateStartedSound);
         }
 
-        private void BoundingBox_RotateStopped(object sender, EventArgs e)
+        private void BoundingBox_RotateStopped(object sender, BoundingBoxManipulationEventArgs e)
         {
             Tools.PlaySound(this.soundEmitter, this.RotateStoppedSound);
         }
 
-        private void BoundingBox_ScaleStarted(object sender, EventArgs e)
+        private void BoundingBox_ScaleStarted(object sender, BoundingBoxManipulationEventArgs e)
         {
             Tools.PlaySound(this.soundEmitter, this.ScaleStartedSound);
         }
 
-        private void BoundingBox_ScaleStopped(object sender, EventArgs e)
+        private void BoundingBox_ScaleStopped(object sender, BoundingBoxManipulationEventArgs e)
         {
             Tools.PlaySound(this.soundEmitter, this.ScaleStoppedSound);
         }
