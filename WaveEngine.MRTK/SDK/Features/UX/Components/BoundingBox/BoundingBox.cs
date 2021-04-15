@@ -585,7 +585,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
             this.RotationHandlePrefab.OnScenePrefabChanged += this.HandlePrefab_OnScenePrefabChanged;
             this.FaceScaleHandlePrefab.OnScenePrefabChanged += this.HandlePrefab_OnScenePrefabChanged;
 
-            this.CreateRig();
+            this.InternalCreateRig();
         }
 
         /// <inheritdoc/>
@@ -625,7 +625,19 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
         /// <summary>
         /// Destroys and re-creates the rig around the bounding box.
         /// </summary>
-        public void CreateRig()
+        /// <returns><see langword="true"/> if the rig can be re-created at that moment.</returns>
+        public bool CreateRig()
+        {
+            if (!this.IsActivated)
+            {
+                return false;
+            }
+
+            this.InternalCreateRig();
+            return true;
+        }
+
+        private void InternalCreateRig()
         {
             if (this.Owner != null)
             {
