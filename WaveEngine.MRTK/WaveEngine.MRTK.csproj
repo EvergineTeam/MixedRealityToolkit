@@ -20,12 +20,12 @@
     <DefineConstants>TRACE</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="WaveEngine.Bullet" Version="3.1.0.7478-nightly" />
-    <PackageReference Include="WaveEngine.Common" Version="3.1.0.7478-nightly" />
-    <PackageReference Include="WaveEngine.Components" Version="3.1.0.7478-nightly" />
-    <PackageReference Include="WaveEngine.Framework" Version="3.1.0.7478-nightly" />
-    <PackageReference Include="WaveEngine.Mathematics" Version="3.1.0.7478-nightly" />
-    <PackageReference Include="WaveEngine.Platform" Version="3.1.0.7478-nightly" />
+    <PackageReference Include="WaveEngine.Bullet" Version="3.1.0.7662-nightly" />
+    <PackageReference Include="WaveEngine.Common" Version="3.1.0.7662-nightly" />
+    <PackageReference Include="WaveEngine.Components" Version="3.1.0.7662-nightly" />
+    <PackageReference Include="WaveEngine.Framework" Version="3.1.0.7662-nightly" />
+    <PackageReference Include="WaveEngine.Mathematics" Version="3.1.0.7662-nightly" />
+    <PackageReference Include="WaveEngine.Platform" Version="3.1.0.7662-nightly" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\LICENSE">
