@@ -27,9 +27,6 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
     {
         private static readonly string RIG_ROOT_NAME = "rigRoot";
 
-        [BindService]
-        private AssetsService assetsService = null;
-
         [BindComponent]
         private Transform3D transform = null;
 
@@ -573,8 +570,13 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
                 this.Owner.AddComponent(this.boxCollider3D);
             }
 
-            var effect = this.assetsService.Load<Effect>(DefaultResourcesIDs.StandardEffectID);
-            var opaqueLayer = this.assetsService.Load<RenderLayerDescription>(DefaultResourcesIDs.OpaqueRenderLayerID);
+            return true;
+        }
+
+        /// <inheritdoc/>
+        protected override void OnActivated()
+        {
+            base.OnActivated();
 
             this.transform.ScaleChanged += this.Transform_ScaleChanged;
             this.transform.LocalScaleChanged += this.Transform_ScaleChanged;
@@ -583,13 +585,13 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
             this.RotationHandlePrefab.OnScenePrefabChanged += this.HandlePrefab_OnScenePrefabChanged;
             this.FaceScaleHandlePrefab.OnScenePrefabChanged += this.HandlePrefab_OnScenePrefabChanged;
 
-            return true;
+            this.CreateRig();
         }
 
         /// <inheritdoc/>
-        protected override void OnDetach()
+        protected override void OnDeactivated()
         {
-            base.OnDetach();
+            base.OnDeactivated();
 
             this.transform.ScaleChanged -= this.Transform_ScaleChanged;
             this.transform.LocalScaleChanged -= this.Transform_ScaleChanged;
@@ -597,6 +599,8 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
             this.ScaleHandlePrefab.OnScenePrefabChanged -= this.HandlePrefab_OnScenePrefabChanged;
             this.RotationHandlePrefab.OnScenePrefabChanged -= this.HandlePrefab_OnScenePrefabChanged;
             this.FaceScaleHandlePrefab.OnScenePrefabChanged -= this.HandlePrefab_OnScenePrefabChanged;
+
+            this.DestroyRig();
         }
 
         private void HandlePrefab_OnScenePrefabChanged(object sender, EventArgs e)
@@ -607,22 +611,6 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
         private void Transform_ScaleChanged(object sender, EventArgs e)
         {
             this.UpdateRigHandles();
-        }
-
-        /// <inheritdoc/>
-        protected override void OnActivated()
-        {
-            base.OnActivated();
-
-            this.CreateRig();
-        }
-
-        /// <inheritdoc/>
-        protected override void OnDeactivated()
-        {
-            base.OnDeactivated();
-
-            this.DestroyRig();
         }
 
         /// <inheritdoc/>
@@ -1097,7 +1085,6 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
         private void UpdateRigHandles()
         {
             var activeCamera = this.Managers.RenderManager.ActiveCamera3D;
-
             for (int i = 0; i < this.helpersList.Count; i++)
             {
                 var helper = this.helpersList[i];
