@@ -534,6 +534,7 @@ Items:
                     PressPosition: 0.100000001
                     ReleasePosition: 0.300000012
                     RetractSpeed: 5.0
+                    SimulateTouchWithPointers: true
                     SpeechKeyWord: button
                     StartPosition: 0.5
                     UpdateOrder: 0.5
@@ -667,6 +668,7 @@ Items:
                     PressPosition: 0.100000001
                     ReleasePosition: 0.300000012
                     RetractSpeed: 5.0
+                    SimulateTouchWithPointers: true
                     SpeechKeyWord: button
                     StartPosition: 0.5
                     UpdateOrder: 0.5
@@ -800,6 +802,7 @@ Items:
                     PressPosition: 0.100000001
                     ReleasePosition: 0.300000012
                     RetractSpeed: 5.0
+                    SimulateTouchWithPointers: true
                     SpeechKeyWord: button
                     StartPosition: 0.5
                     UpdateOrder: 0.5
@@ -933,6 +936,7 @@ Items:
                     PressPosition: 0.100000001
                     ReleasePosition: 0.300000012
                     RetractSpeed: 5.0
+                    SimulateTouchWithPointers: true
                     SpeechKeyWord: button
                     StartPosition: 0.5
                     UpdateOrder: 0.5
@@ -1066,6 +1070,7 @@ Items:
                     PressPosition: 0.100000001
                     ReleasePosition: 0.300000012
                     RetractSpeed: 5.0
+                    SimulateTouchWithPointers: true
                     SpeechKeyWord: button
                     StartPosition: 0.5
                     UpdateOrder: 0.5
@@ -1199,6 +1204,7 @@ Items:
                     PressPosition: 0.100000001
                     ReleasePosition: 0.300000012
                     RetractSpeed: 5.0
+                    SimulateTouchWithPointers: true
                     SpeechKeyWord: button
                     StartPosition: 0.5
                     UpdateOrder: 0.5
@@ -1332,6 +1338,7 @@ Items:
                     PressPosition: 0.100000001
                     ReleasePosition: 0.300000012
                     RetractSpeed: 5.0
+                    SimulateTouchWithPointers: true
                     SpeechKeyWord: button
                     StartPosition: 0.5
                     UpdateOrder: 0.5
@@ -1465,6 +1472,7 @@ Items:
                     PressPosition: 0.100000001
                     ReleasePosition: 0.300000012
                     RetractSpeed: 5.0
+                    SimulateTouchWithPointers: true
                     SpeechKeyWord: button
                     StartPosition: 0.5
                     UpdateOrder: 0.5
@@ -1598,6 +1606,7 @@ Items:
                     PressPosition: 0.100000001
                     ReleasePosition: 0.300000012
                     RetractSpeed: 5.0
+                    SimulateTouchWithPointers: true
                     SpeechKeyWord: button
                     StartPosition: 0.5
                     UpdateOrder: 0.5
@@ -1731,6 +1740,7 @@ Items:
                     PressPosition: 0.100000001
                     ReleasePosition: 0.300000012
                     RetractSpeed: 5.0
+                    SimulateTouchWithPointers: true
                     SpeechKeyWord: button
                     StartPosition: 0.5
                     UpdateOrder: 0.5
@@ -1864,6 +1874,7 @@ Items:
                     PressPosition: 0.100000001
                     ReleasePosition: 0.300000012
                     RetractSpeed: 5.0
+                    SimulateTouchWithPointers: true
                     SpeechKeyWord: button
                     StartPosition: 0.5
                     UpdateOrder: 0.5
@@ -1997,6 +2008,7 @@ Items:
                     PressPosition: 0.100000001
                     ReleasePosition: 0.300000012
                     RetractSpeed: 5.0
+                    SimulateTouchWithPointers: true
                     SpeechKeyWord: button
                     StartPosition: 0.5
                     UpdateOrder: 0.5
@@ -2124,6 +2136,7 @@ Items:
                 PixelDensity: 3780
                 Text: Press Interaction
                 TextAlignment: Left
+                TextTrimming: None
                 TextWrapping: NoWrap
                 UpdateOrder: 0.5
                 VerticalAlignment: Center
@@ -2182,6 +2195,7 @@ Items:
                 PixelDensity: 3780
                 Text: HoloLens 2 buttons and other custom button examples using PressableButton.cs
                 TextAlignment: Left
+                TextTrimming: None
                 TextWrapping: Wrap
                 UpdateOrder: 0.5
                 VerticalAlignment: Top
@@ -2498,6 +2512,7 @@ Items:
                     PixelDensity: 3780
                     Text: Color Change on Pressed Event
                     TextAlignment: Left
+                    TextTrimming: None
                     TextWrapping: NoWrap
                     UpdateOrder: 0.5
                     VerticalAlignment: Center
@@ -3085,6 +3100,7 @@ Items:
                 PixelDensity: 3780
                 Text: Slider Interaction
                 TextAlignment: Left
+                TextTrimming: None
                 TextWrapping: NoWrap
                 UpdateOrder: 0.5
                 VerticalAlignment: Center
@@ -3143,6 +3159,7 @@ Items:
                 PixelDensity: 3780
                 Text: Example using PinchSlider.cs
                 TextAlignment: Left
+                TextTrimming: None
                 TextWrapping: NoWrap
                 UpdateOrder: 0.5
                 VerticalAlignment: Center
@@ -3862,6 +3879,7 @@ Items:
                 PixelDensity: 3780
                 Text: Touch Interaction
                 TextAlignment: Left
+                TextTrimming: None
                 TextWrapping: NoWrap
                 UpdateOrder: 0.5
                 VerticalAlignment: Center
@@ -3920,6 +3938,7 @@ Items:
                 PixelDensity: 3780
                 Text: Examples of touch events using HandInteractionTouch.cs Only works with HoloLens 2's articulated hand
                 TextAlignment: Left
+                TextTrimming: None
                 TextWrapping: Wrap
                 UpdateOrder: 0.5
                 VerticalAlignment: Center
@@ -4781,6 +4800,7 @@ Items:
                 PixelDensity: 3780
                 Text: Manipulation Interaction
                 TextAlignment: Left
+                TextTrimming: None
                 TextWrapping: NoWrap
                 UpdateOrder: 0.5
                 VerticalAlignment: Center
@@ -4839,6 +4859,7 @@ Items:
                 PixelDensity: 3778
                 Text: Examples using SimpleManipulationHandler.cs with and without physics and using TetheredPlacement.cs
                 TextAlignment: Left
+                TextTrimming: None
                 TextWrapping: Wrap
                 UpdateOrder: 0.5
                 VerticalAlignment: Center
@@ -5047,6 +5068,7 @@ Items:
                 PixelDensity: 3780
                 Text: One/Two Handed     Maintain original rotation
                 TextAlignment: Left
+                TextTrimming: None
                 TextWrapping: Wrap
                 UpdateOrder: 0.5
                 VerticalAlignment: Center
@@ -5105,6 +5127,7 @@ Items:
                 PixelDensity: 3780
                 Text: One/Two Handed     Maintain original scale
                 TextAlignment: Left
+                TextTrimming: None
                 TextWrapping: Wrap
                 UpdateOrder: 0.5
                 VerticalAlignment: Center
@@ -5163,6 +5186,7 @@ Items:
                 PixelDensity: 3780
                 Text: One/Two Handed     Maintain original position
                 TextAlignment: Left
+                TextTrimming: None
                 TextWrapping: Wrap
                 UpdateOrder: 0.5
                 VerticalAlignment: Center
@@ -5532,6 +5556,7 @@ Items:
                 PixelDensity: 3780
                 Text: Pan & Zoom Interaction
                 TextAlignment: Left
+                TextTrimming: None
                 TextWrapping: NoWrap
                 UpdateOrder: 0.5
                 VerticalAlignment: Center
@@ -5590,6 +5615,7 @@ Items:
                 PixelDensity: 3780
                 Text: Example of panning and zooming 2D content using HandInteractionPanZoom.cs
                 TextAlignment: Left
+                TextTrimming: None
                 TextWrapping: Wrap
                 UpdateOrder: 0.5
                 VerticalAlignment: Center
@@ -5965,6 +5991,7 @@ Items:
                 PixelDensity: 2000
                 Text: Hand Interaction Examples
                 TextAlignment: Left
+                TextTrimming: None
                 TextWrapping: NoWrap
                 UpdateOrder: 0.5
                 VerticalAlignment: Center
@@ -6023,6 +6050,7 @@ Items:
                 PixelDensity: 2000
                 Text: This example scene demonstrates various types of hand tracking interactions such as Press, Touch, Grab, Scroll, Move, Rotate, and Scale. You can find common UI and interaction building blocks that are part of HoloLens shell.
                 TextAlignment: Justify
+                TextTrimming: None
                 TextWrapping: Wrap
                 UpdateOrder: 0.5
                 VerticalAlignment: Center
@@ -6705,6 +6733,7 @@ Items:
                 PixelDensity: 3780
                 Text: Bounding Box
                 TextAlignment: Left
+                TextTrimming: None
                 TextWrapping: NoWrap
                 UpdateOrder: 0.5
                 VerticalAlignment: Center
@@ -6763,6 +6792,7 @@ Items:
                 PixelDensity: 3780
                 Text: Standard UI for resizing and rotating an object
                 TextAlignment: Left
+                TextTrimming: None
                 TextWrapping: Wrap
                 UpdateOrder: 0.5
                 VerticalAlignment: Center
@@ -6821,6 +6851,7 @@ Items:
                 PixelDensity: 3780
                 Text: Bounding box with all handles
                 TextAlignment: Left
+                TextTrimming: None
                 TextWrapping: Wrap
                 UpdateOrder: 0.5
                 VerticalAlignment: Center
@@ -6879,6 +6910,7 @@ Items:
                 PixelDensity: 3780
                 Text: Bounding box with rotation handles
                 TextAlignment: Left
+                TextTrimming: None
                 TextWrapping: Wrap
                 UpdateOrder: 0.5
                 VerticalAlignment: Center
@@ -6937,6 +6969,7 @@ Items:
                 PixelDensity: 3780
                 Text: Bounding box with uniform scale handles
                 TextAlignment: Left
+                TextTrimming: None
                 TextWrapping: Wrap
                 UpdateOrder: 0.5
                 VerticalAlignment: Center
