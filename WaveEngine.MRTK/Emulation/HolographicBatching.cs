@@ -72,12 +72,13 @@ namespace WaveEngine.MRTK.Emulation
         }
 
         /// <summary>
-        /// Disables batching feature on meshes that uses <see cref="HoloGraphic"/> materials that does not allows batching.
+        /// Disables batching feature on meshes that use <see cref="HoloGraphic"/> materials that do not allow batching.
         /// </summary>
         /// <param name="materialComponents">The collection of <see cref="MaterialComponent"/> to process.</param>
         public void DisableBatchingOnRequiredHolographicMaterials(IEnumerable<MaterialComponent> materialComponents)
         {
             var holographicEffectsByOwner = materialComponents.Where(m => m.Material?.Effect?.Id == HoloGraphic.EffectId)
+                                                              .Where(m => m.IsAttached) // Exclude unattached components
                                                               .ToDictionary(m => m.Owner, m => new HoloGraphic(m.Material));
 
             foreach (var pair in holographicEffectsByOwner)
