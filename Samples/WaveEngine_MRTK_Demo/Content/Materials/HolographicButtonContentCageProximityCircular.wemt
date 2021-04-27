@@ -6,13 +6,15 @@ DefaultProfile:
   Platform: Undefined
 ExportAsRaw: false
 MaterialInfo:
-  Id: cc7c3a02-e589-4a25-8ce5-d6ba92cdab21
+  Id: f05c1842-9d37-40aa-b74b-244eee51e547
   ActiveDirectives:
+    - ALPHABLEND
     - BORDER_LIGHT
     - BORDER_LIGHT_OPAQUE
     - HOVER_LIGHT
     - IGNORE_Z_SCALE
     - NEAR_LIGHT_FADE
+    - NEAR_PLANE_FADE
     - PROXIMITY_LIGHT
     - PROXIMITY_LIGHT_TWO_SIDED
     - ROUND_CORNERS
@@ -23,7 +25,7 @@ MaterialInfo:
   Parameters:
     - Name: WorldViewProj
       Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
-      ValueByteArray: qh+kQJQOSb6f5wC+UuQAvgAAAADexoFA6fGKv1ruir+MUcW+sTsnwDNw1r+2ata/Xh4QMoTMmjUf7ItAvRuPQA==
+      ValueByteArray: Vl1XQAAAAAAAAAAAAAAAAAAAAACYMopADf9kvzD5ZL8AAAAAmjIKwAv/5L8u+eS/AAAAAHmCGjUf7ItAvRuPQA==
     - Name: World
       Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
       ValueByteArray: AAAAQAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAACAPw==
@@ -99,12 +101,24 @@ MaterialInfo:
     - Name: Offset
       Type: WaveEngine.Mathematics.Vector2,WaveEngine.Mathematics
       ValueByteArray: AAAAAAAAAAA=
-    - Name: MultiviewViewProj
-      Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
-      ValueByteArray: kpPOPwjcv72p9ji+gfM4vnJaDrfRDxdA/yFXvlQeV77EUpu+3jP/vuj+db+2+nW/9FFXPnRC377/T5++KTRYvg==
+    - Name: IridescenceIntensity
+      Type: System.Single
+      ValueByteArray: AAAAPw==
+    - Name: IridescenceThreshold
+      Type: System.Single
+      ValueByteArray: zcxMPQ==
+    - Name: IridescenceAngle
+      Type: System.Single
+      ValueByteArray: FK5Hvw==
+    - Name: EyePosition
+      Type: WaveEngine.Mathematics.Vector3,WaveEngine.Mathematics
+      ValueByteArray: 14jePSiR4T1a8Cy/
     - Name: EyeCount
       Type: System.Int32
       ValueByteArray: AQAAAA==
+    - Name: MultiviewViewProj
+      Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
+      ValueByteArray: kpPOPwjcv72p9ji+gfM4vnJaDrfRDxdA/yFXvlQeV77EUpu+3jP/vuj+db+2+nW/9FFXPnRC377/T5++KTRYvg==
     - Name: SunDirection
       Type: WaveEngine.Mathematics.Vector3,WaveEngine.Mathematics
       ValueByteArray: AAAAAAAAAAAAAIA/
@@ -120,7 +134,11 @@ MaterialInfo:
   Samplers:
     - ID: 00000000-0000-0000-0000-000000000000
       Name: null
+    - ID: 00000000-0000-0000-0000-000000000000
+      Name: null
   Textures:
+    - ID: 00000000-0000-0000-0000-000000000000
+      Name: null
     - ID: 00000000-0000-0000-0000-000000000000
       Name: null
 Profiles: {}

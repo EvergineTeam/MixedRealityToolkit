@@ -81,6 +81,11 @@ namespace WaveEngine.MRTK.Effects
         public const string IridescenceDirective = "IRIDESCENCE";
 
         /// <summary>
+        /// The NearPlaneFade feature directive.
+        /// </summary>
+        public const string NearPlaneFadeDirective = "NEAR_PLANE_FADE";
+
+        /// <summary>
         /// The NearLightFade feature directive.
         /// </summary>
         public const string NearLightFadeDirective = "NEAR_LIGHT_FADE";

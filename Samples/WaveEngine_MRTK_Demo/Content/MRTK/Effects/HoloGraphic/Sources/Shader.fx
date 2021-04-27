@@ -10,6 +10,7 @@
 	[directives:ROUND_CORNERS                  ROUND_CORNERS_OFF                  ROUND_CORNERS                  ]
 	[directives:INDEPENDENT_CORNERS			   INDEPENDENT_CORNERS_OFF			  INDEPENDENT_CORNERS			 ]
 	[directives:IGNORE_Z_SCALE                 IGNORE_Z_SCALE_OFF                 IGNORE_Z_SCALE                 ]
+	[directives:NEAR_PLANE_FADE                NEAR_PLANE_FADE_OFF                NEAR_PLANE_FADE                ]
 	[directives:NEAR_LIGHT_FADE                NEAR_LIGHT_FADE_OFF                NEAR_LIGHT_FADE                ]
 	[directives:HOVER_LIGHT                    HOVER_LIGHT_OFF                    HOVER_LIGHT                    ]
 	[directives:HOVER_COLOR_OVERRIDE           HOVER_COLOR_OVERRIDE_OFF           HOVER_COLOR_OVERRIDE           ]
@@ -26,8 +27,7 @@
 
 	cbuffer PerDrawCall : register(b0)
 	{
-		float4x4 WorldViewProj		: packoffset(c0);	[WorldViewProjection]
-		float4x4 World				: packoffset(c4);	[World]
+		float4x4 World				: packoffset(c0);	[World]
 	};
 
 	cbuffer Parameters : register(b1)
@@ -54,8 +54,8 @@
 		float EdgeSmoothingValue	: packoffset(c3.w); [Default(0.002)] //Range(0.0, 0.2)
 		
 		//NEAR_LIGHT_FADE
-		float FadeBeginDistance     : packoffset(c5.x); [Default(0.01)] //Range(0.0, 10.0)
-        float FadeCompleteDistance  : packoffset(c5.y); [Default(0.1)]  //Range(0.0, 10.0)
+		float FadeBeginDistance     : packoffset(c5.x); [Default(0.85)] //Range(0.0, 10.0)
+        float FadeCompleteDistance  : packoffset(c5.y); [Default(0.5)]  //Range(0.0, 10.0)
         float FadeMinValue          : packoffset(c5.z); [Default(0.0)]  //Range(0.0, 1.0)
         
         //HOVER_LIGHT
@@ -81,9 +81,11 @@
 	
 	cbuffer PerCamera : register(b2)
 	{
-		float3    EyePosition				: packoffset(c4.x); [CameraPosition]
-		int       EyeCount					: packoffset(c4.w); [MultiviewCount]
-		float4x4  MultiviewViewProj[6]		: packoffset(c5.x); [MultiviewViewProjection]
+		float4x4  View					    : packoffset(c0.x); [View]
+		float4x4  ViewProj					: packoffset(c4.x); [ViewProjection]
+		float3    EyePosition				: packoffset(c8.x); [CameraPosition]
+		int       EyeCount					: packoffset(c8.w); [MultiviewCount]
+		float4x4  MultiviewViewProj[6]		: packoffset(c9.x); [MultiviewViewProjection]
 	};
 	
 	cbuffer PerScene : register(b3)
@@ -270,8 +272,6 @@
 		const int vid = input.InstId % EyeCount;
 		const float4x4 viewProj = MultiviewViewProj[vid];
 	
-		float4x4 worldViewProj = mul(World, viewProj);
-		
 		// Note which view this vertex has been sent to. Used for matrix lookup.
 		// Taking the modulo of the instance ID allows geometry instancing to be used
 		// along with stereo instanced drawing; in that case, two copies of each 
@@ -279,19 +279,22 @@
 	
 		output.ViewId = vid;
 #else
-		float4x4 worldViewProj = WorldViewProj;
+		float4x4 viewProj = ViewProj;
 #endif
 
-		output.pos = mul(input.Position, worldViewProj);
-		output.worldPosition = mul(input.Position, World);
+		const float4 transformedPosWorld = mul(input.Position, World);
+
+		output.pos = mul(transformedPosWorld, viewProj);
+		output.worldPosition = transformedPosWorld;
 		
 		float3 localNormal = input.normal;
 #if PROXIMITY_LIGHT || DIRECTIONAL_LIGHT
 		output.worldNormal = normalize(mul(float4(input.normal, 0), World).xyz);
 #endif
 
-#if NEAR_LIGHT_FADE
+#if NEAR_PLANE_FADE
 		float rangeInverse = 1.0 / (FadeBeginDistance - FadeCompleteDistance);
+#if NEAR_LIGHT_FADE
 	    float fadeDistance = _MaxNearLightDistance;
 	
 	    [unroll]
@@ -307,7 +310,9 @@
 	        int dataIndex = proximityLightIndex * PROXIMITY_LIGHT_DATA_SIZE;
 	        fadeDistance = min(fadeDistance, NearLightDistance(ProximityLightData[dataIndex], output.worldPosition.xyz));
 	    }
-
+#else
+		float fadeDistance = -mul(transformedPosWorld, View).z;
+#endif
 		output.worldPosition.w = max(saturate(mad(fadeDistance, rangeInverse, - FadeCompleteDistance * rangeInverse)), FadeMinValue);
 #endif
 
@@ -398,7 +403,7 @@
 #if ALBEDO_MAP
 		float4 albedo = Texture.Sample(Sampler, input.uv) * float4(Color, Alpha);
 #else
-		float4 albedo = float4(Color, Alpha);
+		float4 albedo = float4(Color * Alpha, Alpha);
 #endif
 	
 #if BORDER_LIGHT || INNER_GLOW || ROUND_CORNERS
@@ -447,7 +452,7 @@
 
 #if PROXIMITY_LIGHT || DIRECTIONAL_LIGHT
 // Normal calculation.
-		float3 worldNormal = normalize(input.worldNormal);
+		float3 worldNormal = input.worldNormal;
 #endif
 
 #if IRIDESCENCE
@@ -537,6 +542,7 @@
 
 #if ROUND_CORNERS
 		albedo *= roundCornerClip;
+        pointToLight *= roundCornerClip;
 #endif
 
 #if (ALPHATEST || ROUND_CORNERS) && !ALPHABLEND
@@ -601,18 +607,14 @@
         output.a += lerp(0.0, InnerGlowAlpha, uvGlow.x + uvGlow.y);
 #endif
 
-#if (NEAR_LIGHT_FADE)
+#if (NEAR_PLANE_FADE)
         output *= input.worldPosition.w;
 #endif
 
-// Hover and proximity lighting should occur after near plane fading.
+		// Hover and proximity lighting should occur after near plane fading.
 #if HOVER_LIGHT || PROXIMITY_LIGHT
         output.rgb += fluentLightColor * FluentLightIntensity * pointToLight;
-        output.a += 1.0f * FluentLightIntensity * pointToLight;
 #endif
-
-	
-		output.rgb *= clamp(output.a, 0, 1);
 		
 #if !GAMMA_COLORSPACE
 		output.rgb = GammaToLinear(output.rgb);

@@ -48,11 +48,11 @@ namespace WaveEngine_MRTK_Demo.Editor
                 this.AddRange(nameof(HoloGraphic.Smoothness), 0, 1, 0.5f, indent: 1);
             }
 
-            // TODO: In Unity this is related to nearPlaneFade.
-            if (this.AddDirectiveCheckbox("Near Light Fade", HoloGraphic.NearLightFadeDirective))
+            if (this.AddDirectiveCheckbox("Near Fade", HoloGraphic.NearPlaneFadeDirective))
             {
-                this.AddRange(nameof(HoloGraphic.FadeBeginDistance), 0.0f, 10f, 0.01f, name: "Fade Begin", indent: 1);
-                this.AddRange(nameof(HoloGraphic.FadeCompleteDistance), 0.0f, 10f, 0.1f, name: "Fade Complete", indent: 1);
+                this.AddDirectiveCheckbox("Use light", HoloGraphic.NearLightFadeDirective, indent: 1);
+                this.AddRange(nameof(HoloGraphic.FadeBeginDistance), 0.0f, 10f, 0.85f, name: "Fade Begin", indent: 1);
+                this.AddRange(nameof(HoloGraphic.FadeCompleteDistance), 0.0f, 10f, 0.5f, name: "Fade Complete", indent: 1);
                 this.AddRange(nameof(HoloGraphic.FadeMinValue), 0.0f, 1f, 0.0f, name: "Fade Min Value", indent: 1);
             }
 
