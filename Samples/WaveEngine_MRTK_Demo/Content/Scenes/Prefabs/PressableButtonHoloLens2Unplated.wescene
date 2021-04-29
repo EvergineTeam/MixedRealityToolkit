@@ -17,7 +17,7 @@ Items:
         LocalPosition:
           X: 0.0
           Y: 0.0
-          Z: 5.96046448E-07
+          Z: 0.0
         LocalScale:
           X: 1.0
           Y: 1.0
@@ -59,6 +59,8 @@ Items:
         PressPosition: 0.100000001
         ReleasePosition: 0.300000012
         RetractSpeed: 10.0
+        SimulateTouchWithPointers: true
+        SpeechKeyWord: 
         StartPosition: 0.5
         UpdateOrder: 0.5
       - !WaveEngine.MRTK.Services.InputSystem.NearInteractionTouchable,WaveEngine.MRTK
@@ -134,12 +136,7 @@ Items:
                 InitialU: 0.0
                 InitialV: 0.0
                 IsEnabled: true
-                Model: 00000000-0000-0000-0000-000000000000
-                ModelMeshName: plane_primitive
-                Normal:
-                  X: 0.0
-                  Y: 1.0
-                  Z: 0.0
+                PlaneNormal: YPositive
                 TwoSides: false
                 UTile: 1.0
                 UVHorizontalFlip: false
@@ -149,9 +146,10 @@ Items:
               - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                 Id: 4fee1d52-e879-4831-86d5-8ef795ce0eeb
                 DebugBoundingbox: true
-                FrustumCullingEnabled: true
+                IsCullingEnabled: true
                 IsEnabled: true
                 OrderBias: 0
+                RenderFlags: CastShadows
             Children: []
             Id: b53277ca-0618-48c9-bd14-4827cc1194f8
         Id: 00bbb74d-e74c-4115-9560-28ee316bcdac
@@ -218,8 +216,6 @@ Items:
                 InitialU: 0.0
                 InitialV: 0.0
                 IsEnabled: true
-                Model: 00000000-0000-0000-0000-000000000000
-                ModelMeshName: cube_primitive
                 Size: 1.0
                 UTile: 1.0
                 UVHorizontalFlip: false
@@ -228,9 +224,10 @@ Items:
               - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                 Id: 742aa151-4b53-4797-97a8-8dd1821e9094
                 DebugBoundingbox: true
-                FrustumCullingEnabled: true
+                IsCullingEnabled: true
                 IsEnabled: true
                 OrderBias: 0
+                RenderFlags: CastShadows
             Children:
               - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
                 Name: plane
@@ -265,12 +262,7 @@ Items:
                     InitialU: 0.0
                     InitialV: 0.0
                     IsEnabled: true
-                    Model: 00000000-0000-0000-0000-000000000000
-                    ModelMeshName: plane_primitive
-                    Normal:
-                      X: 0.0
-                      Y: 0.0
-                      Z: 1.0
+                    PlaneNormal: ZNegative
                     TwoSides: false
                     UTile: 1.0
                     UVHorizontalFlip: false
@@ -280,9 +272,10 @@ Items:
                   - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                     Id: 52713c7d-f6ab-4d68-9926-71057115a3e9
                     DebugBoundingbox: true
-                    FrustumCullingEnabled: true
+                    IsCullingEnabled: true
                     IsEnabled: true
                     OrderBias: 0
+                    RenderFlags: CastShadows
                 Children: []
                 Id: c20b1e4f-75b0-41ba-bb8c-83c9d27a8944
             Id: df845455-77c1-4045-8d40-9324f7654c6c

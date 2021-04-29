@@ -90,10 +90,10 @@ Items:
           - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
             Id: cbf3c63f-16b8-482e-bf22-365c61eae21b
             DebugBoundingbox: true
-            IsCastShadows: false
             IsCullingEnabled: true
             IsEnabled: true
             OrderBias: 0
+            RenderFlags: CastShadows
         Children: []
         Id: 52a20f53-c705-43a8-a1d5-bde76d4c49ed
     Id: 64b07a03-237d-49fa-a3e6-d98cbba37d41

@@ -26,7 +26,7 @@ Items:
         Id: 615f5159-9a4d-47f6-9e3b-012b4dc13180
         IntensityMultiplier: 1.0
         IsEnabled: true
-        ReflectionProbe: 7ab6c1ef-301b-45d9-9555-aa1ef471a552
+        ReflectionProbe: 51c8c0fa-ed93-4b66-9eeb-2382b714f7e3
     Children: []
     Id: 046665f3-bf43-4a2f-9c17-ac19073d0d84
   - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
@@ -54,19 +54,30 @@ Items:
       - !WaveEngine.Framework.Graphics.PhotometricDirectionalLight,WaveEngine.Framework
         Id: 3c88e988-25ae-45c5-8281-555bbb52962f
         Color:
-          A: 0
-          B: 228
-          G: 240
-          R: 249
+          A: 255
+          B: 253
+          G: 248
+          R: 255
         ColorByTemperature: true
+        DebugMode: false
+        GammaDistribution: 0.800000012
         Illuminance: 10.0
         Intensity: 10.0
         IsEnabled: true
+        IsShadowEnabled: false
         LinearColor:
-          A: 0.0
-          B: 0.779089451
-          G: 0.874792576
-          R: 0.9453125
+          A: 1.0
+          B: 0.982790232
+          G: 0.943362474
+          R: 1.0
+        ShadowBias: 0.00499999989
+        ShadowDistance: 80.0
+        ShadowOpacity: 1.0
+        SplitDistance:
+          - 0.0
+          - 0.0
+          - 0.0
+          - 0.0
         Temperature: 6500.0
       - !WaveEngine.Framework.Graphics.SunComponent,WaveEngine.Framework
         Id: 5cc947fb-5bb5-4035-afc5-3ce53d77c0dd
@@ -99,13 +110,11 @@ Items:
         Id: 3d4addef-f2a9-44a2-9c99-cf038fcc8f55
         AsignedTo: Default
         IsEnabled: true
-        Material: 900137d7-e439-444d-8a91-589d631e3608
+        Material: null
       - !WaveEngine.Components.Graphics3D.SphereMesh,WaveEngine.Components
         Id: 1a72e99d-ebf6-4ad6-b7d7-84d31fee2c94
         Diameter: 1.0
         IsEnabled: true
-        Model: 00000000-0000-0000-0000-000000000000
-        ModelMeshName: sphere_primitive
         Tessellation: 32
         UVHorizontalFlip: false
         UVVerticalFlip: false
@@ -115,6 +124,7 @@ Items:
         IsCullingEnabled: false
         IsEnabled: true
         OrderBias: 0
+        RenderFlags: CastShadows
       - !WaveEngine.Components.Environment.AtmosphereController,WaveEngine.Components
         Id: 466a9902-740a-4f2d-b956-ec82b87ec43e
         AtmosphereRadiusInKm: 6471.0
@@ -170,6 +180,7 @@ Items:
         Id: e6234645-a09c-405e-b7cc-e8970277f72c
         Aperture: 1.0
         AspectRatio: 2.11666656
+        AutoDepthBounds: false
         AutoExposureEnabled: false
         CameraOrder: 0.0
         ClearDepth: 1.0
@@ -273,8 +284,6 @@ Items:
           - !WaveEngine.Components.Graphics3D.TeapotMesh,WaveEngine.Components
             Id: 4a85a245-753a-48a1-af28-53db8c35dcf8
             IsEnabled: true
-            Model: 00000000-0000-0000-0000-000000000000
-            ModelMeshName: teapot_primitive
             Size: 1.0
             Tessellation: 16
           - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
@@ -283,6 +292,7 @@ Items:
             IsCullingEnabled: true
             IsEnabled: true
             OrderBias: 0
+            RenderFlags: CastShadows
           - !WaveEngine.MRTK.Services.InputSystem.NearInteractionGrabbable,WaveEngine.MRTK
             Id: 202d715b-fa44-4dcb-b016-e0fdab9c9559
             IsEnabled: true
@@ -321,6 +331,7 @@ Items:
             IsCullingEnabled: true
             IsEnabled: false
             OrderBias: 0
+            RenderFlags: CastShadows
           - !WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox.BoundingBox,WaveEngine.MRTK
             Id: b95cb0bf-7902-4c1a-bbe8-33ecd2f9acc1
             AutoCalculate: true
@@ -478,6 +489,7 @@ Items:
                     PressPosition: 0.100000001
                     ReleasePosition: 0.300000012
                     RetractSpeed: 10.0
+                    SimulateTouchWithPointers: true
                     SpeechKeyWord: 
                     StartPosition: 0.5
                     UpdateOrder: 0.5
@@ -557,8 +569,6 @@ Items:
                             Diameter: 1.0
                             Height: 0.299999833
                             IsEnabled: true
-                            Model: 00000000-0000-0000-0000-000000000000
-                            ModelMeshName: cylinder_primitive
                             Tessellation: 32
                           - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                             Id: bcb3882e-fb76-4212-9442-7aeb211a5418
@@ -566,6 +576,7 @@ Items:
                             IsCullingEnabled: true
                             IsEnabled: true
                             OrderBias: 0
+                            RenderFlags: CastShadows
                         Children: []
                         Id: e3311087-e856-4269-b539-6323e37fd62d
                       - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
@@ -623,8 +634,6 @@ Items:
                                 Diameter: 0.799999952
                                 Height: 0.299999833
                                 IsEnabled: true
-                                Model: 00000000-0000-0000-0000-000000000000
-                                ModelMeshName: cylinder_primitive
                                 Tessellation: 32
                               - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                                 Id: a3f0fc1e-781f-4317-ba9d-9aa0b722d40c
@@ -632,6 +641,7 @@ Items:
                                 IsCullingEnabled: true
                                 IsEnabled: true
                                 OrderBias: 0
+                                RenderFlags: CastShadows
                               - !WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButtonVisualFeedbackComponent,WaveEngine.MRTK
                                 Id: 1ff2a1e0-533f-4f45-9b41-fe61fae9fb15
                                 ChangeColor: true
@@ -778,8 +788,6 @@ Items:
                         Diameter: 0.00200000009
                         Height: 0.149999842
                         IsEnabled: true
-                        Model: 00000000-0000-0000-0000-000000000000
-                        ModelMeshName: cylinder_primitive
                         Tessellation: 16
                       - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                         Id: d953b076-53f1-4daf-977d-ddfc4820de88
@@ -787,6 +795,7 @@ Items:
                         IsCullingEnabled: true
                         IsEnabled: true
                         OrderBias: 0
+                        RenderFlags: CastShadows
                     Children: []
                     Id: 11c208ed-ecbf-41df-95d4-b35d44bc63e0
                 Id: b0cdc717-3bf2-47e3-ba5f-c4639bec0312
@@ -877,8 +886,6 @@ Items:
                         InitialU: 0.0
                         InitialV: 0.0
                         IsEnabled: true
-                        Model: 00000000-0000-0000-0000-000000000000
-                        ModelMeshName: cube_primitive
                         Size: 1.0
                         UTile: 1.0
                         UVHorizontalFlip: false
@@ -890,6 +897,7 @@ Items:
                         IsCullingEnabled: true
                         IsEnabled: true
                         OrderBias: 0
+                        RenderFlags: CastShadows
                     Children: []
                     Id: a5f558ee-ec6f-4db5-a219-28a12dc50c87
                   - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework

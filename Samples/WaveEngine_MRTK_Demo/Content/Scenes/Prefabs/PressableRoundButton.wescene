@@ -59,6 +59,7 @@ Items:
         PressPosition: 0.300000012
         ReleasePosition: 0.400000006
         RetractSpeed: 3.0
+        SimulateTouchWithPointers: true
         SpeechKeyWord: button
         StartPosition: 0.5
         UpdateOrder: 0.5
@@ -126,8 +127,6 @@ Items:
                 Diameter: 1.0
                 Height: 0.299999833
                 IsEnabled: true
-                Model: 00000000-0000-0000-0000-000000000000
-                ModelMeshName: cylinder_primitive
                 Tessellation: 32
               - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                 Id: bcb3882e-fb76-4212-9442-7aeb211a5418
@@ -135,6 +134,7 @@ Items:
                 IsCullingEnabled: true
                 IsEnabled: true
                 OrderBias: 0
+                RenderFlags: CastShadows
             Children: []
             Id: e3311087-e856-4269-b539-6323e37fd62d
           - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
@@ -192,8 +192,6 @@ Items:
                     Diameter: 0.799999952
                     Height: 0.299999833
                     IsEnabled: true
-                    Model: 00000000-0000-0000-0000-000000000000
-                    ModelMeshName: cylinder_primitive
                     Tessellation: 32
                   - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                     Id: a3f0fc1e-781f-4317-ba9d-9aa0b722d40c
@@ -201,6 +199,7 @@ Items:
                     IsCullingEnabled: true
                     IsEnabled: true
                     OrderBias: 0
+                    RenderFlags: CastShadows
                   - !WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButtonVisualFeedbackComponent,WaveEngine.MRTK
                     Id: 0028b0ec-c90c-4419-94a5-c0eab8b379f0
                     ChangeColor: true
@@ -292,12 +291,7 @@ Items:
                     InitialU: 0.0
                     InitialV: 0.0
                     IsEnabled: true
-                    Model: 00000000-0000-0000-0000-000000000000
-                    ModelMeshName: plane_primitive
-                    Normal:
-                      X: 0.0
-                      Y: 0.0
-                      Z: 1.0
+                    PlaneNormal: ZNegative
                     TwoSides: false
                     UTile: 1.0
                     UVHorizontalFlip: false
@@ -310,6 +304,7 @@ Items:
                     IsCullingEnabled: true
                     IsEnabled: true
                     OrderBias: 0
+                    RenderFlags: CastShadows
                 Children: []
                 Id: 73c2f046-661f-4504-88ae-9edd81e3b898
             Id: 8ad44454-4569-4542-a541-7c01081f0359
@@ -365,6 +360,7 @@ Items:
                 PixelDensity: 10000
                 Text: Say "Button"
                 TextAlignment: Center
+                TextTrimming: None
                 TextWrapping: NoWrap
                 UpdateOrder: 0.5
                 VerticalAlignment: Center

@@ -96,8 +96,6 @@ Items:
                 Diameter: 0.00200000009
                 Height: 0.149999842
                 IsEnabled: true
-                Model: 00000000-0000-0000-0000-000000000000
-                ModelMeshName: cylinder_primitive
                 Tessellation: 16
               - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
                 Id: d953b076-53f1-4daf-977d-ddfc4820de88
@@ -105,6 +103,7 @@ Items:
                 IsCullingEnabled: true
                 IsEnabled: true
                 OrderBias: 0
+                RenderFlags: CastShadows
             Children: []
             Id: 11c208ed-ecbf-41df-95d4-b35d44bc63e0
         Id: b0cdc717-3bf2-47e3-ba5f-c4639bec0312
@@ -201,6 +200,7 @@ Items:
                 IsCullingEnabled: true
                 IsEnabled: true
                 OrderBias: 0
+                RenderFlags: CastShadows
             Children: []
             Id: e0b2f115-1b88-44f9-adcf-b100a8e5b898
           - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
@@ -245,12 +245,7 @@ Items:
                   B: 255
                   G: 255
                   R: 255
-                Height: 0.00851249974
-                Highlight:
-                  A: 0
-                  B: 0
-                  G: 0
-                  R: 0
+                Height: 0.0114000002
                 HorizontalAlignment: Right
                 IsEnabled: true
                 Normal: ZNegative
@@ -260,10 +255,11 @@ Items:
                 PixelDensity: 5000
                 Text: Title
                 TextAlignment: Right
+                TextTrimming: None
                 TextWrapping: NoWrap
                 UpdateOrder: 0.5
                 VerticalAlignment: Center
-                Width: 0.0119687496
+                Width: 0.0160000008
             Children: []
             Id: f822d1fd-a540-4f1f-a1c5-b2a97dc7b151
           - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
@@ -308,12 +304,7 @@ Items:
                   B: 255
                   G: 255
                   R: 255
-                Height: 0.011172656
-                Highlight:
-                  A: 0
-                  B: 0
-                  G: 0
-                  R: 0
+                Height: 0.0148
                 HorizontalAlignment: Right
                 IsEnabled: true
                 Normal: ZNegative
@@ -323,10 +314,11 @@ Items:
                 PixelDensity: 5000
                 Text: value
                 TextAlignment: Right
+                TextTrimming: None
                 TextWrapping: NoWrap
                 UpdateOrder: 0.5
                 VerticalAlignment: Center
-                Width: 0.0193265621
+                Width: 0.0255999994
               - !WaveEngine_MRTK_Demo.Components.ShowSliderValue,WaveEngine_MRTK_Demo
                 Id: a5c9ddb0-e967-41ba-b350-5035ea53a5f5
                 IsEnabled: true

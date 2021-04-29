@@ -85,17 +85,15 @@ Items:
           - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
             Id: cbf3c63f-16b8-482e-bf22-365c61eae21b
             DebugBoundingbox: true
-            IsCastShadows: false
             IsCullingEnabled: true
             IsEnabled: true
             OrderBias: 0
+            RenderFlags: CastShadows
           - !WaveEngine.Components.Graphics3D.CubeMesh,WaveEngine.Components
             Id: d85320d3-02b2-42c0-ac1c-5e60227e1774
             InitialU: 0.0
             InitialV: 0.0
             IsEnabled: true
-            Model: 00000000-0000-0000-0000-000000000000
-            ModelMeshName: cube_primitive
             Size: 1.0
             UTile: 1.0
             UVHorizontalFlip: false

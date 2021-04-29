@@ -132,7 +132,7 @@ namespace WaveEngine.MRTK.Scenes
                 .AddChild(new Entity("visual")
                     .AddComponent(new Transform3D())
                     .AddComponent(new MaterialComponent())
-                    .AddComponent(new PlaneMesh() { TwoSides = true, Normal = Vector3.Forward, Width = 0.01f, Height = 0.01f })
+                    .AddComponent(new PlaneMesh() { TwoSides = true, PlaneNormal = PlaneMesh.NormalAxis.ZNegative, Width = 0.01f, Height = 0.01f })
                     .AddComponent(new MeshRenderer())
                     .AddComponent(new ProximityLight()));
 
@@ -181,7 +181,7 @@ namespace WaveEngine.MRTK.Scenes
                 .AddChild(new Entity("visual")
                     .AddComponent(new Transform3D())
                     .AddComponent(new MaterialComponent())
-                    .AddComponent(new PlaneMesh() { Normal = -Vector3.Forward, Width = 0.01f, Height = 0.01f })
+                    .AddComponent(new PlaneMesh() { PlaneNormal = PlaneMesh.NormalAxis.ZPositive, Width = 0.01f, Height = 0.01f })
                     .AddComponent(new MeshRenderer())
                     .AddComponent(new SphereCollider3D())
                     .AddComponent(new StaticBody3D() { CollisionCategories = CollisionCategory3D.Cat2, IsSensor = true, MaskBits = CollisionCategory3D.Cat1 })

@@ -59,6 +59,7 @@ Items:
         PressPosition: 0.100000001
         ReleasePosition: 0.300000012
         RetractSpeed: 10.0
+        SimulateTouchWithPointers: true
         SpeechKeyWord: 
         StartPosition: 0.5
         UpdateOrder: 0.5
@@ -127,12 +128,7 @@ Items:
                 InitialU: 0.0
                 InitialV: 0.0
                 IsEnabled: true
-                Model: 00000000-0000-0000-0000-000000000000
-                ModelMeshName: plane_primitive
-                Normal:
-                  X: 0.0
-                  Y: 0.0
-                  Z: 1.0
+                PlaneNormal: ZNegative
                 TwoSides: false
                 UTile: 1.0
                 UVHorizontalFlip: false
@@ -145,6 +141,7 @@ Items:
                 IsCullingEnabled: true
                 IsEnabled: true
                 OrderBias: 0
+                RenderFlags: CastShadows
             Children: []
             Id: d074b0f3-7ff0-4d54-b34a-c6d290a0a777
         Id: f415a511-7b5c-4a29-a1ea-bbbd2ae093e1
@@ -212,12 +209,7 @@ Items:
                 InitialU: 0.0
                 InitialV: 0.0
                 IsEnabled: true
-                Model: 00000000-0000-0000-0000-000000000000
-                ModelMeshName: plane_primitive
-                Normal:
-                  X: -0.0
-                  Y: -0.0
-                  Z: -1.0
+                PlaneNormal: ZPositive
                 TwoSides: false
                 UTile: 1.0
                 UVHorizontalFlip: false
@@ -230,6 +222,7 @@ Items:
                 IsCullingEnabled: true
                 IsEnabled: true
                 OrderBias: 0
+                RenderFlags: CastShadows
             Children: []
             Id: b53277ca-0618-48c9-bd14-4827cc1194f8
           - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
@@ -274,7 +267,7 @@ Items:
                   B: 255
                   G: 255
                   R: 255
-                Height: 0.00719999988
+                Height: 0.00710000005
                 HorizontalAlignment: Center
                 IsEnabled: true
                 Normal: ZNegative
@@ -284,10 +277,11 @@ Items:
                 PixelDensity: 10000
                 Text: 32x32mm
                 TextAlignment: Center
+                TextTrimming: None
                 TextWrapping: NoWrap
                 UpdateOrder: 0.5
                 VerticalAlignment: Center
-                Width: 0.0230999999
+                Width: 0.023
             Children: []
             Id: ba8b2d64-89d0-40f8-bbd2-86eefe4deea5
         Id: 00bbb74d-e74c-4115-9560-28ee316bcdac
@@ -354,8 +348,6 @@ Items:
                 InitialU: 0.0
                 InitialV: 0.0
                 IsEnabled: true
-                Model: 00000000-0000-0000-0000-000000000000
-                ModelMeshName: cube_primitive
                 Size: 1.0
                 UTile: 1.0
                 UVHorizontalFlip: false
@@ -367,6 +359,7 @@ Items:
                 IsCullingEnabled: true
                 IsEnabled: true
                 OrderBias: 0
+                RenderFlags: CastShadows
             Children:
               - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
                 Name: HighlighPlate
@@ -401,12 +394,7 @@ Items:
                     InitialU: 0.0
                     InitialV: 0.0
                     IsEnabled: true
-                    Model: 00000000-0000-0000-0000-000000000000
-                    ModelMeshName: plane_primitive
-                    Normal:
-                      X: 0.0
-                      Y: 0.0
-                      Z: 1.0
+                    PlaneNormal: ZNegative
                     TwoSides: false
                     UTile: 1.0
                     UVHorizontalFlip: false
@@ -419,6 +407,7 @@ Items:
                     IsCullingEnabled: true
                     IsEnabled: true
                     OrderBias: 0
+                    RenderFlags: CastShadows
                 Children: []
                 Id: b91b2b30-621b-4a3b-bb50-5cfb1dc04e36
             Id: df845455-77c1-4045-8d40-9324f7654c6c

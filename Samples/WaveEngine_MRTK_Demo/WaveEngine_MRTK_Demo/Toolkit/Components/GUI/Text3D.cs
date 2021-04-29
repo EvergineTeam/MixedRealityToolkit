@@ -11,6 +11,7 @@ using WaveEngine.Framework.Services;
 using WaveEngine.Mathematics;
 using WaveEngine.MRTK.Effects;
 using WaveEngine.NoesisGUI;
+using static WaveEngine.Components.Graphics3D.PlaneMesh;
 using Color = WaveEngine.Common.Graphics.Color;
 using Vector3 = WaveEngine.Mathematics.Vector3;
 
@@ -18,16 +19,6 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
 {
     public class Text3D : Behavior
     {
-        public enum PlaneNormal
-        {
-            X,
-            XNegative,
-            Y,
-            YNegative,
-            Z,
-            ZNegative,
-        };
-
         [BindService]
         protected GraphicsContext graphicsContext;
 
@@ -243,7 +234,7 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
         private Color foreground = Color.White;
 
         [RenderProperty(Tooltip = "The text block plane normal direction.")]
-        public PlaneNormal Normal
+        public NormalAxis Normal
         {
             get => this.normal;
             set
@@ -254,7 +245,7 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
                 }
             }
         }
-        private PlaneNormal normal = PlaneNormal.ZNegative;
+        private NormalAxis normal = NormalAxis.ZNegative;
 
         [RenderProperty(Tooltip = "The text alignment to use.")]
         public TextAlignment TextAlignment
@@ -597,27 +588,7 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
                 return;
             }
 
-            switch (this.normal)
-            {
-                case PlaneNormal.X:
-                    this.planeMesh.Normal = Vector3.UnitX;
-                    break;
-                case PlaneNormal.XNegative:
-                    this.planeMesh.Normal = -Vector3.UnitX;
-                    break;
-                case PlaneNormal.Y:
-                    this.planeMesh.Normal = Vector3.UnitY;
-                    break;
-                case PlaneNormal.YNegative:
-                    this.planeMesh.Normal = -Vector3.UnitY;
-                    break;
-                case PlaneNormal.Z:
-                    this.planeMesh.Normal = -Vector3.UnitZ;
-                    break;
-                case PlaneNormal.ZNegative:
-                    this.planeMesh.Normal = Vector3.UnitZ;
-                    break;
-            }
+            this.planeMesh.PlaneNormal = this.normal;
         }
 
         protected FontFamily GetFontFamily(string fontFamilySource)
