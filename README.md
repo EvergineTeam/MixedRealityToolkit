@@ -30,7 +30,8 @@ These components can be added to your scene and customized using the Wave Engine
 | 2D style plane which supports scrolling with articulated hand input | Learn about various types of pointers | Scripts and examples for integrating speech input|
 
 # Example scene
-Check out WaveEngine.MRTK's various types of interactions and UI controls in our sample scene, which can be found in the Releases section. (Click on the image to see a demo video)
+Check out WaveEngine.MRTK's various types of interactions and UI controls in our sample scene, which can be found in the Releases section.
 
-[![Example Scene](Documentation/Images/MRTK_Examples.png)](https://www.youtube.com/watch?v=KbhLifObJNA)
+Video: https://www.youtube.com/watch?v=KbhLifObJNA
 
+![alt Example Scene](Documentation/Images/MRTK_Examples.png)
