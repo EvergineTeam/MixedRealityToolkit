@@ -1,8 +1,8 @@
 [Begin_ResourceLayout]
 	
-	[directives:SunDisk SUNDISK_OFF SUNDISK]
-	[directives:Multiview MULTIVIEW_OFF MULTIVIEW]
-	[directives:ColorSpace GAMMA_COLORSPACE_OFF GAMMA_COLORSPACE]
+	[Directives:SunDisk SUNDISK_OFF SUNDISK]
+	[Directives:Multiview MULTIVIEW_OFF MULTIVIEW]
+	[Directives:ColorSpace GAMMA_COLORSPACE_OFF GAMMA_COLORSPACE]
 
 	cbuffer PerCamera : register(b0)
 	{
@@ -37,8 +37,8 @@
 
 [Begin_Pass:Default]
 
-	[profile 10_0]
-	[entrypoints VS=VS PS=PS]
+	[Profile 10_0]
+	[Entrypoints VS=VS PS=PS]
 
     #define MIE_G (-0.990)
     #define MIE_G2 0.9801
@@ -53,7 +53,9 @@
 	struct VS_IN
 	{
 		float4 vertex 	: POSITION;
+#if MULTIVIEW	    		
 		uint InstId		: SV_InstanceID;
+#endif
 	};
 
 	struct PS_IN
@@ -146,7 +148,7 @@
         if(y > 0)
         {
         	float3 sunColor = SunColor * SunIntensity;
-        	float3 sunAttenuation = saturate(y)* calcSunAttenuation(normalize(SunDirection), -ray);
+        	float3 sunAttenuation = y * calcSunAttenuation(normalize(SunDirection), -ray);
            	col += sunColor * sunAttenuation;
         }
         #endif

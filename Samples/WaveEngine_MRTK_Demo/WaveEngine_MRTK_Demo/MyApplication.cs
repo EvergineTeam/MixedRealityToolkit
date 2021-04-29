@@ -8,7 +8,7 @@ using WaveEngine_MRTK_Demo.Scenes;
 
 namespace WaveEngine_MRTK_Demo
 {
-    public class MyApplication : Application
+    public partial class MyApplication : Application
     {
         private TaskCompletionSource<bool> applicationGotFocusTCS = new TaskCompletionSource<bool>();
 

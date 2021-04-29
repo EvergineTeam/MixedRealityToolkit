@@ -13,6 +13,6 @@ Profiles:
     Compile: Yes
     ExcludeAsset: true
     GraphicsBackend: WebGL1
-    MandatoryCombinations:
+    MandatoryCombinations: 
     Name: Web1
     Platform: Web

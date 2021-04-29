@@ -1,6 +1,6 @@
 [Begin_ResourceLayout]
 
-[directives:Multiview MULTIVIEW_OFF MULTIVIEW]
+	[Directives:Multiview MULTIVIEW_OFF MULTIVIEW]
 
 	cbuffer Matrices : register(b0)
 	{
@@ -18,14 +18,16 @@
 
 [Begin_Pass:Default]
 
-	[profile 10_0]
-	[entrypoints VS=VS PS=PS]
+	[Profile 10_0]
+	[Entrypoints VS=VS PS=PS]
 
 	struct VS_IN_COLOR
 	{
 	    float4 Position : POSITION;
 	    float4 Color	: COLOR;
+#if MULTIVIEW	    
 		uint   InstanceID	: SV_InstanceID;
+#endif
 	};
 
 	struct VS_OUT_COLOR

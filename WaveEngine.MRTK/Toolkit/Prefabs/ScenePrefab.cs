@@ -1,14 +1,13 @@
 ﻿// Copyright © Wave Engine S.L. All rights reserved. Use is subject to license terms.
 
 using System;
-using System.IO;
+using System.Diagnostics;
 using System.Linq;
 using WaveEngine.Common.Attributes;
 using WaveEngine.Components.Graphics3D;
 using WaveEngine.Framework;
 using WaveEngine.Framework.Assets;
-using WaveEngine.Framework.Assets.Importers;
-using WaveEngine.Platform;
+using WaveEngine.Framework.Services;
 
 namespace WaveEngine.MRTK.Toolkit.Prefabs
 {
@@ -17,8 +16,11 @@ namespace WaveEngine.MRTK.Toolkit.Prefabs
     /// </summary>
     public class ScenePrefab : Component
     {
+        /// <summary>
+        /// Gets or sets the asset service.
+        /// </summary>
         [BindService]
-        private AssetsDirectory assetsDirectory = null;
+        public AssetsService AssetsService;
 
         private bool duplicateMaterials;
 
@@ -102,22 +104,16 @@ namespace WaveEngine.MRTK.Toolkit.Prefabs
                 return;
             }
 
-            var importer = new WaveSceneImporter();
-            var source = new SceneSource();
-
-            string path = this.GetAssetPath(this.ScenePrefabProperty.PrefabId);
-            using (var stream = this.assetsDirectory.Open(path))
-            {
-                importer.ImportHeader(stream, out source);
-                importer.ImportData(stream, source, false);
-            }
-
+            var st = Stopwatch.StartNew();
+            var source = this.AssetsService.GetAssetSource<SceneSource>(this.ScenePrefabProperty.PrefabId);
             foreach (var item in source.SceneData.Items)
             {
                 var child = item.Entity;
                 this.PrepareEntity(child);
                 this.Owner.AddChild(child);
             }
+
+            Trace.WriteLine($"Prefab with id '{this.ScenePrefabProperty.PrefabId}' created in {st.ElapsedMilliseconds}ms");
         }
 
         private void PrepareEntity(Entity entity)
@@ -141,11 +137,6 @@ namespace WaveEngine.MRTK.Toolkit.Prefabs
                 this.PrepareEntity(child);
                 entity.AddChild(child);
             }
-        }
-
-        private string GetAssetPath(Guid id)
-        {
-            return this.assetsDirectory.EnumerateFiles(string.Empty, $"{id}.*", SearchOption.AllDirectories).FirstOrDefault();
         }
     }
 }

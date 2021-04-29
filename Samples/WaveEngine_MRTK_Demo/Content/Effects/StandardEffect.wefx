@@ -1,7 +1,7 @@
 !WaveEngine.Assets.Exporters.EffectMetaFile,WaveEngine.Assets
 Id: daa1f60a-82ad-40fc-8fbb-7b85caa6de0a
 DefaultProfile:
-  Compile: Yes
+  Compile: ByPlatform
   ExcludeAsset: false
   GraphicsBackend: ByPlatform
   MandatoryCombinations: 
@@ -9,6 +9,13 @@ DefaultProfile:
   Platform: Undefined
 ExportAsRaw: false
 Profiles:
+  UWP.MixedReality:
+    Compile: ByPlatform
+    ExcludeAsset: false
+    GraphicsBackend: ByPlatform
+    MandatoryCombinations: DIFF
+    Name: UWP.MixedReality
+    Platform: UWP
   Web1:
     Compile: Yes
     ExcludeAsset: true

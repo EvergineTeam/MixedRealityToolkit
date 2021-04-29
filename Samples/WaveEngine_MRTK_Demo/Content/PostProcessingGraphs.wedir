@@ -6,4 +6,11 @@ DefaultProfile:
   OutputName: null
   Platform: Undefined
 ExportAsRaw: false
-Profiles: {}
+Profiles:
+  UWP.MixedReality:
+    Compile: Yes
+    ExcludeAsset: true
+    GraphicsBackend: ByPlatform
+    MandatoryCombinations:
+    Name: UWP.MixedReality
+    Platform: UWP
