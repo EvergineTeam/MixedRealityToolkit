@@ -6,10 +6,10 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="System.Drawing.Common" Version="5.0.0" />
-    <PackageReference Include="WaveEngine.Common" Version="3.2.0.7765-preview" />
-    <PackageReference Include="WaveEngine.Components" Version="3.2.0.7765-preview" />
-    <PackageReference Include="WaveEngine.Framework" Version="3.2.0.7765-preview" />
-    <PackageReference Include="WaveEngine.Editor.Extension" Version="3.2.0.7765-preview" />
+    <PackageReference Include="WaveEngine.Common" Version="3.2.0.7787-preview" />
+    <PackageReference Include="WaveEngine.Components" Version="3.2.0.7787-preview" />
+    <PackageReference Include="WaveEngine.Framework" Version="3.2.0.7787-preview" />
+    <PackageReference Include="WaveEngine.Editor.Extension" Version="3.2.0.7787-preview" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WaveEngine_MRTK_Demo\WaveEngine_MRTK_Demo.csproj" />
