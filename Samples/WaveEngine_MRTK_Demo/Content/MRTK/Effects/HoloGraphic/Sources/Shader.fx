@@ -396,9 +396,11 @@
 	float4 PS(PS_IN input) : SV_Target
 	{
 #if ALBEDO_MAP
-		float4 albedo = Texture.Sample(Sampler, input.uv) * float4(Color, Alpha);
+        float4 albedo = Texture.Sample(Sampler, input.uv);
+        float sampleAlpha = max(albedo.a, 0.0001);
+        albedo.rgb /= sampleAlpha;
 #else
-		float4 albedo = float4(Color, Alpha);
+        float4 albedo = float4(1.0, 1.0, 1.0, 1.0);
 #endif
 	
 #if BORDER_LIGHT || INNER_GLOW || ROUND_CORNERS
@@ -449,6 +451,8 @@
 // Normal calculation.
 		float3 worldNormal = normalize(input.worldNormal);
 #endif
+ 
+        albedo *= float4(Color, Alpha);
 
 #if IRIDESCENCE
         albedo.rgb += input.iridescentColor;
@@ -610,13 +614,12 @@
         output.rgb += fluentLightColor * FluentLightIntensity * pointToLight;
         output.a += 1.0f * FluentLightIntensity * pointToLight;
 #endif
-
-	
-		output.rgb *= clamp(output.a, 0, 1);
 		
 #if !GAMMA_COLORSPACE
 		output.rgb = GammaToLinear(output.rgb);
 #endif
+
+		output.rgb *= clamp(output.a, 0, 1);
 	
 		return output;
 	}
