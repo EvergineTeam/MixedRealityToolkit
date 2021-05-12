@@ -11,7 +11,7 @@ DefaultProfile:
   ScaledWidth: 512
   ScalingType: Original
 ExportAsRaw: false
-GenerateMipMaps: false
+GenerateMipMaps: true
 NinePatchType: None
 PremultipliedAlpha: true
 Profiles: {}
