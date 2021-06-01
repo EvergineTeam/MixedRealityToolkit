@@ -30,7 +30,7 @@ namespace WaveEngine.MRTK.Behaviors
         /// <summary>
         /// The cursor.
         /// </summary>
-        [BindComponent(source: BindComponentSource.Children)]
+        [BindComponent(isExactType: false, source: BindComponentSource.Children)]
         protected Cursor cursor;
 
         /// <summary>

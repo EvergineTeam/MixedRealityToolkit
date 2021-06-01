@@ -38,17 +38,16 @@ namespace WaveEngine.MRTK.Behaviors
         {
             if (!Application.Current.IsEditor)
             {
-                MaterialComponent materialComponent = this.Owner.FindComponent<MaterialComponent>();
+                var materialComponent = this.Owner.FindComponent<MaterialComponent>();
                 materialComponent.Material = materialComponent.Material.Clone();
                 this.material = materialComponent.Material;
                 this.holoHandsDecorator = new HoloHandsLocal(this.material);
                 this.material.ActiveDirectivesNames = this.directivesAnimating;
                 this.meshRenderer = this.Owner.FindComponent<MeshRenderer>();
 
-                CursorManager cursorManager = this.Owner.Scene.Managers.FindManager<CursorManager>();
-                foreach (Cursor c in cursorManager.Cursors)
+                foreach (var c in Cursor.ActiveCursors)
                 {
-                    TrackXRJoint joint = c.Owner.FindComponent<TrackXRJoint>();
+                    var joint = c.Owner.FindComponent<TrackXRJoint>();
                     if (joint != null && joint.Handedness == this.Handedness)
                     {
                         this.trackXRJoint = joint;

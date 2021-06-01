@@ -13,6 +13,7 @@ using WaveEngine.Framework.Physics3D;
 using WaveEngine.Framework.Services;
 using WaveEngine.Mathematics;
 using WaveEngine.MRTK.Base.EventDatum.Input;
+using WaveEngine.MRTK.Emulation;
 using WaveEngine.MRTK.SDK.Features.Input.Handlers;
 using WaveEngine.MRTK.Services.InputSystem;
 using WaveEngine.MRTK.Toolkit.Prefabs;
@@ -504,7 +505,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
         private Vector3 boundingBoxSize;
 
         // Interaction variables
-        private Entity currentCursor;
+        private Cursor currentCursor;
         private BoundingBoxHelper currentHandle;
 
         private Vector3 initialGrabPoint;

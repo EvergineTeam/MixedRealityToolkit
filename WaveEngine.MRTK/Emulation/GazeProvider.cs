@@ -22,30 +22,63 @@ namespace WaveEngine.MRTK.Services.InputSystem
         /// The transform.
         /// </summary>
         [BindComponent]
-        public Transform3D transform = null;
+        protected Transform3D transform = null;
 
         /// <summary>
         /// The camera.
         /// </summary>
         [BindComponent]
-        public Camera3D camera;
+        protected Camera3D camera;
+
+        /// <summary>
+        /// The XR platform dependency.
+        /// </summary>
+        [BindService(isRequired: false)]
+        protected XRPlatform xrPlatform;
+
+        private IVoiceCommandService voiceCommandService;
+
+        private Entity gazePointerEntity;
+        private Transform3D gazePointerTransform;
+        private HoverLight gazePointerLight;
+
+        private ISphereColliderShape3D gazePointerShape;
+
+        private IFocusable currentFocusable;
 
         /// <summary>
         /// Gets or sets the max distance to capture.
         /// </summary>
-        public float Distance { get; set; } = 1000.0f;
+        public float Distance { get; set; } = 10.0f;
 
         /// <summary>
         /// Gets or sets a value indicating whether the gaze pointer should have an hover light.
         /// </summary>
         [RenderProperty(Tooltip = "Whether the gaze pointer should have an hover light.")]
-        public bool HasHoverLight { get; set; }
+        public bool HasHoverLight
+        {
+            get => this.hasHoverLight;
+            set
+            {
+                if (this.hasHoverLight != value)
+                {
+                    this.hasHoverLight = value;
+
+                    if (this.gazePointerLight != null)
+                    {
+                        this.gazePointerLight.IsEnabled = value;
+                    }
+                }
+            }
+        }
+
+        private bool hasHoverLight;
 
         /// <summary>
         /// Gets or sets the radius of the gaze pointer.
         /// </summary>
         [RenderPropertyAsFInput(minLimit: 0, maxLimit: 1, Tooltip = "Specifies the radius of the gaze pointer.")]
-        public float Radius { get; set; } = 0.15f;
+        public float Radius { get; set; } = 0.05f;
 
         /// <summary>
         /// Gets or sets the hover light color.
@@ -56,9 +89,7 @@ namespace WaveEngine.MRTK.Services.InputSystem
         /// <summary>
         /// Gets or sets the collision category bits.
         /// </summary>
-        public CollisionCategory3D Mask { get; set; } = CollisionCategory3D.All;
-
-        private XRPlatform xrPlatform;
+        public CollisionCategory3D CollisionCategoryMask { get; set; } = CollisionCategory3D.All;
 
         /// <summary>
         /// Gets the target aimed by the gaze or null.
@@ -72,24 +103,24 @@ namespace WaveEngine.MRTK.Services.InputSystem
 
             private set
             {
-                if (this.gazeTarget != null)
+                if (this.gazeTarget == value)
                 {
-                    IFocusable focusable = this.FindComponent<IFocusable>(this.gazeTarget);
-                    focusable?.OnFocusExit();
+                    return;
                 }
+
+                this.currentFocusable?.OnFocusExit();
+                this.currentFocusable = null;
 
                 this.gazeTarget = value;
 
                 if (this.gazeTarget != null)
                 {
-                    IFocusable focusable = this.FindComponent<IFocusable>(this.gazeTarget);
-                    focusable?.OnFocusEnter();
+                    this.currentFocusable = this.FindComponent<IFocusable>(this.gazeTarget);
+                    this.currentFocusable?.OnFocusEnter();
                 }
             }
         }
 
-        private Transform3D gazePointerTransform;
-        private Collider3D gazePointerCollider;
         private Entity gazeTarget;
 
         private T FindComponent<T>(Entity entity)
@@ -97,45 +128,84 @@ namespace WaveEngine.MRTK.Services.InputSystem
         {
             foreach (Component c in entity.Components)
             {
-                if (c is T)
+                if (c.IsActivated && c is T typed)
                 {
-                    return c as T;
+                    return typed;
                 }
             }
 
             return null;
         }
 
-        /// <inheritdoc/>
-        protected override void Start()
+        /// <inheritdoc />
+        protected override bool OnAttached()
         {
-            var assetsService = Application.Current.Container.Resolve<AssetsService>();
-
-            if (!Application.Current.IsEditor)
+            if (!base.OnAttached())
             {
-                this.gazePointerTransform = new Transform3D();
-                this.gazePointerCollider = new SphereCollider3D() { Radius = this.Radius };
-                var gazePointerEntity = new Entity("GazePointer")
-                    .AddComponent(this.gazePointerTransform)
-                    .AddComponent(this.gazePointerCollider);
-
-                if (this.HasHoverLight)
-                {
-                    gazePointerEntity.AddComponent(new HoverLight() { Radius = this.Radius, Color = this.Color });
-                }
-
-                this.Managers.EntityManager.Add(gazePointerEntity);
-
-                this.xrPlatform = Application.Current.Container.Resolve<XRPlatform>();
-                if (this.xrPlatform != null)
-                {
-                    IVoiceCommandService voiceCommandService = Application.Current.Container.Resolve<IVoiceCommandService>();
-                    if (voiceCommandService != null)
-                    {
-                        voiceCommandService.CommandRecognized += this.VoiceCommandService_CommandRecognized;
-                    }
-                }
+                return false;
             }
+
+            if (Application.Current.IsEditor)
+            {
+                return true;
+            }
+
+            this.voiceCommandService = Application.Current.Container.Resolve<IVoiceCommandService>();
+
+            this.gazePointerShape = this.Managers.PhysicManager3D.CreateColliderShape<ISphereColliderShape3D>();
+            this.gazePointerShape.Radius = this.Radius;
+
+            this.gazePointerTransform = new Transform3D();
+            this.gazePointerLight = new HoverLight()
+            {
+                IsEnabled = this.hasHoverLight,
+                Radius = this.Radius,
+                Color = this.Color,
+            };
+
+            this.gazePointerEntity = new Entity("GazePointer")
+                   .AddComponent(this.gazePointerTransform)
+                   .AddComponent(this.gazePointerLight);
+
+            return true;
+        }
+
+        /// <inheritdoc />
+        protected override void OnActivated()
+        {
+            base.OnActivated();
+
+            this.Managers.EntityManager.Add(this.gazePointerEntity);
+
+            if (this.voiceCommandService != null)
+            {
+                this.voiceCommandService.CommandRecognized += this.VoiceCommandService_CommandRecognized;
+            }
+        }
+
+        /// <inheritdoc />
+        protected override void OnDeactivated()
+        {
+            base.OnDeactivated();
+
+            this.Managers.EntityManager.Detach(this.gazePointerEntity);
+
+            if (this.voiceCommandService != null)
+            {
+                this.voiceCommandService.CommandRecognized -= this.VoiceCommandService_CommandRecognized;
+            }
+        }
+
+        /// <inheritdoc />
+        protected override void OnDetach()
+        {
+            base.OnDetach();
+
+            this.gazePointerShape?.Dispose();
+            this.gazePointerShape = null;
+
+            this.gazePointerEntity.Destroy();
+            this.gazePointerEntity = null;
         }
 
         private void VoiceCommandService_CommandRecognized(object sender, string e)
@@ -171,19 +241,17 @@ namespace WaveEngine.MRTK.Services.InputSystem
                 var r = ray.Value;
                 var fromPosition = r.Position;
                 var toPosition = r.GetPoint(this.Distance);
-                Matrix4x4.CreateTranslation(ref fromPosition, out var from);
-                Matrix4x4.CreateTranslation(ref toPosition, out var to);
-                var result = this.Managers.PhysicManager3D.ConvexSweepTest(this.gazePointerCollider.InternalColliderShape, from, to, this.Mask);
 
-                var hitEntity = result.Succeeded ? ((PhysicBody3D)result.PhysicBody.UserData).Owner : null;
-                if (hitEntity != this.GazeTarget)
-                {
-                    this.GazeTarget = hitEntity;
-                }
+                var result = this.Managers.PhysicManager3D.RayCast(ref fromPosition, ref toPosition, this.CollisionCategoryMask);
+
+                this.GazeTarget = result.Succeeded ? result.PhysicBody.BodyComponent.Owner : null;
 
                 // Update gaze pointer
-                var targetPosition = result.Succeeded ? Vector3.Project(result.Point - r.Position, r.Direction) + r.Position : r.GetPoint(100000.0f);
-                this.gazePointerTransform.Position = targetPosition;
+                if (this.hasHoverLight)
+                {
+                    var targetPosition = result.Succeeded ? Vector3.Project(result.Point - r.Position, r.Direction) + r.Position : r.GetPoint(100000.0f);
+                    this.gazePointerTransform.Position = targetPosition;
+                }
             }
             else
             {

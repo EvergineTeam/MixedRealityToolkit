@@ -177,7 +177,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
             {
                 foreach (var pointer in this.cursorDistances.Keys)
                 {
-                    var proximityLights = pointer.FindComponentsInChildren<ProximityLight>();
+                    var proximityLights = pointer.Owner.FindComponentsInChildren<ProximityLight>();
                     foreach (var proximityLight in proximityLights)
                     {
                         proximityLight.Pulse();

@@ -89,12 +89,12 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
         /// <summary>
         /// The cursor local positions.
         /// </summary>
-        protected Dictionary<Entity, Vector3> cursorLocalPositions = new Dictionary<Entity, Vector3>();
+        protected Dictionary<Cursor, Vector3> cursorLocalPositions = new Dictionary<Cursor, Vector3>();
 
         /// <summary>
         /// The cursor distances.
         /// </summary>
-        protected Dictionary<Entity, float> cursorDistances = new Dictionary<Entity, float>();
+        protected Dictionary<Cursor, float> cursorDistances = new Dictionary<Cursor, float>();
 
         /// <inheritdoc/>
         void IMixedRealityTouchHandler.OnTouchStarted(HandTrackingInputEventData eventData)
@@ -164,8 +164,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
                 return;
             }
 
-            var cursor = eventData.Cursor.FindComponent<Cursor>();
-            if (cursor.IsTouch ||
+            if (eventData.Cursor is CursorTouch ||
                 (this.simulatePressState != PressSimulationState.None &&
                  this.simulatedPointerEventData?.Cursor != eventData.Cursor))
             {
@@ -212,19 +211,19 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
         {
         }
 
-        private void TouchStart(Entity cursor, Vector3 localPosition)
+        private void TouchStart(Cursor cursor, Vector3 localPosition)
         {
             this.UpdateCursor(cursor, localPosition);
             this.InternalOnTouchStarted(cursor);
         }
 
-        private void TouchUpdate(Entity cursor, Vector3 localPosition)
+        private void TouchUpdate(Cursor cursor, Vector3 localPosition)
         {
             this.UpdateCursor(cursor, localPosition);
             this.InternalOnTouchUpdated(cursor);
         }
 
-        private void TouchComplete(Entity cursor)
+        private void TouchComplete(Cursor cursor)
         {
             this.InternalOnTouchCompleted(cursor);
 
@@ -236,7 +235,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
         /// Method invoked when the touch is started.
         /// </summary>
         /// <param name="cursor">The cursor.</param>
-        protected virtual void InternalOnTouchStarted(Entity cursor)
+        protected virtual void InternalOnTouchStarted(Cursor cursor)
         {
         }
 
@@ -244,7 +243,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
         /// Method invoked when the touch is updated.
         /// </summary>
         /// <param name="cursor">The cursor.</param>
-        protected virtual void InternalOnTouchUpdated(Entity cursor)
+        protected virtual void InternalOnTouchUpdated(Cursor cursor)
         {
         }
 
@@ -252,7 +251,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
         /// Method invoked when the touch is completed.
         /// </summary>
         /// <param name="cursor">The cursor.</param>
-        protected virtual void InternalOnTouchCompleted(Entity cursor)
+        protected virtual void InternalOnTouchCompleted(Cursor cursor)
         {
         }
 
@@ -377,7 +376,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
             return position.Dot(this.nearInteractionTouchable.LocalPressDirection);
         }
 
-        private void UpdateCursor(Entity cursor, Vector3 localPosition)
+        private void UpdateCursor(Cursor cursor, Vector3 localPosition)
         {
             this.cursorLocalPositions[cursor] = localPosition;
             this.cursorDistances[cursor] = this.ProjectOnPressDirection(localPosition);

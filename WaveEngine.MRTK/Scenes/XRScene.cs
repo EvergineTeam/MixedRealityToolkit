@@ -56,13 +56,17 @@ namespace WaveEngine.MRTK.Scenes
         /// </summary>
         protected abstract Guid HandRaySampler { get; }
 
+        /// <summary>
+        /// Gets or sets the <see cref="CollisionCategory3D"/> used by the <see cref="Cursor"/> entities.
+        /// </summary>
+        protected virtual CollisionCategory3D CursorCollisionCategory { get; set; } = CollisionCategory3D.Cat2;
+
         /// <inheritdoc/>
         public override void RegisterManagers()
         {
             base.RegisterManagers();
 
             this.Managers.AddManager(new BulletPhysicManager3D());
-            this.Managers.AddManager(new CursorManager());
         }
 
         /// <inheritdoc/>
@@ -84,6 +88,7 @@ namespace WaveEngine.MRTK.Scenes
 
             InitHoloScene(
                 this,
+                this.CursorCollisionCategory,
                 assetsService.Load<Material>(this.CursorMatReleased),
                 assetsService.Load<Material>(this.CursorMatPressed),
                 this.HoloHandsMat == Guid.Empty ? null : assetsService.Load<Material>(this.HoloHandsMat),
@@ -99,7 +104,7 @@ namespace WaveEngine.MRTK.Scenes
 
             // Create GazeProvider
             Camera3D cam = this.Managers.EntityManager.FindFirstComponentOfType<Camera3D>();
-            cam.Owner.AddComponent(new GazeProvider());
+            cam.Owner.AddComponent(new GazeProvider() { CollisionCategoryMask = CollisionCategory3D.All & ~this.CursorCollisionCategory });
         }
 
         private static void CreateXRHandMesh(Scene scene, Material material, XRHandedness handedness)
@@ -122,13 +127,13 @@ namespace WaveEngine.MRTK.Scenes
             scene.Managers.EntityManager.Add(handEntity);
         }
 
-        private static Entity CreateCursor(Scene scene, Material releasedMaterial, Material pressedMaterial, XRHandedness handedness, Texture handRayTexture, SamplerState handRaySampler)
+        private static Entity CreateCursor(Scene scene, CollisionCategory3D cursorCollisionCategory, Material releasedMaterial, Material pressedMaterial, XRHandedness handedness, Texture handRayTexture, SamplerState handRaySampler)
         {
-            var mainCursor = new Entity("Cursor_" + handedness)
+            var mainCursor = new Entity($"{nameof(CursorTouch)}_{handedness}")
                 .AddComponent(new Transform3D())
-                .AddComponent(new Cursor() { IsTouch = true, PressedMaterial = pressedMaterial, ReleasedMaterial = releasedMaterial, UpdateOrder = 0.3f })
+                .AddComponent(new CursorTouch() { PressedMaterial = pressedMaterial, ReleasedMaterial = releasedMaterial })
                 .AddComponent(new SphereCollider3D() { Radius = 0.005f })
-                .AddComponent(new StaticBody3D() { CollisionCategories = CollisionCategory3D.Cat2, IsSensor = true, MaskBits = CollisionCategory3D.Cat1 })
+                .AddComponent(new StaticBody3D() { CollisionCategories = cursorCollisionCategory, IsSensor = true, MaskBits = CollisionCategory3D.All & ~cursorCollisionCategory })
                 .AddChild(new Entity("visual")
                     .AddComponent(new Transform3D())
                     .AddComponent(new MaterialComponent())
@@ -170,12 +175,13 @@ namespace WaveEngine.MRTK.Scenes
                 })
                 .AddComponent(new LineMeshRenderer3D());
 
-            var farCursor = new Entity("FarCursor_" + handedness)
+            var farCursor = new Entity($"{nameof(CursorRay)}_{handedness}")
                 .AddComponent(new Transform3D())
                 .AddComponent(new CursorRay()
                 {
+                    PressedMaterial = pressedMaterial,
+                    ReleasedMaterial = releasedMaterial,
                     TouchCursorEntity = mainCursor,
-                    CollisionMask = CollisionCategory3D.Cat1,
                 })
                 .AddChild(ray)
                 .AddChild(new Entity("visual")
@@ -183,10 +189,7 @@ namespace WaveEngine.MRTK.Scenes
                     .AddComponent(new MaterialComponent())
                     .AddComponent(new PlaneMesh() { PlaneNormal = PlaneMesh.NormalAxis.ZNegative, Width = 0.01f, Height = 0.01f })
                     .AddComponent(new MeshRenderer())
-                    .AddComponent(new SphereCollider3D())
-                    .AddComponent(new StaticBody3D() { CollisionCategories = CollisionCategory3D.Cat2, IsSensor = true, MaskBits = CollisionCategory3D.Cat1 })
-                    .AddComponent(new Cursor() { PressedMaterial = pressedMaterial, ReleasedMaterial = releasedMaterial, UpdateOrder = 0.3f })
-                    .AddComponent(new CameraDistanceScale())
+                    .AddComponent(new CameraDistanceScale() { UpdateOrder = 1 })
                     .AddComponent(new HoverLight()));
 
             var entityManager = scene.Managers.EntityManager;
@@ -200,17 +203,18 @@ namespace WaveEngine.MRTK.Scenes
         /// Initializes scene for HoloLens.
         /// </summary>
         /// <param name="scene">Scene to add components to.</param>
+        /// <param name="cursorCollisionCategory">The <see cref="CollisionCategory3D"/> used by the <see cref="Cursor"/> entities.</param>
         /// <param name="cursorMatReleased">Material for the cursor when it's released.</param>
         /// <param name="cursorMatPressed">Material for the cursor when it's pressed.</param>
         /// <param name="handMat">Material for the hands.</param>
         /// <param name="spatialMappingMat">Material for the spatial mapping.</param>
         /// <param name="handRayTexture">Texture for handrays.</param>
         /// <param name="handRaySampler">Sampler for the handrays texture.</param>
-        public static void InitHoloScene(Scene scene, Material cursorMatReleased, Material cursorMatPressed, Material handMat, Material spatialMappingMat, Texture handRayTexture, SamplerState handRaySampler)
+        public static void InitHoloScene(Scene scene, CollisionCategory3D cursorCollisionCategory, Material cursorMatReleased, Material cursorMatPressed, Material handMat, Material spatialMappingMat, Texture handRayTexture, SamplerState handRaySampler)
         {
             // Create cursors
-            CreateCursor(scene, cursorMatReleased, cursorMatPressed, XRHandedness.LeftHand, handRayTexture, handRaySampler);
-            CreateCursor(scene, cursorMatReleased, cursorMatPressed, XRHandedness.RightHand, handRayTexture, handRaySampler);
+            CreateCursor(scene, cursorCollisionCategory, cursorMatReleased, cursorMatPressed, XRHandedness.LeftHand, handRayTexture, handRaySampler);
+            CreateCursor(scene, cursorCollisionCategory, cursorMatReleased, cursorMatPressed, XRHandedness.RightHand, handRayTexture, handRaySampler);
 
             // Create hand meshes
             if (handMat != null)

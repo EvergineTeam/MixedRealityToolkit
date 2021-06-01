@@ -1,11 +1,13 @@
 ﻿// Copyright © Wave Engine S.L. All rights reserved. Use is subject to license terms.
 
 using System;
+using System.Collections.Generic;
 using WaveEngine.Common.Attributes;
 using WaveEngine.Components.Graphics3D;
 using WaveEngine.Framework;
 using WaveEngine.Framework.Graphics;
-using WaveEngine.Framework.Physics3D;
+using WaveEngine.Mathematics;
+using WaveEngine.MRTK.Base.EventDatum.Input;
 using WaveEngine.MRTK.Base.Interfaces.InputSystem.Handlers;
 
 namespace WaveEngine.MRTK.Emulation
@@ -13,25 +15,40 @@ namespace WaveEngine.MRTK.Emulation
     /// <summary>
     /// Visible cursor in scene.
     /// </summary>
-    public class Cursor : Behavior
+    public abstract class Cursor : Behavior
     {
-        [BindComponent]
-        internal Transform3D Transform { get; private set; }
+        private static readonly int VELOCITY_HISTORY_SIZE = 10;
 
+        private static readonly List<Cursor> activeCursors = new List<Cursor>();
+
+        /// <summary>
+        /// Gets the currently active cursors.
+        /// </summary>
+        public static IEnumerable<Cursor> ActiveCursors => activeCursors;
+
+        /// <summary>
+        /// The <see cref="Transform3D"/> component dependency.
+        /// </summary>
         [BindComponent]
-        internal StaticBody3D StaticBody3D { get; private set; }
+        protected Transform3D transform;
+
+        private float historyElapsedTime;
+        private List<float> gameTimeHistory = new List<float>(VELOCITY_HISTORY_SIZE);
+
+        private Vector3 linearVelocity;
+        private Quaternion angularVelocity;
+
+        private List<Vector3> positionHistory = new List<Vector3>(VELOCITY_HISTORY_SIZE);
+        private List<Quaternion> orientationHistory = new List<Quaternion>(VELOCITY_HISTORY_SIZE);
+
+        private List<Entity> pointerInteractedEntities = new List<Entity>();
+        private Entity pointerInteractedEntity;
 
         /// <summary>
         /// The Material component.
         /// </summary>
         [BindComponent(isRequired: false, source: BindComponentSource.Children)]
         protected MaterialComponent materialComponent;
-
-        /// <summary>
-        /// The cursor manager.
-        /// </summary>
-        [BindSceneManager]
-        protected CursorManager cursorManager;
 
         /// <summary>
         /// Gets or sets the material when the cursor is pressed.
@@ -76,35 +93,6 @@ namespace WaveEngine.MRTK.Emulation
         [DontRenderProperty]
         public bool PreviousPinch { get; private set; }
 
-        private bool isTouch;
-
-        /// <summary>
-        /// Gets or sets a value indicating whether the cursor should
-        /// produce <see cref="IMixedRealityPointerHandler"/> events.
-        /// <para>
-        /// This property cannot be changed while <see cref="Cursor"/> is activated.</para>
-        /// </summary>
-        public bool IsTouch
-        {
-            get => this.isTouch;
-            set
-            {
-                if (this.IsActivated)
-                {
-                    throw new InvalidOperationException($"{nameof(this.IsTouch)} property cannot be changed while {nameof(Cursor)} is activated.");
-                }
-
-                this.isTouch = value;
-            }
-        }
-
-        /// <summary>
-        /// Gets a value indicating whether the cursor is colliding with a <see cref="IMixedRealityPointerHandler"/>.
-        /// </summary>
-        [WaveIgnore]
-        [DontRenderProperty]
-        public bool IsTouching { get; internal set; }
-
         /// <summary>
         /// Gets or sets a value indicating whether the cursor visible.
         /// </summary>
@@ -125,20 +113,77 @@ namespace WaveEngine.MRTK.Emulation
         protected override void OnActivated()
         {
             base.OnActivated();
-            this.cursorManager.AddCursor(this);
+
             this.UpdateColor();
+
+            activeCursors.Add(this);
         }
 
         /// <inheritdoc/>
         protected override void OnDeactivated()
         {
             base.OnDeactivated();
-            this.cursorManager.RemoveCursor(this);
+
+            if (this.pointerInteractedEntity != null)
+            {
+                this.RunPointerHandlers(this.pointerInteractedEntity, (h, e) => h?.OnPointerUp(e));
+                this.pointerInteractedEntity = null;
+            }
+
+            this.historyElapsedTime = 0;
+            this.gameTimeHistory.Clear();
+            this.positionHistory.Clear();
+            this.orientationHistory.Clear();
+            this.pointerInteractedEntities.Clear();
+
+            activeCursors.Remove(this);
         }
 
         /// <inheritdoc/>
         protected override void Update(TimeSpan gameTime)
         {
+            // Update gameTime history and compute history elapsed time
+            var elapsed = (float)gameTime.TotalSeconds;
+            this.gameTimeHistory.Add(elapsed);
+            this.historyElapsedTime += elapsed;
+
+            if (this.gameTimeHistory.Count > VELOCITY_HISTORY_SIZE)
+            {
+                this.historyElapsedTime -= this.gameTimeHistory[0];
+                this.gameTimeHistory.RemoveAt(0);
+            }
+
+            // Update cursor velocity
+            this.AddToHistoryList(this.positionHistory, this.transform.Position);
+            this.AddToHistoryList(this.orientationHistory, this.transform.Orientation);
+
+            var linearVelocity = (this.positionHistory[this.positionHistory.Count - 1] - this.positionHistory[0]) / this.historyElapsedTime;
+            var angularVelocity = this.orientationHistory[this.orientationHistory.Count - 1] * Quaternion.Inverse(this.orientationHistory[0]) * (1 / this.historyElapsedTime);
+
+            this.linearVelocity = linearVelocity;
+            this.angularVelocity = angularVelocity;
+
+            if (this.PreviousPinch)
+            {
+                if (this.Pinch)
+                {
+                    // PointerDragged while the cursor is pinched
+                    this.RunPointerHandlers(this.pointerInteractedEntity, (h, e) => h?.OnPointerDragged(e));
+                }
+                else
+                {
+                    // PointerUp when the cursor is unpinched
+                    this.RunPointerHandlers(this.pointerInteractedEntity, (h, e) => h?.OnPointerUp(e));
+                    this.pointerInteractedEntity = null;
+                }
+            }
+            else if (this.Pinch && this.pointerInteractedEntities.Count > 0)
+            {
+                // PointerDown when the cursor transitions to pinched while inside a collider
+                this.pointerInteractedEntity = this.pointerInteractedEntities[0];
+                this.RunPointerHandlers(this.pointerInteractedEntity, (h, e) => h?.OnPointerDown(e));
+            }
+
             this.PreviousPinch = this.Pinch;
         }
 
@@ -150,6 +195,72 @@ namespace WaveEngine.MRTK.Emulation
             }
 
             this.materialComponent.Material = this.Pinch ? this.PressedMaterial : this.ReleasedMaterial;
+        }
+
+        private void AddToHistoryList<T>(List<T> list, T newItem)
+        {
+            list.Add(newItem);
+
+            if (list.Count > VELOCITY_HISTORY_SIZE)
+            {
+                list.RemoveAt(0);
+            }
+        }
+
+        private void RunPointerHandlers(Entity other, Action<IMixedRealityPointerHandler, MixedRealityPointerEventData> action)
+        {
+            var eventArgs = new MixedRealityPointerEventData()
+            {
+                Cursor = this,
+                CurrentTarget = other,
+                Position = this.transform.Position,
+                Orientation = this.transform.Orientation,
+                LinearVelocity = this.linearVelocity,
+                AngularVelocity = this.angularVelocity,
+            };
+
+            this.RunOnComponents<IMixedRealityPointerHandler>(other, (x) => action(x, eventArgs));
+        }
+
+        /// <summary>
+        /// Adds a pointer interacted entity.
+        /// </summary>
+        /// <param name="interactedEntity">The pointer interacted entity.</param>
+        protected void AddPointerInteraction(Entity interactedEntity)
+        {
+            this.pointerInteractedEntities.Insert(0, interactedEntity);
+        }
+
+        /// <summary>
+        /// Remove a pointer interacted entity.
+        /// </summary>
+        /// <param name="interactedEntity">The pointer interacted entity.</param>
+        protected void RemovePointerInteraction(Entity interactedEntity)
+        {
+            this.pointerInteractedEntities.Remove(interactedEntity);
+        }
+
+        /// <summary>
+        /// Runs the specified action for the components from the given entity implementing the <typeparamref name="T"/> type.
+        /// </summary>
+        /// <typeparam name="T">The component type of interface.</typeparam>
+        /// <param name="entity">The entity used to find the components.</param>
+        /// <param name="action">The action callback to be invoked on every <typeparamref name="T"/> component.</param>
+        protected void RunOnComponents<T>(Entity entity, Action<T> action)
+        {
+            var current = entity;
+            while (current != null)
+            {
+                foreach (var c in current.Components)
+                {
+                    if (c.IsActivated && c is T interactable)
+                    {
+                        action(interactable);
+                    }
+                }
+
+                current = current.Parent;
+            }
         }
     }
 }

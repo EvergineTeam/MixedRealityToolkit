@@ -7,6 +7,7 @@ using WaveEngine.Framework.Graphics;
 using WaveEngine.Mathematics;
 using WaveEngine.MRTK.Base.EventDatum.Input;
 using WaveEngine.MRTK.Base.Interfaces.InputSystem.Handlers;
+using WaveEngine.MRTK.Emulation;
 using WaveEngine.MRTK.Services.InputSystem;
 
 namespace WaveEngine.MRTK.SDK.Features.UX.Components.Sliders
@@ -95,7 +96,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.Sliders
 
         private float startSliderValue;
         private Vector3 startPointerPosition;
-        private Entity activePointer;
+        private Cursor activePointer;
         private Vector3 sliderThumbOffset;
 
         private float sliderValue;

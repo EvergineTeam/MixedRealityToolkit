@@ -19,15 +19,6 @@ namespace WaveEngine.MRTK.Base.Interfaces.InputSystem.Handlers
         void OnTouchStarted(HandTrackingInputEventData eventData);
 
         /// <summary>
-        /// When a Touch motion ends, this handler receives the event.
-        /// </summary>
-        /// <remarks>
-        /// A Touch motion is defined as occurring within the bounds of an object (transitive).
-        /// </remarks>
-        /// <param name="eventData">Contains information about the HandTrackingInputSource.</param>
-        void OnTouchCompleted(HandTrackingInputEventData eventData);
-
-        /// <summary>
         /// When a Touch motion is updated, this handler receives the event.
         /// </summary>
         /// <remarks>
@@ -35,5 +26,14 @@ namespace WaveEngine.MRTK.Base.Interfaces.InputSystem.Handlers
         /// </remarks>
         /// <param name="eventData">Contains information about the HandTrackingInputSource.</param>
         void OnTouchUpdated(HandTrackingInputEventData eventData);
+
+        /// <summary>
+        /// When a Touch motion ends, this handler receives the event.
+        /// </summary>
+        /// <remarks>
+        /// A Touch motion is defined as occurring within the bounds of an object (transitive).
+        /// </remarks>
+        /// <param name="eventData">Contains information about the HandTrackingInputSource.</param>
+        void OnTouchCompleted(HandTrackingInputEventData eventData);
     }
 }

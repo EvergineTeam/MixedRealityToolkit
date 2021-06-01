@@ -2,6 +2,7 @@
 
 using WaveEngine.Framework;
 using WaveEngine.Mathematics;
+using WaveEngine.MRTK.Emulation;
 
 namespace WaveEngine.MRTK.Base.EventDatum.Input
 {
@@ -16,8 +17,8 @@ namespace WaveEngine.MRTK.Base.EventDatum.Input
         public Vector3 Position { get; set; }
 
         /// <summary>
-        /// Gets or sets the cursor entity.
+        /// Gets or sets the cursor component.
         /// </summary>
-        public Entity Cursor { get; set; }
+        public CursorTouch Cursor { get; set; }
     }
 }

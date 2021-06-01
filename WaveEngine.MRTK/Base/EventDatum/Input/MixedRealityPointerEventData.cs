@@ -2,6 +2,7 @@
 
 using WaveEngine.Framework;
 using WaveEngine.Mathematics;
+using WaveEngine.MRTK.Emulation;
 
 namespace WaveEngine.MRTK.Base.EventDatum.Input
 {
@@ -31,9 +32,9 @@ namespace WaveEngine.MRTK.Base.EventDatum.Input
         public Quaternion AngularVelocity;
 
         /// <summary>
-        /// Gets or sets the cursor entity.
+        /// Gets or sets the cursor component.
         /// </summary>
-        public Entity Cursor { get; set; }
+        public Cursor Cursor { get; set; }
 
         /// <summary>
         /// Gets or sets the current target.

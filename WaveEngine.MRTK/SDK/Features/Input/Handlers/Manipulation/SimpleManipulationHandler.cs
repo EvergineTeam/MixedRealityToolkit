@@ -10,6 +10,7 @@ using WaveEngine.Framework.Physics3D;
 using WaveEngine.Mathematics;
 using WaveEngine.MRTK.Base.EventDatum.Input;
 using WaveEngine.MRTK.Base.Interfaces.InputSystem.Handlers;
+using WaveEngine.MRTK.Emulation;
 
 namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
 {
@@ -173,7 +174,7 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
         // Distance between the controllers at the moment the grab is started
         private float grabDistance;
 
-        private readonly Dictionary<Entity, Matrix4x4> activeCursors = new Dictionary<Entity, Matrix4x4>();
+        private readonly Dictionary<Cursor, Matrix4x4> activeCursors = new Dictionary<Cursor, Matrix4x4>();
 
         private Vector3 previousAngularFactor;
         private Vector3 previousLinearFactor;
