@@ -7,7 +7,7 @@ namespace WaveEngine.MRTK.Base.Interfaces.InputSystem.Handlers
     /// <summary>
     /// Implementation of this interface causes a component to receive notifications of Pointer events.
     /// </summary>
-    public interface IMixedRealityPointerHandler
+    public interface IMixedRealityPointerHandler : IMixedRealityEventHandler
     {
         /// <summary>
         /// When a pointer down event is raised, this method is used to pass along the event data to the input handler.

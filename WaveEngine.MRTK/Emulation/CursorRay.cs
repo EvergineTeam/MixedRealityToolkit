@@ -37,7 +37,7 @@ namespace WaveEngine.MRTK.Emulation
         private Transform3D lineMeshTransform;
         private Transform3D touchCursorTransform;
 
-        private CollisionCategory3D cursorCollisionMask;
+        private CollisionCategory3D cursorCollisionCategoryMask;
 
         private float pinchDist;
         private Vector3 pinchPosRef;
@@ -68,7 +68,7 @@ namespace WaveEngine.MRTK.Emulation
             this.touchCursor = this.TouchCursorEntity.FindComponentInChildren<CursorTouch>();
             this.xrJoint = this.TouchCursorEntity.FindComponent<TrackXRJoint>();
 
-            this.cursorCollisionMask = this.TouchCursorEntity.FindComponent<StaticBody3D>().CollisionCategories;
+            this.cursorCollisionCategoryMask = this.TouchCursorEntity.FindComponent<StaticBody3D>().MaskBits;
 
             this.UpdateOrder = this.touchCursor.UpdateOrder + 0.1f; // Ensure this is executed always after the main Cursor
             this.cam = this.Managers.RenderManager.ActiveCamera3D;
@@ -173,7 +173,7 @@ namespace WaveEngine.MRTK.Emulation
                     }
                     else
                     {
-                        var result = this.Managers.PhysicManager3D.RayCast(ref r, 10, CollisionCategory3D.All & ~this.cursorCollisionMask);
+                        var result = this.Managers.PhysicManager3D.RayCast(ref r, 10, this.cursorCollisionCategoryMask);
 
                         var collPoint = result.Succeeded ? result.Point : r.GetPoint(10);
                         var normal = result.Succeeded ? result.Normal : Vector3.Forward;

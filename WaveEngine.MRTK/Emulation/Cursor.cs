@@ -9,6 +9,7 @@ using WaveEngine.Framework.Graphics;
 using WaveEngine.Mathematics;
 using WaveEngine.MRTK.Base.EventDatum.Input;
 using WaveEngine.MRTK.Base.Interfaces.InputSystem.Handlers;
+using WaveEngine.MRTK.Extensions;
 
 namespace WaveEngine.MRTK.Emulation
 {
@@ -247,19 +248,11 @@ namespace WaveEngine.MRTK.Emulation
         /// <param name="entity">The entity used to find the components.</param>
         /// <param name="action">The action callback to be invoked on every <typeparamref name="T"/> component.</param>
         protected void RunOnComponents<T>(Entity entity, Action<T> action)
+            where T : IMixedRealityEventHandler
         {
-            var current = entity;
-            while (current != null)
+            foreach (var interactable in entity.FindEventHandlers<T>())
             {
-                foreach (var c in current.Components)
-                {
-                    if (c.IsActivated && c is T interactable)
-                    {
-                        action(interactable);
-                    }
-                }
-
-                current = current.Parent;
+                action(interactable);
             }
         }
     }

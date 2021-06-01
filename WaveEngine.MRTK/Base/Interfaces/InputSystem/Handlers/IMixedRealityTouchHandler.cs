@@ -7,7 +7,7 @@ namespace WaveEngine.MRTK.Base.Interfaces.InputSystem.Handlers
     /// <summary>
     /// Implementation of this interface causes a component to receive notifications of Touch events from HandTrackingInputSources.
     /// </summary>
-    public interface IMixedRealityTouchHandler
+    public interface IMixedRealityTouchHandler : IMixedRealityEventHandler
     {
         /// <summary>
         /// When a Touch motion has occurred, this handler receives the event.

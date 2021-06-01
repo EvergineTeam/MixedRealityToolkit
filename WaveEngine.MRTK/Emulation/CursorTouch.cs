@@ -9,6 +9,7 @@ using WaveEngine.Framework.Graphics;
 using WaveEngine.Framework.Physics3D;
 using WaveEngine.MRTK.Base.EventDatum.Input;
 using WaveEngine.MRTK.Base.Interfaces.InputSystem.Handlers;
+using WaveEngine.MRTK.Extensions;
 
 namespace WaveEngine.MRTK.Emulation
 {
@@ -106,7 +107,7 @@ namespace WaveEngine.MRTK.Emulation
         private void ExternalTouch_BeginCollision(object sender, CollisionInfo3D args)
         {
             var otherEntity = args.OtherBody.Owner;
-            var hasHandler = otherEntity.Components.Any(x => x.IsActivated && (x is IMixedRealityTouchHandler || x is IMixedRealityPointerHandler));
+            var hasHandler = otherEntity.HasEventHandlers<IMixedRealityTouchHandler, IMixedRealityPointerHandler>();
             if (hasHandler)
             {
                 this.externalTouchCollisionEntities.Add(otherEntity);

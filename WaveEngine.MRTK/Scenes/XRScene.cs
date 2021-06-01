@@ -58,8 +58,16 @@ namespace WaveEngine.MRTK.Scenes
 
         /// <summary>
         /// Gets or sets the <see cref="CollisionCategory3D"/> used by the <see cref="Cursor"/> entities.
+        /// Default: <see cref="CollisionCategory3D.Cat2"/>.
         /// </summary>
-        protected virtual CollisionCategory3D CursorCollisionCategory { get; set; } = CollisionCategory3D.Cat2;
+        public virtual CollisionCategory3D CursorCollisionCategory { get; protected set; } = CollisionCategory3D.Cat2;
+
+        /// <summary>
+        /// Gets or sets the <see cref="CollisionCategory3D"/> mask used by the <see cref="Cursor"/> entities.
+        /// Default: <see cref="CollisionCategory3D.All"/>.
+        /// <para>It indicates with which <see cref="CollisionCategory3D"/> the cursors will collide.</para>
+        /// </summary>
+        public virtual CollisionCategory3D CursorCollisionCategoryMask { get; protected set; } = CollisionCategory3D.All;
 
         /// <inheritdoc/>
         public override void RegisterManagers()
@@ -84,17 +92,7 @@ namespace WaveEngine.MRTK.Scenes
                 this.Managers.EntityManager.Remove(entity);
             }
 
-            var assetsService = Application.Current.Container.Resolve<AssetsService>();
-
-            InitHoloScene(
-                this,
-                this.CursorCollisionCategory,
-                assetsService.Load<Material>(this.CursorMatReleased),
-                assetsService.Load<Material>(this.CursorMatPressed),
-                this.HoloHandsMat == Guid.Empty ? null : assetsService.Load<Material>(this.HoloHandsMat),
-                this.SpatialMappingMat == Guid.Empty ? null : assetsService.Load<Material>(this.SpatialMappingMat),
-                assetsService.Load<Texture>(this.HandRayTexture),
-                assetsService.Load<SamplerState>(this.HandRaySampler));
+            this.InitHoloScene();
         }
 
         /// <inheritdoc/>
@@ -104,10 +102,10 @@ namespace WaveEngine.MRTK.Scenes
 
             // Create GazeProvider
             Camera3D cam = this.Managers.EntityManager.FindFirstComponentOfType<Camera3D>();
-            cam.Owner.AddComponent(new GazeProvider() { CollisionCategoryMask = CollisionCategory3D.All & ~this.CursorCollisionCategory });
+            cam.Owner.AddComponent(new GazeProvider() { CollisionCategoryMask = this.CursorCollisionCategoryMask & ~this.CursorCollisionCategory });
         }
 
-        private static void CreateXRHandMesh(Scene scene, Material material, XRHandedness handedness)
+        private void CreateXRHandMesh(XRHandedness handedness, Material material)
         {
             Entity handEntity = new Entity()
                 .AddComponent(new Transform3D())
@@ -124,20 +122,37 @@ namespace WaveEngine.MRTK.Scenes
                 .AddComponent(new HoloHandsUpdater() { Handedness = handedness })
                 ;
 
-            scene.Managers.EntityManager.Add(handEntity);
+            this.Managers.EntityManager.Add(handEntity);
         }
 
-        private static Entity CreateCursor(Scene scene, CollisionCategory3D cursorCollisionCategory, Material releasedMaterial, Material pressedMaterial, XRHandedness handedness, Texture handRayTexture, SamplerState handRaySampler)
+        private Entity CreateCursor(XRHandedness handedness, Material pressedMaterial, Material releasedMaterial, Texture handRayTexture, SamplerState handRaySampler)
         {
+            const float cursorPlaneSize = 0.01f;
+
             var mainCursor = new Entity($"{nameof(CursorTouch)}_{handedness}")
                 .AddComponent(new Transform3D())
-                .AddComponent(new CursorTouch() { PressedMaterial = pressedMaterial, ReleasedMaterial = releasedMaterial })
+                .AddComponent(new CursorTouch()
+                {
+                    PressedMaterial = pressedMaterial,
+                    ReleasedMaterial = releasedMaterial,
+                })
                 .AddComponent(new SphereCollider3D() { Radius = 0.005f })
-                .AddComponent(new StaticBody3D() { CollisionCategories = cursorCollisionCategory, IsSensor = true, MaskBits = CollisionCategory3D.All & ~cursorCollisionCategory })
+                .AddComponent(new StaticBody3D()
+                {
+                    IsSensor = true,
+                    CollisionCategories = this.CursorCollisionCategory,
+                    MaskBits = this.CursorCollisionCategoryMask & ~this.CursorCollisionCategory,
+                })
                 .AddChild(new Entity("visual")
                     .AddComponent(new Transform3D())
                     .AddComponent(new MaterialComponent())
-                    .AddComponent(new PlaneMesh() { TwoSides = true, PlaneNormal = PlaneMesh.NormalAxis.ZNegative, Width = 0.01f, Height = 0.01f })
+                    .AddComponent(new PlaneMesh()
+                    {
+                        TwoSides = true,
+                        PlaneNormal = PlaneMesh.NormalAxis.ZNegative,
+                        Width = cursorPlaneSize,
+                        Height = cursorPlaneSize,
+                    })
                     .AddComponent(new MeshRenderer())
                     .AddComponent(new ProximityLight()));
 
@@ -166,10 +181,10 @@ namespace WaveEngine.MRTK.Scenes
                 {
                     IsCameraAligned = true,
                     LinePoints = new List<LinePointInfo>()
-                        {
-                            new LinePointInfo() { Position = Vector3.Zero, Thickness = 0.003f, Color = Color.White },
-                            new LinePointInfo() { Position = -Vector3.UnitZ, Thickness = 0.003f, Color = Color.White },
-                        },
+                    {
+                        new LinePointInfo() { Position = Vector3.Zero, Thickness = 0.003f, Color = Color.White },
+                        new LinePointInfo() { Position = -Vector3.UnitZ, Thickness = 0.003f, Color = Color.White },
+                    },
                     DiffuseTexture = handRayTexture,
                     DiffuseSampler = handRaySampler,
                 })
@@ -187,12 +202,17 @@ namespace WaveEngine.MRTK.Scenes
                 .AddChild(new Entity("visual")
                     .AddComponent(new Transform3D())
                     .AddComponent(new MaterialComponent())
-                    .AddComponent(new PlaneMesh() { PlaneNormal = PlaneMesh.NormalAxis.ZNegative, Width = 0.01f, Height = 0.01f })
+                    .AddComponent(new PlaneMesh()
+                    {
+                        PlaneNormal = PlaneMesh.NormalAxis.ZNegative,
+                        Width = cursorPlaneSize,
+                        Height = cursorPlaneSize,
+                    })
                     .AddComponent(new MeshRenderer())
                     .AddComponent(new CameraDistanceScale() { UpdateOrder = 1 })
                     .AddComponent(new HoverLight()));
 
-            var entityManager = scene.Managers.EntityManager;
+            var entityManager = this.Managers.EntityManager;
             entityManager.Add(mainCursor);
             entityManager.Add(farCursor);
 
@@ -202,28 +222,27 @@ namespace WaveEngine.MRTK.Scenes
         /// <summary>
         /// Initializes scene for HoloLens.
         /// </summary>
-        /// <param name="scene">Scene to add components to.</param>
-        /// <param name="cursorCollisionCategory">The <see cref="CollisionCategory3D"/> used by the <see cref="Cursor"/> entities.</param>
-        /// <param name="cursorMatReleased">Material for the cursor when it's released.</param>
-        /// <param name="cursorMatPressed">Material for the cursor when it's pressed.</param>
-        /// <param name="handMat">Material for the hands.</param>
-        /// <param name="spatialMappingMat">Material for the spatial mapping.</param>
-        /// <param name="handRayTexture">Texture for handrays.</param>
-        /// <param name="handRaySampler">Sampler for the handrays texture.</param>
-        public static void InitHoloScene(Scene scene, CollisionCategory3D cursorCollisionCategory, Material cursorMatReleased, Material cursorMatPressed, Material handMat, Material spatialMappingMat, Texture handRayTexture, SamplerState handRaySampler)
+        protected void InitHoloScene()
         {
+            var assetsManager = this.Managers.AssetSceneManager;
+
             // Create cursors
-            CreateCursor(scene, cursorCollisionCategory, cursorMatReleased, cursorMatPressed, XRHandedness.LeftHand, handRayTexture, handRaySampler);
-            CreateCursor(scene, cursorCollisionCategory, cursorMatReleased, cursorMatPressed, XRHandedness.RightHand, handRayTexture, handRaySampler);
+            var cursorMatPressed = assetsManager.Load<Material>(this.CursorMatPressed);
+            var cursorMatReleased = assetsManager.Load<Material>(this.CursorMatReleased);
+            var handRayTexture = assetsManager.Load<Texture>(this.HandRayTexture);
+            var handRaySampler = assetsManager.Load<SamplerState>(this.HandRaySampler);
+            this.CreateCursor(XRHandedness.LeftHand, cursorMatPressed, cursorMatReleased, handRayTexture, handRaySampler);
+            this.CreateCursor(XRHandedness.RightHand, cursorMatPressed, cursorMatReleased, handRayTexture, handRaySampler);
 
             // Create hand meshes
+            var handMat = this.HoloHandsMat == Guid.Empty ? null : assetsManager.Load<Material>(this.HoloHandsMat);
             if (handMat != null)
             {
-                CreateXRHandMesh(scene, handMat, XRHandedness.LeftHand);
-                CreateXRHandMesh(scene, handMat, XRHandedness.RightHand);
+                this.CreateXRHandMesh(XRHandedness.LeftHand, handMat);
+                this.CreateXRHandMesh(XRHandedness.RightHand, handMat);
             }
 
-            var entityManager = scene.Managers.EntityManager;
+            var entityManager = this.Managers.EntityManager;
 
             // Create cursor position updater
             if (entityManager.FindFirstComponentOfType<CursorPosShaderUpdater>() == null)
@@ -240,6 +259,7 @@ namespace WaveEngine.MRTK.Scenes
             }
 
             // Create spatial mapping
+            var spatialMappingMat = this.SpatialMappingMat == Guid.Empty ? null : assetsManager.Load<Material>(this.SpatialMappingMat);
             entityManager.Add(new Entity(nameof(SpatialMapping))
                          .AddComponent(new SpatialMapping()
                          {

@@ -1,6 +1,7 @@
 ﻿// Copyright © Wave Engine S.L. All rights reserved. Use is subject to license terms.
 
 using System;
+using System.Linq;
 using WaveEngine.Common.Attributes;
 using WaveEngine.Common.Graphics;
 using WaveEngine.Framework;
@@ -9,6 +10,7 @@ using WaveEngine.Framework.Physics3D;
 using WaveEngine.Framework.Services;
 using WaveEngine.Mathematics;
 using WaveEngine.MRTK.Emulation;
+using WaveEngine.MRTK.Extensions;
 using WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons;
 
 namespace WaveEngine.MRTK.Services.InputSystem
@@ -113,29 +115,12 @@ namespace WaveEngine.MRTK.Services.InputSystem
 
                 this.gazeTarget = value;
 
-                if (this.gazeTarget != null)
-                {
-                    this.currentFocusable = this.FindComponent<IFocusable>(this.gazeTarget);
-                    this.currentFocusable?.OnFocusEnter();
-                }
+                this.currentFocusable = this.gazeTarget?.FindEventHandlers<IFocusable>()?.FirstOrDefault();
+                this.currentFocusable?.OnFocusEnter();
             }
         }
 
         private Entity gazeTarget;
-
-        private T FindComponent<T>(Entity entity)
-            where T : class
-        {
-            foreach (Component c in entity.Components)
-            {
-                if (c.IsActivated && c is T typed)
-                {
-                    return typed;
-                }
-            }
-
-            return null;
-        }
 
         /// <inheritdoc />
         protected override bool OnAttached()
@@ -210,10 +195,8 @@ namespace WaveEngine.MRTK.Services.InputSystem
 
         private void VoiceCommandService_CommandRecognized(object sender, string e)
         {
-            if (this.GazeTarget != null)
-            {
-                this.FindComponent<ISpeechHandler>(this.GazeTarget)?.OnSpeechKeywordRecognized(e);
-            }
+            var speechHandler = this.gazeTarget.FindEventHandlers<ISpeechHandler>()?.FirstOrDefault();
+            speechHandler?.OnSpeechKeywordRecognized(e);
         }
 
         /// <summary>
