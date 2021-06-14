@@ -1,7 +1,6 @@
 ﻿// Copyright © Wave Engine S.L. All rights reserved. Use is subject to license terms.
 
 using System;
-using System.Linq;
 using WaveEngine.Framework;
 using WaveEngine.MRTK.SDK.Features.UX.Components.States;
 
@@ -46,7 +45,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.ToggleButtons
 
         private void AddComponents()
         {
-            this.stateManager = this.Owner.FindComponent<ToggleStateManager>();
+            this.stateManager = this.Owner.FindComponent<ToggleStateManager>(isExactType: false);
             if (this.stateManager == null)
             {
                 this.stateManager = new ToggleStateManager();

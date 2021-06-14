@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using WaveEngine.Framework;
 using WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons;
@@ -26,9 +27,29 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.States
         public State<TState> CurrentState { get => this.currentState; }
 
         /// <summary>
+        /// Gets manager states.
+        /// </summary>
+        public IReadOnlyCollection<State<TState>> States => this.allStates?.AsReadOnly();
+
+        /// <summary>
         /// Raised when state changes.
         /// </summary>
         public event EventHandler<StateChangedEventArgs<TState>> StateChanged;
+
+        /// <summary>
+        /// Changes manager current state to other state.
+        /// </summary>
+        /// <param name="newState">New state.</param>
+        public virtual void ChangeState(State<TState> newState)
+        {
+            if (newState != this.currentState)
+            {
+                var oldState = this.currentState;
+                this.currentState = newState;
+                this.NotifyStateAware();
+                this.StateChanged?.Invoke(this, new StateChangedEventArgs<TState>(oldState, newState));
+            }
+        }
 
         /// <inheritdoc />
         protected override bool OnAttached()
@@ -64,6 +85,12 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.States
         protected abstract List<State<TState>> GetStateList();
 
         /// <summary>
+        /// Controls if button state could be changed through user interaction.
+        /// </summary>
+        /// <returns>True if state change is allowed; false otherwise.</returns>
+        protected virtual bool CanChangeState() => true;
+
+        /// <summary>
         /// Retrieves next state once user presses the button.
         /// </summary>
         /// <returns>Next state.</returns>
@@ -72,17 +99,6 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.States
             return this.currentState == null
                 ? this.allStates.FirstOrDefault()
                 : this.allStates[(this.allStates.IndexOf(this.currentState) + 1) % this.allStates.Count];
-        }
-
-        private void ChangeState(State<TState> newState)
-        {
-            if (newState != this.currentState)
-            {
-                var oldState = this.currentState;
-                this.currentState = newState;
-                this.NotifyStateAware();
-                this.StateChanged?.Invoke(this, new StateChangedEventArgs<TState>(oldState, newState));
-            }
         }
 
         private void NotifyStateAware()
@@ -99,8 +115,11 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.States
 
         private void Button_ButtonPressed(object sender, EventArgs e)
         {
-            var newState = this.GetNextState();
-            this.ChangeState(newState);
+            if (this.CanChangeState())
+            {
+                var newState = this.GetNextState();
+                this.ChangeState(newState);
+            }
         }
     }
 }
