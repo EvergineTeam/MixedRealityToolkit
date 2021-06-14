@@ -1,4 +1,6 @@
-﻿using Noesis;
+﻿// Copyright © Wave Engine S.L. All rights reserved. Use is subject to license terms.
+
+using Noesis;
 using System;
 using System.Collections.Generic;
 using WaveEngine.Common.Attributes;
@@ -15,19 +17,34 @@ using static WaveEngine.Components.Graphics3D.PlaneMesh;
 using Color = WaveEngine.Common.Graphics.Color;
 using Vector3 = WaveEngine.Mathematics.Vector3;
 
-namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
+namespace WaveEngine.MRTK.Toolkit.GUI
 {
+    /// <summary>
+    /// A component that loads 3D text.
+    /// </summary>
     public class Text3D : Behavior
     {
+        /// <summary>
+        /// Graphics context.
+        /// </summary>
         [BindService]
         protected GraphicsContext graphicsContext;
 
+        /// <summary>
+        /// Assets service.
+        /// </summary>
         [BindService]
         protected AssetsService assetsService;
 
+        /// <summary>
+        /// Noesis service.
+        /// </summary>
         [BindService]
         protected NoesisService noesisService;
 
+        /// <summary>
+        /// Gets or sets text.
+        /// </summary>
         [RenderProperty(Tooltip = "The text that will be shown")]
         public string Text
         {
@@ -39,11 +56,15 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
                     this.textBlock.Text = value;
                     this.textBlock.TextTrimming = this.TextTrimming; // Noesis workaround
                     this.Invalidate();
-                };
+                }
             }
         }
+
         private string text = string.Empty;
 
+        /// <summary>
+        /// Gets or sets font size.
+        /// </summary>
         [RenderPropertyAsInput(minLimit: 1, Tooltip = "The font size used to render the text")]
         public int FontSize
         {
@@ -57,8 +78,12 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
                 }
             }
         }
+
         private int fontSize = 36;
 
+        /// <summary>
+        /// Gets or sets font alpha.
+        /// </summary>
         [RenderPropertyAsFInput(Tooltip = "The alpha value for the text component", MinLimit = 0, MaxLimit = 1)]
         public float Alpha
         {
@@ -71,6 +96,7 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
                 }
             }
         }
+
         private float alpha = 1.0f;
 
         /// <summary>
@@ -88,8 +114,12 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
                 }
             }
         }
+
         private bool customWidth = false;
 
+        /// <summary>
+        /// Gets or sets with of text block.
+        /// </summary>
         [RenderProperty(Tooltip = "The text block width in meters.")]
         public float Width
         {
@@ -102,8 +132,12 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
                 }
             }
         }
+
         private float width = 0.3f;
 
+        /// <summary>
+        /// Gets or sets text horizontal alignment.
+        /// </summary>
         [RenderProperty(Tooltip = "The text horizontal alignment")]
         public HorizontalAlignment HorizontalAlignment
         {
@@ -116,6 +150,7 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
                 }
             }
         }
+
         private HorizontalAlignment horizontalAlignment = HorizontalAlignment.Left;
 
         /// <summary>
@@ -133,8 +168,12 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
                 }
             }
         }
+
         private bool customHeight = false;
 
+        /// <summary>
+        /// Gets or sets height of text block.
+        /// </summary>
         [RenderProperty(Tooltip = "The text block height in meters.")]
         public float Height
         {
@@ -147,8 +186,12 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
                 }
             }
         }
+
         private float height = 0.1f;
 
+        /// <summary>
+        /// Gets or sets text vertical alignment.
+        /// </summary>
         [RenderProperty(Tooltip = "The text vertical alignment.")]
         public VerticalAlignment VerticalAlignment
         {
@@ -161,8 +204,12 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
                 }
             }
         }
+
         private VerticalAlignment verticalAlignment = VerticalAlignment.Top;
 
+        /// <summary>
+        /// Gets or sets text block origin.
+        /// </summary>
         [RenderProperty(Tooltip = "The origin (also known as pivot) from where the text block scales, rotates and translates. Its values are included in [0, 1] where (0, 0) indicates the top left corner. Such values are percentages where 1 means the 100% of the rectangle's width/height.")]
         public Vector2 Origin
         {
@@ -175,8 +222,12 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
                 }
             }
         }
+
         private Vector2 origin = Vector2.Center;
 
+        /// <summary>
+        /// Gets or sets pixel density.
+        /// </summary>
         [RenderProperty(Tooltip = "The pixel density expressed as pixels/meter.")]
         public int PixelDensity
         {
@@ -188,13 +239,17 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
                     this.Invalidate(ifAutoSizeOnly: false);
                 }
 
-                this.resolutionScaleFactor = (float)this.pixelDensity / referencePixelDensity;
+                this.resolutionScaleFactor = (float)this.pixelDensity / ReferencePixelDensity;
             }
         }
-        private const int referencePixelDensity = 3780;
 
-        private int pixelDensity = referencePixelDensity;
+        private const int ReferencePixelDensity = 3780;
 
+        private int pixelDensity = ReferencePixelDensity;
+
+        /// <summary>
+        /// Gets or sets block background color.
+        /// </summary>
         [RenderProperty(Tooltip = "The text block foreground color.")]
         public Color Background
         {
@@ -212,9 +267,13 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
                 }
             }
         }
+
         private Color background = Color.Transparent;
 
-        [RenderProperty(Tooltip = "The text block foreground color.")]
+        /// <summary>
+        /// Gets or sets text foreground color.
+        /// </summary>
+        [RenderProperty(Tooltip = "The text foreground color.")]
         public Color Foreground
         {
             get => this.foreground;
@@ -231,8 +290,12 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
                 }
             }
         }
+
         private Color foreground = Color.White;
 
+        /// <summary>
+        /// Gets or sets text block plane normal direction.
+        /// </summary>
         [RenderProperty(Tooltip = "The text block plane normal direction.")]
         public NormalAxis Normal
         {
@@ -245,8 +308,12 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
                 }
             }
         }
+
         private NormalAxis normal = NormalAxis.ZNegative;
 
+        /// <summary>
+        /// Gets or sets text alignment to use.
+        /// </summary>
         [RenderProperty(Tooltip = "The text alignment to use.")]
         public TextAlignment TextAlignment
         {
@@ -260,8 +327,12 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
                 }
             }
         }
+
         private TextAlignment textAlignment = TextAlignment.Left;
 
+        /// <summary>
+        /// Gets or sets text wrapping to use.
+        /// </summary>
         [RenderProperty(Tooltip = "The text wrapping to use.")]
         public TextWrapping TextWrapping
         {
@@ -275,8 +346,12 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
                 }
             }
         }
+
         private TextWrapping textWrapping = TextWrapping.NoWrap;
 
+        /// <summary>
+        /// Gets or sets text font family source to use.
+        /// </summary>
         [RenderProperty(Tooltip = "The text font family source to use.")]
         public string FontFamilySource
         {
@@ -290,8 +365,12 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
                 }
             }
         }
+
         private string fontFamilySource = string.Empty;
 
+        /// <summary>
+        /// Gets or sets text font weight to use.
+        /// </summary>
         [RenderProperty(Tooltip = "The text font weight to use.")]
         public FontWeight FontWeight
         {
@@ -305,8 +384,12 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
                 }
             }
         }
+
         private FontWeight fontWeight = FontWeight.Normal;
 
+        /// <summary>
+        /// Gets or sets text font stretch to use.
+        /// </summary>
         [RenderProperty(Tooltip = "The text font stretch to use.")]
         public FontStretch FontStretch
         {
@@ -320,8 +403,12 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
                 }
             }
         }
+
         private FontStretch fontStretch = FontStretch.Normal;
 
+        /// <summary>
+        /// Gets or sets text font style to use.
+        /// </summary>
         [RenderProperty(Tooltip = "The text font style to use.")]
         public FontStyle FontStyle
         {
@@ -335,8 +422,12 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
                 }
             }
         }
+
         private FontStyle fontStyle = FontStyle.Normal;
 
+        /// <summary>
+        /// Gets or sets text trimming to use.
+        /// </summary>
         [RenderProperty(Tooltip = "The text trimming to use when the text width is longer than the available width")]
         public TextTrimming TextTrimming
         {
@@ -350,10 +441,14 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
                 }
             }
         }
+
         private TextTrimming textTrimming = TextTrimming.None;
 
         private string containerEntityName => $"Text3D_{this.Id}";
 
+        /// <summary>
+        /// Gets text block inlines.
+        /// </summary>
         public InlineCollection Inlines => this.textBlock?.Inlines;
 
         private Transform3D planeTransform;
@@ -374,6 +469,7 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
         private bool isFrameBufferDirty = true;
         private float resolutionScaleFactor = 1;
 
+        /// <inheritdoc />
         protected override void OnLoaded()
         {
             base.OnLoaded();
@@ -384,6 +480,7 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
             }
         }
 
+        /// <inheritdoc />
         protected override bool OnAttached()
         {
             if (!base.OnAttached())
@@ -397,6 +494,7 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
             return true;
         }
 
+        /// <inheritdoc />
         protected override void OnDetach()
         {
             this.RemoveContainerEntity();
@@ -406,6 +504,7 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
             base.OnDetach();
         }
 
+        /// <inheritdoc />
         protected override void Update(TimeSpan gameTime)
         {
             this.UpdateNoesisPanelFrameBuffer();
@@ -439,7 +538,7 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
             {
                 var isFontFamilyLoaded = string.IsNullOrEmpty(this.fontFamilySource) ||
                                          this.noesisService.StyleValid;
-                var hasContent = (!string.IsNullOrEmpty(this.text) || this.Inlines?.Count > 0);
+                var hasContent = !string.IsNullOrEmpty(this.text) || this.Inlines?.Count > 0;
                 return isFontFamilyLoaded && hasContent;
             }
 
@@ -466,7 +565,7 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
                 EnableMouse = false,
                 EnableTouch = false,
                 Width = 1,
-                Height = 1
+                Height = 1,
             };
 
             // Set property values
@@ -537,6 +636,10 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
             this.isContainerEntityAdded = false;
         }
 
+        /// <summary>
+        /// Builds a <see cref="TextBlock"/>.
+        /// </summary>
+        /// <returns>A text block.</returns>
         protected virtual TextBlock BuildTextBlock()
         {
             var noesisColor = new Noesis.Color();
@@ -562,6 +665,11 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
             };
         }
 
+        /// <summary>
+        /// Builds a <see cref="FrameworkElement"/>.
+        /// </summary>
+        /// <param name="textBlock">A <see cref="TextBlock"/>.</param>
+        /// <returns>A framework element.</returns>
         protected virtual FrameworkElement BuildFrameworkElement(TextBlock textBlock)
         {
             var noesisColor = new Noesis.Color();
@@ -591,6 +699,11 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
             this.planeMesh.PlaneNormal = this.normal;
         }
 
+        /// <summary>
+        /// Gets <see cref="FontFamily"/> instance from source.
+        /// </summary>
+        /// <param name="fontFamilySource">Font source.</param>
+        /// <returns>Font family.</returns>
         protected FontFamily GetFontFamily(string fontFamilySource)
         {
             return string.IsNullOrEmpty(fontFamilySource) ? null : new FontFamily(fontFamilySource);
@@ -624,16 +737,16 @@ namespace WaveEngine_MRTK_Demo.Toolkit.Components.GUI
 
                 if (this.customWidth)
                 {
-                    availableSize.Width = this.GetPixelSize(this.width, referencePixelDensity);
+                    availableSize.Width = this.GetPixelSize(this.width, ReferencePixelDensity);
                 }
 
                 if (this.customHeight)
                 {
-                    availableSize.Height = this.GetPixelSize(this.height, referencePixelDensity);
+                    availableSize.Height = this.GetPixelSize(this.height, ReferencePixelDensity);
                 }
 
                 this.textBlock.Measure(availableSize);
-                var desiredSize = this.textBlock.DesiredSize * resolutionScaleFactor;
+                var desiredSize = this.textBlock.DesiredSize * this.resolutionScaleFactor;
                 desiredSize.Width = (float)Math.Ceiling(desiredSize.Width);
                 desiredSize.Height = (float)Math.Ceiling(desiredSize.Height);
 

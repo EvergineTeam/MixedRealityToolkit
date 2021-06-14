@@ -97,7 +97,7 @@ Items:
         Children:
           - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
             Name: Quad
-            Tag: null
+            Tag: PART_Plate
             IsEnabled: true
             IsStatic: false
             Components:
@@ -178,7 +178,7 @@ Items:
         Children:
           - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
             Name: UIButtonSquareIcon
-            Tag: null
+            Tag: PART_Icon
             IsEnabled: true
             IsStatic: false
             Components:
@@ -227,7 +227,7 @@ Items:
             Id: b53277ca-0618-48c9-bd14-4827cc1194f8
           - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
             Name: Text
-            Tag: null
+            Tag: PART_Text
             IsEnabled: true
             IsStatic: false
             Components:
@@ -247,7 +247,7 @@ Items:
                   X: 1.0
                   Y: 1.0
                   Z: 1.0
-              - !WaveEngine_MRTK_Demo.Toolkit.Components.GUI.Text3D,WaveEngine_MRTK_Demo
+              - !WaveEngine.MRTK.Toolkit.GUI.Text3D,WaveEngine.MRTK
                 Id: 0c3534a2-de82-4170-9ce7-41a75c558902
                 Alpha: 1.0
                 Background:
