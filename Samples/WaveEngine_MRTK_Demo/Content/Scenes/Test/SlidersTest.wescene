@@ -26,7 +26,7 @@ Items:
         Id: 123f9559-4071-45e5-9708-ea09bae31c5f
         IntensityMultiplier: 1.0
         IsEnabled: true
-        ReflectionProbe: bf6d5923-dbfe-4585-aba4-fd3f11444b60
+        ReflectionProbe: a97b8187-86e2-45c9-ad11-1e29be0db3f2
     Children: []
     Id: ad8017e0-08ed-427c-97ed-a9c055150ae7
   - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
@@ -645,5 +645,281 @@ Items:
                 Id: c49b637e-23e6-4989-82e7-2bc03254fb7e
             Id: 6af2958c-8175-4a38-be2c-59819d7c3a1f
         Id: 1cdb4f38-ec5e-406e-991a-59bb2affbb31
+      - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+        Name: horizontal
+        Tag: null
+        IsEnabled: true
+        IsStatic: false
+        Components:
+          - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+            Id: 4d8bbd5a-7f9e-4549-bd27-4b816662e4eb
+            IsEnabled: true
+            LocalOrientation:
+              W: 1.0
+              X: 0.0
+              Y: 0.0
+              Z: 0.0
+            LocalPosition:
+              X: -0.256252646
+              Y: 0.0477196798
+              Z: -5.89000955E-08
+            LocalScale:
+              X: 1.0
+              Y: 1.0
+              Z: 1.0
+        Children:
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: SectionTitle
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: 93c9cbcd-0835-4111-9d05-808234ff86bd
+                IsEnabled: true
+                LocalOrientation:
+                  W: 1.0
+                  X: 0.0
+                  Y: 0.0
+                  Z: 0.0
+                LocalPosition:
+                  X: 0.0202045217
+                  Y: 0.0610097647
+                  Z: 0.0
+                LocalScale:
+                  X: 1.0
+                  Y: 1.0
+                  Z: 1.0
+              - !WaveEngine.MRTK.Toolkit.GUI.Text3D,WaveEngine.MRTK
+                Id: e9cb769c-aaa4-4d91-907d-5bda3701a780
+                Alpha: 1.0
+                Background:
+                  A: 0
+                  B: 0
+                  G: 0
+                  R: 0
+                CustomHeight: false
+                CustomWidth: false
+                FontFamilySource: /Fonts/#Segoe UI
+                FontSize: 64
+                FontStretch: Normal
+                FontStyle: Normal
+                FontWeight: Bold
+                Foreground:
+                  A: 255
+                  B: 255
+                  G: 255
+                  R: 255
+                Height: 0.022751322
+                HorizontalAlignment: Left
+                IsEnabled: true
+                Normal: ZNegative
+                Origin:
+                  X: 0.0
+                  Y: 0.5
+                PixelDensity: 3780
+                Text: Horizontal sliders
+                TextAlignment: Left
+                TextTrimming: None
+                TextWrapping: NoWrap
+                UpdateOrder: 0.5
+                VerticalAlignment: Center
+                Width: 0.139947087
+            Children: []
+            Id: 1a5b7aa4-147e-46c4-8c41-2c34b51750a2
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: description
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: 9de43366-4267-4088-a1f2-5a1ad4cfb645
+                IsEnabled: true
+                LocalOrientation:
+                  W: 1.0
+                  X: 0.0
+                  Y: 0.0
+                  Z: 0.0
+                LocalPosition:
+                  X: 0.0202045217
+                  Y: 0.0355906785
+                  Z: 3.03025782E-09
+                LocalScale:
+                  X: 1.0
+                  Y: 1.0
+                  Z: 1.0
+              - !WaveEngine.MRTK.Toolkit.GUI.Text3D,WaveEngine.MRTK
+                Id: 62258f20-d604-4534-86e7-2b9f70647b88
+                Alpha: 1.0
+                Background:
+                  A: 0
+                  B: 0
+                  G: 0
+                  R: 0
+                CustomHeight: false
+                CustomWidth: true
+                FontFamilySource: /Fonts/#Segoe UI
+                FontSize: 24
+                FontStretch: Normal
+                FontStyle: Normal
+                FontWeight: Bold
+                Foreground:
+                  A: 255
+                  B: 255
+                  G: 255
+                  R: 255
+                Height: 0.00846560858
+                HorizontalAlignment: Left
+                IsEnabled: true
+                Normal: ZNegative
+                Origin:
+                  X: 0.0
+                  Y: 0.5
+                PixelDensity: 3780
+                Text: Samples of how to change slider orientation to horizontal.
+                TextAlignment: Left
+                TextTrimming: None
+                TextWrapping: Wrap
+                UpdateOrder: 0.5
+                VerticalAlignment: Center
+                Width: 0.360000014
+            Children: []
+            Id: fd85e6fd-e20d-4baf-9a2c-65bf8fc61b91
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: samples
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: af1e1e7f-5011-48e0-899f-e47966b250f8
+                IsEnabled: true
+                LocalOrientation:
+                  W: 1.0
+                  X: 0.0
+                  Y: 0.0
+                  Z: 0.0
+                LocalPosition:
+                  X: 0.0
+                  Y: 0.0
+                  Z: 0.0
+                LocalScale:
+                  X: 1.0
+                  Y: 1.0
+                  Z: 1.0
+            Children:
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: items
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: 4e506057-a070-4f86-bd6d-1a5258334e26
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: 0.00352758914
+                      Y: -0.0214598775
+                      Z: 3.28714123E-09
+                    LocalScale:
+                      X: 1.0
+                      Y: 1.0
+                      Z: 1.0
+                Children:
+                  - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                    Name: default
+                    Tag: null
+                    IsEnabled: true
+                    IsStatic: false
+                    Components:
+                      - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                        Id: 20c55159-23bb-454e-acf0-02cb7a8a47f8
+                        IsEnabled: true
+                        LocalOrientation:
+                          W: 1.0
+                          X: 0.0
+                          Y: 0.0
+                          Z: 0.0
+                        LocalPosition:
+                          X: -0.0619696379
+                          Y: 0.014815744
+                          Z: -9.73965086E-09
+                        LocalScale:
+                          X: 1.0
+                          Y: 1.0
+                          Z: 1.0
+                      - !WaveEngine.MRTK.Toolkit.Prefabs.ScenePrefab,WaveEngine.MRTK
+                        Id: 5f3cf0e8-9463-4b36-9789-91ddee70661e
+                        DuplicateMaterials: false
+                        IsEnabled: true
+                        ScenePrefabProperty:
+                          PrefabId: ebf701c2-15f7-4a05-bfb0-946e3ac5aa06
+                      - !WaveEngine.MRTK.SDK.Features.UX.Components.Sliders.ChangeSliderOrientation,WaveEngine.MRTK
+                        Id: 3875d191-17eb-4989-94c7-a16c6b8bab66
+                        IsEnabled: true
+                        Rotation: -1.57079637
+                    Children: []
+                    Id: 4ca6a2f3-2658-4845-af56-e64a9defb35a
+                  - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                    Name: changed-materials
+                    Tag: null
+                    IsEnabled: true
+                    IsStatic: false
+                    Components:
+                      - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                        Id: 94ed5848-bf0b-4c35-8a21-e53ab9b91121
+                        IsEnabled: true
+                        LocalOrientation:
+                          W: 1.0
+                          X: 0.0
+                          Y: 0.0
+                          Z: 0.0
+                        LocalPosition:
+                          X: -0.0610725284
+                          Y: -0.0353563987
+                          Z: -3.57371732E-09
+                        LocalScale:
+                          X: 1.0
+                          Y: 1.0
+                          Z: 1.0
+                      - !WaveEngine.MRTK.Toolkit.Prefabs.ScenePrefab,WaveEngine.MRTK
+                        Id: 4c25bc89-aa68-4860-9a4e-6f67fd324db1
+                        DuplicateMaterials: false
+                        IsEnabled: true
+                        ScenePrefabProperty:
+                          PrefabId: ebf701c2-15f7-4a05-bfb0-946e3ac5aa06
+                      - !WaveEngine.MRTK.SDK.Features.UX.Components.Configurators.SliderConfigurator,WaveEngine.MRTK
+                        Id: ca9323bd-9a75-4e27-970e-1c4714f4b8e5
+                        CreatesNewThumbMaterialInstance: false
+                        CreatesNewTrackMaterialInstance: false
+                        IsEnabled: true
+                        PrimaryColor:
+                          A: 255
+                          B: 255
+                          G: 255
+                          R: 255
+                        SecondaryColor:
+                          A: 255
+                          B: 255
+                          G: 255
+                          R: 255
+                        Thumb: 78e9e4d7-711b-44b7-b673-9d2cb9f1220f
+                        Title: Title
+                        Track: b5810cca-0555-4aab-86b8-b591766234a5
+                      - !WaveEngine.MRTK.SDK.Features.UX.Components.Sliders.ChangeSliderOrientation,WaveEngine.MRTK
+                        Id: 5caf5917-90a5-454a-9f17-53affe563523
+                        IsEnabled: true
+                        Rotation: -1.57079637
+                    Children: []
+                    Id: 14ae2df7-aa0f-4adb-8644-955f925b0498
+                Id: 9c021dd6-ed1c-49bb-bb80-0abdcf16c40f
+            Id: 56b3e548-2be6-4f33-926a-230a3fd83421
+        Id: 59b44705-0bb8-4341-8b5e-43cf8d364b08
     Id: 386cdfbd-5282-47d7-bcd3-0b9956b21f03
 Managers: []
