@@ -66,7 +66,7 @@ Items:
         Children:
           - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
             Name: sliderTrackSimple
-            Tag: null
+            Tag: PART_Track
             IsEnabled: true
             IsStatic: false
             Components:
@@ -164,7 +164,7 @@ Items:
         Children:
           - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
             Name: Slider_Button
-            Tag: null
+            Tag: PART_Thumb
             IsEnabled: true
             IsStatic: false
             Components:
@@ -205,7 +205,7 @@ Items:
             Id: e0b2f115-1b88-44f9-adcf-b100a8e5b898
           - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
             Name: Title
-            Tag: null
+            Tag: PART_Title
             IsEnabled: true
             IsStatic: false
             Components:
@@ -264,7 +264,7 @@ Items:
             Id: f822d1fd-a540-4f1f-a1c5-b2a97dc7b151
           - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
             Name: Value
-            Tag: null
+            Tag: PART_Value
             IsEnabled: true
             IsStatic: false
             Components:

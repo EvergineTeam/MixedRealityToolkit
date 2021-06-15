@@ -112,7 +112,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.Configurators
                 if (this.text != value)
                 {
                     this.text = value;
-                    this.UpdateText();
+                    this.OnUpdateText();
                 }
             }
         }
@@ -140,7 +140,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.Configurators
             base.OnActivated();
             this.plateConfigurator.Apply();
             this.iconConfigurator.Apply();
-            this.UpdateText();
+            this.OnUpdateText();
             this.UpdateTextColor();
         }
 
@@ -150,14 +150,11 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.Configurators
             this.UpdateTextColor();
         }
 
-        private void UpdateText()
+        private void OnUpdateText()
         {
             if (this.buttonText != null)
             {
-                // we can't pass a null string, as this will provoke an
-                // exception with noesis block width. As workaround we place a
-                // single space string.
-                this.buttonText.Text = this.Text ?? " ";
+                this.buttonText.Text = this.text.AsSafeStringForText3D();
             }
         }
 
