@@ -863,7 +863,7 @@ Items:
                       - !WaveEngine.MRTK.SDK.Features.UX.Components.Sliders.ChangeSliderOrientation,WaveEngine.MRTK
                         Id: 3875d191-17eb-4989-94c7-a16c6b8bab66
                         IsEnabled: true
-                        Rotation: -1.57079637
+                        Rotation: 1.57079637
                     Children: []
                     Id: 4ca6a2f3-2658-4845-af56-e64a9defb35a
                   - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
@@ -915,7 +915,7 @@ Items:
                       - !WaveEngine.MRTK.SDK.Features.UX.Components.Sliders.ChangeSliderOrientation,WaveEngine.MRTK
                         Id: 5caf5917-90a5-454a-9f17-53affe563523
                         IsEnabled: true
-                        Rotation: -1.57079637
+                        Rotation: 1.57079637
                     Children: []
                     Id: 14ae2df7-aa0f-4adb-8644-955f925b0498
                 Id: 9c021dd6-ed1c-49bb-bb80-0abdcf16c40f
