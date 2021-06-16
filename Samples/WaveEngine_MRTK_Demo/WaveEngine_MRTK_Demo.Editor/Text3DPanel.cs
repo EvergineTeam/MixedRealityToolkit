@@ -1,12 +1,10 @@
 ﻿using System.Collections.Generic;
-using System.Drawing;
-using System.Drawing.Text;
 using System.Linq;
 using WaveEngine.Editor.Extension;
 using WaveEngine.Editor.Extension.Attributes;
 using WaveEngine.Framework;
+using WaveEngine.MRTK.Toolkit.GUI;
 using WaveEngine.Platform;
-using WaveEngine_MRTK_Demo.Toolkit.Components.GUI;
 
 namespace WaveEngine_MRTK_Demo.Editor
 {

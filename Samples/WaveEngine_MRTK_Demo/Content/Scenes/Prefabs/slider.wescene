@@ -2,7 +2,7 @@
 Items:
   - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
     Name: pinchSlider0
-    Tag: null
+    Tag: PART_Root
     IsEnabled: true
     IsStatic: false
     Components:
@@ -10,10 +10,10 @@ Items:
         Id: ea0272b2-a7d6-4202-b68b-ad1c35bfbce6
         IsEnabled: true
         LocalOrientation:
-          W: 1.94707184E-07
+          W: 1.0
           X: 0.0
-          Y: 1.0
-          Z: 0.0
+          Y: 0.0
+          Z: -0.0
         LocalPosition:
           X: 0.0
           Y: 0.0
@@ -66,7 +66,7 @@ Items:
         Children:
           - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
             Name: sliderTrackSimple
-            Tag: null
+            Tag: PART_Track
             IsEnabled: true
             IsStatic: false
             Components:
@@ -164,7 +164,7 @@ Items:
         Children:
           - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
             Name: Slider_Button
-            Tag: null
+            Tag: PART_Thumb
             IsEnabled: true
             IsStatic: false
             Components:
@@ -172,14 +172,14 @@ Items:
                 Id: 4b02096f-247a-4a01-b41a-731a66912bae
                 IsEnabled: true
                 LocalOrientation:
-                  W: 8.54225206E-08
-                  X: -0.70710665
-                  Y: -0.707106888
-                  Z: -8.80869919E-08
+                  W: 0.707106888
+                  X: -8.6754774E-08
+                  Y: 8.67547385E-08
+                  Z: 0.70710665
                 LocalPosition:
                   X: -2.85894508E-09
                   Y: 0.0
-                  Z: -0.0123416819
+                  Z: 0.0120000001
                 LocalScale:
                   X: 1.0
                   Y: 1.0
@@ -204,126 +204,150 @@ Items:
             Children: []
             Id: e0b2f115-1b88-44f9-adcf-b100a8e5b898
           - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
-            Name: Title
-            Tag: null
+            Name: text
+            Tag: PART_Text
             IsEnabled: true
             IsStatic: false
             Components:
               - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
-                Id: f4a22c88-f69c-4f4f-864b-a20fa676a96d
+                Id: 4e23cde8-e88f-4c32-9586-f1ae80c99139
                 IsEnabled: true
                 LocalOrientation:
-                  W: 1.94707184E-07
+                  W: 1.0
                   X: 0.0
-                  Y: 1.0
-                  Z: -0.0
+                  Y: 0.0
+                  Z: 0.0
                 LocalPosition:
-                  X: -0.0261000004
-                  Y: 0.00548836868
-                  Z: 8.81039242E-10
+                  X: 0.0260000005
+                  Y: 0.0
+                  Z: 0.0
                 LocalScale:
                   X: 1.0
                   Y: 1.0
                   Z: 1.0
-              - !WaveEngine_MRTK_Demo.Toolkit.Components.GUI.Text3D,WaveEngine_MRTK_Demo
-                Id: 2d146da0-dc69-4713-96f6-02f27aa3f6e4
-                Alpha: 1.0
-                Background:
-                  A: 0
-                  B: 0
-                  G: 0
-                  R: 0
-                CustomHeight: false
-                CustomWidth: false
-                FontFamilySource: /Fonts/#Segoe UI
-                FontSize: 32
-                FontStretch: Normal
-                FontStyle: Normal
-                FontWeight: Normal
-                Foreground:
-                  A: 255
-                  B: 255
-                  G: 255
-                  R: 255
-                Height: 0.0114000002
-                HorizontalAlignment: Right
+            Children:
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: Title
+                Tag: PART_Title
                 IsEnabled: true
-                Normal: ZNegative
-                Origin:
-                  X: 1.0
-                  Y: 0.5
-                PixelDensity: 5000
-                Text: Title
-                TextAlignment: Right
-                TextTrimming: None
-                TextWrapping: NoWrap
-                UpdateOrder: 0.5
-                VerticalAlignment: Center
-                Width: 0.0160000008
-            Children: []
-            Id: f822d1fd-a540-4f1f-a1c5-b2a97dc7b151
-          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
-            Name: Value
-            Tag: null
-            IsEnabled: true
-            IsStatic: false
-            Components:
-              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
-                Id: 67f0cc20-fe0a-4ed6-a5c6-b88a639011f9
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: f4a22c88-f69c-4f4f-864b-a20fa676a96d
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: -0.0
+                    LocalPosition:
+                      X: 0.0
+                      Y: 0.00548836868
+                      Z: 8.81039242E-10
+                    LocalScale:
+                      X: 1.0
+                      Y: 1.0
+                      Z: 1.0
+                  - !WaveEngine.MRTK.Toolkit.GUI.Text3D,WaveEngine.MRTK
+                    Id: 2d146da0-dc69-4713-96f6-02f27aa3f6e4
+                    Alpha: 1.0
+                    Background:
+                      A: 0
+                      B: 0
+                      G: 0
+                      R: 0
+                    CustomHeight: false
+                    CustomWidth: false
+                    FontFamilySource: /Fonts/#Segoe UI
+                    FontSize: 32
+                    FontStretch: Normal
+                    FontStyle: Normal
+                    FontWeight: Normal
+                    Foreground:
+                      A: 255
+                      B: 255
+                      G: 255
+                      R: 255
+                    Height: 0.0114000002
+                    HorizontalAlignment: Right
+                    IsEnabled: true
+                    Normal: ZNegative
+                    Origin:
+                      X: 1.0
+                      Y: 0.5
+                    PixelDensity: 5000
+                    Text: Title
+                    TextAlignment: Right
+                    TextTrimming: None
+                    TextWrapping: NoWrap
+                    UpdateOrder: 0.5
+                    VerticalAlignment: Center
+                    Width: 0.0160000008
+                Children: []
+                Id: f822d1fd-a540-4f1f-a1c5-b2a97dc7b151
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: Value
+                Tag: PART_Value
                 IsEnabled: true
-                LocalOrientation:
-                  W: 1.94707184E-07
-                  X: 0.0
-                  Y: 1.0
-                  Z: -0.0
-                LocalPosition:
-                  X: -0.0260678064
-                  Y: -0.00433111843
-                  Z: 3.78102705E-09
-                LocalScale:
-                  X: 1.0
-                  Y: 1.0
-                  Z: 1.0
-              - !WaveEngine_MRTK_Demo.Toolkit.Components.GUI.Text3D,WaveEngine_MRTK_Demo
-                Id: a1cc0b39-c06b-4e2b-8f45-cfc2236572f7
-                Alpha: 1.0
-                Background:
-                  A: 0
-                  B: 0
-                  G: 0
-                  R: 0
-                CustomHeight: false
-                CustomWidth: false
-                FontFamilySource: /Fonts/#Segoe UI
-                FontSize: 42
-                FontStretch: Normal
-                FontStyle: Normal
-                FontWeight: Normal
-                Foreground:
-                  A: 255
-                  B: 255
-                  G: 255
-                  R: 255
-                Height: 0.0148
-                HorizontalAlignment: Right
-                IsEnabled: true
-                Normal: ZNegative
-                Origin:
-                  X: 1.0
-                  Y: 0.5
-                PixelDensity: 5000
-                Text: value
-                TextAlignment: Right
-                TextTrimming: None
-                TextWrapping: NoWrap
-                UpdateOrder: 0.5
-                VerticalAlignment: Center
-                Width: 0.0255999994
-              - !WaveEngine_MRTK_Demo.Components.ShowSliderValue,WaveEngine_MRTK_Demo
-                Id: a5c9ddb0-e967-41ba-b350-5035ea53a5f5
-                IsEnabled: true
-            Children: []
-            Id: 2d1a0452-acba-444e-bd8e-d7a8cb9aedbc
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: 67f0cc20-fe0a-4ed6-a5c6-b88a639011f9
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: -0.0
+                    LocalPosition:
+                      X: 0.0
+                      Y: -0.00433111843
+                      Z: 3.78102705E-09
+                    LocalScale:
+                      X: 1.0
+                      Y: 1.0
+                      Z: 1.0
+                  - !WaveEngine.MRTK.Toolkit.GUI.Text3D,WaveEngine.MRTK
+                    Id: a1cc0b39-c06b-4e2b-8f45-cfc2236572f7
+                    Alpha: 1.0
+                    Background:
+                      A: 0
+                      B: 0
+                      G: 0
+                      R: 0
+                    CustomHeight: false
+                    CustomWidth: false
+                    FontFamilySource: /Fonts/#Segoe UI
+                    FontSize: 42
+                    FontStretch: Normal
+                    FontStyle: Normal
+                    FontWeight: Normal
+                    Foreground:
+                      A: 255
+                      B: 255
+                      G: 255
+                      R: 255
+                    Height: 0.0148
+                    HorizontalAlignment: Right
+                    IsEnabled: true
+                    Normal: ZNegative
+                    Origin:
+                      X: 1.0
+                      Y: 0.5
+                    PixelDensity: 5000
+                    Text: value
+                    TextAlignment: Right
+                    TextTrimming: None
+                    TextWrapping: NoWrap
+                    UpdateOrder: 0.5
+                    VerticalAlignment: Center
+                    Width: 0.0255999994
+                  - !WaveEngine_MRTK_Demo.Components.ShowSliderValue,WaveEngine_MRTK_Demo
+                    Id: a5c9ddb0-e967-41ba-b350-5035ea53a5f5
+                    IsEnabled: true
+                Children: []
+                Id: 2d1a0452-acba-444e-bd8e-d7a8cb9aedbc
+            Id: 021dcb6b-b30b-4c59-a8df-3f30bb953ce0
         Id: 9c0d18b5-5928-4a8c-bf0a-ee78937b1c7b
     Id: 660df448-a8ac-4d33-a9bd-ae324caebaeb
 Managers: []

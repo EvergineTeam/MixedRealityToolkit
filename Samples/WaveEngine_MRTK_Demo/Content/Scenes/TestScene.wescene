@@ -26,7 +26,7 @@ Items:
         Id: 615f5159-9a4d-47f6-9e3b-012b4dc13180
         IntensityMultiplier: 1.0
         IsEnabled: true
-        ReflectionProbe: 51c8c0fa-ed93-4b66-9eeb-2382b714f7e3
+        ReflectionProbe: 729a1af6-dd26-4d6a-901a-a55e9720e487
     Children: []
     Id: 046665f3-bf43-4a2f-9c17-ac19073d0d84
   - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
@@ -922,7 +922,7 @@ Items:
                           X: 1.0
                           Y: 1.0
                           Z: 1.0
-                      - !WaveEngine_MRTK_Demo.Toolkit.Components.GUI.Text3D,WaveEngine_MRTK_Demo
+                      - !WaveEngine.MRTK.Toolkit.GUI.Text3D,WaveEngine.MRTK
                         Id: dac94535-3c81-43aa-ab9f-e84a79a2b4e8
                         Alpha: 1.0
                         Background:
@@ -981,7 +981,7 @@ Items:
                           X: 1.0
                           Y: 1.0
                           Z: 1.0
-                      - !WaveEngine_MRTK_Demo.Toolkit.Components.GUI.Text3D,WaveEngine_MRTK_Demo
+                      - !WaveEngine.MRTK.Toolkit.GUI.Text3D,WaveEngine.MRTK
                         Id: f14fa961-5935-410c-a28c-7359be6ff675
                         Alpha: 1.0
                         Background:

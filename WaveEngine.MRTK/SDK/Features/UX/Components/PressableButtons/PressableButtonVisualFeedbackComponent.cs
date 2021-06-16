@@ -105,7 +105,27 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
             if (this.ChangeColor)
             {
                 // Set MaterialComponent color
+                this.FixUpReleasedMaterial();
                 this.materialComponent.Material = pressed ? this.PressedMaterial : this.releasedMaterial;
+            }
+        }
+
+        /// <summary>
+        /// It's possible that other component changes default button material, that here is cached
+        /// when component is attached.
+        /// </summary>
+        private void FixUpReleasedMaterial()
+        {
+            var currentMaterial = this.materialComponent?.Material;
+            if (currentMaterial == null)
+            {
+                return;
+            }
+
+            if (currentMaterial.Id != this.releasedMaterial?.Id &&
+                currentMaterial.Id != this.PressedMaterial?.Id)
+            {
+                this.releasedMaterial = currentMaterial;
             }
         }
     }

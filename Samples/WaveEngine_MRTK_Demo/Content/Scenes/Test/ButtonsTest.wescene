@@ -1,0 +1,3787 @@
+!WaveEngine.Framework.Assets.AssetSources.Entities.SceneModel,WaveEngine.Framework
+Items:
+  - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+    Name: EnvironmentManager
+    Tag: null
+    IsEnabled: true
+    IsStatic: false
+    Components:
+      - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+        Id: d91a504c-b26f-47e8-8763-def1f58bf0c1
+        IsEnabled: true
+        LocalOrientation:
+          W: 1.0
+          X: 0.0
+          Y: 0.0
+          Z: 0.0
+        LocalPosition:
+          X: 0.999729156
+          Y: 1.580235
+          Z: 0.843612909
+        LocalScale:
+          X: 1.0
+          Y: 1.0
+          Z: 1.0
+      - !WaveEngine.Components.Graphics3D.EnvironmentComponent,WaveEngine.Framework
+        Id: 123f9559-4071-45e5-9708-ea09bae31c5f
+        IntensityMultiplier: 1.0
+        IsEnabled: true
+        ReflectionProbe: 24c78cf0-1cc1-40a8-9657-28cc458ae371
+    Children: []
+    Id: ad8017e0-08ed-427c-97ed-a9c055150ae7
+  - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+    Name: SunLight
+    Tag: null
+    IsEnabled: true
+    IsStatic: false
+    Components:
+      - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+        Id: 8d406dae-3d2b-4fae-a5ce-58ad678dc67e
+        IsEnabled: true
+        LocalOrientation:
+          W: 0.875426233
+          X: -0.408218026
+          Y: 0.234569266
+          Z: 0.109380692
+        LocalPosition:
+          X: 0.0
+          Y: 0.0
+          Z: 0.0
+        LocalScale:
+          X: 1.0
+          Y: 1.0
+          Z: 1.0
+      - !WaveEngine.Framework.Graphics.PhotometricDirectionalLight,WaveEngine.Framework
+        Id: d9abdcf3-5231-4fa2-bb59-f1a9ba6e555c
+        Color:
+          A: 255
+          B: 253
+          G: 248
+          R: 255
+        ColorByTemperature: true
+        DebugMode: false
+        GammaDistribution: 0.800000012
+        Illuminance: 10.0
+        Intensity: 10.0
+        IsEnabled: true
+        IsShadowEnabled: false
+        LinearColor:
+          A: 1.0
+          B: 0.982790232
+          G: 0.943362474
+          R: 1.0
+        ShadowBias: 0.00499999989
+        ShadowDistance: 80.0
+        ShadowOpacity: 1.0
+        SplitDistance:
+          - 0.0
+          - 0.0
+          - 0.0
+          - 0.0
+        Temperature: 6500.0
+      - !WaveEngine.Framework.Graphics.SunComponent,WaveEngine.Framework
+        Id: 1fc05b9d-1327-4a98-ac14-4be2affda7df
+        IsEnabled: true
+    Children: []
+    Id: 2b2e4c3f-bffd-4554-a412-9437605b8e3a
+  - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+    Name: SkyAtmosphere
+    Tag: Skybox
+    IsEnabled: true
+    IsStatic: false
+    Components:
+      - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+        Id: b002cfff-d4eb-4e92-8f91-ef2da1a809ec
+        IsEnabled: true
+        LocalOrientation:
+          W: 1.0
+          X: 0.0
+          Y: 0.0
+          Z: 0.0
+        LocalPosition:
+          X: 0.0
+          Y: 0.0
+          Z: 0.0
+        LocalScale:
+          X: 1.0
+          Y: 1.0
+          Z: 1.0
+      - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+        Id: 88e25e58-d6ca-4934-a280-294f805c26bd
+        AsignedTo: Default
+        IsEnabled: true
+        Material: null
+      - !WaveEngine.Components.Graphics3D.SphereMesh,WaveEngine.Components
+        Id: 9369593f-c243-4632-b7c2-8b3e94abc256
+        Diameter: 1.0
+        IsEnabled: true
+        Tessellation: 32
+        UVHorizontalFlip: false
+        UVVerticalFlip: false
+      - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+        Id: 06c2bb0d-d53f-4f56-9d16-a75495d7cf9e
+        DebugBoundingbox: true
+        IsCullingEnabled: false
+        IsEnabled: true
+        OrderBias: 0
+        RenderFlags: CastShadows
+      - !WaveEngine.Components.Environment.AtmosphereController,WaveEngine.Components
+        Id: b84071a0-41cb-4f73-bfe2-fdd83a95ad77
+        AtmosphereRadiusInKm: 6471.0
+        IsEnabled: true
+        MiePreferredScatteringDirection: 0.758000016
+        MieScaleHeight: 1200.0
+        MieScatteringCoefficient: 21.0
+        ModifySunColor: true
+        PlanetRadiusInKm: 6371.0
+        RayleighScaleHeight: 8000.0
+        RayleighScatteringCoefficient:
+          X: 5.5
+          Y: 13.0
+          Z: 22.3999996
+        SunDiskEnabled: true
+        SunDiskSize: 0.0199999996
+        SunIntensity: 22.0
+        UpdateOrder: 0.5
+    Children: []
+    Id: d2fdca18-3c13-46e5-b7b6-5ba46051c1f4
+  - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+    Name: HolographicBatching
+    Tag: null
+    IsEnabled: true
+    IsStatic: false
+    Components:
+      - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+        Id: 2e3f3259-2278-4277-9006-db6a8794ea48
+        IsEnabled: true
+        LocalOrientation:
+          W: 1.0
+          X: 0.0
+          Y: 0.0
+          Z: 0.0
+        LocalPosition:
+          X: 0.0
+          Y: 0.0
+          Z: 0.0
+        LocalScale:
+          X: 1.0
+          Y: 1.0
+          Z: 1.0
+      - !WaveEngine.MRTK.Emulation.HolographicBatching,WaveEngine.MRTK
+        Id: 4caa8f96-2f69-49bf-8e47-f006251cc2f7
+        IsEnabled: true
+    Children: []
+    Id: 80c974d1-ac28-449a-bd2a-1fe248766773
+  - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+    Name: camera
+    Tag: 
+    IsEnabled: true
+    IsStatic: false
+    Components:
+      - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+        Id: d8af0a4f-ec5d-4dbd-88d5-b657d9821e64
+        IsEnabled: true
+        LocalOrientation:
+          W: 0.980608106
+          X: -0.195978805
+          Y: 1.11024541E-07
+          Z: -1.34341775E-07
+        LocalPosition:
+          X: 0.198621243
+          Y: 0.325728297
+          Z: 0.574680567
+        LocalScale:
+          X: 1.0
+          Y: 1.0
+          Z: 1.0
+      - !WaveEngine.Components.Cameras.FreeCamera3D,WaveEngine.Components
+        Id: 98c044c8-e826-4290-bdec-7c37e65dd58a
+        IsEnabled: true
+        MaxPitch: 1.49225616
+        MouseSensibility: 0.200000003
+        Speed: 0.200000003
+        TouchMoveAndOrientationRatio: 0.5
+        TouchSensibility: 1.0
+        UpdateOrder: 0.5
+      - !WaveEngine.Framework.Graphics.Camera3D,WaveEngine.Framework
+        Id: e6234645-a09c-405e-b7cc-e8970277f72c
+        Aperture: 1.0
+        AspectRatio: 1.74418604
+        AutoDepthBounds: false
+        AutoExposureEnabled: false
+        CameraOrder: 0.0
+        ClearDepth: 1.0
+        ClearFlags: All
+        ClearStencil: 0
+        Compensation: 0.0
+        DepthRange:
+          MaxDepth: 1.0
+          MinDepth: 0.0
+        DisplayTag: null
+        DisplayTagDirty: true
+        Exposure: 1.00000012
+        FarPlane: 1000.0
+        FieldOfView: 0.785398185
+        FieldOfViewAxis: Vertical
+        FocalDistance: 1.0
+        FocalLength: 50.0
+        FrustumCullingEnabled: true
+        HDREnabled: true
+        IsEnabled: true
+        LayerMaskDefaultValue: true
+        LinearBackgroundColor:
+          A: 0.0
+          B: 0.0
+          G: 0.0
+          R: 0.0
+        LogLuminanceRange: 12.0
+        MinLogLuminance: -10.0
+        NearPlane: 0.100000001
+        ScreenViewport:
+          Height: 172.0
+          MaxDepth: 1.0
+          MinDepth: 0.0
+          Width: 300.0
+          X: 0.0
+          Y: 0.0
+        Sensitivity: 100.0
+        SensorSize:
+          X: 36.0
+          Y: 24.0
+        ShutterSpeed: 1.20000005
+        TAU: 1.10000002
+        TagFilter: null
+        UpVector:
+          X: 0.0
+          Y: 1.0
+          Z: 0.0
+        UsePhysicalParameters: false
+    Children: []
+    Id: b0c3cd83-5c05-4c45-9228-c44aebdd9b4d
+  - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+    Name: buttons
+    Tag: 
+    IsEnabled: true
+    IsStatic: false
+    Components:
+      - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+        Id: cd4188bb-1487-4bb2-b319-eeb3d290797a
+        IsEnabled: true
+        LocalOrientation:
+          W: -4.37113883E-08
+          X: -0.0
+          Y: 1.0
+          Z: 0.0
+        LocalPosition:
+          X: 0.0
+          Y: 0.0
+          Z: 0.0
+        LocalScale:
+          X: 1.0
+          Y: 1.0
+          Z: 1.0
+    Children:
+      - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+        Name: configurators
+        Tag: null
+        IsEnabled: true
+        IsStatic: false
+        Components:
+          - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+            Id: 75eabedd-a0e7-4b63-a77d-be466c60e126
+            IsEnabled: true
+            LocalOrientation:
+              W: 1.0
+              X: 0.0
+              Y: 0.0
+              Z: 0.0
+            LocalPosition:
+              X: 0.0680612251
+              Y: 0.0477196798
+              Z: 8.11349921E-09
+            LocalScale:
+              X: 1.0
+              Y: 1.0
+              Z: 1.0
+        Children:
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: SectionTitle
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: be9a2ffe-bcea-43ab-856e-c9df05be4784
+                IsEnabled: true
+                LocalOrientation:
+                  W: 1.0
+                  X: 0.0
+                  Y: 0.0
+                  Z: 0.0
+                LocalPosition:
+                  X: 0.0202045217
+                  Y: 0.0610097647
+                  Z: 0.0
+                LocalScale:
+                  X: 1.0
+                  Y: 1.0
+                  Z: 1.0
+              - !WaveEngine.MRTK.Toolkit.GUI.Text3D,WaveEngine.MRTK
+                Id: 236726e7-35b7-4a8b-84d5-f65cc3aef732
+                Alpha: 1.0
+                Background:
+                  A: 0
+                  B: 0
+                  G: 0
+                  R: 0
+                CustomHeight: false
+                CustomWidth: false
+                FontFamilySource: /Fonts/#Segoe UI
+                FontSize: 64
+                FontStretch: Normal
+                FontStyle: Normal
+                FontWeight: Bold
+                Foreground:
+                  A: 255
+                  B: 255
+                  G: 255
+                  R: 255
+                Height: 0.022751322
+                HorizontalAlignment: Left
+                IsEnabled: true
+                Normal: ZNegative
+                Origin:
+                  X: 0.0
+                  Y: 0.5
+                PixelDensity: 3780
+                Text: Button configurator
+                TextAlignment: Left
+                TextTrimming: None
+                TextWrapping: NoWrap
+                UpdateOrder: 0.5
+                VerticalAlignment: Center
+                Width: 0.159788355
+            Children: []
+            Id: 56d34263-7dd6-4848-bef3-8591b54a1fb2
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: description
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: dffca7ce-391f-4113-933c-66cd06c14ad3
+                IsEnabled: true
+                LocalOrientation:
+                  W: 1.0
+                  X: 0.0
+                  Y: 0.0
+                  Z: 0.0
+                LocalPosition:
+                  X: 0.0202045217
+                  Y: 0.0355906785
+                  Z: 3.03025782E-09
+                LocalScale:
+                  X: 1.0
+                  Y: 1.0
+                  Z: 1.0
+              - !WaveEngine.MRTK.Toolkit.GUI.Text3D,WaveEngine.MRTK
+                Id: 6fc365f3-8474-43e2-ba61-0c64f198fdb3
+                Alpha: 1.0
+                Background:
+                  A: 0
+                  B: 0
+                  G: 0
+                  R: 0
+                CustomHeight: false
+                CustomWidth: true
+                FontFamilySource: /Fonts/#Segoe UI
+                FontSize: 24
+                FontStretch: Normal
+                FontStyle: Normal
+                FontWeight: Bold
+                Foreground:
+                  A: 255
+                  B: 255
+                  G: 255
+                  R: 255
+                Height: 0.0169312172
+                HorizontalAlignment: Left
+                IsEnabled: true
+                Normal: ZNegative
+                Origin:
+                  X: 0.0
+                  Y: 0.5
+                PixelDensity: 3780
+                Text: Samples of buttons with custom icons, plate and tint colors.
+                TextAlignment: Left
+                TextTrimming: None
+                TextWrapping: Wrap
+                UpdateOrder: 0.5
+                VerticalAlignment: Center
+                Width: 0.159999996
+            Children: []
+            Id: 3602a542-b7b6-465f-a5ab-03eca288ff47
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: samples
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: c9b14681-c5f4-4414-a601-a46940faf9b2
+                IsEnabled: true
+                LocalOrientation:
+                  W: 1.0
+                  X: 0.0
+                  Y: 0.0
+                  Z: 0.0
+                LocalPosition:
+                  X: 0.0
+                  Y: 0.0
+                  Z: 0.0
+                LocalScale:
+                  X: 1.0
+                  Y: 1.0
+                  Z: 1.0
+            Children:
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: squares
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: c0125479-7f50-4cee-bf27-497840780727
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: 0.00352758914
+                      Y: -0.0214598775
+                      Z: 3.28714123E-09
+                    LocalScale:
+                      X: 1.0
+                      Y: 1.0
+                      Z: 1.0
+                Children:
+                  - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                    Name: default
+                    Tag: null
+                    IsEnabled: true
+                    IsStatic: false
+                    Components:
+                      - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                        Id: 75d86f68-d37e-47df-a42b-27d0546e29fc
+                        IsEnabled: true
+                        LocalOrientation:
+                          W: 1.0
+                          X: 0.0
+                          Y: 0.0
+                          Z: 0.0
+                        LocalPosition:
+                          X: 0.0
+                          Y: 0.0202627182
+                          Z: 2.41549625E-09
+                        LocalScale:
+                          X: 1.0
+                          Y: 1.0
+                          Z: 1.0
+                      - !WaveEngine.MRTK.Toolkit.Prefabs.ScenePrefab,WaveEngine.MRTK
+                        Id: af6c055d-e4f0-44db-83aa-687ab5d82937
+                        DuplicateMaterials: false
+                        IsEnabled: true
+                        ScenePrefabProperty:
+                          PrefabId: facc69c2-67f2-4bc3-97cd-d1ddbd42a7e5
+                    Children: []
+                    Id: f1c9378e-7752-42a6-8c94-4c52c76eb63d
+                  - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                    Name: changedIconButNoTint
+                    Tag: null
+                    IsEnabled: true
+                    IsStatic: false
+                    Components:
+                      - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                        Id: fcd1f28f-d7bc-4920-81ee-c6cdb8918767
+                        IsEnabled: true
+                        LocalOrientation:
+                          W: 1.0
+                          X: 0.0
+                          Y: 0.0
+                          Z: 0.0
+                        LocalPosition:
+                          X: -0.0391719267
+                          Y: 0.020175837
+                          Z: 2.45893528E-09
+                        LocalScale:
+                          X: 1.0
+                          Y: 1.0
+                          Z: 1.0
+                      - !WaveEngine.MRTK.Toolkit.Prefabs.ScenePrefab,WaveEngine.MRTK
+                        Id: 3c136828-7e7b-4396-aa41-e6974896dc8b
+                        DuplicateMaterials: false
+                        IsEnabled: true
+                        ScenePrefabProperty:
+                          PrefabId: facc69c2-67f2-4bc3-97cd-d1ddbd42a7e5
+                      - !WaveEngine.MRTK.SDK.Features.UX.Components.Configurators.StandardButtonConfigurator,WaveEngine.MRTK
+                        Id: 681a2093-69a3-4913-8fc8-07fa7ceba7b1
+                        CreatesNewBackPlateMaterialInstance: false
+                        CreatesNewIconMaterialInstance: false
+                        Icon: d129f5e3-9a07-442b-8f09-779075e73943
+                        IsEnabled: true
+                        Plate: null
+                        PrimaryColor:
+                          A: 255
+                          B: 255
+                          G: 255
+                          R: 255
+                        Text: Button
+                    Children: []
+                    Id: 0d4a74fe-7f45-41e8-95e5-0d048e01dff6
+                  - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                    Name: changedIconAndTint
+                    Tag: null
+                    IsEnabled: true
+                    IsStatic: false
+                    Components:
+                      - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                        Id: 96f96fac-8c90-485b-87c4-408c9551db67
+                        IsEnabled: true
+                        LocalOrientation:
+                          W: 1.0
+                          X: 0.0
+                          Y: -4.36332302E-05
+                          Z: 0.0
+                        LocalPosition:
+                          X: -0.0777043849
+                          Y: 0.0199999996
+                          Z: 2.77633028E-09
+                        LocalScale:
+                          X: 1.0
+                          Y: 1.0
+                          Z: 1.0
+                      - !WaveEngine.MRTK.Toolkit.Prefabs.ScenePrefab,WaveEngine.MRTK
+                        Id: 1fe4d55d-d557-4a3d-acee-dc2e9ef5b8d8
+                        DuplicateMaterials: false
+                        IsEnabled: true
+                        ScenePrefabProperty:
+                          PrefabId: facc69c2-67f2-4bc3-97cd-d1ddbd42a7e5
+                      - !WaveEngine.MRTK.SDK.Features.UX.Components.Configurators.StandardButtonConfigurator,WaveEngine.MRTK
+                        Id: a03f274d-2056-440a-a37b-5525f4abf79f
+                        CreatesNewBackPlateMaterialInstance: false
+                        CreatesNewIconMaterialInstance: true
+                        Icon: d129f5e3-9a07-442b-8f09-779075e73943
+                        IsEnabled: true
+                        Plate: null
+                        PrimaryColor:
+                          A: 255
+                          B: 4
+                          G: 0
+                          R: 255
+                        Text: Button
+                    Children: []
+                    Id: b2281372-b10a-44cf-9cf7-b70b6365c8da
+                  - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                    Name: changedIconAndBack
+                    Tag: null
+                    IsEnabled: true
+                    IsStatic: false
+                    Components:
+                      - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                        Id: 9f77b066-ce84-4480-b066-e56c5a6d87d5
+                        IsEnabled: true
+                        LocalOrientation:
+                          W: 1.0
+                          X: 0.0
+                          Y: -4.36332302E-05
+                          Z: 0.0
+                        LocalPosition:
+                          X: -0.119441576
+                          Y: 0.0199999996
+                          Z: 2.40792808E-09
+                        LocalScale:
+                          X: 1.0
+                          Y: 1.0
+                          Z: 1.0
+                      - !WaveEngine.MRTK.Toolkit.Prefabs.ScenePrefab,WaveEngine.MRTK
+                        Id: a3839386-3b62-47d3-9983-bfb3c90bfa04
+                        DuplicateMaterials: false
+                        IsEnabled: true
+                        ScenePrefabProperty:
+                          PrefabId: facc69c2-67f2-4bc3-97cd-d1ddbd42a7e5
+                      - !WaveEngine.MRTK.SDK.Features.UX.Components.Configurators.StandardButtonConfigurator,WaveEngine.MRTK
+                        Id: 2945e4c0-0489-48f0-9e85-82ea252e51c0
+                        CreatesNewBackPlateMaterialInstance: true
+                        CreatesNewIconMaterialInstance: true
+                        Icon: d129f5e3-9a07-442b-8f09-779075e73943
+                        IsEnabled: true
+                        Plate: 5b5bc9bf-19f4-4513-9e52-d0e5935da820
+                        PrimaryColor:
+                          A: 255
+                          B: 4
+                          G: 0
+                          R: 255
+                        Text: Button
+                    Children: []
+                    Id: 61115568-5018-4dac-abde-193227195440
+                Id: c49b637e-23e6-4989-82e7-2bc03254fb7e
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: rounded
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: 778f8764-2faf-4f1d-9748-149057673cf4
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: 0.00176247954
+                      Y: -0.0227535963
+                      Z: 3.07663583E-09
+                    LocalScale:
+                      X: 1.0
+                      Y: 1.0
+                      Z: 1.0
+                Children:
+                  - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                    Name: default
+                    Tag: null
+                    IsEnabled: true
+                    IsStatic: false
+                    Components:
+                      - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                        Id: d68388aa-300f-495a-88cb-21f653c23959
+                        IsEnabled: true
+                        LocalOrientation:
+                          W: 1.0
+                          X: 0.0
+                          Y: 0.0
+                          Z: 0.0
+                        LocalPosition:
+                          X: 0.00141404569
+                          Y: -0.0343899466
+                          Z: -0.00542075234
+                        LocalScale:
+                          X: 0.800000012
+                          Y: 0.800000012
+                          Z: 0.800000012
+                      - !WaveEngine.MRTK.Toolkit.Prefabs.ScenePrefab,WaveEngine.MRTK
+                        Id: 6aa63257-a433-4466-bad1-970229591db1
+                        DuplicateMaterials: false
+                        IsEnabled: true
+                        ScenePrefabProperty:
+                          PrefabId: 36cadeae-b478-4b98-a06c-72a186813083
+                    Children: []
+                    Id: c2234bf1-a48e-42d8-ba39-d17ef99d501f
+                  - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                    Name: pink
+                    Tag: null
+                    IsEnabled: true
+                    IsStatic: false
+                    Components:
+                      - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                        Id: 7e4f9c31-83d4-4e06-a9fb-b06606cf6216
+                        IsEnabled: true
+                        LocalOrientation:
+                          W: 1.0
+                          X: 0.0
+                          Y: 0.0
+                          Z: 0.0
+                        LocalPosition:
+                          X: -0.0422514752
+                          Y: -0.0343899466
+                          Z: -0.00542075606
+                        LocalScale:
+                          X: 0.800000012
+                          Y: 0.800000012
+                          Z: 0.800000012
+                      - !WaveEngine.MRTK.Toolkit.Prefabs.ScenePrefab,WaveEngine.MRTK
+                        Id: 518a559a-246b-46db-8c6c-159259027b57
+                        DuplicateMaterials: false
+                        IsEnabled: true
+                        ScenePrefabProperty:
+                          PrefabId: 36cadeae-b478-4b98-a06c-72a186813083
+                      - !WaveEngine.MRTK.SDK.Features.UX.Components.Configurators.RoundedButtonConfigurator,WaveEngine.MRTK
+                        Id: bce7ae22-059e-4d07-bbcf-2637c0f3f0c5
+                        Back: null
+                        Front: e15b70dc-4787-4517-a720-914d405afa85
+                        IsEnabled: true
+                    Children: []
+                    Id: 7baa203d-18a9-4c8c-b219-2d2de2c1219e
+                  - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                    Name: lime
+                    Tag: null
+                    IsEnabled: true
+                    IsStatic: false
+                    Components:
+                      - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                        Id: 6ed83764-2995-4886-a14a-e81af1a0f444
+                        IsEnabled: true
+                        LocalOrientation:
+                          W: 1.0
+                          X: 0.0
+                          Y: 0.0
+                          Z: 0.0
+                        LocalPosition:
+                          X: -0.084596701
+                          Y: -0.0343899466
+                          Z: -0.00542075932
+                        LocalScale:
+                          X: 0.800000012
+                          Y: 0.800000012
+                          Z: 0.800000012
+                      - !WaveEngine.MRTK.Toolkit.Prefabs.ScenePrefab,WaveEngine.MRTK
+                        Id: 2d60d4c4-b6c6-4b50-a63b-83f53bc2e6c8
+                        DuplicateMaterials: false
+                        IsEnabled: true
+                        ScenePrefabProperty:
+                          PrefabId: 36cadeae-b478-4b98-a06c-72a186813083
+                      - !WaveEngine.MRTK.SDK.Features.UX.Components.Configurators.RoundedButtonConfigurator,WaveEngine.MRTK
+                        Id: c519be23-ab64-4d67-9b27-3b1beaf9530a
+                        Back: b5810cca-0555-4aab-86b8-b591766234a5
+                        Front: c46cf687-2999-4576-a5a1-f1b6863e6d3f
+                        IsEnabled: true
+                    Children: []
+                    Id: 15baf8db-dcd3-48bf-8c0e-62714a9af3b9
+                Id: c8d6d8d4-8727-42c5-8887-27e3073ad4f7
+            Id: 6af2958c-8175-4a38-be2c-59819d7c3a1f
+        Id: 1cdb4f38-ec5e-406e-991a-59bb2affbb31
+      - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+        Name: toggleButtons
+        Tag: null
+        IsEnabled: true
+        IsStatic: false
+        Components:
+          - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+            Id: 16330761-337e-4518-9304-94309e8b9341
+            IsEnabled: true
+            LocalOrientation:
+              W: 1.0
+              X: 0.0
+              Y: 0.0
+              Z: 0.0
+            LocalPosition:
+              X: -0.127636433
+              Y: 0.110005051
+              Z: -2.1017792E-09
+            LocalScale:
+              X: 1.0
+              Y: 1.0
+              Z: 1.0
+        Children:
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: SectionTitle
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: 1b7ac4f7-8645-4226-83de-7b9f8d311065
+                IsEnabled: true
+                LocalOrientation:
+                  W: 1.0
+                  X: 0.0
+                  Y: 0.0
+                  Z: 0.0
+                LocalPosition:
+                  X: 0.0
+                  Y: 0.0
+                  Z: 0.0
+                LocalScale:
+                  X: 1.0
+                  Y: 1.0
+                  Z: 1.0
+              - !WaveEngine.MRTK.Toolkit.GUI.Text3D,WaveEngine.MRTK
+                Id: b6b44ec6-f828-4d12-bbfb-5964e5665774
+                Alpha: 1.0
+                Background:
+                  A: 0
+                  B: 0
+                  G: 0
+                  R: 0
+                CustomHeight: false
+                CustomWidth: false
+                FontFamilySource: /Fonts/#Segoe UI
+                FontSize: 64
+                FontStretch: Normal
+                FontStyle: Normal
+                FontWeight: Bold
+                Foreground:
+                  A: 255
+                  B: 255
+                  G: 255
+                  R: 255
+                Height: 0.022751322
+                HorizontalAlignment: Left
+                IsEnabled: true
+                Normal: ZNegative
+                Origin:
+                  X: 0.0
+                  Y: 0.5
+                PixelDensity: 3780
+                Text: Toggle buttons
+                TextAlignment: Left
+                TextTrimming: None
+                TextWrapping: NoWrap
+                UpdateOrder: 0.5
+                VerticalAlignment: Center
+                Width: 0.120370373
+            Children: []
+            Id: 0bf24696-3f26-47fa-b536-d818b04a5cc6
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: description
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: e78e90ff-33bd-46a8-bbf7-6fc61562ffb1
+                IsEnabled: true
+                LocalOrientation:
+                  W: 1.0
+                  X: 0.0
+                  Y: 0.0
+                  Z: 0.0
+                LocalPosition:
+                  X: 0.0
+                  Y: -0.0266946852
+                  Z: 1.32455353E-08
+                LocalScale:
+                  X: 1.0
+                  Y: 1.0
+                  Z: 1.0
+              - !WaveEngine.MRTK.Toolkit.GUI.Text3D,WaveEngine.MRTK
+                Id: 5d2f4bff-36d1-475a-98bf-ab82b89c085e
+                Alpha: 1.0
+                Background:
+                  A: 0
+                  B: 0
+                  G: 0
+                  R: 0
+                CustomHeight: false
+                CustomWidth: true
+                FontFamilySource: /Fonts/#Segoe UI
+                FontSize: 24
+                FontStretch: Normal
+                FontStyle: Normal
+                FontWeight: Bold
+                Foreground:
+                  A: 255
+                  B: 255
+                  G: 255
+                  R: 255
+                Height: 0.0253968257
+                HorizontalAlignment: Left
+                IsEnabled: true
+                Normal: ZNegative
+                Origin:
+                  X: 0.0
+                  Y: 0.5
+                PixelDensity: 3780
+                Text: Samples of toggle buttons with custom icons, plate and tint colors. A different set of configuration is possible depending on button state (On/Off).
+                TextAlignment: Left
+                TextTrimming: None
+                TextWrapping: Wrap
+                UpdateOrder: 0.5
+                VerticalAlignment: Center
+                Width: 0.159999996
+            Children: []
+            Id: 460d343e-1bcb-42cf-9613-166a236f1343
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: samples
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: e72244ee-7137-45b1-a8e8-46c35505ee4c
+                IsEnabled: true
+                LocalOrientation:
+                  W: 1.0
+                  X: 0.0
+                  Y: 0.0
+                  Z: 0.0
+                LocalPosition:
+                  X: 0.0
+                  Y: -0.0312280655
+                  Z: 3.7226755E-09
+                LocalScale:
+                  X: 1.0
+                  Y: 1.0
+                  Z: 1.0
+            Children:
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: squares
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: 8626370c-084e-4124-a6f7-e12dc05c2ec1
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalScale:
+                      X: 1.0
+                      Y: 1.0
+                      Z: 1.0
+                Children:
+                  - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                    Name: single
+                    Tag: null
+                    IsEnabled: true
+                    IsStatic: false
+                    Components:
+                      - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                        Id: be8c972f-5a53-4063-94df-d4c6492489f0
+                        IsEnabled: true
+                        LocalOrientation:
+                          W: 1.0
+                          X: 0.0
+                          Y: 0.0
+                          Z: 0.0
+                        LocalPosition:
+                          X: 0.0
+                          Y: 0.0
+                          Z: 0.0
+                        LocalScale:
+                          X: 1.0
+                          Y: 1.0
+                          Z: 1.0
+                    Children:
+                      - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                        Name: eventText
+                        Tag: null
+                        IsEnabled: true
+                        IsStatic: false
+                        Components:
+                          - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                            Id: 7d10d835-dbba-4043-8482-1e410bfe61fe
+                            IsEnabled: true
+                            LocalOrientation:
+                              W: 1.0
+                              X: 0.0
+                              Y: 0.0
+                              Z: 0.0
+                            LocalPosition:
+                              X: -0.0203689337
+                              Y: -0.0562681407
+                              Z: -9.13582987E-09
+                            LocalScale:
+                              X: 1.0
+                              Y: 1.0
+                              Z: 1.0
+                          - !WaveEngine.MRTK.Toolkit.GUI.Text3D,WaveEngine.MRTK
+                            Id: 08e02e4c-c0a3-4fd6-971e-be46eed45f27
+                            Alpha: 1.0
+                            Background:
+                              A: 0
+                              B: 0
+                              G: 0
+                              R: 0
+                            CustomHeight: false
+                            CustomWidth: false
+                            FontFamilySource: 
+                            FontSize: 20
+                            FontStretch: Normal
+                            FontStyle: Normal
+                            FontWeight: Normal
+                            Foreground:
+                              A: 255
+                              B: 255
+                              G: 255
+                              R: 255
+                            Height: 0.00529100513
+                            HorizontalAlignment: Left
+                            IsEnabled: true
+                            Normal: ZNegative
+                            Origin:
+                              X: 0.5
+                              Y: 0.5
+                            PixelDensity: 3780
+                            Text: Off
+                            TextAlignment: Left
+                            TextTrimming: None
+                            TextWrapping: NoWrap
+                            UpdateOrder: 0.5
+                            VerticalAlignment: Top
+                            Width: 0.00952380989
+                          - !WaveEngine_MRTK_Demo.Components.ToggleButtons.ShowToggleState,WaveEngine_MRTK_Demo
+                            Id: 3d4ab55b-5757-4a62-899e-a66091d34250
+                            IsEnabled: true
+                        Children:
+                          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                            Name: singleToggleButton
+                            Tag: null
+                            IsEnabled: true
+                            IsStatic: false
+                            Components:
+                              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                                Id: 361f3cf7-ea09-4b7a-880e-76806de3059e
+                                IsEnabled: true
+                                LocalOrientation:
+                                  W: 1.0
+                                  X: 0.0
+                                  Y: -4.36332302E-05
+                                  Z: 0.0
+                                LocalPosition:
+                                  X: 0.00170966983
+                                  Y: 0.0252494514
+                                  Z: 3.21381588E-09
+                                LocalScale:
+                                  X: 1.0
+                                  Y: 1.0
+                                  Z: 1.0
+                              - !WaveEngine.MRTK.Toolkit.Prefabs.ScenePrefab,WaveEngine.MRTK
+                                Id: 8e482b4b-0b60-4b0b-9c56-d5df04a8acbf
+                                DuplicateMaterials: false
+                                IsEnabled: true
+                                ScenePrefabProperty:
+                                  PrefabId: facc69c2-67f2-4bc3-97cd-d1ddbd42a7e5
+                              - !WaveEngine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleButton,WaveEngine.MRTK
+                                Id: 01b43087-381a-43bc-a9e7-e56dd94f61bb
+                                IsEnabled: true
+                              - !WaveEngine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleStateManager,WaveEngine.MRTK
+                                Id: 1b0dc332-a5df-4699-92f1-f38814138d5b
+                                DefaultComponentsAdded: true
+                                IsEnabled: true
+                              - !WaveEngine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleButtonConfigurator,WaveEngine.MRTK
+                                Id: 83352c8f-db3f-405e-a589-8f93ad40f5fd
+                                CreatesNewBackPlateMaterialInstance: false
+                                CreatesNewIconMaterialInstance: true
+                                Icon: 469a29b3-53be-4afd-adbc-14ca42894154
+                                IsEnabled: true
+                                Plate: 95c775d7-1461-4465-beb0-84ec959e4ede
+                                PrimaryColor:
+                                  A: 255
+                                  B: 0
+                                  G: 0
+                                  R: 190
+                                TargetState: Off
+                                Text: I am off
+                              - !WaveEngine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleButtonConfigurator,WaveEngine.MRTK
+                                Id: b5a1de5b-777f-4180-81d5-1695d0b43127
+                                CreatesNewBackPlateMaterialInstance: false
+                                CreatesNewIconMaterialInstance: true
+                                Icon: d129f5e3-9a07-442b-8f09-779075e73943
+                                IsEnabled: false
+                                Plate: 4f32ee6e-22c9-48be-ad27-76ba638454fb
+                                PrimaryColor:
+                                  A: 255
+                                  B: 13
+                                  G: 245
+                                  R: 41
+                                TargetState: On
+                                Text: I am on
+                            Children: []
+                            Id: a45fe9a8-de6c-4cff-86fa-cd74ff16aa0d
+                        Id: 20636c2e-7ce8-42d4-bb41-2beff4dfd35d
+                    Id: cb5de720-913f-4672-a2f7-b3ca260ba63b
+                  - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                    Name: extra-configurator
+                    Tag: null
+                    IsEnabled: true
+                    IsStatic: false
+                    Components:
+                      - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                        Id: 3f8e5b73-6040-4c7a-989c-0d9e1389a2b5
+                        IsEnabled: true
+                        LocalOrientation:
+                          W: 1.0
+                          X: 0.0
+                          Y: 0.0
+                          Z: 0.0
+                        LocalPosition:
+                          X: -0.0416453779
+                          Y: 0.0
+                          Z: -4.96450392E-09
+                        LocalScale:
+                          X: 1.0
+                          Y: 1.0
+                          Z: 1.0
+                    Children:
+                      - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                        Name: eventText
+                        Tag: null
+                        IsEnabled: true
+                        IsStatic: false
+                        Components:
+                          - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                            Id: 28ea4576-5b0f-4307-9227-ab31ee84acac
+                            IsEnabled: true
+                            LocalOrientation:
+                              W: 1.0
+                              X: 0.0
+                              Y: 0.0
+                              Z: 0.0
+                            LocalPosition:
+                              X: -0.0203689337
+                              Y: -0.0562681407
+                              Z: -9.13582987E-09
+                            LocalScale:
+                              X: 1.0
+                              Y: 1.0
+                              Z: 1.0
+                          - !WaveEngine.MRTK.Toolkit.GUI.Text3D,WaveEngine.MRTK
+                            Id: 03862511-c9f6-4982-b276-1be0b5fa4d8c
+                            Alpha: 1.0
+                            Background:
+                              A: 0
+                              B: 0
+                              G: 0
+                              R: 0
+                            CustomHeight: false
+                            CustomWidth: false
+                            FontFamilySource: 
+                            FontSize: 20
+                            FontStretch: Normal
+                            FontStyle: Normal
+                            FontWeight: Normal
+                            Foreground:
+                              A: 255
+                              B: 255
+                              G: 255
+                              R: 255
+                            Height: 0.00529100513
+                            HorizontalAlignment: Left
+                            IsEnabled: true
+                            Normal: ZNegative
+                            Origin:
+                              X: 0.5
+                              Y: 0.5
+                            PixelDensity: 3780
+                            Text: Off
+                            TextAlignment: Left
+                            TextTrimming: None
+                            TextWrapping: NoWrap
+                            UpdateOrder: 0.5
+                            VerticalAlignment: Top
+                            Width: 0.00952380989
+                          - !WaveEngine_MRTK_Demo.Components.ToggleButtons.ShowToggleState,WaveEngine_MRTK_Demo
+                            Id: 08b0d5c6-e07d-4fc1-86c8-3bd48312b77c
+                            IsEnabled: true
+                        Children:
+                          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                            Name: singleToggleButton
+                            Tag: null
+                            IsEnabled: true
+                            IsStatic: false
+                            Components:
+                              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                                Id: f1175dc5-a98d-408e-b30a-142ee858960d
+                                IsEnabled: true
+                                LocalOrientation:
+                                  W: 1.0
+                                  X: 0.0
+                                  Y: -4.36332302E-05
+                                  Z: 0.0
+                                LocalPosition:
+                                  X: 0.00170966983
+                                  Y: 0.0252494514
+                                  Z: 3.21381588E-09
+                                LocalScale:
+                                  X: 0.800000012
+                                  Y: 0.800000012
+                                  Z: 0.800000012
+                              - !WaveEngine.MRTK.Toolkit.Prefabs.ScenePrefab,WaveEngine.MRTK
+                                Id: 40b234de-bc56-4da6-9133-9d064fd4b967
+                                DuplicateMaterials: false
+                                IsEnabled: true
+                                ScenePrefabProperty:
+                                  PrefabId: facc69c2-67f2-4bc3-97cd-d1ddbd42a7e5
+                              - !WaveEngine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleButton,WaveEngine.MRTK
+                                Id: 9906afe8-48c5-4a2c-9e4e-18ef7927cb86
+                                IsEnabled: true
+                              - !WaveEngine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleStateManager,WaveEngine.MRTK
+                                Id: 2dcb760a-9b4f-48a8-8844-e7e64c5c0149
+                                DefaultComponentsAdded: true
+                                IsEnabled: true
+                              - !WaveEngine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleButtonConfigurator,WaveEngine.MRTK
+                                Id: 80c81257-db9e-4d23-9b92-cf4a40f7f90d
+                                CreatesNewBackPlateMaterialInstance: false
+                                CreatesNewIconMaterialInstance: true
+                                Icon: 469a29b3-53be-4afd-adbc-14ca42894154
+                                IsEnabled: true
+                                Plate: 95c775d7-1461-4465-beb0-84ec959e4ede
+                                PrimaryColor:
+                                  A: 255
+                                  B: 0
+                                  G: 0
+                                  R: 190
+                                TargetState: Off
+                                Text: I am off
+                              - !WaveEngine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleButtonConfigurator,WaveEngine.MRTK
+                                Id: 30bd1373-9c0f-4d43-a471-ddf10caab2ee
+                                CreatesNewBackPlateMaterialInstance: false
+                                CreatesNewIconMaterialInstance: true
+                                Icon: d129f5e3-9a07-442b-8f09-779075e73943
+                                IsEnabled: false
+                                Plate: 4f32ee6e-22c9-48be-ad27-76ba638454fb
+                                PrimaryColor:
+                                  A: 255
+                                  B: 13
+                                  G: 245
+                                  R: 41
+                                TargetState: On
+                                Text: I am on
+                              - !WaveEngine_MRTK_Demo.Components.ToggleButtons.ToggleApplyTransform,WaveEngine_MRTK_Demo
+                                Id: 4fa5b145-2bc0-4e09-89cb-83389a803edd
+                                IsEnabled: true
+                                Scale:
+                                  X: 0.800000012
+                                  Y: 0.800000012
+                                  Z: 0.800000012
+                                TargetState: Off
+                              - !WaveEngine_MRTK_Demo.Components.ToggleButtons.ToggleApplyTransform,WaveEngine_MRTK_Demo
+                                Id: c9861509-1651-40f4-9f53-b819c8e9c530
+                                IsEnabled: false
+                                Scale:
+                                  X: 1.0
+                                  Y: 1.0
+                                  Z: 1.0
+                                TargetState: On
+                            Children: []
+                            Id: 1ed22020-26b3-4403-a2b0-0b0f5f326346
+                        Id: 8ce0da30-4800-4f43-aa1b-888d28e96cfd
+                    Id: 99e942e2-558f-4da5-b022-a29481a8a14b
+                  - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                    Name: description
+                    Tag: null
+                    IsEnabled: true
+                    IsStatic: false
+                    Components:
+                      - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                        Id: adbb6fcc-8398-4c3a-85c5-83a977d1db44
+                        IsEnabled: true
+                        LocalOrientation:
+                          W: 1.0
+                          X: 0.0
+                          Y: 0.0
+                          Z: 0.0
+                        LocalPosition:
+                          X: -0.0906559825
+                          Y: -0.0311752558
+                          Z: -5.493213E-09
+                        LocalScale:
+                          X: 1.0
+                          Y: 1.0
+                          Z: 1.0
+                      - !WaveEngine.MRTK.Toolkit.GUI.Text3D,WaveEngine.MRTK
+                        Id: 489c35b5-a7e9-4a21-a577-3698d6a28e4f
+                        Alpha: 1.0
+                        Background:
+                          A: 0
+                          B: 0
+                          G: 0
+                          R: 0
+                        CustomHeight: false
+                        CustomWidth: true
+                        FontFamilySource: /Fonts/#Segoe UI
+                        FontSize: 18
+                        FontStretch: Normal
+                        FontStyle: Normal
+                        FontWeight: Bold
+                        Foreground:
+                          A: 255
+                          B: 255
+                          G: 255
+                          R: 255
+                        Height: 0.0126984129
+                        HorizontalAlignment: Left
+                        IsEnabled: true
+                        Normal: ZNegative
+                        Origin:
+                          X: 0.0
+                          Y: 0.5
+                        PixelDensity: 3780
+                        Text: Second button in this row shows how you can create custom state-based components. For example, to scale target item.
+                        TextAlignment: Left
+                        TextTrimming: None
+                        TextWrapping: Wrap
+                        UpdateOrder: 0.5
+                        VerticalAlignment: Center
+                        Width: 0.159999996
+                    Children: []
+                    Id: 5fa15b54-c39d-450e-840e-cf5853d603b7
+                Id: e2b38bee-d0db-403b-b18d-518e81a73a0a
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: rounded
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: d2c2ed9f-d545-4b7c-b52b-20e7fbf0df27
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: 0.0
+                      Y: -0.0567966551
+                      Z: -6.77068979E-09
+                    LocalScale:
+                      X: 1.0
+                      Y: 1.0
+                      Z: 1.0
+                Children:
+                  - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                    Name: single
+                    Tag: null
+                    IsEnabled: true
+                    IsStatic: false
+                    Components:
+                      - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                        Id: 1863140a-265b-47c3-87ad-0cf74aef5c82
+                        IsEnabled: true
+                        LocalOrientation:
+                          W: 1.0
+                          X: 0.0
+                          Y: 0.0
+                          Z: 0.0
+                        LocalPosition:
+                          X: 0.0
+                          Y: 0.0
+                          Z: 0.0
+                        LocalScale:
+                          X: 1.0
+                          Y: 1.0
+                          Z: 1.0
+                    Children:
+                      - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                        Name: eventText
+                        Tag: null
+                        IsEnabled: true
+                        IsStatic: false
+                        Components:
+                          - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                            Id: b35f8034-c618-4164-b3ab-35a333c1eef1
+                            IsEnabled: true
+                            LocalOrientation:
+                              W: 1.0
+                              X: 0.0
+                              Y: 0.0
+                              Z: 0.0
+                            LocalPosition:
+                              X: -0.0203689337
+                              Y: -0.0562681407
+                              Z: -9.13582987E-09
+                            LocalScale:
+                              X: 1.0
+                              Y: 1.0
+                              Z: 1.0
+                          - !WaveEngine.MRTK.Toolkit.GUI.Text3D,WaveEngine.MRTK
+                            Id: 6bc2119f-f340-4d36-bbab-ef9baa429e79
+                            Alpha: 1.0
+                            Background:
+                              A: 0
+                              B: 0
+                              G: 0
+                              R: 0
+                            CustomHeight: false
+                            CustomWidth: false
+                            FontFamilySource: 
+                            FontSize: 20
+                            FontStretch: Normal
+                            FontStyle: Normal
+                            FontWeight: Normal
+                            Foreground:
+                              A: 255
+                              B: 255
+                              G: 255
+                              R: 255
+                            Height: 0.00529100513
+                            HorizontalAlignment: Left
+                            IsEnabled: true
+                            Normal: ZNegative
+                            Origin:
+                              X: 0.5
+                              Y: 0.5
+                            PixelDensity: 3780
+                            Text: Off
+                            TextAlignment: Left
+                            TextTrimming: None
+                            TextWrapping: NoWrap
+                            UpdateOrder: 0.5
+                            VerticalAlignment: Top
+                            Width: 0.00952380989
+                          - !WaveEngine_MRTK_Demo.Components.ToggleButtons.ShowToggleState,WaveEngine_MRTK_Demo
+                            Id: f7d93f7d-ffa7-446a-93c6-6ae29e15860b
+                            IsEnabled: true
+                        Children:
+                          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                            Name: singleToggleButton
+                            Tag: null
+                            IsEnabled: true
+                            IsStatic: false
+                            Components:
+                              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                                Id: a15db20d-4b99-4661-8bf4-47530e820923
+                                IsEnabled: true
+                                LocalOrientation:
+                                  W: 1.0
+                                  X: 0.0
+                                  Y: -4.36332302E-05
+                                  Z: 0.0
+                                LocalPosition:
+                                  X: 0.00170966983
+                                  Y: 0.0252494514
+                                  Z: 3.21381588E-09
+                                LocalScale:
+                                  X: 0.800000012
+                                  Y: 0.800000012
+                                  Z: 0.800000012
+                              - !WaveEngine.MRTK.Toolkit.Prefabs.ScenePrefab,WaveEngine.MRTK
+                                Id: e60bd403-b022-4cea-9aec-0f3f7cb95835
+                                DuplicateMaterials: false
+                                IsEnabled: true
+                                ScenePrefabProperty:
+                                  PrefabId: 36cadeae-b478-4b98-a06c-72a186813083
+                              - !WaveEngine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleButton,WaveEngine.MRTK
+                                Id: bde92230-1f0f-460d-bb8d-8c463b17d551
+                                IsEnabled: true
+                              - !WaveEngine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleStateManager,WaveEngine.MRTK
+                                Id: 909b5316-59de-4f46-88d3-4d9d3139c530
+                                DefaultComponentsAdded: true
+                                IsEnabled: true
+                              - !WaveEngine.MRTK.SDK.Features.UX.Components.ToggleButtons.RoundedToggleButtonConfigurator,WaveEngine.MRTK
+                                Id: beb02b30-0d02-4296-848c-261e4bf43116
+                                Back: b5810cca-0555-4aab-86b8-b591766234a5
+                                Front: e15b70dc-4787-4517-a720-914d405afa85
+                                IsEnabled: true
+                                TargetState: Off
+                              - !WaveEngine.MRTK.SDK.Features.UX.Components.ToggleButtons.RoundedToggleButtonConfigurator,WaveEngine.MRTK
+                                Id: a597f8d7-2c86-4995-945f-3ae676a3ad35
+                                Back: b5810cca-0555-4aab-86b8-b591766234a5
+                                Front: 3521d95f-b8ce-40cb-b4d0-c268f64496bd
+                                IsEnabled: false
+                                TargetState: On
+                            Children: []
+                            Id: 6c266e22-e27c-424a-a0e7-f5d49cfcd2d5
+                        Id: f8751f87-d677-40df-bee4-bb36b3f2ef81
+                    Id: ac0ef8aa-f2a6-40f7-962a-52c6c8e4cd2e
+                  - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                    Name: extra-configurator
+                    Tag: null
+                    IsEnabled: true
+                    IsStatic: false
+                    Components:
+                      - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                        Id: 95184d9d-591b-412b-b801-24362035f2e4
+                        IsEnabled: true
+                        LocalOrientation:
+                          W: 1.0
+                          X: 0.0
+                          Y: 0.0
+                          Z: 0.0
+                        LocalPosition:
+                          X: -0.0416453779
+                          Y: 0.0
+                          Z: -4.96450392E-09
+                        LocalScale:
+                          X: 1.0
+                          Y: 1.0
+                          Z: 1.0
+                    Children:
+                      - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                        Name: eventText
+                        Tag: null
+                        IsEnabled: true
+                        IsStatic: false
+                        Components:
+                          - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                            Id: 97ac75a6-93b9-47d0-9974-9b1d6a25086d
+                            IsEnabled: true
+                            LocalOrientation:
+                              W: 1.0
+                              X: 0.0
+                              Y: 0.0
+                              Z: 0.0
+                            LocalPosition:
+                              X: -0.0203689337
+                              Y: -0.0562681407
+                              Z: -9.13582987E-09
+                            LocalScale:
+                              X: 1.0
+                              Y: 1.0
+                              Z: 1.0
+                          - !WaveEngine.MRTK.Toolkit.GUI.Text3D,WaveEngine.MRTK
+                            Id: ba6e334d-2714-4a84-a138-20598dbde0d0
+                            Alpha: 1.0
+                            Background:
+                              A: 0
+                              B: 0
+                              G: 0
+                              R: 0
+                            CustomHeight: false
+                            CustomWidth: false
+                            FontFamilySource: 
+                            FontSize: 20
+                            FontStretch: Normal
+                            FontStyle: Normal
+                            FontWeight: Normal
+                            Foreground:
+                              A: 255
+                              B: 255
+                              G: 255
+                              R: 255
+                            Height: 0.00529100513
+                            HorizontalAlignment: Left
+                            IsEnabled: true
+                            Normal: ZNegative
+                            Origin:
+                              X: 0.5
+                              Y: 0.5
+                            PixelDensity: 3780
+                            Text: Off
+                            TextAlignment: Left
+                            TextTrimming: None
+                            TextWrapping: NoWrap
+                            UpdateOrder: 0.5
+                            VerticalAlignment: Top
+                            Width: 0.00952380989
+                          - !WaveEngine_MRTK_Demo.Components.ToggleButtons.ShowToggleState,WaveEngine_MRTK_Demo
+                            Id: 2c8ff714-426d-4e5c-ace6-4f6cb12f89de
+                            IsEnabled: true
+                        Children:
+                          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                            Name: singleToggleButton
+                            Tag: null
+                            IsEnabled: true
+                            IsStatic: false
+                            Components:
+                              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                                Id: ad5b0f21-3005-4e67-9d6b-0294e6ed0903
+                                IsEnabled: true
+                                LocalOrientation:
+                                  W: 1.0
+                                  X: 0.0
+                                  Y: -4.36332302E-05
+                                  Z: 0.0
+                                LocalPosition:
+                                  X: 0.00170966983
+                                  Y: 0.0252494514
+                                  Z: 3.21381588E-09
+                                LocalScale:
+                                  X: 0.600000024
+                                  Y: 0.600000024
+                                  Z: 0.600000024
+                              - !WaveEngine.MRTK.Toolkit.Prefabs.ScenePrefab,WaveEngine.MRTK
+                                Id: a90fd6fd-11a5-4b9b-826a-86fba4ecc20a
+                                DuplicateMaterials: false
+                                IsEnabled: true
+                                ScenePrefabProperty:
+                                  PrefabId: 36cadeae-b478-4b98-a06c-72a186813083
+                              - !WaveEngine_MRTK_Demo.Components.ToggleButtons.ToggleApplyTransform,WaveEngine_MRTK_Demo
+                                Id: b050b35b-04cd-4402-8882-dec08e71075c
+                                IsEnabled: true
+                                Scale:
+                                  X: 0.600000024
+                                  Y: 0.600000024
+                                  Z: 0.600000024
+                                TargetState: Off
+                              - !WaveEngine_MRTK_Demo.Components.ToggleButtons.ToggleApplyTransform,WaveEngine_MRTK_Demo
+                                Id: 091c594e-7249-448f-aad3-77dc05fa3f88
+                                IsEnabled: false
+                                Scale:
+                                  X: 0.800000012
+                                  Y: 0.800000012
+                                  Z: 0.800000012
+                                TargetState: On
+                              - !WaveEngine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleButton,WaveEngine.MRTK
+                                Id: ad915eed-27c1-4d83-adb7-2843925e1a69
+                                IsEnabled: true
+                              - !WaveEngine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleStateManager,WaveEngine.MRTK
+                                Id: 9e278de0-90c2-409b-8f23-d13d4e0ba835
+                                DefaultComponentsAdded: true
+                                IsEnabled: true
+                              - !WaveEngine.MRTK.SDK.Features.UX.Components.ToggleButtons.RoundedToggleButtonConfigurator,WaveEngine.MRTK
+                                Id: 8eb7f6ba-678d-448f-b2c0-246b64f62077
+                                Back: b5810cca-0555-4aab-86b8-b591766234a5
+                                Front: e15b70dc-4787-4517-a720-914d405afa85
+                                IsEnabled: true
+                                TargetState: Off
+                              - !WaveEngine.MRTK.SDK.Features.UX.Components.ToggleButtons.RoundedToggleButtonConfigurator,WaveEngine.MRTK
+                                Id: 53bf22c1-befe-46c1-9d5b-1c64f467e8d9
+                                Back: b5810cca-0555-4aab-86b8-b591766234a5
+                                Front: 3521d95f-b8ce-40cb-b4d0-c268f64496bd
+                                IsEnabled: false
+                                TargetState: On
+                            Children: []
+                            Id: 2d5f6ce6-9a1c-4658-b887-80cfdd3b2fcb
+                        Id: 510ff1ed-f2a5-472a-bc49-2f7ec81875ee
+                    Id: f537b444-7841-4a1f-b3d2-cb102a905196
+                Id: 7841079e-b192-4522-8788-16f35b9cee2a
+            Id: 9ed3ae5a-11c7-4d0d-a285-ee10ecdac693
+        Id: 7f96adf6-9188-4521-8f4a-4fb2f56078f9
+      - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+        Name: grouping
+        Tag: null
+        IsEnabled: true
+        IsStatic: false
+        Components:
+          - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+            Id: 4e9a56ce-2174-4c7b-96bf-5df794a9c4f7
+            IsEnabled: true
+            LocalOrientation:
+              W: 1.0
+              X: 0.0
+              Y: 0.0
+              Z: 0.0
+            LocalPosition:
+              X: -0.381576598
+              Y: 0.110005051
+              Z: -5.45739525E-08
+            LocalScale:
+              X: 1.0
+              Y: 1.0
+              Z: 1.0
+        Children:
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: SectionTitle
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: b7766960-0942-48f1-8f5d-1d7337c693e0
+                IsEnabled: true
+                LocalOrientation:
+                  W: 1.0
+                  X: 0.0
+                  Y: 0.0
+                  Z: 0.0
+                LocalPosition:
+                  X: 0.0
+                  Y: 0.0
+                  Z: 0.0
+                LocalScale:
+                  X: 1.0
+                  Y: 1.0
+                  Z: 1.0
+              - !WaveEngine.MRTK.Toolkit.GUI.Text3D,WaveEngine.MRTK
+                Id: 7bd9d910-c075-4933-8712-10b2db214be6
+                Alpha: 1.0
+                Background:
+                  A: 0
+                  B: 0
+                  G: 0
+                  R: 0
+                CustomHeight: false
+                CustomWidth: false
+                FontFamilySource: /Fonts/#Segoe UI
+                FontSize: 64
+                FontStretch: Normal
+                FontStyle: Normal
+                FontWeight: Bold
+                Foreground:
+                  A: 255
+                  B: 255
+                  G: 255
+                  R: 255
+                Height: 0.022751322
+                HorizontalAlignment: Left
+                IsEnabled: true
+                Normal: ZNegative
+                Origin:
+                  X: 0.0
+                  Y: 0.5
+                PixelDensity: 3780
+                Text: Toggle groups
+                TextAlignment: Left
+                TextTrimming: None
+                TextWrapping: NoWrap
+                UpdateOrder: 0.5
+                VerticalAlignment: Center
+                Width: 0.114285715
+            Children: []
+            Id: a540c20c-b266-4f10-90b0-f721eef37c42
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: description
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: 2767b501-ae47-45b1-a631-fadd4f985206
+                IsEnabled: true
+                LocalOrientation:
+                  W: 1.0
+                  X: 0.0
+                  Y: 0.0
+                  Z: 0.0
+                LocalPosition:
+                  X: 0.0
+                  Y: -0.0266946852
+                  Z: 1.32455353E-08
+                LocalScale:
+                  X: 1.0
+                  Y: 1.0
+                  Z: 1.0
+              - !WaveEngine.MRTK.Toolkit.GUI.Text3D,WaveEngine.MRTK
+                Id: 5646fa44-88e6-4ac3-b0cb-c4ba572bec2e
+                Alpha: 1.0
+                Background:
+                  A: 0
+                  B: 0
+                  G: 0
+                  R: 0
+                CustomHeight: false
+                CustomWidth: true
+                FontFamilySource: /Fonts/#Segoe UI
+                FontSize: 24
+                FontStretch: Normal
+                FontStyle: Normal
+                FontWeight: Bold
+                Foreground:
+                  A: 255
+                  B: 255
+                  G: 255
+                  R: 255
+                Height: 0.0169312172
+                HorizontalAlignment: Left
+                IsEnabled: true
+                Normal: ZNegative
+                Origin:
+                  X: 0.0
+                  Y: 0.5
+                PixelDensity: 3780
+                Text: Samples of toggle groups, and different ways to declare them.
+                TextAlignment: Left
+                TextTrimming: None
+                TextWrapping: Wrap
+                UpdateOrder: 0.5
+                VerticalAlignment: Center
+                Width: 0.159999996
+            Children: []
+            Id: 768a0b4f-f37a-4527-b4b3-7ea7c4e46089
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: samples
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: 833ec3ab-07a2-49c6-9e15-3dba5cff8832
+                IsEnabled: true
+                LocalOrientation:
+                  W: 1.0
+                  X: 0.0
+                  Y: 0.0
+                  Z: 0.0
+                LocalPosition:
+                  X: 0.0
+                  Y: -0.0312280655
+                  Z: 3.7226755E-09
+                LocalScale:
+                  X: 1.0
+                  Y: 1.0
+                  Z: 1.0
+            Children:
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: toggle
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: 9f166e29-581a-41c0-ac3d-703b00c9e26c
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: 0.0
+                      Y: -0.00901216269
+                      Z: -2.28380514E-08
+                    LocalScale:
+                      X: 1.0
+                      Y: 1.0
+                      Z: 1.0
+                Children:
+                  - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                    Name: description
+                    Tag: null
+                    IsEnabled: true
+                    IsStatic: false
+                    Components:
+                      - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                        Id: a85b340a-3f53-4a95-ad80-2ed3def943e6
+                        IsEnabled: true
+                        LocalOrientation:
+                          W: 1.0
+                          X: 0.0
+                          Y: 0.0
+                          Z: 0.0
+                        LocalPosition:
+                          X: 0.0
+                          Y: -0.00789654255
+                          Z: 9.41355438E-10
+                        LocalScale:
+                          X: 1.0
+                          Y: 1.0
+                          Z: 1.0
+                      - !WaveEngine.MRTK.Toolkit.GUI.Text3D,WaveEngine.MRTK
+                        Id: 0866f087-c91c-4b69-815a-f1f6704d0c26
+                        Alpha: 1.0
+                        Background:
+                          A: 0
+                          B: 0
+                          G: 0
+                          R: 0
+                        CustomHeight: false
+                        CustomWidth: true
+                        FontFamilySource: /Fonts/#Segoe UI
+                        FontSize: 18
+                        FontStretch: Normal
+                        FontStyle: Normal
+                        FontWeight: Bold
+                        Foreground:
+                          A: 255
+                          B: 255
+                          G: 255
+                          R: 255
+                        Height: 0.00634920644
+                        HorizontalAlignment: Left
+                        IsEnabled: true
+                        Normal: ZNegative
+                        Origin:
+                          X: 0.0
+                          Y: 0.5
+                        PixelDensity: 3780
+                        Text: 'Group #1: each element has a group component. Allow off = false.'
+                        TextAlignment: Left
+                        TextTrimming: None
+                        TextWrapping: Wrap
+                        UpdateOrder: 0.5
+                        VerticalAlignment: Center
+                        Width: 0.159999996
+                    Children: []
+                    Id: 41c068fb-cbc5-4f19-8e32-04e3a992a790
+                  - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                    Name: buttons
+                    Tag: null
+                    IsEnabled: true
+                    IsStatic: false
+                    Components:
+                      - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                        Id: a7b2b36f-cd98-4af1-a197-cc38d688d62c
+                        IsEnabled: true
+                        LocalOrientation:
+                          W: 1.0
+                          X: 0.0
+                          Y: 0.0
+                          Z: 0.0
+                        LocalPosition:
+                          X: 0.00989186764
+                          Y: -0.00544545054
+                          Z: 2.6931275E-09
+                        LocalScale:
+                          X: 1.0
+                          Y: 1.0
+                          Z: 1.0
+                    Children:
+                      - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                        Name: button
+                        Tag: null
+                        IsEnabled: true
+                        IsStatic: false
+                        Components:
+                          - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                            Id: 6fe62c43-ef25-49ff-a499-24ecf7acece7
+                            IsEnabled: true
+                            LocalOrientation:
+                              W: 1.0
+                              X: 0.0
+                              Y: 0.0
+                              Z: 0.0
+                            LocalPosition:
+                              X: 0.0
+                              Y: 0.0
+                              Z: 0.0
+                            LocalScale:
+                              X: 1.0
+                              Y: 1.0
+                              Z: 1.0
+                          - !WaveEngine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleGroup,WaveEngine.MRTK
+                            Id: e7e79653-e944-44a8-b523-f353b7e184fa
+                            AllowOff: false
+                            IsEnabled: true
+                            Name: Group1
+                        Children:
+                          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                            Name: eventText
+                            Tag: null
+                            IsEnabled: true
+                            IsStatic: false
+                            Components:
+                              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                                Id: 1cf7ce18-a483-4ce8-8118-1dc837e394c0
+                                IsEnabled: true
+                                LocalOrientation:
+                                  W: 1.0
+                                  X: 0.0
+                                  Y: 0.0
+                                  Z: 0.0
+                                LocalPosition:
+                                  X: -0.0203689337
+                                  Y: -0.0562681407
+                                  Z: -9.13582987E-09
+                                LocalScale:
+                                  X: 1.0
+                                  Y: 1.0
+                                  Z: 1.0
+                              - !WaveEngine.MRTK.Toolkit.GUI.Text3D,WaveEngine.MRTK
+                                Id: 94a75822-3a2d-402e-9b6a-fe58d9cc4de8
+                                Alpha: 1.0
+                                Background:
+                                  A: 0
+                                  B: 0
+                                  G: 0
+                                  R: 0
+                                CustomHeight: false
+                                CustomWidth: false
+                                FontFamilySource: 
+                                FontSize: 20
+                                FontStretch: Normal
+                                FontStyle: Normal
+                                FontWeight: Normal
+                                Foreground:
+                                  A: 255
+                                  B: 255
+                                  G: 255
+                                  R: 255
+                                Height: 0.00529100513
+                                HorizontalAlignment: Left
+                                IsEnabled: true
+                                Normal: ZNegative
+                                Origin:
+                                  X: 0.5
+                                  Y: 0.5
+                                PixelDensity: 3780
+                                Text: Off
+                                TextAlignment: Left
+                                TextTrimming: None
+                                TextWrapping: NoWrap
+                                UpdateOrder: 0.5
+                                VerticalAlignment: Top
+                                Width: 0.00952380989
+                              - !WaveEngine_MRTK_Demo.Components.ToggleButtons.ShowToggleState,WaveEngine_MRTK_Demo
+                                Id: cce93a9d-ea56-4011-afdb-7f357f04bd6a
+                                IsEnabled: true
+                            Children:
+                              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                                Name: singleToggleButton
+                                Tag: null
+                                IsEnabled: true
+                                IsStatic: false
+                                Components:
+                                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                                    Id: fd04345b-b219-4c1e-8047-6bdeb40c1278
+                                    IsEnabled: true
+                                    LocalOrientation:
+                                      W: 1.0
+                                      X: 0.0
+                                      Y: -4.36332302E-05
+                                      Z: 0.0
+                                    LocalPosition:
+                                      X: 0.00170966983
+                                      Y: 0.0252494514
+                                      Z: 3.21381588E-09
+                                    LocalScale:
+                                      X: 0.800000012
+                                      Y: 0.800000012
+                                      Z: 0.800000012
+                                  - !WaveEngine.MRTK.Toolkit.Prefabs.ScenePrefab,WaveEngine.MRTK
+                                    Id: 2d0814df-1a56-45fd-996b-e6b795093835
+                                    DuplicateMaterials: false
+                                    IsEnabled: true
+                                    ScenePrefabProperty:
+                                      PrefabId: 36cadeae-b478-4b98-a06c-72a186813083
+                                  - !WaveEngine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleButton,WaveEngine.MRTK
+                                    Id: 2bbb33f3-b908-46ea-9ca6-734b36d96402
+                                    IsEnabled: true
+                                  - !WaveEngine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleStateManager,WaveEngine.MRTK
+                                    Id: 8f55a315-54d3-44a8-a79b-26de62dcdf29
+                                    DefaultComponentsAdded: true
+                                    IsEnabled: true
+                                  - !WaveEngine.MRTK.SDK.Features.UX.Components.ToggleButtons.RoundedToggleButtonConfigurator,WaveEngine.MRTK
+                                    Id: ee96e2ba-e1e1-4ba3-aab5-65bc2c4a13ec
+                                    Back: null
+                                    Front: b5810cca-0555-4aab-86b8-b591766234a5
+                                    IsEnabled: true
+                                    TargetState: Off
+                                  - !WaveEngine.MRTK.SDK.Features.UX.Components.ToggleButtons.RoundedToggleButtonConfigurator,WaveEngine.MRTK
+                                    Id: 19668841-7f0b-4e79-8b7c-6881108dfab0
+                                    Back: null
+                                    Front: 0867071b-476d-41cc-b072-9dd796ce98a2
+                                    IsEnabled: false
+                                    TargetState: On
+                                Children: []
+                                Id: c7c195e3-e879-4d1a-a0e9-c2a24d2ae126
+                            Id: faed1004-c4ff-492d-be61-7275917ef878
+                        Id: 3fd2ca25-5ba6-4014-953e-b8cd86358a3e
+                      - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                        Name: button
+                        Tag: null
+                        IsEnabled: true
+                        IsStatic: false
+                        Components:
+                          - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                            Id: 672b54f1-b49b-41c1-ab6b-2b392829bd3b
+                            IsEnabled: true
+                            LocalOrientation:
+                              W: 1.0
+                              X: 0.0
+                              Y: 0.0
+                              Z: 0.0
+                            LocalPosition:
+                              X: -0.044994697
+                              Y: 0.0
+                              Z: -9.29735577E-09
+                            LocalScale:
+                              X: 1.0
+                              Y: 1.0
+                              Z: 1.0
+                          - !WaveEngine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleGroup,WaveEngine.MRTK
+                            Id: 2d52e52a-a569-422e-a2f2-94bc0ef8dd31
+                            AllowOff: false
+                            IsEnabled: true
+                            Name: Group1
+                        Children:
+                          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                            Name: eventText
+                            Tag: null
+                            IsEnabled: true
+                            IsStatic: false
+                            Components:
+                              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                                Id: 7920d6f0-b72b-4e2c-ba81-b3dc51ca081a
+                                IsEnabled: true
+                                LocalOrientation:
+                                  W: 1.0
+                                  X: 0.0
+                                  Y: 0.0
+                                  Z: 0.0
+                                LocalPosition:
+                                  X: -0.0203689337
+                                  Y: -0.0562681407
+                                  Z: -9.13582987E-09
+                                LocalScale:
+                                  X: 1.0
+                                  Y: 1.0
+                                  Z: 1.0
+                              - !WaveEngine.MRTK.Toolkit.GUI.Text3D,WaveEngine.MRTK
+                                Id: 96966732-8545-4c8f-973c-2a97a58c8403
+                                Alpha: 1.0
+                                Background:
+                                  A: 0
+                                  B: 0
+                                  G: 0
+                                  R: 0
+                                CustomHeight: false
+                                CustomWidth: false
+                                FontFamilySource: 
+                                FontSize: 20
+                                FontStretch: Normal
+                                FontStyle: Normal
+                                FontWeight: Normal
+                                Foreground:
+                                  A: 255
+                                  B: 255
+                                  G: 255
+                                  R: 255
+                                Height: 0.00529100513
+                                HorizontalAlignment: Left
+                                IsEnabled: true
+                                Normal: ZNegative
+                                Origin:
+                                  X: 0.5
+                                  Y: 0.5
+                                PixelDensity: 3780
+                                Text: Off
+                                TextAlignment: Left
+                                TextTrimming: None
+                                TextWrapping: NoWrap
+                                UpdateOrder: 0.5
+                                VerticalAlignment: Top
+                                Width: 0.00952380989
+                              - !WaveEngine_MRTK_Demo.Components.ToggleButtons.ShowToggleState,WaveEngine_MRTK_Demo
+                                Id: ea830ae7-c917-4d73-ac6c-36da5f277f17
+                                IsEnabled: true
+                            Children:
+                              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                                Name: singleToggleButton
+                                Tag: null
+                                IsEnabled: true
+                                IsStatic: false
+                                Components:
+                                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                                    Id: 6c6c8eb9-47f8-450e-bbbe-3e0ac705be70
+                                    IsEnabled: true
+                                    LocalOrientation:
+                                      W: 1.0
+                                      X: 0.0
+                                      Y: -4.36332302E-05
+                                      Z: 0.0
+                                    LocalPosition:
+                                      X: 0.00170966983
+                                      Y: 0.0252494514
+                                      Z: 3.21381588E-09
+                                    LocalScale:
+                                      X: 0.800000012
+                                      Y: 0.800000012
+                                      Z: 0.800000012
+                                  - !WaveEngine.MRTK.Toolkit.Prefabs.ScenePrefab,WaveEngine.MRTK
+                                    Id: 1e559ac2-4c33-455e-befe-5182390af9ed
+                                    DuplicateMaterials: false
+                                    IsEnabled: true
+                                    ScenePrefabProperty:
+                                      PrefabId: 36cadeae-b478-4b98-a06c-72a186813083
+                                  - !WaveEngine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleButton,WaveEngine.MRTK
+                                    Id: b5b00aee-0242-4e8f-824f-d148d3b06942
+                                    IsEnabled: true
+                                  - !WaveEngine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleStateManager,WaveEngine.MRTK
+                                    Id: fa58253d-5d3c-4df9-9f13-ab5c058c24e8
+                                    DefaultComponentsAdded: true
+                                    IsEnabled: true
+                                  - !WaveEngine.MRTK.SDK.Features.UX.Components.ToggleButtons.RoundedToggleButtonConfigurator,WaveEngine.MRTK
+                                    Id: f338b275-470e-4861-b807-e6654563ba2c
+                                    Back: null
+                                    Front: b5810cca-0555-4aab-86b8-b591766234a5
+                                    IsEnabled: true
+                                    TargetState: Off
+                                  - !WaveEngine.MRTK.SDK.Features.UX.Components.ToggleButtons.RoundedToggleButtonConfigurator,WaveEngine.MRTK
+                                    Id: 823f06a5-1418-4c02-9072-ced0a725a07c
+                                    Back: null
+                                    Front: 0867071b-476d-41cc-b072-9dd796ce98a2
+                                    IsEnabled: false
+                                    TargetState: On
+                                Children: []
+                                Id: c1905357-5bce-44cb-8722-6943b728b348
+                            Id: a8a0db27-1bf8-492a-b225-c806d7ac2af6
+                        Id: 8a96985b-848b-45a6-b49f-2710736ca138
+                      - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                        Name: button
+                        Tag: null
+                        IsEnabled: true
+                        IsStatic: false
+                        Components:
+                          - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                            Id: 48771e4a-0d99-47c7-99f0-c879f20feca2
+                            IsEnabled: true
+                            LocalOrientation:
+                              W: 1.0
+                              X: 0.0
+                              Y: 0.0
+                              Z: 0.0
+                            LocalPosition:
+                              X: -0.0908094496
+                              Y: 0.0
+                              Z: -1.87641547E-08
+                            LocalScale:
+                              X: 1.0
+                              Y: 1.0
+                              Z: 1.0
+                          - !WaveEngine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleGroup,WaveEngine.MRTK
+                            Id: 6cd4f078-7770-40b0-a8fc-dc3b25fcfbc1
+                            AllowOff: false
+                            IsEnabled: true
+                            Name: Group1
+                        Children:
+                          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                            Name: eventText
+                            Tag: null
+                            IsEnabled: true
+                            IsStatic: false
+                            Components:
+                              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                                Id: eac37a2c-d2e1-49cf-8ad6-97923805e494
+                                IsEnabled: true
+                                LocalOrientation:
+                                  W: 1.0
+                                  X: 0.0
+                                  Y: 0.0
+                                  Z: 0.0
+                                LocalPosition:
+                                  X: -0.0203689337
+                                  Y: -0.0562681407
+                                  Z: -9.13582987E-09
+                                LocalScale:
+                                  X: 1.0
+                                  Y: 1.0
+                                  Z: 1.0
+                              - !WaveEngine.MRTK.Toolkit.GUI.Text3D,WaveEngine.MRTK
+                                Id: d7f0b3b3-33f9-4d07-9fe7-8223b1ad2976
+                                Alpha: 1.0
+                                Background:
+                                  A: 0
+                                  B: 0
+                                  G: 0
+                                  R: 0
+                                CustomHeight: false
+                                CustomWidth: false
+                                FontFamilySource: 
+                                FontSize: 20
+                                FontStretch: Normal
+                                FontStyle: Normal
+                                FontWeight: Normal
+                                Foreground:
+                                  A: 255
+                                  B: 255
+                                  G: 255
+                                  R: 255
+                                Height: 0.00529100513
+                                HorizontalAlignment: Left
+                                IsEnabled: true
+                                Normal: ZNegative
+                                Origin:
+                                  X: 0.5
+                                  Y: 0.5
+                                PixelDensity: 3780
+                                Text: Off
+                                TextAlignment: Left
+                                TextTrimming: None
+                                TextWrapping: NoWrap
+                                UpdateOrder: 0.5
+                                VerticalAlignment: Top
+                                Width: 0.00952380989
+                              - !WaveEngine_MRTK_Demo.Components.ToggleButtons.ShowToggleState,WaveEngine_MRTK_Demo
+                                Id: 4945228d-6e90-464b-b46d-a313ab67c12f
+                                IsEnabled: true
+                            Children:
+                              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                                Name: singleToggleButton
+                                Tag: null
+                                IsEnabled: true
+                                IsStatic: false
+                                Components:
+                                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                                    Id: 21f635e2-c74d-4d83-8401-de2da1cb47d6
+                                    IsEnabled: true
+                                    LocalOrientation:
+                                      W: 1.0
+                                      X: 0.0
+                                      Y: -4.36332302E-05
+                                      Z: 0.0
+                                    LocalPosition:
+                                      X: 0.00170966983
+                                      Y: 0.0252494514
+                                      Z: 3.21381588E-09
+                                    LocalScale:
+                                      X: 0.800000012
+                                      Y: 0.800000012
+                                      Z: 0.800000012
+                                  - !WaveEngine.MRTK.Toolkit.Prefabs.ScenePrefab,WaveEngine.MRTK
+                                    Id: 805390bb-a382-40bf-951b-5312be13d219
+                                    DuplicateMaterials: false
+                                    IsEnabled: true
+                                    ScenePrefabProperty:
+                                      PrefabId: 36cadeae-b478-4b98-a06c-72a186813083
+                                  - !WaveEngine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleButton,WaveEngine.MRTK
+                                    Id: cac120d9-8ac3-4d04-98f3-41ffa7fcc0a0
+                                    IsEnabled: true
+                                  - !WaveEngine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleStateManager,WaveEngine.MRTK
+                                    Id: 5b49879a-469b-487c-a136-5d1df87d4ebf
+                                    DefaultComponentsAdded: true
+                                    IsEnabled: true
+                                  - !WaveEngine.MRTK.SDK.Features.UX.Components.ToggleButtons.RoundedToggleButtonConfigurator,WaveEngine.MRTK
+                                    Id: 0754ba50-c15a-4e24-a6a0-93ebd1bb41a4
+                                    Back: null
+                                    Front: b5810cca-0555-4aab-86b8-b591766234a5
+                                    IsEnabled: true
+                                    TargetState: Off
+                                  - !WaveEngine.MRTK.SDK.Features.UX.Components.ToggleButtons.RoundedToggleButtonConfigurator,WaveEngine.MRTK
+                                    Id: 1849e4df-e8af-4d15-9b75-ec275fa99d48
+                                    Back: null
+                                    Front: 0867071b-476d-41cc-b072-9dd796ce98a2
+                                    IsEnabled: false
+                                    TargetState: On
+                                Children: []
+                                Id: e6a2226c-9ddd-4932-8479-5a7702e4f81d
+                            Id: 082101c5-ea15-41f4-88df-67716108d490
+                        Id: a0830fbf-24fd-4b68-ab35-40bdebc693fa
+                      - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                        Name: button
+                        Tag: null
+                        IsEnabled: true
+                        IsStatic: false
+                        Components:
+                          - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                            Id: 70f120bb-7262-4b45-ba68-4ddaecdb9074
+                            IsEnabled: true
+                            LocalOrientation:
+                              W: 1.0
+                              X: 0.0
+                              Y: 0.0
+                              Z: 0.0
+                            LocalPosition:
+                              X: -0.134475291
+                              Y: 0.0
+                              Z: -2.77869532E-08
+                            LocalScale:
+                              X: 1.0
+                              Y: 1.0
+                              Z: 1.0
+                          - !WaveEngine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleGroup,WaveEngine.MRTK
+                            Id: 28d0396d-c4cd-4fff-b3e1-d850b7f7ddae
+                            AllowOff: false
+                            IsEnabled: true
+                            Name: Group1
+                        Children:
+                          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                            Name: eventText
+                            Tag: null
+                            IsEnabled: true
+                            IsStatic: false
+                            Components:
+                              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                                Id: d0cf9c87-008c-4964-8990-52c6908907e7
+                                IsEnabled: true
+                                LocalOrientation:
+                                  W: 1.0
+                                  X: 0.0
+                                  Y: 0.0
+                                  Z: 0.0
+                                LocalPosition:
+                                  X: -0.0203689337
+                                  Y: -0.0562681407
+                                  Z: -9.13582987E-09
+                                LocalScale:
+                                  X: 1.0
+                                  Y: 1.0
+                                  Z: 1.0
+                              - !WaveEngine.MRTK.Toolkit.GUI.Text3D,WaveEngine.MRTK
+                                Id: ad1cc20c-1f4a-4f7d-a50b-cb60dc11a176
+                                Alpha: 1.0
+                                Background:
+                                  A: 0
+                                  B: 0
+                                  G: 0
+                                  R: 0
+                                CustomHeight: false
+                                CustomWidth: false
+                                FontFamilySource: 
+                                FontSize: 20
+                                FontStretch: Normal
+                                FontStyle: Normal
+                                FontWeight: Normal
+                                Foreground:
+                                  A: 255
+                                  B: 255
+                                  G: 255
+                                  R: 255
+                                Height: 0.00529100513
+                                HorizontalAlignment: Left
+                                IsEnabled: true
+                                Normal: ZNegative
+                                Origin:
+                                  X: 0.5
+                                  Y: 0.5
+                                PixelDensity: 3780
+                                Text: Off
+                                TextAlignment: Left
+                                TextTrimming: None
+                                TextWrapping: NoWrap
+                                UpdateOrder: 0.5
+                                VerticalAlignment: Top
+                                Width: 0.00952380989
+                              - !WaveEngine_MRTK_Demo.Components.ToggleButtons.ShowToggleState,WaveEngine_MRTK_Demo
+                                Id: e5130552-f224-4d8b-a930-477d8ea30ddc
+                                IsEnabled: true
+                            Children:
+                              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                                Name: singleToggleButton
+                                Tag: null
+                                IsEnabled: true
+                                IsStatic: false
+                                Components:
+                                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                                    Id: c1330c1d-bb2a-4a94-918a-1143476b14d9
+                                    IsEnabled: true
+                                    LocalOrientation:
+                                      W: 1.0
+                                      X: 0.0
+                                      Y: -4.36332302E-05
+                                      Z: 0.0
+                                    LocalPosition:
+                                      X: 0.00170966983
+                                      Y: 0.0252494514
+                                      Z: 3.21381588E-09
+                                    LocalScale:
+                                      X: 0.800000012
+                                      Y: 0.800000012
+                                      Z: 0.800000012
+                                  - !WaveEngine.MRTK.Toolkit.Prefabs.ScenePrefab,WaveEngine.MRTK
+                                    Id: 9a666699-e3c6-48b8-9484-33f50eb9f051
+                                    DuplicateMaterials: false
+                                    IsEnabled: true
+                                    ScenePrefabProperty:
+                                      PrefabId: 36cadeae-b478-4b98-a06c-72a186813083
+                                  - !WaveEngine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleButton,WaveEngine.MRTK
+                                    Id: b29f06bf-8d90-4f02-bf59-0e123f45f86b
+                                    IsEnabled: true
+                                  - !WaveEngine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleStateManager,WaveEngine.MRTK
+                                    Id: 4f01b470-59cf-4296-bdc0-705c0f9832d2
+                                    DefaultComponentsAdded: true
+                                    IsEnabled: true
+                                  - !WaveEngine.MRTK.SDK.Features.UX.Components.ToggleButtons.RoundedToggleButtonConfigurator,WaveEngine.MRTK
+                                    Id: 4a2c9853-bf16-4766-95d8-a80df44a2fbe
+                                    Back: null
+                                    Front: b5810cca-0555-4aab-86b8-b591766234a5
+                                    IsEnabled: true
+                                    TargetState: Off
+                                  - !WaveEngine.MRTK.SDK.Features.UX.Components.ToggleButtons.RoundedToggleButtonConfigurator,WaveEngine.MRTK
+                                    Id: 898114a0-f14c-44cf-9fbd-6ea9ac1fa556
+                                    Back: null
+                                    Front: 0867071b-476d-41cc-b072-9dd796ce98a2
+                                    IsEnabled: false
+                                    TargetState: On
+                                Children: []
+                                Id: 47218850-90f4-43ca-8fa3-ec077ce6f12f
+                            Id: c48bc3f0-963c-481e-bd23-502e73d1aafb
+                        Id: 0804473c-5059-4532-8dac-cc73e0d487a5
+                    Id: ca308de9-3cec-4d91-b2c0-5f258cf8666f
+                Id: 2a90c841-5342-41cb-bcdd-38539e011d73
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: toggle-allow-off
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: 60e9a69f-085b-47f1-a9db-4a0ed05a4ba1
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: 0.0
+                      Y: -0.0871478617
+                      Z: -1.94076506E-08
+                    LocalScale:
+                      X: 1.0
+                      Y: 1.0
+                      Z: 1.0
+                Children:
+                  - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                    Name: description
+                    Tag: null
+                    IsEnabled: true
+                    IsStatic: false
+                    Components:
+                      - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                        Id: 0a9f78ae-76ce-4db8-8642-115430469242
+                        IsEnabled: true
+                        LocalOrientation:
+                          W: 1.0
+                          X: 0.0
+                          Y: 0.0
+                          Z: 0.0
+                        LocalPosition:
+                          X: 0.0
+                          Y: 0.0
+                          Z: 0.0
+                        LocalScale:
+                          X: 1.0
+                          Y: 1.0
+                          Z: 1.0
+                      - !WaveEngine.MRTK.Toolkit.GUI.Text3D,WaveEngine.MRTK
+                        Id: deb92ce6-a915-4212-8b2b-e086b7d95275
+                        Alpha: 1.0
+                        Background:
+                          A: 0
+                          B: 0
+                          G: 0
+                          R: 0
+                        CustomHeight: false
+                        CustomWidth: true
+                        FontFamilySource: /Fonts/#Segoe UI
+                        FontSize: 18
+                        FontStretch: Normal
+                        FontStyle: Normal
+                        FontWeight: Bold
+                        Foreground:
+                          A: 255
+                          B: 255
+                          G: 255
+                          R: 255
+                        Height: 0.00634920644
+                        HorizontalAlignment: Left
+                        IsEnabled: true
+                        Normal: ZNegative
+                        Origin:
+                          X: 0.0
+                          Y: 0.5
+                        PixelDensity: 3780
+                        Text: 'Group #2: each element has a group component. Allow off = true.'
+                        TextAlignment: Left
+                        TextTrimming: None
+                        TextWrapping: Wrap
+                        UpdateOrder: 0.5
+                        VerticalAlignment: Center
+                        Width: 0.159999996
+                    Children: []
+                    Id: c1518a98-bbca-42cc-9349-7207b59d4e91
+                  - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                    Name: buttons
+                    Tag: null
+                    IsEnabled: true
+                    IsStatic: false
+                    Components:
+                      - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                        Id: 3a85ded6-f4f6-498f-9b0c-e09f0a342a28
+                        IsEnabled: true
+                        LocalOrientation:
+                          W: 1.0
+                          X: 0.0
+                          Y: 0.0
+                          Z: 0.0
+                        LocalPosition:
+                          X: 0.0102553666
+                          Y: 0.0
+                          Z: 2.11910134E-09
+                        LocalScale:
+                          X: 1.0
+                          Y: 1.0
+                          Z: 1.0
+                    Children:
+                      - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                        Name: button
+                        Tag: null
+                        IsEnabled: true
+                        IsStatic: false
+                        Components:
+                          - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                            Id: 83fef931-f779-4e4e-afa1-3212e5b3f4d1
+                            IsEnabled: true
+                            LocalOrientation:
+                              W: 1.0
+                              X: 0.0
+                              Y: 0.0
+                              Z: 0.0
+                            LocalPosition:
+                              X: 0.0
+                              Y: 0.0
+                              Z: 0.0
+                            LocalScale:
+                              X: 1.0
+                              Y: 1.0
+                              Z: 1.0
+                          - !WaveEngine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleGroup,WaveEngine.MRTK
+                            Id: e6e2d604-72a7-4bfe-87c7-fd920ad30803
+                            AllowOff: true
+                            IsEnabled: true
+                            Name: Group2
+                        Children:
+                          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                            Name: eventText
+                            Tag: null
+                            IsEnabled: true
+                            IsStatic: false
+                            Components:
+                              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                                Id: 681078f9-e3e3-4785-8363-4f4d60ec6106
+                                IsEnabled: true
+                                LocalOrientation:
+                                  W: 1.0
+                                  X: 0.0
+                                  Y: 0.0
+                                  Z: 0.0
+                                LocalPosition:
+                                  X: -0.0203689337
+                                  Y: -0.0562681407
+                                  Z: -9.13582987E-09
+                                LocalScale:
+                                  X: 1.0
+                                  Y: 1.0
+                                  Z: 1.0
+                              - !WaveEngine.MRTK.Toolkit.GUI.Text3D,WaveEngine.MRTK
+                                Id: ec3c8e73-617c-4675-bfce-a5ae4e2adb0a
+                                Alpha: 1.0
+                                Background:
+                                  A: 0
+                                  B: 0
+                                  G: 0
+                                  R: 0
+                                CustomHeight: false
+                                CustomWidth: false
+                                FontFamilySource: 
+                                FontSize: 20
+                                FontStretch: Normal
+                                FontStyle: Normal
+                                FontWeight: Normal
+                                Foreground:
+                                  A: 255
+                                  B: 255
+                                  G: 255
+                                  R: 255
+                                Height: 0.00529100513
+                                HorizontalAlignment: Left
+                                IsEnabled: true
+                                Normal: ZNegative
+                                Origin:
+                                  X: 0.5
+                                  Y: 0.5
+                                PixelDensity: 3780
+                                Text: Off
+                                TextAlignment: Left
+                                TextTrimming: None
+                                TextWrapping: NoWrap
+                                UpdateOrder: 0.5
+                                VerticalAlignment: Top
+                                Width: 0.00952380989
+                              - !WaveEngine_MRTK_Demo.Components.ToggleButtons.ShowToggleState,WaveEngine_MRTK_Demo
+                                Id: dce647e7-04e8-48cf-8e0c-c324762fd4d2
+                                IsEnabled: true
+                            Children:
+                              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                                Name: singleToggleButton
+                                Tag: null
+                                IsEnabled: true
+                                IsStatic: false
+                                Components:
+                                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                                    Id: 911c593d-7899-41ad-92e4-2f59d31773d5
+                                    IsEnabled: true
+                                    LocalOrientation:
+                                      W: 1.0
+                                      X: 0.0
+                                      Y: -4.36332302E-05
+                                      Z: 0.0
+                                    LocalPosition:
+                                      X: 0.00170966983
+                                      Y: 0.0252494514
+                                      Z: 3.21381588E-09
+                                    LocalScale:
+                                      X: 0.800000012
+                                      Y: 0.800000012
+                                      Z: 0.800000012
+                                  - !WaveEngine.MRTK.Toolkit.Prefabs.ScenePrefab,WaveEngine.MRTK
+                                    Id: 506a820d-df34-4c64-8b9f-66410b448bfc
+                                    DuplicateMaterials: false
+                                    IsEnabled: true
+                                    ScenePrefabProperty:
+                                      PrefabId: 36cadeae-b478-4b98-a06c-72a186813083
+                                  - !WaveEngine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleButton,WaveEngine.MRTK
+                                    Id: ceabfb4f-6072-47c6-ad7b-ac895ea621f2
+                                    IsEnabled: true
+                                  - !WaveEngine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleStateManager,WaveEngine.MRTK
+                                    Id: fa4ab192-877d-4cfc-a511-e6ba738ecdcd
+                                    DefaultComponentsAdded: true
+                                    IsEnabled: true
+                                  - !WaveEngine.MRTK.SDK.Features.UX.Components.ToggleButtons.RoundedToggleButtonConfigurator,WaveEngine.MRTK
+                                    Id: 5f28bf33-170a-42db-92d2-a1c5f7c79dd4
+                                    Back: 8e4718a1-e35c-4cfd-8cdb-166657218560
+                                    Front: 78e9e4d7-711b-44b7-b673-9d2cb9f1220f
+                                    IsEnabled: true
+                                    TargetState: Off
+                                  - !WaveEngine.MRTK.SDK.Features.UX.Components.ToggleButtons.RoundedToggleButtonConfigurator,WaveEngine.MRTK
+                                    Id: db84387f-8d7d-401b-859b-b8f5010cf1a5
+                                    Back: 8e4718a1-e35c-4cfd-8cdb-166657218560
+                                    Front: 0867071b-476d-41cc-b072-9dd796ce98a2
+                                    IsEnabled: false
+                                    TargetState: On
+                                Children: []
+                                Id: e77ba127-691c-4a3d-b70a-5af50482d66d
+                            Id: 6cf7bc72-2814-42d1-ad39-b307d8332a6c
+                        Id: c9288f90-7989-4d37-adf8-ff2bdf0f3c43
+                      - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                        Name: button
+                        Tag: null
+                        IsEnabled: true
+                        IsStatic: false
+                        Components:
+                          - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                            Id: 97c43734-1ae5-4bd2-8cf0-17f46db3260e
+                            IsEnabled: true
+                            LocalOrientation:
+                              W: 1.0
+                              X: 0.0
+                              Y: 0.0
+                              Z: 0.0
+                            LocalPosition:
+                              X: -0.044994697
+                              Y: 0.0
+                              Z: -9.29735577E-09
+                            LocalScale:
+                              X: 1.0
+                              Y: 1.0
+                              Z: 1.0
+                          - !WaveEngine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleGroup,WaveEngine.MRTK
+                            Id: c3f66e34-f6f4-4bb0-bb44-bdd5f0340589
+                            AllowOff: true
+                            IsEnabled: true
+                            Name: Group2
+                        Children:
+                          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                            Name: eventText
+                            Tag: null
+                            IsEnabled: true
+                            IsStatic: false
+                            Components:
+                              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                                Id: f53179d1-d4e5-4819-8373-965159ca4a25
+                                IsEnabled: true
+                                LocalOrientation:
+                                  W: 1.0
+                                  X: 0.0
+                                  Y: 0.0
+                                  Z: 0.0
+                                LocalPosition:
+                                  X: -0.0203689337
+                                  Y: -0.0562681407
+                                  Z: -9.13582987E-09
+                                LocalScale:
+                                  X: 1.0
+                                  Y: 1.0
+                                  Z: 1.0
+                              - !WaveEngine.MRTK.Toolkit.GUI.Text3D,WaveEngine.MRTK
+                                Id: dd03270d-fdec-4cf3-a4a1-ec58f080ae37
+                                Alpha: 1.0
+                                Background:
+                                  A: 0
+                                  B: 0
+                                  G: 0
+                                  R: 0
+                                CustomHeight: false
+                                CustomWidth: false
+                                FontFamilySource: 
+                                FontSize: 20
+                                FontStretch: Normal
+                                FontStyle: Normal
+                                FontWeight: Normal
+                                Foreground:
+                                  A: 255
+                                  B: 255
+                                  G: 255
+                                  R: 255
+                                Height: 0.00529100513
+                                HorizontalAlignment: Left
+                                IsEnabled: true
+                                Normal: ZNegative
+                                Origin:
+                                  X: 0.5
+                                  Y: 0.5
+                                PixelDensity: 3780
+                                Text: Off
+                                TextAlignment: Left
+                                TextTrimming: None
+                                TextWrapping: NoWrap
+                                UpdateOrder: 0.5
+                                VerticalAlignment: Top
+                                Width: 0.00952380989
+                              - !WaveEngine_MRTK_Demo.Components.ToggleButtons.ShowToggleState,WaveEngine_MRTK_Demo
+                                Id: f6177752-3d06-4cb4-ad4f-721075e657b6
+                                IsEnabled: true
+                            Children:
+                              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                                Name: singleToggleButton
+                                Tag: null
+                                IsEnabled: true
+                                IsStatic: false
+                                Components:
+                                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                                    Id: 1a0422a9-de97-4446-939a-730c4812b611
+                                    IsEnabled: true
+                                    LocalOrientation:
+                                      W: 1.0
+                                      X: 0.0
+                                      Y: -4.36332302E-05
+                                      Z: 0.0
+                                    LocalPosition:
+                                      X: 0.00170966983
+                                      Y: 0.0252494514
+                                      Z: 3.21381588E-09
+                                    LocalScale:
+                                      X: 0.800000012
+                                      Y: 0.800000012
+                                      Z: 0.800000012
+                                  - !WaveEngine.MRTK.Toolkit.Prefabs.ScenePrefab,WaveEngine.MRTK
+                                    Id: 81df492d-6373-46b7-8209-9d898ff40b7a
+                                    DuplicateMaterials: false
+                                    IsEnabled: true
+                                    ScenePrefabProperty:
+                                      PrefabId: 36cadeae-b478-4b98-a06c-72a186813083
+                                  - !WaveEngine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleButton,WaveEngine.MRTK
+                                    Id: 591b132a-de84-4ecd-9381-30ff00bd15a6
+                                    IsEnabled: true
+                                  - !WaveEngine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleStateManager,WaveEngine.MRTK
+                                    Id: 645cc714-9098-4e2a-b28a-e9b91b907b19
+                                    DefaultComponentsAdded: true
+                                    IsEnabled: true
+                                  - !WaveEngine.MRTK.SDK.Features.UX.Components.ToggleButtons.RoundedToggleButtonConfigurator,WaveEngine.MRTK
+                                    Id: de49a5d7-fac9-42bc-bc46-29adc8974f95
+                                    Back: 8e4718a1-e35c-4cfd-8cdb-166657218560
+                                    Front: 78e9e4d7-711b-44b7-b673-9d2cb9f1220f
+                                    IsEnabled: true
+                                    TargetState: Off
+                                  - !WaveEngine.MRTK.SDK.Features.UX.Components.ToggleButtons.RoundedToggleButtonConfigurator,WaveEngine.MRTK
+                                    Id: a5b3d45e-08cf-4982-9022-c37b69c4d77b
+                                    Back: 8e4718a1-e35c-4cfd-8cdb-166657218560
+                                    Front: 0867071b-476d-41cc-b072-9dd796ce98a2
+                                    IsEnabled: false
+                                    TargetState: On
+                                Children: []
+                                Id: 90a1f84b-e791-4c49-b3a9-a1268de8d9a0
+                            Id: f533bcac-576b-4e56-90d8-9f78ab8e3211
+                        Id: ae08ac39-8303-49bc-8cbe-accfec121599
+                      - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                        Name: button
+                        Tag: null
+                        IsEnabled: true
+                        IsStatic: false
+                        Components:
+                          - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                            Id: a95baf4f-d70b-4314-bcc7-35c13fb06e37
+                            IsEnabled: true
+                            LocalOrientation:
+                              W: 1.0
+                              X: 0.0
+                              Y: 0.0
+                              Z: 0.0
+                            LocalPosition:
+                              X: -0.0908094496
+                              Y: 0.0
+                              Z: -1.87641547E-08
+                            LocalScale:
+                              X: 1.0
+                              Y: 1.0
+                              Z: 1.0
+                          - !WaveEngine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleGroup,WaveEngine.MRTK
+                            Id: 5ad22072-f24d-459d-b14c-80a64f8e3423
+                            AllowOff: true
+                            IsEnabled: true
+                            Name: Group2
+                        Children:
+                          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                            Name: eventText
+                            Tag: null
+                            IsEnabled: true
+                            IsStatic: false
+                            Components:
+                              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                                Id: 565afd33-4263-4583-a8e4-868c487f2658
+                                IsEnabled: true
+                                LocalOrientation:
+                                  W: 1.0
+                                  X: 0.0
+                                  Y: 0.0
+                                  Z: 0.0
+                                LocalPosition:
+                                  X: -0.0203689337
+                                  Y: -0.0562681407
+                                  Z: -9.13582987E-09
+                                LocalScale:
+                                  X: 1.0
+                                  Y: 1.0
+                                  Z: 1.0
+                              - !WaveEngine.MRTK.Toolkit.GUI.Text3D,WaveEngine.MRTK
+                                Id: 001a1e90-d3e5-480f-ac0e-2e8ae21bd531
+                                Alpha: 1.0
+                                Background:
+                                  A: 0
+                                  B: 0
+                                  G: 0
+                                  R: 0
+                                CustomHeight: false
+                                CustomWidth: false
+                                FontFamilySource: 
+                                FontSize: 20
+                                FontStretch: Normal
+                                FontStyle: Normal
+                                FontWeight: Normal
+                                Foreground:
+                                  A: 255
+                                  B: 255
+                                  G: 255
+                                  R: 255
+                                Height: 0.00529100513
+                                HorizontalAlignment: Left
+                                IsEnabled: true
+                                Normal: ZNegative
+                                Origin:
+                                  X: 0.5
+                                  Y: 0.5
+                                PixelDensity: 3780
+                                Text: Off
+                                TextAlignment: Left
+                                TextTrimming: None
+                                TextWrapping: NoWrap
+                                UpdateOrder: 0.5
+                                VerticalAlignment: Top
+                                Width: 0.00952380989
+                              - !WaveEngine_MRTK_Demo.Components.ToggleButtons.ShowToggleState,WaveEngine_MRTK_Demo
+                                Id: 27713e2e-2234-4af8-a37f-4f352351ef15
+                                IsEnabled: true
+                            Children:
+                              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                                Name: singleToggleButton
+                                Tag: null
+                                IsEnabled: true
+                                IsStatic: false
+                                Components:
+                                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                                    Id: 48931629-8b3a-45c8-bacc-b1b31cd261db
+                                    IsEnabled: true
+                                    LocalOrientation:
+                                      W: 1.0
+                                      X: 0.0
+                                      Y: -4.36332302E-05
+                                      Z: 0.0
+                                    LocalPosition:
+                                      X: 0.00170966983
+                                      Y: 0.0252494514
+                                      Z: 3.21381588E-09
+                                    LocalScale:
+                                      X: 0.800000012
+                                      Y: 0.800000012
+                                      Z: 0.800000012
+                                  - !WaveEngine.MRTK.Toolkit.Prefabs.ScenePrefab,WaveEngine.MRTK
+                                    Id: e12570b2-b4ae-4f43-92ab-a00c72bf52da
+                                    DuplicateMaterials: false
+                                    IsEnabled: true
+                                    ScenePrefabProperty:
+                                      PrefabId: 36cadeae-b478-4b98-a06c-72a186813083
+                                  - !WaveEngine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleButton,WaveEngine.MRTK
+                                    Id: c914f273-864f-401e-8c97-5b6ff1bfb845
+                                    IsEnabled: true
+                                  - !WaveEngine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleStateManager,WaveEngine.MRTK
+                                    Id: 99453a81-fd2a-4a55-8c47-ad74128aa6a8
+                                    DefaultComponentsAdded: true
+                                    IsEnabled: true
+                                  - !WaveEngine.MRTK.SDK.Features.UX.Components.ToggleButtons.RoundedToggleButtonConfigurator,WaveEngine.MRTK
+                                    Id: aaa4426f-e1e1-4ad2-9f0b-9329a4e0ce4c
+                                    Back: 8e4718a1-e35c-4cfd-8cdb-166657218560
+                                    Front: 78e9e4d7-711b-44b7-b673-9d2cb9f1220f
+                                    IsEnabled: true
+                                    TargetState: Off
+                                  - !WaveEngine.MRTK.SDK.Features.UX.Components.ToggleButtons.RoundedToggleButtonConfigurator,WaveEngine.MRTK
+                                    Id: 2612693b-330c-42b6-888c-4ec343c2d56e
+                                    Back: 8e4718a1-e35c-4cfd-8cdb-166657218560
+                                    Front: 0867071b-476d-41cc-b072-9dd796ce98a2
+                                    IsEnabled: false
+                                    TargetState: On
+                                Children: []
+                                Id: 60e19d6b-8ffb-4b52-9f58-a554e34e41a4
+                            Id: ce912630-923f-49ad-9771-ed677c3b1cf3
+                        Id: 2d858587-4d45-4177-af5e-d7c7bfa5bb9c
+                      - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                        Name: button
+                        Tag: null
+                        IsEnabled: true
+                        IsStatic: false
+                        Components:
+                          - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                            Id: a3a7938c-71de-48d5-afbc-003e3b3e9847
+                            IsEnabled: true
+                            LocalOrientation:
+                              W: 1.0
+                              X: 0.0
+                              Y: 0.0
+                              Z: 0.0
+                            LocalPosition:
+                              X: -0.134475291
+                              Y: 0.0
+                              Z: -2.77869532E-08
+                            LocalScale:
+                              X: 1.0
+                              Y: 1.0
+                              Z: 1.0
+                          - !WaveEngine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleGroup,WaveEngine.MRTK
+                            Id: baab0866-81f4-423b-88b1-3b035c054478
+                            AllowOff: true
+                            IsEnabled: true
+                            Name: Group2
+                        Children:
+                          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                            Name: eventText
+                            Tag: null
+                            IsEnabled: true
+                            IsStatic: false
+                            Components:
+                              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                                Id: 686ea881-d5dd-4974-9da3-c34741708a7a
+                                IsEnabled: true
+                                LocalOrientation:
+                                  W: 1.0
+                                  X: 0.0
+                                  Y: 0.0
+                                  Z: 0.0
+                                LocalPosition:
+                                  X: -0.0203689337
+                                  Y: -0.0562681407
+                                  Z: -9.13582987E-09
+                                LocalScale:
+                                  X: 1.0
+                                  Y: 1.0
+                                  Z: 1.0
+                              - !WaveEngine.MRTK.Toolkit.GUI.Text3D,WaveEngine.MRTK
+                                Id: 0c6dde89-f060-41b2-8abe-022f412840e1
+                                Alpha: 1.0
+                                Background:
+                                  A: 0
+                                  B: 0
+                                  G: 0
+                                  R: 0
+                                CustomHeight: false
+                                CustomWidth: false
+                                FontFamilySource: 
+                                FontSize: 20
+                                FontStretch: Normal
+                                FontStyle: Normal
+                                FontWeight: Normal
+                                Foreground:
+                                  A: 255
+                                  B: 255
+                                  G: 255
+                                  R: 255
+                                Height: 0.00529100513
+                                HorizontalAlignment: Left
+                                IsEnabled: true
+                                Normal: ZNegative
+                                Origin:
+                                  X: 0.5
+                                  Y: 0.5
+                                PixelDensity: 3780
+                                Text: Off
+                                TextAlignment: Left
+                                TextTrimming: None
+                                TextWrapping: NoWrap
+                                UpdateOrder: 0.5
+                                VerticalAlignment: Top
+                                Width: 0.00952380989
+                              - !WaveEngine_MRTK_Demo.Components.ToggleButtons.ShowToggleState,WaveEngine_MRTK_Demo
+                                Id: 4e9c8b0f-c924-49d3-8cf6-476c566c1157
+                                IsEnabled: true
+                            Children:
+                              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                                Name: singleToggleButton
+                                Tag: null
+                                IsEnabled: true
+                                IsStatic: false
+                                Components:
+                                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                                    Id: 30764f22-f597-4aa8-9c88-b59118662856
+                                    IsEnabled: true
+                                    LocalOrientation:
+                                      W: 1.0
+                                      X: 0.0
+                                      Y: -4.36332302E-05
+                                      Z: 0.0
+                                    LocalPosition:
+                                      X: 0.00170966983
+                                      Y: 0.0252494514
+                                      Z: 3.21381588E-09
+                                    LocalScale:
+                                      X: 0.800000012
+                                      Y: 0.800000012
+                                      Z: 0.800000012
+                                  - !WaveEngine.MRTK.Toolkit.Prefabs.ScenePrefab,WaveEngine.MRTK
+                                    Id: e1df14cb-1a93-4220-bcba-d90de0da84ce
+                                    DuplicateMaterials: false
+                                    IsEnabled: true
+                                    ScenePrefabProperty:
+                                      PrefabId: 36cadeae-b478-4b98-a06c-72a186813083
+                                  - !WaveEngine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleButton,WaveEngine.MRTK
+                                    Id: 41ab80ea-9429-4d26-85d0-abff4266989e
+                                    IsEnabled: true
+                                  - !WaveEngine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleStateManager,WaveEngine.MRTK
+                                    Id: 268bed0c-da77-45da-8a89-3885a656de09
+                                    DefaultComponentsAdded: true
+                                    IsEnabled: true
+                                  - !WaveEngine.MRTK.SDK.Features.UX.Components.ToggleButtons.RoundedToggleButtonConfigurator,WaveEngine.MRTK
+                                    Id: b682e619-74e3-4137-b291-5526fabf12f4
+                                    Back: 8e4718a1-e35c-4cfd-8cdb-166657218560
+                                    Front: 78e9e4d7-711b-44b7-b673-9d2cb9f1220f
+                                    IsEnabled: true
+                                    TargetState: Off
+                                  - !WaveEngine.MRTK.SDK.Features.UX.Components.ToggleButtons.RoundedToggleButtonConfigurator,WaveEngine.MRTK
+                                    Id: d8a37d6b-c919-4aad-bddc-a294a8b69b22
+                                    Back: 8e4718a1-e35c-4cfd-8cdb-166657218560
+                                    Front: 0867071b-476d-41cc-b072-9dd796ce98a2
+                                    IsEnabled: false
+                                    TargetState: On
+                                Children: []
+                                Id: e8c697ce-ff83-4a75-967b-4dc8b0f5de09
+                            Id: f3286a4b-e9c7-45f3-b0b3-1bbd275957a2
+                        Id: d8f6ff22-cefb-4d92-8aae-a92cc10e19e4
+                    Id: 1a91ccce-d0bb-4038-b01a-3034d189daa7
+                Id: 1fc858de-0735-4b96-bed7-853d791bbd55
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: toggle-parent-group
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: b462115b-0574-4d41-94c0-50472fcbaac1
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: 0.0
+                      Y: -0.158807352
+                      Z: -4.98137354E-09
+                    LocalScale:
+                      X: 1.0
+                      Y: 1.0
+                      Z: 1.0
+                  - !WaveEngine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleGroup,WaveEngine.MRTK
+                    Id: d40acc44-9d90-4591-b891-5586f9bd8dfa
+                    AllowOff: false
+                    IsEnabled: true
+                    Name: Group3
+                Children:
+                  - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                    Name: description
+                    Tag: null
+                    IsEnabled: true
+                    IsStatic: false
+                    Components:
+                      - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                        Id: 0805ed56-f5ab-4231-b4f1-cdb488f01c6b
+                        IsEnabled: true
+                        LocalOrientation:
+                          W: 1.0
+                          X: 0.0
+                          Y: 0.0
+                          Z: 0.0
+                        LocalPosition:
+                          X: 0.0
+                          Y: 0.0
+                          Z: 0.0
+                        LocalScale:
+                          X: 1.0
+                          Y: 1.0
+                          Z: 1.0
+                      - !WaveEngine.MRTK.Toolkit.GUI.Text3D,WaveEngine.MRTK
+                        Id: 2dac5f5d-a702-4ca6-94ce-c3ec9915a5b6
+                        Alpha: 1.0
+                        Background:
+                          A: 0
+                          B: 0
+                          G: 0
+                          R: 0
+                        CustomHeight: false
+                        CustomWidth: true
+                        FontFamilySource: /Fonts/#Segoe UI
+                        FontSize: 18
+                        FontStretch: Normal
+                        FontStyle: Normal
+                        FontWeight: Bold
+                        Foreground:
+                          A: 255
+                          B: 255
+                          G: 255
+                          R: 255
+                        Height: 0.00634920644
+                        HorizontalAlignment: Left
+                        IsEnabled: true
+                        Normal: ZNegative
+                        Origin:
+                          X: 0.0
+                          Y: 0.5
+                        PixelDensity: 3780
+                        Text: 'Group #3: single group component for all hierarchy. Allow off = false.'
+                        TextAlignment: Left
+                        TextTrimming: None
+                        TextWrapping: Wrap
+                        UpdateOrder: 0.5
+                        VerticalAlignment: Center
+                        Width: 0.159999996
+                    Children: []
+                    Id: a20750b7-ab5b-449b-83d5-fef30b66418c
+                  - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                    Name: buttons
+                    Tag: null
+                    IsEnabled: true
+                    IsStatic: false
+                    Components:
+                      - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                        Id: 4c882805-38a7-4904-ab51-19355adf9e8f
+                        IsEnabled: true
+                        LocalOrientation:
+                          W: 1.0
+                          X: 0.0
+                          Y: 0.0
+                          Z: 0.0
+                        LocalPosition:
+                          X: 0.0100603104
+                          Y: 0.0
+                          Z: 2.07879225E-09
+                        LocalScale:
+                          X: 1.0
+                          Y: 1.0
+                          Z: 1.0
+                    Children:
+                      - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                        Name: button
+                        Tag: null
+                        IsEnabled: true
+                        IsStatic: false
+                        Components:
+                          - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                            Id: 4e96fec9-753a-4cad-921d-f8b1431ee921
+                            IsEnabled: true
+                            LocalOrientation:
+                              W: 1.0
+                              X: 0.0
+                              Y: 0.0
+                              Z: 0.0
+                            LocalPosition:
+                              X: 0.0
+                              Y: 0.0
+                              Z: 0.0
+                            LocalScale:
+                              X: 1.0
+                              Y: 1.0
+                              Z: 1.0
+                        Children:
+                          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                            Name: eventText
+                            Tag: null
+                            IsEnabled: true
+                            IsStatic: false
+                            Components:
+                              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                                Id: 3508b984-9800-4f24-a986-016f8810619b
+                                IsEnabled: true
+                                LocalOrientation:
+                                  W: 1.0
+                                  X: 0.0
+                                  Y: 0.0
+                                  Z: 0.0
+                                LocalPosition:
+                                  X: -0.0203689337
+                                  Y: -0.0562681407
+                                  Z: -9.13582987E-09
+                                LocalScale:
+                                  X: 1.0
+                                  Y: 1.0
+                                  Z: 1.0
+                              - !WaveEngine.MRTK.Toolkit.GUI.Text3D,WaveEngine.MRTK
+                                Id: 056179a6-1932-4093-8456-087f2e7ed307
+                                Alpha: 1.0
+                                Background:
+                                  A: 0
+                                  B: 0
+                                  G: 0
+                                  R: 0
+                                CustomHeight: false
+                                CustomWidth: false
+                                FontFamilySource: 
+                                FontSize: 20
+                                FontStretch: Normal
+                                FontStyle: Normal
+                                FontWeight: Normal
+                                Foreground:
+                                  A: 255
+                                  B: 255
+                                  G: 255
+                                  R: 255
+                                Height: 0.00529100513
+                                HorizontalAlignment: Left
+                                IsEnabled: true
+                                Normal: ZNegative
+                                Origin:
+                                  X: 0.5
+                                  Y: 0.5
+                                PixelDensity: 3780
+                                Text: Off
+                                TextAlignment: Left
+                                TextTrimming: None
+                                TextWrapping: NoWrap
+                                UpdateOrder: 0.5
+                                VerticalAlignment: Top
+                                Width: 0.00952380989
+                              - !WaveEngine_MRTK_Demo.Components.ToggleButtons.ShowToggleState,WaveEngine_MRTK_Demo
+                                Id: 393fec22-95c1-4c8e-b756-9a54130713e8
+                                IsEnabled: true
+                            Children:
+                              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                                Name: singleToggleButton
+                                Tag: null
+                                IsEnabled: true
+                                IsStatic: false
+                                Components:
+                                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                                    Id: a0946b6e-ed14-400c-a021-8050e66fe04f
+                                    IsEnabled: true
+                                    LocalOrientation:
+                                      W: 1.0
+                                      X: 0.0
+                                      Y: -4.36332302E-05
+                                      Z: 0.0
+                                    LocalPosition:
+                                      X: 0.00170966983
+                                      Y: 0.0252494514
+                                      Z: 3.21381588E-09
+                                    LocalScale:
+                                      X: 0.800000012
+                                      Y: 0.800000012
+                                      Z: 0.800000012
+                                  - !WaveEngine.MRTK.Toolkit.Prefabs.ScenePrefab,WaveEngine.MRTK
+                                    Id: 5ae6fe76-4874-41c6-97e4-8179f572eba2
+                                    DuplicateMaterials: false
+                                    IsEnabled: true
+                                    ScenePrefabProperty:
+                                      PrefabId: 36cadeae-b478-4b98-a06c-72a186813083
+                                  - !WaveEngine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleButton,WaveEngine.MRTK
+                                    Id: 8a279cc3-4054-4016-8702-69d5b1fb7f7f
+                                    IsEnabled: true
+                                  - !WaveEngine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleStateManager,WaveEngine.MRTK
+                                    Id: f58e6470-aae6-41d5-b991-9eda992c1990
+                                    DefaultComponentsAdded: true
+                                    IsEnabled: true
+                                  - !WaveEngine.MRTK.SDK.Features.UX.Components.ToggleButtons.RoundedToggleButtonConfigurator,WaveEngine.MRTK
+                                    Id: 15db8c55-0af9-4b89-86bf-a9d7bd07955c
+                                    Back: b5810cca-0555-4aab-86b8-b591766234a5
+                                    Front: e15b70dc-4787-4517-a720-914d405afa85
+                                    IsEnabled: true
+                                    TargetState: Off
+                                  - !WaveEngine.MRTK.SDK.Features.UX.Components.ToggleButtons.RoundedToggleButtonConfigurator,WaveEngine.MRTK
+                                    Id: 709fb897-7c44-4f65-8d52-85c93f98c6ea
+                                    Back: b5810cca-0555-4aab-86b8-b591766234a5
+                                    Front: 3521d95f-b8ce-40cb-b4d0-c268f64496bd
+                                    IsEnabled: false
+                                    TargetState: On
+                                Children: []
+                                Id: 46aebc8f-474a-4741-8ba5-781a8dda5df8
+                            Id: 004c8425-b79c-4d12-8d58-45fd2eb394f1
+                        Id: 289100fb-96d2-45b5-8022-a53f89d8bfa3
+                      - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                        Name: button
+                        Tag: null
+                        IsEnabled: true
+                        IsStatic: false
+                        Components:
+                          - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                            Id: e939ca5a-2805-4475-a4e9-00ed1abfa653
+                            IsEnabled: true
+                            LocalOrientation:
+                              W: 1.0
+                              X: 0.0
+                              Y: 0.0
+                              Z: 0.0
+                            LocalPosition:
+                              X: -0.044994697
+                              Y: 0.0
+                              Z: -9.29735577E-09
+                            LocalScale:
+                              X: 1.0
+                              Y: 1.0
+                              Z: 1.0
+                        Children:
+                          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                            Name: eventText
+                            Tag: null
+                            IsEnabled: true
+                            IsStatic: false
+                            Components:
+                              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                                Id: 777dddde-1e1e-4735-96b1-b532f8d6a893
+                                IsEnabled: true
+                                LocalOrientation:
+                                  W: 1.0
+                                  X: 0.0
+                                  Y: 0.0
+                                  Z: 0.0
+                                LocalPosition:
+                                  X: -0.0203689337
+                                  Y: -0.0562681407
+                                  Z: -9.13582987E-09
+                                LocalScale:
+                                  X: 1.0
+                                  Y: 1.0
+                                  Z: 1.0
+                              - !WaveEngine.MRTK.Toolkit.GUI.Text3D,WaveEngine.MRTK
+                                Id: 69914946-3df6-4f98-8301-69122402734e
+                                Alpha: 1.0
+                                Background:
+                                  A: 0
+                                  B: 0
+                                  G: 0
+                                  R: 0
+                                CustomHeight: false
+                                CustomWidth: false
+                                FontFamilySource: 
+                                FontSize: 20
+                                FontStretch: Normal
+                                FontStyle: Normal
+                                FontWeight: Normal
+                                Foreground:
+                                  A: 255
+                                  B: 255
+                                  G: 255
+                                  R: 255
+                                Height: 0.00529100513
+                                HorizontalAlignment: Left
+                                IsEnabled: true
+                                Normal: ZNegative
+                                Origin:
+                                  X: 0.5
+                                  Y: 0.5
+                                PixelDensity: 3780
+                                Text: Off
+                                TextAlignment: Left
+                                TextTrimming: None
+                                TextWrapping: NoWrap
+                                UpdateOrder: 0.5
+                                VerticalAlignment: Top
+                                Width: 0.00952380989
+                              - !WaveEngine_MRTK_Demo.Components.ToggleButtons.ShowToggleState,WaveEngine_MRTK_Demo
+                                Id: c61cfef6-d0cd-4b7f-a4b7-bd28a6927b63
+                                IsEnabled: true
+                            Children:
+                              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                                Name: singleToggleButton
+                                Tag: null
+                                IsEnabled: true
+                                IsStatic: false
+                                Components:
+                                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                                    Id: ea1f995c-db02-42a5-8fe3-0cfa147f6679
+                                    IsEnabled: true
+                                    LocalOrientation:
+                                      W: 1.0
+                                      X: 0.0
+                                      Y: -4.36332302E-05
+                                      Z: 0.0
+                                    LocalPosition:
+                                      X: 0.00170966983
+                                      Y: 0.0252494514
+                                      Z: 3.21381588E-09
+                                    LocalScale:
+                                      X: 0.800000012
+                                      Y: 0.800000012
+                                      Z: 0.800000012
+                                  - !WaveEngine.MRTK.Toolkit.Prefabs.ScenePrefab,WaveEngine.MRTK
+                                    Id: 308b20c2-767c-4481-b7d7-cb7a2baed21e
+                                    DuplicateMaterials: false
+                                    IsEnabled: true
+                                    ScenePrefabProperty:
+                                      PrefabId: 36cadeae-b478-4b98-a06c-72a186813083
+                                  - !WaveEngine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleButton,WaveEngine.MRTK
+                                    Id: 0e7ba8cb-bc5a-4d97-9173-e4ca86ecf428
+                                    IsEnabled: true
+                                  - !WaveEngine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleStateManager,WaveEngine.MRTK
+                                    Id: 5b450473-9fa0-4dd8-a475-fef6572ac1b9
+                                    DefaultComponentsAdded: true
+                                    IsEnabled: true
+                                  - !WaveEngine.MRTK.SDK.Features.UX.Components.ToggleButtons.RoundedToggleButtonConfigurator,WaveEngine.MRTK
+                                    Id: 5327d496-2c35-4429-91ae-7e0a289be0c6
+                                    Back: b5810cca-0555-4aab-86b8-b591766234a5
+                                    Front: e15b70dc-4787-4517-a720-914d405afa85
+                                    IsEnabled: true
+                                    TargetState: Off
+                                  - !WaveEngine.MRTK.SDK.Features.UX.Components.ToggleButtons.RoundedToggleButtonConfigurator,WaveEngine.MRTK
+                                    Id: 05037318-dd53-45ac-a22e-edee9b72cc12
+                                    Back: b5810cca-0555-4aab-86b8-b591766234a5
+                                    Front: 3521d95f-b8ce-40cb-b4d0-c268f64496bd
+                                    IsEnabled: false
+                                    TargetState: On
+                                Children: []
+                                Id: 247cf6b8-c686-4700-b180-92db368b7c58
+                            Id: f4a0f896-0833-4086-bb10-d9dae50ca94b
+                        Id: 4bf34c4f-5070-4f4a-a500-8a39217effc4
+                      - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                        Name: button
+                        Tag: null
+                        IsEnabled: true
+                        IsStatic: false
+                        Components:
+                          - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                            Id: 84cacad0-7830-4024-b9e1-f21137f6a077
+                            IsEnabled: true
+                            LocalOrientation:
+                              W: 1.0
+                              X: 0.0
+                              Y: 0.0
+                              Z: 0.0
+                            LocalPosition:
+                              X: -0.0908094496
+                              Y: 0.0
+                              Z: -1.87641547E-08
+                            LocalScale:
+                              X: 1.0
+                              Y: 1.0
+                              Z: 1.0
+                        Children:
+                          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                            Name: eventText
+                            Tag: null
+                            IsEnabled: true
+                            IsStatic: false
+                            Components:
+                              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                                Id: 08d9fc31-9297-4934-a961-a6bb7c445e6d
+                                IsEnabled: true
+                                LocalOrientation:
+                                  W: 1.0
+                                  X: 0.0
+                                  Y: 0.0
+                                  Z: 0.0
+                                LocalPosition:
+                                  X: -0.0203689337
+                                  Y: -0.0562681407
+                                  Z: -9.13582987E-09
+                                LocalScale:
+                                  X: 1.0
+                                  Y: 1.0
+                                  Z: 1.0
+                              - !WaveEngine.MRTK.Toolkit.GUI.Text3D,WaveEngine.MRTK
+                                Id: 016aee08-a609-439a-a646-ac641d1ff78a
+                                Alpha: 1.0
+                                Background:
+                                  A: 0
+                                  B: 0
+                                  G: 0
+                                  R: 0
+                                CustomHeight: false
+                                CustomWidth: false
+                                FontFamilySource: 
+                                FontSize: 20
+                                FontStretch: Normal
+                                FontStyle: Normal
+                                FontWeight: Normal
+                                Foreground:
+                                  A: 255
+                                  B: 255
+                                  G: 255
+                                  R: 255
+                                Height: 0.00529100513
+                                HorizontalAlignment: Left
+                                IsEnabled: true
+                                Normal: ZNegative
+                                Origin:
+                                  X: 0.5
+                                  Y: 0.5
+                                PixelDensity: 3780
+                                Text: Off
+                                TextAlignment: Left
+                                TextTrimming: None
+                                TextWrapping: NoWrap
+                                UpdateOrder: 0.5
+                                VerticalAlignment: Top
+                                Width: 0.00952380989
+                              - !WaveEngine_MRTK_Demo.Components.ToggleButtons.ShowToggleState,WaveEngine_MRTK_Demo
+                                Id: 441b7943-cc04-4a98-96eb-9a36fb436c3d
+                                IsEnabled: true
+                            Children:
+                              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                                Name: singleToggleButton
+                                Tag: null
+                                IsEnabled: true
+                                IsStatic: false
+                                Components:
+                                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                                    Id: 17ceeba5-0343-44bc-bce6-b512ba933727
+                                    IsEnabled: true
+                                    LocalOrientation:
+                                      W: 1.0
+                                      X: 0.0
+                                      Y: -4.36332302E-05
+                                      Z: 0.0
+                                    LocalPosition:
+                                      X: 0.00170966983
+                                      Y: 0.0252494514
+                                      Z: 3.21381588E-09
+                                    LocalScale:
+                                      X: 0.800000012
+                                      Y: 0.800000012
+                                      Z: 0.800000012
+                                  - !WaveEngine.MRTK.Toolkit.Prefabs.ScenePrefab,WaveEngine.MRTK
+                                    Id: 80e6bd49-b170-4e4f-a6e0-26683e1f12b8
+                                    DuplicateMaterials: false
+                                    IsEnabled: true
+                                    ScenePrefabProperty:
+                                      PrefabId: 36cadeae-b478-4b98-a06c-72a186813083
+                                  - !WaveEngine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleButton,WaveEngine.MRTK
+                                    Id: 4ecc0913-8ebc-40cc-a7be-1f062fbdd4b9
+                                    IsEnabled: true
+                                  - !WaveEngine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleStateManager,WaveEngine.MRTK
+                                    Id: 375f742f-ac1f-4811-b2a6-a7956295ea74
+                                    DefaultComponentsAdded: true
+                                    IsEnabled: true
+                                  - !WaveEngine.MRTK.SDK.Features.UX.Components.ToggleButtons.RoundedToggleButtonConfigurator,WaveEngine.MRTK
+                                    Id: 09d382cd-fefe-4b31-a3bb-5ebf0dabaca9
+                                    Back: b5810cca-0555-4aab-86b8-b591766234a5
+                                    Front: e15b70dc-4787-4517-a720-914d405afa85
+                                    IsEnabled: true
+                                    TargetState: Off
+                                  - !WaveEngine.MRTK.SDK.Features.UX.Components.ToggleButtons.RoundedToggleButtonConfigurator,WaveEngine.MRTK
+                                    Id: e1dc4e9b-5da6-4dec-b849-81cc484fbf3b
+                                    Back: b5810cca-0555-4aab-86b8-b591766234a5
+                                    Front: 3521d95f-b8ce-40cb-b4d0-c268f64496bd
+                                    IsEnabled: false
+                                    TargetState: On
+                                Children: []
+                                Id: ef7d5c6f-86ac-49f8-8110-a385b8c10fc7
+                            Id: 33933a30-5cf4-4821-845f-7fcefc125d27
+                        Id: 79a4135b-180d-4e63-ba99-f8c3f3e7b79c
+                      - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                        Name: button
+                        Tag: null
+                        IsEnabled: true
+                        IsStatic: false
+                        Components:
+                          - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                            Id: 8d42992f-048f-4c03-9e49-da0d8d533e43
+                            IsEnabled: true
+                            LocalOrientation:
+                              W: 1.0
+                              X: 0.0
+                              Y: 0.0
+                              Z: 0.0
+                            LocalPosition:
+                              X: -0.134475291
+                              Y: 0.0
+                              Z: -2.77869532E-08
+                            LocalScale:
+                              X: 1.0
+                              Y: 1.0
+                              Z: 1.0
+                        Children:
+                          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                            Name: eventText
+                            Tag: null
+                            IsEnabled: true
+                            IsStatic: false
+                            Components:
+                              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                                Id: 1f5bc561-4ada-40d2-a756-a8427cd9ab16
+                                IsEnabled: true
+                                LocalOrientation:
+                                  W: 1.0
+                                  X: 0.0
+                                  Y: 0.0
+                                  Z: 0.0
+                                LocalPosition:
+                                  X: -0.0203689337
+                                  Y: -0.0562681407
+                                  Z: -9.13582987E-09
+                                LocalScale:
+                                  X: 1.0
+                                  Y: 1.0
+                                  Z: 1.0
+                              - !WaveEngine.MRTK.Toolkit.GUI.Text3D,WaveEngine.MRTK
+                                Id: 6f1a176b-dbe9-4bae-8fca-1bbb6011ad94
+                                Alpha: 1.0
+                                Background:
+                                  A: 0
+                                  B: 0
+                                  G: 0
+                                  R: 0
+                                CustomHeight: false
+                                CustomWidth: false
+                                FontFamilySource: 
+                                FontSize: 20
+                                FontStretch: Normal
+                                FontStyle: Normal
+                                FontWeight: Normal
+                                Foreground:
+                                  A: 255
+                                  B: 255
+                                  G: 255
+                                  R: 255
+                                Height: 0.00529100513
+                                HorizontalAlignment: Left
+                                IsEnabled: true
+                                Normal: ZNegative
+                                Origin:
+                                  X: 0.5
+                                  Y: 0.5
+                                PixelDensity: 3780
+                                Text: Off
+                                TextAlignment: Left
+                                TextTrimming: None
+                                TextWrapping: NoWrap
+                                UpdateOrder: 0.5
+                                VerticalAlignment: Top
+                                Width: 0.00952380989
+                              - !WaveEngine_MRTK_Demo.Components.ToggleButtons.ShowToggleState,WaveEngine_MRTK_Demo
+                                Id: 54c2ac6d-8c8c-4b44-a537-1c8b26817c6b
+                                IsEnabled: true
+                            Children:
+                              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                                Name: singleToggleButton
+                                Tag: null
+                                IsEnabled: true
+                                IsStatic: false
+                                Components:
+                                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                                    Id: ca2ed19b-0bdc-4a9c-bd12-5ff5b25b90e5
+                                    IsEnabled: true
+                                    LocalOrientation:
+                                      W: 1.0
+                                      X: 0.0
+                                      Y: -4.36332302E-05
+                                      Z: 0.0
+                                    LocalPosition:
+                                      X: 0.00170966983
+                                      Y: 0.0252494514
+                                      Z: 3.21381588E-09
+                                    LocalScale:
+                                      X: 0.800000012
+                                      Y: 0.800000012
+                                      Z: 0.800000012
+                                  - !WaveEngine.MRTK.Toolkit.Prefabs.ScenePrefab,WaveEngine.MRTK
+                                    Id: 2bb12d4c-ccc0-4f96-b861-d0e0e6308eeb
+                                    DuplicateMaterials: false
+                                    IsEnabled: true
+                                    ScenePrefabProperty:
+                                      PrefabId: 36cadeae-b478-4b98-a06c-72a186813083
+                                  - !WaveEngine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleButton,WaveEngine.MRTK
+                                    Id: f2329825-834c-434c-ad12-76d5a168f6dd
+                                    IsEnabled: true
+                                  - !WaveEngine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleStateManager,WaveEngine.MRTK
+                                    Id: a3c12ba3-6763-4301-bf0b-2f063a611916
+                                    DefaultComponentsAdded: true
+                                    IsEnabled: true
+                                  - !WaveEngine.MRTK.SDK.Features.UX.Components.ToggleButtons.RoundedToggleButtonConfigurator,WaveEngine.MRTK
+                                    Id: bafc339a-feb9-4cc0-aa1f-567925c5f590
+                                    Back: b5810cca-0555-4aab-86b8-b591766234a5
+                                    Front: e15b70dc-4787-4517-a720-914d405afa85
+                                    IsEnabled: true
+                                    TargetState: Off
+                                  - !WaveEngine.MRTK.SDK.Features.UX.Components.ToggleButtons.RoundedToggleButtonConfigurator,WaveEngine.MRTK
+                                    Id: 6ca9084e-74cb-4479-8f72-7015b9bbec94
+                                    Back: b5810cca-0555-4aab-86b8-b591766234a5
+                                    Front: 3521d95f-b8ce-40cb-b4d0-c268f64496bd
+                                    IsEnabled: false
+                                    TargetState: On
+                                Children: []
+                                Id: da390361-f696-4bc2-a222-9495bda0207a
+                            Id: 1ac6d6d7-5105-4300-bdfd-646adda3bcbc
+                        Id: 130a7ad0-6838-4e82-afa3-e01680e9fa18
+                    Id: c58df6f5-5391-4a30-af53-4ca04f77d20a
+                Id: 84986db5-4da5-4f35-99d6-63c28cf60ee1
+            Id: fda77584-8d22-4095-9b14-ef4d8b4b881f
+        Id: 3b297d23-f7d9-4d3d-a0ff-c5e996a24f65
+    Id: 386cdfbd-5282-47d7-bcd3-0b9956b21f03
+Managers: []

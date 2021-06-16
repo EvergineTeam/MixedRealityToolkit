@@ -3,7 +3,7 @@ using WaveEngine.Components.Graphics3D;
 using WaveEngine.Framework;
 using WaveEngine.Framework.Graphics;
 using WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons;
-using WaveEngine_MRTK_Demo.Toolkit.Components.GUI;
+using WaveEngine.MRTK.Toolkit.GUI;
 
 namespace WaveEngine_MRTK_Demo.Components
 {

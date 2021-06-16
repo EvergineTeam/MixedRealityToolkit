@@ -3,8 +3,8 @@ using WaveEngine.Framework;
 using WaveEngine.Mathematics;
 using WaveEngine.MRTK.Effects;
 using WaveEngine.MRTK.SDK.Features.UX.Components.Sliders;
+using WaveEngine.MRTK.Toolkit.GUI;
 using WaveEngine.MRTK.Toolkit.Prefabs;
-using WaveEngine_MRTK_Demo.Toolkit.Components.GUI;
 
 namespace WaveEngine_MRTK_Demo.Components
 {

@@ -1,6 +1,6 @@
 ﻿using WaveEngine.Framework;
 using WaveEngine.MRTK.SDK.Features.UX.Components.Sliders;
-using WaveEngine_MRTK_Demo.Toolkit.Components.GUI;
+using WaveEngine.MRTK.Toolkit.GUI;
 
 namespace WaveEngine_MRTK_Demo.Components
 {
