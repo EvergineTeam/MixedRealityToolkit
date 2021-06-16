@@ -51,8 +51,8 @@ namespace WaveEngine.MRTK.Emulation
 
             var effect = this.Managers.AssetSceneManager.Load<Effect>(HoloGraphic.EffectId);
             this.perFrameCB = effect.SharedCBufferBySlot.Values.FirstOrDefault(x => x.UpdatePolicy == UpdatePolicy.PerFrame);
-            this.hoverLightsParamInfo = this.perFrameCB.CBufferInfo.Parameters[2];
-            this.proximityLightsParamInfo = this.perFrameCB.CBufferInfo.Parameters[3];
+            this.hoverLightsParamInfo = this.perFrameCB.CBufferInfo.Parameters.First(x => x.Name == "HoverLightData");
+            this.proximityLightsParamInfo = this.perFrameCB.CBufferInfo.Parameters.First(x => x.Name == "ProximityLightData");
         }
 
         /// <inheritdoc/>
