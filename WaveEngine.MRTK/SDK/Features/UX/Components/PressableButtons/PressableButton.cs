@@ -72,19 +72,26 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
         /// <inheritdoc/>
         protected override bool OnAttached()
         {
-            var attached = base.OnAttached();
-
-            if (attached)
+            if (!base.OnAttached())
             {
-                this.feedbackVisualsComponentsArray = this.feedbackVisualsComponents?.ToArray();
-
-                if (this.seeItSayItLabel != null)
-                {
-                    this.seeItSayItLabel.IsEnabled = false;
-                }
+                return false;
             }
 
-            return attached;
+            this.feedbackVisualsComponentsArray = this.feedbackVisualsComponents?.ToArray();
+
+            if (this.seeItSayItLabel != null)
+            {
+                this.seeItSayItLabel.IsEnabled = false;
+            }
+
+            return true;
+        }
+
+        /// <inheritdoc/>
+        protected override void OnDetach()
+        {
+            base.OnDetach();
+            this.feedbackVisualsComponentsArray = null;
         }
 
         /// <inheritdoc/>
