@@ -451,6 +451,11 @@ namespace WaveEngine.MRTK.Toolkit.GUI
         /// </summary>
         public InlineCollection Inlines => this.textBlock?.Inlines;
 
+        /// <summary>
+        /// Occurs every time the internal <see cref="NoesisFramebufferPanel"/> is updated.
+        /// </summary>
+        public event System.EventHandler NoesisFrameBufferUpdated;
+
         private Transform3D planeTransform;
         private MaterialComponent materialComponent;
         private MeshRenderer meshRenderer;
@@ -825,6 +830,8 @@ namespace WaveEngine.MRTK.Toolkit.GUI
             }
 
             this.isFrameBufferDirty = false;
+
+            this.NoesisFrameBufferUpdated?.Invoke(this, System.EventArgs.Empty);
         }
 
         private float GetPhysicalSize(float pixelSize)
