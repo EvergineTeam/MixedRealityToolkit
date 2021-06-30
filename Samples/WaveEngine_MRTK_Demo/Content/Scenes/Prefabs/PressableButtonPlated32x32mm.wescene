@@ -60,6 +60,7 @@ Items:
         ReleasePosition: 0.300000012
         RetractSpeed: 10.0
         SimulateTouchWithPointers: true
+        SimulatedPressDuration: 0:00:00:00.3000000
         SpeechKeyWord: 
         StartPosition: 0.5
         UpdateOrder: 0.5
@@ -187,9 +188,9 @@ Items:
                 IsEnabled: true
                 LocalOrientation:
                   W: 1.0
-                  X: 6.85391683E-07
-                  Y: -6.30162824E-15
-                  Z: 9.19420007E-09
+                  X: 0.0
+                  Y: 0.0
+                  Z: 0.0
                 LocalPosition:
                   X: 0.0
                   Y: 0.0

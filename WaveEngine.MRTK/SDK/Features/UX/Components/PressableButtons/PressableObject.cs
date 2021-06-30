@@ -78,8 +78,14 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
         /// Gets or sets a value indicating whether <see cref="IMixedRealityPointerHandler"/>
         /// events will be used to simulate touch press.
         /// </summary>
-        [RenderProperty(Tooltip = "Simulate touch press using" + nameof(IMixedRealityPointerHandler) + " events.")]
+        [RenderProperty(Tag = 1, Tooltip = "Simulate touch press using" + nameof(IMixedRealityPointerHandler) + " events.")]
         public bool SimulateTouchWithPointers { get; set; } = true;
+
+        /// <summary>
+        /// Gets or sets the duration of the simulated touch press when <see cref="SimulateTouchWithPointers"/> is enabled.
+        /// </summary>
+        [RenderProperty(AttachToTag = 1, AttachToValue = true, Tooltip = "Simulated touch press duration in seconds")]
+        public TimeSpan SimulatedPressDuration { get; set; } = TimeSpan.FromMilliseconds(300);
 
         /// <summary>
         /// Gets a value indicating whether this object is being touched.
@@ -267,18 +273,17 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
         /// <inheritdoc/>
         protected override void Update(TimeSpan gameTime)
         {
-            const float pressDurationSeconds = 0.3f;
             switch (this.simulatePressState)
             {
                 default:
                     return;
 
                 case PressSimulationState.Pressing:
-                    this.simulatedPressAmount += (float)gameTime.TotalSeconds / pressDurationSeconds;
+                    this.simulatedPressAmount += (float)(gameTime.TotalSeconds / this.SimulatedPressDuration.TotalSeconds);
                     break;
 
                 case PressSimulationState.Releasing:
-                    this.simulatedPressAmount -= (float)gameTime.TotalSeconds / pressDurationSeconds;
+                    this.simulatedPressAmount -= (float)(gameTime.TotalSeconds / this.SimulatedPressDuration.TotalSeconds);
                     break;
             }
 
