@@ -65,10 +65,20 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.States
         }
 
         /// <inheritdoc />
+        protected override void OnActivated()
+        {
+            base.OnActivated();
+            this.NotifyStateAware();
+        }
+
+        /// <inheritdoc />
         protected override void Start()
         {
             base.Start();
-            this.ChangeState(this.allStates.FirstOrDefault());
+            if (!Application.Current.IsEditor && this.currentState == null)
+            {
+                this.ChangeState(this.allStates.FirstOrDefault());
+            }
         }
 
         /// <inheritdoc />
@@ -103,6 +113,11 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.States
 
         private void NotifyStateAware()
         {
+            if (!this.IsActivated)
+            {
+                return;
+            }
+
             var allConfigurators = this.Owner
                 .FindComponents(typeof(IStateAware<TState>), isExactType: false)
                 .Cast<IStateAware<TState>>();
