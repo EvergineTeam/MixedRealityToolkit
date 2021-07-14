@@ -355,6 +355,11 @@ Items:
                     IsEnabled: true
                     ScenePrefabProperty:
                       PrefabId: 36cadeae-b478-4b98-a06c-72a186813083
+                  - !WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButtonSpeechHandler,WaveEngine.MRTK
+                    Id: c745ac92-374c-41a8-a815-e665a42c83a5
+                    IsEnabled: true
+                    SeeItSayItLabelTag: SeeItSayItLabel
+                    SpeechKeyword: button
                 Children: []
                 Id: 749cbf9a-e45d-4113-b71c-28e4d8543929
               - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
@@ -385,6 +390,11 @@ Items:
                     IsEnabled: true
                     ScenePrefabProperty:
                       PrefabId: 36cadeae-b478-4b98-a06c-72a186813083
+                  - !WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButtonSpeechHandler,WaveEngine.MRTK
+                    Id: 8379a392-e080-4deb-9a36-316ad07c0d0c
+                    IsEnabled: true
+                    SeeItSayItLabelTag: SeeItSayItLabel
+                    SpeechKeyword: button
                 Children: []
                 Id: c8a01bad-674e-4763-823f-018ef4eca286
               - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
@@ -415,6 +425,11 @@ Items:
                     IsEnabled: true
                     ScenePrefabProperty:
                       PrefabId: 36cadeae-b478-4b98-a06c-72a186813083
+                  - !WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButtonSpeechHandler,WaveEngine.MRTK
+                    Id: 76a24ae0-9d37-465a-85af-53b4641d06ee
+                    IsEnabled: true
+                    SeeItSayItLabelTag: SeeItSayItLabel
+                    SpeechKeyword: button
                 Children: []
                 Id: 372a1494-694e-499a-8065-e291fbfcce62
             Id: 92a40ec7-7556-4edf-9e3e-3ca7b6411c94
@@ -542,7 +557,7 @@ Items:
                     ReleasePosition: 0.300000012
                     RetractSpeed: 5.0
                     SimulateTouchWithPointers: true
-                    SpeechKeyWord: button
+                    SimulatedPressDuration: 0:00:00:00.3000000
                     StartPosition: 0.5
                     UpdateOrder: 0.5
                   - !WaveEngine.MRTK.Services.InputSystem.NearInteractionTouchable,WaveEngine.MRTK
@@ -565,6 +580,11 @@ Items:
                     PlayAutomatically: false
                     UpdateOrder: 0.5
                     Volume: 1.0
+                  - !WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButtonSpeechHandler,WaveEngine.MRTK
+                    Id: 99edc90c-768d-4e15-94fb-abdc72d7ff3a
+                    IsEnabled: true
+                    SeeItSayItLabelTag: SeeItSayItLabel
+                    SpeechKeyword: button
                 Children:
                   - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
                     Name: PianoKeyBlack
@@ -676,7 +696,7 @@ Items:
                     ReleasePosition: 0.300000012
                     RetractSpeed: 5.0
                     SimulateTouchWithPointers: true
-                    SpeechKeyWord: button
+                    SimulatedPressDuration: 0:00:00:00.3000000
                     StartPosition: 0.5
                     UpdateOrder: 0.5
                   - !WaveEngine.MRTK.Services.InputSystem.NearInteractionTouchable,WaveEngine.MRTK
@@ -699,6 +719,11 @@ Items:
                     PlayAutomatically: false
                     UpdateOrder: 0.5
                     Volume: 1.0
+                  - !WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButtonSpeechHandler,WaveEngine.MRTK
+                    Id: 24cb3eb5-d8ab-4b66-9905-2a91ab53c697
+                    IsEnabled: true
+                    SeeItSayItLabelTag: SeeItSayItLabel
+                    SpeechKeyword: button
                 Children:
                   - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
                     Name: PianoKeyBlack
@@ -810,7 +835,7 @@ Items:
                     ReleasePosition: 0.300000012
                     RetractSpeed: 5.0
                     SimulateTouchWithPointers: true
-                    SpeechKeyWord: button
+                    SimulatedPressDuration: 0:00:00:00.3000000
                     StartPosition: 0.5
                     UpdateOrder: 0.5
                   - !WaveEngine.MRTK.Services.InputSystem.NearInteractionTouchable,WaveEngine.MRTK
@@ -833,6 +858,11 @@ Items:
                     PlayAutomatically: false
                     UpdateOrder: 0.5
                     Volume: 1.0
+                  - !WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButtonSpeechHandler,WaveEngine.MRTK
+                    Id: 98c2e801-8a99-44e3-af08-9b9daf78f9b4
+                    IsEnabled: true
+                    SeeItSayItLabelTag: SeeItSayItLabel
+                    SpeechKeyword: button
                 Children:
                   - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
                     Name: PianoKeyBlack
@@ -944,7 +974,7 @@ Items:
                     ReleasePosition: 0.300000012
                     RetractSpeed: 5.0
                     SimulateTouchWithPointers: true
-                    SpeechKeyWord: button
+                    SimulatedPressDuration: 0:00:00:00.3000000
                     StartPosition: 0.5
                     UpdateOrder: 0.5
                   - !WaveEngine.MRTK.Services.InputSystem.NearInteractionTouchable,WaveEngine.MRTK
@@ -967,6 +997,11 @@ Items:
                     PlayAutomatically: false
                     UpdateOrder: 0.5
                     Volume: 1.0
+                  - !WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButtonSpeechHandler,WaveEngine.MRTK
+                    Id: ba9a3b05-302f-4f8a-bafe-dd2b47ec92d1
+                    IsEnabled: true
+                    SeeItSayItLabelTag: SeeItSayItLabel
+                    SpeechKeyword: button
                 Children:
                   - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
                     Name: PianoKeyBlack
@@ -1078,7 +1113,7 @@ Items:
                     ReleasePosition: 0.300000012
                     RetractSpeed: 5.0
                     SimulateTouchWithPointers: true
-                    SpeechKeyWord: button
+                    SimulatedPressDuration: 0:00:00:00.3000000
                     StartPosition: 0.5
                     UpdateOrder: 0.5
                   - !WaveEngine.MRTK.Services.InputSystem.NearInteractionTouchable,WaveEngine.MRTK
@@ -1101,6 +1136,11 @@ Items:
                     PlayAutomatically: false
                     UpdateOrder: 0.5
                     Volume: 1.0
+                  - !WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButtonSpeechHandler,WaveEngine.MRTK
+                    Id: ea46ab2f-2498-4535-95c5-a413c9493795
+                    IsEnabled: true
+                    SeeItSayItLabelTag: SeeItSayItLabel
+                    SpeechKeyword: button
                 Children:
                   - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
                     Name: PianoKeyBlack
@@ -1212,7 +1252,7 @@ Items:
                     ReleasePosition: 0.300000012
                     RetractSpeed: 5.0
                     SimulateTouchWithPointers: true
-                    SpeechKeyWord: button
+                    SimulatedPressDuration: 0:00:00:00.3000000
                     StartPosition: 0.5
                     UpdateOrder: 0.5
                   - !WaveEngine.MRTK.Services.InputSystem.NearInteractionTouchable,WaveEngine.MRTK
@@ -1235,6 +1275,11 @@ Items:
                     PlayAutomatically: false
                     UpdateOrder: 0.5
                     Volume: 1.0
+                  - !WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButtonSpeechHandler,WaveEngine.MRTK
+                    Id: fb561f7c-569c-451e-a0d7-21c4e149fa44
+                    IsEnabled: true
+                    SeeItSayItLabelTag: SeeItSayItLabel
+                    SpeechKeyword: button
                 Children:
                   - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
                     Name: PianoKey-B
@@ -1346,7 +1391,7 @@ Items:
                     ReleasePosition: 0.300000012
                     RetractSpeed: 5.0
                     SimulateTouchWithPointers: true
-                    SpeechKeyWord: button
+                    SimulatedPressDuration: 0:00:00:00.3000000
                     StartPosition: 0.5
                     UpdateOrder: 0.5
                   - !WaveEngine.MRTK.Services.InputSystem.NearInteractionTouchable,WaveEngine.MRTK
@@ -1369,6 +1414,11 @@ Items:
                     PlayAutomatically: false
                     UpdateOrder: 0.5
                     Volume: 1.0
+                  - !WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButtonSpeechHandler,WaveEngine.MRTK
+                    Id: 874b15ed-b3ed-4da5-9834-6bf2abf42ee1
+                    IsEnabled: true
+                    SeeItSayItLabelTag: SeeItSayItLabel
+                    SpeechKeyword: button
                 Children:
                   - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
                     Name: PianoKey-A
@@ -1480,7 +1530,7 @@ Items:
                     ReleasePosition: 0.300000012
                     RetractSpeed: 5.0
                     SimulateTouchWithPointers: true
-                    SpeechKeyWord: button
+                    SimulatedPressDuration: 0:00:00:00.3000000
                     StartPosition: 0.5
                     UpdateOrder: 0.5
                   - !WaveEngine.MRTK.Services.InputSystem.NearInteractionTouchable,WaveEngine.MRTK
@@ -1503,6 +1553,11 @@ Items:
                     PlayAutomatically: false
                     UpdateOrder: 0.5
                     Volume: 1.0
+                  - !WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButtonSpeechHandler,WaveEngine.MRTK
+                    Id: 4a777826-f742-49b3-89e2-7478e7209aa6
+                    IsEnabled: true
+                    SeeItSayItLabelTag: SeeItSayItLabel
+                    SpeechKeyword: button
                 Children:
                   - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
                     Name: PianoKey-G
@@ -1614,7 +1669,7 @@ Items:
                     ReleasePosition: 0.300000012
                     RetractSpeed: 5.0
                     SimulateTouchWithPointers: true
-                    SpeechKeyWord: button
+                    SimulatedPressDuration: 0:00:00:00.3000000
                     StartPosition: 0.5
                     UpdateOrder: 0.5
                   - !WaveEngine.MRTK.Services.InputSystem.NearInteractionTouchable,WaveEngine.MRTK
@@ -1637,6 +1692,11 @@ Items:
                     PlayAutomatically: false
                     UpdateOrder: 0.5
                     Volume: 1.0
+                  - !WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButtonSpeechHandler,WaveEngine.MRTK
+                    Id: 6159a0c0-368d-4ec0-a2ee-f11816dbfa16
+                    IsEnabled: true
+                    SeeItSayItLabelTag: SeeItSayItLabel
+                    SpeechKeyword: button
                 Children:
                   - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
                     Name: PianoKey-F
@@ -1748,7 +1808,7 @@ Items:
                     ReleasePosition: 0.300000012
                     RetractSpeed: 5.0
                     SimulateTouchWithPointers: true
-                    SpeechKeyWord: button
+                    SimulatedPressDuration: 0:00:00:00.3000000
                     StartPosition: 0.5
                     UpdateOrder: 0.5
                   - !WaveEngine.MRTK.Services.InputSystem.NearInteractionTouchable,WaveEngine.MRTK
@@ -1771,6 +1831,11 @@ Items:
                     PlayAutomatically: false
                     UpdateOrder: 0.5
                     Volume: 1.0
+                  - !WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButtonSpeechHandler,WaveEngine.MRTK
+                    Id: fcae2eb3-e58c-4edd-8602-f37f060553f0
+                    IsEnabled: true
+                    SeeItSayItLabelTag: SeeItSayItLabel
+                    SpeechKeyword: button
                 Children:
                   - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
                     Name: PianoKey-E
@@ -1882,7 +1947,7 @@ Items:
                     ReleasePosition: 0.300000012
                     RetractSpeed: 5.0
                     SimulateTouchWithPointers: true
-                    SpeechKeyWord: button
+                    SimulatedPressDuration: 0:00:00:00.3000000
                     StartPosition: 0.5
                     UpdateOrder: 0.5
                   - !WaveEngine.MRTK.Services.InputSystem.NearInteractionTouchable,WaveEngine.MRTK
@@ -1905,6 +1970,11 @@ Items:
                     PlayAutomatically: false
                     UpdateOrder: 0.5
                     Volume: 1.0
+                  - !WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButtonSpeechHandler,WaveEngine.MRTK
+                    Id: 20e90ff8-30cc-4251-83c5-ef171d8b2545
+                    IsEnabled: true
+                    SeeItSayItLabelTag: SeeItSayItLabel
+                    SpeechKeyword: button
                 Children:
                   - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
                     Name: PianoKey-D
@@ -2016,7 +2086,7 @@ Items:
                     ReleasePosition: 0.300000012
                     RetractSpeed: 5.0
                     SimulateTouchWithPointers: true
-                    SpeechKeyWord: button
+                    SimulatedPressDuration: 0:00:00:00.3000000
                     StartPosition: 0.5
                     UpdateOrder: 0.5
                   - !WaveEngine.MRTK.Services.InputSystem.NearInteractionTouchable,WaveEngine.MRTK
@@ -2039,6 +2109,11 @@ Items:
                     PlayAutomatically: false
                     UpdateOrder: 0.5
                     Volume: 1.0
+                  - !WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButtonSpeechHandler,WaveEngine.MRTK
+                    Id: 3badade4-3337-42ba-9e55-18dfb19d0142
+                    IsEnabled: true
+                    SeeItSayItLabelTag: SeeItSayItLabel
+                    SpeechKeyword: button
                 Children:
                   - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
                     Name: PianoKey-C
@@ -2260,6 +2335,11 @@ Items:
                     IsEnabled: true
                     ScenePrefabProperty:
                       PrefabId: facc69c2-67f2-4bc3-97cd-d1ddbd42a7e5
+                  - !WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButtonSpeechHandler,WaveEngine.MRTK
+                    Id: 72c78152-6a09-4b0c-a24f-1704a9ce8657
+                    IsEnabled: true
+                    SeeItSayItLabelTag: SeeItSayItLabel
+                    SpeechKeyword: 
                 Children: []
                 Id: 709ed301-96ec-484d-a53b-9945776a8986
               - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework

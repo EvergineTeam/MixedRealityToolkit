@@ -13,19 +13,13 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
     /// <summary>
     /// Represent a pressable button.
     /// </summary>
-    public class PressableButton : PressableObject, ISpeechHandler, IFocusable
+    public class PressableButton : PressableObject
     {
         /// <summary>
         /// The button feedback.
         /// </summary>
         [BindComponent(isExactType: false, isRequired: false, source: BindComponentSource.Children)]
         protected List<IPressableButtonFeedback> feedbackVisualsComponents;
-
-        /// <summary>
-        /// The "See It Say It" label entity. It should be marked with the tag "SeeItSayItLabel".
-        /// </summary>
-        [BindEntity(tag: "SeeItSayItLabel", isRequired: false, source: BindEntitySource.Children)]
-        protected Entity seeItSayItLabel;
 
         /// <summary>
         /// Gets or sets the speed for retracting the moving button visuals on release.
@@ -48,18 +42,13 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
         /// </summary>
         public static event EventHandler AnyButtonReleased;
 
-        /// <summary>
-        ///  Gets or sets the word that will make this object be pressed.
-        /// </summary>
-        public string SpeechKeyWord { get; set; } = string.Empty;
-
         private bool isPressing;
 
         private float currentPosition;
 
         private IPressableButtonFeedback[] feedbackVisualsComponentsArray;
 
-        private bool speechWordRecognized = false;
+        private bool simulatePressRequested = false;
 
         /// <inheritdoc/>
         protected override void OnLoaded()
@@ -79,11 +68,6 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
 
             this.feedbackVisualsComponentsArray = this.feedbackVisualsComponents?.ToArray();
 
-            if (this.seeItSayItLabel != null)
-            {
-                this.seeItSayItLabel.IsEnabled = false;
-            }
-
             return true;
         }
 
@@ -101,11 +85,11 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
 
             float targetPosition;
 
-            if (this.speechWordRecognized)
+            if (this.simulatePressRequested)
             {
                 if (this.currentPosition == this.EndPosition)
                 {
-                    this.speechWordRecognized = false;
+                    this.simulatePressRequested = false;
                     targetPosition = this.StartPosition;
                 }
                 else
@@ -158,6 +142,14 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
             }
         }
 
+        /// <summary>
+        /// Simulates a button press.
+        /// </summary>
+        public void SimulatePress()
+        {
+            this.simulatePressRequested = true;
+        }
+
         private void UpdatePressedState()
         {
             if (this.GetNewPressedState(this.isPressing, this.currentPosition, out var newPressedState))
@@ -190,30 +182,6 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
                         proximityLight.Pulse();
                     }
                 }
-            }
-        }
-
-        /// <inheritdoc/>
-        public void OnSpeechKeywordRecognized(string word)
-        {
-            this.speechWordRecognized = this.SpeechKeyWord == word;
-        }
-
-        /// <inheritdoc/>
-        public void OnFocusEnter()
-        {
-            if (this.seeItSayItLabel != null)
-            {
-                this.seeItSayItLabel.IsEnabled = true;
-            }
-        }
-
-        /// <inheritdoc/>
-        public void OnFocusExit()
-        {
-            if (this.seeItSayItLabel != null)
-            {
-                this.seeItSayItLabel.IsEnabled = false;
             }
         }
     }

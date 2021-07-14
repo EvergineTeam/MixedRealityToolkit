@@ -61,7 +61,6 @@ Items:
         RetractSpeed: 10.0
         SimulateTouchWithPointers: true
         SimulatedPressDuration: 0:00:00:00.3000000
-        SpeechKeyWord: 
         StartPosition: 0.5
         UpdateOrder: 0.5
       - !WaveEngine.MRTK.Services.InputSystem.NearInteractionTouchable,WaveEngine.MRTK
