@@ -375,7 +375,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
         {
             var distance = this.ProjectOnPressDirection(position);
 
-            return distance > this.StartPosition;
+            return distance > 0; // should be this.StartPosition, workaround for a physics issue for now
         }
 
         /// <summary>
