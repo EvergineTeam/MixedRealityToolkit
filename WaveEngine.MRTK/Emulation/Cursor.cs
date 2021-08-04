@@ -39,8 +39,15 @@ namespace WaveEngine.MRTK.Emulation
         private Vector3 linearVelocity;
         private Quaternion angularVelocity;
 
-        private List<Vector3> positionHistory = new List<Vector3>(VELOCITY_HISTORY_SIZE);
-        private List<Quaternion> orientationHistory = new List<Quaternion>(VELOCITY_HISTORY_SIZE);
+        /// <summary>
+        /// This <see cref="Cursor"/>'s position history list.
+        /// </summary>
+        protected readonly List<Vector3> PositionHistory = new List<Vector3>(VELOCITY_HISTORY_SIZE);
+
+        /// <summary>
+        /// This <see cref="Cursor"/>'s orientation history list.
+        /// </summary>
+        protected readonly List<Quaternion> OrientationHistory = new List<Quaternion>(VELOCITY_HISTORY_SIZE);
 
         private List<Entity> pointerInteractedEntities = new List<Entity>();
         private Entity pointerInteractedEntity;
@@ -133,8 +140,8 @@ namespace WaveEngine.MRTK.Emulation
 
             this.historyElapsedTime = 0;
             this.gameTimeHistory.Clear();
-            this.positionHistory.Clear();
-            this.orientationHistory.Clear();
+            this.PositionHistory.Clear();
+            this.OrientationHistory.Clear();
             this.pointerInteractedEntities.Clear();
 
             activeCursors.Remove(this);
@@ -155,11 +162,11 @@ namespace WaveEngine.MRTK.Emulation
             }
 
             // Update cursor velocity
-            this.AddToHistoryList(this.positionHistory, this.transform.Position);
-            this.AddToHistoryList(this.orientationHistory, this.transform.Orientation);
+            this.AddToHistoryList(this.PositionHistory, this.transform.Position);
+            this.AddToHistoryList(this.OrientationHistory, this.transform.Orientation);
 
-            var linearVelocity = (this.positionHistory[this.positionHistory.Count - 1] - this.positionHistory[0]) / this.historyElapsedTime;
-            var angularVelocity = this.orientationHistory[this.orientationHistory.Count - 1] * Quaternion.Inverse(this.orientationHistory[0]) * (1 / this.historyElapsedTime);
+            var linearVelocity = (this.PositionHistory[this.PositionHistory.Count - 1] - this.PositionHistory[0]) / this.historyElapsedTime;
+            var angularVelocity = this.OrientationHistory[this.OrientationHistory.Count - 1] * Quaternion.Inverse(this.OrientationHistory[0]) * (1 / this.historyElapsedTime);
 
             this.linearVelocity = linearVelocity;
             this.angularVelocity = angularVelocity;

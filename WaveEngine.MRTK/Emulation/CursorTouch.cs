@@ -7,6 +7,7 @@ using WaveEngine.Common.Attributes;
 using WaveEngine.Framework;
 using WaveEngine.Framework.Graphics;
 using WaveEngine.Framework.Physics3D;
+using WaveEngine.Mathematics;
 using WaveEngine.MRTK.Base.EventDatum.Input;
 using WaveEngine.MRTK.Base.Interfaces.InputSystem.Handlers;
 using WaveEngine.MRTK.Extensions;
@@ -159,6 +160,7 @@ namespace WaveEngine.MRTK.Emulation
             {
                 Cursor = this,
                 Position = this.transform.Position,
+                PreviousPosition = this.PositionHistory.Count() > 1 ? this.PositionHistory[this.PositionHistory.Count - 2] : Vector3.Zero,
             };
 
             this.RunOnComponents<IMixedRealityTouchHandler>(other, (x) => action(x, eventArgs));

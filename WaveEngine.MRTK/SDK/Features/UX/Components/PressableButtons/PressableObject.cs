@@ -32,6 +32,10 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
 
         private MixedRealityPointerEventData simulatedPointerEventData;
 
+        private bool touchUpdatedRan;
+        private HandTrackingInputEventData forceRunTouchCompletedEventData;
+        private int delayedFrames;
+
         /// <summary>
         /// The transform component.
         /// </summary>
@@ -105,6 +109,8 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
         /// <inheritdoc/>
         void IMixedRealityTouchHandler.OnTouchStarted(HandTrackingInputEventData eventData)
         {
+            this.touchUpdatedRan = false;
+
             var cursor = eventData.Cursor;
 
             // Start presses only once
@@ -114,21 +120,10 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
             }
 
             // Calculate cursor local transform
-            var localPosition = Vector3.TransformCoordinate(eventData.Position, this.GetWorldToLocalTransform());
-
-            // Calculate the press vector, obtained by keeping only the largest coordinate in the cursor local transform
-            var projectionX = new Vector3(localPosition.X, 0, 0);
-            var projectionY = new Vector3(0, localPosition.Y, 0);
-            var projectionZ = new Vector3(0, 0, localPosition.Z);
-
-            var projections = new Vector3[] { projectionX, projectionY, projectionZ };
-
-            var longestProjection = projections
-                                    .OrderByDescending(p => p.LengthSquared())
-                                    .First();
+            var localPosition = Vector3.TransformCoordinate(eventData.PreviousPosition, this.GetWorldToLocalTransform());
 
             // Start touch if pressing from the set press direction or if the button can be pressed from every direction
-            if (!this.EnforceFrontPush || this.PressedFromPressDirection(longestProjection))
+            if (!this.EnforceFrontPush || this.PressedFromPressDirection(localPosition))
             {
                 this.TouchStart(cursor, localPosition);
             }
@@ -137,20 +132,45 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
         /// <inheritdoc/>
         void IMixedRealityTouchHandler.OnTouchUpdated(HandTrackingInputEventData eventData)
         {
+            this.touchUpdatedRan = true;
+
             var cursor = eventData.Cursor;
 
             if (this.cursorLocalPositions.ContainsKey(cursor))
             {
-                var localPosition = Vector3.TransformCoordinate(eventData.Position, this.GetWorldToLocalTransform());
-
-                this.UpdateCursor(cursor, localPosition);
-
-                this.InternalOnTouchUpdated(cursor);
+                this.DoTouchUpdated(eventData);
             }
         }
 
         /// <inheritdoc/>
         void IMixedRealityTouchHandler.OnTouchCompleted(HandTrackingInputEventData eventData)
+        {
+            var cursor = eventData.Cursor;
+
+            if (this.cursorLocalPositions.ContainsKey(cursor))
+            {
+                if (!this.touchUpdatedRan)
+                {
+                    // Delay TouchCompleted for one frame to allow for events to fire.
+                    this.DoTouchUpdated(eventData);
+
+                    this.forceRunTouchCompletedEventData = eventData;
+                }
+                else
+                {
+                    this.DoTouchCompleted(eventData);
+                }
+            }
+        }
+
+        private void DoTouchUpdated(HandTrackingInputEventData eventData)
+        {
+            var localPosition = Vector3.TransformCoordinate(eventData.Position, this.GetWorldToLocalTransform());
+
+            this.TouchUpdate(eventData.Cursor, localPosition);
+        }
+
+        private void DoTouchCompleted(HandTrackingInputEventData eventData)
         {
             var cursor = eventData.Cursor;
 
@@ -273,6 +293,16 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
         /// <inheritdoc/>
         protected override void Update(TimeSpan gameTime)
         {
+            if (this.forceRunTouchCompletedEventData != null)
+            {
+                if (this.delayedFrames++ == 2)
+                {
+                    this.DoTouchCompleted(this.forceRunTouchCompletedEventData);
+                    this.forceRunTouchCompletedEventData = null;
+                    this.delayedFrames = 0;
+                }
+            }
+
             switch (this.simulatePressState)
             {
                 default:
@@ -341,10 +371,11 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
             return false;
         }
 
-        private bool PressedFromPressDirection(Vector3 longestProjection)
+        private bool PressedFromPressDirection(Vector3 position)
         {
-            var projectionOnCurrentPressDirection = this.ProjectOnPressDirection(longestProjection);
-            return MathHelper.FloatEquals(projectionOnCurrentPressDirection, longestProjection.Length());
+            var distance = this.ProjectOnPressDirection(position);
+
+            return distance > this.StartPosition;
         }
 
         /// <summary>

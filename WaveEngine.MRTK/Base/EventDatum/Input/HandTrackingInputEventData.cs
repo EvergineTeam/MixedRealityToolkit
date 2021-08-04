@@ -17,6 +17,11 @@ namespace WaveEngine.MRTK.Base.EventDatum.Input
         public Vector3 Position { get; set; }
 
         /// <summary>
+        /// Gets or sets the previous position.
+        /// </summary>
+        public Vector3 PreviousPosition { get; set; }
+
+        /// <summary>
         /// Gets or sets the cursor component.
         /// </summary>
         public CursorTouch Cursor { get; set; }
