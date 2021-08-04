@@ -490,7 +490,6 @@ Items:
                     ReleasePosition: 0.300000012
                     RetractSpeed: 10.0
                     SimulateTouchWithPointers: true
-                    SpeechKeyWord: 
                     StartPosition: 0.5
                     UpdateOrder: 0.5
                   - !WaveEngine.MRTK.Services.InputSystem.NearInteractionTouchable,WaveEngine.MRTK
