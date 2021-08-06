@@ -1,0 +1,65 @@
+!WaveEngine.Assets.Exporters.MaterialMetaFile,WaveEngine.Assets
+Id: d7c4a591-2f7a-4754-80c4-d47c976843b9
+DefaultProfile:
+  ExcludeAsset: false
+  Name: null
+  Platform: Undefined
+ExportAsRaw: false
+MaterialInfo:
+  Id: 9d532b01-5130-4bc9-b3e7-ad470af9a691
+  ActiveDirectives:
+    - PULSE
+  EffectID: b7b6076f-e298-45cf-babc-a8316996f359
+  Layer: ec4f0d2c-a47c-42c0-9784-86f2c09d10e5
+  Parameters:
+    - Name: WorldViewProj
+      Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
+      ValueByteArray: spScQAAAAAAAAAAAAAAAAAAAAACYMopADf9kvzD5ZL8AAAAAmjIKwAv/5L8u+eS/AAAAAHmCGjUf7ItAvRuPQA==
+    - Name: World
+      Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
+      ValueByteArray: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
+    - Name: Time
+      Type: System.Single
+      ValueByteArray: S+6qQg==
+    - Name: EdgeColor
+      Type: WaveEngine.Mathematics.Vector3,WaveEngine.Mathematics
+      ValueByteArray: AACAPwAAgD8AAIA/
+    - Name: EdgeWidth
+      Type: System.Single
+      ValueByteArray: CtcjPA==
+    - Name: FillColor0
+      Type: WaveEngine.Mathematics.Vector3,WaveEngine.Mathematics
+      ValueByteArray: ke0cP8HKAT/P93M/
+    - Name: EdgeSmooth
+      Type: System.Single
+      ValueByteArray: CtejPQ==
+    - Name: FillColor1
+      Type: WaveEngine.Mathematics.Vector3,WaveEngine.Mathematics
+      ValueByteArray: sp1vPnnpBj+R7Xw/
+    - Name: Displacement
+      Type: System.Single
+      ValueByteArray: j8J1PQ==
+    - Name: t
+      Type: System.Single
+      ValueByteArray: AAAAAA==
+    - Name: distorsionH
+      Type: System.Single
+      ValueByteArray: AACgQQ==
+    - Name: t0
+      Type: System.Single
+      ValueByteArray: uB6FPQ==
+    - Name: t1
+      Type: System.Single
+      ValueByteArray: w/Uovg==
+    - Name: Alpha
+      Type: System.Single
+      ValueByteArray: MzMzPw==
+    - Name: MultiviewViewProj
+      Type: WaveEngine.Mathematics.Matrix4x4,WaveEngine.Mathematics
+      ValueByteArray: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
+    - Name: EyeCount
+      Type: System.Int32
+      ValueByteArray: AAAAAA==
+  Samplers: null
+  Textures: null
+Profiles: {}
