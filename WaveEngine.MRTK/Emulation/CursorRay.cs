@@ -184,6 +184,7 @@ namespace WaveEngine.MRTK.Emulation
                             if (this.farPointerInteractedEntity != null)
                             {
                                 this.RemovePointerInteraction(this.farPointerInteractedEntity);
+                                this.RemoveFocusableInteraction(this.farPointerInteractedEntity);
                             }
 
                             this.farPointerInteractedEntity = interactedEntity;
@@ -191,6 +192,7 @@ namespace WaveEngine.MRTK.Emulation
                             if (this.farPointerInteractedEntity != null)
                             {
                                 this.AddPointerInteraction(this.farPointerInteractedEntity);
+                                this.AddFocusableInteraction(this.farPointerInteractedEntity);
                             }
                         }
 
@@ -219,6 +221,10 @@ namespace WaveEngine.MRTK.Emulation
                     this.lineMeshTransform.Scale = new Vector3(1, 1, distance);
                     this.lineMeshTransform.LookAt(this.transform.Position, Vector3.Up);
                     this.rayLineMesh.TextureTiling = new Vector2(distance * 0.5f * 30.0f, 1.0f);
+                }
+                else
+                {
+                    this.RemoveAllFocusableInteractions();
                 }
             }
 

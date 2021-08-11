@@ -113,12 +113,16 @@ namespace WaveEngine.MRTK.Emulation
             {
                 this.externalTouchCollisionEntities.Add(otherEntity);
             }
+
+            this.AddFocusableInteraction(otherEntity);
         }
 
         private void ExternalTouch_EndCollision(object sender, CollisionInfo3D args)
         {
             var otherEntity = args.OtherBody.Owner;
             this.externalTouchCollisionEntities.Remove(otherEntity);
+
+            this.RemoveFocusableInteraction(otherEntity);
         }
 
         private void InternalTouch_BeginCollision(object sender, CollisionInfo3D info)

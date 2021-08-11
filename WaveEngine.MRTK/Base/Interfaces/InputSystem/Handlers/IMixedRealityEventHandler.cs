@@ -3,7 +3,7 @@
 namespace WaveEngine.MRTK.Base.Interfaces.InputSystem.Handlers
 {
     /// <summary>
-    /// Base class that all Mixed Reality event handlers inherit from.
+    /// Base interface that all Mixed Reality event handlers inherit from.
     /// </summary>
     public interface IMixedRealityEventHandler
     {

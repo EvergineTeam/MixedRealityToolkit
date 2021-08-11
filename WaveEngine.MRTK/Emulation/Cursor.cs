@@ -2,6 +2,8 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
 using WaveEngine.Common.Attributes;
 using WaveEngine.Components.Graphics3D;
 using WaveEngine.Framework;
@@ -38,6 +40,9 @@ namespace WaveEngine.MRTK.Emulation
 
         private Vector3 linearVelocity;
         private Quaternion angularVelocity;
+
+        private Entity focusedEntity;
+        private List<Entity> pointerFocusableEntities = new List<Entity>();
 
         /// <summary>
         /// This <see cref="Cursor"/>'s position history list.
@@ -113,6 +118,28 @@ namespace WaveEngine.MRTK.Emulation
                 if (this.materialComponent != null)
                 {
                     this.materialComponent.Owner.IsEnabled = value;
+                }
+            }
+        }
+
+        private Entity FocusedEntity
+        {
+            get => this.focusedEntity;
+            set
+            {
+                if (this.focusedEntity != value)
+                {
+                    if (this.focusedEntity != null)
+                    {
+                        this.RunFocusHandlers(this.focusedEntity, (h, e) => h?.OnFocusExit(e));
+                    }
+
+                    this.focusedEntity = value;
+
+                    if (this.focusedEntity != null)
+                    {
+                        this.RunFocusHandlers(this.focusedEntity, (h, e) => h?.OnFocusEnter(e));
+                    }
                 }
             }
         }
@@ -193,6 +220,23 @@ namespace WaveEngine.MRTK.Emulation
             }
 
             this.PreviousPinch = this.Pinch;
+
+            // Update entity in focus
+            Entity focusedEntity = null;
+            var closestDistance = float.PositiveInfinity;
+            for (int i = 0; i < this.pointerFocusableEntities.Count; i++)
+            {
+                var entity = this.pointerFocusableEntities[i];
+                var distance = Vector3.DistanceSquared(this.transform.Position, entity.FindComponent<Transform3D>().Position);
+
+                if (distance < closestDistance)
+                {
+                    closestDistance = distance;
+                    focusedEntity = entity;
+                }
+            }
+
+            this.FocusedEntity = focusedEntity;
         }
 
         private void UpdateColor()
@@ -230,6 +274,16 @@ namespace WaveEngine.MRTK.Emulation
             this.RunOnComponents<IMixedRealityPointerHandler>(other, (x) => action(x, eventArgs));
         }
 
+        private void RunFocusHandlers(Entity other, Action<IMixedRealityFocusHandler, MixedRealityFocusEventData> action)
+        {
+            var eventArgs = new MixedRealityFocusEventData()
+            {
+                Cursor = this,
+            };
+
+            this.RunOnComponents<IMixedRealityFocusHandler>(other, (x) => action(x, eventArgs));
+        }
+
         /// <summary>
         /// Adds a pointer interacted entity.
         /// </summary>
@@ -246,6 +300,38 @@ namespace WaveEngine.MRTK.Emulation
         protected void RemovePointerInteraction(Entity interactedEntity)
         {
             this.pointerInteractedEntities.Remove(interactedEntity);
+        }
+
+        /// <summary>
+        /// Add an entity to the list of focusable objects for this cursor.
+        /// </summary>
+        /// <param name="focusedEntity">The entity to add.</param>
+        internal void AddFocusableInteraction(Entity focusedEntity)
+        {
+            if (focusedEntity.HasEventHandlers<IMixedRealityFocusHandler>())
+            {
+                if (!this.pointerFocusableEntities.Contains(focusedEntity))
+                {
+                    this.pointerFocusableEntities.Add(focusedEntity);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Remove an entity from the list of focusable objects for this cursor.
+        /// </summary>
+        /// <param name="focusedEntity">The entity to remove.</param>
+        internal void RemoveFocusableInteraction(Entity focusedEntity)
+        {
+            this.pointerFocusableEntities.Remove(focusedEntity);
+        }
+
+        /// <summary>
+        /// Remove all entities from the list of focusable objects for this cursor.
+        /// </summary>
+        internal void RemoveAllFocusableInteractions()
+        {
+            this.pointerFocusableEntities.Clear();
         }
 
         /// <summary>
