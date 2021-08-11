@@ -56,29 +56,37 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
         [RenderProperty(Tooltip = "Set whether the button visuals color will be modified when pressed")]
         public bool ChangeColor { get; set; } = false;
 
+        /// <summary>
+        /// Gets or sets the distance offset that this entity will receive when the button is focused.
+        /// </summary>
+        [RenderProperty(Tooltip = "The distance offset that this entity will receive when the button is focused")]
+        public float FocusedAccentDistance { get; set; } = 0.0f;
+
         private Vector3 movingVisualsInitialLocalPosition;
         private Vector3 movingVisualsInitialLocalScale;
 
         private Material releasedMaterial;
 
+        private Vector3 focusOffset;
+
         /// <inheritdoc/>
         protected override bool OnAttached()
         {
-            var attached = base.OnAttached();
-
-            if (attached)
+            if (!base.OnAttached())
             {
-                if (this.materialComponent?.Material != null)
-                {
-                    // Cache current material as released
-                    this.releasedMaterial = this.materialComponent.Material;
-                }
-
-                this.movingVisualsInitialLocalPosition = this.transform.LocalPosition;
-                this.movingVisualsInitialLocalScale = this.transform.LocalScale;
+                return false;
             }
 
-            return attached;
+            if (this.materialComponent?.Material != null)
+            {
+                // Cache current material as released
+                this.releasedMaterial = this.materialComponent.Material;
+            }
+
+            this.movingVisualsInitialLocalPosition = this.transform.LocalPosition;
+            this.movingVisualsInitialLocalScale = this.transform.LocalScale;
+
+            return true;
         }
 
         /// <inheritdoc/>
@@ -99,7 +107,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
                 Vector3 pushVectorLocal = Vector3.TransformNormal(pushVector, this.transform.WorldToLocalTransform);
 
                 // Move visuals
-                this.transform.LocalPosition = this.movingVisualsInitialLocalPosition + (pushVectorLocal * this.MovementScale);
+                this.transform.LocalPosition = this.movingVisualsInitialLocalPosition + (pushVectorLocal * this.MovementScale) + this.focusOffset;
             }
 
             if (this.ChangeColor)
@@ -108,6 +116,13 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
                 this.FixUpReleasedMaterial();
                 this.materialComponent.Material = pressed ? this.PressedMaterial : this.releasedMaterial;
             }
+        }
+
+        /// <inheritdoc/>
+        void IPressableButtonFeedback.FocusChanged(bool focus)
+        {
+            this.focusOffset = Vector3.Forward * this.FocusedAccentDistance * (focus ? 1 : 0);
+            this.transform.LocalPosition = this.movingVisualsInitialLocalPosition + this.focusOffset;
         }
 
         /// <summary>

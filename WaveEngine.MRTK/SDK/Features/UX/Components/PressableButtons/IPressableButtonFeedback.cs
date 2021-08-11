@@ -16,5 +16,11 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
         /// <param name="pressRatio">The press ratio.</param>
         /// <param name="pressed">If the button is pressed.</param>
         void Feedback(Vector3 pushVector, float pressRatio, bool pressed);
+
+        /// <summary>
+        /// Notify when the button focus state changes.
+        /// </summary>
+        /// <param name="focus">Whether the button is in focus.</param>
+        void FocusChanged(bool focus);
     }
 }

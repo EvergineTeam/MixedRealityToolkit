@@ -6,6 +6,8 @@ using System.Linq;
 using WaveEngine.Common.Attributes;
 using WaveEngine.Framework;
 using WaveEngine.Mathematics;
+using WaveEngine.MRTK.Base.EventDatum.Input;
+using WaveEngine.MRTK.Base.Interfaces.InputSystem.Handlers;
 using WaveEngine.MRTK.Emulation;
 
 namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
@@ -13,7 +15,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
     /// <summary>
     /// Represent a pressable button.
     /// </summary>
-    public class PressableButton : PressableObject
+    public class PressableButton : PressableObject, IMixedRealityFocusHandler
     {
         /// <summary>
         /// The button feedback.
@@ -49,6 +51,30 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
         private IPressableButtonFeedback[] feedbackVisualsComponentsArray;
 
         private bool simulatePressRequested = false;
+
+        private int focusSources;
+
+        /// <inheritdoc/>
+        public void OnFocusEnter(MixedRealityFocusEventData eventData)
+        {
+            this.focusSources++;
+
+            if (this.focusSources == 1)
+            {
+                this.RefreshFocusedState();
+            }
+        }
+
+        /// <inheritdoc/>
+        public void OnFocusExit(MixedRealityFocusEventData eventData)
+        {
+            this.focusSources--;
+
+            if (this.focusSources == 0)
+            {
+                this.RefreshFocusedState();
+            }
+        }
 
         /// <inheritdoc/>
         protected override void OnLoaded()
@@ -138,6 +164,17 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
                     {
                         this.feedbackVisualsComponentsArray[i].Feedback(pushVectorWorld, pressRatio, this.isPressing);
                     }
+                }
+            }
+        }
+
+        private void RefreshFocusedState()
+        {
+            if (this.feedbackVisualsComponentsArray != null)
+            {
+                for (int i = 0; i < this.feedbackVisualsComponentsArray.Length; i++)
+                {
+                    this.feedbackVisualsComponentsArray[i].FocusChanged(this.focusSources > 0);
                 }
             }
         }

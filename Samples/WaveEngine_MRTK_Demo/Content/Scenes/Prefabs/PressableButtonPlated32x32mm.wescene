@@ -171,6 +171,7 @@ Items:
             Id: 9e743e35-7aa1-4f72-a77d-b31ae5175757
             ChangeColor: false
             Compressable: false
+            FocusedAccentDistance: 0.00200000009
             IsEnabled: true
             MinCompressRatio: 0.25
             MovementScale: 0.5
@@ -311,6 +312,7 @@ Items:
             Id: 4adec8bf-3111-4936-9ab0-b2b997bc24b8
             ChangeColor: false
             Compressable: true
+            FocusedAccentDistance: 0.0
             IsEnabled: true
             MinCompressRatio: 0.25
             MovementScale: 1.0
