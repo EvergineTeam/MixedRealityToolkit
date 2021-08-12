@@ -22,6 +22,11 @@ namespace WaveEngine.MRTK.Extensions
         public static IEnumerable<T> FindEventHandlers<T>(this Entity entity)
             where T : IMixedRealityEventHandler
         {
+            if (entity is null)
+            {
+                throw new System.ArgumentNullException(nameof(entity));
+            }
+
             var current = entity;
             while (current != null)
             {
@@ -49,6 +54,11 @@ namespace WaveEngine.MRTK.Extensions
         public static bool HasEventHandlers<T>(this Entity entity)
             where T : IMixedRealityEventHandler
         {
+            if (entity is null)
+            {
+                throw new System.ArgumentNullException(nameof(entity));
+            }
+
             var current = entity;
             while (current != null)
             {
@@ -80,6 +90,11 @@ namespace WaveEngine.MRTK.Extensions
             where T1 : IMixedRealityEventHandler
             where T2 : IMixedRealityEventHandler
         {
+            if (entity is null)
+            {
+                throw new System.ArgumentNullException(nameof(entity));
+            }
+
             var current = entity;
             while (current != null)
             {

@@ -30,6 +30,7 @@ namespace WaveEngine.MRTK.Emulation
         private Entity externalTouchEntity;
         private StaticBody3D externalTouchStaticBody3D;
 
+        private Dictionary<int, Entity> collisionEntitiesByCollisionId = new Dictionary<int, Entity>();
         private HashSet<Entity> externalTouchCollisionEntities = new HashSet<Entity>();
         private HashSet<Entity> nearTouchCollisionEntities = new HashSet<Entity>();
 
@@ -105,9 +106,30 @@ namespace WaveEngine.MRTK.Emulation
             this.externalTouchEntity = null;
         }
 
-        private void ExternalTouch_BeginCollision(object sender, CollisionInfo3D args)
+        private Entity RegisterCollidedEntity(CollisionInfo3D info)
         {
-            var otherEntity = args.OtherBody.Owner;
+            this.UnregisterCollidedEntity(info);
+
+            var otherEntity = info.OtherBody.Owner;
+            this.collisionEntitiesByCollisionId.Add(info.Id, otherEntity);
+            return otherEntity;
+        }
+
+        private Entity UnregisterCollidedEntity(CollisionInfo3D info)
+        {
+            if (this.collisionEntitiesByCollisionId.TryGetValue(info.Id, out var otherEntity))
+            {
+                this.collisionEntitiesByCollisionId.Remove(info.Id);
+                return otherEntity;
+            }
+
+            return null;
+        }
+
+        private void ExternalTouch_BeginCollision(object sender, CollisionInfo3D info)
+        {
+            var otherEntity = this.RegisterCollidedEntity(info);
+
             var hasHandler = otherEntity.HasEventHandlers<IMixedRealityTouchHandler, IMixedRealityPointerHandler>();
             if (hasHandler)
             {
@@ -117,17 +139,18 @@ namespace WaveEngine.MRTK.Emulation
             this.AddFocusableInteraction(otherEntity);
         }
 
-        private void ExternalTouch_EndCollision(object sender, CollisionInfo3D args)
+        private void ExternalTouch_EndCollision(object sender, CollisionInfo3D info)
         {
-            var otherEntity = args.OtherBody.Owner;
-            this.externalTouchCollisionEntities.Remove(otherEntity);
+            var otherEntity = this.UnregisterCollidedEntity(info);
 
+            this.externalTouchCollisionEntities.Remove(otherEntity);
             this.RemoveFocusableInteraction(otherEntity);
         }
 
         private void InternalTouch_BeginCollision(object sender, CollisionInfo3D info)
         {
-            var interactedEntity = info.OtherBody.Owner;
+            var interactedEntity = this.RegisterCollidedEntity(info);
+
             this.AddPointerInteraction(interactedEntity);
 
             this.RunTouchHandlers(interactedEntity, (h, e) =>
@@ -139,9 +162,8 @@ namespace WaveEngine.MRTK.Emulation
 
         private void InternalTouch_UpdateCollision(object sender, CollisionInfo3D info)
         {
-            var interactedEntity = info.OtherBody.Owner;
-
-            if (this.nearTouchCollisionEntities.Contains(interactedEntity))
+            if (this.collisionEntitiesByCollisionId.TryGetValue(info.Id, out var interactedEntity) &&
+                this.nearTouchCollisionEntities.Contains(interactedEntity))
             {
                 this.RunTouchHandlers(interactedEntity, (h, e) => h?.OnTouchUpdated(e));
             }
@@ -149,7 +171,7 @@ namespace WaveEngine.MRTK.Emulation
 
         private void InternalTouch_EndCollision(object sender, CollisionInfo3D info)
         {
-            var interactedEntity = info.OtherBody.Owner;
+            var interactedEntity = this.UnregisterCollidedEntity(info);
             this.RemovePointerInteraction(interactedEntity);
 
             if (this.nearTouchCollisionEntities.Remove(interactedEntity))
