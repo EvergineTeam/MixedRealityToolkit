@@ -3,7 +3,9 @@
 using Noesis;
 using System;
 using System.Collections.Generic;
+using WaveEngine.Common;
 using WaveEngine.Common.Attributes;
+using WaveEngine.Common.Dependencies;
 using WaveEngine.Common.Graphics;
 using WaveEngine.Components.Graphics3D;
 using WaveEngine.Framework;
@@ -444,6 +446,35 @@ namespace WaveEngine.MRTK.Toolkit.GUI
 
         private TextTrimming textTrimming = TextTrimming.None;
 
+        /// <summary>
+        /// Gets or sets the type of the layer.
+        /// </summary>
+        /// <value>
+        /// The type of the layer.
+        /// </value>
+        public RenderLayerDescription Layer
+        {
+            get
+            {
+                return this.layer.Value;
+            }
+
+            set
+            {
+                if (this.layer.Value != value)
+                {
+                    this.layer.Value = value;
+
+                    if (this.holographicMaterial != null)
+                    {
+                        this.holographicMaterial.LayerDescription = value;
+                    }
+                }
+            }
+        }
+
+        private readonly LoadableDependencyLink<RenderLayerDescription> layer;
+
         private string containerEntityName => $"Text3D_{this.Id}";
 
         /// <summary>
@@ -474,6 +505,14 @@ namespace WaveEngine.MRTK.Toolkit.GUI
         private bool isFrameBufferDirty = true;
         private float resolutionScaleFactor = 1;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Text3D"/> class.
+        /// </summary>
+        public Text3D()
+        {
+            this.layer = LoadableDependenciesManager.RegisterPropertyDependencyLink<RenderLayerDescription>(this, nameof(this.Layer));
+        }
+
         /// <inheritdoc />
         protected override void OnLoaded()
         {
@@ -491,6 +530,11 @@ namespace WaveEngine.MRTK.Toolkit.GUI
             if (!base.OnAttached())
             {
                 return false;
+            }
+
+            if (this.layer.Value == null)
+            {
+                this.Layer = this.assetsService.Load<RenderLayerDescription>(DefaultResourcesIDs.AlphaRenderLayerID);
             }
 
             // Build FrameworkElement
@@ -589,7 +633,7 @@ namespace WaveEngine.MRTK.Toolkit.GUI
                 {
                     Id = this.Id,
                     Albedo = Color.White,
-                    LayerDescription = this.assetsService.Load<RenderLayerDescription>(DefaultResourcesIDs.AlphaRenderLayerID),
+                    LayerDescription = this.layer.Value,
                     Sampler = this.assetsService.Load<SamplerState>(DefaultResourcesIDs.LinearClampSamplerID),
                 };
 
