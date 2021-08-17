@@ -3,7 +3,6 @@
 using System;
 using WaveEngine.Common.Attributes;
 using WaveEngine.Framework;
-using WaveEngine.Framework.Services;
 using WaveEngine.Framework.XR;
 using WaveEngine.Mathematics;
 using WaveEngine.MRTK.Emulation;
@@ -16,12 +15,6 @@ namespace WaveEngine.MRTK.Behaviors
     /// </summary>
     public class HoloLensControlBehavior : Behavior
     {
-        /// <summary>
-        /// The xrPlatform.
-        /// </summary>
-        [BindService]
-        protected XRPlatform xrPlatform;
-
         /// <summary>
         /// The joint.
         /// </summary>
