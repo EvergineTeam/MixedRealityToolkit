@@ -56,7 +56,7 @@ namespace WaveEngine.MRTK.Toolkit.CommandService
 
         private void ToggleButton_Toggled(object sender, EventArgs e)
         {
-            this.commandService.SendCommand(this.toggleButton.IsOn ? this.OnCommand : this.OffCommand);
+            this.commandService.ExecuteCommand(this, this.toggleButton.IsOn ? this.OnCommand : this.OffCommand);
         }
     }
 }
