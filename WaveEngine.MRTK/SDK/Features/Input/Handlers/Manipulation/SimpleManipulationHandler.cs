@@ -23,7 +23,7 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
         /// The transform.
         /// </summary>
         [BindComponent]
-        protected Transform3D transform = null;
+        protected Transform3D transform;
 
         /// <summary>
         /// The rigid body.
@@ -35,13 +35,13 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
         /// The collider.
         /// </summary>
         [BindComponent(isRequired: false, isExactType: false, source: BindComponentSource.Children)]
-        protected Collider3D collider = null;
+        protected Collider3D collider;
 
         /// <summary>
         /// The physicBody3D.
         /// </summary>
         [BindComponent(isRequired: false, isExactType: false)]
-        protected PhysicBody3D physicBody3D = null;
+        protected PhysicBody3D physicBody3D;
 
         /// <summary>
         /// Gets or sets a value indicating whether the manipulation smoothing is enabled.
@@ -56,14 +56,20 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
         public float SmoothingAmount { get; set; } = 0.001f;
 
         /// <summary>
+        /// Gets or sets a value indicating whether the rotation manipulation is allowed when using single pointer.
+        /// </summary>
+        [RenderProperty(Tooltip = "Enable rotation manipulation when using single pointer")]
+        public bool EnableSinglePointerRotation { get; set; } = true;
+
+        /// <summary>
+        /// The global manipulation started event.
+        /// </summary>
+        public static event EventHandler AnyManipulationStarted;
+
+        /// <summary>
         /// The manipulation started event.
         /// </summary>
         public event EventHandler ManipulationStarted;
-
-        /// <summary>
-        /// The glopal manipulation started event.
-        /// </summary>
-        public static event EventHandler AnyManipulationStarted;
 
         /// <summary>
         /// The manipulation ended event.
@@ -248,16 +254,14 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
 
             var cursor = eventData.Cursor;
 
-            if (this.activeCursors.ContainsKey(cursor))
+            if (this.activeCursors.Remove(cursor))
             {
-                if (this.activeCursors.Count == 1)
+                if (this.activeCursors.Count == 0)
                 {
                     this.ReleaseRigidBody(eventData.LinearVelocity, eventData.AngularVelocity);
 
                     this.ManipulationEnded?.Invoke(this, EventArgs.Empty);
                 }
-
-                this.activeCursors.Remove(cursor);
 
                 eventData.SetHandled();
             }
@@ -387,7 +391,13 @@ namespace WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation
                     controllerTransform = rightTransform;
                 }
 
-                if ((constraintsMask & (int)ConstraintsEnum.ConstraintRotAll) != 0)
+                var constraintsRotationMask = constraintsMask & (int)ConstraintsEnum.ConstraintRotAll;
+                if ((!this.EnableSinglePointerRotation && !(leftPressed && rightPressed)) ||
+                    constraintsRotationMask == (int)ConstraintsEnum.ConstraintRotAll)
+                {
+                    controllerTransform = Matrix4x4.CreateFromTRS(controllerTransform.Translation, Vector3.Zero, controllerTransform.Scale);
+                }
+                else if (constraintsRotationMask != 0)
                 {
                     Vector3 rotation = controllerTransform.Rotation;
                     for (int i = 0; i < 3; ++i)

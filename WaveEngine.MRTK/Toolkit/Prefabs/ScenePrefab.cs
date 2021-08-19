@@ -7,6 +7,8 @@ using WaveEngine.Common.Attributes;
 using WaveEngine.Components.Graphics3D;
 using WaveEngine.Framework;
 using WaveEngine.Framework.Assets;
+using WaveEngine.Framework.Graphics;
+using WaveEngine.Framework.Managers;
 using WaveEngine.Framework.Services;
 
 namespace WaveEngine.MRTK.Toolkit.Prefabs
@@ -17,10 +19,16 @@ namespace WaveEngine.MRTK.Toolkit.Prefabs
     public class ScenePrefab : Component
     {
         /// <summary>
-        /// Gets or sets the asset service.
+        /// The asset service.
         /// </summary>
         [BindService]
-        public AssetsService AssetsService;
+        protected AssetsService assetService;
+
+        /// <summary>
+        /// The asset scene manager.
+        /// </summary>
+        [BindSceneManager]
+        protected AssetSceneManager assetSceneManager;
 
         private bool duplicateMaterials;
 
@@ -46,6 +54,11 @@ namespace WaveEngine.MRTK.Toolkit.Prefabs
                 }
             }
         }
+
+        /// <summary>
+        /// Occurs before a prefab root entity will be added to the <see cref="ScenePrefab"/> owner.
+        /// </summary>
+        public event EventHandler<Entity> AddingPrefabEntityRoot;
 
         /// <inheritdoc/>
         protected override bool OnAttached()
@@ -86,7 +99,7 @@ namespace WaveEngine.MRTK.Toolkit.Prefabs
         }
 
         /// <summary>
-        /// Refresh the entity, reinstancing the prefab.
+        /// Refresh the entity, re-instancing the prefab.
         /// </summary>
         /// <param name="checkIsAttached">Check if it's attached.</param>
         public void RefreshEntity(bool checkIsAttached = true)
@@ -105,12 +118,17 @@ namespace WaveEngine.MRTK.Toolkit.Prefabs
             }
 
             var st = Stopwatch.StartNew();
-            var source = this.AssetsService.GetAssetSource<SceneSource>(this.ScenePrefabProperty.PrefabId);
-            foreach (var item in source.SceneData.Items)
+            var source = this.assetService.GetAssetSource<SceneSource>(this.ScenePrefabProperty.PrefabId);
+            var sceneItems = source.SceneData.Items.ToArray();
+            foreach (var item in sceneItems)
             {
-                var child = item.Entity;
-                this.PrepareEntity(child);
-                this.Owner.AddChild(child);
+                this.PrepareEntity(item.Entity);
+            }
+
+            foreach (var item in sceneItems)
+            {
+                this.AddingPrefabEntityRoot?.Invoke(this, item.Entity);
+                this.Owner.AddChild(item.Entity);
             }
 
             Trace.WriteLine($"Prefab with id '{this.ScenePrefabProperty.PrefabId}' created in {st.ElapsedMilliseconds}ms");
@@ -125,9 +143,12 @@ namespace WaveEngine.MRTK.Toolkit.Prefabs
                 component.Id = Guid.NewGuid();
 
                 if (this.DuplicateMaterials &&
-                    component is MaterialComponent materialComponent)
+                    component is MaterialComponent materialComponent &&
+                    materialComponent.Material != null)
                 {
-                    materialComponent.Material = materialComponent.Material?.Clone();
+                    var clonedMaterial = this.assetSceneManager.Load<Material>(materialComponent.Material.Id, forceNewInstance: true);
+                    clonedMaterial.Id = Guid.NewGuid();
+                    materialComponent.Material = clonedMaterial;
                 }
             }
 

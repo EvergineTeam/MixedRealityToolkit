@@ -200,16 +200,19 @@ namespace WaveEngine.MRTK.Emulation
 
             if (this.PreviousPinch)
             {
-                if (this.Pinch)
+                if (this.pointerInteractedEntity != null)
                 {
-                    // PointerDragged while the cursor is pinched
-                    this.RunPointerHandlers(this.pointerInteractedEntity, (h, e) => h?.OnPointerDragged(e));
-                }
-                else
-                {
-                    // PointerUp when the cursor is unpinched
-                    this.RunPointerHandlers(this.pointerInteractedEntity, (h, e) => h?.OnPointerUp(e));
-                    this.pointerInteractedEntity = null;
+                    if (this.Pinch)
+                    {
+                        // PointerDragged while the cursor is pinched
+                        this.RunPointerHandlers(this.pointerInteractedEntity, (h, e) => h?.OnPointerDragged(e));
+                    }
+                    else
+                    {
+                        // PointerUp when the cursor is unpinched
+                        this.RunPointerHandlers(this.pointerInteractedEntity, (h, e) => h?.OnPointerUp(e));
+                        this.pointerInteractedEntity = null;
+                    }
                 }
             }
             else if (this.Pinch && this.pointerInteractedEntities.Count > 0)
@@ -306,7 +309,7 @@ namespace WaveEngine.MRTK.Emulation
         /// Add an entity to the list of focusable objects for this cursor.
         /// </summary>
         /// <param name="focusedEntity">The entity to add.</param>
-        internal void AddFocusableInteraction(Entity focusedEntity)
+        protected void AddFocusableInteraction(Entity focusedEntity)
         {
             if (focusedEntity.HasEventHandlers<IMixedRealityFocusHandler>())
             {
@@ -321,7 +324,7 @@ namespace WaveEngine.MRTK.Emulation
         /// Remove an entity from the list of focusable objects for this cursor.
         /// </summary>
         /// <param name="focusedEntity">The entity to remove.</param>
-        internal void RemoveFocusableInteraction(Entity focusedEntity)
+        protected void RemoveFocusableInteraction(Entity focusedEntity)
         {
             this.pointerFocusableEntities.Remove(focusedEntity);
         }
@@ -329,7 +332,7 @@ namespace WaveEngine.MRTK.Emulation
         /// <summary>
         /// Remove all entities from the list of focusable objects for this cursor.
         /// </summary>
-        internal void RemoveAllFocusableInteractions()
+        protected void RemoveAllFocusableInteractions()
         {
             this.pointerFocusableEntities.Clear();
         }

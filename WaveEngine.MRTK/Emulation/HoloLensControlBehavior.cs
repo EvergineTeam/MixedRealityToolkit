@@ -3,24 +3,18 @@
 using System;
 using WaveEngine.Common.Attributes;
 using WaveEngine.Framework;
-using WaveEngine.Framework.Services;
 using WaveEngine.Framework.XR;
+using WaveEngine.Mathematics;
 using WaveEngine.MRTK.Emulation;
 using WaveEngine.MRTK.SDK.Features;
 
 namespace WaveEngine.MRTK.Behaviors
 {
     /// <summary>
-    /// Hololens pinch.
+    /// HoloLens pinch.
     /// </summary>
     public class HoloLensControlBehavior : Behavior
     {
-        /// <summary>
-        /// The xrPlatform.
-        /// </summary>
-        [BindService]
-        protected XRPlatform xrPlatform;
-
         /// <summary>
         /// The joint.
         /// </summary>
@@ -34,32 +28,39 @@ namespace WaveEngine.MRTK.Behaviors
         protected Cursor cursor;
 
         /// <summary>
-        /// Gets or sets the first joint.
+        /// Gets or sets the distance between the index finger tip and the thumb tip required to enter the pinch/air tap gesture.
+        /// The pinch gesture enter will be registered for all values less than the <see cref="EnterPinchDistance"/>.
+        /// Default: <c>0.02f</c>.
         /// </summary>
-        [RenderProperty(Tooltip = "First joint that will be used for the pinch gesture")]
-        public XRHandJointKind PinchJoint1 { get; set; } = XRHandJointKind.IndexTip;
+        [RenderProperty(Tooltip = "The distance at which the cursor will enter the pinch gesture")]
+        public float EnterPinchDistance { get; set; } = 0.02f;
 
         /// <summary>
-        /// Gets or sets the second joint.
+        /// Gets or sets the distance between the index finger tip and the thumb tip required to exit the pinch/air tap gesture.
+        /// The pinch gesture exit will be registered for all values greater than the <see cref="ExitPinchDistance"/>.
+        /// Default: <c>0.05f</c>.
         /// </summary>
-        [RenderProperty(Tooltip = "Second joint that will be used for the pinch gesture")]
-        public XRHandJointKind PinchJoint2 { get; set; } = XRHandJointKind.ThumbTip;
-
-        /// <summary>
-        /// Gets or sets the pinch distance.
-        /// </summary>
-        [RenderProperty(Tooltip = "The distance at which the cursor will make the pinch gesture")]
-        public float PinchDistance { get; set; } = 0.03f;
+        [RenderProperty(Tooltip = "The distance at which the cursor will exit the pinch gesture")]
+        public float ExitPinchDistance { get; set; } = 0.05f;
 
         /// <inheritdoc/>
         protected override void Update(TimeSpan gameTime)
         {
             if (Tools.IsJointValid(this.trackXRJoint)
-                && this.trackXRJoint.TrackedDevice.TryGetArticulatedHandJoint(this.PinchJoint1, out var joint1)
-                && this.trackXRJoint.TrackedDevice.TryGetArticulatedHandJoint(this.PinchJoint2, out var joint2))
+                && this.trackXRJoint.TrackedDevice.TryGetArticulatedHandJoint(XRHandJointKind.IndexTip, out var indexTip)
+                && this.trackXRJoint.TrackedDevice.TryGetArticulatedHandJoint(XRHandJointKind.ThumbTip, out var thumbTip))
             {
-                var distance = joint1.Pose.Position - joint2.Pose.Position;
-                this.cursor.Pinch = distance.Length() < this.PinchDistance;
+                float distance = Vector3.Distance(indexTip.Pose.Position, thumbTip.Pose.Position);
+
+                var isPinching = this.cursor.Pinch;
+                if (isPinching && distance > this.ExitPinchDistance)
+                {
+                    this.cursor.Pinch = false;
+                }
+                else if (!isPinching && distance < this.EnterPinchDistance)
+                {
+                    this.cursor.Pinch = true;
+                }
             }
             else
             {
