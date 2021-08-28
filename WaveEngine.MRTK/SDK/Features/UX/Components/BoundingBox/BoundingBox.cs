@@ -4,13 +4,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using WaveEngine.Common.Attributes;
-using WaveEngine.Common.Graphics;
 using WaveEngine.Components.Graphics3D;
 using WaveEngine.Framework;
 using WaveEngine.Framework.Graphics;
-using WaveEngine.Framework.Graphics.Effects;
 using WaveEngine.Framework.Physics3D;
-using WaveEngine.Framework.Services;
 using WaveEngine.Mathematics;
 using WaveEngine.MRTK.Base.EventDatum.Input;
 using WaveEngine.MRTK.Emulation;
@@ -490,12 +487,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
         /// </summary>
         public event EventHandler<BoundingBoxManipulationEventArgs> ScaleStopped;
 
-        // Rig
-
-        /// <summary>
-        /// Gets the gizmos root.
-        /// </summary>
-        public Entity rigRootEntity { get; private set; }
+        private Entity rigRootEntity;
 
         private Dictionary<Entity, BoundingBoxHelper> helpers;
         private List<BoundingBoxHelper> helpersList;
@@ -627,7 +619,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
         /// Destroys and re-creates the rig around the bounding box.
         /// </summary>
         /// <returns><see langword="true"/> if the rig can be re-created at that moment.</returns>
-        public bool CreateRig()
+        private bool CreateRig()
         {
             if (!this.IsActivated)
             {
@@ -645,15 +637,9 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
                 this.DestroyRig();
                 this.InitializeRigRoot();
                 this.InitializeDataStructures();
-                ////this.SetBoundingBoxCollider();
                 this.AddHelpers();
-                ////HandleIgnoreCollider();
                 this.AddBoxDisplay();
                 this.UpdateRigHandles();
-                ////Flatten();
-                ////ResetHandleVisibility();
-                ////rigRoot.gameObject.SetActive(active);
-                ////UpdateRigVisibilityInInspector();
             }
         }
 
@@ -860,15 +846,10 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
 
         private void AddHelpers()
         {
+            // Add corners
             var cornerCenters = this.GetCornerPositionsFromBounds();
             var cornerRotations = this.CalculateCornerRotations();
-            var faceCenters = this.CalculateFaceCenters();
-            var faceRotations = this.CalculateFaceRotations();
-            var edgeCenters = this.CalculateEdgeCenters(cornerCenters);
-            var edgeRotations = this.CalculateEdgeRotations();
-            var edgeAxes = this.CalculateAxisTypes();
 
-            // Add corners
             if (this.showScaleHandles)
             {
                 for (int i = 0; i < cornerCenters.Length; ++i)
@@ -884,6 +865,9 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
             }
 
             // Add face balls
+            var faceCenters = this.CalculateFaceCenters();
+            var faceRotations = this.CalculateFaceRotations();
+
             bool[] showScaleHandle = { this.ShowXScaleHandle, this.ShowYScaleHandle, this.ShowZScaleHandle };
             for (int i = 0; i < faceCenters.Length; ++i)
             {
@@ -902,6 +886,10 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
             }
 
             // Add midpoints
+            var edgeCenters = this.CalculateEdgeCenters(cornerCenters);
+            var edgeRotations = this.CalculateEdgeRotations();
+            var edgeAxes = this.CalculateAxisTypes();
+
             bool[] showRotationHandle = { this.ShowXRotationHandle, this.ShowYRotationHandle, this.ShowZRotationHandle };
             for (int i = 0; i < edgeCenters.Length; ++i)
             {
@@ -979,7 +967,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
                     {
                         Type = BoundingBoxHelperType.WireframeLink,
                         AxisType = edgeAxes[i],
-                        Entity = link,
+                        BaseEntity = link,
                         Transform = linkTransform,
                     };
 
@@ -992,7 +980,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
 
         private void CreateHandle(Vector3 position, Vector3 oppositePosition, Vector3 visualRotation, ScenePrefabProperty prefab, BoundingBoxHelperType bbhType, AxisType axisType)
         {
-            Transform3D handleTransform = new Transform3D()
+            var handleTransform = new Transform3D()
             {
                 LocalPosition = position,
             };
@@ -1012,23 +1000,40 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
             }
             else
             {
+                Component collider;
+                Component mesh;
+
+                if (bbhType == BoundingBoxHelperType.RotationHandle)
+                {
+                    collider = new SphereCollider3D()
+                    {
+                        Margin = 0.0001f,
+                    };
+
+                    mesh = new SphereMesh();
+                }
+                else
+                {
+                    collider = new BoxCollider3D()
+                    {
+                        Margin = 0.0001f,
+                    };
+
+                    mesh = new CubeMesh();
+                }
+
                 handle
-                    .AddComponent(bbhType == BoundingBoxHelperType.RotationHandle ?
-                    (Component)new SphereCollider3D()
+                    .AddComponent(collider)
+                    .AddComponent(new StaticBody3D()
                     {
-                        Margin = 0.0001f,
-                    }
-                    :
-                    (Component)new BoxCollider3D()
-                    {
-                        Margin = 0.0001f,
+                        CollisionCategories = this.CollisionCategory,
+                        IsSensor = true,
                     })
-                    .AddComponent(new StaticBody3D() { CollisionCategories = this.CollisionCategory, IsSensor = true })
                     .AddComponent(new NearInteractionGrabbable());
 
                 Entity handleVisual = new Entity("visuals")
                     .AddComponent(new Transform3D())
-                    .AddComponent(bbhType == BoundingBoxHelperType.RotationHandle ? (Component)new SphereMesh() : (Component)new CubeMesh())
+                    .AddComponent(mesh)
                     .AddComponent(new MeshRenderer())
                     .AddComponent(new MaterialComponent());
 
@@ -1053,7 +1058,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
                 {
                     Type = bbhType,
                     AxisType = axisType,
-                    Entity = handle,
+                    BaseEntity = handle,
                     Transform = handleTransform,
                     OppositeHandlePosition = oppositePosition,
                 };
@@ -1162,7 +1167,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
                 {
                     this.currentHandle = handle;
 
-                    this.ApplyMaterialToAllComponents(this.currentHandle.Entity, this.handleGrabbedMaterial);
+                    this.ApplyMaterialToAllComponents(this.currentHandle.BaseEntity, this.handleGrabbedMaterial);
                     this.ApplyMaterialToAllComponents(this.boxDisplay, this.boxGrabbedMaterial);
 
                     this.currentCursor = eventData.Cursor;
@@ -1301,7 +1306,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
         {
             if (this.currentCursor == eventData.Cursor)
             {
-                this.ApplyMaterialToAllComponents(this.currentHandle.Entity, this.handleMaterial);
+                this.ApplyMaterialToAllComponents(this.currentHandle.BaseEntity, this.handleMaterial);
                 this.ApplyMaterialToAllComponents(this.boxDisplay, this.boxMaterial);
 
                 switch (this.currentHandle.Type)

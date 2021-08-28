@@ -74,9 +74,9 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.BoundingBox
         public AxisType AxisType;
 
         /// <summary>
-        /// The handle entity.
+        /// The handle base entity.
         /// </summary>
-        public Entity Entity;
+        public Entity BaseEntity;
 
         /// <summary>
         /// The handle transform.
