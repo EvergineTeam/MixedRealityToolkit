@@ -282,6 +282,7 @@ namespace WaveEngine.MRTK.Emulation
             var eventArgs = new MixedRealityFocusEventData()
             {
                 Cursor = this,
+                CurrentTarget = other,
             };
 
             this.RunOnComponents<IMixedRealityFocusHandler>(other, (x) => action(x, eventArgs));

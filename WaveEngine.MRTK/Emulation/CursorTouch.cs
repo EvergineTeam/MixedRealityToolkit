@@ -187,6 +187,7 @@ namespace WaveEngine.MRTK.Emulation
                 Cursor = this,
                 Position = this.transform.Position,
                 PreviousPosition = this.PositionHistory.Count() > 1 ? this.PositionHistory[this.PositionHistory.Count - 2] : Vector3.Zero,
+                CurrentTarget = other,
             };
 
             this.RunOnComponents<IMixedRealityTouchHandler>(other, (x) => action(x, eventArgs));

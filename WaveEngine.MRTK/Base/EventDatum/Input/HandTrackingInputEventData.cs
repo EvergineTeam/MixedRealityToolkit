@@ -25,5 +25,10 @@ namespace WaveEngine.MRTK.Base.EventDatum.Input
         /// Gets or sets the cursor component.
         /// </summary>
         public CursorTouch Cursor { get; set; }
+
+        /// <summary>
+        /// Gets or sets the current target.
+        /// </summary>
+        public Entity CurrentTarget { get; set; }
     }
 }
