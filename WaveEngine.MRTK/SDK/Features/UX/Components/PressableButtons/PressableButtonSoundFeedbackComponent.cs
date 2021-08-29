@@ -36,20 +36,20 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
         /// <inheritdoc/>
         protected override bool OnAttached()
         {
-            var attached = base.OnAttached();
-
-            if (attached)
+            if (!base.OnAttached())
             {
-                this.pressableButton.ButtonPressed += this.PressableButton_ButtonPressed;
-                this.pressableButton.ButtonReleased += this.PressableButton_ButtonReleased;
-
-                if (!Application.Current.IsEditor)
-                {
-                    this.soundEmitter = this.Owner.GetOrAddComponent<SoundEmitter3D>();
-                }
+                return false;
             }
 
-            return attached;
+            this.pressableButton.ButtonPressed += this.PressableButton_ButtonPressed;
+            this.pressableButton.ButtonReleased += this.PressableButton_ButtonReleased;
+
+            if (!Application.Current.IsEditor)
+            {
+                this.soundEmitter = this.Owner.GetOrAddComponent<SoundEmitter3D>();
+            }
+
+            return true;
         }
 
         /// <inheritdoc/>

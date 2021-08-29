@@ -384,6 +384,8 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.AxisManipulationHandler
                     this.grabbedEntityPosition = this.transform.Position;
                     this.grabbedCursorPosition = eventData.Position;
 
+                    this.FireManipulationEvent(handle.Type, started: true);
+
                     eventData.SetHandled();
                 }
             }
@@ -436,6 +438,8 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.AxisManipulationHandler
 
             if (this.currentCursor == eventData.Cursor)
             {
+                this.FireManipulationEvent(this.currentHandle.Type, started: false);
+
                 this.ApplyMaterialToHandle(this.currentHandle, h => h.IdleMaterial);
 
                 this.currentCursor = null;
