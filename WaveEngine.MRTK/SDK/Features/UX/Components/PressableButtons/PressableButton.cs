@@ -39,11 +39,6 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
         /// </summary>
         public event EventHandler ButtonReleased;
 
-        /// <summary>
-        /// Event fired when any button is pressed
-        /// </summary>
-        public static event EventHandler AnyButtonReleased;
-
         private bool isPressing;
 
         private float currentPosition;
@@ -200,7 +195,6 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
                 }
                 else
                 {
-                    AnyButtonReleased?.Invoke(this, EventArgs.Empty);
                     this.ButtonReleased?.Invoke(this, EventArgs.Empty);
                 }
             }
