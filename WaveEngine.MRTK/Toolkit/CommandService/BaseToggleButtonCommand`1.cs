@@ -11,15 +11,9 @@ namespace WaveEngine.MRTK.Toolkit.CommandService
     /// Base class for adding support to a <see cref="ToggleButton"/> to make command requests to a <see cref="BaseCommandService{T}"/>/>.
     /// </summary>
     /// <typeparam name="T">The <see cref="Enum"/> containing the commands that can be requested.</typeparam>
-    public class BaseToggleButtonCommand<T> : Component
+    public class BaseToggleButtonCommand<T> : BaseCommandRequester<T>
         where T : Enum
     {
-        /// <summary>
-        /// The command service.
-        /// </summary>
-        [BindService]
-        protected BaseCommandService<T> commandService;
-
         /// <summary>
         /// The <see cref="ToggleButton"/> component that this component will react to.
         /// </summary>
