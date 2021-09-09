@@ -1,5 +1,6 @@
 ﻿// Copyright © Wave Engine S.L. All rights reserved. Use is subject to license terms.
 
+using System;
 using System.Collections.Generic;
 using WaveEngine.Framework;
 using WaveEngine.MRTK.Base.Interfaces.InputSystem.Handlers;
@@ -24,7 +25,7 @@ namespace WaveEngine.MRTK.Extensions
         {
             if (entity is null)
             {
-                throw new System.ArgumentNullException(nameof(entity));
+                throw new ArgumentNullException(nameof(entity));
             }
 
             var current = entity;
@@ -56,7 +57,7 @@ namespace WaveEngine.MRTK.Extensions
         {
             if (entity is null)
             {
-                throw new System.ArgumentNullException(nameof(entity));
+                throw new ArgumentNullException(nameof(entity));
             }
 
             var current = entity;
@@ -92,7 +93,7 @@ namespace WaveEngine.MRTK.Extensions
         {
             if (entity is null)
             {
-                throw new System.ArgumentNullException(nameof(entity));
+                throw new ArgumentNullException(nameof(entity));
             }
 
             var current = entity;
@@ -110,6 +111,21 @@ namespace WaveEngine.MRTK.Extensions
             }
 
             return false;
+        }
+
+        /// <summary>
+        /// Runs the specified action for the components from the given entity implementing the <typeparamref name="T"/> type.
+        /// </summary>
+        /// <typeparam name="T">The component type of interface.</typeparam>
+        /// <param name="entity">The entity used to find the components.</param>
+        /// <param name="action">The action callback to be invoked on every <typeparamref name="T"/> component.</param>
+        public static void RunOnComponents<T>(this Entity entity, Action<T> action)
+            where T : IMixedRealityEventHandler
+        {
+            foreach (var interactable in entity.FindEventHandlers<T>())
+            {
+                action(interactable);
+            }
         }
     }
 }

@@ -1,8 +1,5 @@
 ﻿// Copyright © Wave Engine S.L. All rights reserved. Use is subject to license terms.
 
-using System;
-using System.Collections.Generic;
-using System.Text;
 using WaveEngine.MRTK.Base.EventDatum.Input;
 
 namespace WaveEngine.MRTK.Base.Interfaces.InputSystem.Handlers

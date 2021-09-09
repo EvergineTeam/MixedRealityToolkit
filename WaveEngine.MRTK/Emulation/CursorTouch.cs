@@ -190,7 +190,7 @@ namespace WaveEngine.MRTK.Emulation
                 CurrentTarget = other,
             };
 
-            this.RunOnComponents<IMixedRealityTouchHandler>(other, (x) => action(x, eventArgs));
+            other.RunOnComponents<IMixedRealityTouchHandler>((x) => action(x, eventArgs));
         }
     }
 }

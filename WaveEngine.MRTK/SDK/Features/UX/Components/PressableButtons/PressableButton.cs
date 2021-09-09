@@ -47,28 +47,16 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
 
         private bool simulatePressRequested = false;
 
-        private int focusSources;
-
         /// <inheritdoc/>
         public void OnFocusEnter(MixedRealityFocusEventData eventData)
         {
-            this.focusSources++;
-
-            if (this.focusSources == 1)
-            {
-                this.RefreshFocusedState();
-            }
+            this.RefreshFocusedState(true);
         }
 
         /// <inheritdoc/>
         public void OnFocusExit(MixedRealityFocusEventData eventData)
         {
-            this.focusSources--;
-
-            if (this.focusSources == 0)
-            {
-                this.RefreshFocusedState();
-            }
+            this.RefreshFocusedState(false);
         }
 
         /// <inheritdoc/>
@@ -163,13 +151,13 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
             }
         }
 
-        private void RefreshFocusedState()
+        private void RefreshFocusedState(bool focused)
         {
             if (this.feedbackVisualsComponentsArray != null)
             {
                 for (int i = 0; i < this.feedbackVisualsComponentsArray.Length; i++)
                 {
-                    this.feedbackVisualsComponentsArray[i].FocusChanged(this.focusSources > 0);
+                    this.feedbackVisualsComponentsArray[i].FocusChanged(focused);
                 }
             }
         }
@@ -202,7 +190,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
 
         private void PulseProximityLight()
         {
-            // Pulse each proximity light on pointer cursors' interacting with this button.
+            // Pulse each proximity light on pointer cursors interacting with this button.
             if (this.cursorDistances.Keys.Count != 0)
             {
                 foreach (var pointer in this.cursorDistances.Keys)

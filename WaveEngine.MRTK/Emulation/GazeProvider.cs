@@ -21,6 +21,15 @@ namespace WaveEngine.MRTK.Services.InputSystem
     public class GazeProvider : Behavior
     {
         /// <summary>
+        /// The XR platform dependency.
+        /// </summary>
+        [BindService(isRequired: false)]
+        protected XRPlatform xrPlatform;
+
+        [BindSceneManager]
+        private FocusProvider focusProvider = null;
+
+        /// <summary>
         /// The transform.
         /// </summary>
         [BindComponent]
@@ -32,12 +41,6 @@ namespace WaveEngine.MRTK.Services.InputSystem
         [BindComponent]
         protected Camera3D camera;
 
-        /// <summary>
-        /// The XR platform dependency.
-        /// </summary>
-        [BindService(isRequired: false)]
-        protected XRPlatform xrPlatform;
-
         private IVoiceCommandService voiceCommandService;
 
         private Entity gazePointerEntity;
@@ -45,8 +48,6 @@ namespace WaveEngine.MRTK.Services.InputSystem
         private HoverLight gazePointerLight;
 
         private ISphereColliderShape3D gazePointerShape;
-
-        private IFocusable currentFocusable;
 
         /// <summary>
         /// Gets or sets the max distance to capture.
@@ -98,10 +99,7 @@ namespace WaveEngine.MRTK.Services.InputSystem
         /// </summary>
         public Entity GazeTarget
         {
-            get
-            {
-                return this.gazeTarget;
-            }
+            get => this.gazeTarget;
 
             private set
             {
@@ -110,13 +108,11 @@ namespace WaveEngine.MRTK.Services.InputSystem
                     return;
                 }
 
-                this.currentFocusable?.OnFocusExit();
-                this.currentFocusable = null;
+                this.focusProvider.FocusExit(this.gazeTarget, null);
 
                 this.gazeTarget = value;
 
-                this.currentFocusable = this.gazeTarget?.FindEventHandlers<IFocusable>()?.FirstOrDefault();
-                this.currentFocusable?.OnFocusEnter();
+                this.focusProvider.FocusEnter(this.gazeTarget, null);
             }
         }
 

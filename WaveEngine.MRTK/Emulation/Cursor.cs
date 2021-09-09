@@ -2,8 +2,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
 using WaveEngine.Common.Attributes;
 using WaveEngine.Components.Graphics3D;
 using WaveEngine.Framework;
@@ -12,6 +10,7 @@ using WaveEngine.Mathematics;
 using WaveEngine.MRTK.Base.EventDatum.Input;
 using WaveEngine.MRTK.Base.Interfaces.InputSystem.Handlers;
 using WaveEngine.MRTK.Extensions;
+using WaveEngine.MRTK.Services.InputSystem;
 
 namespace WaveEngine.MRTK.Emulation
 {
@@ -28,6 +27,9 @@ namespace WaveEngine.MRTK.Emulation
         /// Gets the currently active cursors.
         /// </summary>
         public static IEnumerable<Cursor> ActiveCursors => activeCursors;
+
+        [BindSceneManager]
+        private FocusProvider focusProvider = null;
 
         /// <summary>
         /// The <see cref="Transform3D"/> component dependency.
@@ -122,28 +124,6 @@ namespace WaveEngine.MRTK.Emulation
             }
         }
 
-        private Entity FocusedEntity
-        {
-            get => this.focusedEntity;
-            set
-            {
-                if (this.focusedEntity != value)
-                {
-                    if (this.focusedEntity != null)
-                    {
-                        this.RunFocusHandlers(this.focusedEntity, (h, e) => h?.OnFocusExit(e));
-                    }
-
-                    this.focusedEntity = value;
-
-                    if (this.focusedEntity != null)
-                    {
-                        this.RunFocusHandlers(this.focusedEntity, (h, e) => h?.OnFocusEnter(e));
-                    }
-                }
-            }
-        }
-
         /// <inheritdoc/>
         protected override void OnActivated()
         {
@@ -225,7 +205,7 @@ namespace WaveEngine.MRTK.Emulation
             this.PreviousPinch = this.Pinch;
 
             // Update entity in focus
-            Entity focusedEntity = null;
+            Entity newFocusedEntity = null;
             var closestDistance = float.PositiveInfinity;
             for (int i = 0; i < this.pointerFocusableEntities.Count; i++)
             {
@@ -235,11 +215,23 @@ namespace WaveEngine.MRTK.Emulation
                 if (distance < closestDistance)
                 {
                     closestDistance = distance;
-                    focusedEntity = entity;
+                    newFocusedEntity = entity;
                 }
             }
 
-            this.FocusedEntity = focusedEntity;
+            this.UpdateFocusedEntity(newFocusedEntity);
+        }
+
+        private void UpdateFocusedEntity(Entity focusedEntity)
+        {
+            if (this.focusedEntity != focusedEntity)
+            {
+                this.focusProvider.FocusExit(this.focusedEntity, this);
+
+                this.focusedEntity = focusedEntity;
+
+                this.focusProvider.FocusEnter(this.focusedEntity, this);
+            }
         }
 
         private void UpdateColor()
@@ -274,18 +266,7 @@ namespace WaveEngine.MRTK.Emulation
                 AngularVelocity = this.angularVelocity,
             };
 
-            this.RunOnComponents<IMixedRealityPointerHandler>(other, (x) => action(x, eventArgs));
-        }
-
-        private void RunFocusHandlers(Entity other, Action<IMixedRealityFocusHandler, MixedRealityFocusEventData> action)
-        {
-            var eventArgs = new MixedRealityFocusEventData()
-            {
-                Cursor = this,
-                CurrentTarget = other,
-            };
-
-            this.RunOnComponents<IMixedRealityFocusHandler>(other, (x) => action(x, eventArgs));
+            other.RunOnComponents<IMixedRealityPointerHandler>((x) => action(x, eventArgs));
         }
 
         /// <summary>
@@ -336,21 +317,6 @@ namespace WaveEngine.MRTK.Emulation
         protected void RemoveAllFocusableInteractions()
         {
             this.pointerFocusableEntities.Clear();
-        }
-
-        /// <summary>
-        /// Runs the specified action for the components from the given entity implementing the <typeparamref name="T"/> type.
-        /// </summary>
-        /// <typeparam name="T">The component type of interface.</typeparam>
-        /// <param name="entity">The entity used to find the components.</param>
-        /// <param name="action">The action callback to be invoked on every <typeparamref name="T"/> component.</param>
-        protected void RunOnComponents<T>(Entity entity, Action<T> action)
-            where T : IMixedRealityEventHandler
-        {
-            foreach (var interactable in entity.FindEventHandlers<T>())
-            {
-                action(interactable);
-            }
         }
     }
 }
