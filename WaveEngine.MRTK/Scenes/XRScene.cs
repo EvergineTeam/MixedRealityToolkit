@@ -76,6 +76,7 @@ namespace WaveEngine.MRTK.Scenes
 
             this.Managers.AddManager(new BulletPhysicManager3D());
             this.Managers.AddManager(new FocusProvider());
+            this.Managers.AddManager(new VoiceCommandsProvider());
         }
 
         /// <inheritdoc/>

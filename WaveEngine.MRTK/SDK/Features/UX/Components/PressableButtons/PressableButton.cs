@@ -170,6 +170,15 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
             this.simulatePressRequested = true;
         }
 
+        /// <summary>
+        /// Fires the <see cref="ButtonPressed"/> and <see cref="ButtonReleased"/> events without triggering animation changes.
+        /// </summary>
+        public void ForceFireEvents()
+        {
+            this.ButtonPressed?.Invoke(this, EventArgs.Empty);
+            this.ButtonReleased?.Invoke(this, EventArgs.Empty);
+        }
+
         private void UpdatePressedState()
         {
             if (this.GetNewPressedState(this.isPressing, this.currentPosition, out var newPressedState))

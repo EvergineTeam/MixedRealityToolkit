@@ -4,18 +4,19 @@ using System;
 using System.Linq;
 using WaveEngine.Common.Attributes;
 using WaveEngine.Framework;
+using WaveEngine.MRTK.SDK.Features.Input.Handlers;
 
 namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
 {
     /// <summary>
     /// Default Speech and Focus handler for <see cref="PressableButton"/>.
     /// </summary>
-    public class PressableButtonSpeechHandler : Component, ISpeechHandler, IFocusable
+    public class PressableButtonSpeechHandler : SpeechHandler
     {
         /// <summary>
         /// The pressable button dependency.
         /// </summary>
-        [BindComponent]
+        [BindComponent(source: BindComponentSource.Children)]
         protected PressableButton pressableButton;
 
         /// <summary>
@@ -24,20 +25,10 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
         protected Entity seeItSayItLabel;
 
         /// <summary>
-        ///  Gets or sets the word that will make this button be pressed.
-        /// </summary>
-        public string SpeechKeyword { get; set; } = string.Empty;
-
-        /// <summary>
         /// Gets or sets the tag value used by the "See It Say It" label entity. By default: 'SeeItSayItLabel'.
         /// </summary>
-        [RenderProperty(Tooltip = "the tag value used by the 'See It Say It' label entity. By default: 'SeeItSayItLabel'.")]
+        [RenderProperty(Tooltip = "The tag value used by the 'See It Say It' label entity. By default: 'SeeItSayItLabel'.")]
         public string SeeItSayItLabelTag { get; set; } = "SeeItSayItLabel";
-
-        /// <summary>
-        /// Occurs whenever the <see cref="SpeechKeyword"/> is recognized;
-        /// </summary>
-        public event EventHandler SpeechKeywordRecognized;
 
         /// <inheritdoc/>
         protected override bool OnAttached()
@@ -58,17 +49,13 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
         }
 
         /// <inheritdoc/>
-        public void OnSpeechKeywordRecognized(string word)
+        protected override void InternalOnSpeechKeywordRecognized(string keyword)
         {
-            if (this.SpeechKeyword == word)
-            {
-                this.pressableButton.SimulatePress();
-                this.SpeechKeywordRecognized?.Invoke(this, EventArgs.Empty);
-            }
+            this.pressableButton.ForceFireEvents();
         }
 
         /// <inheritdoc/>
-        public void OnFocusEnter()
+        protected override void InternalOnFocusEnter()
         {
             if (this.seeItSayItLabel != null)
             {
@@ -77,7 +64,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons
         }
 
         /// <inheritdoc/>
-        public void OnFocusExit()
+        protected override void InternalOnFocusLeave()
         {
             if (this.seeItSayItLabel != null)
             {

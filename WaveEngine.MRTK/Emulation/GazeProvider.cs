@@ -1,7 +1,6 @@
 ﻿// Copyright © Wave Engine S.L. All rights reserved. Use is subject to license terms.
 
 using System;
-using System.Linq;
 using WaveEngine.Common.Attributes;
 using WaveEngine.Common.Graphics;
 using WaveEngine.Framework;
@@ -10,8 +9,6 @@ using WaveEngine.Framework.Physics3D;
 using WaveEngine.Framework.Services;
 using WaveEngine.Mathematics;
 using WaveEngine.MRTK.Emulation;
-using WaveEngine.MRTK.Extensions;
-using WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons;
 
 namespace WaveEngine.MRTK.Services.InputSystem
 {
@@ -40,8 +37,6 @@ namespace WaveEngine.MRTK.Services.InputSystem
         /// </summary>
         [BindComponent]
         protected Camera3D camera;
-
-        private IVoiceCommandService voiceCommandService;
 
         private Entity gazePointerEntity;
         private Transform3D gazePointerTransform;
@@ -131,8 +126,6 @@ namespace WaveEngine.MRTK.Services.InputSystem
                 return true;
             }
 
-            this.voiceCommandService = Application.Current.Container.Resolve<IVoiceCommandService>();
-
             this.gazePointerShape = this.Managers.PhysicManager3D.CreateColliderShape<ISphereColliderShape3D>();
             this.gazePointerShape.Radius = this.Radius;
 
@@ -157,11 +150,6 @@ namespace WaveEngine.MRTK.Services.InputSystem
             base.OnActivated();
 
             this.Managers.EntityManager.Add(this.gazePointerEntity);
-
-            if (this.voiceCommandService != null)
-            {
-                this.voiceCommandService.CommandRecognized += this.VoiceCommandService_CommandRecognized;
-            }
         }
 
         /// <inheritdoc />
@@ -170,11 +158,6 @@ namespace WaveEngine.MRTK.Services.InputSystem
             base.OnDeactivated();
 
             this.Managers.EntityManager.Detach(this.gazePointerEntity);
-
-            if (this.voiceCommandService != null)
-            {
-                this.voiceCommandService.CommandRecognized -= this.VoiceCommandService_CommandRecognized;
-            }
         }
 
         /// <inheritdoc />
@@ -187,12 +170,6 @@ namespace WaveEngine.MRTK.Services.InputSystem
 
             this.gazePointerEntity.Destroy();
             this.gazePointerEntity = null;
-        }
-
-        private void VoiceCommandService_CommandRecognized(object sender, string e)
-        {
-            var speechHandler = this.gazeTarget.FindEventHandlers<ISpeechHandler>()?.FirstOrDefault();
-            speechHandler?.OnSpeechKeywordRecognized(e);
         }
 
         /// <summary>
