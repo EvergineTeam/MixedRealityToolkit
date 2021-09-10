@@ -1,4 +1,7 @@
 !WaveEngine.Common.ProjectModel,WaveEngine.Common
+Packages:
+  - Id: WaveEngine.Core
+    Version: 3.3.0.8524-preview
 Profiles:
   - AdditionalEffectTechniqueCombinations: GAMMA_COLORSPACE-SHADOW_SUPPORTED
     AlphaCompressionFormat: BC3_UNorm
