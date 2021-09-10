@@ -8,10 +8,10 @@ namespace WaveEngine_MRTK_Demo.Components.ToggleButtons
     public class ShowToggleState : Component
     {
         [BindComponent(source: BindComponentSource.Owner, isRequired: true)]
-        private Text3D textComponent;
+        protected Text3D textComponent;
 
         [BindComponent(source: BindComponentSource.ChildrenSkipOwner, isRequired: true)]
-        private ToggleButton button;
+        protected ToggleButton button;
 
         protected override void OnActivated()
         {

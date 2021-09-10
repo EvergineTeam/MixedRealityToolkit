@@ -75,7 +75,6 @@ Items:
         Id: e9493a27-274b-433e-a6b2-1521db97ec74
         IsEnabled: true
         SeeItSayItLabelTag: SeeItSayItLabel
-        SpeechKeyword: button
     Children:
       - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
         Name: buttonContent
