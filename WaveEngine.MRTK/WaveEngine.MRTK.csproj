@@ -20,13 +20,13 @@
     <DefineConstants>TRACE</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="WaveEngine.Bullet" Version="3.2.0.8168-nightly" />
-    <PackageReference Include="WaveEngine.Common" Version="3.2.0.8168-nightly" />
-    <PackageReference Include="WaveEngine.Components" Version="3.2.0.8168-nightly" />
-    <PackageReference Include="WaveEngine.Framework" Version="3.2.0.8168-nightly" />
-    <PackageReference Include="WaveEngine.Mathematics" Version="3.2.0.8168-nightly" />
-    <PackageReference Include="WaveEngine.NoesisGUI" Version="3.2.0.8168-nightly" />
-    <PackageReference Include="WaveEngine.Platform" Version="3.2.0.8168-nightly" />
+    <PackageReference Include="WaveEngine.Bullet" Version="3.3.0.8524-preview" />
+    <PackageReference Include="WaveEngine.Common" Version="3.3.0.8524-preview" />
+    <PackageReference Include="WaveEngine.Components" Version="3.3.0.8524-preview" />
+    <PackageReference Include="WaveEngine.Framework" Version="3.3.0.8524-preview" />
+    <PackageReference Include="WaveEngine.Mathematics" Version="3.3.0.8524-preview" />
+    <PackageReference Include="WaveEngine.NoesisGUI" Version="3.3.0.8524-preview" />
+    <PackageReference Include="WaveEngine.Platform" Version="3.3.0.8524-preview" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\LICENSE">
