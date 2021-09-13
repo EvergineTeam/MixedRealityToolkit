@@ -38,4 +38,13 @@
       <PackagePath></PackagePath>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\WaveEngine.MRTK.Editor\bin\$(Configuration)\netstandard2.0\WaveEngine.MRTK.Editor.dll">
+      <Pack>True</Pack>
+      <PackagePath>lib\netstandard2.0\WaveEngine.MRTK.Editor.dll</PackagePath>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="WaveEngine.MRTK.targets" PackagePath="build" Visible="true"/>
+  </ItemGroup>
 </Project>

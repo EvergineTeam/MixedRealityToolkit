@@ -15,7 +15,8 @@ param (
 	[string]$outputFolderBase = "nupkgs",
 	[string]$buildVerbosity = "normal",
 	[string]$buildConfiguration = "Release",
-	[string]$bindingsCsprojPath = "WaveEngine.MRTK\WaveEngine.MRTK.csproj"
+	[string]$bindingsCsprojPath = "Source\WaveEngine.MRTK\WaveEngine.MRTK.csproj",
+	[string]$editorCsprojPath = "Source\WaveEngine.MRTK.Editor\WaveEngine.MRTK.Editor.csproj"
 )
 
 # Utility functions
@@ -36,6 +37,7 @@ $absoluteOutputFolder = Resolve-Path $outputFolder
 
 # Generate packages
 LogDebug "START packaging process"
+& dotnet build "$editorCsprojPath" -v:$buildVerbosity -p:Configuration=$buildConfiguration
 & dotnet pack "$bindingsCsprojPath" -v:$buildVerbosity -p:Configuration=$buildConfiguration -p:PackageOutputPath="$absoluteOutputFolder" -p:IncludeSymbols=true -p:Version=$version
 
 LogDebug "END packaging process"
