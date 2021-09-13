@@ -24,6 +24,6 @@
     <PackageReference Include="WaveEngine.CodeScenes" Version="3.3.0.8524-preview" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\WaveEngine.MRTK\WaveEngine.MRTK.csproj" />
+    <ProjectReference Include="..\..\..\Source\WaveEngine.MRTK\WaveEngine.MRTK.csproj" />
   </ItemGroup>
 </Project>

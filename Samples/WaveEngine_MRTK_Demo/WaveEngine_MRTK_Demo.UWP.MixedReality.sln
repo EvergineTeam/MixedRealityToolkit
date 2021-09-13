@@ -6,7 +6,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WaveEngine_MRTK_Demo.UWP.Mi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WaveEngine_MRTK_Demo", "WaveEngine_MRTK_Demo\WaveEngine_MRTK_Demo.csproj", "{04070017-D150-405D-9C6B-9B313DEA8F1A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WaveEngine.MRTK", "..\..\WaveEngine.MRTK\WaveEngine.MRTK.csproj", "{67DE4CB4-453F-41E4-B914-34F25516DC48}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WaveEngine.MRTK", "..\..\Source\WaveEngine.MRTK\WaveEngine.MRTK.csproj", "{67DE4CB4-453F-41E4-B914-34F25516DC48}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WaveEngine_MRTK_Demo.Common", "WaveEngine_MRTK_Demo.Common\WaveEngine_MRTK_Demo.Common.csproj", "{D430DB43-36C7-4E66-8849-8FF29AF92606}"
 EndProject

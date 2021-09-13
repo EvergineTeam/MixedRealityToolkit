@@ -29,11 +29,11 @@
     <PackageReference Include="WaveEngine.Platform" Version="3.3.0.8524-preview" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\LICENSE">
+    <None Include="..\..\LICENSE">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
-    <None Include="..\Resources\NugetIcon\icon.png">
+    <None Include="..\..\Resources\NugetIcon\icon.png">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
