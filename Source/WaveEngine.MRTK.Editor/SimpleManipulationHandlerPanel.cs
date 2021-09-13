@@ -5,7 +5,7 @@ using WaveEngine.Editor.Extension.Attributes;
 using WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation;
 using static WaveEngine.MRTK.SDK.Features.Input.Handlers.Manipulation.SimpleManipulationHandler;
 
-namespace WaveEngine_MRTK_Demo.Editor
+namespace WaveEngine.MRTK.Editor
 {
     [CustomPanelEditor(typeof(SimpleManipulationHandler))]
     public class SimpleManipulationHandlerPanel : PanelEditor

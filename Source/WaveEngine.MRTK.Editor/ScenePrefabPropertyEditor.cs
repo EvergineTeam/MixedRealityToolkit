@@ -7,7 +7,7 @@ using WaveEngine.Framework;
 using WaveEngine.Framework.Services;
 using WaveEngine.MRTK.Toolkit.Prefabs;
 
-namespace WaveEngine_MRTK_Demo.Editor
+namespace WaveEngine.MRTK.Editor
 {
     [CustomPropertyEditor(typeof(ScenePrefabProperty))]
     public class ScenePrefabPropertyEditor : PropertyEditor<ScenePrefabProperty>

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Reflection;
 using WaveEngine.Framework.Assets.Importers;
 
-namespace WaveEngine_MRTK_Demo.Editor
+namespace WaveEngine.MRTK.Editor
 {
     public static class WaveContentUtils
     {

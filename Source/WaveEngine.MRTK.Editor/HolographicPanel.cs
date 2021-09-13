@@ -6,7 +6,7 @@ using WaveEngine.Editor.Extension;
 using WaveEngine.Editor.Extension.Attributes;
 using WaveEngine.MRTK.Effects;
 
-namespace WaveEngine_MRTK_Demo.Editor
+namespace WaveEngine.MRTK.Editor
 {
     [CustomPanelEditor(typeof(HoloGraphic))]
     public class HolographicPanel : PanelEditor

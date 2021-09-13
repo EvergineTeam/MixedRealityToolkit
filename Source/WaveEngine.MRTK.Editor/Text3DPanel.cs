@@ -6,7 +6,7 @@ using WaveEngine.Framework;
 using WaveEngine.MRTK.Toolkit.GUI;
 using WaveEngine.Platform;
 
-namespace WaveEngine_MRTK_Demo.Editor
+namespace WaveEngine.MRTK.Editor
 {
     [CustomPanelEditor(typeof(Text3D))]
     public class Text3DPanel : PanelEditor
