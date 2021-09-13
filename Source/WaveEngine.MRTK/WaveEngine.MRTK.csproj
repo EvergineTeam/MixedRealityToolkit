@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <Description>Provides and set of components that help developing Mixed Reality applications using Wave Engine.</Description>
-    <Copyright>Copyright (c) Wave Engine 2020</Copyright>
+    <Copyright>Copyright (c) Wave Engine 2021</Copyright>
     <Authors>Wave Engine Team</Authors>
     <Company>Plain Concepts</Company>
     <Product>Wave Engine</Product>
