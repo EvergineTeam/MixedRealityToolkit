@@ -157,7 +157,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.Configurators
         {
             if (this.buttonText != null)
             {
-                this.buttonText.Text = this.text.AsSafeStringForText3D();
+                this.buttonText.Text = this.text;
             }
         }
 

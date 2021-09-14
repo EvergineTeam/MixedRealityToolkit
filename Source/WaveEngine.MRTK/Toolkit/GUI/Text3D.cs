@@ -14,6 +14,7 @@ using WaveEngine.Framework.Graphics.Effects;
 using WaveEngine.Framework.Services;
 using WaveEngine.Mathematics;
 using WaveEngine.MRTK.Effects;
+using WaveEngine.MRTK.SDK.Features.UX.Components.Configurators;
 using WaveEngine.NoesisGUI;
 using static WaveEngine.Components.Graphics3D.PlaneMesh;
 using Color = WaveEngine.Common.Graphics.Color;
@@ -53,9 +54,11 @@ namespace WaveEngine.MRTK.Toolkit.GUI
             get => this.text;
             set
             {
-                if (this.SetProperty(ref this.text, value, this.textBlock))
+                var newValue = value.AsSafeStringForText3D();
+
+                if (this.SetProperty(ref this.text, newValue, this.textBlock))
                 {
-                    this.textBlock.Text = value;
+                    this.textBlock.Text = newValue;
                     this.textBlock.TextTrimming = this.TextTrimming; // Noesis workaround
                     this.Invalidate();
                 }

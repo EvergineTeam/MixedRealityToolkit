@@ -189,7 +189,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.Configurators
         {
             if (this.titleText != null)
             {
-                this.titleText.Text = this.title.AsSafeStringForText3D();
+                this.titleText.Text = this.title;
             }
         }
     }
