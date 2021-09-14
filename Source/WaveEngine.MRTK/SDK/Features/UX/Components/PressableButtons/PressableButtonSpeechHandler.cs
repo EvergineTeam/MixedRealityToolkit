@@ -1,6 +1,5 @@
 ﻿// Copyright © Wave Engine S.L. All rights reserved. Use is subject to license terms.
 
-using System;
 using System.Linq;
 using WaveEngine.Common.Attributes;
 using WaveEngine.Framework;

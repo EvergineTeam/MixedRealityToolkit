@@ -2,9 +2,11 @@ using System.Threading.Tasks;
 using WaveEngine.Framework;
 using WaveEngine.Framework.Services;
 using WaveEngine.Framework.Threading;
+using WaveEngine.MRTK.Emulation;
 using WaveEngine.NoesisGUI;
 using WaveEngine.Platform;
 using WaveEngine_MRTK_Demo.Scenes;
+using WaveEngine_MRTK_Demo.VoiceCommands;
 
 namespace WaveEngine_MRTK_Demo
 {
@@ -38,6 +40,15 @@ namespace WaveEngine_MRTK_Demo
         protected async Task InitializeAsync(bool forceCreateContextInWaveThread)
         {
             base.Initialize();
+
+            var voiceCommandService = this.Container.Resolve<IVoiceCommandService>();
+            if (voiceCommandService == null)
+            {
+                this.Container.RegisterType<FakeVoiceCommandService>();
+                voiceCommandService = this.Container.Resolve<FakeVoiceCommandService>();
+            }
+
+            voiceCommandService.ConfigureVoiceCommands(VoiceKeywords.ValidVoiceKeywords);
 
             // Get ScreenContextManager
             var screenContextManager = this.Container.Resolve<ScreenContextManager>();
