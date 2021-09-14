@@ -75,6 +75,8 @@ Items:
         Id: e9493a27-274b-433e-a6b2-1521db97ec74
         IsEnabled: true
         SeeItSayItLabelTag: SeeItSayItLabel
+        SpeechHandlerFireCondition: Global
+        SpeechKeywords: null
     Children:
       - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
         Name: buttonContent
@@ -208,6 +210,7 @@ Items:
                     Id: 0028b0ec-c90c-4419-94a5-c0eab8b379f0
                     ChangeColor: true
                     Compressable: false
+                    FocusedAccentDistance: 0.0
                     IsEnabled: true
                     MinCompressRatio: 0.25
                     MovementScale: 1.0
@@ -240,7 +243,7 @@ Items:
               Z: 1.0
         Children:
           - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
-            Name: 10x32mm_Square
+            Name: pivot
             Tag: null
             IsEnabled: true
             IsStatic: false
@@ -357,6 +360,7 @@ Items:
                 Height: 0.00850000046
                 HorizontalAlignment: Center
                 IsEnabled: true
+                Layer: e35c59a9-26ab-4b4c-8210-4b1f21c31530
                 Normal: ZNegative
                 Origin:
                   X: 0.5

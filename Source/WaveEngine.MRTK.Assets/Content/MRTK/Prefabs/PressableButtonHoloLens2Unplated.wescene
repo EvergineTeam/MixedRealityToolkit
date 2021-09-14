@@ -67,7 +67,7 @@ Items:
         Id: 29a10c2d-676e-40d5-968a-f00b915596a4
         IsEnabled: true
       - !WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButtonSoundFeedbackComponent,WaveEngine.MRTK
-        Id: 1aac5e68-a560-411b-b1ea-5acc968d8c8d
+        Id: b5af3e87-fdcd-4936-ae34-6d88e4958951
         IsEnabled: true
         PressedSound: 2f03824d-5709-4c4d-9857-c6a47769a5bc
         ReleasedSound: 7f835fa0-da0a-4152-b6ee-157943781e61
@@ -82,8 +82,8 @@ Items:
             Id: 3285a976-4ce8-4b39-a9e7-203308e91cbd
             IsEnabled: true
             LocalOrientation:
-              W: 0.707106888
-              X: -0.70710665
+              W: 1.0
+              X: 0.0
               Y: 0.0
               Z: 0.0
             LocalPosition:
@@ -95,7 +95,7 @@ Items:
               Y: 1.0
               Z: 1.0
           - !WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButtonVisualFeedbackComponent,WaveEngine.MRTK
-            Id: 761081f9-2783-4ad2-9e0e-07c925d7d2f1
+            Id: 9e743e35-7aa1-4f72-a77d-b31ae5175757
             ChangeColor: false
             Compressable: false
             FocusedAccentDistance: 0.00200000009
@@ -106,7 +106,7 @@ Items:
         Children:
           - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
             Name: UIButtonSquareIcon
-            Tag: null
+            Tag: PART_Icon
             IsEnabled: true
             IsStatic: false
             Components:
@@ -114,14 +114,14 @@ Items:
                 Id: d0a6115e-ceb4-4f55-baaf-1ef2a74b1fc5
                 IsEnabled: true
                 LocalOrientation:
-                  W: 1.94707184E-07
-                  X: -9.19421161E-09
-                  Y: -1.0
-                  Z: 6.85391853E-07
+                  W: 1.0
+                  X: 0.0
+                  Y: 0.0
+                  Z: 0.0
                 LocalPosition:
                   X: 0.0
-                  Y: 0.00150000001
-                  Z: -2.68533178E-08
+                  Y: 0.0
+                  Z: 0.0
                 LocalScale:
                   X: 0.0149999997
                   Y: 0.0149999997
@@ -130,14 +130,14 @@ Items:
                 Id: 945ecb95-128b-4645-9a98-16a8b76fd419
                 AsignedTo: Default
                 IsEnabled: true
-                Material: 163a35b7-72c2-41c3-8116-2b44e8a79394
+                Material: null
               - !WaveEngine.Components.Graphics3D.PlaneMesh,WaveEngine.Components
                 Id: 9dc7cce4-a28a-4b7a-a1e1-82129a1e5296
                 Height: 1.0
                 InitialU: 0.0
                 InitialV: 0.0
                 IsEnabled: true
-                PlaneNormal: YPositive
+                PlaneNormal: ZNegative
                 TwoSides: false
                 UTile: 1.0
                 UVHorizontalFlip: false
@@ -153,6 +153,66 @@ Items:
                 RenderFlags: CastShadows
             Children: []
             Id: b53277ca-0618-48c9-bd14-4827cc1194f8
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: Text
+            Tag: PART_Text
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: 52c45d68-3f2d-44f9-8b9f-27648cd61529
+                IsEnabled: true
+                LocalOrientation:
+                  W: 1.0
+                  X: 0.0
+                  Y: 0.0
+                  Z: 0.0
+                LocalPosition:
+                  X: 3.31211014E-09
+                  Y: -0.0101032658
+                  Z: 0.0
+                LocalScale:
+                  X: 1.0
+                  Y: 1.0
+                  Z: 1.0
+              - !WaveEngine.MRTK.Toolkit.GUI.Text3D,WaveEngine.MRTK
+                Id: 0c3534a2-de82-4170-9ce7-41a75c558902
+                Alpha: 1.0
+                Background:
+                  A: 0
+                  B: 0
+                  G: 0
+                  R: 0
+                CustomHeight: false
+                CustomWidth: false
+                FontFamilySource: /Fonts/#Segoe UI
+                FontSize: 20
+                FontStretch: Normal
+                FontStyle: Normal
+                FontWeight: Normal
+                Foreground:
+                  A: 255
+                  B: 255
+                  G: 255
+                  R: 255
+                Height: 0.00710000005
+                HorizontalAlignment: Center
+                IsEnabled: true
+                Layer: e35c59a9-26ab-4b4c-8210-4b1f21c31530
+                Normal: ZNegative
+                Origin:
+                  X: 0.5
+                  Y: 0.539999962
+                PixelDensity: 10000
+                Text: 32x32mm
+                TextAlignment: Center
+                TextTrimming: None
+                TextWrapping: NoWrap
+                UpdateOrder: 0.5
+                VerticalAlignment: Center
+                Width: 0.023
+            Children: []
+            Id: ba8b2d64-89d0-40f8-bbd2-86eefe4deea5
         Id: 00bbb74d-e74c-4115-9560-28ee316bcdac
       - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
         Name: CompressableButtonVisuals
@@ -161,7 +221,7 @@ Items:
         IsStatic: false
         Components:
           - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
-            Id: 7a42b9c2-5e27-4de7-b179-95a9286f970d
+            Id: c6f04b5b-7640-4a5a-b326-0a340bd43c2b
             IsEnabled: true
             LocalOrientation:
               W: 1.0
@@ -177,7 +237,7 @@ Items:
               Y: 1.0
               Z: 1.0
           - !WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButtonVisualFeedbackComponent,WaveEngine.MRTK
-            Id: 13ea84ef-d311-4627-8605-ea9c4fb33910
+            Id: 4adec8bf-3111-4936-9ab0-b2b997bc24b8
             ChangeColor: false
             Compressable: true
             FocusedAccentDistance: 0.0
@@ -232,13 +292,13 @@ Items:
                 RenderFlags: CastShadows
             Children:
               - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
-                Name: plane
+                Name: HighlightPlate
                 Tag: null
                 IsEnabled: true
                 IsStatic: false
                 Components:
                   - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
-                    Id: 09841753-9a3f-4b57-b314-09412f6adabe
+                    Id: b2247f4c-dba5-4cf7-8644-2412fd305835
                     IsEnabled: true
                     LocalOrientation:
                       W: 1.0
@@ -248,18 +308,18 @@ Items:
                     LocalPosition:
                       X: 0.0
                       Y: 0.0
-                      Z: -0.51110673
+                      Z: -0.510592341
                     LocalScale:
                       X: 1.0
                       Y: 1.0
                       Z: 1.0
                   - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
-                    Id: b26c300d-0336-46c8-a4e3-ad5596d395d7
+                    Id: 781bbb9e-c6b5-44f3-be46-5de9077fe86b
                     AsignedTo: Default
                     IsEnabled: true
                     Material: 876d9b5c-5016-4796-8473-92a19a5d244c
                   - !WaveEngine.Components.Graphics3D.PlaneMesh,WaveEngine.Components
-                    Id: d355abee-c7e6-476d-85f8-377404ddfbd6
+                    Id: 08424638-72fd-4ac9-aaba-10aa4876b008
                     Height: 1.0
                     InitialU: 0.0
                     InitialV: 0.0
@@ -272,15 +332,15 @@ Items:
                     Width: 1.0
                     YTile: 1.0
                   - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
-                    Id: 52713c7d-f6ab-4d68-9926-71057115a3e9
+                    Id: 0fd70c3f-920c-4b92-aed2-426130d410d7
                     DebugBoundingbox: true
                     IsCullingEnabled: true
                     IsEnabled: true
                     OrderBias: 0
                     RenderFlags: CastShadows
                 Children: []
-                Id: c20b1e4f-75b0-41ba-bb8c-83c9d27a8944
+                Id: b91b2b30-621b-4a3b-bb50-5cfb1dc04e36
             Id: df845455-77c1-4045-8d40-9324f7654c6c
-        Id: b8f7f801-d36a-436e-836b-63f7a9025a0c
+        Id: bf5809d4-0569-4eac-a934-17ddd341a9c5
     Id: 114ed9c5-f183-44bc-bb2f-2c3c560f19d6
 Managers: []

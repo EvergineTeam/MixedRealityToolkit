@@ -16,7 +16,7 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.Configurators
         private readonly MaterialConfigurator iconConfigurator;
 
         [BindComponent(source: BindComponentSource.ChildrenSkipOwner, tag: "PART_Plate", isRequired: false)]
-        private MaterialComponent pateMaterial = null;
+        private MaterialComponent plateMaterial = null;
 
         [BindComponent(source: BindComponentSource.ChildrenSkipOwner, tag: "PART_Icon", isRequired: false)]
         private MaterialComponent iconMaterial = null;
@@ -120,18 +120,21 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.Configurators
         /// <inheritdoc />
         protected override bool OnAttached()
         {
-            bool attached = base.OnAttached();
-            if (attached)
+            if (!base.OnAttached())
             {
-                this.plateConfigurator.UseAssetManager(this.Managers.AssetSceneManager);
-                this.iconConfigurator.UseAssetManager(this.Managers.AssetSceneManager);
-                this.plateConfigurator.CreatesNewMaterialInstance = this.CreatesNewBackPlateMaterialInstance;
-                this.iconConfigurator.CreatesNewMaterialInstance = this.CreatesNewIconMaterialInstance;
-                this.plateConfigurator.TargetMaterialComponent = this.pateMaterial;
-                this.iconConfigurator.TargetMaterialComponent = this.iconMaterial;
+                return false;
             }
 
-            return attached;
+            this.plateConfigurator.UseAssetManager(this.Managers.AssetSceneManager);
+            this.iconConfigurator.UseAssetManager(this.Managers.AssetSceneManager);
+
+            this.plateConfigurator.CreatesNewMaterialInstance = this.CreatesNewBackPlateMaterialInstance;
+            this.iconConfigurator.CreatesNewMaterialInstance = this.CreatesNewIconMaterialInstance;
+
+            this.plateConfigurator.TargetMaterialComponent = this.plateMaterial;
+            this.iconConfigurator.TargetMaterialComponent = this.iconMaterial;
+
+            return true;
         }
 
         /// <inheritdoc />
