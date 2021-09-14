@@ -342,7 +342,7 @@ Items:
                     UpdateOrder: 0.5
                     VerticalAlignment: Center
                     Width: 0.0255999994
-                  - !WaveEngine_MRTK_Demo.Components.ShowSliderValue,WaveEngine_MRTK_Demo
+                  - !WaveEngine.MRTK.SDK.Features.UX.Components.Sliders.ShowSliderValue,WaveEngine.MRTK
                     Id: a5c9ddb0-e967-41ba-b350-5035ea53a5f5
                     IsEnabled: true
                 Children: []

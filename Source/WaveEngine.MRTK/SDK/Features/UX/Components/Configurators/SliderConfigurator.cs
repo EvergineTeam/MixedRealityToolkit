@@ -141,18 +141,21 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.Configurators
         /// <inheritdoc />
         protected override bool OnAttached()
         {
-            bool attached = base.OnAttached();
-            if (attached)
+            if (!base.OnAttached())
             {
-                this.trackConfigurator.UseAssetManager(this.Managers.AssetSceneManager);
-                this.thumbConfigurator.UseAssetManager(this.Managers.AssetSceneManager);
-                this.trackConfigurator.CreatesNewMaterialInstance = this.CreatesNewTrackMaterialInstance;
-                this.thumbConfigurator.CreatesNewMaterialInstance = this.CreatesNewThumbMaterialInstance;
-                this.trackConfigurator.TargetMaterialComponent = this.trackMaterial;
-                this.thumbConfigurator.TargetMaterialComponent = this.thumbMaterial;
+                return false;
             }
 
-            return attached;
+            this.trackConfigurator.UseAssetManager(this.Managers.AssetSceneManager);
+            this.thumbConfigurator.UseAssetManager(this.Managers.AssetSceneManager);
+
+            this.trackConfigurator.CreatesNewMaterialInstance = this.CreatesNewTrackMaterialInstance;
+            this.thumbConfigurator.CreatesNewMaterialInstance = this.CreatesNewThumbMaterialInstance;
+
+            this.trackConfigurator.TargetMaterialComponent = this.trackMaterial;
+            this.thumbConfigurator.TargetMaterialComponent = this.thumbMaterial;
+
+            return true;
         }
 
         /// <inheritdoc />
