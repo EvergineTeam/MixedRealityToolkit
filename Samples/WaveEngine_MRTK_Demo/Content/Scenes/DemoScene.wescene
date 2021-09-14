@@ -2628,7 +2628,7 @@ Items:
                 Id: b50116bd-e984-4b0e-8399-3b01c7bd7494
                 AsignedTo: Default
                 IsEnabled: true
-                Material: b5810cca-0555-4aab-86b8-b591766234a5
+                Material: 3521d95f-b8ce-40cb-b4d0-c268f64496bd
               - !WaveEngine.Components.Graphics3D.CubeMesh,WaveEngine.Components
                 Id: 70ee0f3c-230a-47c5-af6e-bbfd6eccc183
                 InitialU: 0.0
@@ -2650,7 +2650,7 @@ Items:
                 Id: 2d09d108-4268-4305-a4fc-9d5e0452cc2f
                 IsEnabled: true
                 material0: 3521d95f-b8ce-40cb-b4d0-c268f64496bd
-                material1: b5810cca-0555-4aab-86b8-b591766234a5
+                material1: bfcf267e-cc0a-482c-9738-a19701e97652
                 material2: c46cf687-2999-4576-a5a1-f1b6863e6d3f
                 material3: e15b70dc-4787-4517-a720-914d405afa85
             Children:
@@ -4480,9 +4480,9 @@ Items:
                   Y: 0.0
                   Z: 0.0
                 LocalPosition:
-                  X: -0.648999929
-                  Y: 0.050999999
-                  Z: -0.465000004
+                  X: -0.64899987
+                  Y: -0.0246368647
+                  Z: -0.464999914
                 LocalScale:
                   X: 0.156472906
                   Y: 0.156472906
@@ -4595,9 +4595,9 @@ Items:
                   Y: -0.256652057
                   Z: 0.0
                 LocalPosition:
-                  X: -0.644999981
-                  Y: -0.116999999
-                  Z: -0.455000013
+                  X: -0.64500016
+                  Y: -0.184956312
+                  Z: -0.454999924
                 LocalScale:
                   X: 0.156472906
                   Y: 0.156472906
@@ -4710,9 +4710,9 @@ Items:
                   Y: 0.140633389
                   Z: 0.0
                 LocalPosition:
-                  X: -0.657999992
-                  Y: -0.301999986
-                  Z: -0.479000002
+                  X: -0.658000052
+                  Y: -0.350118876
+                  Z: -0.479000092
                 LocalScale:
                   X: 0.156472906
                   Y: 0.156472906
@@ -4825,9 +4825,9 @@ Items:
                   Y: 0.382683694
                   Z: 0.0
                 LocalPosition:
-                  X: 0.334992111
-                  Y: -0.373274088
-                  Z: -0.564999998
+                  X: 0.33499217
+                  Y: -0.427776337
+                  Z: -0.565000057
                 LocalScale:
                   X: 0.0599999987
                   Y: 0.0599999987
@@ -5041,9 +5041,9 @@ Items:
                   Y: -0.0175599921
                   Z: -0.0175599959
                 LocalPosition:
-                  X: -0.18178606
-                  Y: -0.394999832
-                  Z: -0.546235383
+                  X: -0.181786358
+                  Y: -0.42962265
+                  Z: -0.546235085
                 LocalScale:
                   X: 0.0250000004
                   Y: 0.0250000004
@@ -7333,5 +7333,244 @@ Items:
             Children: []
             Id: 53bd849b-f7b1-4aa9-b9fb-beed03172436
         Id: aba4da0b-92d7-4554-b90c-f8c6a9c8b711
+      - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+        Name: AxisExample
+        Tag: null
+        IsEnabled: true
+        IsStatic: false
+        Components:
+          - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+            Id: ad641b6b-41bb-4286-bde2-5c137cc7f0a5
+            IsEnabled: true
+            LocalOrientation:
+              W: 1.0
+              X: 0.0
+              Y: 0.0
+              Z: 0.0
+            LocalPosition:
+              X: 0.464466721
+              Y: -0.574212551
+              Z: 0.0454072952
+            LocalScale:
+              X: 1.0
+              Y: 1.0
+              Z: 1.0
+        Children:
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: AxisManipulationHandler
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: 8bb56e0b-540a-496a-b412-3c2c93d9054e
+                IsEnabled: true
+                LocalOrientation:
+                  W: -4.37113883E-08
+                  X: -0.0
+                  Y: 1.0
+                  Z: 0.0
+                LocalPosition:
+                  X: 0.0
+                  Y: 0.0
+                  Z: 0.0
+                LocalScale:
+                  X: 1.0
+                  Y: 1.0
+                  Z: 1.0
+              - !WaveEngine.MRTK.SDK.Features.UX.Components.AxisManipulationHandler.AxisManipulationHandler,WaveEngine.MRTK
+                Id: 4e58a77d-abdd-4cb3-9342-a9e85adfc232
+                AxisHandleFocusedMaterial: 0dfdda40-2622-4b23-8ad0-5d7987849f14
+                AxisHandleGrabbedMaterial: cfd90095-ca9f-40aa-a8d8-b77b956a9d53
+                AxisHandleMaterial: 84896037-fa9d-4415-a1b0-98d35e4133f6
+                AxisHandlePrefab:
+                  PrefabId: 42751e81-ed6e-4e09-b0d2-2b238f4afcc3
+                CenterHandleFocusedMaterial: 371241eb-b255-4358-bc40-6375efbcaa2a
+                CenterHandleGrabbedMaterial: 12d12046-a843-446f-86bb-bae3fccb9239
+                CenterHandleMaterial: 3d6d2f54-6191-4826-b0d8-bfc7cc612115
+                CenterHandlePrefab:
+                  PrefabId: cd0721a6-f291-4db1-8639-db871bc2175b
+                CollisionCategory: Cat1
+                HandleScale: 0.0199999996
+                IsEnabled: true
+                PlaneHandleFocusedMaterial: 0147fd18-2157-45a9-9c0e-096c2a3b98c0
+                PlaneHandleGrabbedMaterial: 149c21e7-0968-49ca-887a-12fad63b86bb
+                PlaneHandleMaterial: ec096b72-56fe-4fb5-8a73-38df0fd97af6
+                PlaneHandlePrefab:
+                  PrefabId: 2d623669-2e9e-4ce2-8c3b-927846111629
+                PlaneHandlesActivateAxisHandles: true
+              - !WaveEngine.MRTK.SDK.Features.UX.Components.AxisManipulationHandler.AxisManipulationHandlerSoundFeedbackComponent,WaveEngine.MRTK
+                Id: 8f96e80b-88f2-49e2-8ef7-56b1e0d39396
+                AxisManipulationEndedSound: 2550413b-8a0d-4a9e-b665-08797e03d01a
+                AxisManipulationStartedSound: fc34b826-4d64-4aa9-944f-cd6a9f7ac84e
+                CenterManipulationEndedSound: fd9d4d83-ee1a-479b-8836-2d7de657ce46
+                CenterManipulationStartedSound: 225031ed-2f89-4ab3-8f3b-ec380424b7bc
+                IsEnabled: true
+                PlaneManipulationEndedSound: 45dc1893-7425-44b8-a79c-55162353d8c4
+                PlaneManipulationStartedSound: 72bbb386-6f6a-4175-93ff-2467ca3f6136
+            Children:
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: Platonic
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: 659aee25-7ee5-4e0f-a9e2-1bf002f6b4a0
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: -0.0
+                    LocalPosition:
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalScale:
+                      X: 0.0500000007
+                      Y: 0.0500000007
+                      Z: 0.0500000007
+                  - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+                    Id: a5a83507-45ac-438e-9035-93626be634ab
+                    AsignedTo: DefaultMaterial
+                    IsEnabled: true
+                    Material: bfcf267e-cc0a-482c-9738-a19701e97652
+                  - !WaveEngine.Components.Graphics3D.MeshComponent,WaveEngine.Framework
+                    Id: 35fa17b7-e630-48bc-af03-e3e64bd0c90b
+                    IsEnabled: true
+                    Model: fea0a9fa-7078-4742-9d9c-42ded82a82c4
+                    ModelMeshName: Platonic
+                  - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+                    Id: dea4adf1-dff1-4863-b0f9-a8fba45e1b7f
+                    DebugBoundingbox: true
+                    IsCullingEnabled: true
+                    IsEnabled: true
+                    OrderBias: 0
+                    RenderFlags: CastShadows
+                Children: []
+                Id: c6b20e56-8646-4c69-b4ee-2f2919f32ec3
+            Id: a4476a5b-c4f0-4f7f-881b-f10374ab7048
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: AxisTitle
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: b38774be-4b59-40c1-8c87-cc5c9db2fca3
+                IsEnabled: true
+                LocalOrientation:
+                  W: 1.0
+                  X: 0.0
+                  Y: 0.0
+                  Z: 0.0
+                LocalPosition:
+                  X: 0.0444713831
+                  Y: 0.21676527
+                  Z: -1.78813934E-06
+                LocalScale:
+                  X: 1.0
+                  Y: 1.0
+                  Z: 1.0
+              - !WaveEngine.MRTK.Toolkit.GUI.Text3D,WaveEngine.MRTK
+                Id: 60be1b7c-fd7d-4469-a76e-697a97775e3e
+                Alpha: 1.0
+                Background:
+                  A: 0
+                  B: 0
+                  G: 0
+                  R: 0
+                CustomHeight: false
+                CustomWidth: false
+                FontFamilySource: /Fonts/#Segoe UI
+                FontSize: 64
+                FontStretch: Normal
+                FontStyle: Normal
+                FontWeight: Bold
+                Foreground:
+                  A: 255
+                  B: 255
+                  G: 255
+                  R: 255
+                Height: 0.022751322
+                HorizontalAlignment: Left
+                IsEnabled: true
+                Layer: e35c59a9-26ab-4b4c-8210-4b1f21c31530
+                Normal: ZNegative
+                Origin:
+                  X: 0.0
+                  Y: 0.5
+                PixelDensity: 3780
+                Text: Axis Manipulator
+                TextAlignment: Left
+                TextTrimming: None
+                TextWrapping: NoWrap
+                UpdateOrder: 0.5
+                VerticalAlignment: Center
+                Width: 0.137037039
+            Children: []
+            Id: abbd3de9-2599-40ca-8251-b63e0856f2d2
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: AxisSubtitle
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: 2345be0e-9d2d-4bf2-8f32-5fa205962f54
+                IsEnabled: true
+                LocalOrientation:
+                  W: 1.0
+                  X: 0.0
+                  Y: 0.0
+                  Z: 0.0
+                LocalPosition:
+                  X: 0.0445000008
+                  Y: 0.180943251
+                  Z: 0.0
+                LocalScale:
+                  X: 1.0
+                  Y: 1.0
+                  Z: 1.0
+              - !WaveEngine.MRTK.Toolkit.GUI.Text3D,WaveEngine.MRTK
+                Id: 246539fc-ca10-4a9a-969c-adc1dbc10f00
+                Alpha: 1.0
+                Background:
+                  A: 0
+                  B: 0
+                  G: 0
+                  R: 0
+                CustomHeight: false
+                CustomWidth: true
+                FontFamilySource: /Fonts/#Segoe UI
+                FontSize: 42
+                FontStretch: Normal
+                FontStyle: Normal
+                FontWeight: Normal
+                Foreground:
+                  A: 255
+                  B: 255
+                  G: 255
+                  R: 255
+                Height: 0.0444444455
+                HorizontalAlignment: Left
+                IsEnabled: true
+                Layer: e35c59a9-26ab-4b4c-8210-4b1f21c31530
+                Normal: ZNegative
+                Origin:
+                  X: 0.0
+                  Y: 0.5
+                PixelDensity: 3780
+                Text: A handle to move an object along one, two or all three axes.
+                TextAlignment: Left
+                TextTrimming: None
+                TextWrapping: Wrap
+                UpdateOrder: 0.5
+                VerticalAlignment: Center
+                Width: 0.136600032
+            Children: []
+            Id: e1096ca3-ea66-4f24-9fc6-e65f9ebc6914
+        Id: 10120b93-e2c6-446f-b38c-60ddf9bc0423
     Id: bf7601de-e3ee-4c6a-9ec4-717fc4c11ddd
 Managers: []
