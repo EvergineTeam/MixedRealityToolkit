@@ -3262,6 +3262,24 @@ Items:
                 IsEnabled: true
                 ScenePrefabProperty:
                   PrefabId: ebf701c2-15f7-4a05-bfb0-946e3ac5aa06
+              - !WaveEngine.MRTK.SDK.Features.UX.Components.Configurators.SliderConfigurator,WaveEngine.MRTK
+                Id: b5df32c2-8e5d-45d0-a5fe-a07ac3ad60d2
+                CreatesNewThumbMaterialInstance: false
+                CreatesNewTrackMaterialInstance: false
+                IsEnabled: true
+                PrimaryColor:
+                  A: 255
+                  B: 255
+                  G: 255
+                  R: 255
+                SecondaryColor:
+                  A: 255
+                  B: 255
+                  G: 255
+                  R: 255
+                Thumb: null
+                Title: Red
+                Track: 1eb22db1-a530-42a0-8873-a556f60f03f2
             Children: []
             Id: 57983931-b67d-4331-8cd6-14b1213d5654
           - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
@@ -3292,6 +3310,24 @@ Items:
                 IsEnabled: true
                 ScenePrefabProperty:
                   PrefabId: ebf701c2-15f7-4a05-bfb0-946e3ac5aa06
+              - !WaveEngine.MRTK.SDK.Features.UX.Components.Configurators.SliderConfigurator,WaveEngine.MRTK
+                Id: db88a3ff-4b12-404d-a495-a261e37d576c
+                CreatesNewThumbMaterialInstance: false
+                CreatesNewTrackMaterialInstance: false
+                IsEnabled: true
+                PrimaryColor:
+                  A: 255
+                  B: 255
+                  G: 255
+                  R: 255
+                SecondaryColor:
+                  A: 255
+                  B: 255
+                  G: 255
+                  R: 255
+                Thumb: null
+                Title: Green
+                Track: c3e0700e-b748-4613-82e7-c0de2ecf3c45
             Children: []
             Id: 56ebdbd2-b3b8-40be-a348-06ebbca4bd82
           - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
@@ -3322,6 +3358,24 @@ Items:
                 IsEnabled: true
                 ScenePrefabProperty:
                   PrefabId: ebf701c2-15f7-4a05-bfb0-946e3ac5aa06
+              - !WaveEngine.MRTK.SDK.Features.UX.Components.Configurators.SliderConfigurator,WaveEngine.MRTK
+                Id: 8e3f0414-fe91-43cc-b994-b76627bf56d9
+                CreatesNewThumbMaterialInstance: false
+                CreatesNewTrackMaterialInstance: false
+                IsEnabled: true
+                PrimaryColor:
+                  A: 255
+                  B: 255
+                  G: 255
+                  R: 255
+                SecondaryColor:
+                  A: 255
+                  B: 255
+                  G: 255
+                  R: 255
+                Thumb: null
+                Title: Blue
+                Track: 29a88f02-4265-419f-9b61-b3b786fa6b30
             Children: []
             Id: 7686bf59-db4b-4b11-90e5-881e27417b76
           - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
