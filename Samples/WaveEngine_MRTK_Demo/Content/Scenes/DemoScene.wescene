@@ -2985,7 +2985,7 @@ Items:
                 Id: f49c89d3-460c-4efb-b808-eb8bd40b19ca
             Id: 3b5d2bca-fadf-4628-8931-9e8f5e344acb
           - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
-            Name: PressableButtonsSharedPlate40x40mm
+            Name: MultiStateButtonsSharedPlate40x40mm
             Tag: null
             IsEnabled: true
             IsStatic: false
@@ -3108,11 +3108,11 @@ Items:
                     IsEnabled: true
                     ScenePrefabProperty:
                       PrefabId: d3c78edd-e94f-4e2c-ba4b-c52b3a998cf4
-                  - !WaveEngine.MRTK.SDK.Features.UX.Components.Configurators.StandardButtonConfigurator,WaveEngine.MRTK
-                    Id: 56797b52-d498-4f13-8b65-7194e34971f2
+                  - !WaveEngine_MRTK_Demo.Components.MultiStateButtons.MultiStateButtonConfigurator,WaveEngine_MRTK_Demo
+                    Id: 2fe31d6d-31b0-4481-a48c-423e8f07ba30
                     CreatesNewBackPlateMaterialInstance: false
                     CreatesNewIconMaterialInstance: false
-                    Icon: 163a35b7-72c2-41c3-8116-2b44e8a79394
+                    Icon: 7a93b9b7-56a3-41f1-8392-0751355e1bef
                     IsEnabled: true
                     Plate: null
                     PrimaryColor:
@@ -3120,7 +3120,39 @@ Items:
                       B: 255
                       G: 255
                       R: 255
-                    Text: Button
+                    TargetState: StateA
+                    Text: Option A
+                  - !WaveEngine_MRTK_Demo.Components.MultiStateButtons.MultiStateButtonConfigurator,WaveEngine_MRTK_Demo
+                    Id: 11a4f37d-50b8-4758-a540-cd366bb1a8c2
+                    CreatesNewBackPlateMaterialInstance: false
+                    CreatesNewIconMaterialInstance: false
+                    Icon: b4780cf3-7509-4615-86d3-6c2ffa231fa4
+                    IsEnabled: false
+                    Plate: null
+                    PrimaryColor:
+                      A: 255
+                      B: 255
+                      G: 255
+                      R: 255
+                    TargetState: StateB
+                    Text: Option B
+                  - !WaveEngine_MRTK_Demo.Components.MultiStateButtons.MultiStateButtonConfigurator,WaveEngine_MRTK_Demo
+                    Id: 185f4235-02c2-4ec5-b162-782c533da2b2
+                    CreatesNewBackPlateMaterialInstance: false
+                    CreatesNewIconMaterialInstance: false
+                    Icon: ce2f33db-e32c-4a69-870c-b2905569897f
+                    IsEnabled: false
+                    Plate: null
+                    PrimaryColor:
+                      A: 255
+                      B: 255
+                      G: 255
+                      R: 255
+                    TargetState: StateC
+                    Text: Option C
+                  - !WaveEngine_MRTK_Demo.Components.MultiStateButtons.MultiStateStateManager,WaveEngine_MRTK_Demo
+                    Id: f6a5814f-7609-4b59-979c-3f8d3d217b7d
+                    IsEnabled: true
                 Children: []
                 Id: 22ae0abc-7c93-4f87-a6db-36511057a337
               - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
@@ -3130,7 +3162,7 @@ Items:
                 IsStatic: false
                 Components:
                   - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
-                    Id: f162ec8e-0b0d-4ff1-9c2e-d564f43d39a8
+                    Id: dceef28e-6e7b-415f-a389-35762bed4e1e
                     IsEnabled: true
                     LocalOrientation:
                       W: 1.0
@@ -3138,7 +3170,7 @@ Items:
                       Y: 0.0
                       Z: 0.0
                     LocalPosition:
-                      X: 0.032000009
+                      X: 0.0320000015
                       Y: 0.0
                       Z: 0.0
                     LocalScale:
@@ -3146,16 +3178,16 @@ Items:
                       Y: 1.0
                       Z: 1.0
                   - !WaveEngine.MRTK.Toolkit.Prefabs.ScenePrefab,WaveEngine.MRTK
-                    Id: e524e6e5-ac26-4ac3-9327-077450b218f6
+                    Id: 7c74a475-2018-4304-b8db-efa988010cc1
                     DuplicateMaterials: false
                     IsEnabled: true
                     ScenePrefabProperty:
                       PrefabId: d3c78edd-e94f-4e2c-ba4b-c52b3a998cf4
-                  - !WaveEngine.MRTK.SDK.Features.UX.Components.Configurators.StandardButtonConfigurator,WaveEngine.MRTK
-                    Id: 65ef1cd9-0a50-47bf-b13e-fb1b62cd2b74
+                  - !WaveEngine_MRTK_Demo.Components.MultiStateButtons.MultiStateButtonConfigurator,WaveEngine_MRTK_Demo
+                    Id: e96b1bc8-81e4-464c-a357-c2d44d968fc2
                     CreatesNewBackPlateMaterialInstance: false
                     CreatesNewIconMaterialInstance: false
-                    Icon: 163a35b7-72c2-41c3-8116-2b44e8a79394
+                    Icon: 7a93b9b7-56a3-41f1-8392-0751355e1bef
                     IsEnabled: true
                     Plate: null
                     PrimaryColor:
@@ -3163,9 +3195,41 @@ Items:
                       B: 255
                       G: 255
                       R: 255
-                    Text: Button
+                    TargetState: StateA
+                    Text: Option A
+                  - !WaveEngine_MRTK_Demo.Components.MultiStateButtons.MultiStateButtonConfigurator,WaveEngine_MRTK_Demo
+                    Id: 4e2ce138-f8b5-4409-99ed-3aa3965f7375
+                    CreatesNewBackPlateMaterialInstance: false
+                    CreatesNewIconMaterialInstance: false
+                    Icon: b4780cf3-7509-4615-86d3-6c2ffa231fa4
+                    IsEnabled: false
+                    Plate: null
+                    PrimaryColor:
+                      A: 255
+                      B: 255
+                      G: 255
+                      R: 255
+                    TargetState: StateB
+                    Text: Option B
+                  - !WaveEngine_MRTK_Demo.Components.MultiStateButtons.MultiStateButtonConfigurator,WaveEngine_MRTK_Demo
+                    Id: 6e01fb40-f978-4d93-8498-bef51ab51d1a
+                    CreatesNewBackPlateMaterialInstance: false
+                    CreatesNewIconMaterialInstance: false
+                    Icon: ce2f33db-e32c-4a69-870c-b2905569897f
+                    IsEnabled: false
+                    Plate: null
+                    PrimaryColor:
+                      A: 255
+                      B: 255
+                      G: 255
+                      R: 255
+                    TargetState: StateC
+                    Text: Option C
+                  - !WaveEngine_MRTK_Demo.Components.MultiStateButtons.MultiStateStateManager,WaveEngine_MRTK_Demo
+                    Id: 41f5484a-dbd2-497c-9516-1ddce21ed949
+                    IsEnabled: true
                 Children: []
-                Id: 8d8cce64-1a14-4dc4-bf9d-9a3e32d2739c
+                Id: 915232c0-ee89-40fb-ac0a-74112bcb8c0d
               - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
                 Name: PressableButton_3
                 Tag: null
@@ -3173,7 +3237,7 @@ Items:
                 IsStatic: false
                 Components:
                   - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
-                    Id: ad44bda3-6ac7-469f-8ed8-ff3156f76145
+                    Id: 416e6f05-0ead-4ba4-83b3-d95ee8d44eb0
                     IsEnabled: true
                     LocalOrientation:
                       W: 1.0
@@ -3189,16 +3253,16 @@ Items:
                       Y: 1.0
                       Z: 1.0
                   - !WaveEngine.MRTK.Toolkit.Prefabs.ScenePrefab,WaveEngine.MRTK
-                    Id: 93bec42b-1130-41a3-bae6-61e261bd1821
+                    Id: d9efdc43-a5f4-47ce-92ae-e94d2dab7594
                     DuplicateMaterials: false
                     IsEnabled: true
                     ScenePrefabProperty:
                       PrefabId: d3c78edd-e94f-4e2c-ba4b-c52b3a998cf4
-                  - !WaveEngine.MRTK.SDK.Features.UX.Components.Configurators.StandardButtonConfigurator,WaveEngine.MRTK
-                    Id: b8979abf-c7c9-49c9-8956-ab0f99906f8d
+                  - !WaveEngine_MRTK_Demo.Components.MultiStateButtons.MultiStateButtonConfigurator,WaveEngine_MRTK_Demo
+                    Id: e28900b0-9260-4d5a-a5a0-38d0877aea36
                     CreatesNewBackPlateMaterialInstance: false
                     CreatesNewIconMaterialInstance: false
-                    Icon: 163a35b7-72c2-41c3-8116-2b44e8a79394
+                    Icon: 7a93b9b7-56a3-41f1-8392-0751355e1bef
                     IsEnabled: true
                     Plate: null
                     PrimaryColor:
@@ -3206,9 +3270,41 @@ Items:
                       B: 255
                       G: 255
                       R: 255
-                    Text: Button
+                    TargetState: StateA
+                    Text: Option A
+                  - !WaveEngine_MRTK_Demo.Components.MultiStateButtons.MultiStateButtonConfigurator,WaveEngine_MRTK_Demo
+                    Id: bcb59f5e-3667-4b50-8a8d-5557a1a2ee44
+                    CreatesNewBackPlateMaterialInstance: false
+                    CreatesNewIconMaterialInstance: false
+                    Icon: b4780cf3-7509-4615-86d3-6c2ffa231fa4
+                    IsEnabled: false
+                    Plate: null
+                    PrimaryColor:
+                      A: 255
+                      B: 255
+                      G: 255
+                      R: 255
+                    TargetState: StateB
+                    Text: Option B
+                  - !WaveEngine_MRTK_Demo.Components.MultiStateButtons.MultiStateButtonConfigurator,WaveEngine_MRTK_Demo
+                    Id: 2fc861a8-26ca-4a36-91fe-073a8b0d0d86
+                    CreatesNewBackPlateMaterialInstance: false
+                    CreatesNewIconMaterialInstance: false
+                    Icon: ce2f33db-e32c-4a69-870c-b2905569897f
+                    IsEnabled: false
+                    Plate: null
+                    PrimaryColor:
+                      A: 255
+                      B: 255
+                      G: 255
+                      R: 255
+                    TargetState: StateC
+                    Text: Option C
+                  - !WaveEngine_MRTK_Demo.Components.MultiStateButtons.MultiStateStateManager,WaveEngine_MRTK_Demo
+                    Id: 4033208b-0c31-45c8-b939-6702a7c6b622
+                    IsEnabled: true
                 Children: []
-                Id: 66916c86-34ad-46fc-976f-bad4fa7b69a7
+                Id: d762ef09-4cd8-4a47-9944-9397ea65ad63
             Id: 24812237-5896-4b61-acc4-a5d844be7534
         Id: 47d72413-3506-4620-bb70-f7a391fa8bd1
       - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework

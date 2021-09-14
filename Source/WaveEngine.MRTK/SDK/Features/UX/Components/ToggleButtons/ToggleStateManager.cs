@@ -59,13 +59,14 @@ namespace WaveEngine.MRTK.SDK.Features.UX.Components.ToggleButtons
         /// <inheritdoc />
         protected override bool OnAttached()
         {
-            bool attached = base.OnAttached();
-            if (attached)
+            if (!base.OnAttached())
             {
-                this.AddDefaultComponents();
+                return false;
             }
 
-            return attached;
+            this.AddDefaultComponents();
+
+            return true;
         }
 
         /// <inheritdoc />
