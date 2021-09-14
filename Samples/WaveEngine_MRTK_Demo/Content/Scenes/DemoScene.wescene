@@ -26,7 +26,7 @@ Items:
         Id: 123f9559-4071-45e5-9708-ea09bae31c5f
         IntensityMultiplier: 1.0
         IsEnabled: true
-        ReflectionProbe: 851e3d4e-bbaf-4815-8937-16807c12ea6c
+        ReflectionProbe: cf77ce73-3566-4bb4-8df0-9b428f60f8e4
         Strategy: Automatically
     Children: []
     Id: ad8017e0-08ed-427c-97ed-a9c055150ae7
@@ -55,10 +55,10 @@ Items:
       - !WaveEngine.Framework.Graphics.PhotometricDirectionalLight,WaveEngine.Framework
         Id: d9abdcf3-5231-4fa2-bb59-f1a9ba6e555c
         Color:
-          A: 0
-          B: 228
-          G: 240
-          R: 249
+          A: 255
+          B: 253
+          G: 248
+          R: 255
         ColorByTemperature: true
         DebugMode: false
         GammaDistribution: 0.800000012
@@ -67,10 +67,10 @@ Items:
         IsEnabled: true
         IsShadowEnabled: false
         LinearColor:
-          A: 0.0
-          B: 0.779089451
-          G: 0.874792576
-          R: 0.9453125
+          A: 1.0
+          B: 0.982790232
+          G: 0.943362474
+          R: 1.0
         ShadowBias: 0.00499999989
         ShadowDistance: 80.0
         ShadowOpacity: 1.0
@@ -2371,6 +2371,19 @@ Items:
                     SeeItSayItLabelTag: SeeItSayItLabel
                     SpeechHandlerFireCondition: Global
                     SpeechKeywords: null
+                  - !WaveEngine.MRTK.SDK.Features.UX.Components.Configurators.StandardButtonConfigurator,WaveEngine.MRTK
+                    Id: 28d820ce-d3b9-4f16-b792-b1457e2203d0
+                    CreatesNewBackPlateMaterialInstance: false
+                    CreatesNewIconMaterialInstance: false
+                    Icon: 163a35b7-72c2-41c3-8116-2b44e8a79394
+                    IsEnabled: true
+                    Plate: null
+                    PrimaryColor:
+                      A: 255
+                      B: 255
+                      G: 255
+                      R: 255
+                    Text: Button
                 Children: []
                 Id: 709ed301-96ec-484d-a53b-9945776a8986
               - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
@@ -2401,6 +2414,19 @@ Items:
                     IsEnabled: true
                     ScenePrefabProperty:
                       PrefabId: facc69c2-67f2-4bc3-97cd-d1ddbd42a7e5
+                  - !WaveEngine.MRTK.SDK.Features.UX.Components.Configurators.StandardButtonConfigurator,WaveEngine.MRTK
+                    Id: c13dce83-ce8e-4f67-88a6-8a4d09d3e2b7
+                    CreatesNewBackPlateMaterialInstance: false
+                    CreatesNewIconMaterialInstance: false
+                    Icon: 163a35b7-72c2-41c3-8116-2b44e8a79394
+                    IsEnabled: true
+                    Plate: null
+                    PrimaryColor:
+                      A: 255
+                      B: 255
+                      G: 255
+                      R: 255
+                    Text: Button
                 Children: []
                 Id: d70270df-f08b-4304-ba62-bcb3b7a6a13c
               - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
@@ -2431,6 +2457,19 @@ Items:
                     IsEnabled: true
                     ScenePrefabProperty:
                       PrefabId: facc69c2-67f2-4bc3-97cd-d1ddbd42a7e5
+                  - !WaveEngine.MRTK.SDK.Features.UX.Components.Configurators.StandardButtonConfigurator,WaveEngine.MRTK
+                    Id: 37dd8eb8-dbbf-41cf-bc79-2b6938aa3c87
+                    CreatesNewBackPlateMaterialInstance: false
+                    CreatesNewIconMaterialInstance: false
+                    Icon: 163a35b7-72c2-41c3-8116-2b44e8a79394
+                    IsEnabled: true
+                    Plate: null
+                    PrimaryColor:
+                      A: 255
+                      B: 255
+                      G: 255
+                      R: 255
+                    Text: Button
                 Children: []
                 Id: 3e595de7-4180-4a9a-84a6-3fc1f2ce561c
               - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
@@ -2461,6 +2500,19 @@ Items:
                     IsEnabled: true
                     ScenePrefabProperty:
                       PrefabId: facc69c2-67f2-4bc3-97cd-d1ddbd42a7e5
+                  - !WaveEngine.MRTK.SDK.Features.UX.Components.Configurators.StandardButtonConfigurator,WaveEngine.MRTK
+                    Id: 4b5c6ad0-52d6-4bde-8bd0-0c8640d78056
+                    CreatesNewBackPlateMaterialInstance: false
+                    CreatesNewIconMaterialInstance: false
+                    Icon: 163a35b7-72c2-41c3-8116-2b44e8a79394
+                    IsEnabled: true
+                    Plate: null
+                    PrimaryColor:
+                      A: 255
+                      B: 255
+                      G: 255
+                      R: 255
+                    Text: Button
                 Children: []
                 Id: 3ec0cae7-bce5-4c25-b095-7889e95c6992
               - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
@@ -2491,6 +2543,19 @@ Items:
                     IsEnabled: true
                     ScenePrefabProperty:
                       PrefabId: facc69c2-67f2-4bc3-97cd-d1ddbd42a7e5
+                  - !WaveEngine.MRTK.SDK.Features.UX.Components.Configurators.StandardButtonConfigurator,WaveEngine.MRTK
+                    Id: 55458b74-af1f-448f-bd2b-d62b139908d6
+                    CreatesNewBackPlateMaterialInstance: false
+                    CreatesNewIconMaterialInstance: false
+                    Icon: 163a35b7-72c2-41c3-8116-2b44e8a79394
+                    IsEnabled: true
+                    Plate: null
+                    PrimaryColor:
+                      A: 255
+                      B: 255
+                      G: 255
+                      R: 255
+                    Text: Button
                 Children: []
                 Id: 9e1597d5-9ed5-4ffb-b6a0-d91e78aba289
               - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
@@ -2521,6 +2586,19 @@ Items:
                     IsEnabled: true
                     ScenePrefabProperty:
                       PrefabId: facc69c2-67f2-4bc3-97cd-d1ddbd42a7e5
+                  - !WaveEngine.MRTK.SDK.Features.UX.Components.Configurators.StandardButtonConfigurator,WaveEngine.MRTK
+                    Id: 5452b563-158d-4e6f-9647-7f02333120b6
+                    CreatesNewBackPlateMaterialInstance: false
+                    CreatesNewIconMaterialInstance: false
+                    Icon: 163a35b7-72c2-41c3-8116-2b44e8a79394
+                    IsEnabled: true
+                    Plate: null
+                    PrimaryColor:
+                      A: 255
+                      B: 255
+                      G: 255
+                      R: 255
+                    Text: Button
                 Children: []
                 Id: 25be2efd-3d2c-4cfd-93fa-a2ad4ed17abf
             Id: cf260f8b-5d22-488a-98f3-c482b12c6228
@@ -2761,6 +2839,19 @@ Items:
                     IsEnabled: true
                     ScenePrefabProperty:
                       PrefabId: d3c78edd-e94f-4e2c-ba4b-c52b3a998cf4
+                  - !WaveEngine.MRTK.SDK.Features.UX.Components.Configurators.StandardButtonConfigurator,WaveEngine.MRTK
+                    Id: f507ebad-4ce6-4a60-b56e-f49ab7c225e6
+                    CreatesNewBackPlateMaterialInstance: false
+                    CreatesNewIconMaterialInstance: false
+                    Icon: 163a35b7-72c2-41c3-8116-2b44e8a79394
+                    IsEnabled: true
+                    Plate: null
+                    PrimaryColor:
+                      A: 255
+                      B: 255
+                      G: 255
+                      R: 255
+                    Text: Button
                 Children: []
                 Id: 3a748b97-9655-4644-b703-99f17e10ede9
               - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
@@ -2791,6 +2882,19 @@ Items:
                     IsEnabled: true
                     ScenePrefabProperty:
                       PrefabId: d3c78edd-e94f-4e2c-ba4b-c52b3a998cf4
+                  - !WaveEngine.MRTK.SDK.Features.UX.Components.Configurators.StandardButtonConfigurator,WaveEngine.MRTK
+                    Id: afaff0a4-1ab8-476e-8d03-7685661724ff
+                    CreatesNewBackPlateMaterialInstance: false
+                    CreatesNewIconMaterialInstance: false
+                    Icon: 163a35b7-72c2-41c3-8116-2b44e8a79394
+                    IsEnabled: true
+                    Plate: null
+                    PrimaryColor:
+                      A: 255
+                      B: 255
+                      G: 255
+                      R: 255
+                    Text: Button
                 Children: []
                 Id: e7643ae2-3bfd-4e07-b13e-ba2dfaace5c3
               - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
@@ -2821,6 +2925,19 @@ Items:
                     IsEnabled: true
                     ScenePrefabProperty:
                       PrefabId: d3c78edd-e94f-4e2c-ba4b-c52b3a998cf4
+                  - !WaveEngine.MRTK.SDK.Features.UX.Components.Configurators.StandardButtonConfigurator,WaveEngine.MRTK
+                    Id: b5e4e03b-3c1c-452f-9442-21558aa5413e
+                    CreatesNewBackPlateMaterialInstance: false
+                    CreatesNewIconMaterialInstance: false
+                    Icon: 163a35b7-72c2-41c3-8116-2b44e8a79394
+                    IsEnabled: true
+                    Plate: null
+                    PrimaryColor:
+                      A: 255
+                      B: 255
+                      G: 255
+                      R: 255
+                    Text: Button
                 Children: []
                 Id: 6cc84ac5-300f-406b-b4be-0db0cc460587
               - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
@@ -2851,6 +2968,19 @@ Items:
                     IsEnabled: true
                     ScenePrefabProperty:
                       PrefabId: d3c78edd-e94f-4e2c-ba4b-c52b3a998cf4
+                  - !WaveEngine.MRTK.SDK.Features.UX.Components.Configurators.StandardButtonConfigurator,WaveEngine.MRTK
+                    Id: 0f7d657f-71a3-4e74-8a70-8c58e620080e
+                    CreatesNewBackPlateMaterialInstance: false
+                    CreatesNewIconMaterialInstance: false
+                    Icon: 163a35b7-72c2-41c3-8116-2b44e8a79394
+                    IsEnabled: true
+                    Plate: null
+                    PrimaryColor:
+                      A: 255
+                      B: 255
+                      G: 255
+                      R: 255
+                    Text: Button
                 Children: []
                 Id: f49c89d3-460c-4efb-b808-eb8bd40b19ca
             Id: 3b5d2bca-fadf-4628-8931-9e8f5e344acb
@@ -2978,6 +3108,19 @@ Items:
                     IsEnabled: true
                     ScenePrefabProperty:
                       PrefabId: d3c78edd-e94f-4e2c-ba4b-c52b3a998cf4
+                  - !WaveEngine.MRTK.SDK.Features.UX.Components.Configurators.StandardButtonConfigurator,WaveEngine.MRTK
+                    Id: 56797b52-d498-4f13-8b65-7194e34971f2
+                    CreatesNewBackPlateMaterialInstance: false
+                    CreatesNewIconMaterialInstance: false
+                    Icon: 163a35b7-72c2-41c3-8116-2b44e8a79394
+                    IsEnabled: true
+                    Plate: null
+                    PrimaryColor:
+                      A: 255
+                      B: 255
+                      G: 255
+                      R: 255
+                    Text: Button
                 Children: []
                 Id: 22ae0abc-7c93-4f87-a6db-36511057a337
               - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
@@ -3008,6 +3151,19 @@ Items:
                     IsEnabled: true
                     ScenePrefabProperty:
                       PrefabId: d3c78edd-e94f-4e2c-ba4b-c52b3a998cf4
+                  - !WaveEngine.MRTK.SDK.Features.UX.Components.Configurators.StandardButtonConfigurator,WaveEngine.MRTK
+                    Id: 65ef1cd9-0a50-47bf-b13e-fb1b62cd2b74
+                    CreatesNewBackPlateMaterialInstance: false
+                    CreatesNewIconMaterialInstance: false
+                    Icon: 163a35b7-72c2-41c3-8116-2b44e8a79394
+                    IsEnabled: true
+                    Plate: null
+                    PrimaryColor:
+                      A: 255
+                      B: 255
+                      G: 255
+                      R: 255
+                    Text: Button
                 Children: []
                 Id: 8d8cce64-1a14-4dc4-bf9d-9a3e32d2739c
               - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
@@ -3038,6 +3194,19 @@ Items:
                     IsEnabled: true
                     ScenePrefabProperty:
                       PrefabId: d3c78edd-e94f-4e2c-ba4b-c52b3a998cf4
+                  - !WaveEngine.MRTK.SDK.Features.UX.Components.Configurators.StandardButtonConfigurator,WaveEngine.MRTK
+                    Id: b8979abf-c7c9-49c9-8956-ab0f99906f8d
+                    CreatesNewBackPlateMaterialInstance: false
+                    CreatesNewIconMaterialInstance: false
+                    Icon: 163a35b7-72c2-41c3-8116-2b44e8a79394
+                    IsEnabled: true
+                    Plate: null
+                    PrimaryColor:
+                      A: 255
+                      B: 255
+                      G: 255
+                      R: 255
+                    Text: Button
                 Children: []
                 Id: 66916c86-34ad-46fc-976f-bad4fa7b69a7
             Id: 24812237-5896-4b61-acc4-a5d844be7534
@@ -4118,7 +4287,7 @@ Items:
               - !WaveEngine.Framework.Physics3D.BoxCollider3D,WaveEngine.Framework
                 Id: fde60ff1-9a0a-4d72-b34f-d7d24acebbe4
                 IsEnabled: true
-                Margin: 0.0
+                Margin: 0.00100000005
                 Offset:
                   X: 0.0
                   Y: 0.0
@@ -4203,7 +4372,7 @@ Items:
               - !WaveEngine.Framework.Physics3D.BoxCollider3D,WaveEngine.Framework
                 Id: 645e0215-d473-44e2-b5fe-ec64a32781f2
                 IsEnabled: true
-                Margin: 0.0
+                Margin: 0.00100000005
                 Offset:
                   X: 0.0
                   Y: 0.0
@@ -4318,7 +4487,7 @@ Items:
               - !WaveEngine.Framework.Physics3D.BoxCollider3D,WaveEngine.Framework
                 Id: d83154e5-cb30-4a5a-8eca-4bbd7884f342
                 IsEnabled: true
-                Margin: 0.0
+                Margin: 0.00100000005
                 Offset:
                   X: 0.0
                   Y: 0.0
@@ -4433,7 +4602,7 @@ Items:
               - !WaveEngine.Framework.Physics3D.BoxCollider3D,WaveEngine.Framework
                 Id: 98f8b430-498b-4887-92d5-0c8fc1a47a81
                 IsEnabled: true
-                Margin: 0.0
+                Margin: 0.00100000005
                 Offset:
                   X: 0.0
                   Y: 0.0
@@ -4516,7 +4685,7 @@ Items:
               - !WaveEngine.Framework.Physics3D.BoxCollider3D,WaveEngine.Framework
                 Id: 72f701e7-9b78-44d0-889e-302faac8de73
                 IsEnabled: true
-                Margin: 0.0
+                Margin: 0.00100000005
                 Offset:
                   X: 0.0
                   Y: 3.0
@@ -4824,7 +4993,7 @@ Items:
                   - !WaveEngine.Framework.Physics3D.BoxCollider3D,WaveEngine.Framework
                     Id: db3ea2c7-e367-4e9e-8e54-8e01060505fc
                     IsEnabled: true
-                    Margin: 0.0
+                    Margin: 0.00100000005
                     Offset:
                       X: 0.0
                       Y: 0.0
@@ -5413,30 +5582,6 @@ Items:
                         RenderFlags: CastShadows
                     Children: []
                     Id: fd72d7c2-62f7-4261-bf91-6fd0bd2a274e
-                  - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
-                    Name: Title
-                    Tag: null
-                    IsEnabled: true
-                    IsStatic: false
-                    Components:
-                      - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
-                        Id: 7dfeaa6e-c251-44a9-80fd-02d12b41a3a6
-                        IsEnabled: true
-                        LocalOrientation:
-                          W: 0.707106888
-                          X: 0.0
-                          Y: -0.70710665
-                          Z: 0.0
-                        LocalPosition:
-                          X: -0.0683000013
-                          Y: 0.113164499
-                          Z: 0.0604960285
-                        LocalScale:
-                          X: 2.40306044
-                          Y: 23.8095245
-                          Z: 285.714294
-                    Children: []
-                    Id: bd593b08-42ff-4527-8900-507cfd4fb70d
                 Id: cd955ecb-ac00-49e8-8f56-04c9a862b41e
               - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
                 Name: ContentBackPlate
@@ -6006,7 +6151,7 @@ Items:
             Children: []
             Id: 45f33ea5-f5f8-4390-87ef-a22172cd57a7
           - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
-            Name: SectionTitle
+            Name: Title
             Tag: null
             IsEnabled: true
             IsStatic: false
@@ -6066,7 +6211,7 @@ Items:
             Children: []
             Id: fba2f6e9-2da1-4e47-b288-3e13bf0764cb
           - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
-            Name: SectionSubtitle
+            Name: Content
             Tag: null
             IsEnabled: true
             IsStatic: false
@@ -6150,7 +6295,7 @@ Items:
               Z: 0.606660008
         Children:
           - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
-            Name: HoloLens1 Style
+            Name: AllHandlesBoundingBox
             Tag: null
             IsEnabled: true
             IsStatic: false
@@ -6276,7 +6421,7 @@ Items:
                 Id: 8e41fb61-2bd1-4a2e-81c2-be9b96539ffc
             Id: 10a93be1-3592-48a8-a470-9b5c6e6300c3
           - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
-            Name: Model_Platonic
+            Name: ScaleHandlesBoundingBox
             Tag: null
             IsEnabled: true
             IsStatic: false
@@ -6378,7 +6523,7 @@ Items:
             Children: []
             Id: a3a5d007-0e0a-4220-9f31-cab5841a1f92
           - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
-            Name: HoloLens1StyleActivateManuallyByAppBar
+            Name: RotationHandlesBoundingBox
             Tag: null
             IsEnabled: true
             IsStatic: false
@@ -6738,7 +6883,7 @@ Items:
                 Id: bb4c959d-1bf1-44b4-a0d2-89e5dfbc89eb
             Id: 138aea70-84a8-48bf-b4c0-730010413235
           - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
-            Name: SectionTitle
+            Name: BoundingBoxTitle
             Tag: null
             IsEnabled: true
             IsStatic: false
@@ -6798,7 +6943,7 @@ Items:
             Children: []
             Id: 4527982a-f677-44ce-877b-36268a2bb107
           - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
-            Name: SectionSubtitle
+            Name: BoundingBoxSubtitle
             Tag: null
             IsEnabled: true
             IsStatic: false
@@ -6858,7 +7003,7 @@ Items:
             Children: []
             Id: b705a5ae-a252-421e-842a-5a6cfeec082d
           - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
-            Name: AllHandles
+            Name: AllHandlesText
             Tag: null
             IsEnabled: true
             IsStatic: false
@@ -6918,7 +7063,7 @@ Items:
             Children: []
             Id: c150ba97-0caa-4ea5-b51f-032d0bfccbbc
           - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
-            Name: RotationHandles
+            Name: RotationHandlesText
             Tag: null
             IsEnabled: true
             IsStatic: false
@@ -6978,7 +7123,7 @@ Items:
             Children: []
             Id: cf31e4bf-dd7f-4327-8ac3-fda935ce099a
           - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
-            Name: ScaleHandles
+            Name: ScaleHandlesText
             Tag: null
             IsEnabled: true
             IsStatic: false
