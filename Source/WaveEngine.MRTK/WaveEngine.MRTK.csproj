@@ -39,7 +39,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\WaveEngine.MRTK.Editor\bin\$(Configuration)\netstandard2.0\WaveEngine.MRTK.Editor.dll">
+    <None Include="..\WaveEngine.MRTK.Editor\bin\$(Configuration)\netstandard2.0\WaveEngine.MRTK.Editor.dll" Visible="false">
       <Pack>True</Pack>
       <PackagePath>lib\netstandard2.0\WaveEngine.MRTK.Editor.dll</PackagePath>
     </None>

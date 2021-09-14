@@ -12,6 +12,7 @@
     <PackageReference Include="WaveEngine.Editor.Extension" Version="3.3.0.8524-preview" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Source\WaveEngine.MRTK.Editor\WaveEngine.MRTK.Editor.csproj" />
     <ProjectReference Include="..\WaveEngine_MRTK_Demo\WaveEngine_MRTK_Demo.csproj" />
   </ItemGroup>
 </Project>
