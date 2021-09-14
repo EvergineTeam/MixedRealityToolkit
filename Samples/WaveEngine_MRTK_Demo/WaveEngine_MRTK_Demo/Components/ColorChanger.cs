@@ -3,7 +3,6 @@ using WaveEngine.Components.Graphics3D;
 using WaveEngine.Framework;
 using WaveEngine.Framework.Graphics;
 using WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons;
-using WaveEngine.MRTK.Toolkit.GUI;
 
 namespace WaveEngine_MRTK_Demo.Components
 {
@@ -20,26 +19,43 @@ namespace WaveEngine_MRTK_Demo.Components
         private Material[] materials;
         private int currentMaterialIdx = 0;
 
-        protected override void Start()
+        protected override void OnActivated()
         {
-            if (!Application.Current.IsEditor)
+            base.OnActivated();
+
+            if (Application.Current.IsEditor)
             {
-                materials = new Material[] { material0, material1, material2, material3 };
-                materialComponent.Material = material0;
+                return;
+            }
 
-                string[] nodesWithButtons = { "PressableButtons", "PressableButtonsSharedPlate", "PressableButtonsSharedPlate40x40mm" };
-                foreach (string nodeName in nodesWithButtons)
+            this.materials = new Material[] { material0, material1, material2, material3 };
+            this.materialComponent.Material = material0;
+
+            this.SubscribeToButtonPresses(true);
+        }
+
+        protected override void OnDeactivated()
+        {
+            base.OnDeactivated();
+
+            this.SubscribeToButtonPresses(false);
+        }
+
+        private void SubscribeToButtonPresses(bool subscribe)
+        {
+            foreach (var child in this.Owner.Parent.ChildEntities)
+            {
+                if (child.Name.ToLowerInvariant().StartsWith("pressablebuttons"))
                 {
-                    Entity buttonsParent = this.Owner.Parent.FindChild(nodeName);
-                    foreach (PressableButton b in buttonsParent.FindComponentsInChildren<PressableButton>())
+                    foreach (var button in child.FindComponentsInChildren<PressableButton>())
                     {
-                        b.ButtonPressed += OnButtonPressed;
-
-                        //Update text based on scale
-                        Text3D text3d = b.Owner.FindComponentInChildren<Text3D>();
-                        if (text3d != null)
+                        if (subscribe)
                         {
-                            text3d.Text = string.Format("{0}x{0}mm", 32.0f * b.Owner.FindComponent<Transform3D>().Scale.X);
+                            button.ButtonPressed += this.OnButtonPressed;
+                        }
+                        else
+                        {
+                            button.ButtonPressed -= this.OnButtonPressed;
                         }
                     }
                 }
@@ -48,7 +64,7 @@ namespace WaveEngine_MRTK_Demo.Components
 
         private void OnButtonPressed(object sender, EventArgs e)
         {
-            materialComponent.Material = materials[(currentMaterialIdx++) % materials.Length];
+            materialComponent.Material = materials[(++currentMaterialIdx) % materials.Length];
         }
     }
 }
