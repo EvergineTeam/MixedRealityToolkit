@@ -44,7 +44,7 @@ namespace WaveEngine.MRTK.Toolkit.CommandService
 
         private void PressableButton_ButtonReleased(object sender, EventArgs e)
         {
-            this.commandService.ExecuteCommand(this, this.Command);
+            this.commandService?.ExecuteCommand(this, this.Command);
         }
     }
 }

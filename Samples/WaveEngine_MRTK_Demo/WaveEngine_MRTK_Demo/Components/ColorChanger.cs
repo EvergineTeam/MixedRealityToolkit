@@ -1,12 +1,12 @@
-﻿using System;
-using WaveEngine.Components.Graphics3D;
+﻿using WaveEngine.Components.Graphics3D;
 using WaveEngine.Framework;
 using WaveEngine.Framework.Graphics;
-using WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons;
+using WaveEngine.MRTK.Toolkit.CommandService;
+using WaveEngine_MRTK_Demo.Components.Commands;
 
 namespace WaveEngine_MRTK_Demo.Components
 {
-    public class ColorChanger : Component
+    public class ColorChanger : BaseCommandRequester<DemoCommands>
     {
         [BindComponent]
         public MaterialComponent materialComponent;
@@ -31,40 +31,28 @@ namespace WaveEngine_MRTK_Demo.Components
             this.materials = new Material[] { material0, material1, material2, material3 };
             this.materialComponent.Material = material0;
 
-            this.SubscribeToButtonPresses(true);
+            if (this.commandService != null)
+            {
+                this.commandService.CommandReceived += this.CommandService_CommandReceived;
+            }
         }
 
         protected override void OnDeactivated()
         {
             base.OnDeactivated();
 
-            this.SubscribeToButtonPresses(false);
-        }
-
-        private void SubscribeToButtonPresses(bool subscribe)
-        {
-            foreach (var child in this.Owner.Parent.ChildEntities)
+            if (this.commandService != null)
             {
-                if (child.Name.ToLowerInvariant().StartsWith("pressablebuttons"))
-                {
-                    foreach (var button in child.FindComponentsInChildren<PressableButton>())
-                    {
-                        if (subscribe)
-                        {
-                            button.ButtonPressed += this.OnButtonPressed;
-                        }
-                        else
-                        {
-                            button.ButtonPressed -= this.OnButtonPressed;
-                        }
-                    }
-                }
+                this.commandService.CommandReceived -= this.CommandService_CommandReceived;
             }
         }
 
-        private void OnButtonPressed(object sender, EventArgs e)
+        private void CommandService_CommandReceived(object sender, CommandReceivedEventArgs commandReceived)
         {
-            materialComponent.Material = materials[(++currentMaterialIdx) % materials.Length];
+            if (commandReceived.Command is DemoCommands command && command == DemoCommands.ColorChange)
+            {
+                materialComponent.Material = materials[(++currentMaterialIdx) % materials.Length];
+            }
         }
     }
 }

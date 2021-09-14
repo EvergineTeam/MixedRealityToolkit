@@ -29,7 +29,7 @@ namespace WaveEngine.MRTK.Toolkit.CommandService
         /// <inheritdoc/>
         protected override void InternalOnSpeechKeywordRecognized(string keyword)
         {
-            this.commandService.ExecuteCommand(this, this.Command);
+            this.commandService?.ExecuteCommand(this, this.Command);
         }
     }
 }

@@ -15,7 +15,7 @@ namespace WaveEngine.MRTK.Toolkit.CommandService
         /// <summary>
         /// The command service.
         /// </summary>
-        [BindService]
+        [BindService(isRequired: false)]
         protected BaseCommandService<T> commandService;
     }
 }

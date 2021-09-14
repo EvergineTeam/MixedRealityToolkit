@@ -283,7 +283,7 @@ Items:
           Z: 1.0
     Children:
       - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
-        Name: pressExamples
+        Name: PressExamples
         Tag: null
         IsEnabled: true
         IsStatic: false
@@ -2318,330 +2318,6 @@ Items:
             Children: []
             Id: cc885280-1130-4d6b-9af7-34fabfd8eb74
           - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
-            Name: PressableButtons
-            Tag: null
-            IsEnabled: true
-            IsStatic: false
-            Components:
-              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
-                Id: 7eb83060-aeb8-4c91-a56f-b1f4c712c242
-                IsEnabled: true
-                LocalOrientation:
-                  W: 1.0
-                  X: 0.0
-                  Y: 0.0
-                  Z: 0.0
-                LocalPosition:
-                  X: 0.0799999982
-                  Y: -0.0170000009
-                  Z: -0.0144999996
-                LocalScale:
-                  X: 1.0
-                  Y: 1.0
-                  Z: 1.0
-            Children:
-              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
-                Name: PressableButtonPlated32x32mm
-                Tag: null
-                IsEnabled: true
-                IsStatic: false
-                Components:
-                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
-                    Id: 7338b5be-39d0-454e-8799-6c09a3c0dbbc
-                    IsEnabled: true
-                    LocalOrientation:
-                      W: 1.0
-                      X: 0.0
-                      Y: 0.0
-                      Z: 0.0
-                    LocalPosition:
-                      X: 0.0549999997
-                      Y: 0.0
-                      Z: 0.0
-                    LocalScale:
-                      X: 1.0
-                      Y: 1.0
-                      Z: 1.0
-                  - !WaveEngine.MRTK.Toolkit.Prefabs.ScenePrefab,WaveEngine.MRTK
-                    Id: aa2c7380-b9da-48ca-8e77-5b77bb33ad34
-                    DuplicateMaterials: false
-                    IsEnabled: true
-                    ScenePrefabProperty:
-                      PrefabId: facc69c2-67f2-4bc3-97cd-d1ddbd42a7e5
-                  - !WaveEngine.MRTK.SDK.Features.UX.Components.Configurators.StandardButtonConfigurator,WaveEngine.MRTK
-                    Id: 28d820ce-d3b9-4f16-b792-b1457e2203d0
-                    CreatesNewBackPlateMaterialInstance: false
-                    CreatesNewIconMaterialInstance: false
-                    Icon: 163a35b7-72c2-41c3-8116-2b44e8a79394
-                    IsEnabled: true
-                    Plate: null
-                    PrimaryColor:
-                      A: 255
-                      B: 255
-                      G: 255
-                      R: 255
-                    Text: Button
-                  - !WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButtonSpeechHandler,WaveEngine.MRTK
-                    Id: 48eb4c34-b134-4827-b1dc-22378e16122e
-                    IsEnabled: true
-                    SeeItSayItLabelTag: SeeItSayItLabel
-                    SpeechHandlerFireCondition: EnabledAndFocus
-                    SpeechKeywords:
-                      - Button
-                Children: []
-                Id: 709ed301-96ec-484d-a53b-9945776a8986
-              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
-                Name: PressableButtonPlated40x40mm
-                Tag: null
-                IsEnabled: true
-                IsStatic: false
-                Components:
-                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
-                    Id: 165ea1ed-99ab-41d6-b143-a74fa1b394c1
-                    IsEnabled: true
-                    LocalOrientation:
-                      W: 1.0
-                      X: 0.0
-                      Y: 0.0
-                      Z: 0.0
-                    LocalPosition:
-                      X: -0.0308999997
-                      Y: 0.0
-                      Z: 0.0
-                    LocalScale:
-                      X: 1.25
-                      Y: 1.25
-                      Z: 1.0
-                  - !WaveEngine.MRTK.Toolkit.Prefabs.ScenePrefab,WaveEngine.MRTK
-                    Id: abea5f6c-fc23-42a7-93a2-df906b2585e3
-                    DuplicateMaterials: false
-                    IsEnabled: true
-                    ScenePrefabProperty:
-                      PrefabId: facc69c2-67f2-4bc3-97cd-d1ddbd42a7e5
-                  - !WaveEngine.MRTK.SDK.Features.UX.Components.Configurators.StandardButtonConfigurator,WaveEngine.MRTK
-                    Id: c13dce83-ce8e-4f67-88a6-8a4d09d3e2b7
-                    CreatesNewBackPlateMaterialInstance: false
-                    CreatesNewIconMaterialInstance: false
-                    Icon: 163a35b7-72c2-41c3-8116-2b44e8a79394
-                    IsEnabled: true
-                    Plate: null
-                    PrimaryColor:
-                      A: 255
-                      B: 255
-                      G: 255
-                      R: 255
-                    Text: Button
-                  - !WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButtonSpeechHandler,WaveEngine.MRTK
-                    Id: 976c05fe-3eea-48e0-8b81-8b3d283e4554
-                    IsEnabled: true
-                    SeeItSayItLabelTag: SeeItSayItLabel
-                    SpeechHandlerFireCondition: EnabledAndFocus
-                    SpeechKeywords:
-                      - Button
-                Children: []
-                Id: d70270df-f08b-4304-ba62-bcb3b7a6a13c
-              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
-                Name: PressableButtonPlated48x48mm
-                Tag: null
-                IsEnabled: true
-                IsStatic: false
-                Components:
-                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
-                    Id: 28ac290a-0bf6-443e-881f-1466fc0ded74
-                    IsEnabled: true
-                    LocalOrientation:
-                      W: 1.0
-                      X: 0.0
-                      Y: 0.0
-                      Z: 0.0
-                    LocalPosition:
-                      X: -0.132400006
-                      Y: 0.0
-                      Z: 0.0
-                    LocalScale:
-                      X: 1.5
-                      Y: 1.5
-                      Z: 1.0
-                  - !WaveEngine.MRTK.Toolkit.Prefabs.ScenePrefab,WaveEngine.MRTK
-                    Id: 7a30d1ce-7f67-4a37-8b70-7913f2e112ad
-                    DuplicateMaterials: false
-                    IsEnabled: true
-                    ScenePrefabProperty:
-                      PrefabId: facc69c2-67f2-4bc3-97cd-d1ddbd42a7e5
-                  - !WaveEngine.MRTK.SDK.Features.UX.Components.Configurators.StandardButtonConfigurator,WaveEngine.MRTK
-                    Id: 37dd8eb8-dbbf-41cf-bc79-2b6938aa3c87
-                    CreatesNewBackPlateMaterialInstance: false
-                    CreatesNewIconMaterialInstance: false
-                    Icon: 163a35b7-72c2-41c3-8116-2b44e8a79394
-                    IsEnabled: true
-                    Plate: null
-                    PrimaryColor:
-                      A: 255
-                      B: 255
-                      G: 255
-                      R: 255
-                    Text: Button
-                  - !WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButtonSpeechHandler,WaveEngine.MRTK
-                    Id: de2851fb-20ee-4b72-9f9e-84989d2d4e9f
-                    IsEnabled: true
-                    SeeItSayItLabelTag: SeeItSayItLabel
-                    SpeechHandlerFireCondition: EnabledAndFocus
-                    SpeechKeywords:
-                      - Button
-                Children: []
-                Id: 3e595de7-4180-4a9a-84a6-3fc1f2ce561c
-              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
-                Name: PressableButtonPlated48x48mm_2
-                Tag: null
-                IsEnabled: true
-                IsStatic: false
-                Components:
-                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
-                    Id: 4a720593-0d15-4da0-8aea-4ad4dcb06870
-                    IsEnabled: true
-                    LocalOrientation:
-                      W: 1.0
-                      X: 0.0
-                      Y: 0.0
-                      Z: 0.0
-                    LocalPosition:
-                      X: -0.185699999
-                      Y: 0.0
-                      Z: 0.0
-                    LocalScale:
-                      X: 1.5
-                      Y: 1.5
-                      Z: 1.0
-                  - !WaveEngine.MRTK.Toolkit.Prefabs.ScenePrefab,WaveEngine.MRTK
-                    Id: 4c0c782f-eb73-4f2a-b17c-3ee1e534ea59
-                    DuplicateMaterials: false
-                    IsEnabled: true
-                    ScenePrefabProperty:
-                      PrefabId: facc69c2-67f2-4bc3-97cd-d1ddbd42a7e5
-                  - !WaveEngine.MRTK.SDK.Features.UX.Components.Configurators.StandardButtonConfigurator,WaveEngine.MRTK
-                    Id: 4b5c6ad0-52d6-4bde-8bd0-0c8640d78056
-                    CreatesNewBackPlateMaterialInstance: false
-                    CreatesNewIconMaterialInstance: false
-                    Icon: 163a35b7-72c2-41c3-8116-2b44e8a79394
-                    IsEnabled: true
-                    Plate: null
-                    PrimaryColor:
-                      A: 255
-                      B: 255
-                      G: 255
-                      R: 255
-                    Text: Button
-                  - !WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButtonSpeechHandler,WaveEngine.MRTK
-                    Id: 0fd00d64-3e27-4d32-bc15-758042bf9175
-                    IsEnabled: true
-                    SeeItSayItLabelTag: SeeItSayItLabel
-                    SpeechHandlerFireCondition: EnabledAndFocus
-                    SpeechKeywords:
-                      - Button
-                Children: []
-                Id: 3ec0cae7-bce5-4c25-b095-7889e95c6992
-              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
-                Name: PressableButtonPlated40x40mm_2
-                Tag: null
-                IsEnabled: true
-                IsStatic: false
-                Components:
-                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
-                    Id: d88442e7-35df-40af-9c39-5e5b31f470de
-                    IsEnabled: true
-                    LocalOrientation:
-                      W: 1.0
-                      X: 0.0
-                      Y: 0.0
-                      Z: 0.0
-                    LocalPosition:
-                      X: -0.0753000006
-                      Y: 0.0
-                      Z: 0.0
-                    LocalScale:
-                      X: 1.25
-                      Y: 1.25
-                      Z: 1.0
-                  - !WaveEngine.MRTK.Toolkit.Prefabs.ScenePrefab,WaveEngine.MRTK
-                    Id: 2b86d5c7-1af3-4998-8356-64f0cc485bd7
-                    DuplicateMaterials: false
-                    IsEnabled: true
-                    ScenePrefabProperty:
-                      PrefabId: facc69c2-67f2-4bc3-97cd-d1ddbd42a7e5
-                  - !WaveEngine.MRTK.SDK.Features.UX.Components.Configurators.StandardButtonConfigurator,WaveEngine.MRTK
-                    Id: 55458b74-af1f-448f-bd2b-d62b139908d6
-                    CreatesNewBackPlateMaterialInstance: false
-                    CreatesNewIconMaterialInstance: false
-                    Icon: 163a35b7-72c2-41c3-8116-2b44e8a79394
-                    IsEnabled: true
-                    Plate: null
-                    PrimaryColor:
-                      A: 255
-                      B: 255
-                      G: 255
-                      R: 255
-                    Text: Button
-                  - !WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButtonSpeechHandler,WaveEngine.MRTK
-                    Id: 016d4356-b53d-4c30-b6e3-3aea126fc4d3
-                    IsEnabled: true
-                    SeeItSayItLabelTag: SeeItSayItLabel
-                    SpeechHandlerFireCondition: EnabledAndFocus
-                    SpeechKeywords:
-                      - Button
-                Children: []
-                Id: 9e1597d5-9ed5-4ffb-b6a0-d91e78aba289
-              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
-                Name: PressableButtonPlated32x32mm_2
-                Tag: null
-                IsEnabled: true
-                IsStatic: false
-                Components:
-                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
-                    Id: 81418648-464b-48e8-87d1-a457be89e755
-                    IsEnabled: true
-                    LocalOrientation:
-                      W: 1.0
-                      X: 0.0
-                      Y: 0.0
-                      Z: 0.0
-                    LocalPosition:
-                      X: 0.0171000008
-                      Y: -2.98023224E-08
-                      Z: -1.25169754E-06
-                    LocalScale:
-                      X: 1.0
-                      Y: 1.0
-                      Z: 1.0
-                  - !WaveEngine.MRTK.Toolkit.Prefabs.ScenePrefab,WaveEngine.MRTK
-                    Id: 80d98e8d-5e19-432b-853b-30ec256c16c8
-                    DuplicateMaterials: false
-                    IsEnabled: true
-                    ScenePrefabProperty:
-                      PrefabId: facc69c2-67f2-4bc3-97cd-d1ddbd42a7e5
-                  - !WaveEngine.MRTK.SDK.Features.UX.Components.Configurators.StandardButtonConfigurator,WaveEngine.MRTK
-                    Id: 5452b563-158d-4e6f-9647-7f02333120b6
-                    CreatesNewBackPlateMaterialInstance: false
-                    CreatesNewIconMaterialInstance: false
-                    Icon: 163a35b7-72c2-41c3-8116-2b44e8a79394
-                    IsEnabled: true
-                    Plate: null
-                    PrimaryColor:
-                      A: 255
-                      B: 255
-                      G: 255
-                      R: 255
-                    Text: Button
-                  - !WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButtonSpeechHandler,WaveEngine.MRTK
-                    Id: b45a686a-e6f1-4967-9c04-8bd200d58993
-                    IsEnabled: true
-                    SeeItSayItLabelTag: SeeItSayItLabel
-                    SpeechHandlerFireCondition: EnabledAndFocus
-                    SpeechKeywords:
-                      - Button
-                Children: []
-                Id: 25be2efd-3d2c-4cfd-93fa-a2ad4ed17abf
-            Id: cf260f8b-5d22-488a-98f3-c482b12c6228
-          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
             Name: PressedEventColorCube
             Tag: null
             IsEnabled: true
@@ -2754,6 +2430,354 @@ Items:
                 Children: []
                 Id: ec8d67f9-f1f5-4516-bd2d-7a85ce7397cd
             Id: 7be99bd1-2b9d-4d84-90e1-b10f8a507538
+          - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+            Name: PressableButtons
+            Tag: null
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                Id: 7eb83060-aeb8-4c91-a56f-b1f4c712c242
+                IsEnabled: true
+                LocalOrientation:
+                  W: 1.0
+                  X: 0.0
+                  Y: 0.0
+                  Z: 0.0
+                LocalPosition:
+                  X: 0.0799999982
+                  Y: -0.0170000009
+                  Z: -0.0144999996
+                LocalScale:
+                  X: 1.0
+                  Y: 1.0
+                  Z: 1.0
+            Children:
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: PressableButtonPlated32x32mm
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: 7338b5be-39d0-454e-8799-6c09a3c0dbbc
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: 0.0549999997
+                      Y: 0.0
+                      Z: 0.0
+                    LocalScale:
+                      X: 1.0
+                      Y: 1.0
+                      Z: 1.0
+                  - !WaveEngine.MRTK.Toolkit.Prefabs.ScenePrefab,WaveEngine.MRTK
+                    Id: aa2c7380-b9da-48ca-8e77-5b77bb33ad34
+                    DuplicateMaterials: false
+                    IsEnabled: true
+                    ScenePrefabProperty:
+                      PrefabId: facc69c2-67f2-4bc3-97cd-d1ddbd42a7e5
+                  - !WaveEngine.MRTK.SDK.Features.UX.Components.Configurators.StandardButtonConfigurator,WaveEngine.MRTK
+                    Id: 28d820ce-d3b9-4f16-b792-b1457e2203d0
+                    CreatesNewBackPlateMaterialInstance: false
+                    CreatesNewIconMaterialInstance: false
+                    Icon: 163a35b7-72c2-41c3-8116-2b44e8a79394
+                    IsEnabled: true
+                    Plate: null
+                    PrimaryColor:
+                      A: 255
+                      B: 255
+                      G: 255
+                      R: 255
+                    Text: Button
+                  - !WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButtonSpeechHandler,WaveEngine.MRTK
+                    Id: 48eb4c34-b134-4827-b1dc-22378e16122e
+                    IsEnabled: true
+                    SeeItSayItLabelTag: SeeItSayItLabel
+                    SpeechHandlerFireCondition: EnabledAndFocus
+                    SpeechKeywords:
+                      - Button
+                  - !WaveEngine_MRTK_Demo.Components.Commands.DemoPressableButtonCommand,WaveEngine_MRTK_Demo
+                    Id: fe40ca9a-c4e8-4650-8ad0-b6cf6ebf7ee6
+                    Command: ColorChange
+                    IsEnabled: true
+                Children: []
+                Id: 709ed301-96ec-484d-a53b-9945776a8986
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: PressableButtonPlated40x40mm
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: 165ea1ed-99ab-41d6-b143-a74fa1b394c1
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: -0.0308999997
+                      Y: 0.0
+                      Z: 0.0
+                    LocalScale:
+                      X: 1.25
+                      Y: 1.25
+                      Z: 1.0
+                  - !WaveEngine.MRTK.Toolkit.Prefabs.ScenePrefab,WaveEngine.MRTK
+                    Id: abea5f6c-fc23-42a7-93a2-df906b2585e3
+                    DuplicateMaterials: false
+                    IsEnabled: true
+                    ScenePrefabProperty:
+                      PrefabId: facc69c2-67f2-4bc3-97cd-d1ddbd42a7e5
+                  - !WaveEngine.MRTK.SDK.Features.UX.Components.Configurators.StandardButtonConfigurator,WaveEngine.MRTK
+                    Id: c13dce83-ce8e-4f67-88a6-8a4d09d3e2b7
+                    CreatesNewBackPlateMaterialInstance: false
+                    CreatesNewIconMaterialInstance: false
+                    Icon: 163a35b7-72c2-41c3-8116-2b44e8a79394
+                    IsEnabled: true
+                    Plate: null
+                    PrimaryColor:
+                      A: 255
+                      B: 255
+                      G: 255
+                      R: 255
+                    Text: Button
+                  - !WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButtonSpeechHandler,WaveEngine.MRTK
+                    Id: 976c05fe-3eea-48e0-8b81-8b3d283e4554
+                    IsEnabled: true
+                    SeeItSayItLabelTag: SeeItSayItLabel
+                    SpeechHandlerFireCondition: EnabledAndFocus
+                    SpeechKeywords:
+                      - Button
+                  - !WaveEngine_MRTK_Demo.Components.Commands.DemoPressableButtonCommand,WaveEngine_MRTK_Demo
+                    Id: 19cbf848-02b3-45ac-b63a-9ccf4b40e250
+                    Command: ColorChange
+                    IsEnabled: true
+                Children: []
+                Id: d70270df-f08b-4304-ba62-bcb3b7a6a13c
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: PressableButtonPlated48x48mm
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: 28ac290a-0bf6-443e-881f-1466fc0ded74
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: -0.132400006
+                      Y: 0.0
+                      Z: 0.0
+                    LocalScale:
+                      X: 1.5
+                      Y: 1.5
+                      Z: 1.0
+                  - !WaveEngine.MRTK.Toolkit.Prefabs.ScenePrefab,WaveEngine.MRTK
+                    Id: 7a30d1ce-7f67-4a37-8b70-7913f2e112ad
+                    DuplicateMaterials: false
+                    IsEnabled: true
+                    ScenePrefabProperty:
+                      PrefabId: facc69c2-67f2-4bc3-97cd-d1ddbd42a7e5
+                  - !WaveEngine.MRTK.SDK.Features.UX.Components.Configurators.StandardButtonConfigurator,WaveEngine.MRTK
+                    Id: 37dd8eb8-dbbf-41cf-bc79-2b6938aa3c87
+                    CreatesNewBackPlateMaterialInstance: false
+                    CreatesNewIconMaterialInstance: false
+                    Icon: 163a35b7-72c2-41c3-8116-2b44e8a79394
+                    IsEnabled: true
+                    Plate: null
+                    PrimaryColor:
+                      A: 255
+                      B: 255
+                      G: 255
+                      R: 255
+                    Text: Button
+                  - !WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButtonSpeechHandler,WaveEngine.MRTK
+                    Id: de2851fb-20ee-4b72-9f9e-84989d2d4e9f
+                    IsEnabled: true
+                    SeeItSayItLabelTag: SeeItSayItLabel
+                    SpeechHandlerFireCondition: EnabledAndFocus
+                    SpeechKeywords:
+                      - Button
+                  - !WaveEngine_MRTK_Demo.Components.Commands.DemoPressableButtonCommand,WaveEngine_MRTK_Demo
+                    Id: b679d584-a7ef-4fc1-9008-e180c00aa874
+                    Command: ColorChange
+                    IsEnabled: true
+                Children: []
+                Id: 3e595de7-4180-4a9a-84a6-3fc1f2ce561c
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: PressableButtonPlated48x48mm_2
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: 4a720593-0d15-4da0-8aea-4ad4dcb06870
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: -0.185699999
+                      Y: 0.0
+                      Z: 0.0
+                    LocalScale:
+                      X: 1.5
+                      Y: 1.5
+                      Z: 1.0
+                  - !WaveEngine.MRTK.Toolkit.Prefabs.ScenePrefab,WaveEngine.MRTK
+                    Id: 4c0c782f-eb73-4f2a-b17c-3ee1e534ea59
+                    DuplicateMaterials: false
+                    IsEnabled: true
+                    ScenePrefabProperty:
+                      PrefabId: facc69c2-67f2-4bc3-97cd-d1ddbd42a7e5
+                  - !WaveEngine.MRTK.SDK.Features.UX.Components.Configurators.StandardButtonConfigurator,WaveEngine.MRTK
+                    Id: 4b5c6ad0-52d6-4bde-8bd0-0c8640d78056
+                    CreatesNewBackPlateMaterialInstance: false
+                    CreatesNewIconMaterialInstance: false
+                    Icon: 163a35b7-72c2-41c3-8116-2b44e8a79394
+                    IsEnabled: true
+                    Plate: null
+                    PrimaryColor:
+                      A: 255
+                      B: 255
+                      G: 255
+                      R: 255
+                    Text: Button
+                  - !WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButtonSpeechHandler,WaveEngine.MRTK
+                    Id: 0fd00d64-3e27-4d32-bc15-758042bf9175
+                    IsEnabled: true
+                    SeeItSayItLabelTag: SeeItSayItLabel
+                    SpeechHandlerFireCondition: EnabledAndFocus
+                    SpeechKeywords:
+                      - Button
+                  - !WaveEngine_MRTK_Demo.Components.Commands.DemoPressableButtonCommand,WaveEngine_MRTK_Demo
+                    Id: b9ead9bf-c3b2-429b-9250-c9c8f801e61a
+                    Command: ColorChange
+                    IsEnabled: true
+                Children: []
+                Id: 3ec0cae7-bce5-4c25-b095-7889e95c6992
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: PressableButtonPlated40x40mm_2
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: d88442e7-35df-40af-9c39-5e5b31f470de
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: -0.0753000006
+                      Y: 0.0
+                      Z: 0.0
+                    LocalScale:
+                      X: 1.25
+                      Y: 1.25
+                      Z: 1.0
+                  - !WaveEngine.MRTK.Toolkit.Prefabs.ScenePrefab,WaveEngine.MRTK
+                    Id: 2b86d5c7-1af3-4998-8356-64f0cc485bd7
+                    DuplicateMaterials: false
+                    IsEnabled: true
+                    ScenePrefabProperty:
+                      PrefabId: facc69c2-67f2-4bc3-97cd-d1ddbd42a7e5
+                  - !WaveEngine.MRTK.SDK.Features.UX.Components.Configurators.StandardButtonConfigurator,WaveEngine.MRTK
+                    Id: 55458b74-af1f-448f-bd2b-d62b139908d6
+                    CreatesNewBackPlateMaterialInstance: false
+                    CreatesNewIconMaterialInstance: false
+                    Icon: 163a35b7-72c2-41c3-8116-2b44e8a79394
+                    IsEnabled: true
+                    Plate: null
+                    PrimaryColor:
+                      A: 255
+                      B: 255
+                      G: 255
+                      R: 255
+                    Text: Button
+                  - !WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButtonSpeechHandler,WaveEngine.MRTK
+                    Id: 016d4356-b53d-4c30-b6e3-3aea126fc4d3
+                    IsEnabled: true
+                    SeeItSayItLabelTag: SeeItSayItLabel
+                    SpeechHandlerFireCondition: EnabledAndFocus
+                    SpeechKeywords:
+                      - Button
+                  - !WaveEngine_MRTK_Demo.Components.Commands.DemoPressableButtonCommand,WaveEngine_MRTK_Demo
+                    Id: 26d517e8-4ad4-4a14-aa38-4bc92e340080
+                    Command: ColorChange
+                    IsEnabled: true
+                Children: []
+                Id: 9e1597d5-9ed5-4ffb-b6a0-d91e78aba289
+              - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+                Name: PressableButtonPlated32x32mm_2
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+                    Id: 81418648-464b-48e8-87d1-a457be89e755
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: 0.0171000008
+                      Y: -2.98023224E-08
+                      Z: -1.25169754E-06
+                    LocalScale:
+                      X: 1.0
+                      Y: 1.0
+                      Z: 1.0
+                  - !WaveEngine.MRTK.Toolkit.Prefabs.ScenePrefab,WaveEngine.MRTK
+                    Id: 80d98e8d-5e19-432b-853b-30ec256c16c8
+                    DuplicateMaterials: false
+                    IsEnabled: true
+                    ScenePrefabProperty:
+                      PrefabId: facc69c2-67f2-4bc3-97cd-d1ddbd42a7e5
+                  - !WaveEngine.MRTK.SDK.Features.UX.Components.Configurators.StandardButtonConfigurator,WaveEngine.MRTK
+                    Id: 5452b563-158d-4e6f-9647-7f02333120b6
+                    CreatesNewBackPlateMaterialInstance: false
+                    CreatesNewIconMaterialInstance: false
+                    Icon: 163a35b7-72c2-41c3-8116-2b44e8a79394
+                    IsEnabled: true
+                    Plate: null
+                    PrimaryColor:
+                      A: 255
+                      B: 255
+                      G: 255
+                      R: 255
+                    Text: Button
+                  - !WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButtonSpeechHandler,WaveEngine.MRTK
+                    Id: b45a686a-e6f1-4967-9c04-8bd200d58993
+                    IsEnabled: true
+                    SeeItSayItLabelTag: SeeItSayItLabel
+                    SpeechHandlerFireCondition: EnabledAndFocus
+                    SpeechKeywords:
+                      - Button
+                  - !WaveEngine_MRTK_Demo.Components.Commands.DemoPressableButtonCommand,WaveEngine_MRTK_Demo
+                    Id: e4666d4b-a633-46a1-b588-45ea2d1c98db
+                    Command: ColorChange
+                    IsEnabled: true
+                Children: []
+                Id: 25be2efd-3d2c-4cfd-93fa-a2ad4ed17abf
+            Id: cf260f8b-5d22-488a-98f3-c482b12c6228
           - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
             Name: PressableButtonsSharedPlate
             Tag: null
@@ -2898,6 +2922,10 @@ Items:
                     SpeechHandlerFireCondition: EnabledAndFocus
                     SpeechKeywords:
                       - Button
+                  - !WaveEngine_MRTK_Demo.Components.Commands.DemoPressableButtonCommand,WaveEngine_MRTK_Demo
+                    Id: 8ecccd37-4a9d-4c6b-8d8f-de6d00ae66dc
+                    Command: ColorChange
+                    IsEnabled: true
                 Children: []
                 Id: 3a748b97-9655-4644-b703-99f17e10ede9
               - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
@@ -2948,6 +2976,10 @@ Items:
                     SpeechHandlerFireCondition: EnabledAndFocus
                     SpeechKeywords:
                       - Button
+                  - !WaveEngine_MRTK_Demo.Components.Commands.DemoPressableButtonCommand,WaveEngine_MRTK_Demo
+                    Id: 550dbb33-a7af-4405-beb1-38e7bb6d287c
+                    Command: ColorChange
+                    IsEnabled: true
                 Children: []
                 Id: e7643ae2-3bfd-4e07-b13e-ba2dfaace5c3
               - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
@@ -2998,6 +3030,10 @@ Items:
                     SpeechHandlerFireCondition: EnabledAndFocus
                     SpeechKeywords:
                       - Button
+                  - !WaveEngine_MRTK_Demo.Components.Commands.DemoPressableButtonCommand,WaveEngine_MRTK_Demo
+                    Id: c32e1f4f-98fe-4d56-a335-26cd534d8211
+                    Command: ColorChange
+                    IsEnabled: true
                 Children: []
                 Id: 6cc84ac5-300f-406b-b4be-0db0cc460587
               - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
@@ -3048,6 +3084,10 @@ Items:
                     SpeechHandlerFireCondition: EnabledAndFocus
                     SpeechKeywords:
                       - Button
+                  - !WaveEngine_MRTK_Demo.Components.Commands.DemoPressableButtonCommand,WaveEngine_MRTK_Demo
+                    Id: 74a83864-8302-4073-ae00-7fed7edc553f
+                    Command: ColorChange
+                    IsEnabled: true
                 Children: []
                 Id: f49c89d3-460c-4efb-b808-eb8bd40b19ca
             Id: 3b5d2bca-fadf-4628-8931-9e8f5e344acb

@@ -3,8 +3,10 @@ using WaveEngine.Framework;
 using WaveEngine.Framework.Services;
 using WaveEngine.Framework.Threading;
 using WaveEngine.MRTK.Emulation;
+using WaveEngine.MRTK.Toolkit.CommandService;
 using WaveEngine.NoesisGUI;
 using WaveEngine.Platform;
+using WaveEngine_MRTK_Demo.Components.Commands;
 using WaveEngine_MRTK_Demo.Scenes;
 using WaveEngine_MRTK_Demo.VoiceCommands;
 
@@ -27,6 +29,8 @@ namespace WaveEngine_MRTK_Demo
             this.Container.RegisterType<WorkActionScheduler>();
             this.Container.RegisterType<ForegroundTaskSchedulerService>();
             this.Container.RegisterType<NoesisService>();
+
+            this.Container.RegisterType<DemoCommandService>();
 
             ForegroundTaskScheduler.Foreground.Configure(this.Container);
             BackgroundTaskScheduler.Background.Configure(this.Container);
