@@ -31,9 +31,8 @@ LogDebug "Output folder.......: $outputFolderBase"
 LogDebug "#######################################"
 
 # Create output folder
-$outputFolder = Join-Path $outputFolderBase $versionWithSuffix
-New-Item -ItemType Directory -Force -Path $outputFolder
-$absoluteOutputFolder = Resolve-Path $outputFolder
+New-Item -ItemType Directory -Force -Path $outputFolderBase
+$absoluteOutputFolder = Resolve-Path $outputFolderBase
 
 # Generate packages
 LogDebug "START packaging process"

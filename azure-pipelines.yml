@@ -4,14 +4,6 @@ trigger:
 pool:
   vmImage: 'windows-2019'
   
-parameters:
-- name: 'publishEnabled'
-  default: 'false'
-  type: string
-- name: 'publishContainer'
-  default: ''
-  type: string
-
 variables:
   - group: Versions
   - name: 'nugetConfigPath'
@@ -22,6 +14,10 @@ variables:
     value: '$(Build.StagingDirectory)/wepkgs'
   - name: 'appversion'
     value: '$(version.major).$(version.minor).$(version.patch).$(Build.BuildID)-$(version.previewSuffix)'
+  - name: 'publishContainer'
+    value: 'preview'
+  - name: 'publishEnabled'
+    value: true
 
 workspace:
   clean: all
@@ -68,29 +64,28 @@ steps:
     ArtifactName: 'NuGets'
     publishLocation: 'Container'
 
-#- task: NuGetCommand@2
-#  displayName: 'Push NuGets to NuGet.org'
-#  enabled: ${{ parameters.publishEnabled }}
-#  inputs:
-#    command: 'push'
-#    packagesToPush: '$(nugetOutputPath)/**/*.nupkg;!$(nugetOutputPath)/**/*.symbols.nupkg'
-#    nuGetFeedType: 'external'
-#    publishFeedCredentials: 'WaveEngine Nuget.org'
+- task: NuGetCommand@2
+  displayName: 'Push NuGets to NuGet.org'
+  condition: and(succeeded(), '$(publishEnabled)')
+  inputs:
+    command: 'push'
+    packagesToPush: '$(nugetOutputPath)/*.nupkg;!$(nugetOutputPath)/*.symbols.nupkg'
+    nuGetFeedType: 'external'
+    publishFeedCredentials: 'WaveEngine Nuget.org'
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact: Wepkgs'
   inputs:
-    PathtoPublish: '$(wepkgOutputPath)/$(appversion)'
+    PathtoPublish: '$(wepkgOutputPath)'
     ArtifactName: Wepkgs
   continueOnError: true
 
 - task: AzureFileCopy@2
   displayName: 'Upload to Azure BLOB Wepkgs'
-  enabled: ${{ parameters.publishEnabled }}
-  condition: and(succeeded(), ne('${{ parameters.publishContainer }}', ''))
+  condition: and(and(succeeded(), ne('$(publishContainer)', '')), '$(publishEnabled)')
   inputs:
-    SourcePath: '$(wepkgOutputPath)/$(appversion)/WaveEngine.MRTK.Assets.$(appversion).wepkg'
+    SourcePath: '$(wepkgOutputPath)/WaveEngine.MRTK.Assets.$(appversion).wepkg'
     azureSubscription: 'Waveengineteam devops connections SP'
     Destination: AzureBlob
     storage: waveeditor
-    ContainerName: 'wepkg-${{ parameters.publishContainer }}'
+    ContainerName: 'wepkg-$(publishContainer)'

@@ -30,14 +30,11 @@ LogDebug "Output folder.......: $outputFolderBase"
 LogDebug "#######################################"
 
 # Create output folder
-$outputFolder = Join-Path $outputFolderBase $versionWithSuffix
-New-Item -ItemType Directory -Force -Path $outputFolder
-$absoluteOutputFolder = Resolve-Path $outputFolder
+New-Item -ItemType Directory -Force -Path $outputFolderBase
+$absoluteOutputFolder = Resolve-Path $outputFolderBase
 
 # Generate packages
 LogDebug "START assets packaging process"
-& dotnet build "$assetsCsprojPath" -v:$buildVerbosity -p:Configuration=$buildConfiguration -p:OutputPath="$absoluteOutputFolder" -p:Version=$version
-
-Get-ChildItem "$absoluteOutputFolder" -Exclude "*.wepkg" | Remove-Item -Recurse
+& dotnet build "$assetsCsprojPath" -v:$buildVerbosity -p:Configuration=$buildConfiguration -t:CreateWavePackage -p:Version=$version -o "$absoluteOutputFolder"
 
 LogDebug "END assets packaging process"
