@@ -2,9 +2,13 @@ using System.Threading.Tasks;
 using WaveEngine.Framework;
 using WaveEngine.Framework.Services;
 using WaveEngine.Framework.Threading;
+using WaveEngine.MRTK.Emulation;
+using WaveEngine.MRTK.Toolkit.CommandService;
 using WaveEngine.NoesisGUI;
 using WaveEngine.Platform;
+using WaveEngine_MRTK_Demo.Components.Commands;
 using WaveEngine_MRTK_Demo.Scenes;
+using WaveEngine_MRTK_Demo.VoiceCommands;
 
 namespace WaveEngine_MRTK_Demo
 {
@@ -26,6 +30,8 @@ namespace WaveEngine_MRTK_Demo
             this.Container.RegisterType<ForegroundTaskSchedulerService>();
             this.Container.RegisterType<NoesisService>();
 
+            this.Container.RegisterType<DemoCommandService>();
+
             ForegroundTaskScheduler.Foreground.Configure(this.Container);
             BackgroundTaskScheduler.Background.Configure(this.Container);
         }
@@ -38,6 +44,15 @@ namespace WaveEngine_MRTK_Demo
         protected async Task InitializeAsync(bool forceCreateContextInWaveThread)
         {
             base.Initialize();
+
+            var voiceCommandService = this.Container.Resolve<IVoiceCommandService>();
+            if (voiceCommandService == null)
+            {
+                this.Container.RegisterType<FakeVoiceCommandService>();
+                voiceCommandService = this.Container.Resolve<FakeVoiceCommandService>();
+            }
+
+            voiceCommandService.ConfigureVoiceCommands(VoiceKeywords.ValidVoiceKeywords);
 
             // Get ScreenContextManager
             var screenContextManager = this.Container.Resolve<ScreenContextManager>();
@@ -61,7 +76,6 @@ namespace WaveEngine_MRTK_Demo
             var assetsService = this.Container.Resolve<AssetsService>();
 
             var scene = assetsService.Load<DemoScene>(WaveContent.Scenes.DemoScene_wescene);
-            //var scene = assetsService.Load<TestScene>(WaveContent.Scenes.TestScene_wescene);
             scene.Initialize();
 
             return new ScreenContext(scene);

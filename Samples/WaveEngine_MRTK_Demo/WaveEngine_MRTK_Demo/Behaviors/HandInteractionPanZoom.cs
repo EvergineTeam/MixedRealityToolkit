@@ -99,7 +99,7 @@ namespace WaveEngine_MRTK_Demo.Behaviors
             /// <summary>
             /// The cursor
             /// </summary>
-            public Entity Cursor { get; set; }
+            public Cursor Cursor { get; set; }
 
             /// <summary>
             /// The cursor's transform
@@ -197,7 +197,8 @@ namespace WaveEngine_MRTK_Demo.Behaviors
         /// <inheritdoc/>
         public void OnTouchStarted(HandTrackingInputEventData eventData)
         {
-            this.touchInfos.Add(new TouchInfo { Cursor = eventData.Cursor, Transform = eventData.Cursor.FindComponent<Transform3D>(), UV = GetUVPos(eventData.Position) });
+            var transform = eventData.Cursor.Owner.FindComponent<Transform3D>();
+            this.touchInfos.Add(new TouchInfo { Cursor = eventData.Cursor, Transform = transform, UV = GetUVPos(eventData.Position) });
             Tools.PlaySound(soundEmitter, PanStartedSound);
         }
 
@@ -226,9 +227,10 @@ namespace WaveEngine_MRTK_Demo.Behaviors
 
         public void OnPointerDown(MixedRealityPointerEventData eventData)
         {
-            if (eventData.Cursor.FindComponent<Cursor>()?.IsTouch == false)
+            if (!(eventData.Cursor is CursorTouch))
             {
-                this.touchInfos.Add(new TouchInfo { Cursor = eventData.Cursor, Transform = eventData.Cursor.FindComponent<Transform3D>(), UV = GetUVPos(eventData.Position) });
+                var transform = eventData.Cursor.Owner.FindComponent<Transform3D>();
+                this.touchInfos.Add(new TouchInfo { Cursor = eventData.Cursor, Transform = transform, UV = GetUVPos(eventData.Position) });
                 Tools.PlaySound(soundEmitter, PanStartedSound);
             }
         }

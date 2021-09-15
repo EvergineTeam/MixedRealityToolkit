@@ -1,0 +1,120 @@
+!WaveEngine.Framework.Assets.AssetSources.Entities.SceneModel,WaveEngine.Framework
+Items:
+  - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+    Name: collider
+    Tag: null
+    IsEnabled: true
+    IsStatic: false
+    Components:
+      - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+        Id: 6d8b597c-f8d9-4ba2-92ab-3de59c2c2952
+        IsEnabled: true
+        LocalOrientation:
+          W: 1.0
+          X: 0.0
+          Y: 0.0
+          Z: 0.0
+        LocalPosition:
+          X: 5.0
+          Y: 0.0
+          Z: 2.39244088E-07
+        LocalScale:
+          X: 4.0
+          Y: 1.0
+          Z: 1.0
+      - !WaveEngine.Framework.Physics3D.StaticBody3D,WaveEngine.Framework
+        Id: 2262921e-e19f-4850-b9a2-5b831395d584
+        CcdMotionThreshold: 0.0
+        CcdSweptSphereRadius: 0.200000003
+        CollisionCategories: Cat1
+        Friction: 0.5
+        IsEnabled: true
+        IsSensor: true
+        MaskBits: All
+        Restitution: 0.0
+        RollingFriction: 0.0
+        UpdateOrder: 0.5
+      - !WaveEngine.Framework.Physics3D.BoxCollider3D,WaveEngine.Framework
+        Id: f014fcc8-1b6f-4177-9a0d-128549ea74f5
+        IsEnabled: true
+        Margin: 0.00100000005
+        Offset:
+          X: 0.0
+          Y: 0.0
+          Z: 0.0
+        OrientationOffset:
+          W: 1.0
+          X: 0.0
+          Y: 0.0
+          Z: 0.0
+        Size:
+          X: 1.0
+          Y: 1.0
+          Z: 1.0
+      - !WaveEngine.MRTK.Services.InputSystem.NearInteractionGrabbable,WaveEngine.MRTK
+        Id: fd8179e3-2a3c-4b59-b949-bece748d7d5e
+        IsEnabled: true
+    Children:
+      - !WaveEngine.Framework.Assets.AssetSources.Entities.EntityItemModel,WaveEngine.Framework
+        Name: visual
+        Tag: null
+        IsEnabled: true
+        IsStatic: false
+        Components:
+          - !WaveEngine.Framework.Graphics.Transform3D,WaveEngine.Framework
+            Id: c2c98119-3647-4dd2-b798-f45021ffe784
+            IsEnabled: true
+            LocalOrientation:
+              W: 1.0
+              X: 0.0
+              Y: 0.0
+              Z: 0.0
+            LocalPosition:
+              X: 0.0
+              Y: 0.0
+              Z: 0.0
+            LocalScale:
+              X: 1.0
+              Y: 1.0
+              Z: 1.0
+          - !WaveEngine.Components.Graphics3D.MaterialComponent,WaveEngine.Framework
+            Id: aa7a26c8-d644-452b-b782-fb17387fdc20
+            AsignedTo: Default
+            IsEnabled: true
+            Material: 84896037-fa9d-4415-a1b0-98d35e4133f6
+          - !WaveEngine.Components.Graphics3D.PlaneMesh,WaveEngine.Components
+            Id: 99a90534-f8be-4ac4-b5ec-8522002ba58a
+            Height: 1.0
+            InitialU: 0.0
+            InitialV: 0.0
+            IsEnabled: true
+            PlaneNormal: ZPositive
+            TwoSides: false
+            UTile: 1.0
+            UVHorizontalFlip: false
+            UVVerticalFlip: false
+            Width: 1.0
+            YTile: 1.0
+          - !WaveEngine.Components.Graphics3D.MeshRenderer,WaveEngine.Framework
+            Id: 05bab93f-c117-4a33-b08e-25e3a69eca4e
+            DebugBoundingbox: true
+            IsCullingEnabled: true
+            IsEnabled: true
+            OrderBias: 0
+            RenderFlags: CastShadows
+          - !WaveEngine.Components.Toolkit.LookAtBehavior,WaveEngine.Components
+            Id: c12992e9-0d5b-4ac5-81cb-7bbb3493a01a
+            Axis: Z
+            AxisConstraint: true
+            Flip: false
+            IsEnabled: true
+            IsLocalOriented: true
+            KeepUpVector: false
+            LookAtEntity: false
+            OrientationAxis: X
+            TargetEntity: null
+            UpdateOrder: 0.5
+        Children: []
+        Id: af1fa84c-b599-4b08-a6cc-7b380379ac22
+    Id: 8e6942e1-a716-45cf-b0bf-a0aa85472501
+Managers: []

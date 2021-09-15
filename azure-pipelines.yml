@@ -3,15 +3,21 @@ trigger:
 
 pool:
   vmImage: 'windows-2019'
-
+  
 variables:
   - group: Versions
   - name: 'nugetConfigPath'
-    value: '$(Build.SourcesDirectory)/WaveEngine.MRTK/NuGet.config'
+    value: '$(Build.SourcesDirectory)/Source/WaveEngine.MRTK/NuGet.config'
   - name: 'nugetOutputPath'
     value: '$(Build.StagingDirectory)/nupkgs'
+  - name: 'wepkgOutputPath'
+    value: '$(Build.StagingDirectory)/wepkgs'
   - name: 'appversion'
     value: '$(version.major).$(version.minor).$(version.patch).$(Build.BuildID)-$(version.previewSuffix)'
+  - name: 'publishContainer'
+    value: 'preview'
+  - name: 'publishEnabled'
+    value: true
 
 workspace:
   clean: all
@@ -44,6 +50,12 @@ steps:
   inputs:
     filePath: './Generate-NuGets.ps1'
     arguments: '-Version $(appversion) -outputfolder $(nugetOutputPath)'
+    
+- task: PowerShell@2
+  displayName: 'Generate Assets package'
+  inputs:
+    filePath: './Generate-Assets-Package.ps1'
+    arguments: '-Version $(appversion) -outputfolder $(wepkgOutputPath)'
 
 - task: PublishBuildArtifacts@1
   displayName: "Publish Artifact: NuGets"
@@ -54,8 +66,26 @@ steps:
 
 - task: NuGetCommand@2
   displayName: 'Push NuGets to NuGet.org'
+  condition: and(succeeded(), '$(publishEnabled)')
   inputs:
     command: 'push'
-    packagesToPush: '$(nugetOutputPath)/**/*.nupkg;!$(nugetOutputPath)/**/*.symbols.nupkg'
+    packagesToPush: '$(nugetOutputPath)/*.nupkg;!$(nugetOutputPath)/*.symbols.nupkg'
     nuGetFeedType: 'external'
     publishFeedCredentials: 'WaveEngine Nuget.org'
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact: Wepkgs'
+  inputs:
+    PathtoPublish: '$(wepkgOutputPath)'
+    ArtifactName: Wepkgs
+  continueOnError: true
+
+- task: AzureFileCopy@2
+  displayName: 'Upload to Azure BLOB Wepkgs'
+  condition: and(and(succeeded(), ne('$(publishContainer)', '')), '$(publishEnabled)')
+  inputs:
+    SourcePath: '$(wepkgOutputPath)/WaveEngine.MRTK.Assets.$(appversion).wepkg'
+    azureSubscription: 'Waveengineteam devops connections SP'
+    Destination: AzureBlob
+    storage: waveeditor
+    ContainerName: 'wepkg-$(publishContainer)'

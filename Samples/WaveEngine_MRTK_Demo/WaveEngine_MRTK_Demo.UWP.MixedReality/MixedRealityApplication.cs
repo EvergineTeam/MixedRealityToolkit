@@ -1,4 +1,5 @@
 ﻿using System;
+using WaveEngine.MRTK.Emulation;
 using WaveEngine_MRTK_Demo.Common;
 using WaveEngine_MRTK_Demo.UWP.MixedReality.Services;
 
@@ -10,11 +11,7 @@ namespace WaveEngine_MRTK_Demo.UWP.MixedReality
             : base()
         {
             // Add services specific to Mixed Reality
-            this.Container.RegisterType<VoiceCommandService>();
-            VoiceCommandService voiceCommandService = this.Container.Resolve<VoiceCommandService>();
-            voiceCommandService.ConfigureVoiceCommands(new string[] {
-                "select", "button"
-            });
+            this.Container.RegisterType<IVoiceCommandService, VoiceCommandService>();
         }
 
         public async override void Initialize()

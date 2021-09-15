@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29613.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WaveEngine.MRTK", "WaveEngine.MRTK\WaveEngine.MRTK.csproj", "{2AFDFB11-8EF7-4317-86B7-24824AA77F49}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WaveEngine.MRTK.Editor", "WaveEngine.MRTK.Editor\WaveEngine.MRTK.Editor.csproj", "{A9900002-DD1B-4F9D-BBE2-F69D4A686EDA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2AFDFB11-8EF7-4317-86B7-24824AA77F49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2AFDFB11-8EF7-4317-86B7-24824AA77F49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2AFDFB11-8EF7-4317-86B7-24824AA77F49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2AFDFB11-8EF7-4317-86B7-24824AA77F49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9900002-DD1B-4F9D-BBE2-F69D4A686EDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9900002-DD1B-4F9D-BBE2-F69D4A686EDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9900002-DD1B-4F9D-BBE2-F69D4A686EDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9900002-DD1B-4F9D-BBE2-F69D4A686EDA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {17AA9B45-D2E5-4076-ACBE-33F44DA7B8D4}
+	EndGlobalSection
+EndGlobal

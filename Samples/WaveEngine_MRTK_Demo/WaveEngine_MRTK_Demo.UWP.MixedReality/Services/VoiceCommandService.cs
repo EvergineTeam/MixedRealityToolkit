@@ -67,7 +67,6 @@ namespace WaveEngine_MRTK_Demo.UWP.MixedReality.Services
         /// <summary>
         /// Initialize Speech Recognizer and compile constraints.
         /// </summary>
-        /// <returns>Awaitable task.</returns>
         private async void InitializeRecognizer()
         {
             if (this.initializationFailed)

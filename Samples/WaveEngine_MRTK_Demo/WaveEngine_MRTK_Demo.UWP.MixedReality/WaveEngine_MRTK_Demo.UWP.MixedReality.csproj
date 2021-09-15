@@ -25,6 +25,7 @@
     <AppxBundle>Always</AppxBundle>
     <AppxBundlePlatforms>arm64</AppxBundlePlatforms>
     <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
+    <PackageCertificateThumbprint>87A85524BEA510E6D6E78ADB88D6855E6A7A60C2</PackageCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -141,26 +142,26 @@
       <Version>6.2.9</Version>
     </PackageReference>
     <PackageReference Include="WaveEngine.MixedReality">
-      <Version>3.2.0.7787-preview</Version>
+      <Version>3.3.0.8524-preview</Version>
     </PackageReference>
     <PackageReference Include="WaveEngine.XAudio2">
-      <Version>3.2.0.7787-preview</Version>
+      <Version>3.3.0.8524-preview</Version>
     </PackageReference>
     <PackageReference Include="WaveEngine.Targets">
-      <Version>3.2.0.7787-preview</Version>
+      <Version>3.3.0.8524-preview</Version>
     </PackageReference>
     <PackageReference Include="WaveEngine.Targets.UWP">
-      <Version>3.2.0.7787-preview</Version>
+      <Version>3.3.0.8524-preview</Version>
     </PackageReference>
     <PackageReference Include="WaveEngine.UWPView">
-      <Version>3.2.0.7787-preview</Version>
+      <Version>3.3.0.8524-preview</Version>
     </PackageReference>
     <PackageReference Include="WaveEngine.Bullet">
-      <Version>3.2.0.7787-preview</Version>
+      <Version>3.3.0.8524-preview</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\WaveEngine.MRTK\WaveEngine.MRTK.csproj">
+    <ProjectReference Include="..\..\..\Source\WaveEngine.MRTK\WaveEngine.MRTK.csproj">
       <Project>{67DE4CB4-453F-41E4-B914-34F25516DC48}</Project>
       <Name>WaveEngine.MRTK</Name>
     </ProjectReference>

@@ -1,6 +1,11 @@
 !WaveEngine.Common.ProjectModel,WaveEngine.Common
+Packages:
+  - Id: WaveEngine.Core
+    Version: 3.3.0.8524-preview
+  - Id: WaveEngine.MRTK.Assets
+    LocalPath: ../../Source/WaveEngine.MRTK.Assets/
 Profiles:
-  - AdditionalEffectTechniqueCombinations: GAMMA_COLORSPACE-SHADOW_SUPPORTED
+  - AdditionalEffectTechniqueCombinations: GAMMA_COLORSPACE-SHADOW_SUPPORTED-SHADOWFILTER7
     AlphaCompressionFormat: BC3_UNorm
     CompileEffects: true
     GraphicsBackend: DirectX11
@@ -8,7 +13,7 @@ Profiles:
     Name: Windows
     NonAlphaCompressionFormat: BC3_UNorm
     Platform: Windows
-  - AdditionalEffectTechniqueCombinations: MULTIVIEW-GAMMA_COLORSPACE-SHADOW_SUPPORTED
+  - AdditionalEffectTechniqueCombinations: MULTIVIEW_RTI-GAMMA_COLORSPACE-SHADOW_SUPPORTED-SHADOWFILTER3
     AlphaCompressionFormat: BC3_UNorm
     CompileEffects: true
     GraphicsBackend: DirectX11

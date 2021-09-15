@@ -1,13 +1,12 @@
-﻿using System;
-using WaveEngine.Components.Graphics3D;
+﻿using WaveEngine.Components.Graphics3D;
 using WaveEngine.Framework;
 using WaveEngine.Framework.Graphics;
-using WaveEngine.MRTK.SDK.Features.UX.Components.PressableButtons;
-using WaveEngine_MRTK_Demo.Toolkit.Components.GUI;
+using WaveEngine.MRTK.Toolkit.CommandService;
+using WaveEngine_MRTK_Demo.Components.Commands;
 
 namespace WaveEngine_MRTK_Demo.Components
 {
-    public class ColorChanger : Component
+    public class ColorChanger : BaseCommandRequester<DemoCommands>
     {
         [BindComponent]
         public MaterialComponent materialComponent;
@@ -20,35 +19,40 @@ namespace WaveEngine_MRTK_Demo.Components
         private Material[] materials;
         private int currentMaterialIdx = 0;
 
-        protected override void Start()
+        protected override void OnActivated()
         {
-            if (!Application.Current.IsEditor)
+            base.OnActivated();
+
+            if (Application.Current.IsEditor)
             {
-                materials = new Material[] { material0, material1, material2, material3 };
-                materialComponent.Material = material0;
+                return;
+            }
 
-                string[] nodesWithButtons = { "PressableButtons", "PressableButtonsSharedPlate", "PressableButtonsSharedPlate40x40mm" };
-                foreach (string nodeName in nodesWithButtons)
-                {
-                    Entity buttonsParent = this.Owner.Parent.FindChild(nodeName);
-                    foreach (PressableButton b in buttonsParent.FindComponentsInChildren<PressableButton>())
-                    {
-                        b.ButtonPressed += OnButtonPressed;
+            this.materials = new Material[] { material0, material1, material2, material3 };
+            this.materialComponent.Material = material0;
 
-                        //Update text based on scale
-                        Text3D text3d = b.Owner.FindComponentInChildren<Text3D>();
-                        if (text3d != null)
-                        {
-                            text3d.Text = string.Format("{0}x{0}mm", 32.0f * b.Owner.FindComponent<Transform3D>().Scale.X);
-                        }
-                    }
-                }
+            if (this.commandService != null)
+            {
+                this.commandService.CommandReceived += this.CommandService_CommandReceived;
             }
         }
 
-        private void OnButtonPressed(object sender, EventArgs e)
+        protected override void OnDeactivated()
         {
-            materialComponent.Material = materials[(currentMaterialIdx++) % materials.Length];
+            base.OnDeactivated();
+
+            if (this.commandService != null)
+            {
+                this.commandService.CommandReceived -= this.CommandService_CommandReceived;
+            }
+        }
+
+        private void CommandService_CommandReceived(object sender, CommandReceivedEventArgs commandReceived)
+        {
+            if (commandReceived.Command is DemoCommands command && command == DemoCommands.ColorChange)
+            {
+                materialComponent.Material = materials[(++currentMaterialIdx) % materials.Length];
+            }
         }
     }
 }
