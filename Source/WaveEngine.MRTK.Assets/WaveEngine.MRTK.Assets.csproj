@@ -5,7 +5,7 @@
   </PropertyGroup>
   
   <ItemGroup>
-    <PackageReference Include="WaveEngine.Packages.Targets" Version="3.2.0.8344-nightly"/>
+    <PackageReference Include="WaveEngine.Packages.Targets" Version="3.3.0.8524-preview"/>
   </ItemGroup>
 
   <ItemGroup>
