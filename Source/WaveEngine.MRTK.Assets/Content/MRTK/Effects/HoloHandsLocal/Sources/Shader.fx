@@ -1,7 +1,7 @@
 [Begin_ResourceLayout]
 
 	[Directives:Kind BASE PULSE]
-	[Directives:Multiview MULTIVIEW_OFF MULTIVIEW]
+	[Directives:Multiview MULTIVIEW_OFF MULTIVIEW_RTI MULTIVIEW_VI]
 	[Directives:ColorSpace GAMMA_COLORSPACE_OFF GAMMA_COLORSPACE]
 
 	cbuffer Base : register(b0)
@@ -45,7 +45,9 @@
 	{
 		float4 Position : POSITION;
 		
-#if MULTIVIEW
+#if MULTIVIEW_VI	
+		uint ViewID : SV_ViewID;
+#elif MULTIVIEW_RTI
 		uint InstId : SV_InstanceID;
 #endif
 	};
@@ -54,8 +56,10 @@
 	{
 		float4 pos 		: SV_POSITION;
 		
-#if MULTIVIEW
-		uint InstId         : SV_RenderTargetArrayIndex;
+#if MULTIVIEW_VI	
+		uint ViewID 	: SV_ViewID;	
+#elif MULTIVIEW_RTI
+		uint InstId 	: SV_InstanceID;
 #endif
 	};
 	
@@ -65,9 +69,9 @@
 		float4 info 	: TEXCOORD0;
 		float4 extra	: TEXCOORD1;
 		
-#if MULTIVIEW
-		uint ViewId         : SV_RenderTargetArrayIndex;
-#endif		
+#if MULTIVIEW_RTI
+		uint ViewId 	: SV_RenderTargetArrayIndex;
+#endif	
 	};
 
 	//Helpers Functions
@@ -114,7 +118,10 @@
 		GS_IN output = (GS_IN)0;
 
 		output.pos = input.Position;
-#if MULTIVIEW
+
+#if MULTIVIEW_VI
+		output.ViewID = input.ViewID;
+#elif MULTIVIEW_RTI
 		output.InstId = input.InstId;
 #endif
 
@@ -149,7 +156,7 @@
 		float4 normal = float4(GetNormal(input), 0);
 #endif
 
-#if MULTIVIEW
+#if MULTIVIEW_RTI
 		const int vid = input[0].InstId % EyeCount;
 		const float4x4 viewProj = MultiviewViewProj[vid];
 		
@@ -160,6 +167,9 @@
 	
 		output.ViewId = vid;
 		
+		float4x4 worldViewProj = mul(World, viewProj);
+#elif MULTIVIEW_VI
+		float4x4 viewProj = MultiviewViewProj[input.ViewID];
 		float4x4 worldViewProj = mul(World, viewProj);
 #else
 		float4x4 worldViewProj = WorldViewProj;

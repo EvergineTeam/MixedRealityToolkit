@@ -1,28 +1,28 @@
 [Begin_ResourceLayout]
 
-	[Directives:ALPHATEST					   ALPHATEST_OFF					  ALPHATEST					 ]
-	[Directives:ALPHABLEND					   ALPHABLEND_OFF					  ALPHABLEND					 ]
-	[Directives:BORDER_LIGHT                   BORDER_LIGHT_OFF                   BORDER_LIGHT                   ]
-	[Directives:BORDER_LIGHT_USES_HOVER_COLOR  BORDER_LIGHT_USES_HOVER_COLOR_OFF  BORDER_LIGHT_USES_HOVER_COLOR  ]
-	[Directives:BORDER_LIGHT_REPLACES_ALBEDO   BORDER_LIGHT_REPLACES_ALBEDO_OFF   BORDER_LIGHT_REPLACES_ALBEDO   ]
-	[Directives:BORDER_LIGHT_OPAQUE            BORDER_LIGHT_OPAQUE_OFF            BORDER_LIGHT_OPAQUE            ]
-	[Directives:INNER_GLOW                     INNER_GLOW_OFF                     INNER_GLOW                     ]
-	[Directives:ROUND_CORNERS                  ROUND_CORNERS_OFF                  ROUND_CORNERS                  ]
-	[Directives:INDEPENDENT_CORNERS			   INDEPENDENT_CORNERS_OFF			  INDEPENDENT_CORNERS			 ]
-	[Directives:IGNORE_Z_SCALE                 IGNORE_Z_SCALE_OFF                 IGNORE_Z_SCALE                 ]
-	[Directives:NEAR_LIGHT_FADE                NEAR_LIGHT_FADE_OFF                NEAR_LIGHT_FADE                ]
-	[Directives:HOVER_LIGHT                    HOVER_LIGHT_OFF                    HOVER_LIGHT                    ]
-	[Directives:HOVER_COLOR_OVERRIDE           HOVER_COLOR_OVERRIDE_OFF           HOVER_COLOR_OVERRIDE           ]
-	[Directives:PROXIMITY_LIGHT                PROXIMITY_LIGHT_OFF                PROXIMITY_LIGHT                ]
-	[Directives:PROXIMITY_LIGHT_TWO_SIDED      PROXIMITY_LIGHT_TWO_SIDED_OFF      PROXIMITY_LIGHT_TWO_SIDED      ]
-	[Directives:PROXIMITY_LIGHT_COLOR_OVERRIDE PROXIMITY_LIGHT_COLOR_OVERRIDE_OFF PROXIMITY_LIGHT_COLOR_OVERRIDE ]
-	[Directives:PROXIMITY_LIGHT_SUBTRACTIVE    PROXIMITY_LIGHT_SUBTRACTIVE_OFF    PROXIMITY_LIGHT_SUBTRACTIVE    ]
-	[Directives:DIRECTIONAL_LIGHT              DIRECTIONAL_LIGHT_OFF              DIRECTIONAL_LIGHT              ]
-	[Directives:SPECULAR_HIGHLIGHTS			   SPECULAR_HIGHLIGHTS_OFF			  SPECULAR_HIGHLIGHTS			 ]
-	[Directives:ALBEDO_MAP                     ALBEDO_MAP_OFF                     ALBEDO_MAP                     ]
-	[Directives:IRIDESCENCE					   IRIDESCENCE_OFF					  IRIDESCENCE					 ]
-	[Directives:Multiview                      MULTIVIEW_OFF                      MULTIVIEW                      ]
-	[Directives:ColorSpace 					   GAMMA_COLORSPACE_OFF 			  GAMMA_COLORSPACE				 ]
+	[Directives:ALPHATEST					   ALPHATEST_OFF					  ALPHATEST											]
+	[Directives:ALPHABLEND					   ALPHABLEND_OFF					  ALPHABLEND										]
+	[Directives:BORDER_LIGHT                   BORDER_LIGHT_OFF                   BORDER_LIGHT										]
+	[Directives:BORDER_LIGHT_USES_HOVER_COLOR  BORDER_LIGHT_USES_HOVER_COLOR_OFF  BORDER_LIGHT_USES_HOVER_COLOR						]
+	[Directives:BORDER_LIGHT_REPLACES_ALBEDO   BORDER_LIGHT_REPLACES_ALBEDO_OFF   BORDER_LIGHT_REPLACES_ALBEDO						]
+	[Directives:BORDER_LIGHT_OPAQUE            BORDER_LIGHT_OPAQUE_OFF            BORDER_LIGHT_OPAQUE								]
+	[Directives:INNER_GLOW                     INNER_GLOW_OFF                     INNER_GLOW										]
+	[Directives:ROUND_CORNERS                  ROUND_CORNERS_OFF                  ROUND_CORNERS										]
+	[Directives:INDEPENDENT_CORNERS			   INDEPENDENT_CORNERS_OFF			  INDEPENDENT_CORNERS								]
+	[Directives:IGNORE_Z_SCALE                 IGNORE_Z_SCALE_OFF                 IGNORE_Z_SCALE									]
+	[Directives:NEAR_LIGHT_FADE                NEAR_LIGHT_FADE_OFF                NEAR_LIGHT_FADE									]
+	[Directives:HOVER_LIGHT                    HOVER_LIGHT_OFF                    HOVER_LIGHT										]
+	[Directives:HOVER_COLOR_OVERRIDE           HOVER_COLOR_OVERRIDE_OFF           HOVER_COLOR_OVERRIDE								]
+	[Directives:PROXIMITY_LIGHT                PROXIMITY_LIGHT_OFF                PROXIMITY_LIGHT									]
+	[Directives:PROXIMITY_LIGHT_TWO_SIDED      PROXIMITY_LIGHT_TWO_SIDED_OFF      PROXIMITY_LIGHT_TWO_SIDED							]
+	[Directives:PROXIMITY_LIGHT_COLOR_OVERRIDE PROXIMITY_LIGHT_COLOR_OVERRIDE_OFF PROXIMITY_LIGHT_COLOR_OVERRIDE					]
+	[Directives:PROXIMITY_LIGHT_SUBTRACTIVE    PROXIMITY_LIGHT_SUBTRACTIVE_OFF    PROXIMITY_LIGHT_SUBTRACTIVE						]
+	[Directives:DIRECTIONAL_LIGHT              DIRECTIONAL_LIGHT_OFF              DIRECTIONAL_LIGHT									]
+	[Directives:SPECULAR_HIGHLIGHTS			   SPECULAR_HIGHLIGHTS_OFF			  SPECULAR_HIGHLIGHTS								]
+	[Directives:ALBEDO_MAP                     ALBEDO_MAP_OFF                     ALBEDO_MAP										]
+	[Directives:IRIDESCENCE					   IRIDESCENCE_OFF					  IRIDESCENCE										]
+	[Directives:Multiview 					   MULTIVIEW_OFF				      MULTIVIEW_RTI						MULTIVIEW_VI	]
+	[Directives:ColorSpace 					   GAMMA_COLORSPACE_OFF 			  GAMMA_COLORSPACE									]
 
 	cbuffer PerDrawCall : register(b0)
 	{
@@ -230,8 +230,9 @@
 
 		float3 normal : NORMAL;
 
-		
-#if MULTIVIEW
+#if MULTIVIEW_VI	
+		uint ViewID : SV_ViewID;
+#elif MULTIVIEW_RTI
 		uint InstId : SV_InstanceID;
 #endif
 	};
@@ -257,7 +258,7 @@
 		float3 scale 	: TEXCOORD3;
 #endif
 		
-#if MULTIVIEW
+#if MULTIVIEW_RTI
 		uint ViewId         : SV_RenderTargetArrayIndex;
 #endif
 	};
@@ -266,7 +267,7 @@
 	{
 		PS_IN output = (PS_IN)0;
 
-#if MULTIVIEW
+#if MULTIVIEW_RTI
 		const int vid = input.InstId % EyeCount;
 		const float4x4 viewProj = MultiviewViewProj[vid];
 	
@@ -278,6 +279,8 @@
 		// instance would be drawn, one for left and one for right.
 	
 		output.ViewId = vid;
+#elif MULTIVIEW_VI
+		const float4x4 viewProj = MultiviewViewProj[input.ViewID];
 #else
 		float4x4 worldViewProj = WorldViewProj;
 #endif
