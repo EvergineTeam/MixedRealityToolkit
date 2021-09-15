@@ -1,8 +1,8 @@
 <#
 .SYNOPSIS
-	Wave Engine MRTK NuGet Packages generator script, (c) 2021 Wave Engine
+	Wave Engine MRTK Assets Packages generator script, (c) 2021 Wave Engine
 .DESCRIPTION
-	This script generates NuGet packages for the Mixed Reality Toolkit for Wave Engine
+	This script generates Assets packages for the Mixed Reality Toolkit for Wave Engine
 	It's meant to have the same behavior when executed locally as when it's executed in a CI pipeline.
 .EXAMPLE
 	<script> -version 3.4.22.288-local
@@ -12,11 +12,10 @@
 
 param (
     [Parameter(mandatory=$true)][string]$version,
-	[string]$outputFolderBase = "nupkgs",
+	[string]$outputFolderBase = "wepkgs",
 	[string]$buildVerbosity = "normal",
 	[string]$buildConfiguration = "Release",
-	[string]$bindingsCsprojPath = "Source\WaveEngine.MRTK\WaveEngine.MRTK.csproj",
-	[string]$editorCsprojPath = "Source\WaveEngine.MRTK.Editor\WaveEngine.MRTK.Editor.csproj"
+	[string]$assetsCsprojPath = "Source\WaveEngine.MRTK.Assets\WaveEngine.MRTK.Assets.csproj"
 )
 
 # Utility functions
@@ -36,8 +35,9 @@ New-Item -ItemType Directory -Force -Path $outputFolder
 $absoluteOutputFolder = Resolve-Path $outputFolder
 
 # Generate packages
-LogDebug "START packaging process"
-& dotnet build "$editorCsprojPath" -v:$buildVerbosity -p:Configuration=$buildConfiguration
-& dotnet pack "$bindingsCsprojPath" -v:$buildVerbosity -p:Configuration=$buildConfiguration -p:PackageOutputPath="$absoluteOutputFolder" -p:IncludeSymbols=true -p:Version=$version
+LogDebug "START assets packaging process"
+& dotnet build "$assetsCsprojPath" -v:$buildVerbosity -p:Configuration=$buildConfiguration -p:OutputPath="$absoluteOutputFolder" -p:Version=$version
 
-LogDebug "END packaging process"
+Get-ChildItem "$absoluteOutputFolder" -Exclude "*.wepkg" | Remove-Item -Recurse
+
+LogDebug "END assets packaging process"
