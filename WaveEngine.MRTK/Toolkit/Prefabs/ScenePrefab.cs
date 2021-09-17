@@ -195,9 +195,6 @@ namespace WaveEngine.MRTK.Toolkit.Prefabs
                 return;
             }
 
-            // Ensure prefab entities are detached
-            this.DetachPrefabEntities();
-
             foreach (var entity in this.prefabEntities)
             {
                 entity.Destroy();
@@ -218,6 +215,7 @@ namespace WaveEngine.MRTK.Toolkit.Prefabs
                 return;
             }
 
+            this.DetachPrefabEntities();
             this.DestroyPrefabEntities();
             this.AttachPrefabEntities();
         }
