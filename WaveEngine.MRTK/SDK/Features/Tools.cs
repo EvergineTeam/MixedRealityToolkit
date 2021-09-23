@@ -4,6 +4,8 @@ using WaveEngine.Common.Audio;
 using WaveEngine.Common.Media;
 using WaveEngine.Components.Sound;
 using WaveEngine.Framework;
+using WaveEngine.Framework.Services;
+using WaveEngine.Framework.XR.TrackedDevices;
 using WaveEngine.MRTK.Behaviors;
 
 namespace WaveEngine.MRTK.SDK.Features
@@ -81,6 +83,15 @@ namespace WaveEngine.MRTK.SDK.Features
         public static bool IsJointValid(TrackXRJoint joint)
         {
             return joint != null && joint.TrackedDevice != null && joint.TrackedDevice.IsConnected && joint.TrackedDevice.PoseIsValid;
+        }
+
+        /// <summary>
+        /// Checks if the <see cref="XRInputTracking"/> is available.
+        /// </summary>
+        /// <returns><c>true</c> if the <see cref="XRInputTracking"/> is available; otherwise, <c>false</c>.</returns>
+        public static bool IsXRPlatformInputTrackingAvailable()
+        {
+            return Application.Current.Container.Resolve<XRPlatform>().InputTracking != null;
         }
     }
 }

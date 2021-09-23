@@ -12,11 +12,11 @@ using WaveEngine.Components.XR;
 using WaveEngine.Framework;
 using WaveEngine.Framework.Graphics;
 using WaveEngine.Framework.Physics3D;
-using WaveEngine.Framework.Services;
 using WaveEngine.Framework.XR;
 using WaveEngine.Mathematics;
 using WaveEngine.MRTK.Behaviors;
 using WaveEngine.MRTK.Emulation;
+using WaveEngine.MRTK.SDK.Features;
 using WaveEngine.MRTK.Services.InputSystem;
 
 namespace WaveEngine.MRTK.Scenes
@@ -158,7 +158,7 @@ namespace WaveEngine.MRTK.Scenes
                     .AddComponent(new MeshRenderer())
                     .AddComponent(new ProximityLight()));
 
-            if (Application.Current.Container.IsRegistered<XRPlatform>())
+            if (Tools.IsXRPlatformInputTrackingAvailable())
             {
                 // HoloLens 2
                 mainCursor.AddComponent(new TrackXRJoint()

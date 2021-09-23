@@ -9,6 +9,7 @@ using WaveEngine.Framework.Physics3D;
 using WaveEngine.Framework.Services;
 using WaveEngine.Mathematics;
 using WaveEngine.MRTK.Emulation;
+using WaveEngine.MRTK.SDK.Features;
 
 namespace WaveEngine.MRTK.Services.InputSystem
 {
@@ -179,7 +180,7 @@ namespace WaveEngine.MRTK.Services.InputSystem
         protected override void Update(TimeSpan gameTime)
         {
             Ray? ray;
-            if (this.xrPlatform != null)
+            if (Tools.IsXRPlatformInputTrackingAvailable())
             {
                 ray = this.xrPlatform.EyeGaze;
                 if (ray == null)
