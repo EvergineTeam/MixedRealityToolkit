@@ -127,6 +127,11 @@ namespace WaveEngine.MRTK.Services.InputSystem
                 return true;
             }
 
+            if (!Tools.IsXRPlatformInputTrackingAvailable())
+            {
+                this.xrPlatform = null;
+            }
+
             this.gazePointerShape = this.Managers.PhysicManager3D.CreateColliderShape<ISphereColliderShape3D>();
             this.gazePointerShape.Radius = this.Radius;
 
@@ -180,7 +185,7 @@ namespace WaveEngine.MRTK.Services.InputSystem
         protected override void Update(TimeSpan gameTime)
         {
             Ray? ray;
-            if (Tools.IsXRPlatformInputTrackingAvailable())
+            if (this.xrPlatform != null)
             {
                 ray = this.xrPlatform.EyeGaze;
                 if (ray == null)
