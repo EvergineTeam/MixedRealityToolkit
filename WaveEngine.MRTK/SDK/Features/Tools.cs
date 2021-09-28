@@ -91,7 +91,7 @@ namespace WaveEngine.MRTK.SDK.Features
         /// <returns><c>true</c> if the <see cref="XRInputTracking"/> is available; otherwise, <c>false</c>.</returns>
         public static bool IsXRPlatformInputTrackingAvailable()
         {
-            return Application.Current.Container.Resolve<XRPlatform>().InputTracking != null;
+            return Application.Current.Container.Resolve<XRPlatform>()?.InputTracking != null;
         }
     }
 }
