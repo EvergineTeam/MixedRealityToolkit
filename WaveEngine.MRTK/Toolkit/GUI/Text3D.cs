@@ -665,6 +665,11 @@ namespace WaveEngine.MRTK.Toolkit.GUI
 
         private void RemoveContainerEntity()
         {
+            if (!this.isContainerEntityAdded)
+            {
+                return;
+            }
+
             if (this.noesisFramebuffer != null)
             {
                 this.noesisFramebuffer.Dispose();
@@ -673,6 +678,7 @@ namespace WaveEngine.MRTK.Toolkit.GUI
                 this.holographicMaterial.Texture = null;
             }
 
+            this.noesisFramebuffer = null;
             this.planeTransform = null;
             this.materialComponent = null;
             this.meshRenderer = null;
