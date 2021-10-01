@@ -709,6 +709,7 @@ namespace WaveEngine.MRTK.Toolkit.GUI
                 Foreground = this.foregroundBrush,
                 HorizontalAlignment = this.HorizontalAlignment,
                 VerticalAlignment = this.VerticalAlignment,
+                TextAlignment = this.TextAlignment,
                 Text = this.Text,
                 TextWrapping = this.TextWrapping,
                 FontWeight = this.FontWeight,
