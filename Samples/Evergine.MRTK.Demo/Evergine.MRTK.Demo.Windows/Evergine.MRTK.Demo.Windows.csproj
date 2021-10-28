@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="Evergine.DirectX11" Version="2021.10.28.1-nightly" />
+    <PackageReference Include="Evergine.HLSLEverywhere" Version="2021.10.28.1-nightly" />
+    <PackageReference Include="Evergine.XAudio2" Version="2021.10.28.1-nightly" />
+    <PackageReference Include="Evergine.Forms" Version="2021.10.28.1-nightly" />
+    <PackageReference Include="Evergine.Targets" Version="2021.10.28.1-nightly" />
+    <PackageReference Include="Evergine.Targets.Windows" Version="2021.10.28.1-nightly" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\Evergine.MRTK.Demo\Evergine.MRTK.Demo.csproj" />
+  </ItemGroup>
+  
+  <ItemGroup Condition="$(DefineConstants.Contains('EVERGINE_EDITOR'))">
+    <ProjectReference Include="..\Evergine.MRTK.Demo.Editor\Evergine.MRTK.Demo.Editor.csproj" />
+  </ItemGroup>
+  
+</Project>

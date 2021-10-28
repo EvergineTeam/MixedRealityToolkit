@@ -1,0 +1,22 @@
+Packages:
+  - Id: Evergine.Core
+    LocalPath: null
+    Version: 2021.10.28.1-nightly
+Profiles:
+  - AdditionalEffectTechniqueCombinations: SHADOW_SUPPORTED-SHADOWFILTER7
+    AlphaCompressionFormat: BC3_UNorm
+    CompileEffects: false
+    GraphicsBackend: DirectX11
+    LauncherType: Default
+    Name: Windows
+    NonAlphaCompressionFormat: BC3_UNorm
+    Platform: Windows
+  - AdditionalEffectTechniqueCombinations: MULTIVIEW_RTI-GAMMA_COLORSPACE-SHADOW_SUPPORTED-SHADOWFILTER3
+    AlphaCompressionFormat: BC3_UNorm
+    CompileEffects: false
+    GraphicsBackend: DirectX11
+    LauncherType: MixedReality
+    Name: UWP.MixedReality
+    NonAlphaCompressionFormat: BC3_UNorm
+    Platform: UWP
+ResourcesPath: Content

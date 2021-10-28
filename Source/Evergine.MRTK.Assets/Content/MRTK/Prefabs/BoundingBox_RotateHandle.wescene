@@ -1,0 +1,100 @@
+!Evergine.Framework.Assets.AssetSources.Entities.SceneModel,Evergine.Framework
+Items:
+  - !Evergine.Framework.Assets.AssetSources.Entities.EntityItemModel,Evergine.Framework
+    Name: edge
+    Tag: null
+    IsEnabled: true
+    IsStatic: false
+    Components:
+      - !Evergine.Framework.Graphics.Transform3D,Evergine.Framework
+        Id: 70abe8b8-398c-4679-9ff2-97dcbdb1404b
+        IsEnabled: true
+        LocalOrientation:
+          W: 1.0
+          X: 0.0
+          Y: 0.0
+          Z: 0.0
+        LocalPosition:
+          X: 0.0
+          Y: 0.0
+          Z: 0.0
+        LocalScale:
+          X: 1.0
+          Y: 1.0
+          Z: 1.0
+      - !Evergine.Framework.Physics3D.BoxCollider3D,Evergine.Framework
+        Id: c14d12fe-e80a-437d-951b-e60b0b5557ac
+        IsEnabled: true
+        Margin: 0.00100000005
+        Offset:
+          X: -0.300000012
+          Y: 0.0
+          Z: -0.300000012
+        OrientationOffset:
+          W: 1.0
+          X: 0.0
+          Y: 0.0
+          Z: 0.0
+        Size:
+          X: 1.0
+          Y: 2.0
+          Z: 1.0
+      - !Evergine.Framework.Physics3D.StaticBody3D,Evergine.Framework
+        Id: 180756df-c55c-4e17-8857-c9a7601997e9
+        CcdMotionThreshold: 0.0
+        CcdSweptSphereRadius: 0.200000003
+        CollisionCategories: Cat1
+        Friction: 0.5
+        IsEnabled: true
+        IsSensor: true
+        MaskBits: All
+        Restitution: 0.0
+        RollingFriction: 0.0
+        UpdateOrder: 0.5
+      - !Evergine.MRTK.Services.InputSystem.NearInteractionGrabbable,Evergine.MRTK
+        Id: 50804574-92c5-4e47-9812-4dee258d7570
+        IsEnabled: true
+    Children:
+      - !Evergine.Framework.Assets.AssetSources.Entities.EntityItemModel,Evergine.Framework
+        Name: visuals
+        Tag: null
+        IsEnabled: true
+        IsStatic: false
+        Components:
+          - !Evergine.Framework.Graphics.Transform3D,Evergine.Framework
+            Id: e11687ba-12b9-4c2a-ae04-89b7265a200a
+            IsEnabled: true
+            LocalOrientation:
+              W: 1.0
+              X: 0.0
+              Y: 0.0
+              Z: 0.0
+            LocalPosition:
+              X: 0.0
+              Y: 0.0
+              Z: 0.0
+            LocalScale:
+              X: 1.0
+              Y: 2.0
+              Z: 1.0
+          - !Evergine.Components.Graphics3D.MaterialComponent,Evergine.Framework
+            Id: 5fcefac3-29c1-41b3-b4d4-45bdeafe7d74
+            AsignedTo: DefaultMaterial
+            IsEnabled: true
+            Material: 9adff77b-f6b6-4683-bf28-243fafea5436
+          - !Evergine.Components.Graphics3D.MeshComponent,Evergine.Framework
+            Id: fe5ef1d5-5562-4fe7-b961-9f99186a3399
+            IsEnabled: true
+            Model: ad14ac2e-280b-450e-a134-fcf7fb4cdde9
+            ModelMeshName: shl_adjustBoxRotateWidget_Sq_16mmx2mm
+          - !Evergine.Components.Graphics3D.MeshRenderer,Evergine.Framework
+            Id: cbf3c63f-16b8-482e-bf22-365c61eae21b
+            DebugBoundingbox: true
+            IsCullingEnabled: true
+            IsEnabled: true
+            OrderBias: 0
+            RenderFlags: CastShadows
+        Children: []
+        Id: 52a20f53-c705-43a8-a1d5-bde76d4c49ed
+    Id: 64b07a03-237d-49fa-a3e6-d98cbba37d41
+Managers: []

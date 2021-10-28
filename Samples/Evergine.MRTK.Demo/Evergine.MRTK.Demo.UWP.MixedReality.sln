@@ -1,0 +1,56 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28721.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evergine.MRTK.Demo.UWP.MixedReality", "Evergine.MRTK.Demo.UWP.MixedReality\Evergine.MRTK.Demo.UWP.MixedReality.csproj", "{A0434164-58E1-4B51-AEF3-BBCF5C1BF583}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Evergine.MRTK.Demo", "Evergine.MRTK.Demo\Evergine.MRTK.Demo.csproj", "{04070017-D150-405D-9C6B-9B313DEA8F1A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|ARM64 = Debug|ARM64
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|ARM64 = Release|ARM64
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A0434164-58E1-4B51-AEF3-BBCF5C1BF583}.Debug|ARM64.ActiveCfg = Debug|ARM64
+		{A0434164-58E1-4B51-AEF3-BBCF5C1BF583}.Debug|ARM64.Build.0 = Debug|ARM64
+		{A0434164-58E1-4B51-AEF3-BBCF5C1BF583}.Debug|ARM64.Deploy.0 = Debug|ARM64
+		{A0434164-58E1-4B51-AEF3-BBCF5C1BF583}.Debug|x64.ActiveCfg = Debug|x64
+		{A0434164-58E1-4B51-AEF3-BBCF5C1BF583}.Debug|x64.Build.0 = Debug|x64
+		{A0434164-58E1-4B51-AEF3-BBCF5C1BF583}.Debug|x64.Deploy.0 = Debug|x64
+		{A0434164-58E1-4B51-AEF3-BBCF5C1BF583}.Debug|x86.ActiveCfg = Debug|x86
+		{A0434164-58E1-4B51-AEF3-BBCF5C1BF583}.Debug|x86.Build.0 = Debug|x86
+		{A0434164-58E1-4B51-AEF3-BBCF5C1BF583}.Debug|x86.Deploy.0 = Debug|x86
+		{A0434164-58E1-4B51-AEF3-BBCF5C1BF583}.Release|ARM64.ActiveCfg = Release|ARM64
+		{A0434164-58E1-4B51-AEF3-BBCF5C1BF583}.Release|ARM64.Build.0 = Release|ARM64
+		{A0434164-58E1-4B51-AEF3-BBCF5C1BF583}.Release|ARM64.Deploy.0 = Release|ARM64
+		{A0434164-58E1-4B51-AEF3-BBCF5C1BF583}.Release|x64.ActiveCfg = Release|x64
+		{A0434164-58E1-4B51-AEF3-BBCF5C1BF583}.Release|x64.Build.0 = Release|x64
+		{A0434164-58E1-4B51-AEF3-BBCF5C1BF583}.Release|x64.Deploy.0 = Release|x64
+		{A0434164-58E1-4B51-AEF3-BBCF5C1BF583}.Release|x86.ActiveCfg = Release|x86
+		{A0434164-58E1-4B51-AEF3-BBCF5C1BF583}.Release|x86.Build.0 = Release|x86
+		{A0434164-58E1-4B51-AEF3-BBCF5C1BF583}.Release|x86.Deploy.0 = Release|x86
+		{04070017-D150-405D-9C6B-9B313DEA8F1A}.Debug|ARM64.ActiveCfg = Debug|Any CPU
+		{04070017-D150-405D-9C6B-9B313DEA8F1A}.Debug|ARM64.Build.0 = Debug|Any CPU
+		{04070017-D150-405D-9C6B-9B313DEA8F1A}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{04070017-D150-405D-9C6B-9B313DEA8F1A}.Debug|x64.Build.0 = Debug|Any CPU
+		{04070017-D150-405D-9C6B-9B313DEA8F1A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{04070017-D150-405D-9C6B-9B313DEA8F1A}.Debug|x86.Build.0 = Debug|Any CPU
+		{04070017-D150-405D-9C6B-9B313DEA8F1A}.Release|ARM64.ActiveCfg = Release|Any CPU
+		{04070017-D150-405D-9C6B-9B313DEA8F1A}.Release|ARM64.Build.0 = Release|Any CPU
+		{04070017-D150-405D-9C6B-9B313DEA8F1A}.Release|x64.ActiveCfg = Release|Any CPU
+		{04070017-D150-405D-9C6B-9B313DEA8F1A}.Release|x64.Build.0 = Release|Any CPU
+		{04070017-D150-405D-9C6B-9B313DEA8F1A}.Release|x86.ActiveCfg = Release|Any CPU
+		{04070017-D150-405D-9C6B-9B313DEA8F1A}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {61A13D6B-09D1-4824-8722-431804D54BAE}
+	EndGlobalSection
+EndGlobal

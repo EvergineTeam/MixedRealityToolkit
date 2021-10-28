@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Package
+  xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
+  xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest"
+  xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
+  xmlns:uap2="http://schemas.microsoft.com/appx/manifest/uap/windows10/2"
+  IgnorableNamespaces="uap uap2 mp">
+
+  <Identity Name="Evergine.MRTK.Demo.UWP.MixedReality"
+            Publisher="CN=Evergine"
+            Version="1.0.0.0" />
+
+  <mp:PhoneIdentity PhoneProductId="3c3f15d0-9655-4eae-985a-6a2627fc40be" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+
+  <Properties>
+    <DisplayName>Evergine.MRTK.Demo.UWP.MixedReality</DisplayName>
+    <PublisherDisplayName>Evergine</PublisherDisplayName>
+    <Logo>Assets\StoreLogo.png</Logo>
+  </Properties>
+
+  <Dependencies>
+    <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.16299.0" MaxVersionTested="10.0.17763.0" />
+  </Dependencies>
+
+  <Resources>
+    <Resource Language="x-generate"/>
+  </Resources>
+
+  <Applications>
+    <Application Id="App"
+        Executable="$targetnametoken$.exe"
+        EntryPoint="Evergine.MRTK.Demo.UWP.MixedReality.AppView">
+        <uap:VisualElements
+             DisplayName="Evergine.MRTK.Demo.UWP.MixedReality"
+             Square150x150Logo="Assets\Square150x150Logo.png" 
+             Square44x44Logo="Assets\Square44x44Logo.png" 
+             Description="Evergine.MRTK.Demo.UWP.MixedReality"
+             BackgroundColor="#464646">
+          <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" />
+          <uap:SplashScreen Image="Assets\SplashScreen.png" />
+        </uap:VisualElements>
+      </Application>
+  </Applications>
+
+  <Capabilities>
+    <uap2:Capability Name="spatialPerception" />
+  </Capabilities>
+</Package>

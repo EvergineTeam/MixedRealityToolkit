@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="System.Drawing.Common" Version="5.0.0" />
+    <PackageReference Include="Evergine.Common" Version="2021.10.28.1-nightly" />
+    <PackageReference Include="Evergine.Components" Version="2021.10.28.1-nightly" />
+    <PackageReference Include="Evergine.Framework" Version="2021.10.28.1-nightly" />
+    <PackageReference Include="Evergine.Editor.Extension" Version="2021.10.28.1-nightly" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Evergine.MRTK\Evergine.MRTK.csproj" />
+  </ItemGroup>
+</Project>
