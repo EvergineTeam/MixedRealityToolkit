@@ -1,0 +1,111 @@
+!Evergine.Assets.Exporters.MaterialMetaFile,Evergine.Assets
+Id: c29e3e3b-a18d-4f8e-981c-cb6438f9adc4
+DefaultProfile:
+  ExcludeAsset: false
+  Name: null
+  Platform: Undefined
+ExportAsRaw: false
+MaterialInfo:
+  Id: f621eec0-ac78-4bec-86c2-5fa5424d1c42
+  ActiveDirectives:
+    - ALBEDO_MAP
+  EffectID: 4f7e4c24-e83c-4350-9cd4-511fb2199cf4
+  Layer: e35c59a9-26ab-4b4c-8210-4b1f21c31530
+  Parameters:
+    - Name: WorldViewProj
+      Type: Evergine.Mathematics.Matrix4x4,Evergine.Mathematics
+      ValueByteArray: wDODQGVOFL5ig2U5gn1lOfJ7tK9rTZC8EAMAwJL//7/q+/u9anCawBYB7zv4+u47+ZeNsTYK1zQf7ItAvRuPQA==
+    - Name: World
+      Type: Evergine.Mathematics.Matrix4x4,Evergine.Mathematics
+      ValueByteArray: AAAAQAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAACAPw==
+    - Name: Color
+      Type: Evergine.Mathematics.Vector3,Evergine.Mathematics
+      ValueByteArray: AACAPwAAgD8AAIA/
+    - Name: Alpha
+      Type: System.Single
+      ValueByteArray: AACAPw==
+    - Name: InnerGlowColor
+      Type: Evergine.Mathematics.Vector3,Evergine.Mathematics
+      ValueByteArray: AACAPwAAgD8AAIA/
+    - Name: InnerGlowAlpha
+      Type: System.Single
+      ValueByteArray: AABAPw==
+    - Name: InnerGlowPower
+      Type: System.Single
+      ValueByteArray: AACAQA==
+    - Name: BorderWidth
+      Type: System.Single
+      ValueByteArray: zczMPQ==
+    - Name: BorderMinValue
+      Type: System.Single
+      ValueByteArray: zczMPQ==
+    - Name: FluentLightIntensity
+      Type: System.Single
+      ValueByteArray: AACAPw==
+    - Name: RoundCornerRadious
+      Type: System.Single
+      ValueByteArray: AACAPg==
+    - Name: RoundCornerMargin
+      Type: System.Single
+      ValueByteArray: CtcjPA==
+    - Name: Cutoff
+      Type: System.Single
+      ValueByteArray: AAAAPw==
+    - Name: EdgeSmoothingValue
+      Type: System.Single
+      ValueByteArray: bxIDOw==
+    - Name: FadeBeginDistance
+      Type: System.Single
+      ValueByteArray: CtcjPA==
+    - Name: FadeCompleteDistance
+      Type: System.Single
+      ValueByteArray: zczMPQ==
+    - Name: FadeMinValue
+      Type: System.Single
+      ValueByteArray: AAAAAA==
+    - Name: HoverColorOverride
+      Type: Evergine.Mathematics.Vector3,Evergine.Mathematics
+      ValueByteArray: j8J1Po/CdT6PwnU+
+    - Name: ProximityLightCenterColorOverride
+      Type: Evergine.Mathematics.Vector4,Evergine.Mathematics
+      ValueByteArray: PQpXPs3MDD9I4Xo/AAAAAA==
+    - Name: ProximityLightMiddleColorOverride
+      Type: Evergine.Mathematics.Vector4,Evergine.Mathematics
+      ValueByteArray: 7FE4PlyPAj8AAIA/zcxMPg==
+    - Name: ProximityLightOuterColorOverride
+      Type: Evergine.Mathematics.Vector4,Evergine.Mathematics
+      ValueByteArray: CtejPo/C9T2kcD0/AACAPw==
+    - Name: LightColor0
+      Type: Evergine.Mathematics.Vector4,Evergine.Mathematics
+      ValueByteArray: AAAAPwAAAD8AAAA/AACAPw==
+    - Name: Metallic
+      Type: System.Single
+      ValueByteArray: AAAAAA==
+    - Name: Smoothness
+      Type: System.Single
+      ValueByteArray: AAAAPw==
+    - Name: Tiling
+      Type: Evergine.Mathematics.Vector2,Evergine.Mathematics
+      ValueByteArray: AACAPwAAgD8=
+    - Name: Offset
+      Type: Evergine.Mathematics.Vector2,Evergine.Mathematics
+      ValueByteArray: AAAAAAAAAAA=
+    - Name: HoverLightData
+      Type: Evergine.Mathematics.Vector4,Evergine.Mathematics
+      ValueByteArray: AAAAAAAAAAAAAAAAAAAAAA==
+    - Name: ProximityLightData
+      Type: Evergine.Mathematics.Vector4,Evergine.Mathematics
+      ValueByteArray: AAAAAAAAAAAAAAAAAAAAAA==
+    - Name: MultiviewViewProj
+      Type: Evergine.Mathematics.Matrix4x4,Evergine.Mathematics
+      ValueByteArray: kpPOPwjcv72p9ji+gfM4vnJaDrfRDxdA/yFXvlQeV77EUpu+3jP/vuj+db+2+nW/9FFXPnRC377/T5++KTRYvg==
+    - Name: EyeCount
+      Type: System.Int32
+      ValueByteArray: AQAAAA==
+  Samplers:
+    - ID: 00000000-0000-0000-0000-000000000000
+      Name: null
+  Textures:
+    - ID: 2f299be3-6ca5-40e8-a95c-ca45ff4ff177
+      Name: Texture
+Profiles: {}

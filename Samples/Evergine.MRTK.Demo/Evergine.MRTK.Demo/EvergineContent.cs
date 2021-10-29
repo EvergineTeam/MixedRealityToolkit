@@ -16,11 +16,406 @@ namespace Evergine.MRTK.Demo
     public sealed class EvergineContent
     {
         
+        public sealed class Fonts
+        {
+            
+            /// <summary> Asset Path (Fonts/segoeui.ttf.wefile) </summary>
+            public static readonly Guid segoeui_ttf = new Guid("318fd4bd-769e-4812-8c7d-1be0dd9a1782");
+            
+            /// <summary> Asset Path (Fonts/segoeuib.ttf.wefile) </summary>
+            public static readonly Guid segoeuib_ttf = new Guid("39c20a0d-0ec9-41e0-93d2-cf8031ea95f1");
+            
+            /// <summary> Asset Path (Fonts/segoeuii.ttf.wefile) </summary>
+            public static readonly Guid segoeuii_ttf = new Guid("76a3571a-a06d-4547-ac18-2308991224a6");
+        }
+        
+        public sealed class Materials
+        {
+            
+            /// <summary> Asset Path (Materials/Default.wemt) </summary>
+            public static readonly Guid Default = new Guid("9733ded4-830a-4004-877d-43ec3740ce42");
+            
+            /// <summary> Asset Path (Materials/GlowMaterial.wemt) </summary>
+            public static readonly Guid GlowMaterial = new Guid("e7a15e18-dad0-4e60-9390-4554f5b198af");
+            
+            /// <summary> Asset Path (Materials/HolographicBackplateAlt.wemt) </summary>
+            public static readonly Guid HolographicBackplateAlt = new Guid("5b5bc9bf-19f4-4513-9e52-d0e5935da820");
+            
+            /// <summary> Asset Path (Materials/HolographicBackplateCircular.wemt) </summary>
+            public static readonly Guid HolographicBackplateCircular = new Guid("3ea22f6a-babb-4f87-aa60-e5a4f0d43d91");
+            
+            /// <summary> Asset Path (Materials/HolographicButtonContentCageProximityCircular.wemt) </summary>
+            public static readonly Guid HolographicButtonContentCageProximityCircular = new Guid("63d36daa-5a7c-4214-aaa5-54209ad8e041");
+            
+            /// <summary> Asset Path (Materials/MRTK_Logo.wemt) </summary>
+            public static readonly Guid MRTK_Logo = new Guid("7566d83a-0cd7-412d-9c48-9dd38e64d91f");
+            
+            /// <summary> Asset Path (Materials/PanContent.wemt) </summary>
+            public static readonly Guid PanContent = new Guid("9ca041f7-ffef-4c3e-b349-e19cf446979a");
+            
+            /// <summary> Asset Path (Materials/Plain_Logo.wemt) </summary>
+            public static readonly Guid Plain_Logo = new Guid("95235db6-8277-4f3e-b9ef-7daf58f6a955");
+            
+            /// <summary> Asset Path (Materials/SliderThumb.wemt) </summary>
+            public static readonly Guid SliderThumb = new Guid("c8d05e91-fdd0-4ac5-a098-cb018c984ddb");
+            
+            /// <summary> Asset Path (Materials/UIDarkGray.wemt) </summary>
+            public static readonly Guid UIDarkGray = new Guid("95c775d7-1461-4465-beb0-84ec959e4ede");
+            
+            /// <summary> Asset Path (Materials/Wave_Logo.wemt) </summary>
+            public static readonly Guid Wave_Logo = new Guid("c29e3e3b-a18d-4f8e-981c-cb6438f9adc4");
+            
+            /// <summary> Asset Path (Materials/DefaultMaterial.wemt) </summary>
+            public static readonly Guid DefaultMaterial = new Guid("02181b63-5a0e-46d1-9208-d92376ae33fb");
+            
+            /// <summary> Asset Path (Materials/DistortionMat.wemt) </summary>
+            public static readonly Guid DistortionMat = new Guid("5f795365-07f5-4b56-83df-043eb40a7457");
+            
+            public sealed class Colors
+            {
+                
+                /// <summary> Asset Path (Materials/Colors/Standard_Blue.wemt) </summary>
+                public static readonly Guid Standard_Blue = new Guid("29a88f02-4265-419f-9b61-b3b786fa6b30");
+                
+                /// <summary> Asset Path (Materials/Colors/Standard_Charcoal.wemt) </summary>
+                public static readonly Guid Standard_Charcoal = new Guid("8e4718a1-e35c-4cfd-8cdb-166657218560");
+                
+                /// <summary> Asset Path (Materials/Colors/Standard_Cyan.wemt) </summary>
+                public static readonly Guid Standard_Cyan = new Guid("3521d95f-b8ce-40cb-b4d0-c268f64496bd");
+                
+                /// <summary> Asset Path (Materials/Colors/Standard_Emerald.wemt) </summary>
+                public static readonly Guid Standard_Emerald = new Guid("0867071b-476d-41cc-b072-9dd796ce98a2");
+                
+                /// <summary> Asset Path (Materials/Colors/Standard_Green.wemt) </summary>
+                public static readonly Guid Standard_Green = new Guid("c3e0700e-b748-4613-82e7-c0de2ecf3c45");
+                
+                /// <summary> Asset Path (Materials/Colors/Standard_Lime.wemt) </summary>
+                public static readonly Guid Standard_Lime = new Guid("c46cf687-2999-4576-a5a1-f1b6863e6d3f");
+                
+                /// <summary> Asset Path (Materials/Colors/Standard_Orange.wemt) </summary>
+                public static readonly Guid Standard_Orange = new Guid("bfcf267e-cc0a-482c-9738-a19701e97652");
+                
+                /// <summary> Asset Path (Materials/Colors/Standard_Pink.wemt) </summary>
+                public static readonly Guid Standard_Pink = new Guid("e15b70dc-4787-4517-a720-914d405afa85");
+                
+                /// <summary> Asset Path (Materials/Colors/Standard_Purple.wemt) </summary>
+                public static readonly Guid Standard_Purple = new Guid("78e9e4d7-711b-44b7-b673-9d2cb9f1220f");
+                
+                /// <summary> Asset Path (Materials/Colors/Standard_Red.wemt) </summary>
+                public static readonly Guid Standard_Red = new Guid("1eb22db1-a530-42a0-8873-a556f60f03f2");
+                
+                /// <summary> Asset Path (Materials/Colors/Standard_Yellow.wemt) </summary>
+                public static readonly Guid Standard_Yellow = new Guid("b5810cca-0555-4aab-86b8-b591766234a5");
+            }
+            
+            public sealed class Icons
+            {
+                
+                /// <summary> Asset Path (Materials/Icons/Adjust.wemt) </summary>
+                public static readonly Guid Adjust = new Guid("163a35b7-72c2-41c3-8116-2b44e8a79394");
+                
+                /// <summary> Asset Path (Materials/Icons/IconA.wemt) </summary>
+                public static readonly Guid IconA = new Guid("7a93b9b7-56a3-41f1-8392-0751355e1bef");
+                
+                /// <summary> Asset Path (Materials/Icons/IconB.wemt) </summary>
+                public static readonly Guid IconB = new Guid("b4780cf3-7509-4615-86d3-6c2ffa231fa4");
+                
+                /// <summary> Asset Path (Materials/Icons/IconC.wemt) </summary>
+                public static readonly Guid IconC = new Guid("ce2f33db-e32c-4a69-870c-b2905569897f");
+                
+                /// <summary> Asset Path (Materials/Icons/Microphone.wemt) </summary>
+                public static readonly Guid Microphone = new Guid("d129f5e3-9a07-442b-8f09-779075e73943");
+                
+                /// <summary> Asset Path (Materials/Icons/MicrophoneOff.wemt) </summary>
+                public static readonly Guid MicrophoneOff = new Guid("469a29b3-53be-4afd-adbc-14ca42894154");
+            }
+        }
+        
+        public sealed class Models
+        {
+            
+            /// <summary> Asset Path (Models/eagle.FBX.wemd) </summary>
+            public static readonly Guid eagle_FBX = new Guid("d6bcbd41-c81d-4903-bf13-0b52c60d2418");
+            
+            /// <summary> Asset Path (Models/Model_Bucky.fbx.wemd) </summary>
+            public static readonly Guid Model_Bucky_fbx = new Guid("334fc69a-5a9e-4ab5-b4ce-96cc3a6c6144");
+            
+            /// <summary> Asset Path (Models/Model_Icosa.fbx.wemd) </summary>
+            public static readonly Guid Model_Icosa_fbx = new Guid("fea0a9fa-7078-4742-9d9c-42ded82a82c4");
+            
+            /// <summary> Asset Path (Models/Model_Octa.fbx.wemd) </summary>
+            public static readonly Guid Model_Octa_fbx = new Guid("7eb041c5-5239-45f0-9e70-e535c0f90d27");
+            
+            /// <summary> Asset Path (Models/PianoKeys.fbx.wemd) </summary>
+            public static readonly Guid PianoKeys_fbx = new Guid("7c21179e-542e-49f4-9f4a-d86929587278");
+            
+            /// <summary> Asset Path (Models/PiggyBot.glb.wemd) </summary>
+            public static readonly Guid PiggyBot_glb = new Guid("261a775b-1156-4290-bbc0-3524ecd7fec8");
+            
+            public sealed class eagle_Embedded
+            {
+                
+                public sealed class Materials
+                {
+                    
+                    /// <summary> Asset Path (Models/eagle_Embedded/Materials/Material #25.wemt) </summary>
+                    public static readonly Guid Material_25 = new Guid("3eb02471-1856-4172-bcd7-464929b7e888");
+                }
+                
+                public sealed class Samplers
+                {
+                    
+                    /// <summary> Asset Path (Models/eagle_Embedded/Samplers/Sampler0.wesp) </summary>
+                    public static readonly Guid Sampler0 = new Guid("11a6cfcf-257b-4dc2-a3b0-f90589d2ecf6");
+                }
+                
+                public sealed class Textures
+                {
+                    
+                    /// <summary> Asset Path (Models/eagle_Embedded/Textures/eagle_dif.jpg.wetx) </summary>
+                    public static readonly Guid eagle_dif_jpg = new Guid("11893737-d548-49e9-bbfc-7a13f2f2ca74");
+                }
+            }
+            
+            public sealed class Model_Bucky_Embedded
+            {
+                
+                public sealed class Materials
+                {
+                    
+                    /// <summary> Asset Path (Models/Model_Bucky_Embedded/Materials/DefaultMaterial.wemt) </summary>
+                    public static readonly Guid DefaultMaterial = new Guid("2c839e03-1f75-4cff-8b29-a2f7044c3e45");
+                }
+                
+                public sealed class Samplers
+                {
+                    
+                    /// <summary> Asset Path (Models/Model_Bucky_Embedded/Samplers/Sampler0.wesp) </summary>
+                    public static readonly Guid Sampler0 = new Guid("b3a459a5-6311-46bb-887a-57997a7e6d55");
+                }
+            }
+            
+            public sealed class Model_Icosa_Embedded
+            {
+                
+                public sealed class Materials
+                {
+                    
+                    /// <summary> Asset Path (Models/Model_Icosa_Embedded/Materials/DefaultMaterial.wemt) </summary>
+                    public static readonly Guid DefaultMaterial = new Guid("ed39fa14-3237-4c87-b295-9b890cb6c171");
+                }
+                
+                public sealed class Samplers
+                {
+                    
+                    /// <summary> Asset Path (Models/Model_Icosa_Embedded/Samplers/Sampler0.wesp) </summary>
+                    public static readonly Guid Sampler0 = new Guid("a19411be-6fda-4374-801d-486680f29bc4");
+                }
+            }
+            
+            public sealed class Model_Octa_Embedded
+            {
+                
+                public sealed class Materials
+                {
+                    
+                    /// <summary> Asset Path (Models/Model_Octa_Embedded/Materials/DefaultMaterial.wemt) </summary>
+                    public static readonly Guid DefaultMaterial = new Guid("537cb43a-e152-4fd6-ba89-ba0c0b93acbd");
+                }
+                
+                public sealed class Samplers
+                {
+                    
+                    /// <summary> Asset Path (Models/Model_Octa_Embedded/Samplers/Sampler0.wesp) </summary>
+                    public static readonly Guid Sampler0 = new Guid("e69242dd-e95f-44fc-b820-7ec0e3a951cf");
+                }
+            }
+            
+            public sealed class PianoKeys_Embedded
+            {
+                
+                public sealed class Materials
+                {
+                    
+                    /// <summary> Asset Path (Models/PianoKeys_Embedded/Materials/DefaultMaterial.wemt) </summary>
+                    public static readonly Guid DefaultMaterial = new Guid("30c217a1-6c1d-4818-a3ec-b51cdee25212");
+                    
+                    /// <summary> Asset Path (Models/PianoKeys_Embedded/Materials/VelvetMaterial.wemt) </summary>
+                    public static readonly Guid VelvetMaterial = new Guid("d80e325e-0caf-4f3f-8ccb-a52a332a6124");
+                }
+                
+                public sealed class Samplers
+                {
+                    
+                    /// <summary> Asset Path (Models/PianoKeys_Embedded/Samplers/Sampler0.wesp) </summary>
+                    public static readonly Guid Sampler0 = new Guid("b3ceb8f6-2450-4899-9559-2b7ead734bc7");
+                }
+                
+                public sealed class Textures
+                {
+                    
+                    /// <summary> Asset Path (Models/PianoKeys_Embedded/Textures/PianoKeys_DIF.png.wetx) </summary>
+                    public static readonly Guid PianoKeys_DIF_png = new Guid("877f10d1-fec6-4c3d-8993-72b81a964dc4");
+                }
+            }
+            
+            public sealed class PiggyBot_Embedded
+            {
+                
+                public sealed class Materials
+                {
+                    
+                    /// <summary> Asset Path (Models/PiggyBot_Embedded/Materials/Piggy_Bot_Complete.wemt) </summary>
+                    public static readonly Guid Piggy_Bot_Complete = new Guid("d50d00e8-f5b2-461d-9b85-1f7ed6d8d4f5");
+                }
+                
+                public sealed class Samplers
+                {
+                    
+                    /// <summary> Asset Path (Models/PiggyBot_Embedded/Samplers/Sampler0.wesp) </summary>
+                    public static readonly Guid Sampler0 = new Guid("b79d2686-7408-44ee-ac47-47302bcb3aaf");
+                }
+                
+                public sealed class Textures
+                {
+                    
+                    /// <summary> Asset Path (Models/PiggyBot_Embedded/Textures/Piggy_Bot_Complete_baseColor.png.wetx) </summary>
+                    public static readonly Guid Piggy_Bot_Complete_baseColor_png = new Guid("709910cd-a6f1-489f-9631-42f733796987");
+                }
+            }
+        }
+        
         public sealed class Scenes
         {
             
+            /// <summary> Asset Path (Scenes/DemoScene.wescene.wesc) </summary>
+            public static readonly Guid DemoScene_wescene = new Guid("3095213c-123c-4c4d-aabe-97502977a3cb");
+            
             /// <summary> Asset Path (Scenes/MyScene.wescene.wesc) </summary>
             public static readonly Guid MyScene_wescene = new Guid("7fc2d0c7-594a-49b1-b12b-adde4c2bc15b");
+            
+            public sealed class Test
+            {
+                
+                /// <summary> Asset Path (Scenes/Test/ButtonsTest.wescene.wesc) </summary>
+                public static readonly Guid ButtonsTest_wescene = new Guid("ce144b7f-5eca-4f99-8b18-84cf3bc9994a");
+                
+                /// <summary> Asset Path (Scenes/Test/SlidersTest.wescene.wesc) </summary>
+                public static readonly Guid SlidersTest_wescene = new Guid("0ba17de3-c407-4f1f-bc8e-60c4692e8e85");
+            }
+        }
+        
+        public sealed class Sounds
+        {
+            
+            /// <summary> Asset Path (Sounds/MRTK_Gem.wav.wesn) </summary>
+            public static readonly Guid MRTK_Gem_wav = new Guid("f0824659-252b-4fc7-9d49-10aacab65fc6");
+            
+            public sealed class FullOctave
+            {
+                
+                /// <summary> Asset Path (Sounds/FullOctave/A.wav.wesn) </summary>
+                public static readonly Guid A_wav = new Guid("efe95d1c-c29a-448c-a680-43c23d921ab3");
+                
+                /// <summary> Asset Path (Sounds/FullOctave/B.wav.wesn) </summary>
+                public static readonly Guid B_wav = new Guid("cb730ab6-ad56-4c99-a375-1c4c15622002");
+                
+                /// <summary> Asset Path (Sounds/FullOctave/BFlat.wav.wesn) </summary>
+                public static readonly Guid BFlat_wav = new Guid("76aac663-946d-4355-8b19-7e54687b20e7");
+                
+                /// <summary> Asset Path (Sounds/FullOctave/C.wav.wesn) </summary>
+                public static readonly Guid C_wav = new Guid("b2d7de44-4b77-4b42-8124-ecea259beb9e");
+                
+                /// <summary> Asset Path (Sounds/FullOctave/C_Octave.wav.wesn) </summary>
+                public static readonly Guid C_Octave_wav = new Guid("06cf9911-80f8-44da-91e3-3ec898b0be58");
+                
+                /// <summary> Asset Path (Sounds/FullOctave/CSharp.wav.wesn) </summary>
+                public static readonly Guid CSharp_wav = new Guid("12182847-e67a-44ef-acaf-ef479e91117e");
+                
+                /// <summary> Asset Path (Sounds/FullOctave/D.wav.wesn) </summary>
+                public static readonly Guid D_wav = new Guid("2935e4c5-e6bb-4cf6-ad09-6811715e2c90");
+                
+                /// <summary> Asset Path (Sounds/FullOctave/E.wav.wesn) </summary>
+                public static readonly Guid E_wav = new Guid("931e026a-01c6-4ae3-bfd5-037c45621916");
+                
+                /// <summary> Asset Path (Sounds/FullOctave/EFlat.wav.wesn) </summary>
+                public static readonly Guid EFlat_wav = new Guid("241621aa-eb7e-4462-924d-5e74f4403de3");
+                
+                /// <summary> Asset Path (Sounds/FullOctave/F.wav.wesn) </summary>
+                public static readonly Guid F_wav = new Guid("d22dd578-0205-4fed-9985-aa67cda76cba");
+                
+                /// <summary> Asset Path (Sounds/FullOctave/FSharp.wav.wesn) </summary>
+                public static readonly Guid FSharp_wav = new Guid("d1d34c95-27ec-4435-b848-9d0ca222a800");
+                
+                /// <summary> Asset Path (Sounds/FullOctave/G.wav.wesn) </summary>
+                public static readonly Guid G_wav = new Guid("9a93463b-a7ff-4b7f-ad19-a2cfdf8e2c76");
+                
+                /// <summary> Asset Path (Sounds/FullOctave/GSharp.wav.wesn) </summary>
+                public static readonly Guid GSharp_wav = new Guid("642185b6-a201-4018-9513-b9983a97a6cd");
+            }
+        }
+        
+        public sealed class Textures
+        {
+            
+            /// <summary> Asset Path (Textures/Checker_albedo.png.wetx) </summary>
+            public static readonly Guid Checker_albedo_png = new Guid("fdc10e79-2a87-42f1-a5b1-78f968cec18f");
+            
+            /// <summary> Asset Path (Textures/Plain Concepts logo.png.wetx) </summary>
+            public static readonly Guid Plain_Concepts_logo_png = new Guid("b69b50a6-7d3e-4f92-89d8-b9ad95d0656d");
+            
+            /// <summary> Asset Path (Textures/Wave_MRTK logo letters.png.wetx) </summary>
+            public static readonly Guid Wave_MRTK_logo_letters_png = new Guid("cfc57bed-a868-447b-bacf-b4f9a339a4fb");
+            
+            /// <summary> Asset Path (Textures/Wave_MRTK logo.png.wetx) </summary>
+            public static readonly Guid Wave_MRTK_logo_png = new Guid("2f299be3-6ca5-40e8-a95c-ca45ff4ff177");
+            
+            /// <summary> Asset Path (Textures/Checker.png.wetx) </summary>
+            public static readonly Guid Checker_png = new Guid("8b1d459c-c433-4ee3-bfe5-b45fbce12736");
+            
+            /// <summary> Asset Path (Textures/dfgLut.png.wetx) </summary>
+            public static readonly Guid dfgLut_png = new Guid("d81d459c-c433-4ee3-bfe5-b45fbce12736");
+            
+            public sealed class Icons
+            {
+                
+                /// <summary> Asset Path (Textures/Icons/AppBarAdjust.png.wetx) </summary>
+                public static readonly Guid AppBarAdjust_png = new Guid("b738c3da-30ed-4e99-a009-0cb4c5aeae02");
+                
+                /// <summary> Asset Path (Textures/Icons/IconA.png.wetx) </summary>
+                public static readonly Guid IconA_png = new Guid("b0ba5395-9244-4338-a9d4-f41ce944031a");
+                
+                /// <summary> Asset Path (Textures/Icons/IconB.png.wetx) </summary>
+                public static readonly Guid IconB_png = new Guid("2b3822c1-aee1-489f-b146-76a9c32ab523");
+                
+                /// <summary> Asset Path (Textures/Icons/IconC.png.wetx) </summary>
+                public static readonly Guid IconC_png = new Guid("23b08303-f4bb-4db1-bb16-145aae520753");
+                
+                /// <summary> Asset Path (Textures/Icons/microphone.png.wetx) </summary>
+                public static readonly Guid microphone_png = new Guid("d9066a16-3cb9-4004-ac35-3714e44eb24c");
+                
+                /// <summary> Asset Path (Textures/Icons/microphoneOff.png.wetx) </summary>
+                public static readonly Guid microphoneOff_png = new Guid("91a386d4-f23d-4bd5-be8f-6af0d3f42b03");
+            }
+            
+            public sealed class PostProcessing
+            {
+                
+                /// <summary> Asset Path (Textures/PostProcessing/BlueNoise.png.wetx) </summary>
+                public static readonly Guid BlueNoise_png = new Guid("85459c5f-78da-4ed0-9038-26d2dd27280d");
+                
+                /// <summary> Asset Path (Textures/PostProcessing/DistortionTexture.png.wetx) </summary>
+                public static readonly Guid DistortionTexture_png = new Guid("34b16253-37ce-457a-bd5b-3ed27bb51738");
+                
+                /// <summary> Asset Path (Textures/PostProcessing/FlareGradient.png.wetx) </summary>
+                public static readonly Guid FlareGradient_png = new Guid("1104127f-8a0e-4a1c-9b8c-b8832362a809");
+                
+                /// <summary> Asset Path (Textures/PostProcessing/FlareStarburst.png.wetx) </summary>
+                public static readonly Guid FlareStarburst_png = new Guid("385d88a2-9a0c-4275-ac7d-499207f1bae0");
+                
+                /// <summary> Asset Path (Textures/PostProcessing/LensDirt00.png.wetx) </summary>
+                public static readonly Guid LensDirt00_png = new Guid("75a8073c-1878-4160-a92d-da0d7530cbb6");
+            }
         }
         
         public sealed class Computes
@@ -200,16 +595,6 @@ namespace Evergine.MRTK.Demo
             public static readonly Guid StandardEffect = new Guid("daa1f60a-82ad-40fc-8fbb-7b85caa6de0a");
         }
         
-        public sealed class Materials
-        {
-            
-            /// <summary> Asset Path (Materials/DefaultMaterial.wemt) </summary>
-            public static readonly Guid DefaultMaterial = new Guid("02181b63-5a0e-46d1-9208-d92376ae33fb");
-            
-            /// <summary> Asset Path (Materials/DistortionMat.wemt) </summary>
-            public static readonly Guid DistortionMat = new Guid("5f795365-07f5-4b56-83df-043eb40a7457");
-        }
-        
         public sealed class PostProcessingGraphs
         {
             
@@ -243,32 +628,310 @@ namespace Evergine.MRTK.Demo
             public static readonly Guid LinearWrapSampler = new Guid("9018edf8-ea96-4721-bf83-5561942432e0");
         }
         
-        public sealed class Textures
+        public sealed class MRTK
         {
             
-            /// <summary> Asset Path (Textures/Checker.png.wetx) </summary>
-            public static readonly Guid Checker_png = new Guid("8b1d459c-c433-4ee3-bfe5-b45fbce12736");
-            
-            /// <summary> Asset Path (Textures/dfgLut.png.wetx) </summary>
-            public static readonly Guid dfgLut_png = new Guid("d81d459c-c433-4ee3-bfe5-b45fbce12736");
-            
-            public sealed class PostProcessing
+            public sealed class Effects
             {
                 
-                /// <summary> Asset Path (Textures/PostProcessing/BlueNoise.png.wetx) </summary>
-                public static readonly Guid BlueNoise_png = new Guid("85459c5f-78da-4ed0-9038-26d2dd27280d");
+                /// <summary> Asset Path (MRTK/Effects/HoloGraphic.wefx) </summary>
+                public static readonly Guid HoloGraphic = new Guid("4f7e4c24-e83c-4350-9cd4-511fb2199cf4");
                 
-                /// <summary> Asset Path (Textures/PostProcessing/DistortionTexture.png.wetx) </summary>
-                public static readonly Guid DistortionTexture_png = new Guid("34b16253-37ce-457a-bd5b-3ed27bb51738");
+                /// <summary> Asset Path (MRTK/Effects/HoloHandsLocal.wefx) </summary>
+                public static readonly Guid HoloHandsLocal = new Guid("b7b6076f-e298-45cf-babc-a8316996f359");
+            }
+            
+            public sealed class Materials
+            {
                 
-                /// <summary> Asset Path (Textures/PostProcessing/FlareGradient.png.wetx) </summary>
-                public static readonly Guid FlareGradient_png = new Guid("1104127f-8a0e-4a1c-9b8c-b8832362a809");
+                /// <summary> Asset Path (MRTK/Materials/HoloHands.wemt) </summary>
+                public static readonly Guid HoloHands = new Guid("d7c4a591-2f7a-4754-80c4-d47c976843b9");
                 
-                /// <summary> Asset Path (Textures/PostProcessing/FlareStarburst.png.wetx) </summary>
-                public static readonly Guid FlareStarburst_png = new Guid("385d88a2-9a0c-4275-ac7d-499207f1bae0");
+                public sealed class AxisManipulator
+                {
+                    
+                    /// <summary> Asset Path (MRTK/Materials/AxisManipulator/AxisLine.wemt) </summary>
+                    public static readonly Guid AxisLine = new Guid("84896037-fa9d-4415-a1b0-98d35e4133f6");
+                    
+                    /// <summary> Asset Path (MRTK/Materials/AxisManipulator/AxisLineFocused.wemt) </summary>
+                    public static readonly Guid AxisLineFocused = new Guid("0dfdda40-2622-4b23-8ad0-5d7987849f14");
+                    
+                    /// <summary> Asset Path (MRTK/Materials/AxisManipulator/AxisLineGrabbed.wemt) </summary>
+                    public static readonly Guid AxisLineGrabbed = new Guid("cfd90095-ca9f-40aa-a8d8-b77b956a9d53");
+                    
+                    /// <summary> Asset Path (MRTK/Materials/AxisManipulator/Origin.wemt) </summary>
+                    public static readonly Guid Origin = new Guid("3d6d2f54-6191-4826-b0d8-bfc7cc612115");
+                    
+                    /// <summary> Asset Path (MRTK/Materials/AxisManipulator/OriginFocused.wemt) </summary>
+                    public static readonly Guid OriginFocused = new Guid("371241eb-b255-4358-bc40-6375efbcaa2a");
+                    
+                    /// <summary> Asset Path (MRTK/Materials/AxisManipulator/OriginGrabbed.wemt) </summary>
+                    public static readonly Guid OriginGrabbed = new Guid("12d12046-a843-446f-86bb-bae3fccb9239");
+                    
+                    /// <summary> Asset Path (MRTK/Materials/AxisManipulator/TwoAxis.wemt) </summary>
+                    public static readonly Guid TwoAxis = new Guid("ec096b72-56fe-4fb5-8a73-38df0fd97af6");
+                    
+                    /// <summary> Asset Path (MRTK/Materials/AxisManipulator/TwoAxisFocused.wemt) </summary>
+                    public static readonly Guid TwoAxisFocused = new Guid("0147fd18-2157-45a9-9c0e-096c2a3b98c0");
+                    
+                    /// <summary> Asset Path (MRTK/Materials/AxisManipulator/TwoAxisGrabbed.wemt) </summary>
+                    public static readonly Guid TwoAxisGrabbed = new Guid("149c21e7-0968-49ca-887a-12fad63b86bb");
+                }
                 
-                /// <summary> Asset Path (Textures/PostProcessing/LensDirt00.png.wetx) </summary>
-                public static readonly Guid LensDirt00_png = new Guid("75a8073c-1878-4160-a92d-da0d7530cbb6");
+                public sealed class BoundingBox
+                {
+                    
+                    /// <summary> Asset Path (MRTK/Materials/BoundingBox/BoundingBoxHandleBlue.wemt) </summary>
+                    public static readonly Guid BoundingBoxHandleBlue = new Guid("9adff77b-f6b6-4683-bf28-243fafea5436");
+                    
+                    /// <summary> Asset Path (MRTK/Materials/BoundingBox/BoundingBoxHandleBlueGrabbed.wemt) </summary>
+                    public static readonly Guid BoundingBoxHandleBlueGrabbed = new Guid("7c6dfc11-0f01-4d22-bfc9-bc5ca4fae227");
+                    
+                    /// <summary> Asset Path (MRTK/Materials/BoundingBox/BoundingBoxVisual.wemt) </summary>
+                    public static readonly Guid BoundingBoxVisual = new Guid("76254053-dba8-4ecd-8ffd-2989ae519c06");
+                    
+                    /// <summary> Asset Path (MRTK/Materials/BoundingBox/BoundingBoxVisualGrabbed.wemt) </summary>
+                    public static readonly Guid BoundingBoxVisualGrabbed = new Guid("0852af68-ed44-4dd5-bebb-05c15449d498");
+                    
+                    /// <summary> Asset Path (MRTK/Materials/BoundingBox/BoundingBoxWireframe.wemt) </summary>
+                    public static readonly Guid BoundingBoxWireframe = new Guid("d04c6b19-b181-4798-8052-73388883abfe");
+                }
+                
+                public sealed class Cursor
+                {
+                    
+                    /// <summary> Asset Path (MRTK/Materials/Cursor/CursorBase.wemt) </summary>
+                    public static readonly Guid CursorBase = new Guid("b65fb622-f2bc-42ef-a797-3a98cd7df438");
+                    
+                    /// <summary> Asset Path (MRTK/Materials/Cursor/CursorPinch.wemt) </summary>
+                    public static readonly Guid CursorPinch = new Guid("d12dec8a-90fd-410d-acc6-078da8c70bb4");
+                }
+                
+                public sealed class Interactables
+                {
+                    
+                    /// <summary> Asset Path (MRTK/Materials/Interactables/HolographicBackplate.wemt) </summary>
+                    public static readonly Guid HolographicBackplate = new Guid("4f32ee6e-22c9-48be-ad27-76ba638454fb");
+                    
+                    /// <summary> Asset Path (MRTK/Materials/Interactables/HolographicButtonContentCage.wemt) </summary>
+                    public static readonly Guid HolographicButtonContentCage = new Guid("36a22ca4-c33c-4784-b55d-0c476895d080");
+                    
+                    /// <summary> Asset Path (MRTK/Materials/Interactables/HolographicButtonContentCageProximity.wemt) </summary>
+                    public static readonly Guid HolographicButtonContentCageProximity = new Guid("876d9b5c-5016-4796-8473-92a19a5d244c");
+                    
+                    /// <summary> Asset Path (MRTK/Materials/Interactables/HolographicPlate.wemt) </summary>
+                    public static readonly Guid HolographicPlate = new Guid("69efcf10-45b8-4d22-8ab3-b4e309f49eb7");
+                    
+                    /// <summary> Asset Path (MRTK/Materials/Interactables/PressableInteractablesFrontplate.wemt) </summary>
+                    public static readonly Guid PressableInteractablesFrontplate = new Guid("75122a47-663c-4625-8118-ff2e2a2bcaeb");
+                    
+                    /// <summary> Asset Path (MRTK/Materials/Interactables/RoundButton_Back.wemt) </summary>
+                    public static readonly Guid RoundButton_Back = new Guid("90ff04a5-fc9e-433e-be4b-ff4e024105e5");
+                    
+                    /// <summary> Asset Path (MRTK/Materials/Interactables/RoundButton_Front.wemt) </summary>
+                    public static readonly Guid RoundButton_Front = new Guid("3f1baba7-748b-4798-82af-8cd1de38ff75");
+                    
+                    /// <summary> Asset Path (MRTK/Materials/Interactables/RoundButton_FrontPressed.wemt) </summary>
+                    public static readonly Guid RoundButton_FrontPressed = new Guid("5690f16f-c7c7-49ac-958c-710cb6375515");
+                }
+            }
+            
+            public sealed class Models
+            {
+                
+                public sealed class BoundingBox
+                {
+                    
+                    /// <summary> Asset Path (MRTK/Models/BoundingBox/MRTK_BoundingBox_RotateHandle.fbx.wemd) </summary>
+                    public static readonly Guid MRTK_BoundingBox_RotateHandle_fbx = new Guid("ad14ac2e-280b-450e-a134-fcf7fb4cdde9");
+                    
+                    /// <summary> Asset Path (MRTK/Models/BoundingBox/MRTK_BoundingBox_ScaleHandle.fbx.wemd) </summary>
+                    public static readonly Guid MRTK_BoundingBox_ScaleHandle_fbx = new Guid("6ccdbf52-05bf-462c-92a6-bfb720372242");
+                }
+                
+                public sealed class Slider
+                {
+                    
+                    /// <summary> Asset Path (MRTK/Models/Slider/Button_Oval_Concave_12x24mm_optimized.fbx.wemd) </summary>
+                    public static readonly Guid Button_Oval_Concave_12x24mm_optimized_fbx = new Guid("d062dd03-25f9-4635-af8c-7435b93bbfd2");
+                    
+                    public sealed class Button_Oval_Concave_12x24mm_optimized_Embedded
+                    {
+                        
+                        public sealed class Materials
+                        {
+                            
+                            /// <summary> Asset Path (MRTK/Models/Slider/Button_Oval_Concave_12x24mm_optimized_Embedded/Materials/lambert1.wemt) </summary>
+                            public static readonly Guid lambert1 = new Guid("0bf88a99-44af-4e83-983a-730c9d84e824");
+                        }
+                        
+                        public sealed class Samplers
+                        {
+                            
+                            /// <summary> Asset Path (MRTK/Models/Slider/Button_Oval_Concave_12x24mm_optimized_Embedded/Samplers/Sampler0.wesp) </summary>
+                            public static readonly Guid Sampler0 = new Guid("0acabff4-0328-433a-b8f8-ce926f8a1ee3");
+                        }
+                    }
+                }
+            }
+            
+            public sealed class Prefabs
+            {
+                
+                /// <summary> Asset Path (MRTK/Prefabs/AxisManipulator_Axis.wescene.wesc) </summary>
+                public static readonly Guid AxisManipulator_Axis_wescene = new Guid("42751e81-ed6e-4e09-b0d2-2b238f4afcc3");
+                
+                /// <summary> Asset Path (MRTK/Prefabs/AxisManipulator_Center.wescene.wesc) </summary>
+                public static readonly Guid AxisManipulator_Center_wescene = new Guid("cd0721a6-f291-4db1-8639-db871bc2175b");
+                
+                /// <summary> Asset Path (MRTK/Prefabs/AxisManipulator_Plane.wescene.wesc) </summary>
+                public static readonly Guid AxisManipulator_Plane_wescene = new Guid("2d623669-2e9e-4ce2-8c3b-927846111629");
+                
+                /// <summary> Asset Path (MRTK/Prefabs/BoundingBox_FaceScaleHandle.wescene.wesc) </summary>
+                public static readonly Guid BoundingBox_FaceScaleHandle_wescene = new Guid("7dc30238-5a85-4f41-b0b8-a5baa67ec465");
+                
+                /// <summary> Asset Path (MRTK/Prefabs/BoundingBox_RotateHandle.wescene.wesc) </summary>
+                public static readonly Guid BoundingBox_RotateHandle_wescene = new Guid("91581f1c-7c41-4c43-bc53-5fdb064a90f7");
+                
+                /// <summary> Asset Path (MRTK/Prefabs/BoundingBox_ScaleHandle.wescene.wesc) </summary>
+                public static readonly Guid BoundingBox_ScaleHandle_wescene = new Guid("92d409e4-15d4-432c-be90-e57aaece73a5");
+                
+                /// <summary> Asset Path (MRTK/Prefabs/PressableButtonHoloLens2Unplated.wescene.wesc) </summary>
+                public static readonly Guid PressableButtonHoloLens2Unplated_wescene = new Guid("d3c78edd-e94f-4e2c-ba4b-c52b3a998cf4");
+                
+                /// <summary> Asset Path (MRTK/Prefabs/PressableButtonPlated32x32mm.wescene.wesc) </summary>
+                public static readonly Guid PressableButtonPlated32x32mm_wescene = new Guid("facc69c2-67f2-4bc3-97cd-d1ddbd42a7e5");
+                
+                /// <summary> Asset Path (MRTK/Prefabs/PressableRoundButton.wescene.wesc) </summary>
+                public static readonly Guid PressableRoundButton_wescene = new Guid("36cadeae-b478-4b98-a06c-72a186813083");
+                
+                /// <summary> Asset Path (MRTK/Prefabs/Slider.wescene.wesc) </summary>
+                public static readonly Guid Slider_wescene = new Guid("ebf701c2-15f7-4a05-bfb0-946e3ac5aa06");
+            }
+            
+            public sealed class RenderLayers
+            {
+                
+                /// <summary> Asset Path (MRTK/RenderLayers/Additive.werl) </summary>
+                public static readonly Guid Additive = new Guid("1bfafe78-d87c-482e-8ba9-ddc18d3e9a6d");
+                
+                /// <summary> Asset Path (MRTK/RenderLayers/AlphaZWrite.werl) </summary>
+                public static readonly Guid AlphaZWrite = new Guid("ec4f0d2c-a47c-42c0-9784-86f2c09d10e5");
+                
+                /// <summary> Asset Path (MRTK/RenderLayers/GUI.werl) </summary>
+                public static readonly Guid GUI = new Guid("08c68e26-7f31-49f8-ac0b-f31db6c9e3dc");
+                
+                /// <summary> Asset Path (MRTK/RenderLayers/OpaqueCullNone.werl) </summary>
+                public static readonly Guid OpaqueCullNone = new Guid("69451f8f-e41d-4a68-a5ad-28a08c76980a");
+                
+                /// <summary> Asset Path (MRTK/RenderLayers/OverGUI.werl) </summary>
+                public static readonly Guid OverGUI = new Guid("09ec3afb-5183-4b53-b78c-7b0ada73b9af");
+            }
+            
+            public sealed class Samplers
+            {
+                
+                /// <summary> Asset Path (MRTK/Samplers/AnisotropicClampSampler.wesp) </summary>
+                public static readonly Guid AnisotropicClampSampler = new Guid("a6f09f12-0f97-4b8e-a872-3f8dbe5bd249");
+                
+                /// <summary> Asset Path (MRTK/Samplers/LinearClampSampler.wesp) </summary>
+                public static readonly Guid LinearClampSampler = new Guid("a865b9be-6653-4d6c-8669-993844950b8d");
+                
+                /// <summary> Asset Path (MRTK/Samplers/LinearWrapSampler.wesp) </summary>
+                public static readonly Guid LinearWrapSampler = new Guid("cb80d2ef-6bcc-4dd3-8e62-636465021fba");
+            }
+            
+            public sealed class Sounds
+            {
+                
+                /// <summary> Asset Path (MRTK/Sounds/MRTK_ButtonPress.wav.wesn) </summary>
+                public static readonly Guid MRTK_ButtonPress_wav = new Guid("2f03824d-5709-4c4d-9857-c6a47769a5bc");
+                
+                /// <summary> Asset Path (MRTK/Sounds/MRTK_ButtonUnpress.wav.wesn) </summary>
+                public static readonly Guid MRTK_ButtonUnpress_wav = new Guid("7f835fa0-da0a-4152-b6ee-157943781e61");
+                
+                /// <summary> Asset Path (MRTK/Sounds/MRTK_Move_End.wav.wesn) </summary>
+                public static readonly Guid MRTK_Move_End_wav = new Guid("fd9d4d83-ee1a-479b-8836-2d7de657ce46");
+                
+                /// <summary> Asset Path (MRTK/Sounds/MRTK_Move_Start.wav.wesn) </summary>
+                public static readonly Guid MRTK_Move_Start_wav = new Guid("225031ed-2f89-4ab3-8f3b-ec380424b7bc");
+                
+                /// <summary> Asset Path (MRTK/Sounds/MRTK_Rotate_Start.wav.wesn) </summary>
+                public static readonly Guid MRTK_Rotate_Start_wav = new Guid("fc34b826-4d64-4aa9-944f-cd6a9f7ac84e");
+                
+                /// <summary> Asset Path (MRTK/Sounds/MRTK_Rotate_Stop.wav.wesn) </summary>
+                public static readonly Guid MRTK_Rotate_Stop_wav = new Guid("2550413b-8a0d-4a9e-b665-08797e03d01a");
+                
+                /// <summary> Asset Path (MRTK/Sounds/MRTK_Scale_Start.wav.wesn) </summary>
+                public static readonly Guid MRTK_Scale_Start_wav = new Guid("72bbb386-6f6a-4175-93ff-2467ca3f6136");
+                
+                /// <summary> Asset Path (MRTK/Sounds/MRTK_Scale_Stop.wav.wesn) </summary>
+                public static readonly Guid MRTK_Scale_Stop_wav = new Guid("45dc1893-7425-44b8-a79c-55162353d8c4");
+                
+                /// <summary> Asset Path (MRTK/Sounds/MRTK_Select_Main.wav.wesn) </summary>
+                public static readonly Guid MRTK_Select_Main_wav = new Guid("e911e7a0-7098-47f6-86c1-27a461c1eb24");
+                
+                /// <summary> Asset Path (MRTK/Sounds/MRTK_Shell_Click_In.wav.wesn) </summary>
+                public static readonly Guid MRTK_Shell_Click_In_wav = new Guid("a84df6b7-3a53-46f0-860b-8afa5f39df29");
+                
+                /// <summary> Asset Path (MRTK/Sounds/MRTK_Shell_Click_Out.wav.wesn) </summary>
+                public static readonly Guid MRTK_Shell_Click_Out_wav = new Guid("e4201bf8-b60e-483c-8f72-44c78e353fb3");
+                
+                /// <summary> Asset Path (MRTK/Sounds/MRTK_Slate_Release.wav.wesn) </summary>
+                public static readonly Guid MRTK_Slate_Release_wav = new Guid("a6f60d00-4b90-4f6c-a51f-337138204f0f");
+                
+                /// <summary> Asset Path (MRTK/Sounds/MRTK_Slate_Touch.wav.wesn) </summary>
+                public static readonly Guid MRTK_Slate_Touch_wav = new Guid("55fa5193-d04b-4a84-9cce-ef0c7b423026");
+                
+                /// <summary> Asset Path (MRTK/Sounds/MRTK_Slider_Grab.wav.wesn) </summary>
+                public static readonly Guid MRTK_Slider_Grab_wav = new Guid("6828c3e0-fcd7-41d0-8643-5fb8dc589a43");
+                
+                /// <summary> Asset Path (MRTK/Sounds/MRTK_Slider_Pass_Notch.wav.wesn) </summary>
+                public static readonly Guid MRTK_Slider_Pass_Notch_wav = new Guid("2c95a330-903a-4af5-a978-775fb7a39ce5");
+                
+                /// <summary> Asset Path (MRTK/Sounds/MRTK_Slider_Release.wav.wesn) </summary>
+                public static readonly Guid MRTK_Slider_Release_wav = new Guid("8380b296-60d7-41ff-af98-f8a7e4c8f43b");
+            }
+            
+            public sealed class Textures
+            {
+                
+                /// <summary> Asset Path (MRTK/Textures/gaze.png.wetx) </summary>
+                public static readonly Guid gaze_png = new Guid("15a7f06a-9bd2-4121-b865-b6b032e87cf4");
+                
+                /// <summary> Asset Path (MRTK/Textures/IridescentSpectrum.png.wetx) </summary>
+                public static readonly Guid IridescentSpectrum_png = new Guid("93738f86-b58f-45fe-9fed-4520abc4b755");
+                
+                /// <summary> Asset Path (MRTK/Textures/IridescentSpectrumRainbow.png.wetx) </summary>
+                public static readonly Guid IridescentSpectrumRainbow_png = new Guid("faf5ce8f-461e-42d6-8be0-e88a6c440e04");
+                
+                /// <summary> Asset Path (MRTK/Textures/line_dots.png.wetx) </summary>
+                public static readonly Guid line_dots_png = new Guid("79d9580a-094a-407f-8773-2a3d217de8e7");
+                
+                /// <summary> Asset Path (MRTK/Textures/pointer_holo.png.wetx) </summary>
+                public static readonly Guid pointer_holo_png = new Guid("e7e7f039-add5-4d9d-8e42-6707db2593c0");
+                
+                public sealed class Axis
+                {
+                    
+                    /// <summary> Asset Path (MRTK/Textures/Axis/AxisLine.png.wetx) </summary>
+                    public static readonly Guid AxisLine_png = new Guid("278ed606-5406-4b55-aa8e-2b7cdb65143b");
+                    
+                    /// <summary> Asset Path (MRTK/Textures/Axis/AxisLineGrabbled.png.wetx) </summary>
+                    public static readonly Guid AxisLineGrabbled_png = new Guid("e0ee93ec-8867-4e22-b902-0c03dabf8395");
+                    
+                    /// <summary> Asset Path (MRTK/Textures/Axis/Origin.png.wetx) </summary>
+                    public static readonly Guid Origin_png = new Guid("12c01f0c-a2c4-42e9-bb1c-7ebb829a3cfe");
+                    
+                    /// <summary> Asset Path (MRTK/Textures/Axis/OriginGrabbed.png.wetx) </summary>
+                    public static readonly Guid OriginGrabbed_png = new Guid("fe05c909-bd6c-496d-a12b-c6fde256ad53");
+                    
+                    /// <summary> Asset Path (MRTK/Textures/Axis/TwoAxis.png.wetx) </summary>
+                    public static readonly Guid TwoAxis_png = new Guid("51c10a21-0170-44fa-8295-8f37c3220eb5");
+                    
+                    /// <summary> Asset Path (MRTK/Textures/Axis/TwoAxisGrabbed.png.wetx) </summary>
+                    public static readonly Guid TwoAxisGrabbed_png = new Guid("c78286f7-c97f-45f7-b6b6-671a15c9fc4c");
+                }
             }
         }
     }

@@ -1,0 +1,104 @@
+!Evergine.Assets.Exporters.MaterialMetaFile,Evergine.Assets
+Id: e15b70dc-4787-4517-a720-914d405afa85
+DefaultProfile:
+  ExcludeAsset: false
+  Name: null
+  Platform: Undefined
+ExportAsRaw: false
+MaterialInfo:
+  Id: 6ef66989-2645-4578-ae04-b0191a603519
+  ActiveDirectives:
+    - DIRECTIONAL_LIGHT
+    - IBL
+    - LIT
+    - PROXIMITY_LIGHT
+  EffectID: 4f7e4c24-e83c-4350-9cd4-511fb2199cf4
+  Layer: 0db59561-b3f5-444f-b5de-e62e3a5b42bf
+  Parameters:
+    - Name: WorldViewProj
+      Type: Evergine.Mathematics.Matrix4x4,Evergine.Mathematics
+      ValueByteArray: XjHvQQAAAAAAAAAAAAAAAAAAAACYMopADP9kvy/5ZL8AAAAAmTIKwAv/5L8u+eS/AAAAAAAAAADB+VVB4I1XQQ==
+    - Name: World
+      Type: Evergine.Mathematics.Matrix4x4,Evergine.Mathematics
+      ValueByteArray: AAAAQAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAACAPw==
+    - Name: Color
+      Type: Evergine.Mathematics.Vector3,Evergine.Mathematics
+      ValueByteArray: 16NwPwAAAAAAAIA/
+    - Name: Alpha
+      Type: System.Single
+      ValueByteArray: AACAPw==
+    - Name: InnerGlowColor
+      Type: Evergine.Mathematics.Vector3,Evergine.Mathematics
+      ValueByteArray: AACAPwAAgD8AAIA/
+    - Name: InnerGlowAlpha
+      Type: System.Single
+      ValueByteArray: AABAPw==
+    - Name: InnerGlowPower
+      Type: System.Single
+      ValueByteArray: AACAQA==
+    - Name: BorderWidth
+      Type: System.Single
+      ValueByteArray: zczMPQ==
+    - Name: BorderMinValue
+      Type: System.Single
+      ValueByteArray: zczMPQ==
+    - Name: FluentLightIntensity
+      Type: System.Single
+      ValueByteArray: AACAPw==
+    - Name: RoundCornerRadius
+      Type: System.Single
+      ValueByteArray: AACAPg==
+    - Name: RoundCornerMargin
+      Type: System.Single
+      ValueByteArray: CtcjPA==
+    - Name: Cutoff
+      Type: System.Single
+      ValueByteArray: AAAAPw==
+    - Name: EdgeSmoothingValue
+      Type: System.Single
+      ValueByteArray: bxIDOw==
+    - Name: FadeBeginDistance
+      Type: System.Single
+      ValueByteArray: CtcjPA==
+    - Name: FadeCompleteDistance
+      Type: System.Single
+      ValueByteArray: zczMPQ==
+    - Name: FadeMinValue
+      Type: System.Single
+      ValueByteArray: AAAAAA==
+    - Name: HoverColorOverride
+      Type: Evergine.Mathematics.Vector3,Evergine.Mathematics
+      ValueByteArray: j8J1Po/CdT6PwnU+
+    - Name: ProximityLightCenterColorOverride
+      Type: Evergine.Mathematics.Vector4,Evergine.Mathematics
+      ValueByteArray: PQpXPs3MDD9I4Xo/AAAAAA==
+    - Name: ProximityLightMiddleColorOverride
+      Type: Evergine.Mathematics.Vector4,Evergine.Mathematics
+      ValueByteArray: 7FE4PlyPAj8AAIA/zcxMPg==
+    - Name: ProximityLightOuterColorOverride
+      Type: Evergine.Mathematics.Vector4,Evergine.Mathematics
+      ValueByteArray: CtejPo/C9T2kcD0/AACAPw==
+    - Name: LightColor0
+      Type: Evergine.Mathematics.Vector4,Evergine.Mathematics
+      ValueByteArray: AAAAPwAAAD8AAAA/AACAPw==
+    - Name: Metallic
+      Type: System.Single
+      ValueByteArray: AAAAAA==
+    - Name: Smoothness
+      Type: System.Single
+      ValueByteArray: AAAAPw==
+    - Name: HoverLightData
+      Type: Evergine.Mathematics.Vector4,Evergine.Mathematics
+      ValueByteArray: AAAAAAAAAAAAAAAAAAAAAA==
+    - Name: ProximityLightData
+      Type: Evergine.Mathematics.Vector4,Evergine.Mathematics
+      ValueByteArray: AAAAAAAAAAAAAAAAAAAAAA==
+    - Name: MultiviewViewProj
+      Type: Evergine.Mathematics.Matrix4x4,Evergine.Mathematics
+      ValueByteArray: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
+    - Name: EyeCount
+      Type: System.Int32
+      ValueByteArray: AQAAAA==
+  Samplers: null
+  Textures: null
+Profiles: {}

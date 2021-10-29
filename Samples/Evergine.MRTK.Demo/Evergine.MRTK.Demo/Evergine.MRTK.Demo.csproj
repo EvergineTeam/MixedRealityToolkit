@@ -16,6 +16,7 @@
     <PackageReference Include="Evergine.Bullet" Version="2021.10.28.1-nightly" />
     <PackageReference Include="Evergine.Targets" Version="2021.10.28.1-nightly" />
     <PackageReference Include="Evergine.CodeScenes" Version="2021.10.28.1-nightly" />
+    <PackageReference Include="Evergine.NoesisGUI" Version="2021.10.28.1-nightly" />
   </ItemGroup>
 
   <ItemGroup>

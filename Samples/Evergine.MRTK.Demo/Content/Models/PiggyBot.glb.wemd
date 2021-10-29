@@ -1,0 +1,31 @@
+!Evergine.Assets.Exporters.ModelMetaFile,Evergine.Assets
+Id: 261a775b-1156-4290-bbc0-3524ecd7fec8
+Clips: []
+DefaultProfile:
+  ExcludeAsset: false
+  Name: null
+  Platform: Undefined
+ExportAnimations: true
+ExportAsRaw: false
+GenerateTangentSpace: false
+Profiles: {}
+Source:
+  Header:
+    Id: 48dbe456-1c40-4c17-998f-af79608d3e49
+    IsCompressed: true
+  LastModified: 0001-01-01T00:00:00.0000000
+  ModelInfo:
+    Id: c4897b7c-107d-4f23-bd98-35c7fb3d5f2e
+    AnimationTracks: []
+    EmbeddedResources: null
+    Materials:
+      - Item1: Piggy_Bot_Complete
+        Item2: d50d00e8-f5b2-461d-9b85-1f7ed6d8d4f5
+    Nodes:
+      - RootNode (gltf orientation matrix)
+      - RootNode (gltf orientation matrix).RootNode (model correction matrix)
+      - RootNode (gltf orientation matrix).RootNode (model correction matrix).8cc9408ce4dc488e8c407eafe6e60d34_fbx
+      - RootNode (gltf orientation matrix).RootNode (model correction matrix).8cc9408ce4dc488e8c407eafe6e60d34_fbx.RootNode
+      - RootNode (gltf orientation matrix).RootNode (model correction matrix).8cc9408ce4dc488e8c407eafe6e60d34_fbx.RootNode.Piggy_Bot
+      - RootNode (gltf orientation matrix).RootNode (model correction matrix).8cc9408ce4dc488e8c407eafe6e60d34_fbx.RootNode.Piggy_Bot.Piggy_Bot_Piggy_Bot_Complete_0
+SwapWindingOrder: false

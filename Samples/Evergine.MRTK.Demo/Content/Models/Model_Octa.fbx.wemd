@@ -1,0 +1,28 @@
+!Evergine.Assets.Exporters.ModelMetaFile,Evergine.Assets
+Id: 7eb041c5-5239-45f0-9e70-e535c0f90d27
+Clips: []
+DefaultProfile:
+  ExcludeAsset: false
+  Name: null
+  Platform: Undefined
+ExportAnimations: true
+ExportAsRaw: false
+GenerateTangentSpace: false
+Profiles: {}
+Source:
+  Header:
+    Id: 0409dd8d-600e-4ea9-94a9-b14cd6148a46
+    IsCompressed: true
+  LastModified: 0001-01-01T00:00:00.0000000
+  ModelInfo:
+    Id: fa4c7958-6b2a-468f-9f4c-6ec8f7b89bda
+    AnimationTracks: []
+    EmbeddedResources: null
+    Materials:
+      - Item1: DefaultMaterial
+        Item2: 537cb43a-e152-4fd6-ba89-ba0c0b93acbd
+    Nodes:
+      - RootNode
+      - RootNode.CINEMA_4D_Editor
+      - RootNode.Platonic
+SwapWindingOrder: false
