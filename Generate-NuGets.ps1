@@ -1,8 +1,8 @@
 <#
 .SYNOPSIS
-	Wave Engine MRTK NuGet Packages generator script, (c) 2021 Wave Engine
+	Evergine MRTK NuGet Packages generator script, (c) 2021 Evergine
 .DESCRIPTION
-	This script generates NuGet packages for the Mixed Reality Toolkit for Wave Engine
+	This script generates NuGet packages for the Mixed Reality Toolkit for Evergine
 	It's meant to have the same behavior when executed locally as when it's executed in a CI pipeline.
 .EXAMPLE
 	<script> -version 3.4.22.288-local
@@ -15,8 +15,8 @@ param (
 	[string]$outputFolderBase = "nupkgs",
 	[string]$buildVerbosity = "normal",
 	[string]$buildConfiguration = "Release",
-	[string]$bindingsCsprojPath = "Source\WaveEngine.MRTK\WaveEngine.MRTK.csproj",
-	[string]$editorCsprojPath = "Source\WaveEngine.MRTK.Editor\WaveEngine.MRTK.Editor.csproj"
+	[string]$bindingsCsprojPath = "Source\Evergine.MRTK\Evergine.MRTK.csproj",
+	[string]$editorCsprojPath = "Source\Evergine.MRTK.Editor\Evergine.MRTK.Editor.csproj"
 )
 
 # Utility functions

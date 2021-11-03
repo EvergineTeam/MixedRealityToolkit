@@ -1,8 +1,8 @@
 <#
 .SYNOPSIS
-	Wave Engine MRTK Assets Packages generator script, (c) 2021 Wave Engine
+	Evergine MRTK Assets Packages generator script, (c) 2021 Evergine
 .DESCRIPTION
-	This script generates Assets packages for the Mixed Reality Toolkit for Wave Engine
+	This script generates Assets packages for the Mixed Reality Toolkit for Evergine
 	It's meant to have the same behavior when executed locally as when it's executed in a CI pipeline.
 .EXAMPLE
 	<script> -version 3.4.22.288-local
@@ -11,15 +11,17 @@
 #>
 
 param (
-    [Parameter(mandatory=$true)][string]$version,
+	[Parameter(mandatory=$true)][string]$version,
 	[string]$outputFolderBase = "wepkgs",
 	[string]$buildVerbosity = "normal",
 	[string]$buildConfiguration = "Release",
-	[string]$assetsCsprojPath = "Source\WaveEngine.MRTK.Assets\WaveEngine.MRTK.Assets.csproj"
+	[string]$assetsCsprojPath = "Source\Evergine.MRTK.Assets\Evergine.MRTK.Assets.csproj"
 )
 
 # Utility functions
-function LogDebug($line) { Write-Host "##[debug] $line" -Foreground Blue -Background Black }
+function LogDebug($line)
+{ Write-Host "##[debug] $line" -Foreground Blue -Background Black 
+}
 
 # Show variables
 LogDebug "############## VARIABLES ##############"
@@ -35,6 +37,6 @@ $absoluteOutputFolder = Resolve-Path $outputFolderBase
 
 # Generate packages
 LogDebug "START assets packaging process"
-& dotnet build "$assetsCsprojPath" -v:$buildVerbosity -p:Configuration=$buildConfiguration -t:CreateWavePackage -p:Version=$version -o "$absoluteOutputFolder"
+& dotnet build "$assetsCsprojPath" -v:$buildVerbosity -p:Configuration=$buildConfiguration -t:CreateEverginePackage -p:Version=$version -o "$absoluteOutputFolder"
 
 LogDebug "END assets packaging process"
