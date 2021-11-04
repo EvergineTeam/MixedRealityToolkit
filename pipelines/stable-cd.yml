@@ -1,4 +1,4 @@
-name: $(Date:yyyy)$(Date:.M)$(Date:.d)$(Rev:.r)-nightly
+name: $(Date:yyyy)$(Date:.M)$(Date:.d)$(Rev:.r)
 
 stages:
   - stage: PackageBuild
