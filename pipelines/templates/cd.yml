@@ -12,13 +12,6 @@ parameters:
     default: ""
     type: string
 
-  - name: "appversion"
-    value: "$(version.major).$(version.minor).$(version.patch).$(Build.BuildID)-$(version.previewSuffix)"
-  - name: "publishContainer"
-    value: "preview"
-  - name: "publishEnabled"
-    value: true
-
 jobs:
   - job: "BuildPackage"
     displayName: "Build Package"
