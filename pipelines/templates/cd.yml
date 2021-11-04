@@ -78,7 +78,7 @@ jobs:
         condition: and(succeeded(), ne('${{ parameters.publishFeed }}', ''))
         inputs:
           command: "push"
-          packagesToPush: "$(nugetOutputPath)/**/*.nupkg;!$(nugetOutputPath)/**/*.snupkg"
+          packagesToPush: "$(nugetOutputPath)/*.nupkg;!$(nugetOutputPath)/*.symbols.nupkg"
           nuGetFeedType: "external"
           publishFeedCredentials: ${{ parameters.publishFeed }}
 
