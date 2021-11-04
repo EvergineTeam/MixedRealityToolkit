@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<RuleSet Name="WaveEngine StyleCop Ruleset" Description="Ruleset used in WaveEngine team." ToolsVersion="15.0">
+<RuleSet Name="Evergine StyleCop Ruleset" Description="Ruleset used in Evergine team." ToolsVersion="15.0">
   <Rules AnalyzerId="Microsoft.Analyzers.ManagedCodeAnalysis" RuleNamespace="Microsoft.Rules.Managed">
     <Rule Id="CS1591" Action="None" />
   </Rules>
