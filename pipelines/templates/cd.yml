@@ -73,7 +73,7 @@ jobs:
           ArtifactName: Wepkgs
 
       - task: NuGetCommand@2
-        displayName: "Push NuGets to NuGet.org"
+        displayName: "Push NuGets to feed"
         enabled: ${{ parameters.publishEnabled }}
         condition: and(succeeded(), ne('${{ parameters.publishFeed }}', ''))
         inputs:
