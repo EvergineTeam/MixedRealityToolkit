@@ -1,0 +1,101 @@
+parameters:
+  - name: "buildVersion"
+    default: ""
+    type: string
+  - name: "publishEnabled"
+    default: "false"
+    type: string
+  - name: "publishFeed"
+    default: ""
+    type: string
+  - name: "publishContainer"
+    default: ""
+    type: string
+
+  - name: "appversion"
+    value: "$(version.major).$(version.minor).$(version.patch).$(Build.BuildID)-$(version.previewSuffix)"
+  - name: "publishContainer"
+    value: "preview"
+  - name: "publishEnabled"
+    value: true
+
+jobs:
+  - job: "BuildPackage"
+    displayName: "Build Package"
+    workspace:
+      clean: all
+    pool:
+      vmImage: "windows-2019"
+    variables:
+      nugetConfigPath: "$(Build.SourcesDirectory)/Source/Evergine.MRTK/NuGet.config"
+      nugetOutputPath: "$(Build.StagingDirectory)/nupkgs"
+      wepkgOutputPath: "$(Build.StagingDirectory)/wepkgs"
+      NetCoreSDKVersion: "5.0.x"
+      NuGetVersion: "5.8.x"
+
+    steps:
+      - task: UseDotNet@2
+        displayName: "Check .NETCore SDK"
+        inputs:
+          version: "$(NetCoreSDKVersion)"
+
+      - task: NuGetToolInstaller@1
+        displayName: "Check NuGet client"
+        inputs:
+          versionSpec: "$(NuGetVersion)"
+          checkLatest: true
+
+      - task: PowerShell@2
+        inputs:
+          targetType: "inline"
+          script: '"<configuration></configuration>" > $(nugetConfigPath)'
+
+      - task: NuGetCommand@2
+        inputs:
+          command: "custom"
+          arguments: 'sources add -Name "nuget.org" -Source "https://api.nuget.org/v3/index.json" -ConfigFile $(nugetConfigPath)'
+
+      - task: PowerShell@2
+        displayName: "Generate NuGet packages"
+        inputs:
+          filePath: "./Generate-NuGets.ps1"
+          arguments: "-Version ${{ parameters.buildVersion }} -outputfolder $(nugetOutputPath)"
+
+      - task: PowerShell@2
+        displayName: "Generate Assets package"
+        inputs:
+          filePath: "./Generate-Assets-Package.ps1"
+          arguments: "-Version ${{ parameters.buildVersion }} -outputfolder $(wepkgOutputPath)"
+
+      - task: PublishBuildArtifacts@1
+        displayName: "Publish Artifact: NuGets"
+        inputs:
+          PathtoPublish: "$(nugetOutputPath)"
+          ArtifactName: "NuGets"
+
+      - task: PublishBuildArtifacts@1
+        displayName: "Publish Artifact: Wepkgs"
+        inputs:
+          PathtoPublish: "$(wepkgOutputPath)"
+          ArtifactName: Wepkgs
+
+      - task: NuGetCommand@2
+        displayName: "Push NuGets to NuGet.org"
+        enabled: ${{ parameters.publishEnabled }}
+        condition: and(succeeded(), ne('${{ parameters.publishFeed }}', ''))
+        inputs:
+          command: "push"
+          packagesToPush: "$(nugetOutputPath)/**/*.nupkg;!$(nugetOutputPath)/**/*.snupkg"
+          nuGetFeedType: "external"
+          publishFeedCredentials: ${{ parameters.publishFeed }}
+
+      - task: AzureFileCopy@2
+        displayName: "Upload to Azure BLOB Wepkgs"
+        enabled: ${{ parameters.publishEnabled }}
+        condition: and(succeeded(), ne('${{ parameters.publishContainer }}', ''))
+        inputs:
+          SourcePath: "$(wepkgOutputPath)/Evergine.MRTK.Assets.${{ parameters.buildVersion }}.wepkg"
+          azureSubscription: "Waveengineteam devops connections SP"
+          Destination: AzureBlob
+          storage: waveeditor
+          ContainerName: "wepkg-${{ parameters.publishContainer }}"

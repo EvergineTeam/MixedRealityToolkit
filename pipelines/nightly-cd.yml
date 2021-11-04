@@ -1,0 +1,15 @@
+name: $(Date:yyyy)$(Date:.M)$(Date:.d)$(Rev:.r)-nightly
+
+trigger:
+  - master
+
+stages:
+  - stage: PackageBuild
+    displayName: "Build Editor and Nugets"
+    jobs:
+      - template: "templates/cd.yml"
+        parameters:
+          buildVersion: "$(Build.BuildNumber)"
+          publishEnabled: true
+          publishFeed: "Evergine.Nightly"
+          publishContainer: "nightly"
