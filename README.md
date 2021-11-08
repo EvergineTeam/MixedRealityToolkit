@@ -1,24 +1,28 @@
-![WaveEngine.MRTK](Documentation/Images/Wave_MRTK_banner.png)
+![Evergine.MRTK](Documentation/Images/Wave_MRTK_banner.png)
 
-[![Build Status](https://waveengineteam.visualstudio.com/Wave.Engine/_apis/build/status/WaveEngine.MixedRealityToolkit-WaveEngine?branchName=master)](https://waveengineteam.visualstudio.com/Wave.Engine/_build/latest?definitionId=61&branchName=master)
-[![Nuget](https://img.shields.io/nuget/v/WaveEngine.MRTK?logo=nuget)](https://www.nuget.org/packages/WaveEngine.MRTK)
+[![Build Status](https://waveengineteam.visualstudio.com/Wave.Engine/_apis/build/status/Evergine.MixedRealityToolkit-Evergine?branchName=master)](https://waveengineteam.visualstudio.com/Wave.Engine/_build/latest?definitionId=61&branchName=master)
+[![Nuget](https://img.shields.io/nuget/v/Evergine.MRTK?logo=nuget)](https://www.nuget.org/packages/Evergine.MRTK)
 
-# What is WaveEngine.MRTK
-WaveEngine.MRTK is a project that provides a set of components and features used to accelerate cross-platform XR application development in Wave Engine. 
+# What is Evergine.MRTK
 
-WaveEngine.MRTK provides a set of **basic building blocks for Wave Engine development on XR platforms** such as
-* Microsoft HoloLens 2
-* Windows Mixed Reality headsets
-* OpenVR headsets (HTC Vive / Oculus Rift)
+Evergine.MRTK is a project that provides a set of components and features used to accelerate cross-platform XR application development in Wave Engine.
 
-WaveEngine.MRTK is heavily based on Microsoft's [Mixed Reality Toolkit for Unity](https://github.com/microsoft/MixedRealityToolkit-Unity).<br><br>
+Evergine.MRTK provides a set of **basic building blocks for Wave Engine development on XR platforms** such as
+
+- Microsoft HoloLens 2
+- Windows Mixed Reality headsets
+- OpenVR headsets (HTC Vive / Oculus Rift)
+
+Evergine.MRTK is heavily based on Microsoft's [Mixed Reality Toolkit for Unity](https://github.com/microsoft/MixedRealityToolkit-Unity).<br><br>
 
 # Required software
-[![Windows SDK](Documentation/Images/Requirements_WindowsSDK.png)](https://developer.microsoft.com/windows/downloads/windows-10-sdk) [Windows SDK](https://developer.microsoft.com/windows/downloads/windows-10-sdk) | [![Wave Engine](Documentation/Images/Requirements_WaveEngine.png)](https://waveengine.net/Downloads) [Wave Engine](https://waveengine.net/Downloads) | [![Visual Studio 2019](Documentation/Images/Requirements_VisualStudio.png)](http://dev.windows.com/downloads) [Visual Studio 2019](http://dev.windows.com/downloads) | [![Emulators (optional)](Documentation/Images/Requirements_Emulators.png)](https://docs.microsoft.com/windows/mixed-reality/using-the-hololens-emulator) [Emulators (optional)](https://docs.microsoft.com/windows/mixed-reality/using-the-hololens-emulator)|
-| :--- | :--- | :--- | :--- |
-| You need the Windows 10 SDK. To run apps for immersive headsets, you need the Windows 10 Fall Creators Update | Wave Engine provides support for building XR projects in Windows 10 | Visual Studio is used for code editing, deploying and building application packages | The emulators allow you to test your app without the device in a simulated environment |
+
+| [![Windows SDK](Documentation/Images/Requirements_WindowsSDK.png)](https://developer.microsoft.com/windows/downloads/windows-10-sdk) [Windows SDK](https://developer.microsoft.com/windows/downloads/windows-10-sdk) | [![Wave Engine](Documentation/Images/Requirements_Evergine.png)](https://waveengine.net/Downloads) [Wave Engine](https://waveengine.net/Downloads) | [![Visual Studio 2019](Documentation/Images/Requirements_VisualStudio.png)](http://dev.windows.com/downloads) [Visual Studio 2019](http://dev.windows.com/downloads) | [![Emulators (optional)](Documentation/Images/Requirements_Emulators.png)](https://docs.microsoft.com/windows/mixed-reality/using-the-hololens-emulator) [Emulators (optional)](https://docs.microsoft.com/windows/mixed-reality/using-the-hololens-emulator) |
+| :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| You need the Windows 10 SDK. To run apps for immersive headsets, you need the Windows 10 Fall Creators Update                                                                                                        | Wave Engine provides support for building XR projects in Windows 10                                                                                | Visual Studio is used for code editing, deploying and building application packages                                                                                  | The emulators allow you to test your app without the device in a simulated environment                                                                                                                                                                        |
 
 # UI and interaction building blocks
+
 These components can be added to your scene and customized using the Wave Engine Editor.
 ||||
 | :--- | :--- | :--- |
@@ -30,7 +34,8 @@ These components can be added to your scene and customized using the Wave Engine
 | 2D style plane which supports scrolling with articulated hand input | Learn about various types of pointers | Scripts and examples for integrating speech input|
 
 # Example scene
-Check out WaveEngine.MRTK's various types of interactions and UI controls in our sample scene, which can be found in the Releases section.
+
+Check out Evergine.MRTK's various types of interactions and UI controls in our sample scene, which can be found in the Releases section.
 
 Video: https://www.youtube.com/watch?v=KbhLifObJNA
 
