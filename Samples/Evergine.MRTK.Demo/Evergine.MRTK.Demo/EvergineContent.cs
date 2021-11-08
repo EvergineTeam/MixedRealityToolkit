@@ -291,9 +291,6 @@ namespace Evergine.MRTK.Demo
             /// <summary> Asset Path (Scenes/DemoScene.wescene.wesc) </summary>
             public static readonly Guid DemoScene_wescene = new Guid("3095213c-123c-4c4d-aabe-97502977a3cb");
             
-            /// <summary> Asset Path (Scenes/MyScene.wescene.wesc) </summary>
-            public static readonly Guid MyScene_wescene = new Guid("7fc2d0c7-594a-49b1-b12b-adde4c2bc15b");
-            
             public sealed class Test
             {
                 
