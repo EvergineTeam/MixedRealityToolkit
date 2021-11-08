@@ -1,2 +1,0 @@
-MainPackage=C:\Code\Wave\MixedRealityToolkit-WaveEngine\Samples\WaveEngine_MRTK_Demo\WaveEngine_MRTK_Demo.UWP.MixedReality\bin\ARM64\Release\WaveEngine_MRTK_Demo.UWP.MixedReality_0.2.2.0_ARM64.appx
-SymbolPackage=C:\Code\Wave\MixedRealityToolkit-WaveEngine\Samples\WaveEngine_MRTK_Demo\WaveEngine_MRTK_Demo.UWP.MixedReality\obj\ARM64\Release\Symbols\WaveEngine_MRTK_Demo.UWP.MixedReality_0.2.2.0_ARM64.appxsym

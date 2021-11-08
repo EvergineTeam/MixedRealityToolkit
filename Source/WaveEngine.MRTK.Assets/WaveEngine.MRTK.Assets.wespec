@@ -1,7 +1,0 @@
-﻿Owners: WaveEngine
-Description: "WaveEngine MRTK assets package."
-Tags:
- - waveengine
- - mrtk
-Nugets:
- - WaveEngine.Framework
