@@ -1,4 +1,4 @@
-name: $(Date:yyyy)$(Date:.M)$(Date:.d)$(Rev:.r)
+name: $(Date:yyyy)$(Date:.M)$(Date:.d)$(Rev:.r)-preview
 
 trigger: none
 pr: none
