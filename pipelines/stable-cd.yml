@@ -8,5 +8,5 @@ stages:
         parameters:
           buildVersion: "$(Build.BuildNumber)"
           publishEnabled: true
-          publishFeed: "Evergine Nuget.org"
+          publishFeed: "Evergine.Stable"
           publishContainer: "stable"
