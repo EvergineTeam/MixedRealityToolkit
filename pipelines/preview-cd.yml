@@ -1,5 +1,8 @@
 name: $(Date:yyyy)$(Date:.M)$(Date:.d)$(Rev:.r)
 
+trigger: none
+pr: none
+
 stages:
   - stage: PackageBuild
     displayName: "Build Editor and Nugets"
@@ -8,5 +11,5 @@ stages:
         parameters:
           buildVersion: "$(Build.BuildNumber)"
           publishEnabled: true
-          publishFeed: "Evergine Nuget.org"
+          publishFeed: "Evergine.Stable"
           publishContainer: "preview"

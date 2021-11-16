@@ -1,5 +1,8 @@
 name: $(Date:yyyy)$(Date:.M)$(Date:.d)$(Rev:.r)
 
+trigger: none
+pr: none
+
 stages:
   - stage: PackageBuild
     displayName: "Build Editor and Nugets"
