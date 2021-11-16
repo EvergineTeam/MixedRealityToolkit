@@ -1,13 +1,13 @@
-![Evergine.MRTK](Documentation/Images/Wave_MRTK_banner.png)
+![Evergine.MRTK](Documentation/Images/Evergine_MRTK_banner.png)
 
 [![Build Status](https://waveengineteam.visualstudio.com/Wave.Engine/_apis/build/status/Evergine.MixedRealityToolkit-Evergine?branchName=master)](https://waveengineteam.visualstudio.com/Wave.Engine/_build/latest?definitionId=61&branchName=master)
 [![Nuget](https://img.shields.io/nuget/v/Evergine.MRTK?logo=nuget)](https://www.nuget.org/packages/Evergine.MRTK)
 
 # What is Evergine.MRTK
 
-Evergine.MRTK is a project that provides a set of components and features used to accelerate cross-platform XR application development in Wave Engine.
+Evergine.MRTK is an Evergine package that provides a set of components and features used to accelerate cross-platform XR application development in Evergine.
 
-Evergine.MRTK provides a set of **basic building blocks for Wave Engine development on XR platforms** such as
+Evergine.MRTK provides a set of **basic building blocks for Evergine development on XR platforms** such as
 
 - Microsoft HoloLens 2
 - Windows Mixed Reality headsets
@@ -17,13 +17,13 @@ Evergine.MRTK is heavily based on Microsoft's [Mixed Reality Toolkit for Unity](
 
 # Required software
 
-| [![Windows SDK](Documentation/Images/Requirements_WindowsSDK.png)](https://developer.microsoft.com/windows/downloads/windows-10-sdk) [Windows SDK](https://developer.microsoft.com/windows/downloads/windows-10-sdk) | [![Wave Engine](Documentation/Images/Requirements_Evergine.png)](https://waveengine.net/Downloads) [Wave Engine](https://waveengine.net/Downloads) | [![Visual Studio 2019](Documentation/Images/Requirements_VisualStudio.png)](http://dev.windows.com/downloads) [Visual Studio 2019](http://dev.windows.com/downloads) | [![Emulators (optional)](Documentation/Images/Requirements_Emulators.png)](https://docs.microsoft.com/windows/mixed-reality/using-the-hololens-emulator) [Emulators (optional)](https://docs.microsoft.com/windows/mixed-reality/using-the-hololens-emulator) |
-| :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| You need the Windows 10 SDK. To run apps for immersive headsets, you need the Windows 10 Fall Creators Update                                                                                                        | Wave Engine provides support for building XR projects in Windows 10                                                                                | Visual Studio is used for code editing, deploying and building application packages                                                                                  | The emulators allow you to test your app without the device in a simulated environment                                                                                                                                                                        |
+| [![Evergine](Documentation/Images/evergine.png)](https://www.evergine.com) [Evergine](www.evergine.com) | [![Visual Studio 2022](Documentation/Images/visual_studio.png)](http://dev.windows.com/downloads) [Visual Studio 2019/2022](http://dev.windows.com/downloads) | [![Windows SDK](Documentation/Images/windows.png)](https://developer.microsoft.com/windows/downloads/windows-10-sdk) [Windows SDK](https://developer.microsoft.com/windows/downloads/windows-10-sdk) | [![Emulators (optional)](Documentation/Images/emulators.png)](https://docs.microsoft.com/windows/mixed-reality/using-the-hololens-emulator) [Emulators (optional)](https://docs.microsoft.com/windows/mixed-reality/using-the-hololens-emulator) |
+| :------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Evergine provides support for building XR projects in Windows 10                                                                             | Visual Studio is used for code editing, deploying and building application packages                                                                                  | You need the Windows 10 SDK. To run apps for immersive headsets, you need the Windows 10 Fall Creators Update                                                                                                        | The emulators allow you to test your app without the device in a simulated environment                                                                                                                                                                        |
 
 # UI and interaction building blocks
 
-These components can be added to your scene and customized using the Wave Engine Editor.
+These components can be added to your scene and customized using the Evergine Editor.
 ||||
 | :--- | :--- | :--- |
 | ![Button](Documentation/Images/Button/MRTK_Button_Main.png) [Button](Documentation/README_Button.md) | ![Bounding Box](Documentation/Images/BoundingBox/MRTK_BoundingBox_Main.png) [Bounding Box](Documentation/README_BoundingBox.md) | ![Manipulation Handler](Documentation/Images/ManipulationHandler/MRTK_Manipulation_Main.png) [Manipulation Handler](Documentation/README_ManipulationHandler.md) |

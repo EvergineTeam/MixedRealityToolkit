@@ -83,12 +83,12 @@ jobs:
           publishFeedCredentials: ${{ parameters.publishFeed }}
 
       - task: AzureFileCopy@2
-        displayName: "Upload to Azure BLOB Wepkgs"
+        displayName: "Upload to Azure BLOB packages"
         enabled: ${{ parameters.publishEnabled }}
         condition: and(succeeded(), ne('${{ parameters.publishContainer }}', ''))
         inputs:
           SourcePath: "$(wepkgOutputPath)/Evergine.MRTK.Assets.${{ parameters.buildVersion }}.wepkg"
           azureSubscription: "Waveengineteam devops connections SP"
           Destination: AzureBlob
-          storage: waveeditor
-          ContainerName: "wepkg-${{ parameters.publishContainer }}"
+          storage: everginestudio
+          ContainerName: "pkg-${{ parameters.publishContainer }}"
