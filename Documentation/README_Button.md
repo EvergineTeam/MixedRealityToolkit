@@ -36,7 +36,7 @@ You need to create two entities: the **button** and the **visual feedback**
   - Add a **BoxCollider** and **StaticBody3D** to configure the collisions
   - Add a **NearInteractionTouchable** component
   - Optional, you can add a mesh to the button either in this node or as a child
-  - Finally add the **PressableButton** component
+  - Finally add the **PressableButton** behaviour
 
 - The **visual feedback** is the entity that shows the current state of the button. This is the part of the button that moves or changes its color when the button is pressed
   - Add an empty **Entity** as child of the button
