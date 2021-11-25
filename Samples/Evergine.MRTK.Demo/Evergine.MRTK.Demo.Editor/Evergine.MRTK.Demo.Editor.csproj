@@ -1,19 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
-
   <ItemGroup>
-    <PackageReference Include="Evergine.Common" Version="2021.11.16.1-preview" />
-    <PackageReference Include="Evergine.Components" Version="2021.11.16.1-preview" />
-    <PackageReference Include="Evergine.Framework" Version="2021.11.16.1-preview" />
-    <PackageReference Include="Evergine.Editor.Extension" Version="2021.11.16.1-preview" />
+    <PackageReference Include="Evergine.Common" Version="2021.11.17.2-preview" />
+    <PackageReference Include="Evergine.Components" Version="2021.11.17.2-preview" />
+    <PackageReference Include="Evergine.Framework" Version="2021.11.17.2-preview" />
+    <PackageReference Include="Evergine.Editor.Extension" Version="2021.11.17.2-preview" />
   </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\..\..\Source\Evergine.MRTK.Editor\Evergine.MRTK.Editor.csproj" />
     <ProjectReference Include="..\Evergine.MRTK.Demo\Evergine.MRTK.Demo.csproj" />
   </ItemGroup>
-
 </Project>

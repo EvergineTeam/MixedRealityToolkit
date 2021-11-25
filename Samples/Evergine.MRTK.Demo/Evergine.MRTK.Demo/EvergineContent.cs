@@ -638,6 +638,19 @@ namespace Evergine.MRTK.Demo
                 public static readonly Guid HoloHandsLocal = new Guid("b7b6076f-e298-45cf-babc-a8316996f359");
             }
             
+            public sealed class Fonts
+            {
+                
+                /// <summary> Asset Path (MRTK/Fonts/segoeui.ttf.wefile) </summary>
+                public static readonly Guid segoeui_ttf = new Guid("318fd4bd-769e-4812-8c7d-1be0dd9a1782");
+                
+                /// <summary> Asset Path (MRTK/Fonts/segoeuib.ttf.wefile) </summary>
+                public static readonly Guid segoeuib_ttf = new Guid("39c20a0d-0ec9-41e0-93d2-cf8031ea95f1");
+                
+                /// <summary> Asset Path (MRTK/Fonts/segoeuii.ttf.wefile) </summary>
+                public static readonly Guid segoeuii_ttf = new Guid("76a3571a-a06d-4547-ac18-2308991224a6");
+            }
+            
             public sealed class Materials
             {
                 

@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build"
-  xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -115,22 +114,22 @@
       <Version>6.2.10</Version>
     </PackageReference>
     <PackageReference Include="Evergine.MixedReality">
-      <Version>2021.11.16.1-preview</Version>
+      <Version>2021.11.17.2-preview</Version>
     </PackageReference>
     <PackageReference Include="Evergine.XAudio2">
-      <Version>2021.11.16.1-preview</Version>
+      <Version>2021.11.17.2-preview</Version>
     </PackageReference>
     <PackageReference Include="Evergine.Targets">
-      <Version>2021.11.16.1-preview</Version>
+      <Version>2021.11.17.2-preview</Version>
     </PackageReference>
     <PackageReference Include="Evergine.Targets.UWP">
-      <Version>2021.11.16.1-preview</Version>
+      <Version>2021.11.17.2-preview</Version>
     </PackageReference>
     <PackageReference Include="Evergine.UWPView">
-      <Version>2021.11.16.1-preview</Version>
+      <Version>2021.11.17.2-preview</Version>
     </PackageReference>
     <PackageReference Include="Evergine.DirectX11">
-      <Version>2021.11.16.1-preview</Version>
+      <Version>2021.11.17.2-preview</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
