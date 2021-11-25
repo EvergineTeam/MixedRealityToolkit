@@ -1,7 +1,7 @@
 !Evergine.Assets.Exporters.EffectMetaFile,Evergine.Assets
 Id: b7b6076f-e298-45cf-babc-a8316996f359
 DefaultProfile:
-  Compile: Yes
+  Compile: ByPlatform
   ExcludeAsset: false
   GraphicsBackend: ByPlatform
   MandatoryCombinations: All
