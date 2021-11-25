@@ -16,19 +16,6 @@ namespace Evergine.MRTK.Demo
     public sealed class EvergineContent
     {
         
-        public sealed class Fonts
-        {
-            
-            /// <summary> Asset Path (Fonts/segoeui.ttf.wefile) </summary>
-            public static readonly Guid segoeui_ttf = new Guid("318fd4bd-769e-4812-8c7d-1be0dd9a1782");
-            
-            /// <summary> Asset Path (Fonts/segoeuib.ttf.wefile) </summary>
-            public static readonly Guid segoeuib_ttf = new Guid("39c20a0d-0ec9-41e0-93d2-cf8031ea95f1");
-            
-            /// <summary> Asset Path (Fonts/segoeuii.ttf.wefile) </summary>
-            public static readonly Guid segoeuii_ttf = new Guid("76a3571a-a06d-4547-ac18-2308991224a6");
-        }
-        
         public sealed class Materials
         {
             
@@ -642,13 +629,13 @@ namespace Evergine.MRTK.Demo
             {
                 
                 /// <summary> Asset Path (MRTK/Fonts/segoeui.ttf.wefile) </summary>
-                public static readonly Guid segoeui_ttf = new Guid("318fd4bd-769e-4812-8c7d-1be0dd9a1782");
+                public static readonly Guid segoeui_ttf = new Guid("c65a0c19-1d97-42fd-a29b-64233864b9b8");
                 
                 /// <summary> Asset Path (MRTK/Fonts/segoeuib.ttf.wefile) </summary>
-                public static readonly Guid segoeuib_ttf = new Guid("39c20a0d-0ec9-41e0-93d2-cf8031ea95f1");
+                public static readonly Guid segoeuib_ttf = new Guid("759c5246-5007-47e1-b4a7-90e572ff5400");
                 
                 /// <summary> Asset Path (MRTK/Fonts/segoeuii.ttf.wefile) </summary>
-                public static readonly Guid segoeuii_ttf = new Guid("76a3571a-a06d-4547-ac18-2308991224a6");
+                public static readonly Guid segoeuii_ttf = new Guid("4ed7d95f-0259-4e61-8073-26e6ac0b71a4");
             }
             
             public sealed class Materials
