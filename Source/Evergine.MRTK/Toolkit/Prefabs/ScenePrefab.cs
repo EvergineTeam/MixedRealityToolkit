@@ -1,6 +1,7 @@
 ﻿// Copyright © Evergine S.L. All rights reserved. Use is subject to license terms.
 
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using Evergine.Common.Attributes;
@@ -32,6 +33,8 @@ namespace Evergine.MRTK.Toolkit.Prefabs
 
         private bool duplicateMaterials;
 
+        private IEnumerable<Entity> prefabEntities;
+
         /// <summary>
         /// Gets the scene prefab ID that will be used.
         /// </summary>
@@ -50,15 +53,20 @@ namespace Evergine.MRTK.Toolkit.Prefabs
                 if (this.duplicateMaterials != value)
                 {
                     this.duplicateMaterials = value;
-                    this.RefreshEntity();
+                    this.AttachPrefabEntities();
                 }
             }
         }
 
         /// <summary>
-        /// Occurs before a prefab root entity will be added to the <see cref="ScenePrefab"/> owner.
+        /// Occurs before a prefab entity will be added to the <see cref="ScenePrefab"/> owner.
         /// </summary>
-        public event EventHandler<Entity> AddingPrefabEntityRoot;
+        public event EventHandler<Entity> AddingPrefabEntity;
+
+        /// <summary>
+        /// Occurs when the prefab entities are instanced.
+        /// </summary>
+        public event EventHandler PrefabEntityRefreshed;
 
         /// <inheritdoc/>
         protected override bool OnAttached()
@@ -70,7 +78,7 @@ namespace Evergine.MRTK.Toolkit.Prefabs
 
             this.ScenePrefabProperty.OnScenePrefabChanged += this.ScenePrefab_OnScenePrefabChanged;
 
-            this.RefreshEntity(false);
+            this.AttachPrefabEntities();
 
             return true;
         }
@@ -78,11 +86,18 @@ namespace Evergine.MRTK.Toolkit.Prefabs
         /// <inheritdoc/>
         protected override void OnDetach()
         {
-            this.ClearEntity();
+            this.DetachPrefabEntities();
 
             this.ScenePrefabProperty.OnScenePrefabChanged -= this.ScenePrefab_OnScenePrefabChanged;
 
             base.OnDetach();
+        }
+
+        /// <inheritdoc/>
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
+            this.DestroyPrefabEntities();
         }
 
         private void ScenePrefab_OnScenePrefabChanged(object sender, EventArgs e)
@@ -90,31 +105,48 @@ namespace Evergine.MRTK.Toolkit.Prefabs
             this.RefreshEntity();
         }
 
-        private void ClearEntity()
+        private void AttachPrefabEntities()
         {
-            while (this.Owner.NumChildren > 0)
+            this.DetachPrefabEntities();
+
+            var alreadyInstantiated = this.prefabEntities != null;
+            this.prefabEntities = this.prefabEntities ?? this.CreatePrefabEntities();
+
+            if (this.prefabEntities == null)
             {
-                this.Owner.RemoveChild(this.Owner.ChildEntities.First());
+                return;
+            }
+
+            foreach (var entity in this.prefabEntities)
+            {
+                this.AddingPrefabEntity?.Invoke(this, entity);
+                this.Owner.AddChild(entity);
+            }
+
+            if (!alreadyInstantiated)
+            {
+                this.PrefabEntityRefreshed?.Invoke(this, EventArgs.Empty);
             }
         }
 
-        /// <summary>
-        /// Refresh the entity, re-instancing the prefab.
-        /// </summary>
-        /// <param name="checkIsAttached">Check if it's attached.</param>
-        public void RefreshEntity(bool checkIsAttached = true)
+        private void DetachPrefabEntities()
         {
-            if (checkIsAttached &&
-                !this.IsAttached)
+            if (this.prefabEntities == null)
             {
                 return;
             }
 
-            this.ClearEntity();
+            foreach (var entity in this.prefabEntities)
+            {
+                this.Owner.DetachChild(entity);
+            }
+        }
 
+        private IEnumerable<Entity> CreatePrefabEntities()
+        {
             if (!this.ScenePrefabProperty.IsPrefabIdValid)
             {
-                return;
+                return null;
             }
 
             var st = Stopwatch.StartNew();
@@ -125,13 +157,9 @@ namespace Evergine.MRTK.Toolkit.Prefabs
                 this.PrepareEntity(item.Entity);
             }
 
-            foreach (var item in sceneItems)
-            {
-                this.AddingPrefabEntityRoot?.Invoke(this, item.Entity);
-                this.Owner.AddChild(item.Entity);
-            }
-
             Trace.WriteLine($"Prefab with id '{this.ScenePrefabProperty.PrefabId}' created in {st.ElapsedMilliseconds}ms");
+
+            return sceneItems.Select(item => item.Entity);
         }
 
         private void PrepareEntity(Entity entity)
@@ -158,6 +186,38 @@ namespace Evergine.MRTK.Toolkit.Prefabs
                 this.PrepareEntity(child);
                 entity.AddChild(child);
             }
+        }
+
+        private void DestroyPrefabEntities()
+        {
+            if (this.prefabEntities == null)
+            {
+                return;
+            }
+
+            foreach (var entity in this.prefabEntities)
+            {
+                entity.Destroy();
+            }
+
+            this.prefabEntities = null;
+        }
+
+        /// <summary>
+        /// Refresh the entity, re-instancing the prefab.
+        /// </summary>
+        /// <param name="checkIsAttached">Check if it's attached.</param>
+        public void RefreshEntity(bool checkIsAttached = true)
+        {
+            if (checkIsAttached &&
+                !this.IsAttached)
+            {
+                return;
+            }
+
+            this.DetachPrefabEntities();
+            this.DestroyPrefabEntities();
+            this.AttachPrefabEntities();
         }
     }
 }

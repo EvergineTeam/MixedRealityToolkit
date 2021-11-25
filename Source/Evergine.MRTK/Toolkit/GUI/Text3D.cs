@@ -668,6 +668,11 @@ namespace Evergine.MRTK.Toolkit.GUI
 
         private void RemoveContainerEntity()
         {
+            if (!this.isContainerEntityAdded)
+            {
+                return;
+            }
+
             if (this.noesisFramebuffer != null)
             {
                 this.noesisFramebuffer.Dispose();
@@ -676,6 +681,7 @@ namespace Evergine.MRTK.Toolkit.GUI
                 this.holographicMaterial.Texture = null;
             }
 
+            this.noesisFramebuffer = null;
             this.planeTransform = null;
             this.materialComponent = null;
             this.meshRenderer = null;
@@ -706,6 +712,7 @@ namespace Evergine.MRTK.Toolkit.GUI
                 Foreground = this.foregroundBrush,
                 HorizontalAlignment = this.HorizontalAlignment,
                 VerticalAlignment = this.VerticalAlignment,
+                TextAlignment = this.TextAlignment,
                 Text = this.Text,
                 TextWrapping = this.TextWrapping,
                 FontWeight = this.FontWeight,

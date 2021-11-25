@@ -9,6 +9,7 @@ using Evergine.Framework.Physics3D;
 using Evergine.Framework.Services;
 using Evergine.Mathematics;
 using Evergine.MRTK.Emulation;
+using Evergine.MRTK.SDK.Features;
 
 namespace Evergine.MRTK.Services.InputSystem
 {
@@ -124,6 +125,11 @@ namespace Evergine.MRTK.Services.InputSystem
             if (Application.Current.IsEditor)
             {
                 return true;
+            }
+
+            if (!Tools.IsXRPlatformInputTrackingAvailable())
+            {
+                this.xrPlatform = null;
             }
 
             this.gazePointerShape = this.Managers.PhysicManager3D.CreateColliderShape<ISphereColliderShape3D>();

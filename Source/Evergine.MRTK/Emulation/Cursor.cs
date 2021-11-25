@@ -210,8 +210,12 @@ namespace Evergine.MRTK.Emulation
             for (int i = 0; i < this.pointerFocusableEntities.Count; i++)
             {
                 var entity = this.pointerFocusableEntities[i];
-                var distance = Vector3.DistanceSquared(this.transform.Position, entity.FindComponent<Transform3D>().Position);
+                if (entity.IsDestroyed)
+                {
+                    continue;
+                }
 
+                var distance = Vector3.DistanceSquared(this.transform.Position, entity.FindComponent<Transform3D>().Position);
                 if (distance < closestDistance)
                 {
                     closestDistance = distance;

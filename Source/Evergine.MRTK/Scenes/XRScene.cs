@@ -12,11 +12,11 @@ using Evergine.Components.XR;
 using Evergine.Framework;
 using Evergine.Framework.Graphics;
 using Evergine.Framework.Physics3D;
-using Evergine.Framework.Services;
 using Evergine.Framework.XR;
 using Evergine.Mathematics;
 using Evergine.MRTK.Behaviors;
 using Evergine.MRTK.Emulation;
+using Evergine.MRTK.SDK.Features;
 using Evergine.MRTK.Services.InputSystem;
 
 namespace Evergine.MRTK.Scenes
@@ -158,7 +158,7 @@ namespace Evergine.MRTK.Scenes
                     .AddComponent(new MeshRenderer())
                     .AddComponent(new ProximityLight()));
 
-            if (Application.Current.Container.IsRegistered<XRPlatform>())
+            if (Tools.IsXRPlatformInputTrackingAvailable())
             {
                 // HoloLens 2
                 mainCursor.AddComponent(new TrackXRJoint()
