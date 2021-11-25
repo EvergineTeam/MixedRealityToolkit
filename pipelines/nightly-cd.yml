@@ -1,7 +1,7 @@
 name: $(Date:yyyy)$(Date:.M)$(Date:.d)$(Rev:.r)-nightly
 
-trigger:
-  - master
+trigger: none
+pr: none
 
 stages:
   - stage: PackageBuild
