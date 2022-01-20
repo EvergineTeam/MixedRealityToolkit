@@ -169,15 +169,6 @@ $RECYCLE.BIN/
 [Ee]xport/
 *.GhostDoc.xml
 
-!Libraries/
-Tools/Libraries/WaveMaterialEditor/
-Tools/Libraries/WaveAssetViewer/
-Tools/Libraries/WaveExporter/
-Tools/Libraries/WaveConstantsGenerator/
-WaveExport/
-Intermediate/
-/Installer/Mac/build
-/Installer/Mac/build-debug
 
 .vs/
 
@@ -189,11 +180,11 @@ EditorReleasePackages/
 _InstallerOutput/
 
 src/.idea/
-.waveengine
+.evergine
 
-# WaveEngine
-.waveengine/
-WaveContent.cs
+# Evergine
+.evergine/
+EvergineContent.cs
 !**/Content/**/*.obj
 
 Environment.wedir

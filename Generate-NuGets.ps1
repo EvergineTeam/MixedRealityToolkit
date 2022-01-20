@@ -7,7 +7,7 @@
 .EXAMPLE
 	<script> -version 3.4.22.288-local
 .LINK
-	https://waveengine.net
+	https://evergine.com/
 #>
 
 param (
