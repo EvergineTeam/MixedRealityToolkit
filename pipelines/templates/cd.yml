@@ -87,7 +87,7 @@ jobs:
         enabled: ${{ parameters.publishEnabled }}
         condition: and(succeeded(), ne('${{ parameters.publishContainer }}', ''))
         inputs:
-          SourcePath: "$(wepkgOutputPath)/Evergine.MRTK.Assets.${{ parameters.buildVersion }}.wepkg"
+          SourcePath: "$(wepkgOutputPath)/Evergine.MRTK.${{ parameters.buildVersion }}.wepkg"
           azureSubscription: "Waveengineteam devops connections SP"
           Destination: AzureBlob
           storage: everginestudio
