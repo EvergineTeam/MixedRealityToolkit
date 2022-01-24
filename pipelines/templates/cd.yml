@@ -18,13 +18,13 @@ jobs:
     workspace:
       clean: all
     pool:
-      vmImage: "windows-2019"
+      vmImage: "windows-2022"
     variables:
       nugetConfigPath: "$(Build.SourcesDirectory)/Source/Evergine.MRTK/NuGet.config"
       nugetOutputPath: "$(Build.StagingDirectory)/nupkgs"
       wepkgOutputPath: "$(Build.StagingDirectory)/wepkgs"
-      NetCoreSDKVersion: "5.0.x"
-      NuGetVersion: "5.8.x"
+      NetCoreSDKVersion: "6.x"
+      NuGetVersion: "6.x"
 
     steps:
       - task: UseDotNet@2

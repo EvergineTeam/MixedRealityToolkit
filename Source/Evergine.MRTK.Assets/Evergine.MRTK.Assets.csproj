@@ -1,11 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Evergine.Packages.Targets" Version="2021.11.16.1-preview"/>
+    <PackageReference Include="Evergine.Packages.Targets" Version="2021.11.16.1-preview" />
   </ItemGroup>
 
   <ItemGroup>
