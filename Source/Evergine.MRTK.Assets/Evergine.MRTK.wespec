@@ -1,8 +1,10 @@
 ﻿Owners: Evergine
 Description: "Evergine Mixed Reality Toolkit package."
 Tags:
- - evergine
- - mrtk
+ - Evergine
+ - MRTK
+ - Mixed Reality
 Nugets:
  - Evergine.Framework
  - Evergine.MRTK
+ 

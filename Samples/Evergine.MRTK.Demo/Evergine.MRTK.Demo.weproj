@@ -1,7 +1,7 @@
 Packages:
   - Id: Evergine.Core
     Version: 2021.11.17.2-preview
-  - Id: Evergine.MRTK.Assets
+  - Id: Evergine.MRTK
     LocalPath: ../../Source/Evergine.MRTK.Assets/
 Profiles:
   - AdditionalEffectTechniqueCombinations: SHADOW_SUPPORTED-SHADOWFILTER7
