@@ -86,6 +86,7 @@
     <Compile Include="AppViewSource.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\VoiceCommandService.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -133,6 +134,10 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Source\Evergine.MRTK\Evergine.MRTK.csproj">
+      <Project>{A233D4F6-B54E-4E72-BC11-AD4634B10995}</Project>
+      <Name>Evergine.MRTK</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Evergine.MRTK.Demo\Evergine.MRTK.Demo.csproj">
       <Project>{04070017-d150-405d-9c6b-9b313dea8f1a}</Project>
       <Name>Evergine.MRTK.Demo</Name>

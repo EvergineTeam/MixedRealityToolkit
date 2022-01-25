@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 
 <Package
   xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
@@ -14,7 +14,7 @@
   <mp:PhoneIdentity PhoneProductId="3c3f15d0-9655-4eae-985a-6a2627fc40be" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
-    <DisplayName>Evergine.MRTK.Demo.UWP.MixedReality</DisplayName>
+    <DisplayName>Evergine MRTK Demo</DisplayName>
     <PublisherDisplayName>Evergine</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
@@ -32,18 +32,20 @@
         Executable="$targetnametoken$.exe"
         EntryPoint="Evergine.MRTK.Demo.UWP.MixedReality.AppView">
         <uap:VisualElements
-             DisplayName="Evergine.MRTK.Demo.UWP.MixedReality"
+             DisplayName="Evergine MRTK Demo"
              Square150x150Logo="Assets\Square150x150Logo.png" 
              Square44x44Logo="Assets\Square44x44Logo.png" 
              Description="Evergine.MRTK.Demo.UWP.MixedReality"
-             BackgroundColor="#464646">
+             BackgroundColor="#FFFFFF">
           <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" />
-          <uap:SplashScreen Image="Assets\SplashScreen.png" />
+          <uap:SplashScreen Image="Assets\SplashScreen.png"  BackgroundColor="#FFFFFF"/>
         </uap:VisualElements>
       </Application>
   </Applications>
 
   <Capabilities>
     <uap2:Capability Name="spatialPerception" />
+    <DeviceCapability Name="microphone"/>
+    <DeviceCapability Name="gazeInput"/>
   </Capabilities>
 </Package>

@@ -4,6 +4,7 @@ using Evergine.Common.Graphics;
 using Evergine.DirectX11;
 using Evergine.Framework.Services;
 using Evergine.MixedReality;
+using Evergine.MRTK.Demo.UWP.MixedReality.Services;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.ApplicationModel.Core;
@@ -46,6 +47,9 @@ namespace Evergine.MRTK.Demo.UWP.MixedReality
 			// Creates XAudio device
             var xaudio = new Evergine.XAudio2.XAudioDevice();
             application.Container.RegisterInstance(xaudio);
+
+            // Register voice commands service
+            application.Container.RegisterType<VoiceCommandService>();
         }
 
         /// <summary>
