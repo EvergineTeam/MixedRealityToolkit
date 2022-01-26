@@ -26,7 +26,7 @@ Items:
         Id: 123f9559-4071-45e5-9708-ea09bae31c5f
         IntensityMultiplier: 1.0
         IsEnabled: true
-        ReflectionProbe: cf77ce73-3566-4bb4-8df0-9b428f60f8e4
+        ReflectionProbe: 3d7332f0-54e3-489b-a525-2725e60a4b0f
         Strategy: Automatically
     Children: []
     Id: ad8017e0-08ed-427c-97ed-a9c055150ae7
@@ -175,7 +175,7 @@ Items:
     Id: 80c974d1-ac28-449a-bd2a-1fe248766773
   - !Evergine.Framework.Assets.AssetSources.Entities.EntityItemModel,Evergine.Framework
     Name: camera
-    Tag:
+    Tag: 
     IsEnabled: true
     IsStatic: false
     Components:
@@ -2229,7 +2229,8 @@ Items:
                   R: 0
                 CustomHeight: false
                 CustomWidth: false
-                FontFamilySource: /MRTK/Fonts/#Segoe UI
+                FontFamilySourceProperty:
+                  FontFamilySource: /MRTK/Fonts/#Segoe UI
                 FontSize: 64
                 FontStretch: Normal
                 FontStyle: Normal
@@ -2289,7 +2290,8 @@ Items:
                   R: 0
                 CustomHeight: false
                 CustomWidth: true
-                FontFamilySource: /MRTK/Fonts/#Segoe UI
+                FontFamilySourceProperty:
+                  FontFamilySource: /MRTK/Fonts/#Segoe UI
                 FontSize: 42
                 FontStretch: Normal
                 FontStyle: Normal
@@ -2401,7 +2403,8 @@ Items:
                       R: 0
                     CustomHeight: false
                     CustomWidth: false
-                    FontFamilySource: /MRTK/Fonts/#Segoe UI
+                    FontFamilySourceProperty:
+                      FontFamilySource: /MRTK/Fonts/#Segoe UI
                     FontSize: 32
                     FontStretch: Normal
                     FontStyle: Normal
@@ -3634,7 +3637,8 @@ Items:
                   R: 0
                 CustomHeight: false
                 CustomWidth: false
-                FontFamilySource: /MRTK/Fonts/#Segoe UI
+                FontFamilySourceProperty:
+                  FontFamilySource: /MRTK/Fonts/#Segoe UI
                 FontSize: 64
                 FontStretch: Normal
                 FontStyle: Normal
@@ -3694,7 +3698,8 @@ Items:
                   R: 0
                 CustomHeight: false
                 CustomWidth: false
-                FontFamilySource: /MRTK/Fonts/#Segoe UI
+                FontFamilySourceProperty:
+                  FontFamilySource: /MRTK/Fonts/#Segoe UI
                 FontSize: 42
                 FontStretch: Normal
                 FontStyle: Normal
@@ -4403,7 +4408,8 @@ Items:
                   R: 0
                 CustomHeight: false
                 CustomWidth: false
-                FontFamilySource: /MRTK/Fonts/#Segoe UI
+                FontFamilySourceProperty:
+                  FontFamilySource: /MRTK/Fonts/#Segoe UI
                 FontSize: 64
                 FontStretch: Normal
                 FontStyle: Normal
@@ -4463,7 +4469,8 @@ Items:
                   R: 0
                 CustomHeight: false
                 CustomWidth: true
-                FontFamilySource: /MRTK/Fonts/#Segoe UI
+                FontFamilySourceProperty:
+                  FontFamilySource: /MRTK/Fonts/#Segoe UI
                 FontSize: 42
                 FontStretch: Normal
                 FontStyle: Normal
@@ -5320,7 +5327,8 @@ Items:
                   R: 0
                 CustomHeight: false
                 CustomWidth: false
-                FontFamilySource: /MRTK/Fonts/#Segoe UI
+                FontFamilySourceProperty:
+                  FontFamilySource: /MRTK/Fonts/#Segoe UI
                 FontSize: 64
                 FontStretch: Normal
                 FontStyle: Normal
@@ -5380,7 +5388,8 @@ Items:
                   R: 0
                 CustomHeight: false
                 CustomWidth: true
-                FontFamilySource: /MRTK/Fonts/#Segoe UI
+                FontFamilySourceProperty:
+                  FontFamilySource: /MRTK/Fonts/#Segoe UI
                 FontSize: 42
                 FontStretch: Normal
                 FontStyle: Normal
@@ -5593,7 +5602,8 @@ Items:
                   R: 0
                 CustomHeight: false
                 CustomWidth: true
-                FontFamilySource: /MRTK/Fonts/#Segoe UI
+                FontFamilySourceProperty:
+                  FontFamilySource: /MRTK/Fonts/#Segoe UI
                 FontSize: 32
                 FontStretch: Normal
                 FontStyle: Normal
@@ -5653,7 +5663,8 @@ Items:
                   R: 0
                 CustomHeight: false
                 CustomWidth: true
-                FontFamilySource: /MRTK/Fonts/#Segoe UI
+                FontFamilySourceProperty:
+                  FontFamilySource: /MRTK/Fonts/#Segoe UI
                 FontSize: 32
                 FontStretch: Normal
                 FontStyle: Normal
@@ -5713,7 +5724,8 @@ Items:
                   R: 0
                 CustomHeight: false
                 CustomWidth: true
-                FontFamilySource: /MRTK/Fonts/#Segoe UI
+                FontFamilySourceProperty:
+                  FontFamilySource: /MRTK/Fonts/#Segoe UI
                 FontSize: 32
                 FontStretch: Normal
                 FontStyle: Normal
@@ -6045,7 +6057,8 @@ Items:
                   R: 0
                 CustomHeight: false
                 CustomWidth: false
-                FontFamilySource: /MRTK/Fonts/#Segoe UI
+                FontFamilySourceProperty:
+                  FontFamilySource: /MRTK/Fonts/#Segoe UI
                 FontSize: 64
                 FontStretch: Normal
                 FontStyle: Normal
@@ -6105,7 +6118,8 @@ Items:
                   R: 0
                 CustomHeight: false
                 CustomWidth: false
-                FontFamilySource: /MRTK/Fonts/#Segoe UI
+                FontFamilySourceProperty:
+                  FontFamilySource: /MRTK/Fonts/#Segoe UI
                 FontSize: 42
                 FontStretch: Normal
                 FontStyle: Normal
@@ -6460,7 +6474,8 @@ Items:
                   R: 0
                 CustomHeight: false
                 CustomWidth: false
-                FontFamilySource: /MRTK/Fonts/#Segoe UI
+                FontFamilySourceProperty:
+                  FontFamilySource: /MRTK/Fonts/#Segoe UI
                 FontSize: 84
                 FontStretch: Normal
                 FontStyle: Normal
@@ -6520,7 +6535,8 @@ Items:
                   R: 0
                 CustomHeight: false
                 CustomWidth: true
-                FontFamilySource: /MRTK/Fonts/#Segoe UI
+                FontFamilySourceProperty:
+                  FontFamilySource: /MRTK/Fonts/#Segoe UI
                 FontSize: 54
                 FontStretch: Normal
                 FontStyle: Normal
@@ -7192,7 +7208,8 @@ Items:
                   R: 0
                 CustomHeight: false
                 CustomWidth: false
-                FontFamilySource: /MRTK/Fonts/#Segoe UI
+                FontFamilySourceProperty:
+                  FontFamilySource: /MRTK/Fonts/#Segoe UI
                 FontSize: 64
                 FontStretch: Normal
                 FontStyle: Normal
@@ -7252,7 +7269,8 @@ Items:
                   R: 0
                 CustomHeight: false
                 CustomWidth: true
-                FontFamilySource: /MRTK/Fonts/#Segoe UI
+                FontFamilySourceProperty:
+                  FontFamilySource: /MRTK/Fonts/#Segoe UI
                 FontSize: 42
                 FontStretch: Normal
                 FontStyle: Normal
@@ -7312,7 +7330,8 @@ Items:
                   R: 0
                 CustomHeight: false
                 CustomWidth: false
-                FontFamilySource: /MRTK/Fonts/#Segoe UI
+                FontFamilySourceProperty:
+                  FontFamilySource: /MRTK/Fonts/#Segoe UI
                 FontSize: 64
                 FontStretch: Normal
                 FontStyle: Normal
@@ -7372,7 +7391,8 @@ Items:
                   R: 0
                 CustomHeight: false
                 CustomWidth: true
-                FontFamilySource: /MRTK/Fonts/#Segoe UI
+                FontFamilySourceProperty:
+                  FontFamilySource: /MRTK/Fonts/#Segoe UI
                 FontSize: 64
                 FontStretch: Normal
                 FontStyle: Normal
@@ -7432,7 +7452,8 @@ Items:
                   R: 0
                 CustomHeight: false
                 CustomWidth: true
-                FontFamilySource: /MRTK/Fonts/#Segoe UI
+                FontFamilySourceProperty:
+                  FontFamilySource: /MRTK/Fonts/#Segoe UI
                 FontSize: 64
                 FontStretch: Normal
                 FontStyle: Normal
@@ -7611,7 +7632,8 @@ Items:
                   R: 0
                 CustomHeight: false
                 CustomWidth: false
-                FontFamilySource: /MRTK/Fonts/#Segoe UI
+                FontFamilySourceProperty:
+                  FontFamilySource: /MRTK/Fonts/#Segoe UI
                 FontSize: 64
                 FontStretch: Normal
                 FontStyle: Normal
@@ -7671,7 +7693,8 @@ Items:
                   R: 0
                 CustomHeight: false
                 CustomWidth: true
-                FontFamilySource: /MRTK/Fonts/#Segoe UI
+                FontFamilySourceProperty:
+                  FontFamilySource: /MRTK/Fonts/#Segoe UI
                 FontSize: 42
                 FontStretch: Normal
                 FontStyle: Normal

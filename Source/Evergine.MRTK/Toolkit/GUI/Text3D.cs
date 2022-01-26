@@ -107,7 +107,7 @@ namespace Evergine.MRTK.Toolkit.GUI
         /// <summary>
         /// Gets or sets a value indicating whether the width of the text block will be predefined or auto-calculated based on text.
         /// </summary>
-        [RenderProperty(Tooltip = "Indicates whether the width of the text block will be predefined or auto-calculated based on text.")]
+        [RenderProperty(Tag = 1, Tooltip = "Indicates whether the width of the text block will be predefined or auto-calculated based on text.")]
         public bool CustomWidth
         {
             get => this.customWidth;
@@ -125,7 +125,7 @@ namespace Evergine.MRTK.Toolkit.GUI
         /// <summary>
         /// Gets or sets with of text block.
         /// </summary>
-        [RenderProperty(Tooltip = "The text block width in meters.")]
+        [RenderProperty(AttachToTag = 1, AttachToValue = true, Tooltip = "The text block width in meters.")]
         public float Width
         {
             get => this.width;
@@ -143,7 +143,7 @@ namespace Evergine.MRTK.Toolkit.GUI
         /// <summary>
         /// Gets or sets text horizontal alignment.
         /// </summary>
-        [RenderProperty(Tooltip = "The text horizontal alignment")]
+        [RenderProperty(AttachToTag = 1, AttachToValue = true, Tooltip = "The text horizontal alignment")]
         public HorizontalAlignment HorizontalAlignment
         {
             get => this.horizontalAlignment;
@@ -161,7 +161,7 @@ namespace Evergine.MRTK.Toolkit.GUI
         /// <summary>
         /// Gets or sets a value indicating whether the height of the text block will be predefined or auto-calculated based on text.
         /// </summary>
-        [RenderProperty(Tooltip = "Indicates whether the height of the text block will be predefined or auto-calculated based on text.")]
+        [RenderProperty(Tag = 2, Tooltip = "Indicates whether the height of the text block will be predefined or auto-calculated based on text.")]
         public bool CustomHeight
         {
             get => this.customHeight;
@@ -179,7 +179,7 @@ namespace Evergine.MRTK.Toolkit.GUI
         /// <summary>
         /// Gets or sets height of text block.
         /// </summary>
-        [RenderProperty(Tooltip = "The text block height in meters.")]
+        [RenderProperty(AttachToTag = 2, AttachToValue = true, Tooltip = "The text block height in meters.")]
         public float Height
         {
             get => this.height;
@@ -197,7 +197,7 @@ namespace Evergine.MRTK.Toolkit.GUI
         /// <summary>
         /// Gets or sets text vertical alignment.
         /// </summary>
-        [RenderProperty(Tooltip = "The text vertical alignment.")]
+        [RenderProperty(AttachToTag = 2, AttachToValue = true, Tooltip = "The text vertical alignment.")]
         public VerticalAlignment VerticalAlignment
         {
             get => this.verticalAlignment;
@@ -355,23 +355,34 @@ namespace Evergine.MRTK.Toolkit.GUI
         private TextWrapping textWrapping = TextWrapping.NoWrap;
 
         /// <summary>
-        /// Gets or sets text font family source to use.
+        /// Gets or sets the text font family source to use.
         /// </summary>
-        [RenderProperty(Tooltip = "The text font family source to use.")]
-        public string FontFamilySource
+        [RenderProperty(CustomPropertyName = "FontFamily", Tooltip = "The text font family source to use.")]
+        public FontFamilySourceProperty FontFamilySourceProperty
         {
-            get => this.fontFamilySource;
+            get
+            {
+                if (this.fontFamilySourceProperty == null)
+                {
+                    this.fontFamilySourceProperty = new FontFamilySourceProperty();
+                    this.fontFamilySourceProperty.OnFontFamilySourceChanged += this.FontFamilySourceProperty_OnFontFamilySourceChanged;
+                }
+
+                return this.fontFamilySourceProperty;
+            }
+
             set
             {
-                if (this.SetProperty(ref this.fontFamilySource, value, this.textBlock))
+                if (this.fontFamilySourceProperty != value)
                 {
-                    this.textBlock.FontFamily = this.GetFontFamily(this.fontFamilySource);
-                    this.Invalidate();
+                    this.fontFamilySourceProperty.OnFontFamilySourceChanged -= this.FontFamilySourceProperty_OnFontFamilySourceChanged;
+                    this.fontFamilySourceProperty = value;
+                    this.fontFamilySourceProperty.OnFontFamilySourceChanged += this.FontFamilySourceProperty_OnFontFamilySourceChanged;
                 }
             }
         }
 
-        private string fontFamilySource = string.Empty;
+        private FontFamilySourceProperty fontFamilySourceProperty;
 
         /// <summary>
         /// Gets or sets text font weight to use.
@@ -562,6 +573,15 @@ namespace Evergine.MRTK.Toolkit.GUI
             this.UpdateNoesisPanelFrameBuffer();
         }
 
+        private void FontFamilySourceProperty_OnFontFamilySourceChanged(object sender, System.EventArgs e)
+        {
+            if (this.textBlock != null)
+            {
+                this.textBlock.FontFamily = this.GetFontFamily(this.fontFamilySourceProperty.FontFamilySource);
+                this.Invalidate();
+            }
+        }
+
         /// <summary>
         /// Invalidates the text control and forces an internal frameBuffer update.
         /// </summary>
@@ -588,7 +608,7 @@ namespace Evergine.MRTK.Toolkit.GUI
 
             if (!this.customWidth || !this.CustomHeight)
             {
-                var isFontFamilyLoaded = string.IsNullOrEmpty(this.fontFamilySource) ||
+                var isFontFamilyLoaded = this.fontFamilySourceProperty.IsFontFamilySourceValid ||
                                          this.noesisService.StyleValid;
                 var hasContent = !string.IsNullOrEmpty(this.text) || this.Inlines?.Count > 0;
                 return isFontFamilyLoaded && hasContent;
@@ -719,7 +739,7 @@ namespace Evergine.MRTK.Toolkit.GUI
                 FontSize = this.FontSize,
                 FontStretch = this.FontStretch,
                 FontStyle = this.FontStyle,
-                FontFamily = this.GetFontFamily(this.FontFamilySource),
+                FontFamily = this.GetFontFamily(this.FontFamilySourceProperty.FontFamilySource),
                 TextTrimming = this.TextTrimming,
             };
         }

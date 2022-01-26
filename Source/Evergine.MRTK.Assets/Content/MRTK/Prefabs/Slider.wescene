@@ -258,7 +258,8 @@ Items:
                       R: 0
                     CustomHeight: false
                     CustomWidth: false
-                    FontFamilySource: /MRTK/Fonts/#Segoe UI
+                    FontFamilySourceProperty: 
+                      FontFamilySource: /MRTK/Fonts/#Segoe UI
                     FontSize: 32
                     FontStretch: Normal
                     FontStyle: Normal
@@ -317,7 +318,8 @@ Items:
                       R: 0
                     CustomHeight: false
                     CustomWidth: false
-                    FontFamilySource: /MRTK/Fonts/#Segoe UI
+                    FontFamilySourceProperty: 
+                      FontFamilySource: /MRTK/Fonts/#Segoe UI
                     FontSize: 42
                     FontStretch: Normal
                     FontStyle: Normal
