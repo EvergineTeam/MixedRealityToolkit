@@ -329,7 +329,7 @@ ASALocalRun/
 
 # Evergine
 .evergine/
-WaveContent.cs
+EvergineContent.cs
 !**/Content/**/*.obj
 **/wwwroot/lib/
 **/wwwroot/evergine/
