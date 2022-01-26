@@ -7,7 +7,6 @@ using Evergine.MRTK.Demo.VoiceCommands;
 using Evergine.MRTK.Emulation;
 using Evergine.NoesisGUI;
 using Evergine.Platform;
-using System.Threading.Tasks;
 
 namespace Evergine.MRTK.Demo
 {
@@ -25,7 +24,9 @@ namespace Evergine.MRTK.Demo
             this.Container.RegisterType<AssetsService>();
             this.Container.RegisterType<ForegroundTaskSchedulerService>();            
             this.Container.RegisterType<WorkActionScheduler>();
-            this.Container.RegisterType<NoesisService>();
+
+            var noesisService = new NoesisService();
+            this.Container.RegisterInstance(noesisService);
 
             this.Container.RegisterType<DemoCommandService>();
 

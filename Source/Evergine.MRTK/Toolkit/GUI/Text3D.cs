@@ -355,9 +355,9 @@ namespace Evergine.MRTK.Toolkit.GUI
         private TextWrapping textWrapping = TextWrapping.NoWrap;
 
         /// <summary>
-        /// Gets or sets the text font family source to use.
+        /// Gets or sets the font family source to use.
         /// </summary>
-        [RenderProperty(CustomPropertyName = "FontFamily", Tooltip = "The text font family source to use.")]
+        [RenderProperty(CustomPropertyName = "FontFamily", Tooltip = "The font family source to use.")]
         public FontFamilySourceProperty FontFamilySourceProperty
         {
             get
@@ -375,9 +375,17 @@ namespace Evergine.MRTK.Toolkit.GUI
             {
                 if (this.fontFamilySourceProperty != value)
                 {
-                    this.fontFamilySourceProperty.OnFontFamilySourceChanged -= this.FontFamilySourceProperty_OnFontFamilySourceChanged;
+                    if (this.fontFamilySourceProperty != null)
+                    {
+                        this.fontFamilySourceProperty.OnFontFamilySourceChanged -= this.FontFamilySourceProperty_OnFontFamilySourceChanged;
+                    }
+
                     this.fontFamilySourceProperty = value;
-                    this.fontFamilySourceProperty.OnFontFamilySourceChanged += this.FontFamilySourceProperty_OnFontFamilySourceChanged;
+
+                    if (this.fontFamilySourceProperty != null)
+                    {
+                        this.fontFamilySourceProperty.OnFontFamilySourceChanged += this.FontFamilySourceProperty_OnFontFamilySourceChanged;
+                    }
                 }
             }
         }
@@ -573,15 +581,6 @@ namespace Evergine.MRTK.Toolkit.GUI
             this.UpdateNoesisPanelFrameBuffer();
         }
 
-        private void FontFamilySourceProperty_OnFontFamilySourceChanged(object sender, System.EventArgs e)
-        {
-            if (this.textBlock != null)
-            {
-                this.textBlock.FontFamily = this.GetFontFamily(this.fontFamilySourceProperty.FontFamilySource);
-                this.Invalidate();
-            }
-        }
-
         /// <summary>
         /// Invalidates the text control and forces an internal frameBuffer update.
         /// </summary>
@@ -739,7 +738,7 @@ namespace Evergine.MRTK.Toolkit.GUI
                 FontSize = this.FontSize,
                 FontStretch = this.FontStretch,
                 FontStyle = this.FontStyle,
-                FontFamily = this.GetFontFamily(this.FontFamilySourceProperty.FontFamilySource),
+                FontFamily = this.FontFamilySourceProperty.GetFontFamily(),
                 TextTrimming = this.TextTrimming,
             };
         }
@@ -768,6 +767,15 @@ namespace Evergine.MRTK.Toolkit.GUI
             return frameworkElement;
         }
 
+        private void FontFamilySourceProperty_OnFontFamilySourceChanged(object sender, System.EventArgs e)
+        {
+            if (this.textBlock != null)
+            {
+                this.textBlock.FontFamily = this.FontFamilySourceProperty.GetFontFamily();
+                this.Invalidate();
+            }
+        }
+
         private void UpdatePlaneNormal()
         {
             if (this.planeMesh == null)
@@ -776,16 +784,6 @@ namespace Evergine.MRTK.Toolkit.GUI
             }
 
             this.planeMesh.PlaneNormal = this.normal;
-        }
-
-        /// <summary>
-        /// Gets <see cref="FontFamily"/> instance from source.
-        /// </summary>
-        /// <param name="fontFamilySource">Font source.</param>
-        /// <returns>Font family.</returns>
-        protected FontFamily GetFontFamily(string fontFamilySource)
-        {
-            return string.IsNullOrEmpty(fontFamilySource) ? null : new FontFamily(fontFamilySource);
         }
 
         private void UpdateOrigin(Transform3D planeTransform)

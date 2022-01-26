@@ -2488,6 +2488,8 @@ Items:
                     Id: 28d820ce-d3b9-4f16-b792-b1457e2203d0
                     CreatesNewBackPlateMaterialInstance: false
                     CreatesNewIconMaterialInstance: false
+                    FontFamilySourceProperty:
+                      FontFamilySource: /MRTK/Fonts/#Segoe UI
                     Icon: 163a35b7-72c2-41c3-8116-2b44e8a79394
                     IsEnabled: true
                     Plate: null
@@ -2542,6 +2544,8 @@ Items:
                     Id: c13dce83-ce8e-4f67-88a6-8a4d09d3e2b7
                     CreatesNewBackPlateMaterialInstance: false
                     CreatesNewIconMaterialInstance: false
+                    FontFamilySourceProperty:
+                      FontFamilySource: /MRTK/Fonts/#Segoe UI
                     Icon: 163a35b7-72c2-41c3-8116-2b44e8a79394
                     IsEnabled: true
                     Plate: null
@@ -2596,6 +2600,8 @@ Items:
                     Id: 37dd8eb8-dbbf-41cf-bc79-2b6938aa3c87
                     CreatesNewBackPlateMaterialInstance: false
                     CreatesNewIconMaterialInstance: false
+                    FontFamilySourceProperty:
+                      FontFamilySource: /MRTK/Fonts/#Segoe UI
                     Icon: 163a35b7-72c2-41c3-8116-2b44e8a79394
                     IsEnabled: true
                     Plate: null
@@ -2650,6 +2656,8 @@ Items:
                     Id: 4b5c6ad0-52d6-4bde-8bd0-0c8640d78056
                     CreatesNewBackPlateMaterialInstance: false
                     CreatesNewIconMaterialInstance: false
+                    FontFamilySourceProperty:
+                      FontFamilySource: /MRTK/Fonts/#Segoe UI
                     Icon: 163a35b7-72c2-41c3-8116-2b44e8a79394
                     IsEnabled: true
                     Plate: null
@@ -2704,6 +2712,8 @@ Items:
                     Id: 55458b74-af1f-448f-bd2b-d62b139908d6
                     CreatesNewBackPlateMaterialInstance: false
                     CreatesNewIconMaterialInstance: false
+                    FontFamilySourceProperty:
+                      FontFamilySource: /MRTK/Fonts/#Segoe UI
                     Icon: 163a35b7-72c2-41c3-8116-2b44e8a79394
                     IsEnabled: true
                     Plate: null
@@ -2758,6 +2768,8 @@ Items:
                     Id: 5452b563-158d-4e6f-9647-7f02333120b6
                     CreatesNewBackPlateMaterialInstance: false
                     CreatesNewIconMaterialInstance: false
+                    FontFamilySourceProperty:
+                      FontFamilySource: /MRTK/Fonts/#Segoe UI
                     Icon: 163a35b7-72c2-41c3-8116-2b44e8a79394
                     IsEnabled: true
                     Plate: null
@@ -2909,6 +2921,8 @@ Items:
                     Id: f507ebad-4ce6-4a60-b56e-f49ab7c225e6
                     CreatesNewBackPlateMaterialInstance: false
                     CreatesNewIconMaterialInstance: false
+                    FontFamilySourceProperty:
+                      FontFamilySource: /MRTK/Fonts/#Segoe UI
                     Icon: 163a35b7-72c2-41c3-8116-2b44e8a79394
                     IsEnabled: true
                     Plate: null
@@ -2963,6 +2977,8 @@ Items:
                     Id: afaff0a4-1ab8-476e-8d03-7685661724ff
                     CreatesNewBackPlateMaterialInstance: false
                     CreatesNewIconMaterialInstance: false
+                    FontFamilySourceProperty:
+                      FontFamilySource: /MRTK/Fonts/#Segoe UI
                     Icon: 163a35b7-72c2-41c3-8116-2b44e8a79394
                     IsEnabled: true
                     Plate: null
@@ -3017,6 +3033,8 @@ Items:
                     Id: b5e4e03b-3c1c-452f-9442-21558aa5413e
                     CreatesNewBackPlateMaterialInstance: false
                     CreatesNewIconMaterialInstance: false
+                    FontFamilySourceProperty:
+                      FontFamilySource: /MRTK/Fonts/#Segoe UI
                     Icon: 163a35b7-72c2-41c3-8116-2b44e8a79394
                     IsEnabled: true
                     Plate: null
@@ -3071,6 +3089,8 @@ Items:
                     Id: 0f7d657f-71a3-4e74-8a70-8c58e620080e
                     CreatesNewBackPlateMaterialInstance: false
                     CreatesNewIconMaterialInstance: false
+                    FontFamilySourceProperty:
+                      FontFamilySource: /MRTK/Fonts/#Segoe UI
                     Icon: 163a35b7-72c2-41c3-8116-2b44e8a79394
                     IsEnabled: true
                     Plate: null
@@ -3222,6 +3242,8 @@ Items:
                     Id: 2fe31d6d-31b0-4481-a48c-423e8f07ba30
                     CreatesNewBackPlateMaterialInstance: false
                     CreatesNewIconMaterialInstance: false
+                    FontFamilySourceProperty:
+                      FontFamilySource: /MRTK/Fonts/#Segoe UI
                     Icon: 7a93b9b7-56a3-41f1-8392-0751355e1bef
                     IsEnabled: true
                     Plate: null
@@ -3236,6 +3258,8 @@ Items:
                     Id: 11a4f37d-50b8-4758-a540-cd366bb1a8c2
                     CreatesNewBackPlateMaterialInstance: false
                     CreatesNewIconMaterialInstance: false
+                    FontFamilySourceProperty:
+                      FontFamilySource: /MRTK/Fonts/#Segoe UI
                     Icon: b4780cf3-7509-4615-86d3-6c2ffa231fa4
                     IsEnabled: false
                     Plate: null
@@ -3250,6 +3274,8 @@ Items:
                     Id: 185f4235-02c2-4ec5-b162-782c533da2b2
                     CreatesNewBackPlateMaterialInstance: false
                     CreatesNewIconMaterialInstance: false
+                    FontFamilySourceProperty:
+                      FontFamilySource: /MRTK/Fonts/#Segoe UI
                     Icon: ce2f33db-e32c-4a69-870c-b2905569897f
                     IsEnabled: false
                     Plate: null
@@ -3304,6 +3330,8 @@ Items:
                     Id: e96b1bc8-81e4-464c-a357-c2d44d968fc2
                     CreatesNewBackPlateMaterialInstance: false
                     CreatesNewIconMaterialInstance: false
+                    FontFamilySourceProperty:
+                      FontFamilySource: /MRTK/Fonts/#Segoe UI
                     Icon: 7a93b9b7-56a3-41f1-8392-0751355e1bef
                     IsEnabled: true
                     Plate: null
@@ -3318,6 +3346,8 @@ Items:
                     Id: 4e2ce138-f8b5-4409-99ed-3aa3965f7375
                     CreatesNewBackPlateMaterialInstance: false
                     CreatesNewIconMaterialInstance: false
+                    FontFamilySourceProperty:
+                      FontFamilySource: /MRTK/Fonts/#Segoe UI
                     Icon: b4780cf3-7509-4615-86d3-6c2ffa231fa4
                     IsEnabled: false
                     Plate: null
@@ -3332,6 +3362,8 @@ Items:
                     Id: 6e01fb40-f978-4d93-8498-bef51ab51d1a
                     CreatesNewBackPlateMaterialInstance: false
                     CreatesNewIconMaterialInstance: false
+                    FontFamilySourceProperty:
+                      FontFamilySource: /MRTK/Fonts/#Segoe UI
                     Icon: ce2f33db-e32c-4a69-870c-b2905569897f
                     IsEnabled: false
                     Plate: null
@@ -3386,6 +3418,8 @@ Items:
                     Id: e28900b0-9260-4d5a-a5a0-38d0877aea36
                     CreatesNewBackPlateMaterialInstance: false
                     CreatesNewIconMaterialInstance: false
+                    FontFamilySourceProperty:
+                      FontFamilySource: /MRTK/Fonts/#Segoe UI
                     Icon: 7a93b9b7-56a3-41f1-8392-0751355e1bef
                     IsEnabled: true
                     Plate: null
@@ -3400,6 +3434,8 @@ Items:
                     Id: bcb59f5e-3667-4b50-8a8d-5557a1a2ee44
                     CreatesNewBackPlateMaterialInstance: false
                     CreatesNewIconMaterialInstance: false
+                    FontFamilySourceProperty:
+                      FontFamilySource: /MRTK/Fonts/#Segoe UI
                     Icon: b4780cf3-7509-4615-86d3-6c2ffa231fa4
                     IsEnabled: false
                     Plate: null
@@ -3414,6 +3450,8 @@ Items:
                     Id: 2fc861a8-26ca-4a36-91fe-073a8b0d0d86
                     CreatesNewBackPlateMaterialInstance: false
                     CreatesNewIconMaterialInstance: false
+                    FontFamilySourceProperty:
+                      FontFamilySource: /MRTK/Fonts/#Segoe UI
                     Icon: ce2f33db-e32c-4a69-870c-b2905569897f
                     IsEnabled: false
                     Plate: null
@@ -3493,6 +3531,8 @@ Items:
                 Id: b5df32c2-8e5d-45d0-a5fe-a07ac3ad60d2
                 CreatesNewThumbMaterialInstance: false
                 CreatesNewTrackMaterialInstance: false
+                FontFamilySourceProperty:
+                  FontFamilySource: /MRTK/Fonts/#Segoe UI
                 IsEnabled: true
                 PrimaryColor:
                   A: 255
@@ -3541,6 +3581,8 @@ Items:
                 Id: db88a3ff-4b12-404d-a495-a261e37d576c
                 CreatesNewThumbMaterialInstance: false
                 CreatesNewTrackMaterialInstance: false
+                FontFamilySourceProperty:
+                  FontFamilySource: /MRTK/Fonts/#Segoe UI
                 IsEnabled: true
                 PrimaryColor:
                   A: 255
@@ -3589,6 +3631,8 @@ Items:
                 Id: 8e3f0414-fe91-43cc-b994-b76627bf56d9
                 CreatesNewThumbMaterialInstance: false
                 CreatesNewTrackMaterialInstance: false
+                FontFamilySourceProperty:
+                  FontFamilySource: /MRTK/Fonts/#Segoe UI
                 IsEnabled: true
                 PrimaryColor:
                   A: 255

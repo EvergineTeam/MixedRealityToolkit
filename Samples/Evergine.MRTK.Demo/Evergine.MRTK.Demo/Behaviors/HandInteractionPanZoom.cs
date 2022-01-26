@@ -116,7 +116,10 @@ namespace Evergine.MRTK.Demo.Behaviors
 
             if (!Application.Current.IsEditor)
             {
-                nearInteractionTouchable = this.Owner.GetOrAddComponent<NearInteractionTouchable>();
+                this.Owner.GetOrAddComponent<BoxCollider3D>();
+                this.Owner.GetOrAddComponent<StaticBody3D>();
+
+                this.nearInteractionTouchable = this.Owner.GetOrAddComponent<NearInteractionTouchable>();
                 this.soundEmitter = this.Owner.GetOrAddComponent<SoundEmitter3D>();
                 this.Owner.GetOrAddComponent<StaticBody3D>();
                 this.Owner.GetInChildrenOrAddComponent<BoxCollider3D>();

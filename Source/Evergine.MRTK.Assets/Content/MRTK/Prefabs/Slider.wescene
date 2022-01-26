@@ -258,8 +258,8 @@ Items:
                       R: 0
                     CustomHeight: false
                     CustomWidth: false
-                    FontFamilySourceProperty: 
-                      FontFamilySource: /MRTK/Fonts/#Segoe UI
+                    FontFamilySourceProperty:
+                      FontFamilySource: 
                     FontSize: 32
                     FontStretch: Normal
                     FontStyle: Normal
@@ -272,6 +272,7 @@ Items:
                     Height: 0.0114000002
                     HorizontalAlignment: Right
                     IsEnabled: true
+                    Layer: e35c59a9-26ab-4b4c-8210-4b1f21c31530
                     Normal: ZNegative
                     Origin:
                       X: 1.0
@@ -318,8 +319,8 @@ Items:
                       R: 0
                     CustomHeight: false
                     CustomWidth: false
-                    FontFamilySourceProperty: 
-                      FontFamilySource: /MRTK/Fonts/#Segoe UI
+                    FontFamilySourceProperty:
+                      FontFamilySource: 
                     FontSize: 42
                     FontStretch: Normal
                     FontStyle: Normal
@@ -332,6 +333,7 @@ Items:
                     Height: 0.0148
                     HorizontalAlignment: Right
                     IsEnabled: true
+                    Layer: e35c59a9-26ab-4b4c-8210-4b1f21c31530
                     Normal: ZNegative
                     Origin:
                       X: 1.0

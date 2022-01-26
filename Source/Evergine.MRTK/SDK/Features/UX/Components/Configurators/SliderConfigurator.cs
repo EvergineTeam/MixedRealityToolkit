@@ -1,6 +1,7 @@
 ﻿// Copyright © Evergine S.L. All rights reserved. Use is subject to license terms.
 
 using System;
+using Evergine.Common.Attributes;
 using Evergine.Common.Graphics;
 using Evergine.Components.Graphics3D;
 using Evergine.Framework;
@@ -35,6 +36,7 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Configurators
         private Color primaryColor = Color.White;
         private Color secondaryColor = Color.White;
         private string title = "Title";
+        private FontFamilySourceProperty fontFamilySourceProperty;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SliderConfigurator"/> class.
@@ -138,6 +140,42 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Configurators
             }
         }
 
+        /// <summary>
+        /// Gets or sets the text font family source to use.
+        /// </summary>
+        [RenderProperty(CustomPropertyName = "FontFamily", Tooltip = "The font family source to use in the button text.")]
+        public FontFamilySourceProperty FontFamilySourceProperty
+        {
+            get
+            {
+                if (this.fontFamilySourceProperty == null)
+                {
+                    this.fontFamilySourceProperty = new FontFamilySourceProperty();
+                    this.fontFamilySourceProperty.OnFontFamilySourceChanged += this.FontFamilySourceProperty_OnFontFamilySourceChanged;
+                }
+
+                return this.fontFamilySourceProperty;
+            }
+
+            set
+            {
+                if (this.fontFamilySourceProperty != value)
+                {
+                    if (this.fontFamilySourceProperty != null)
+                    {
+                        this.fontFamilySourceProperty.OnFontFamilySourceChanged -= this.FontFamilySourceProperty_OnFontFamilySourceChanged;
+                    }
+
+                    this.fontFamilySourceProperty = value;
+
+                    if (this.fontFamilySourceProperty != null)
+                    {
+                        this.fontFamilySourceProperty.OnFontFamilySourceChanged += this.FontFamilySourceProperty_OnFontFamilySourceChanged;
+                    }
+                }
+            }
+        }
+
         /// <inheritdoc />
         protected override bool OnAttached()
         {
@@ -167,6 +205,7 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Configurators
             this.OnUpdateTitle();
             this.OnPrimaryColorUpdate();
             this.OnSecondaryColorUpdate();
+            this.OnUpdateFontFamilySource();
         }
 
         private void OnPrimaryColorUpdate()
@@ -191,6 +230,24 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Configurators
             {
                 this.titleText.Text = this.title;
             }
+        }
+
+        private void OnUpdateFontFamilySource()
+        {
+            if (this.titleText != null)
+            {
+                this.titleText.FontFamilySourceProperty.FontFamilySource = this.FontFamilySourceProperty.FontFamilySource;
+            }
+
+            if (this.valueText != null)
+            {
+                this.valueText.FontFamilySourceProperty.FontFamilySource = this.FontFamilySourceProperty.FontFamilySource;
+            }
+        }
+
+        private void FontFamilySourceProperty_OnFontFamilySourceChanged(object sender, EventArgs e)
+        {
+            this.OnUpdateFontFamilySource();
         }
     }
 }

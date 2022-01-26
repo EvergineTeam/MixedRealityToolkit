@@ -1,4 +1,5 @@
 ﻿// Copyright © Evergine S.L. All rights reserved. Use is subject to license terms.
+using Evergine.Common.Attributes;
 using Evergine.Common.Graphics;
 using Evergine.Components.Graphics3D;
 using Evergine.Framework;
@@ -29,6 +30,7 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Configurators
 
         private Color primaryColor = Color.White;
         private string text;
+        private FontFamilySourceProperty fontFamilySourceProperty;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="StandardButtonConfigurator"/> class.
@@ -117,6 +119,42 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Configurators
             }
         }
 
+        /// <summary>
+        /// Gets or sets the text font family source to use.
+        /// </summary>
+        [RenderProperty(CustomPropertyName = "FontFamily", Tooltip = "The font family source to use in the button text.")]
+        public FontFamilySourceProperty FontFamilySourceProperty
+        {
+            get
+            {
+                if (this.fontFamilySourceProperty == null)
+                {
+                    this.fontFamilySourceProperty = new FontFamilySourceProperty();
+                    this.fontFamilySourceProperty.OnFontFamilySourceChanged += this.FontFamilySourceProperty_OnFontFamilySourceChanged;
+                }
+
+                return this.fontFamilySourceProperty;
+            }
+
+            set
+            {
+                if (this.fontFamilySourceProperty != value)
+                {
+                    if (this.fontFamilySourceProperty != null)
+                    {
+                        this.fontFamilySourceProperty.OnFontFamilySourceChanged -= this.FontFamilySourceProperty_OnFontFamilySourceChanged;
+                    }
+
+                    this.fontFamilySourceProperty = value;
+
+                    if (this.fontFamilySourceProperty != null)
+                    {
+                        this.fontFamilySourceProperty.OnFontFamilySourceChanged += this.FontFamilySourceProperty_OnFontFamilySourceChanged;
+                    }
+                }
+            }
+        }
+
         /// <inheritdoc />
         protected override bool OnAttached()
         {
@@ -144,13 +182,14 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Configurators
             this.plateConfigurator.Apply();
             this.iconConfigurator.Apply();
             this.OnUpdateText();
-            this.UpdateTextColor();
+            this.OnUpdateTextColor();
+            this.OnUpdateFontFamilySource();
         }
 
         private void OnPrimaryColorUpdate()
         {
             this.iconConfigurator.TintColor = this.primaryColor;
-            this.UpdateTextColor();
+            this.OnUpdateTextColor();
         }
 
         private void OnUpdateText()
@@ -161,12 +200,25 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Configurators
             }
         }
 
-        private void UpdateTextColor()
+        private void OnUpdateTextColor()
         {
             if (this.buttonText != null)
             {
                 this.buttonText.Foreground = this.primaryColor;
             }
+        }
+
+        private void OnUpdateFontFamilySource()
+        {
+            if (this.buttonText != null)
+            {
+                this.buttonText.FontFamilySourceProperty.FontFamilySource = this.FontFamilySourceProperty.FontFamilySource;
+            }
+        }
+
+        private void FontFamilySourceProperty_OnFontFamilySourceChanged(object sender, System.EventArgs e)
+        {
+            this.OnUpdateFontFamilySource();
         }
     }
 }

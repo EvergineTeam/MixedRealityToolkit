@@ -46,5 +46,14 @@ namespace Evergine.MRTK.Toolkit.GUI
         {
             this.OnFontFamilySourceChanged?.Invoke(this, EventArgs.Empty);
         }
+
+        /// <summary>
+        /// Gets <see cref="Noesis.FontFamily"/> instance from source.
+        /// </summary>
+        /// <returns>Font family.</returns>
+        public Noesis.FontFamily GetFontFamily()
+        {
+            return this.IsFontFamilySourceValid ? new Noesis.FontFamily(this.fontFamilySource) : null;
+        }
     }
 }
