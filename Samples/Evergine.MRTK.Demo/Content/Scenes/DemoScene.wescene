@@ -2230,7 +2230,7 @@ Items:
                 CustomHeight: false
                 CustomWidth: false
                 FontFamilySourceProperty:
-                  FontFamilySource: /MRTK/Fonts/#Segoe UI
+                  FontFamilySource: /Fonts/#Segoe UI
                 FontSize: 64
                 FontStretch: Normal
                 FontStyle: Normal
@@ -2291,7 +2291,7 @@ Items:
                 CustomHeight: false
                 CustomWidth: true
                 FontFamilySourceProperty:
-                  FontFamilySource: /MRTK/Fonts/#Segoe UI
+                  FontFamilySource: /Fonts/#Segoe UI
                 FontSize: 42
                 FontStretch: Normal
                 FontStyle: Normal
@@ -2404,7 +2404,7 @@ Items:
                     CustomHeight: false
                     CustomWidth: false
                     FontFamilySourceProperty:
-                      FontFamilySource: /MRTK/Fonts/#Segoe UI
+                      FontFamilySource: /Fonts/#Segoe UI
                     FontSize: 32
                     FontStretch: Normal
                     FontStyle: Normal
@@ -2489,7 +2489,7 @@ Items:
                     CreatesNewBackPlateMaterialInstance: false
                     CreatesNewIconMaterialInstance: false
                     FontFamilySourceProperty:
-                      FontFamilySource: /MRTK/Fonts/#Segoe UI
+                      FontFamilySource: /Fonts/#Segoe UI
                     Icon: 163a35b7-72c2-41c3-8116-2b44e8a79394
                     IsEnabled: true
                     Plate: null
@@ -2545,7 +2545,7 @@ Items:
                     CreatesNewBackPlateMaterialInstance: false
                     CreatesNewIconMaterialInstance: false
                     FontFamilySourceProperty:
-                      FontFamilySource: /MRTK/Fonts/#Segoe UI
+                      FontFamilySource: /Fonts/#Segoe UI
                     Icon: 163a35b7-72c2-41c3-8116-2b44e8a79394
                     IsEnabled: true
                     Plate: null
@@ -2601,7 +2601,7 @@ Items:
                     CreatesNewBackPlateMaterialInstance: false
                     CreatesNewIconMaterialInstance: false
                     FontFamilySourceProperty:
-                      FontFamilySource: /MRTK/Fonts/#Segoe UI
+                      FontFamilySource: /Fonts/#Segoe UI
                     Icon: 163a35b7-72c2-41c3-8116-2b44e8a79394
                     IsEnabled: true
                     Plate: null
@@ -2657,7 +2657,7 @@ Items:
                     CreatesNewBackPlateMaterialInstance: false
                     CreatesNewIconMaterialInstance: false
                     FontFamilySourceProperty:
-                      FontFamilySource: /MRTK/Fonts/#Segoe UI
+                      FontFamilySource: /Fonts/#Segoe UI
                     Icon: 163a35b7-72c2-41c3-8116-2b44e8a79394
                     IsEnabled: true
                     Plate: null
@@ -2713,7 +2713,7 @@ Items:
                     CreatesNewBackPlateMaterialInstance: false
                     CreatesNewIconMaterialInstance: false
                     FontFamilySourceProperty:
-                      FontFamilySource: /MRTK/Fonts/#Segoe UI
+                      FontFamilySource: /Fonts/#Segoe UI
                     Icon: 163a35b7-72c2-41c3-8116-2b44e8a79394
                     IsEnabled: true
                     Plate: null
@@ -2769,7 +2769,7 @@ Items:
                     CreatesNewBackPlateMaterialInstance: false
                     CreatesNewIconMaterialInstance: false
                     FontFamilySourceProperty:
-                      FontFamilySource: /MRTK/Fonts/#Segoe UI
+                      FontFamilySource: /Fonts/#Segoe UI
                     Icon: 163a35b7-72c2-41c3-8116-2b44e8a79394
                     IsEnabled: true
                     Plate: null
@@ -2922,7 +2922,7 @@ Items:
                     CreatesNewBackPlateMaterialInstance: false
                     CreatesNewIconMaterialInstance: false
                     FontFamilySourceProperty:
-                      FontFamilySource: /MRTK/Fonts/#Segoe UI
+                      FontFamilySource: /Fonts/#Segoe UI
                     Icon: 163a35b7-72c2-41c3-8116-2b44e8a79394
                     IsEnabled: true
                     Plate: null
@@ -2978,7 +2978,7 @@ Items:
                     CreatesNewBackPlateMaterialInstance: false
                     CreatesNewIconMaterialInstance: false
                     FontFamilySourceProperty:
-                      FontFamilySource: /MRTK/Fonts/#Segoe UI
+                      FontFamilySource: /Fonts/#Segoe UI
                     Icon: 163a35b7-72c2-41c3-8116-2b44e8a79394
                     IsEnabled: true
                     Plate: null
@@ -3034,7 +3034,7 @@ Items:
                     CreatesNewBackPlateMaterialInstance: false
                     CreatesNewIconMaterialInstance: false
                     FontFamilySourceProperty:
-                      FontFamilySource: /MRTK/Fonts/#Segoe UI
+                      FontFamilySource: /Fonts/#Segoe UI
                     Icon: 163a35b7-72c2-41c3-8116-2b44e8a79394
                     IsEnabled: true
                     Plate: null
@@ -3090,7 +3090,7 @@ Items:
                     CreatesNewBackPlateMaterialInstance: false
                     CreatesNewIconMaterialInstance: false
                     FontFamilySourceProperty:
-                      FontFamilySource: /MRTK/Fonts/#Segoe UI
+                      FontFamilySource: /Fonts/#Segoe UI
                     Icon: 163a35b7-72c2-41c3-8116-2b44e8a79394
                     IsEnabled: true
                     Plate: null
@@ -3243,7 +3243,7 @@ Items:
                     CreatesNewBackPlateMaterialInstance: false
                     CreatesNewIconMaterialInstance: false
                     FontFamilySourceProperty:
-                      FontFamilySource: /MRTK/Fonts/#Segoe UI
+                      FontFamilySource: /Fonts/#Segoe UI
                     Icon: 7a93b9b7-56a3-41f1-8392-0751355e1bef
                     IsEnabled: true
                     Plate: null
@@ -3259,7 +3259,7 @@ Items:
                     CreatesNewBackPlateMaterialInstance: false
                     CreatesNewIconMaterialInstance: false
                     FontFamilySourceProperty:
-                      FontFamilySource: /MRTK/Fonts/#Segoe UI
+                      FontFamilySource: /Fonts/#Segoe UI
                     Icon: b4780cf3-7509-4615-86d3-6c2ffa231fa4
                     IsEnabled: false
                     Plate: null
@@ -3275,7 +3275,7 @@ Items:
                     CreatesNewBackPlateMaterialInstance: false
                     CreatesNewIconMaterialInstance: false
                     FontFamilySourceProperty:
-                      FontFamilySource: /MRTK/Fonts/#Segoe UI
+                      FontFamilySource: /Fonts/#Segoe UI
                     Icon: ce2f33db-e32c-4a69-870c-b2905569897f
                     IsEnabled: false
                     Plate: null
@@ -3331,7 +3331,7 @@ Items:
                     CreatesNewBackPlateMaterialInstance: false
                     CreatesNewIconMaterialInstance: false
                     FontFamilySourceProperty:
-                      FontFamilySource: /MRTK/Fonts/#Segoe UI
+                      FontFamilySource: /Fonts/#Segoe UI
                     Icon: 7a93b9b7-56a3-41f1-8392-0751355e1bef
                     IsEnabled: true
                     Plate: null
@@ -3347,7 +3347,7 @@ Items:
                     CreatesNewBackPlateMaterialInstance: false
                     CreatesNewIconMaterialInstance: false
                     FontFamilySourceProperty:
-                      FontFamilySource: /MRTK/Fonts/#Segoe UI
+                      FontFamilySource: /Fonts/#Segoe UI
                     Icon: b4780cf3-7509-4615-86d3-6c2ffa231fa4
                     IsEnabled: false
                     Plate: null
@@ -3363,7 +3363,7 @@ Items:
                     CreatesNewBackPlateMaterialInstance: false
                     CreatesNewIconMaterialInstance: false
                     FontFamilySourceProperty:
-                      FontFamilySource: /MRTK/Fonts/#Segoe UI
+                      FontFamilySource: /Fonts/#Segoe UI
                     Icon: ce2f33db-e32c-4a69-870c-b2905569897f
                     IsEnabled: false
                     Plate: null
@@ -3419,7 +3419,7 @@ Items:
                     CreatesNewBackPlateMaterialInstance: false
                     CreatesNewIconMaterialInstance: false
                     FontFamilySourceProperty:
-                      FontFamilySource: /MRTK/Fonts/#Segoe UI
+                      FontFamilySource: /Fonts/#Segoe UI
                     Icon: 7a93b9b7-56a3-41f1-8392-0751355e1bef
                     IsEnabled: true
                     Plate: null
@@ -3435,7 +3435,7 @@ Items:
                     CreatesNewBackPlateMaterialInstance: false
                     CreatesNewIconMaterialInstance: false
                     FontFamilySourceProperty:
-                      FontFamilySource: /MRTK/Fonts/#Segoe UI
+                      FontFamilySource: /Fonts/#Segoe UI
                     Icon: b4780cf3-7509-4615-86d3-6c2ffa231fa4
                     IsEnabled: false
                     Plate: null
@@ -3451,7 +3451,7 @@ Items:
                     CreatesNewBackPlateMaterialInstance: false
                     CreatesNewIconMaterialInstance: false
                     FontFamilySourceProperty:
-                      FontFamilySource: /MRTK/Fonts/#Segoe UI
+                      FontFamilySource: /Fonts/#Segoe UI
                     Icon: ce2f33db-e32c-4a69-870c-b2905569897f
                     IsEnabled: false
                     Plate: null
@@ -3532,7 +3532,7 @@ Items:
                 CreatesNewThumbMaterialInstance: false
                 CreatesNewTrackMaterialInstance: false
                 FontFamilySourceProperty:
-                  FontFamilySource: /MRTK/Fonts/#Segoe UI
+                  FontFamilySource: /Fonts/#Segoe UI
                 IsEnabled: true
                 PrimaryColor:
                   A: 255
@@ -3582,7 +3582,7 @@ Items:
                 CreatesNewThumbMaterialInstance: false
                 CreatesNewTrackMaterialInstance: false
                 FontFamilySourceProperty:
-                  FontFamilySource: /MRTK/Fonts/#Segoe UI
+                  FontFamilySource: /Fonts/#Segoe UI
                 IsEnabled: true
                 PrimaryColor:
                   A: 255
@@ -3632,7 +3632,7 @@ Items:
                 CreatesNewThumbMaterialInstance: false
                 CreatesNewTrackMaterialInstance: false
                 FontFamilySourceProperty:
-                  FontFamilySource: /MRTK/Fonts/#Segoe UI
+                  FontFamilySource: /Fonts/#Segoe UI
                 IsEnabled: true
                 PrimaryColor:
                   A: 255
@@ -3682,7 +3682,7 @@ Items:
                 CustomHeight: false
                 CustomWidth: false
                 FontFamilySourceProperty:
-                  FontFamilySource: /MRTK/Fonts/#Segoe UI
+                  FontFamilySource: /Fonts/#Segoe UI
                 FontSize: 64
                 FontStretch: Normal
                 FontStyle: Normal
@@ -3743,7 +3743,7 @@ Items:
                 CustomHeight: false
                 CustomWidth: false
                 FontFamilySourceProperty:
-                  FontFamilySource: /MRTK/Fonts/#Segoe UI
+                  FontFamilySource: /Fonts/#Segoe UI
                 FontSize: 42
                 FontStretch: Normal
                 FontStyle: Normal
@@ -4453,7 +4453,7 @@ Items:
                 CustomHeight: false
                 CustomWidth: false
                 FontFamilySourceProperty:
-                  FontFamilySource: /MRTK/Fonts/#Segoe UI
+                  FontFamilySource: /Fonts/#Segoe UI
                 FontSize: 64
                 FontStretch: Normal
                 FontStyle: Normal
@@ -4514,7 +4514,7 @@ Items:
                 CustomHeight: false
                 CustomWidth: true
                 FontFamilySourceProperty:
-                  FontFamilySource: /MRTK/Fonts/#Segoe UI
+                  FontFamilySource: /Fonts/#Segoe UI
                 FontSize: 42
                 FontStretch: Normal
                 FontStyle: Normal
@@ -5372,7 +5372,7 @@ Items:
                 CustomHeight: false
                 CustomWidth: false
                 FontFamilySourceProperty:
-                  FontFamilySource: /MRTK/Fonts/#Segoe UI
+                  FontFamilySource: /Fonts/#Segoe UI
                 FontSize: 64
                 FontStretch: Normal
                 FontStyle: Normal
@@ -5433,7 +5433,7 @@ Items:
                 CustomHeight: false
                 CustomWidth: true
                 FontFamilySourceProperty:
-                  FontFamilySource: /MRTK/Fonts/#Segoe UI
+                  FontFamilySource: /Fonts/#Segoe UI
                 FontSize: 42
                 FontStretch: Normal
                 FontStyle: Normal
@@ -5647,7 +5647,7 @@ Items:
                 CustomHeight: false
                 CustomWidth: true
                 FontFamilySourceProperty:
-                  FontFamilySource: /MRTK/Fonts/#Segoe UI
+                  FontFamilySource: /Fonts/#Segoe UI
                 FontSize: 32
                 FontStretch: Normal
                 FontStyle: Normal
@@ -5708,7 +5708,7 @@ Items:
                 CustomHeight: false
                 CustomWidth: true
                 FontFamilySourceProperty:
-                  FontFamilySource: /MRTK/Fonts/#Segoe UI
+                  FontFamilySource: /Fonts/#Segoe UI
                 FontSize: 32
                 FontStretch: Normal
                 FontStyle: Normal
@@ -5769,7 +5769,7 @@ Items:
                 CustomHeight: false
                 CustomWidth: true
                 FontFamilySourceProperty:
-                  FontFamilySource: /MRTK/Fonts/#Segoe UI
+                  FontFamilySource: /Fonts/#Segoe UI
                 FontSize: 32
                 FontStretch: Normal
                 FontStyle: Normal
@@ -6102,7 +6102,7 @@ Items:
                 CustomHeight: false
                 CustomWidth: false
                 FontFamilySourceProperty:
-                  FontFamilySource: /MRTK/Fonts/#Segoe UI
+                  FontFamilySource: /Fonts/#Segoe UI
                 FontSize: 64
                 FontStretch: Normal
                 FontStyle: Normal
@@ -6163,7 +6163,7 @@ Items:
                 CustomHeight: false
                 CustomWidth: false
                 FontFamilySourceProperty:
-                  FontFamilySource: /MRTK/Fonts/#Segoe UI
+                  FontFamilySource: /Fonts/#Segoe UI
                 FontSize: 42
                 FontStretch: Normal
                 FontStyle: Normal
@@ -6519,7 +6519,7 @@ Items:
                 CustomHeight: false
                 CustomWidth: false
                 FontFamilySourceProperty:
-                  FontFamilySource: /MRTK/Fonts/#Segoe UI
+                  FontFamilySource: /Fonts/#Segoe UI
                 FontSize: 84
                 FontStretch: Normal
                 FontStyle: Normal
@@ -6580,7 +6580,7 @@ Items:
                 CustomHeight: false
                 CustomWidth: true
                 FontFamilySourceProperty:
-                  FontFamilySource: /MRTK/Fonts/#Segoe UI
+                  FontFamilySource: /Fonts/#Segoe UI
                 FontSize: 54
                 FontStretch: Normal
                 FontStyle: Normal
@@ -7253,7 +7253,7 @@ Items:
                 CustomHeight: false
                 CustomWidth: false
                 FontFamilySourceProperty:
-                  FontFamilySource: /MRTK/Fonts/#Segoe UI
+                  FontFamilySource: /Fonts/#Segoe UI
                 FontSize: 64
                 FontStretch: Normal
                 FontStyle: Normal
@@ -7314,7 +7314,7 @@ Items:
                 CustomHeight: false
                 CustomWidth: true
                 FontFamilySourceProperty:
-                  FontFamilySource: /MRTK/Fonts/#Segoe UI
+                  FontFamilySource: /Fonts/#Segoe UI
                 FontSize: 42
                 FontStretch: Normal
                 FontStyle: Normal
@@ -7375,7 +7375,7 @@ Items:
                 CustomHeight: false
                 CustomWidth: false
                 FontFamilySourceProperty:
-                  FontFamilySource: /MRTK/Fonts/#Segoe UI
+                  FontFamilySource: /Fonts/#Segoe UI
                 FontSize: 64
                 FontStretch: Normal
                 FontStyle: Normal
@@ -7436,7 +7436,7 @@ Items:
                 CustomHeight: false
                 CustomWidth: true
                 FontFamilySourceProperty:
-                  FontFamilySource: /MRTK/Fonts/#Segoe UI
+                  FontFamilySource: /Fonts/#Segoe UI
                 FontSize: 64
                 FontStretch: Normal
                 FontStyle: Normal
@@ -7497,7 +7497,7 @@ Items:
                 CustomHeight: false
                 CustomWidth: true
                 FontFamilySourceProperty:
-                  FontFamilySource: /MRTK/Fonts/#Segoe UI
+                  FontFamilySource: /Fonts/#Segoe UI
                 FontSize: 64
                 FontStretch: Normal
                 FontStyle: Normal
@@ -7677,7 +7677,7 @@ Items:
                 CustomHeight: false
                 CustomWidth: false
                 FontFamilySourceProperty:
-                  FontFamilySource: /MRTK/Fonts/#Segoe UI
+                  FontFamilySource: /Fonts/#Segoe UI
                 FontSize: 64
                 FontStretch: Normal
                 FontStyle: Normal
@@ -7738,7 +7738,7 @@ Items:
                 CustomHeight: false
                 CustomWidth: true
                 FontFamilySourceProperty:
-                  FontFamilySource: /MRTK/Fonts/#Segoe UI
+                  FontFamilySource: /Fonts/#Segoe UI
                 FontSize: 42
                 FontStretch: Normal
                 FontStyle: Normal
