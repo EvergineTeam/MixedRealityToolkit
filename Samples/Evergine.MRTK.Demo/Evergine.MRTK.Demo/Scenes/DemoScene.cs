@@ -7,7 +7,6 @@ namespace Evergine.MRTK.Demo.Scenes
     {
         protected override Guid CursorMatPressed => EvergineContent.MRTK.Materials.Cursor.CursorPinch;
 
-
         protected override Guid CursorMatReleased => EvergineContent.MRTK.Materials.Cursor.CursorBase;
 
         protected override Guid HoloHandsMat => EvergineContent.MRTK.Materials.HoloHands;

@@ -79,22 +79,31 @@ namespace Evergine.MRTK.Scenes
             this.Managers.AddManager(new VoiceCommandsProvider());
         }
 
-        /// <inheritdoc/>
-        protected override void CreateScene()
+        /// <summary>
+        /// Creates the XR scene.
+        /// </summary>
+        /// <remarks>
+        /// This method is sealed in order to initialize the XR scene with required components and functionality. If you need additional configuration of the
+        /// scene, override the <see cref="XRScene.OnPostCreateXRScene"/> method.
+        /// </remarks>
+        protected sealed override void CreateScene()
         {
-            var forwardRenderPass = this.Managers.RenderManager.RenderPipeline.DefaultRenderPath as ForwardRenderPath;
-            if (forwardRenderPass != null)
+            // Disable Z prepass
+            var forwardRenderPath = this.Managers.RenderManager.RenderPipeline.DefaultRenderPath as ForwardRenderPath;
+            if (forwardRenderPath != null)
             {
-                forwardRenderPass.ZPrePassIsEnabled = false;
+                forwardRenderPath.ZPrePassIsEnabled = false;
             }
 
+            // Remove the Skybox entities
             var skyboxEntities = this.Managers.EntityManager.FindAllByTag(tag: "Skybox").ToArray();
             foreach (var entity in skyboxEntities)
             {
                 this.Managers.EntityManager.Remove(entity);
             }
 
-            this.InitHoloScene();
+            this.InitXRScene();
+            this.OnPostCreateXRScene();
         }
 
         /// <inheritdoc/>
@@ -105,6 +114,64 @@ namespace Evergine.MRTK.Scenes
             // Create GazeProvider
             Camera3D cam = this.Managers.EntityManager.FindFirstComponentOfType<Camera3D>();
             cam.Owner.AddComponent(new GazeProvider() { CollisionCategoryMask = this.CursorCollisionCategoryMask & ~this.CursorCollisionCategory });
+        }
+
+        /// <summary>
+        /// Initializes the XR scene.
+        /// </summary>
+        protected void InitXRScene()
+        {
+            var assetsManager = this.Managers.AssetSceneManager;
+
+            // Create cursors
+            var cursorMatPressed = assetsManager.Load<Material>(this.CursorMatPressed);
+            var cursorMatReleased = assetsManager.Load<Material>(this.CursorMatReleased);
+            var handRayTexture = assetsManager.Load<Texture>(this.HandRayTexture);
+            var handRaySampler = assetsManager.Load<SamplerState>(this.HandRaySampler);
+            this.CreateCursor(XRHandedness.LeftHand, cursorMatPressed, cursorMatReleased, handRayTexture, handRaySampler);
+            this.CreateCursor(XRHandedness.RightHand, cursorMatPressed, cursorMatReleased, handRayTexture, handRaySampler);
+
+            // Create hand meshes
+            var handMat = this.HoloHandsMat == Guid.Empty ? null : assetsManager.Load<Material>(this.HoloHandsMat);
+            if (handMat != null)
+            {
+                this.CreateXRHandMesh(XRHandedness.LeftHand, handMat);
+                this.CreateXRHandMesh(XRHandedness.RightHand, handMat);
+            }
+
+            var entityManager = this.Managers.EntityManager;
+
+            // Create cursor position updater
+            if (entityManager.FindFirstComponentOfType<CursorPosShaderUpdater>() == null)
+            {
+                entityManager.Add(new Entity(nameof(CursorPosShaderUpdater))
+                    .AddComponent(new CursorPosShaderUpdater()));
+            }
+
+            // Create Holographic batching disabler
+            if (entityManager.FindFirstComponentOfType<HolographicBatching>() == null)
+            {
+                entityManager.Add(new Entity(nameof(HolographicBatching))
+                    .AddComponent(new HolographicBatching()));
+            }
+
+            // Create spatial mapping
+            var spatialMappingMat = this.SpatialMappingMat == Guid.Empty ? null : assetsManager.Load<Material>(this.SpatialMappingMat);
+            entityManager.Add(new Entity(nameof(SpatialMapping))
+                         .AddComponent(new SpatialMapping()
+                         {
+                             GenerateColliders = true,
+                             UpdateInterval = TimeSpan.FromSeconds(4),
+                             Material = spatialMappingMat,
+                         }));
+        }
+
+        /// <summary>
+        /// This method is called after the main XR scene creation in order for the inheriting class to perform additional changes to the scene, as one would with
+        /// the <see cref="Scene.CreateScene"/> method.
+        /// </summary>
+        protected virtual void OnPostCreateXRScene()
+        {
         }
 
         private void CreateXRHandMesh(XRHandedness handedness, Material material)
@@ -219,56 +286,6 @@ namespace Evergine.MRTK.Scenes
             entityManager.Add(farCursor);
 
             return mainCursor;
-        }
-
-        /// <summary>
-        /// Initializes scene for HoloLens.
-        /// </summary>
-        protected void InitHoloScene()
-        {
-            var assetsManager = this.Managers.AssetSceneManager;
-
-            // Create cursors
-            var cursorMatPressed = assetsManager.Load<Material>(this.CursorMatPressed);
-            var cursorMatReleased = assetsManager.Load<Material>(this.CursorMatReleased);
-            var handRayTexture = assetsManager.Load<Texture>(this.HandRayTexture);
-            var handRaySampler = assetsManager.Load<SamplerState>(this.HandRaySampler);
-            this.CreateCursor(XRHandedness.LeftHand, cursorMatPressed, cursorMatReleased, handRayTexture, handRaySampler);
-            this.CreateCursor(XRHandedness.RightHand, cursorMatPressed, cursorMatReleased, handRayTexture, handRaySampler);
-
-            // Create hand meshes
-            var handMat = this.HoloHandsMat == Guid.Empty ? null : assetsManager.Load<Material>(this.HoloHandsMat);
-            if (handMat != null)
-            {
-                this.CreateXRHandMesh(XRHandedness.LeftHand, handMat);
-                this.CreateXRHandMesh(XRHandedness.RightHand, handMat);
-            }
-
-            var entityManager = this.Managers.EntityManager;
-
-            // Create cursor position updater
-            if (entityManager.FindFirstComponentOfType<CursorPosShaderUpdater>() == null)
-            {
-                entityManager.Add(new Entity(nameof(CursorPosShaderUpdater))
-                    .AddComponent(new CursorPosShaderUpdater()));
-            }
-
-            // Create Holographic batching disabler
-            if (entityManager.FindFirstComponentOfType<HolographicBatching>() == null)
-            {
-                entityManager.Add(new Entity(nameof(HolographicBatching))
-                    .AddComponent(new HolographicBatching()));
-            }
-
-            // Create spatial mapping
-            var spatialMappingMat = this.SpatialMappingMat == Guid.Empty ? null : assetsManager.Load<Material>(this.SpatialMappingMat);
-            entityManager.Add(new Entity(nameof(SpatialMapping))
-                         .AddComponent(new SpatialMapping()
-                         {
-                             GenerateColliders = true,
-                             UpdateInterval = TimeSpan.FromSeconds(4),
-                             Material = spatialMappingMat,
-                         }));
         }
     }
 }
