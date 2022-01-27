@@ -6,9 +6,9 @@ DefaultProfile:
   Name: default
   PixelFormat: R8G8B8A8_UNorm
   Platform: Undefined
-  ScaledHeight: 50
+  ScaledHeight: 200
   ScaledPercentage: 1.0
-  ScaledWidth: 135
+  ScaledWidth: 540
   ScalingType: Original
 ExportAsRaw: false
 GenerateMipMaps: true
@@ -30,11 +30,11 @@ Source:
       Faces: 1
       Flags: ShaderResource
       Format: R8G8B8A8_UNorm
-      Height: 50
+      Height: 200
       MipLevels: 1
       SampleCount: None
       Type: Texture2D
       Usage: Default
-      Width: 135
+      Width: 540
     HasData: true
     SamplerID: 9018edf8-ea96-4721-bf83-5561942432e0

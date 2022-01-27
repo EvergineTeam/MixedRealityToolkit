@@ -7098,7 +7098,7 @@ Items:
                     Id: 07b28c0d-143b-46df-af4c-7c2c8e4383e7
                     AsignedTo: Default
                     IsEnabled: true
-                    Material: 8e4718a1-e35c-4cfd-8cdb-166657218560
+                    Material: 95c775d7-1461-4465-beb0-84ec959e4ede
                   - !Evergine.Components.Graphics3D.PlaneMesh,Evergine.Components
                     Id: 293ba6af-d270-4a4c-a11c-0f2858b8746a
                     Height: 1.0
@@ -7135,8 +7135,8 @@ Items:
                           Y: 0.0
                           Z: 0.0
                         LocalPosition:
-                          X: 0.298651576
-                          Y: 0.135103449
+                          X: 0.273862481
+                          Y: 1.49011612E-08
                           Z: -0.235015869
                         LocalScale:
                           X: 0.293651044
@@ -7184,8 +7184,8 @@ Items:
                           Y: 0.0
                           Z: 0.0
                         LocalPosition:
-                          X: -0.146650553
-                          Y: 0.1547077
+                          X: -0.158494711
+                          Y: 1.11758709E-08
                           Z: -0.235427856
                         LocalScale:
                           X: 2.34920835
