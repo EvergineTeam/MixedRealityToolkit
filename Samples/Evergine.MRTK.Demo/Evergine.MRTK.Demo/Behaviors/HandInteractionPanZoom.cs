@@ -116,9 +116,6 @@ namespace Evergine.MRTK.Demo.Behaviors
 
             if (!Application.Current.IsEditor)
             {
-                this.Owner.GetOrAddComponent<BoxCollider3D>();
-                this.Owner.GetOrAddComponent<StaticBody3D>();
-
                 this.nearInteractionTouchable = this.Owner.GetOrAddComponent<NearInteractionTouchable>();
                 this.soundEmitter = this.Owner.GetOrAddComponent<SoundEmitter3D>();
                 this.Owner.GetOrAddComponent<StaticBody3D>();
@@ -135,14 +132,14 @@ namespace Evergine.MRTK.Demo.Behaviors
         {
             // Local postion
             var matrix = this.transform.WorldInverseTransform * this.nearInteractionTouchable.BoxCollider3DTransformInverse;
-            Vector3 localPos = Vector3.TransformCoordinate(position, matrix);
+            var localPos = Vector3.TransformCoordinate(position, matrix);
 
             // Corners
-            Vector2 uv0 = this.slateDecorator.Parameters_Offset;
-            Vector2 uv1 = uv0 + Vector2.One * this.slateDecorator.Parameters_Tiling;
+            var uv0 = this.slateDecorator.Parameters_Offset;
+            var uv1 = uv0 + Vector2.One * this.slateDecorator.Parameters_Tiling;
 
             // Calculate normalized local position
-            Vector2 t = new Vector2(localPos.X + 0.5f, localPos.Z + 0.5f);
+            var t = new Vector2(localPos.X + 0.5f, localPos.Z + 0.5f);
 
             return new Vector2(
                 MathHelper.Lerp(uv0.X, uv1.X, t.X),
@@ -155,35 +152,43 @@ namespace Evergine.MRTK.Demo.Behaviors
         {
             this.speed *= Vector2.One * (1.0f - this.Drag);
 
-            if (touchInfos.Count > 0)
+            if (this.touchInfos.Count > 0)
             {
-                //Scale
+                // Scale
                 if (this.EnableZoom && this.touchInfos.Count > 1)
                 {
-                    float d0 = (touchInfos[0].UV - touchInfos[1].UV).Length();
-                    float d1 = (GetUVPos(touchInfos[0].Transform.Position) - GetUVPos(touchInfos[1].Transform.Position)).Length();
+                    float d0 = (this.touchInfos[0].UV - this.touchInfos[1].UV).Length();
+                    float d1 = (this.GetUVPos(this.touchInfos[0].Transform.Position) - this.GetUVPos(this.touchInfos[1].Transform.Position)).Length();
 
                     float scale = this.slateDecorator.Parameters_Tiling.X * d0 / d1;
                     if (scale < MinZoom || scale > MaxZoom)
                     {
                         scale = MathHelper.Clamp(scale, MinZoom, MaxZoom);
-                        RemapTouches();
+                        this.RemapTouches();
                     }
+
+                    System.Diagnostics.Debug.WriteLine($"{d0} {d1} {scale}");
 
                     this.slateDecorator.Parameters_Tiling = new Vector2(scale, scale);
                 }
 
-                //Translate
-                Vector2 uv = GetUVPos(touchInfos[0].Transform.Position);
-                Vector2 disp = uv - touchInfos[0].UV;
+                // Translate
+                Vector2 uv = this.GetUVPos(this.touchInfos[0].Transform.Position);
+                Vector2 disp = uv - this.touchInfos[0].UV;
                 this.speed = -disp;
             }
 
             if (LockHorizontal)
+            {
                 this.speed.X = 0;
+            }
+
             if (LockVertical)
+            {
                 this.speed.Y = 0;
-            slateDecorator.Parameters_Offset += speed;
+            }
+
+            this.slateDecorator.Parameters_Offset += speed;
         }
 
         /// <summary>
@@ -191,9 +196,9 @@ namespace Evergine.MRTK.Demo.Behaviors
         /// </summary>
         private void RemapTouches()
         {
-            foreach (TouchInfo t in touchInfos)
+            foreach (var t in touchInfos)
             {
-                t.UV = GetUVPos(t.Transform.Position);
+                t.UV = this.GetUVPos(t.Transform.Position);
             }
         }
 
@@ -201,20 +206,20 @@ namespace Evergine.MRTK.Demo.Behaviors
         public void OnTouchStarted(HandTrackingInputEventData eventData)
         {
             var transform = eventData.Cursor.Owner.FindComponent<Transform3D>();
-            this.touchInfos.Add(new TouchInfo { Cursor = eventData.Cursor, Transform = transform, UV = GetUVPos(eventData.Position) });
-            Tools.PlaySound(soundEmitter, PanStartedSound);
+            this.touchInfos.Add(new TouchInfo { Cursor = eventData.Cursor, Transform = transform, UV = this.GetUVPos(eventData.Position) });
+            Tools.PlaySound(soundEmitter, this.PanStartedSound);
         }
 
         /// <inheritdoc/>
         public void OnTouchUpdated(HandTrackingInputEventData eventData)
         {
-            // Nothing to do
+            // Nothing to do 
         }
 
         /// <inheritdoc/>
         public void OnTouchCompleted(HandTrackingInputEventData eventData)
         {
-            for (int i = 0; i < touchInfos.Count; ++i)
+            for (int i = 0; i < this.touchInfos.Count; ++i)
             {
                 if (this.touchInfos[i].Cursor == eventData.Cursor)
                 {
@@ -223,9 +228,9 @@ namespace Evergine.MRTK.Demo.Behaviors
                 }
             }
 
-            RemapTouches();
+            this.RemapTouches();
 
-            Tools.PlaySound(soundEmitter, PanEndedSound);
+            Tools.PlaySound(soundEmitter, this.PanEndedSound);
         }
 
         public void OnPointerDown(MixedRealityPointerEventData eventData)
@@ -253,7 +258,7 @@ namespace Evergine.MRTK.Demo.Behaviors
                 }
             }
 
-            RemapTouches();
+            this.RemapTouches();
 
             Tools.PlaySound(soundEmitter, PanEndedSound);
         }
