@@ -112,7 +112,7 @@ namespace Evergine.MRTK.Demo.Behaviors
         /// <inheritdoc/>
         protected override void Start()
         {
-            this.slateDecorator = new HoloGraphic(materialComponent.Material);
+            this.slateDecorator = new HoloGraphic(this.materialComponent.Material);
 
             if (!Application.Current.IsEditor)
             {
@@ -161,9 +161,9 @@ namespace Evergine.MRTK.Demo.Behaviors
                     float d1 = (this.GetUVPos(this.touchInfos[0].Transform.Position) - this.GetUVPos(this.touchInfos[1].Transform.Position)).Length();
 
                     float scale = this.slateDecorator.Parameters_Tiling.X * d0 / d1;
-                    if (scale < MinZoom || scale > MaxZoom)
+                    if (scale < this.MinZoom || scale > this.MaxZoom)
                     {
-                        scale = MathHelper.Clamp(scale, MinZoom, MaxZoom);
+                        scale = MathHelper.Clamp(scale, this.MinZoom, this.MaxZoom);
                         this.RemapTouches();
                     }
 
@@ -178,17 +178,17 @@ namespace Evergine.MRTK.Demo.Behaviors
                 this.speed = -disp;
             }
 
-            if (LockHorizontal)
+            if (this.LockHorizontal)
             {
                 this.speed.X = 0;
             }
 
-            if (LockVertical)
+            if (this.LockVertical)
             {
                 this.speed.Y = 0;
             }
 
-            this.slateDecorator.Parameters_Offset += speed;
+            this.slateDecorator.Parameters_Offset += this.speed;
         }
 
         /// <summary>
@@ -207,7 +207,7 @@ namespace Evergine.MRTK.Demo.Behaviors
         {
             var transform = eventData.Cursor.Owner.FindComponent<Transform3D>();
             this.touchInfos.Add(new TouchInfo { Cursor = eventData.Cursor, Transform = transform, UV = this.GetUVPos(eventData.Position) });
-            Tools.PlaySound(soundEmitter, this.PanStartedSound);
+            Tools.PlaySound(this.soundEmitter, this.PanStartedSound);
         }
 
         /// <inheritdoc/>
@@ -230,7 +230,7 @@ namespace Evergine.MRTK.Demo.Behaviors
 
             this.RemapTouches();
 
-            Tools.PlaySound(soundEmitter, this.PanEndedSound);
+            Tools.PlaySound(this.soundEmitter, this.PanEndedSound);
         }
 
         public void OnPointerDown(MixedRealityPointerEventData eventData)
@@ -239,7 +239,7 @@ namespace Evergine.MRTK.Demo.Behaviors
             {
                 var transform = eventData.Cursor.Owner.FindComponent<Transform3D>();
                 this.touchInfos.Add(new TouchInfo { Cursor = eventData.Cursor, Transform = transform, UV = GetUVPos(eventData.Position) });
-                Tools.PlaySound(soundEmitter, PanStartedSound);
+                Tools.PlaySound(this.soundEmitter, this.PanStartedSound);
             }
         }
 
@@ -260,7 +260,7 @@ namespace Evergine.MRTK.Demo.Behaviors
 
             this.RemapTouches();
 
-            Tools.PlaySound(soundEmitter, PanEndedSound);
+            Tools.PlaySound(this.soundEmitter, this.PanEndedSound);
         }
 
         public void OnPointerClicked(MixedRealityPointerEventData eventData)
