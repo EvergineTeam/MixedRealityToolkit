@@ -14,7 +14,7 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.States
     /// <typeparam name="TState">State type.</typeparam>
     public abstract class BaseStateManager<TState> : Component
     {
-        [BindComponent(source: BindComponentSource.ChildrenSkipOwner, isRequired: true)]
+        [BindComponent(source: BindComponentSource.Children, isRequired: true)]
         private PressableButton button = null;
 
         private State<TState> currentState;

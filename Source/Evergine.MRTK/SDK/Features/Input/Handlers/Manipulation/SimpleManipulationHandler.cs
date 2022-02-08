@@ -62,11 +62,6 @@ namespace Evergine.MRTK.SDK.Features.Input.Handlers.Manipulation
         public bool EnableSinglePointerRotation { get; set; } = true;
 
         /// <summary>
-        /// The global manipulation started event.
-        /// </summary>
-        public static event EventHandler AnyManipulationStarted;
-
-        /// <summary>
         /// The manipulation started event.
         /// </summary>
         public event EventHandler ManipulationStarted;
@@ -219,7 +214,6 @@ namespace Evergine.MRTK.SDK.Features.Input.Handlers.Manipulation
                     }
 
                     this.ManipulationStarted?.Invoke(this, EventArgs.Empty);
-                    AnyManipulationStarted?.Invoke(this, EventArgs.Empty);
                 }
 
                 eventData.SetHandled();
