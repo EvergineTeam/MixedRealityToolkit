@@ -1,7 +1,7 @@
 !Evergine.Framework.Assets.AssetSources.Entities.SceneModel,Evergine.Framework
 Items:
   - !Evergine.Framework.Assets.AssetSources.Entities.EntityItemModel,Evergine.Framework
-    Name: PressableRoundButtonPREFAB
+    Name: PressableRoundButton
     Tag: null
     IsEnabled: true
     IsStatic: false
@@ -79,7 +79,7 @@ Items:
         SpeechKeywords: null
     Children:
       - !Evergine.Framework.Assets.AssetSources.Entities.EntityItemModel,Evergine.Framework
-        Name: buttonContent
+        Name: Content
         Tag: null
         IsEnabled: true
         IsStatic: false
@@ -102,7 +102,7 @@ Items:
               Z: 1.0
         Children:
           - !Evergine.Framework.Assets.AssetSources.Entities.EntityItemModel,Evergine.Framework
-            Name: tube
+            Name: Back
             Tag: PART_Back
             IsEnabled: true
             IsStatic: false
@@ -144,7 +144,7 @@ Items:
             Children: []
             Id: e3311087-e856-4269-b539-6323e37fd62d
           - !Evergine.Framework.Assets.AssetSources.Entities.EntityItemModel,Evergine.Framework
-            Name: cylinderContainer
+            Name: FrontContainer
             Tag: null
             IsEnabled: true
             IsStatic: false
@@ -167,7 +167,7 @@ Items:
                   Z: 1.0
             Children:
               - !Evergine.Framework.Assets.AssetSources.Entities.EntityItemModel,Evergine.Framework
-                Name: cylinder
+                Name: Front
                 Tag: PART_Front
                 IsEnabled: true
                 IsStatic: false
@@ -243,7 +243,7 @@ Items:
               Z: 1.0
         Children:
           - !Evergine.Framework.Assets.AssetSources.Entities.EntityItemModel,Evergine.Framework
-            Name: pivot
+            Name: Pivot
             Tag: null
             IsEnabled: true
             IsStatic: false
@@ -266,7 +266,7 @@ Items:
                   Z: 1.5
             Children:
               - !Evergine.Framework.Assets.AssetSources.Entities.EntityItemModel,Evergine.Framework
-                Name: plane
+                Name: BackPlate
                 Tag: null
                 IsEnabled: true
                 IsStatic: false
