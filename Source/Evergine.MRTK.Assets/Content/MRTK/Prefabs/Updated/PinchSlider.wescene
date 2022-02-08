@@ -1,7 +1,7 @@
 !Evergine.Framework.Assets.AssetSources.Entities.SceneModel,Evergine.Framework
 Items:
   - !Evergine.Framework.Assets.AssetSources.Entities.EntityItemModel,Evergine.Framework
-    Name: pinchSlider0
+    Name: PinchSlider
     Tag: PART_Root
     IsEnabled: true
     IsStatic: false
@@ -13,7 +13,7 @@ Items:
           W: 1.0
           X: 0.0
           Y: 0.0
-          Z: -0.0
+          Z: 0.0
         LocalPosition:
           X: 0.0
           Y: 0.0
@@ -42,7 +42,7 @@ Items:
         UpdateOrder: 0.5
     Children:
       - !Evergine.Framework.Assets.AssetSources.Entities.EntityItemModel,Evergine.Framework
-        Name: trackVisuals
+        Name: TrackVisuals
         Tag: null
         IsEnabled: true
         IsStatic: false
@@ -65,7 +65,7 @@ Items:
               Z: 1.0
         Children:
           - !Evergine.Framework.Assets.AssetSources.Entities.EntityItemModel,Evergine.Framework
-            Name: sliderTrackSimple
+            Name: SliderTrack
             Tag: PART_Track
             IsEnabled: true
             IsStatic: false
@@ -90,7 +90,7 @@ Items:
                 Id: a1909cf9-9875-451b-b462-21e26fe5b926
                 AsignedTo: Default
                 IsEnabled: true
-                Material: 90ff04a5-fc9e-433e-be4b-ff4e024105e5
+                Material: 7c71e125-9173-449d-a0ab-4771ad204dd5
               - !Evergine.Components.Graphics3D.CylinderMesh,Evergine.Components
                 Id: a87344ae-59ff-4fa5-81ed-1f8a8b396719
                 Diameter: 0.00200000009
@@ -108,7 +108,7 @@ Items:
             Id: 11c208ed-ecbf-41df-95d4-b35d44bc63e0
         Id: b0cdc717-3bf2-47e3-ba5f-c4639bec0312
       - !Evergine.Framework.Assets.AssetSources.Entities.EntityItemModel,Evergine.Framework
-        Name: sliderThumb
+        Name: SliderThumb
         Tag: null
         IsEnabled: true
         IsStatic: false
@@ -163,7 +163,7 @@ Items:
             IsEnabled: true
         Children:
           - !Evergine.Framework.Assets.AssetSources.Entities.EntityItemModel,Evergine.Framework
-            Name: Slider_Button
+            Name: Thumb
             Tag: PART_Thumb
             IsEnabled: true
             IsStatic: false
@@ -188,7 +188,7 @@ Items:
                 Id: e2cd7596-1a8b-4819-8457-0c7b0c8a2b1f
                 AsignedTo: lambert1
                 IsEnabled: true
-                Material: 0bf88a99-44af-4e83-983a-730c9d84e824
+                Material: 207c3402-9a1e-43ed-a8a1-11dabe70811d
               - !Evergine.Components.Graphics3D.MeshComponent,Evergine.Framework
                 Id: f559c7d2-023f-4689-a08d-56b145303bb6
                 IsEnabled: true
@@ -204,7 +204,7 @@ Items:
             Children: []
             Id: e0b2f115-1b88-44f9-adcf-b100a8e5b898
           - !Evergine.Framework.Assets.AssetSources.Entities.EntityItemModel,Evergine.Framework
-            Name: text
+            Name: Text
             Tag: PART_Text
             IsEnabled: true
             IsStatic: false
@@ -239,7 +239,7 @@ Items:
                       W: 1.0
                       X: 0.0
                       Y: 0.0
-                      Z: -0.0
+                      Z: 0.0
                     LocalPosition:
                       X: 0.0
                       Y: 0.00548836868
@@ -269,7 +269,7 @@ Items:
                       B: 255
                       G: 255
                       R: 255
-                    Height: 0.0114000002
+                    Height: 0.00860000029
                     HorizontalAlignment: Right
                     IsEnabled: true
                     Layer: e35c59a9-26ab-4b4c-8210-4b1f21c31530
@@ -284,7 +284,7 @@ Items:
                     TextWrapping: NoWrap
                     UpdateOrder: 0.5
                     VerticalAlignment: Center
-                    Width: 0.0160000008
+                    Width: 0.0253999997
                 Children: []
                 Id: f822d1fd-a540-4f1f-a1c5-b2a97dc7b151
               - !Evergine.Framework.Assets.AssetSources.Entities.EntityItemModel,Evergine.Framework
@@ -300,7 +300,7 @@ Items:
                       W: 1.0
                       X: 0.0
                       Y: 0.0
-                      Z: -0.0
+                      Z: 0.0
                     LocalPosition:
                       X: 0.0
                       Y: -0.00433111843
@@ -330,7 +330,7 @@ Items:
                       B: 255
                       G: 255
                       R: 255
-                    Height: 0.0148
+                    Height: 0.0111999996
                     HorizontalAlignment: Right
                     IsEnabled: true
                     Layer: e35c59a9-26ab-4b4c-8210-4b1f21c31530
@@ -339,13 +339,13 @@ Items:
                       X: 1.0
                       Y: 0.5
                     PixelDensity: 5000
-                    Text: value
+                    Text: Value
                     TextAlignment: Right
                     TextTrimming: None
                     TextWrapping: NoWrap
                     UpdateOrder: 0.5
                     VerticalAlignment: Center
-                    Width: 0.0255999994
+                    Width: 0.0333999991
                   - !Evergine.MRTK.SDK.Features.UX.Components.Sliders.ShowSliderValue,Evergine.MRTK
                     Id: a5c9ddb0-e967-41ba-b350-5035ea53a5f5
                     IsEnabled: true

@@ -1,16 +1,17 @@
 !Evergine.Assets.Exporters.MaterialMetaFile,Evergine.Assets
-Id: 0bf88a99-44af-4e83-983a-730c9d84e824
+Id: 207c3402-9a1e-43ed-a8a1-11dabe70811d
 DefaultProfile:
   ExcludeAsset: false
   Name: null
   Platform: Undefined
 ExportAsRaw: false
 MaterialInfo:
-  Id: 76ad17bb-6461-47bd-88bd-552e14d3b3b6
+  Id: df19aaef-ef6f-455d-b48b-c33e2e2d4a66
   ActiveDirectives:
     - DIRECTIONAL_LIGHT
     - IBL
     - LIT
+    - PROXIMITY_LIGHT
   AllowInstancing: false
   EffectID: 4f7e4c24-e83c-4350-9cd4-511fb2199cf4
   Layer: 0db59561-b3f5-444f-b5de-e62e3a5b42bf
@@ -18,13 +19,13 @@ MaterialInfo:
   Parameters:
     - Name: WorldViewProj
       Type: Evergine.Mathematics.Matrix4x4,Evergine.Mathematics
-      ValueByteArray: 8vRfQAAAAAAAAAAAAAAAAAAAAACYMopADf9kvzD5ZL8AAAAAmjIKwAv/5L8u+eS/AAAAAHmCGjUf7ItAvRuPQA==
+      ValueByteArray: zlPHQQAAAAAAAAAAAAAAAAAAAACaMopADf9kvzD5ZL8AAAAAmjIKwA3/5L8w+eS/AAAAAAAAAAAr+mVB4Y1nQQ==
     - Name: World
       Type: Evergine.Mathematics.Matrix4x4,Evergine.Mathematics
       ValueByteArray: AAAAQAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAACAPw==
     - Name: Color
       Type: Evergine.Mathematics.Vector3,Evergine.Mathematics
-      ValueByteArray: zczMPs3MzD7NzMw+
+      ValueByteArray: p6amPqempj6npqY+
     - Name: Alpha
       Type: System.Single
       ValueByteArray: AACAPw==
@@ -72,19 +73,19 @@ MaterialInfo:
       ValueByteArray: AAAAAA==
     - Name: HoverColorOverride
       Type: Evergine.Mathematics.Vector3,Evergine.Mathematics
-      ValueByteArray: 61gxPetYMT3rWDE9
+      ValueByteArray: j8J1Po/CdT6PwnU+
     - Name: ProximityLightCenterColorOverride
       Type: Evergine.Mathematics.Vector4,Evergine.Mathematics
-      ValueByteArray: DjQEPflsiT753nQ/AAAAAA==
+      ValueByteArray: PQpXPs3MDD9I4Xo/AAAAAA==
     - Name: ProximityLightMiddleColorOverride
       Type: Evergine.Mathematics.Vector4,Evergine.Mathematics
-      ValueByteArray: P1y8PN/IaD4AAIA/zcxMPg==
+      ValueByteArray: 7FE4PlyPAj8AAIA/zcxMPg==
     - Name: ProximityLightOuterColorOverride
       Type: Evergine.Mathematics.Vector4,Evergine.Mathematics
-      ValueByteArray: b/qmPctjGjwe/gM/AACAPw==
+      ValueByteArray: CtejPo/C9T2kcD0/AACAPw==
     - Name: Metallic
       Type: System.Single
-      ValueByteArray: mpkZPw==
+      ValueByteArray: AAAAAA==
     - Name: Smoothness
       Type: System.Single
       ValueByteArray: AAAAPw==
@@ -105,19 +106,19 @@ MaterialInfo:
       ValueByteArray: FK5Hvw==
     - Name: EyePosition
       Type: Evergine.Mathematics.Vector3,Evergine.Mathematics
-      ValueByteArray: m8H+vc5D1j88pYRA
+      ValueByteArray: AAAAAAAAAAAAAAAA
     - Name: EyeCount
       Type: System.Int32
       ValueByteArray: AQAAAA==
     - Name: MultiviewViewProj
       Type: Evergine.Mathematics.Matrix4x4,Evergine.Mathematics
-      ValueByteArray: 58iVPxjQLr6RTim+rkspvsxMKzSzDw5AlVvJviZYyb78CVu+RBVvv6eNZ7+0iWe/XBlFvZj7Dr9hCiY/JaE/Pw==
+      ValueByteArray: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
     - Name: SunDirection
       Type: Evergine.Mathematics.Vector3,Evergine.Mathematics
-      ValueByteArray: AAAAAAAAAAAAAIA/
+      ValueByteArray: AAAAAAAAAAAAAAAA
     - Name: SunColor
       Type: Evergine.Mathematics.Vector3,Evergine.Mathematics
-      ValueByteArray: AACAPwAAgD8AAIA/
+      ValueByteArray: AAAAAAAAAAAAAAAA
     - Name: HoverLightData
       Type: Evergine.Mathematics.Vector4,Evergine.Mathematics
       ValueByteArray: AAAAAAAAAAAAAAAAAAAAAA==

@@ -1,9 +1,0 @@
-!Evergine.Assets.Exporters.DirectoryMetaFile,Evergine.Assets
-Id: 495d19f5-df45-4681-8fec-0d49bac42677
-DefaultProfile:
-  ExcludeAsset: false
-  Name: null
-  OutputName: null
-  Platform: Undefined
-ExportAsRaw: false
-Profiles: {}
