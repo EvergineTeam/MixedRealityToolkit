@@ -1,23 +1,21 @@
 ﻿using Evergine.Components.Graphics3D;
 using Evergine.Framework;
-using Evergine.Mathematics;
 using Evergine.MRTK.Effects;
 using Evergine.MRTK.SDK.Features.UX.Components.Sliders;
-using Evergine.MRTK.Toolkit.GUI;
 using Evergine.MRTK.Toolkit.Prefabs;
 
 namespace Evergine.MRTK.Demo.Components
 {
     class SliderChangeColor : Component
     {
-        [BindComponent(isRequired: true, source: BindComponentSource.Scene, tag: "PinchSliderRed")]
-        private ScenePrefab pinchSliderPrefabR = null;
+        [BindEntity(isRequired: true, source: BindEntitySource.Scene, tag: "PinchSliderRed")]
+        private Entity pinchSliderPrefabR = null;
 
-        [BindComponent(isRequired: true, source: BindComponentSource.Scene, tag: "PinchSliderGreen")]
-        private ScenePrefab pinchSliderPrefabG = null;
+        [BindEntity(isRequired: true, source: BindEntitySource.Scene, tag: "PinchSliderGreen")]
+        private Entity pinchSliderPrefabG = null;
 
-        [BindComponent(isRequired: true, source: BindComponentSource.Scene, tag: "PinchSliderBlue")]
-        private ScenePrefab pinchSliderPrefabB = null;
+        [BindEntity(isRequired: true, source: BindEntitySource.Scene, tag: "PinchSliderBlue")]
+        private Entity pinchSliderPrefabB = null;
 
         [BindComponent(isRequired: true, source: BindComponentSource.Owner)]
         private MaterialComponent materialComponent = null;
@@ -34,9 +32,9 @@ namespace Evergine.MRTK.Demo.Components
 
             this.materialDecorator = new HoloGraphic(materialComponent.Material);
 
-            this.pinchSliders[0] = this.pinchSliderPrefabR.Owner.FindComponentInChildren<PinchSlider>();
-            this.pinchSliders[1] = this.pinchSliderPrefabG.Owner.FindComponentInChildren<PinchSlider>();
-            this.pinchSliders[2] = this.pinchSliderPrefabB.Owner.FindComponentInChildren<PinchSlider>();
+            this.pinchSliders[0] = this.pinchSliderPrefabR.FindComponentInChildren<PinchSlider>();
+            this.pinchSliders[1] = this.pinchSliderPrefabG.FindComponentInChildren<PinchSlider>();
+            this.pinchSliders[2] = this.pinchSliderPrefabB.FindComponentInChildren<PinchSlider>();
 
             for (int i = 0; i < 3; ++i)
             {

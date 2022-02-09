@@ -3623,11 +3623,11 @@ Items:
             Id: be3a392a-ca0f-4029-be6c-371268e8bd58
             Source: 57766a38-40a4-4c0b-adc9-7287d8ff9dc3
             entityLinks:
-              660df448-a8ac-4d33-a9bd-ae324caebaeb:
+              19859b6c-2c13-4512-a276-841d6de282e6:
                 additionalChildrenList: []
                 additionalComponentList:
                   - !Evergine.MRTK.SDK.Features.UX.Components.Configurators.SliderConfigurator,Evergine.MRTK
-                    Id: fbcc4c8c-5a37-4192-996a-95970b66bc75
+                    Id: 3cfdd52d-6a1a-477b-a17c-90e74c4a1789
                     CreatesNewThumbMaterialInstance: false
                     CreatesNewTrackMaterialInstance: false
                     FontFamilySourceProperty:
@@ -3649,11 +3649,15 @@ Items:
             modificationList:
               - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.String,System.Private.CoreLib]],Evergine.Framework
                 Name: Name
-                Target: 660df448-a8ac-4d33-a9bd-ae324caebaeb
+                Target: 19859b6c-2c13-4512-a276-841d6de282e6
                 TypedValue: PinchSlider_Red
+              - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.String,System.Private.CoreLib]],Evergine.Framework
+                Name: Tag
+                Target: 19859b6c-2c13-4512-a276-841d6de282e6
+                TypedValue: PinchSliderRed
               - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Vector3,Evergine.Mathematics]],Evergine.Framework
                 Name: LocalPosition
-                Target: ea0272b2-a7d6-4202-b68b-ad1c35bfbce6
+                Target: fff168c2-5aa1-4edf-95fa-93de7248212a
                 TypedValue:
                   X: 0.137999997
                   Y: -0.300999999
@@ -3682,11 +3686,11 @@ Items:
               - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.Single,System.Private.CoreLib]],Evergine.Framework
                 Name: Width
                 Target: a1cc0b39-c06b-4e2b-8f45-cfc2236572f7
-                TypedValue: 0.0267999992
+                TypedValue: 0.0265999995
               - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.Single,System.Private.CoreLib]],Evergine.Framework
                 Name: Height
                 Target: a1cc0b39-c06b-4e2b-8f45-cfc2236572f7
-                TypedValue: 0.0149999997
+                TypedValue: 0.0148
               - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.MRTK.Toolkit.GUI.FontFamilySourceProperty,Evergine.MRTK]],Evergine.Framework
                 Name: FontFamilySourceProperty
                 Target: a1cc0b39-c06b-4e2b-8f45-cfc2236572f7
@@ -3697,11 +3701,11 @@ Items:
             Id: 559cc2bd-9c60-4fdf-b0c9-33e03d480fed
             Source: 57766a38-40a4-4c0b-adc9-7287d8ff9dc3
             entityLinks:
-              660df448-a8ac-4d33-a9bd-ae324caebaeb:
+              19859b6c-2c13-4512-a276-841d6de282e6:
                 additionalChildrenList: []
                 additionalComponentList:
                   - !Evergine.MRTK.SDK.Features.UX.Components.Configurators.SliderConfigurator,Evergine.MRTK
-                    Id: fbcc4c8c-5a37-4192-996a-95970b66bc75
+                    Id: 25be9f5f-fbf3-44d7-803c-97aae7a5c2b9
                     CreatesNewThumbMaterialInstance: false
                     CreatesNewTrackMaterialInstance: false
                     FontFamilySourceProperty:
@@ -3723,11 +3727,15 @@ Items:
             modificationList:
               - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.String,System.Private.CoreLib]],Evergine.Framework
                 Name: Name
-                Target: 660df448-a8ac-4d33-a9bd-ae324caebaeb
+                Target: 19859b6c-2c13-4512-a276-841d6de282e6
                 TypedValue: PinchSlider_Green
+              - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.String,System.Private.CoreLib]],Evergine.Framework
+                Name: Tag
+                Target: 19859b6c-2c13-4512-a276-841d6de282e6
+                TypedValue: PinchSliderGreen
               - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Vector3,Evergine.Mathematics]],Evergine.Framework
                 Name: LocalPosition
-                Target: ea0272b2-a7d6-4202-b68b-ad1c35bfbce6
+                Target: fff168c2-5aa1-4edf-95fa-93de7248212a
                 TypedValue:
                   X: 0.0430000015
                   Y: -0.300999999
@@ -3743,7 +3751,7 @@ Items:
               - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.Single,System.Private.CoreLib]],Evergine.Framework
                 Name: Width
                 Target: 2d146da0-dc69-4713-96f6-02f27aa3f6e4
-                TypedValue: 0.0226000007
+                TypedValue: 0.0223999992
               - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.Single,System.Private.CoreLib]],Evergine.Framework
                 Name: Height
                 Target: 2d146da0-dc69-4713-96f6-02f27aa3f6e4
@@ -3771,11 +3779,11 @@ Items:
             Id: 0a34e324-74ff-4f5f-a3b9-a3c8d6f5519c
             Source: 57766a38-40a4-4c0b-adc9-7287d8ff9dc3
             entityLinks:
-              660df448-a8ac-4d33-a9bd-ae324caebaeb:
+              19859b6c-2c13-4512-a276-841d6de282e6:
                 additionalChildrenList: []
                 additionalComponentList:
                   - !Evergine.MRTK.SDK.Features.UX.Components.Configurators.SliderConfigurator,Evergine.MRTK
-                    Id: fbcc4c8c-5a37-4192-996a-95970b66bc75
+                    Id: 3bbfed69-2c24-4462-ba43-25c985de64de
                     CreatesNewThumbMaterialInstance: false
                     CreatesNewTrackMaterialInstance: false
                     FontFamilySourceProperty:
@@ -3797,11 +3805,15 @@ Items:
             modificationList:
               - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.String,System.Private.CoreLib]],Evergine.Framework
                 Name: Name
-                Target: 660df448-a8ac-4d33-a9bd-ae324caebaeb
+                Target: 19859b6c-2c13-4512-a276-841d6de282e6
                 TypedValue: PinchSlider_Blue
+              - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.String,System.Private.CoreLib]],Evergine.Framework
+                Name: Tag
+                Target: 19859b6c-2c13-4512-a276-841d6de282e6
+                TypedValue: PinchSliderBlue
               - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Vector3,Evergine.Mathematics]],Evergine.Framework
                 Name: LocalPosition
-                Target: ea0272b2-a7d6-4202-b68b-ad1c35bfbce6
+                Target: fff168c2-5aa1-4edf-95fa-93de7248212a
                 TypedValue:
                   X: -0.0560000017
                   Y: -0.300999999
