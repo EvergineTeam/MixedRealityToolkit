@@ -111,7 +111,7 @@ Items:
         Id: 88e25e58-d6ca-4934-a280-294f805c26bd
         AsignedTo: Default
         IsEnabled: true
-        Material: 4853f814-4fb0-4fee-ad07-88aa5b962414
+        Material: 2273c57b-02a2-4a30-a1b7-5b0fcf3ba3ab
       - !Evergine.Components.Graphics3D.SphereMesh,Evergine.Components
         Id: 9369593f-c243-4632-b7c2-8b3e94abc256
         Diameter: 1.0
@@ -494,6 +494,14 @@ Items:
                         Target: 2d146da0-dc69-4713-96f6-02f27aa3f6e4
                         TypedValue:
                           FontFamilySource: 
+                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.String,System.Private.CoreLib]],Evergine.Framework
+                        Name: Text
+                        Target: a1cc0b39-c06b-4e2b-8f45-cfc2236572f7
+                        TypedValue: 0.50
+                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.Single,System.Private.CoreLib]],Evergine.Framework
+                        Name: Width
+                        Target: a1cc0b39-c06b-4e2b-8f45-cfc2236572f7
+                        TypedValue: 0.0267999992
                       - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.MRTK.Toolkit.GUI.FontFamilySourceProperty,Evergine.MRTK]],Evergine.Framework
                         Name: FontFamilySourceProperty
                         Target: a1cc0b39-c06b-4e2b-8f45-cfc2236572f7
@@ -552,6 +560,14 @@ Items:
                         Target: 2d146da0-dc69-4713-96f6-02f27aa3f6e4
                         TypedValue:
                           FontFamilySource: null
+                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.String,System.Private.CoreLib]],Evergine.Framework
+                        Name: Text
+                        Target: a1cc0b39-c06b-4e2b-8f45-cfc2236572f7
+                        TypedValue: 0.50
+                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.Single,System.Private.CoreLib]],Evergine.Framework
+                        Name: Width
+                        Target: a1cc0b39-c06b-4e2b-8f45-cfc2236572f7
+                        TypedValue: 0.0267999992
                       - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.MRTK.Toolkit.GUI.FontFamilySourceProperty,Evergine.MRTK]],Evergine.Framework
                         Name: FontFamilySourceProperty
                         Target: a1cc0b39-c06b-4e2b-8f45-cfc2236572f7
@@ -626,6 +642,14 @@ Items:
                         Target: 2d146da0-dc69-4713-96f6-02f27aa3f6e4
                         TypedValue:
                           FontFamilySource: null
+                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.String,System.Private.CoreLib]],Evergine.Framework
+                        Name: Text
+                        Target: a1cc0b39-c06b-4e2b-8f45-cfc2236572f7
+                        TypedValue: 0.50
+                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.Single,System.Private.CoreLib]],Evergine.Framework
+                        Name: Width
+                        Target: a1cc0b39-c06b-4e2b-8f45-cfc2236572f7
+                        TypedValue: 0.0267999992
                       - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Common.Graphics.Color,Evergine.Common]],Evergine.Framework
                         Name: Foreground
                         Target: a1cc0b39-c06b-4e2b-8f45-cfc2236572f7
@@ -708,6 +732,14 @@ Items:
                         Target: 2d146da0-dc69-4713-96f6-02f27aa3f6e4
                         TypedValue:
                           FontFamilySource: null
+                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.String,System.Private.CoreLib]],Evergine.Framework
+                        Name: Text
+                        Target: a1cc0b39-c06b-4e2b-8f45-cfc2236572f7
+                        TypedValue: 0.50
+                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.Single,System.Private.CoreLib]],Evergine.Framework
+                        Name: Width
+                        Target: a1cc0b39-c06b-4e2b-8f45-cfc2236572f7
+                        TypedValue: 0.0267999992
                       - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Common.Graphics.Color,Evergine.Common]],Evergine.Framework
                         Name: Foreground
                         Target: a1cc0b39-c06b-4e2b-8f45-cfc2236572f7
@@ -939,7 +971,7 @@ Items:
                           X: -0.061999999
                           Y: 0.0149999997
                           Z: 0.0
-                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%25601[[Evergine.Mathematics.Quaternion,Evergine.Mathematics]],Evergine.Framework
+                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Quaternion,Evergine.Mathematics]],Evergine.Framework
                         Name: LocalOrientation
                         Target: ea0272b2-a7d6-4202-b68b-ad1c35bfbce6
                         TypedValue:
@@ -947,7 +979,7 @@ Items:
                           X: 0.0
                           Y: 0.0
                           Z: 0.707106769
-                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%25601[[Evergine.Mathematics.Quaternion,Evergine.Mathematics]],Evergine.Framework
+                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Quaternion,Evergine.Mathematics]],Evergine.Framework
                         Name: LocalOrientation
                         Target: 4e23cde8-e88f-4c32-9586-f1ae80c99139
                         TypedValue:
@@ -960,6 +992,14 @@ Items:
                         Target: 2d146da0-dc69-4713-96f6-02f27aa3f6e4
                         TypedValue:
                           FontFamilySource: 
+                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.String,System.Private.CoreLib]],Evergine.Framework
+                        Name: Text
+                        Target: a1cc0b39-c06b-4e2b-8f45-cfc2236572f7
+                        TypedValue: 0.50
+                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.Single,System.Private.CoreLib]],Evergine.Framework
+                        Name: Width
+                        Target: a1cc0b39-c06b-4e2b-8f45-cfc2236572f7
+                        TypedValue: 0.0267999992
                       - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.MRTK.Toolkit.GUI.FontFamilySourceProperty,Evergine.MRTK]],Evergine.Framework
                         Name: FontFamilySourceProperty
                         Target: a1cc0b39-c06b-4e2b-8f45-cfc2236572f7
@@ -1009,14 +1049,14 @@ Items:
                           X: -0.061999999
                           Y: -0.0350000001
                           Z: 0.0
-                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%25601[[Evergine.Mathematics.Quaternion,Evergine.Mathematics]],Evergine.Framework
+                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Quaternion,Evergine.Mathematics]],Evergine.Framework
                         Name: LocalOrientation
                         Target: ea0272b2-a7d6-4202-b68b-ad1c35bfbce6
                         TypedValue:
-                          W: 7.54979013E-08
+                          W: 0.707106769
                           X: 0.0
                           Y: 0.0
-                          Z: 1.0
+                          Z: 0.707106769
                       - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Framework.Graphics.Material,Evergine.Framework]],Evergine.Framework
                         Name: Material
                         Target: a1909cf9-9875-451b-b462-21e26fe5b926
@@ -1025,19 +1065,27 @@ Items:
                         Name: Material
                         Target: e2cd7596-1a8b-4819-8457-0c7b0c8a2b1f
                         TypedValue: 78e9e4d7-711b-44b7-b673-9d2cb9f1220f
-                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%25601[[Evergine.Mathematics.Quaternion,Evergine.Mathematics]],Evergine.Framework
+                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Quaternion,Evergine.Mathematics]],Evergine.Framework
                         Name: LocalOrientation
                         Target: 4e23cde8-e88f-4c32-9586-f1ae80c99139
                         TypedValue:
-                          W: 7.54979013E-08
+                          W: 0.707106769
                           X: 0.0
-                          Y: 0.0
-                          Z: -1.0
+                          Y: -0.0
+                          Z: -0.707106769
                       - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.MRTK.Toolkit.GUI.FontFamilySourceProperty,Evergine.MRTK]],Evergine.Framework
                         Name: FontFamilySourceProperty
                         Target: 2d146da0-dc69-4713-96f6-02f27aa3f6e4
                         TypedValue:
                           FontFamilySource: null
+                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.String,System.Private.CoreLib]],Evergine.Framework
+                        Name: Text
+                        Target: a1cc0b39-c06b-4e2b-8f45-cfc2236572f7
+                        TypedValue: 0.50
+                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.Single,System.Private.CoreLib]],Evergine.Framework
+                        Name: Width
+                        Target: a1cc0b39-c06b-4e2b-8f45-cfc2236572f7
+                        TypedValue: 0.0267999992
                       - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.MRTK.Toolkit.GUI.FontFamilySourceProperty,Evergine.MRTK]],Evergine.Framework
                         Name: FontFamilySourceProperty
                         Target: a1cc0b39-c06b-4e2b-8f45-cfc2236572f7

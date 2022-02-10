@@ -3,7 +3,7 @@
 using Evergine.Common.Attributes;
 using Evergine.Framework.Graphics;
 using Evergine.Framework.Physics3D;
-using Evergine.MRTK.Toolkit.Prefabs;
+using Evergine.Framework.Prefabs;
 
 namespace Evergine.MRTK.SDK.Features.UX.Components.AxisManipulationHandler
 {
@@ -36,19 +36,58 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.AxisManipulationHandler
         /// Gets or sets the prefab used for the center handle. If not set, a sphere will be displayed instead.
         /// </summary>
         [RenderProperty(Tooltip = "The prefab used for the center handle. If not set, a sphere will be displayed instead.")]
-        public ScenePrefabProperty CenterHandlePrefab = new ScenePrefabProperty();
+        public Prefab CenterHandlePrefab
+        {
+            get => this.centerHandlePrefab;
+            set
+            {
+                if (this.centerHandlePrefab != value)
+                {
+                    this.centerHandlePrefab = value;
+                    this.CreateRig();
+                }
+            }
+        }
+
+        private Prefab centerHandlePrefab;
 
         /// <summary>
         /// Gets or sets the prefab used for the axis handles. If not set, a box will be displayed instead.
         /// </summary>
         [RenderProperty(Tooltip = "The prefab used for the axis handles. If not set, a box will be displayed instead.")]
-        public ScenePrefabProperty AxisHandlePrefab = new ScenePrefabProperty();
+        public Prefab AxisHandlePrefab
+        {
+            get => this.axisHandlePrefab;
+            set
+            {
+                if (this.axisHandlePrefab != value)
+                {
+                    this.axisHandlePrefab = value;
+                    this.CreateRig();
+                }
+            }
+        }
+
+        private Prefab axisHandlePrefab;
 
         /// <summary>
         /// Gets or sets the prefab used for the plane handles. If not set, a box will be displayed instead.
         /// </summary>
         [RenderProperty(Tooltip = "The prefab used for the plane handles. If not set, a box will be displayed instead.")]
-        public ScenePrefabProperty PlaneHandlePrefab = new ScenePrefabProperty();
+        public Prefab PlaneHandlePrefab
+        {
+            get => this.planeHandlePrefab;
+            set
+            {
+                if (this.planeHandlePrefab != value)
+                {
+                    this.planeHandlePrefab = value;
+                    this.CreateRig();
+                }
+            }
+        }
+
+        private Prefab planeHandlePrefab;
 
         /// <summary>
         /// Gets or sets the material applied to the center handles when not grabbed.

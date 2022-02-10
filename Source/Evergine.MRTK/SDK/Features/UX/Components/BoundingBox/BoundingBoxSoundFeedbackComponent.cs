@@ -1,6 +1,5 @@
 ﻿// Copyright © Evergine S.L. All rights reserved. Use is subject to license terms.
 
-using System;
 using Evergine.Common.Attributes;
 using Evergine.Common.Audio;
 using Evergine.Components.Sound;

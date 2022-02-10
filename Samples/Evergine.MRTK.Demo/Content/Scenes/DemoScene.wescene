@@ -3679,10 +3679,14 @@ Items:
                 Target: 2d146da0-dc69-4713-96f6-02f27aa3f6e4
                 TypedValue:
                   FontFamilySource: /Fonts/#Segoe UI
+              - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.String,System.Private.CoreLib]],Evergine.Framework
+                Name: Text
+                Target: a1cc0b39-c06b-4e2b-8f45-cfc2236572f7
+                TypedValue: 0.50
               - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.Single,System.Private.CoreLib]],Evergine.Framework
                 Name: Width
                 Target: a1cc0b39-c06b-4e2b-8f45-cfc2236572f7
-                TypedValue: 0.0265999995
+                TypedValue: 0.0204000007
               - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.Single,System.Private.CoreLib]],Evergine.Framework
                 Name: Height
                 Target: a1cc0b39-c06b-4e2b-8f45-cfc2236572f7
@@ -3757,10 +3761,14 @@ Items:
                 Target: 2d146da0-dc69-4713-96f6-02f27aa3f6e4
                 TypedValue:
                   FontFamilySource: /Fonts/#Segoe UI
+              - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.String,System.Private.CoreLib]],Evergine.Framework
+                Name: Text
+                Target: a1cc0b39-c06b-4e2b-8f45-cfc2236572f7
+                TypedValue: 0.50
               - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.Single,System.Private.CoreLib]],Evergine.Framework
                 Name: Width
                 Target: a1cc0b39-c06b-4e2b-8f45-cfc2236572f7
-                TypedValue: 0.0265999995
+                TypedValue: 0.0204000007
               - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.Single,System.Private.CoreLib]],Evergine.Framework
                 Name: Height
                 Target: a1cc0b39-c06b-4e2b-8f45-cfc2236572f7
@@ -3835,10 +3843,14 @@ Items:
                 Target: 2d146da0-dc69-4713-96f6-02f27aa3f6e4
                 TypedValue:
                   FontFamilySource: /Fonts/#Segoe UI
+              - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.String,System.Private.CoreLib]],Evergine.Framework
+                Name: Text
+                Target: a1cc0b39-c06b-4e2b-8f45-cfc2236572f7
+                TypedValue: 0.50
               - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.Single,System.Private.CoreLib]],Evergine.Framework
                 Name: Width
                 Target: a1cc0b39-c06b-4e2b-8f45-cfc2236572f7
-                TypedValue: 0.0265999995
+                TypedValue: 0.0204000007
               - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.Single,System.Private.CoreLib]],Evergine.Framework
                 Name: Height
                 Target: a1cc0b39-c06b-4e2b-8f45-cfc2236572f7
@@ -6904,18 +6916,15 @@ Items:
                       Y: 0.0
                       Z: 0.0
                     CollisionCategory: Cat1
-                    FaceScaleHandlePrefab:
-                      PrefabId: 7dc30238-5a85-4f41-b0b8-a5baa67ec465
+                    FaceScaleHandlePrefab: caa9ea87-b38e-4677-86fb-87ef1cb99838
                     HandleGrabbedMaterial: 7c6dfc11-0f01-4d22-bfc9-bc5ca4fae227
                     HandleMaterial: 9adff77b-f6b6-4683-bf28-243fafea5436
                     IsEnabled: true
                     LinkScale: 0.00100000005
                     MaintainHandlesApparentSize: false
-                    RotationHandlePrefab:
-                      PrefabId: 91581f1c-7c41-4c43-bc53-5fdb064a90f7
+                    RotationHandlePrefab: 5e18a808-fd7d-49f9-8187-d9256af252c7
                     RotationHandleScale: 0.0299999975
-                    ScaleHandlePrefab:
-                      PrefabId: 92d409e4-15d4-432c-be90-e57aaece73a5
+                    ScaleHandlePrefab: ae0e37ce-4928-42ef-970e-a4b1e547f4ea
                     ScaleHandleScale: 0.0299999975
                     ShowScaleHandles: true
                     ShowWireframe: true
@@ -7007,18 +7016,15 @@ Items:
                   Y: 0.0
                   Z: 0.0
                 CollisionCategory: Cat1
-                FaceScaleHandlePrefab:
-                  PrefabId: 00000000-0000-0000-0000-000000000000
+                FaceScaleHandlePrefab: null
                 HandleGrabbedMaterial: 7c6dfc11-0f01-4d22-bfc9-bc5ca4fae227
                 HandleMaterial: 9adff77b-f6b6-4683-bf28-243fafea5436
                 IsEnabled: true
                 LinkScale: 0.00100000005
                 MaintainHandlesApparentSize: false
-                RotationHandlePrefab:
-                  PrefabId: 00000000-0000-0000-0000-000000000000
+                RotationHandlePrefab: null
                 RotationHandleScale: 0.0199999996
-                ScaleHandlePrefab:
-                  PrefabId: 92d409e4-15d4-432c-be90-e57aaece73a5
+                ScaleHandlePrefab: ae0e37ce-4928-42ef-970e-a4b1e547f4ea
                 ScaleHandleScale: 0.0299999975
                 ShowScaleHandles: true
                 ShowWireframe: true
@@ -7132,18 +7138,15 @@ Items:
                       Y: 0.0
                       Z: 0.0
                     CollisionCategory: Cat1
-                    FaceScaleHandlePrefab:
-                      PrefabId: 00000000-0000-0000-0000-000000000000
+                    FaceScaleHandlePrefab: null
                     HandleGrabbedMaterial: 7c6dfc11-0f01-4d22-bfc9-bc5ca4fae227
                     HandleMaterial: 9adff77b-f6b6-4683-bf28-243fafea5436
                     IsEnabled: true
                     LinkScale: 0.00100000005
                     MaintainHandlesApparentSize: false
-                    RotationHandlePrefab:
-                      PrefabId: 91581f1c-7c41-4c43-bc53-5fdb064a90f7
+                    RotationHandlePrefab: 5e18a808-fd7d-49f9-8187-d9256af252c7
                     RotationHandleScale: 0.0300000012
-                    ScaleHandlePrefab:
-                      PrefabId: 00000000-0000-0000-0000-000000000000
+                    ScaleHandlePrefab: null
                     ScaleHandleScale: 0.0199999996
                     ShowScaleHandles: false
                     ShowWireframe: true
@@ -7220,18 +7223,15 @@ Items:
                   Y: 0.0
                   Z: 0.0
                 CollisionCategory: Cat1
-                FaceScaleHandlePrefab:
-                  PrefabId: 00000000-0000-0000-0000-000000000000
+                FaceScaleHandlePrefab: null
                 HandleGrabbedMaterial: 7c6dfc11-0f01-4d22-bfc9-bc5ca4fae227
                 HandleMaterial: 9adff77b-f6b6-4683-bf28-243fafea5436
                 IsEnabled: true
                 LinkScale: 0.00499999989
                 MaintainHandlesApparentSize: false
-                RotationHandlePrefab:
-                  PrefabId: 00000000-0000-0000-0000-000000000000
+                RotationHandlePrefab: null
                 RotationHandleScale: 0.0199999996
-                ScaleHandlePrefab:
-                  PrefabId: 00000000-0000-0000-0000-000000000000
+                ScaleHandlePrefab: null
                 ScaleHandleScale: 0.0199999996
                 ShowScaleHandles: false
                 ShowWireframe: false
@@ -7760,9 +7760,9 @@ Items:
                 IsEnabled: true
                 LocalOrientation:
                   W: -4.37113883E-08
-                  X: -0.0
+                  X: 1.52581524E-11
                   Y: 1.0
-                  Z: 0.0
+                  Z: -6.66955004E-19
                 LocalPosition:
                   X: 0.0
                   Y: 0.0
@@ -7776,21 +7776,18 @@ Items:
                 AxisHandleFocusedMaterial: 0dfdda40-2622-4b23-8ad0-5d7987849f14
                 AxisHandleGrabbedMaterial: cfd90095-ca9f-40aa-a8d8-b77b956a9d53
                 AxisHandleMaterial: 84896037-fa9d-4415-a1b0-98d35e4133f6
-                AxisHandlePrefab:
-                  PrefabId: 42751e81-ed6e-4e09-b0d2-2b238f4afcc3
+                AxisHandlePrefab: a5fbf829-0fba-4531-ae07-0a0bf6db6b0d
                 CenterHandleFocusedMaterial: 371241eb-b255-4358-bc40-6375efbcaa2a
                 CenterHandleGrabbedMaterial: 12d12046-a843-446f-86bb-bae3fccb9239
                 CenterHandleMaterial: 3d6d2f54-6191-4826-b0d8-bfc7cc612115
-                CenterHandlePrefab:
-                  PrefabId: cd0721a6-f291-4db1-8639-db871bc2175b
+                CenterHandlePrefab: eb00b4fc-fdcc-420b-9137-70af849e4897
                 CollisionCategory: Cat1
                 HandleScale: 0.0199999996
                 IsEnabled: true
                 PlaneHandleFocusedMaterial: 0147fd18-2157-45a9-9c0e-096c2a3b98c0
                 PlaneHandleGrabbedMaterial: 149c21e7-0968-49ca-887a-12fad63b86bb
                 PlaneHandleMaterial: ec096b72-56fe-4fb5-8a73-38df0fd97af6
-                PlaneHandlePrefab:
-                  PrefabId: 2d623669-2e9e-4ce2-8c3b-927846111629
+                PlaneHandlePrefab: 0227551e-3012-4f6e-b92e-094c0afa41a7
                 PlaneHandlesActivateAxisHandles: true
               - !Evergine.MRTK.SDK.Features.UX.Components.AxisManipulationHandler.AxisManipulationHandlerSoundFeedbackComponent,Evergine.MRTK
                 Id: 8f96e80b-88f2-49e2-8ef7-56b1e0d39396

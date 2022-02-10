@@ -7,12 +7,12 @@ using Evergine.Components.Graphics3D;
 using Evergine.Framework;
 using Evergine.Framework.Graphics;
 using Evergine.Framework.Physics3D;
+using Evergine.Framework.Prefabs;
 using Evergine.Mathematics;
 using Evergine.MRTK.Base.EventDatum.Input;
 using Evergine.MRTK.Base.Interfaces.InputSystem.Handlers;
 using Evergine.MRTK.Emulation;
 using Evergine.MRTK.Services.InputSystem;
-using Evergine.MRTK.Toolkit.Prefabs;
 
 namespace Evergine.MRTK.SDK.Features.UX.Components.AxisManipulationHandler
 {
@@ -39,10 +39,6 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.AxisManipulationHandler
         {
             base.OnActivated();
 
-            this.CenterHandlePrefab.OnScenePrefabChanged += this.HandlePrefab_OnScenePrefabChanged;
-            this.AxisHandlePrefab.OnScenePrefabChanged += this.HandlePrefab_OnScenePrefabChanged;
-            this.PlaneHandlePrefab.OnScenePrefabChanged += this.HandlePrefab_OnScenePrefabChanged;
-
             this.InternalCreateRig();
         }
 
@@ -51,16 +47,7 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.AxisManipulationHandler
         {
             base.OnDeactivated();
 
-            this.CenterHandlePrefab.OnScenePrefabChanged -= this.HandlePrefab_OnScenePrefabChanged;
-            this.AxisHandlePrefab.OnScenePrefabChanged -= this.HandlePrefab_OnScenePrefabChanged;
-            this.PlaneHandlePrefab.OnScenePrefabChanged -= this.HandlePrefab_OnScenePrefabChanged;
-
             this.DestroyRig();
-        }
-
-        private void HandlePrefab_OnScenePrefabChanged(object sender, EventArgs e)
-        {
-            this.CreateRig();
         }
 
         private bool CreateRig()
@@ -217,7 +204,7 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.AxisManipulationHandler
             }
         }
 
-        private AxisManipulationHelper CreateHandle(AxisManipulationHelperType amhType, AxisType axisType, ScenePrefabProperty prefab, Material idleMaterial, Material grabbedMaterial, Material focusedMaterial, Quaternion orientation, AxisManipulationHelper[] relatedHandlers)
+        private AxisManipulationHelper CreateHandle(AxisManipulationHelperType amhType, AxisType axisType, Prefab prefab, Material idleMaterial, Material grabbedMaterial, Material focusedMaterial, Quaternion orientation, AxisManipulationHelper[] relatedHandlers)
         {
             // Entity name suffix
             var suffix = $"{amhType}_{axisType}";
@@ -231,20 +218,15 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.AxisManipulationHandler
 
             this.rigRootEntity.AddChild(handle);
 
-            if (prefab.IsPrefabIdValid)
+            if (prefab != null)
             {
                 // Instantiate prefab
-                var scenePrefab = new ScenePrefab();
-                scenePrefab.ScenePrefabProperty.PrefabId = prefab.PrefabId;
+                var prefabInstance = prefab.Instantiate();
 
-                var container = new Entity($"prefab_{suffix}")
-                    .AddComponent(new Transform3D()
-                    {
-                        LocalOrientation = orientation,
-                    })
-                    .AddComponent(scenePrefab);
+                var prefabTransform = prefabInstance.FindComponent<Transform3D>();
+                prefabTransform.LocalOrientation = orientation;
 
-                handle.AddChild(container);
+                handle.AddChild(prefabInstance);
             }
             else
             {

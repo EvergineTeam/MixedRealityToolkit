@@ -8,12 +8,12 @@ using Evergine.Components.Graphics3D;
 using Evergine.Framework;
 using Evergine.Framework.Graphics;
 using Evergine.Framework.Physics3D;
+using Evergine.Framework.Prefabs;
 using Evergine.Mathematics;
 using Evergine.MRTK.Base.EventDatum.Input;
 using Evergine.MRTK.Emulation;
 using Evergine.MRTK.SDK.Features.Input.Handlers;
 using Evergine.MRTK.Services.InputSystem;
-using Evergine.MRTK.Toolkit.Prefabs;
 
 namespace Evergine.MRTK.SDK.Features.UX.Components.BoundingBox
 {
@@ -402,19 +402,58 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.BoundingBox
         /// Gets or sets the prefab used to display scale handles in corners. If not set, boxes will be displayed instead.
         /// </summary>
         [RenderProperty(Tooltip = "The prefab used to display scale handles in corners. If not set, boxes will be displayed instead.")]
-        public ScenePrefabProperty ScaleHandlePrefab = new ScenePrefabProperty();
+        public Prefab ScaleHandlePrefab
+        {
+            get => this.scaleHandlePrefab;
+            set
+            {
+                if (this.scaleHandlePrefab != value)
+                {
+                    this.scaleHandlePrefab = value;
+                    this.CreateRig();
+                }
+            }
+        }
+
+        private Prefab scaleHandlePrefab;
 
         /// <summary>
         /// Gets or sets the prefab used to display rotation handles in edges. If not set, spheres will be displayed instead.
         /// </summary>
         [RenderProperty(Tooltip = "The prefab used to display rotation handles in edges. If not set, spheres will be displayed instead.")]
-        public ScenePrefabProperty RotationHandlePrefab = new ScenePrefabProperty();
+        public Prefab RotationHandlePrefab
+        {
+            get => this.rotationHandlePrefab;
+            set
+            {
+                if (this.rotationHandlePrefab != value)
+                {
+                    this.rotationHandlePrefab = value;
+                    this.CreateRig();
+                }
+            }
+        }
+
+        private Prefab rotationHandlePrefab;
 
         /// <summary>
         /// Gets or sets the prefab used to display scale handles in faces. If not set, spheres will be displayed instead.
         /// </summary>
         [RenderProperty(Tooltip = "The prefab used to display rotation handles in edges. If not set, spheres will be displayed instead.")]
-        public ScenePrefabProperty FaceScaleHandlePrefab = new ScenePrefabProperty();
+        public Prefab FaceScaleHandlePrefab
+        {
+            get => this.faceScaleHandlePrefab;
+            set
+            {
+                if (this.faceScaleHandlePrefab != value)
+                {
+                    this.faceScaleHandlePrefab = value;
+                    this.CreateRig();
+                }
+            }
+        }
+
+        private Prefab faceScaleHandlePrefab;
 
         /// <summary>
         /// Gets or sets the collision category of the handles.
@@ -517,8 +556,8 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.BoundingBox
                 var bbox = meshComponent?.BoundingBox;
                 if (bbox != null)
                 {
-                    Transform3D meshTransform = meshComponent.Owner.FindComponent<Transform3D>();
-                    Matrix4x4 localToThis = meshTransform.WorldTransform * this.transform.WorldInverseTransform;
+                    var meshTransform = meshComponent.Owner.FindComponent<Transform3D>();
+                    var localToThis = meshTransform.WorldTransform * this.transform.WorldInverseTransform;
                     Mathematics.BoundingBox b = bbox.Value;
                     b.Transform(localToThis);
                     bbox = b;
@@ -574,10 +613,6 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.BoundingBox
             this.transform.ScaleChanged += this.Transform_ScaleChanged;
             this.transform.LocalScaleChanged += this.Transform_ScaleChanged;
 
-            this.ScaleHandlePrefab.OnScenePrefabChanged += this.HandlePrefab_OnScenePrefabChanged;
-            this.RotationHandlePrefab.OnScenePrefabChanged += this.HandlePrefab_OnScenePrefabChanged;
-            this.FaceScaleHandlePrefab.OnScenePrefabChanged += this.HandlePrefab_OnScenePrefabChanged;
-
             this.InternalCreateRig();
         }
 
@@ -589,16 +624,7 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.BoundingBox
             this.transform.ScaleChanged -= this.Transform_ScaleChanged;
             this.transform.LocalScaleChanged -= this.Transform_ScaleChanged;
 
-            this.ScaleHandlePrefab.OnScenePrefabChanged -= this.HandlePrefab_OnScenePrefabChanged;
-            this.RotationHandlePrefab.OnScenePrefabChanged -= this.HandlePrefab_OnScenePrefabChanged;
-            this.FaceScaleHandlePrefab.OnScenePrefabChanged -= this.HandlePrefab_OnScenePrefabChanged;
-
             this.DestroyRig();
-        }
-
-        private void HandlePrefab_OnScenePrefabChanged(object sender, EventArgs e)
-        {
-            this.CreateRig();
         }
 
         private void Transform_ScaleChanged(object sender, EventArgs e)
@@ -933,12 +959,12 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.BoundingBox
                         Rotation = rotation,
                     };
 
-                    Entity link = new Entity($"link_{i}")
+                    var link = new Entity($"link_{i}")
                         .AddComponent(linkTransform);
 
                     this.rigRootEntity.AddChild(link);
 
-                    Entity linkVisual = new Entity("visuals")
+                    var linkVisual = new Entity("visuals")
                         .AddComponent(new Transform3D());
 
                     if (this.wireframeMaterial != null)
@@ -978,7 +1004,7 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.BoundingBox
             this.helpersList = this.helpers.Values.ToList();
         }
 
-        private void CreateHandle(Vector3 position, Vector3 oppositePosition, Vector3 visualRotation, ScenePrefabProperty prefab, BoundingBoxHelperType bbhType, AxisType axisType)
+        private void CreateHandle(Vector3 position, Vector3 oppositePosition, Vector3 visualRotation, Prefab prefab, BoundingBoxHelperType bbhType, AxisType axisType)
         {
             var handleTransform = new Transform3D()
             {
@@ -990,13 +1016,12 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.BoundingBox
 
             this.rigRootEntity.AddChild(handle);
 
-            if (prefab.IsPrefabIdValid)
+            if (prefab != null)
             {
                 // Instantiate prefab
-                var scenePrefab = new ScenePrefab();
-                scenePrefab.ScenePrefabProperty.PrefabId = prefab.PrefabId;
+                var prefabInstance = prefab.Instantiate();
 
-                handle.AddComponent(scenePrefab);
+                handle.AddChild(prefabInstance);
             }
             else
             {
@@ -1031,7 +1056,7 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.BoundingBox
                     })
                     .AddComponent(new NearInteractionGrabbable());
 
-                Entity handleVisual = new Entity("visuals")
+                var handleVisual = new Entity("visuals")
                     .AddComponent(new Transform3D())
                     .AddComponent(mesh)
                     .AddComponent(new MeshRenderer())

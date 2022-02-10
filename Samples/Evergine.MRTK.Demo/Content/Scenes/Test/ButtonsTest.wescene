@@ -111,7 +111,7 @@ Items:
         Id: 88e25e58-d6ca-4934-a280-294f805c26bd
         AsignedTo: Default
         IsEnabled: true
-        Material: dd805e5d-e326-42a9-aa1b-61afaf8c52f3
+        Material: f3604cd5-93d7-4b96-bba9-8d4c0045dc60
       - !Evergine.Components.Graphics3D.SphereMesh,Evergine.Components
         Id: 9369593f-c243-4632-b7c2-8b3e94abc256
         Diameter: 1.0
@@ -3613,7 +3613,7 @@ Items:
                                   - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Framework.Graphics.Material,Evergine.Framework]],Evergine.Framework
                                     Name: Material
                                     Target: 65182969-b575-4f02-92f3-d9c8b594fa14
-                                    TypedValue: 3521d95f-b8ce-40cb-b4d0-c268f64496bd
+                                    TypedValue: e15b70dc-4787-4517-a720-914d405afa85
                                   - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.MRTK.Toolkit.GUI.FontFamilySourceProperty,Evergine.MRTK]],Evergine.Framework
                                     Name: FontFamilySourceProperty
                                     Target: a61a3638-748a-4a7d-8b72-a2ac44dc7df4
