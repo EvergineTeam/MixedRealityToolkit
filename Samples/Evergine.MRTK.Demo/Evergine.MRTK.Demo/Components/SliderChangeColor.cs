@@ -2,7 +2,6 @@
 using Evergine.Framework;
 using Evergine.MRTK.Effects;
 using Evergine.MRTK.SDK.Features.UX.Components.Sliders;
-using Evergine.MRTK.Toolkit.Prefabs;
 
 namespace Evergine.MRTK.Demo.Components
 {

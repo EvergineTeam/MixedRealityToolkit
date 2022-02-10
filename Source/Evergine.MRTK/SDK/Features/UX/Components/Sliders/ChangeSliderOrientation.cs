@@ -23,8 +23,6 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Sliders
         private Transform3D textTransform = null;
 
         private float rotation = DefaultRotation;
-        private Vector3 originalGlobalRotation = Vector3.Zero;
-        private Vector3 originalTextRotation = Vector3.Zero;
 
         /// <summary>
         /// Gets or sets slider rotation.
@@ -45,40 +43,10 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Sliders
         }
 
         /// <inheritdoc />
-        protected override bool OnAttached()
-        {
-            bool attached = base.OnAttached();
-
-            if (attached)
-            {
-                this.originalGlobalRotation = this.rootTransform.LocalRotation;
-
-                if (this.textTransform != null)
-                {
-                    this.originalTextRotation = this.textTransform.LocalRotation;
-                }
-            }
-
-            return attached;
-        }
-
-        /// <inheritdoc />
         protected override void OnActivated()
         {
             base.OnActivated();
             this.OnRotationUpdated();
-        }
-
-        /// <inheritdoc />
-        protected override void OnDetach()
-        {
-            base.OnDetach();
-            this.rootTransform.LocalRotation = this.originalGlobalRotation;
-
-            if (this.textTransform != null)
-            {
-                this.textTransform.LocalRotation = this.originalTextRotation;
-            }
         }
 
         private void OnRotationUpdated()
@@ -87,12 +55,12 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Sliders
 
             if (this.rootTransform != null)
             {
-                this.rootTransform.LocalRotation = Vector3.Add(this.originalGlobalRotation, rotationVector);
+                this.rootTransform.LocalRotation = rotationVector;
             }
 
             if (this.textTransform != null)
             {
-                this.textTransform.LocalRotation = Vector3.Add(this.originalTextRotation, -rotationVector);
+                this.textTransform.LocalRotation = -rotationVector;
             }
         }
     }

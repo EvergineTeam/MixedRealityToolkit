@@ -21,6 +21,8 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Sliders
         {
             base.OnActivated();
             this.pinchSlider.ValueUpdated += this.PinchSlider_ValueUpdated;
+
+            this.UpdateText(this.pinchSlider.SliderValue);
         }
 
         /// <inheritdoc/>
@@ -32,7 +34,12 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Sliders
 
         private void PinchSlider_ValueUpdated(object sender, SliderEventData e)
         {
-            this.text3D.Text = $"{e.NewValue:F2}";
+            this.UpdateText(e.NewValue);
+        }
+
+        private void UpdateText(float value)
+        {
+            this.text3D.Text = $"{value:F2}";
         }
     }
 }
