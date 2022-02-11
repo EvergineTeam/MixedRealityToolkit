@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Evergine.Framework.Assets.Importers;
 
 namespace Evergine.MRTK.Editor
 {
@@ -22,14 +21,6 @@ namespace Evergine.MRTK.Editor
                     .SelectMany(x => GetFontFamilyNameFields(x.type, x.basePath, assetsRootPath))
                     .Distinct()
                     .ToDictionary(x => x.name, x => x.sourcePath);
-        }
-
-        public static Dictionary<string, Guid> FindPrefabs()
-        {
-            return EvergineContentTypes
-                    .SelectMany(x => GetClasses(x, filter: (t) => t.Name.ToLowerInvariant().Contains("prefab")))
-                    .SelectMany(x => GetScenePrefabsFields(x.type))
-                    .ToDictionary(x => x.name, x => x.id);
         }
 
         private static IEnumerable<TypeInfo> GetEvergineContentTypes()
@@ -69,13 +60,6 @@ namespace Evergine.MRTK.Editor
                                               return (fontFamilyName, $"{basePath}/#{fontFamilyName}");
                                           }
                                       });
-        }
-
-        private static IEnumerable<(string name, Guid id)> GetScenePrefabsFields(TypeInfo type)
-        {
-            var sceneExtension = SceneImporter.FileExtension.Replace('.', '_');
-            return type.DeclaredFields.Where(x => x.Name.EndsWith(sceneExtension))
-                .Select(x => (x.Name.Substring(0, x.Name.Length - sceneExtension.Length), (Guid)x.GetValue(null)));
         }
     }
 }
