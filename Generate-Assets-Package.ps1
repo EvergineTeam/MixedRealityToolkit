@@ -1,11 +1,11 @@
 <#
 .SYNOPSIS
-	Evergine MRTK Assets Packages generator script, (c) 2021 Evergine
+	Evergine MRTK Assets Packages generator script, (c) 2022 Evergine
 .DESCRIPTION
 	This script generates Assets packages for the Mixed Reality Toolkit for Evergine
 	It's meant to have the same behavior when executed locally as when it's executed in a CI pipeline.
 .EXAMPLE
-	<script> -version 3.4.22.288-local
+	<script> -version 2022.2.11.1-local
 .LINK
 	https://evergine.com/
 #>
@@ -20,7 +20,7 @@ param (
 
 # Utility functions
 function LogDebug($line)
-{ Write-Host "##[debug] $line" -Foreground Blue -Background Black 
+{ Write-Host "##[debug] $line" -Foreground Blue -Background Black
 }
 
 # Show variables

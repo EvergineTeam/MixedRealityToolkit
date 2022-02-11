@@ -4,10 +4,10 @@ trigger: none
 pr: none
 
 stages:
-  - stage: PackageBuild
-    displayName: "Build Editor and Nugets"
+  - stage: AddonBuild
+    displayName: "Build nuget and assets"
     jobs:
-      - template: "templates/cd.yml"
+      - template: "templates/build.yml"
         parameters:
           buildVersion: "$(Build.BuildNumber)"
           publishEnabled: true

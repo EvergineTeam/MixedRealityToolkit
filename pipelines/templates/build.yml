@@ -13,8 +13,8 @@ parameters:
     type: string
 
 jobs:
-  - job: "BuildPackage"
-    displayName: "Build Package"
+  - job: "BuildAddon"
+    displayName: "Build Addon"
     workspace:
       clean: all
     pool:

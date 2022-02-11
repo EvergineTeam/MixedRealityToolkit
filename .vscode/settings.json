@@ -1,0 +1,5 @@
+{
+  "yaml.schemas": {
+    "https://raw.githubusercontent.com/microsoft/azure-pipelines-vscode/master/service-schema.json": "file:///c%3A/Users/jcarnero/source/Evergine/MixedRealityToolkit/pipelines/templates/build.yml"
+  }
+}
