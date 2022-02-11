@@ -7,9 +7,9 @@ Sliders are UI components that allow you to continuously change a value by movin
 
 ## How to use sliders
 
-### Using ScenePrefab
+### Using prefabs
 
-Create a new Entity and add the Component ScenePrefab. Select any of the available options in the dropdown list and reload the scene. 
+Drag one of the default MRTK slider prefabs onto your scene.
 
 ### Create an Slider from scratch
 

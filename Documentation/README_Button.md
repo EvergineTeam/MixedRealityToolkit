@@ -16,12 +16,11 @@ Examples of the button prefabs under `Scenes/Prefabs` folder
 
 ## How to use pressable buttons
 
-**Using ScenePrefab**
+**Using prefabs**
 
-Create a new Entity and add the Component ScenePrefab. Select any of the next options in the dropdown list:
+Drag one of the default MRTK button prefabs onto your scene. You can choose among these:
 
-- **PressableRoundButton**
-- **PressableButtonPlated32x32**
+- **PressableButtonPlated**
 - **PressableButtonUnplated**
 
 These button prefabs are already configured to have audio-visual feedback. The Entity can be scaled to get different button sizes. The size of the prefabs is 32x32mm.

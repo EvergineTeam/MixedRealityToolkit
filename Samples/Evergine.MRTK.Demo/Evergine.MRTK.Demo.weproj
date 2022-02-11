@@ -1,6 +1,6 @@
 Packages:
   - Id: Evergine.Core
-    Version: 2022.2.10.2-nightly
+    Version: 2022.2.11.2-nightly
   - Id: Evergine.MRTK
     LocalPath: ../../Source/Evergine.MRTK.Assets/
 Profiles:
