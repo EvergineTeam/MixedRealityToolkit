@@ -1,7 +1,6 @@
 name: $(Date:yyyy)$(Date:.M)$(Date:.d)$(Rev:.r)-rolling
 
 trigger:
-  autoCancel: true
   batch: true
   branches:
     include:
