@@ -627,11 +627,6 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.BoundingBox
             this.DestroyRig();
         }
 
-        private void Transform_ScaleChanged(object sender, EventArgs e)
-        {
-            this.UpdateRigHandles();
-        }
-
         /// <inheritdoc/>
         protected override void Update(TimeSpan gameTime)
         {
@@ -645,7 +640,17 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.BoundingBox
         /// Destroys and re-creates the rig around the bounding box.
         /// </summary>
         /// <returns><see langword="true"/> if the rig can be re-created at that moment.</returns>
-        public bool CreateRig()
+        public bool Refresh()
+        {
+            return this.CreateRig();
+        }
+
+        private void Transform_ScaleChanged(object sender, EventArgs e)
+        {
+            this.UpdateRigHandles();
+        }
+
+        private bool CreateRig()
         {
             if (!this.IsActivated)
             {
