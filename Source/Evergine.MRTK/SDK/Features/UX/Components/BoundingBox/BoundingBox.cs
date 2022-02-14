@@ -645,7 +645,7 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.BoundingBox
         /// Destroys and re-creates the rig around the bounding box.
         /// </summary>
         /// <returns><see langword="true"/> if the rig can be re-created at that moment.</returns>
-        private bool CreateRig()
+        public bool CreateRig()
         {
             if (!this.IsActivated)
             {
