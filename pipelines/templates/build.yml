@@ -20,7 +20,6 @@ jobs:
     pool:
       vmImage: "windows-2022"
     variables:
-      nugetConfigPath: "$(Build.SourcesDirectory)/Source/Evergine.MRTK/NuGet.config"
       nugetOutputPath: "$(Build.StagingDirectory)/nupkgs"
       wepkgOutputPath: "$(Build.StagingDirectory)/wepkgs"
       NetCoreSDKVersion: "6.x"
@@ -37,16 +36,6 @@ jobs:
         inputs:
           versionSpec: "$(NuGetVersion)"
           checkLatest: true
-
-      - task: PowerShell@2
-        inputs:
-          targetType: "inline"
-          script: '"<configuration></configuration>" > $(nugetConfigPath)'
-
-      - task: NuGetCommand@2
-        inputs:
-          command: "custom"
-          arguments: 'sources add -Name "nuget.org" -Source "https://api.nuget.org/v3/index.json" -ConfigFile $(nugetConfigPath)'
 
       - task: PowerShell@2
         displayName: "Generate NuGet packages"
