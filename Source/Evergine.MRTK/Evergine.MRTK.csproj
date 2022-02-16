@@ -19,13 +19,13 @@
     <DefineConstants>TRACE</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Evergine.Bullet" Version="2022.2.16.1" />
-    <PackageReference Include="Evergine.Common" Version="2022.2.16.1" />
-    <PackageReference Include="Evergine.Components" Version="2022.2.16.1" />
-    <PackageReference Include="Evergine.Framework" Version="2022.2.16.1" />
-    <PackageReference Include="Evergine.Mathematics" Version="2022.2.16.1" />
-    <PackageReference Include="Evergine.NoesisGUI" Version="2022.2.16.1" />
-    <PackageReference Include="Evergine.Platform" Version="2022.2.16.1" />
+    <PackageReference Include="Evergine.Bullet" Version="2022.2.16.3" />
+    <PackageReference Include="Evergine.Common" Version="2022.2.16.3" />
+    <PackageReference Include="Evergine.Components" Version="2022.2.16.3" />
+    <PackageReference Include="Evergine.Framework" Version="2022.2.16.3" />
+    <PackageReference Include="Evergine.Mathematics" Version="2022.2.16.3" />
+    <PackageReference Include="Evergine.NoesisGUI" Version="2022.2.16.3" />
+    <PackageReference Include="Evergine.Platform" Version="2022.2.16.3" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\LICENSE">
