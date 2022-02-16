@@ -1,8 +1,11 @@
+!Evergine.Common.ProjectModel,Evergine.Common
 Packages:
   - Id: Evergine.Core
-    Version: 2022.2.11.2-nightly
+    LocalPath: null
+    Version: 2022.2.16.1
   - Id: Evergine.MRTK
     LocalPath: ../../Source/Evergine.MRTK.Assets/
+    Version: null
 Profiles:
   - AdditionalEffectTechniqueCombinations: SHADOW_SUPPORTED-SHADOWFILTER7
     AlphaCompressionFormat: BC3_UNorm
