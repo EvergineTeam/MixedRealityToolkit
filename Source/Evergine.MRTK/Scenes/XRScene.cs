@@ -74,7 +74,10 @@ namespace Evergine.MRTK.Scenes
         {
             base.RegisterManagers();
 
-            this.Managers.AddManager(new BulletPhysicManager3D());
+            this.Managers.AddManager(new BulletPhysicManager3D()
+            {
+                PhysicWorldResolution = 10,
+            });
             this.Managers.AddManager(new FocusProvider());
             this.Managers.AddManager(new VoiceCommandsProvider());
         }
