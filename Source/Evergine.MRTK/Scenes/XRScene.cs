@@ -231,7 +231,6 @@ namespace Evergine.MRTK.Scenes
                 mainCursor.AddComponent(new TrackXRJoint()
                 {
                     Handedness = handedness,
-                    SelectionStrategy = TrackXRDevice.SelectionDeviceStrategy.ByHandedness,
                     JointKind = XRHandJointKind.IndexTip,
                     TrackingLostMode = TrackXRDevice.XRTrackingLostMode.KeepLastPose,
                 })

@@ -8,7 +8,7 @@ namespace Evergine.MRTK.Behaviors
     /// <summary>
     /// Track an XR joint.
     /// </summary>
-    public class TrackXRJoint : TrackXRDevice
+    public class TrackXRJoint : TrackXRArticulatedHand
     {
         /// <summary>
         /// Gets or sets the joint.
