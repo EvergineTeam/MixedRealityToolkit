@@ -51,6 +51,7 @@ namespace Evergine.MRTK.Editor
             return type.DeclaredFields.Where(field => field.Name.ToLowerInvariant().EndsWith("_ttf"))
                                       .Select(field => field.Name.Remove(field.Name.LastIndexOf('_')))
                                       .Distinct()
+                                      .Where(name => name != "Arial") // Remove default font as a workaround
                                       .Select(name =>
                                       {
                                           using (var fontCollection = new System.Drawing.Text.PrivateFontCollection())
