@@ -200,7 +200,7 @@ Items:
         IsEnabled: true
         MaxPitch: 1.49225616
         MouseSensibility: 0.200000003
-        Speed: 0.200000003
+        MoveSpeed: 0.200000003
         TouchMoveAndOrientationRatio: 0.5
         TouchSensibility: 1.0
         UpdateOrder: 0.5
