@@ -37,6 +37,6 @@ $absoluteOutputFolder = Resolve-Path $outputFolderBase
 
 # Generate packages
 LogDebug "START assets packaging process"
-& dotnet build "$assetsCsprojPath" -v:$buildVerbosity -p:Configuration=$buildConfiguration -t:CreateEverginePackage -p:Version=$version -o "$absoluteOutputFolder"
+& dotnet build "$assetsCsprojPath" -v:$buildVerbosity -p:Configuration=$buildConfiguration -t:CreateEvergineAddOn -p:Version=$version -o "$absoluteOutputFolder"
 
 LogDebug "END assets packaging process"
