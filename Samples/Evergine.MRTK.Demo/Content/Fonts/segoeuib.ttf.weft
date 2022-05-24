@@ -1,0 +1,17 @@
+!Evergine.Assets.Exporters.FontMetaFile,Evergine.Assets
+Id: 1144d6d6-31f0-4dd7-b206-964e4647a722
+DefaultProfile:
+  ExcludeAsset: false
+  FontInfo:
+    Id: 92e4e898-3fc3-4fd1-a60f-995425ff0dc6
+    Charset: 
+    MinGlyphSize: 32
+  Name: null
+  Platform: Undefined
+ExportAsRaw: false
+Profiles: {}
+Source:
+  Header:
+    Id: c1f71b9b-2f60-457e-b2fd-c45868829749
+    IsCompressed: true
+  LastModified: 0001-01-01T00:00:00.0000000
