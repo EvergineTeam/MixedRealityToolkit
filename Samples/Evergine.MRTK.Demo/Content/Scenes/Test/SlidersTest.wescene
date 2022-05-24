@@ -26,7 +26,7 @@ Items:
         Id: 123f9559-4071-45e5-9708-ea09bae31c5f
         IntensityMultiplier: 1.0
         IsEnabled: true
-        ReflectionProbe: 52b14aab-20b7-45ab-ad04-3b1e9943e182
+        ReflectionProbe: dedb9f1c-9299-486f-9e6d-b973960988e9
         Strategy: Automatically
     Children: []
     Id: ad8017e0-08ed-427c-97ed-a9c055150ae7
@@ -111,7 +111,7 @@ Items:
         Id: 88e25e58-d6ca-4934-a280-294f805c26bd
         AsignedTo: Default
         IsEnabled: true
-        Material: 2273c57b-02a2-4a30-a1b7-5b0fcf3ba3ab
+        Material: 6a64abf2-59e2-4b44-bcbf-c6bc3f962bc9
       - !Evergine.Components.Graphics3D.SphereMesh,Evergine.Components
         Id: 9369593f-c243-4632-b7c2-8b3e94abc256
         Diameter: 1.0
@@ -201,6 +201,7 @@ Items:
         MaxPitch: 1.49225616
         MouseSensibility: 0.200000003
         MoveSpeed: 0.200000003
+        RotationSpeed: 5.0
         TouchMoveAndOrientationRatio: 0.5
         TouchSensibility: 1.0
         UpdateOrder: 0.5
