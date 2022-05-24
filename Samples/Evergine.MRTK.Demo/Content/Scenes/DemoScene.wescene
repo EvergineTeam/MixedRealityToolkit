@@ -26,7 +26,7 @@ Items:
         Id: 123f9559-4071-45e5-9708-ea09bae31c5f
         IntensityMultiplier: 1.0
         IsEnabled: true
-        ReflectionProbe: b3b13005-6180-4839-9ce0-9b245572b7db
+        ReflectionProbe: 9929a1ed-05b4-454d-ab66-e9271d24adca
         Strategy: Automatically
     Children: []
     Id: ad8017e0-08ed-427c-97ed-a9c055150ae7
@@ -201,13 +201,14 @@ Items:
         MaxPitch: 1.49225616
         MouseSensibility: 0.200000003
         MoveSpeed: 0.200000003
+        RotationSpeed: 5.0
         TouchMoveAndOrientationRatio: 0.5
         TouchSensibility: 1.0
         UpdateOrder: 0.5
       - !Evergine.Framework.Graphics.Camera3D,Evergine.Framework
         Id: e6234645-a09c-405e-b7cc-e8970277f72c
         Aperture: 1.0
-        AspectRatio: 2.21511626
+        AspectRatio: 2.17120624
         AutoDepthBounds: false
         AutoExposureEnabled: false
         CameraOrder: 0.0
@@ -239,10 +240,10 @@ Items:
         MinLogLuminance: -10.0
         NearPlane: 0.100000001
         ScreenViewport:
-          Height: 172.0
+          Height: 257.0
           MaxDepth: 1.0
           MinDepth: 0.0
-          Width: 381.0
+          Width: 558.0
           X: 0.0
           Y: 0.0
         Sensitivity: 100.0
