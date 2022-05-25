@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+  <!-- Splash Screen theme. -->
+  <style name="SplashTheme">
+    <item name="android:windowBackground">@drawable/launch</item>
+  </style>
+</resources>
