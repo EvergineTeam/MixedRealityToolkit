@@ -5,7 +5,6 @@ using Evergine.Components.Fonts;
 using Evergine.Components.Graphics3D;
 using Evergine.Framework;
 using Evergine.Framework.Graphics;
-using Evergine.MRTK.Toolkit.GUI;
 
 namespace Evergine.MRTK.SDK.Features.UX.Components.Configurators
 {

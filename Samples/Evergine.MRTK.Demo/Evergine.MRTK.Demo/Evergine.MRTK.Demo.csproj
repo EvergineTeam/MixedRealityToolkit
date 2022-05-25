@@ -14,7 +14,6 @@
     <PackageReference Include="Evergine.Bullet" Version="2022.5.10.1-nightly" />
     <PackageReference Include="Evergine.Targets" Version="2022.5.10.1-nightly" />
     <PackageReference Include="Evergine.CodeScenes" Version="2022.5.10.1-nightly" />
-    <PackageReference Include="Evergine.NoesisGUI" Version="2022.5.10.1-nightly" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Source\Evergine.MRTK\Evergine.MRTK.csproj" />
