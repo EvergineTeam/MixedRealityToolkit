@@ -111,7 +111,7 @@ Items:
         Id: 88e25e58-d6ca-4934-a280-294f805c26bd
         AsignedTo: Default
         IsEnabled: true
-        Material: 48980d13-9e62-4efc-b4ec-8761c1900ecb
+        Material: 60ac447f-cef3-4e54-9387-fd41d91d16ae
       - !Evergine.Components.Graphics3D.SphereMesh,Evergine.Components
         Id: 9369593f-c243-4632-b7c2-8b3e94abc256
         Diameter: 1.0
@@ -490,7 +490,7 @@ Items:
                             Id: 9be927d8-5e1e-4d36-93ac-10a05d2515eb
                             CreatesNewThumbMaterialInstance: false
                             CreatesNewTrackMaterialInstance: false
-                            Font: null
+                            Font: a1bec550-b538-4416-acc3-83ca62a349c7
                             IsEnabled: true
                             PrimaryColor:
                               A: 255
@@ -525,6 +525,14 @@ Items:
                         Name: Material
                         Target: e2cd7596-1a8b-4819-8457-0c7b0c8a2b1f
                         TypedValue: 78e9e4d7-711b-44b7-b673-9d2cb9f1220f
+                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%25601[[Evergine.Framework.Graphics.Font,Evergine.Framework]],Evergine.Framework
+                        Name: Font
+                        Target: da706d1c-05a2-4360-ae80-519c0fa5aaab
+                        TypedValue: a1bec550-b538-4416-acc3-83ca62a349c7
+                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%25601[[Evergine.Framework.Graphics.Font,Evergine.Framework]],Evergine.Framework
+                        Name: Font
+                        Target: 0f01517a-c230-4313-83c9-91826912d8c9
+                        TypedValue: a1bec550-b538-4416-acc3-83ca62a349c7
                     removedComponentList: []
                   - !Evergine.Framework.Assets.AssetSources.Entities.PrefabInstanceModel,Evergine.Framework
                     Id: 46ca31a9-e404-4c75-90ef-6acfffee5746
@@ -537,7 +545,7 @@ Items:
                             Id: 0cf5d27a-a566-4549-9c4d-a49a0d0af6c6
                             CreatesNewThumbMaterialInstance: false
                             CreatesNewTrackMaterialInstance: false
-                            Font: null
+                            Font: a1bec550-b538-4416-acc3-83ca62a349c7
                             IsEnabled: true
                             PrimaryColor:
                               A: 255
@@ -572,6 +580,10 @@ Items:
                         Name: Material
                         Target: e2cd7596-1a8b-4819-8457-0c7b0c8a2b1f
                         TypedValue: 3521d95f-b8ce-40cb-b4d0-c268f64496bd
+                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%25601[[Evergine.Framework.Graphics.Font,Evergine.Framework]],Evergine.Framework
+                        Name: Font
+                        Target: da706d1c-05a2-4360-ae80-519c0fa5aaab
+                        TypedValue: a1bec550-b538-4416-acc3-83ca62a349c7
                       - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.String,System.Private.CoreLib]],Evergine.Framework
                         Name: Text
                         Target: da706d1c-05a2-4360-ae80-519c0fa5aaab
@@ -584,6 +596,10 @@ Items:
                           B: 216
                           G: 216
                           R: 6
+                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%25601[[Evergine.Framework.Graphics.Font,Evergine.Framework]],Evergine.Framework
+                        Name: Font
+                        Target: 0f01517a-c230-4313-83c9-91826912d8c9
+                        TypedValue: a1bec550-b538-4416-acc3-83ca62a349c7
                       - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Common.Graphics.Color,Evergine.Common]],Evergine.Framework
                         Name: Color
                         Target: 0f01517a-c230-4313-83c9-91826912d8c9
@@ -893,7 +909,7 @@ Items:
                             Id: 7014d28e-c9a9-4cdc-a300-a4c770109758
                             CreatesNewThumbMaterialInstance: false
                             CreatesNewTrackMaterialInstance: false
-                            Font: null
+                            Font: a1bec550-b538-4416-acc3-83ca62a349c7
                             IsEnabled: true
                             PrimaryColor:
                               A: 255
@@ -948,6 +964,14 @@ Items:
                           X: 0.0
                           Y: -0.0
                           Z: -0.707106769
+                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%25601[[Evergine.Framework.Graphics.Font,Evergine.Framework]],Evergine.Framework
+                        Name: Font
+                        Target: da706d1c-05a2-4360-ae80-519c0fa5aaab
+                        TypedValue: a1bec550-b538-4416-acc3-83ca62a349c7
+                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%25601[[Evergine.Framework.Graphics.Font,Evergine.Framework]],Evergine.Framework
+                        Name: Font
+                        Target: 0f01517a-c230-4313-83c9-91826912d8c9
+                        TypedValue: a1bec550-b538-4416-acc3-83ca62a349c7
                     removedComponentList: []
                 Id: 9c021dd6-ed1c-49bb-bb80-0abdcf16c40f
             Id: 56b3e548-2be6-4f33-926a-230a3fd83421
