@@ -26,7 +26,7 @@ Items:
         Id: 123f9559-4071-45e5-9708-ea09bae31c5f
         IntensityMultiplier: 1.0
         IsEnabled: true
-        ReflectionProbe: dedb9f1c-9299-486f-9e6d-b973960988e9
+        ReflectionProbe: 82c69771-0da5-4d35-a1f2-3f95b2ea4231
         Strategy: Automatically
     Children: []
     Id: ad8017e0-08ed-427c-97ed-a9c055150ae7
@@ -111,7 +111,7 @@ Items:
         Id: 88e25e58-d6ca-4934-a280-294f805c26bd
         AsignedTo: Default
         IsEnabled: true
-        Material: 6a64abf2-59e2-4b44-bcbf-c6bc3f962bc9
+        Material: 48980d13-9e62-4efc-b4ec-8761c1900ecb
       - !Evergine.Components.Graphics3D.SphereMesh,Evergine.Components
         Id: 9369593f-c243-4632-b7c2-8b3e94abc256
         Diameter: 1.0
@@ -201,7 +201,7 @@ Items:
         MaxPitch: 1.49225616
         MouseSensibility: 0.200000003
         MoveSpeed: 0.200000003
-        RotationSpeed: 5.0
+        RotationSpeed: 1.0
         TouchMoveAndOrientationRatio: 0.5
         TouchSensibility: 1.0
         UpdateOrder: 0.5
@@ -313,60 +313,54 @@ Items:
             IsStatic: false
             Components:
               - !Evergine.Framework.Graphics.Transform3D,Evergine.Framework
-                Id: be9a2ffe-bcea-43ab-856e-c9df05be4784
+                Id: e0d6ee94-2728-44f6-9a6f-4d5798238d25
                 IsEnabled: true
                 LocalOrientation:
-                  W: 1.0
+                  W: -4.37113883E-08
                   X: 0.0
-                  Y: 0.0
+                  Y: -1.0
                   Z: 0.0
                 LocalPosition:
-                  X: 0.0202045217
-                  Y: 0.0610097647
+                  X: 0.0199999996
+                  Y: 0.0710000023
                   Z: 0.0
                 LocalScale:
                   X: 1.0
                   Y: 1.0
                   Z: 1.0
-              - !Evergine.MRTK.Toolkit.GUI.Text3D,Evergine.MRTK
-                Id: 236726e7-35b7-4a8b-84d5-f65cc3aef732
-                Alpha: 1.0
-                Background:
-                  A: 0
-                  B: 0
-                  G: 0
-                  R: 0
-                CustomHeight: false
-                CustomWidth: false
-                FontFamilySourceProperty:
-                  FontFamilySource: /Fonts/#Segoe UI
-                FontSize: 64
-                FontStretch: Normal
-                FontStyle: Normal
-                FontWeight: Bold
-                Foreground:
+              - !Evergine.Components.Fonts.Text3DMesh,Evergine.Components
+                Id: 3e4e9b7a-646e-4f5d-ad3e-05db7ba94997
+                Color:
                   A: 255
                   B: 255
                   G: 255
                   R: 255
-                Height: 0.022751322
+                Ellipsis: true
+                Font: 1144d6d6-31f0-4dd7-b206-964e4647a722
                 HorizontalAlignment: Left
                 IsEnabled: true
                 Layer: e35c59a9-26ab-4b4c-8210-4b1f21c31530
-                Normal: ZNegative
+                LineSpacing: 0.0
                 Origin:
                   X: 0.0
                   Y: 0.5
-                PixelDensity: 3780
+                ScaleFactor: 0.0219999999
+                Size:
+                  X: 8.0
+                  Y: 1.10000002
                 Text: Slider configurator
-                TextAlignment: Left
-                TextTrimming: None
-                TextWrapping: NoWrap
-                UpdateOrder: 0.5
                 VerticalAlignment: Center
-                Width: 0.150529101
+                Wrapping: true
+              - !Evergine.Components.Fonts.Text3DRenderer,Evergine.Components
+                Id: f236686d-62bd-4458-84ca-6ddec5a6dbac
+                DebugBoundingbox: true
+                DebugMode: false
+                IsCullingEnabled: true
+                IsEnabled: true
+                OrderBias: 0
+                RenderFlags: CastShadows
             Children: []
-            Id: 56d34263-7dd6-4848-bef3-8591b54a1fb2
+            Id: 7afd0c62-e669-4277-b890-ecc58512237d
           - !Evergine.Framework.Assets.AssetSources.Entities.EntityItemModel,Evergine.Framework
             Name: description
             Tag: null
@@ -374,60 +368,54 @@ Items:
             IsStatic: false
             Components:
               - !Evergine.Framework.Graphics.Transform3D,Evergine.Framework
-                Id: dffca7ce-391f-4113-933c-66cd06c14ad3
+                Id: 9c3f6b3a-a456-4c16-9b24-544c5be8309b
                 IsEnabled: true
                 LocalOrientation:
-                  W: 1.0
+                  W: -4.37113883E-08
                   X: 0.0
-                  Y: 0.0
+                  Y: -1.0
                   Z: 0.0
                 LocalPosition:
-                  X: 0.0202045217
-                  Y: 0.0355906785
-                  Z: 3.03025782E-09
+                  X: 0.0199999996
+                  Y: 0.0459999964
+                  Z: 0.0
                 LocalScale:
                   X: 1.0
                   Y: 1.0
                   Z: 1.0
-              - !Evergine.MRTK.Toolkit.GUI.Text3D,Evergine.MRTK
-                Id: 6fc365f3-8474-43e2-ba61-0c64f198fdb3
-                Alpha: 1.0
-                Background:
-                  A: 0
-                  B: 0
-                  G: 0
-                  R: 0
-                CustomHeight: false
-                CustomWidth: true
-                FontFamilySourceProperty:
-                  FontFamilySource: /Fonts/#Segoe UI
-                FontSize: 24
-                FontStretch: Normal
-                FontStyle: Normal
-                FontWeight: Bold
-                Foreground:
+              - !Evergine.Components.Fonts.Text3DMesh,Evergine.Components
+                Id: 6f30305b-93bb-4a22-9963-2f1b72ebf74f
+                Color:
                   A: 255
                   B: 255
                   G: 255
                   R: 255
-                Height: 0.00846560858
+                Ellipsis: true
+                Font: 1144d6d6-31f0-4dd7-b206-964e4647a722
                 HorizontalAlignment: Left
                 IsEnabled: true
                 Layer: e35c59a9-26ab-4b4c-8210-4b1f21c31530
-                Normal: ZNegative
+                LineSpacing: 0.0
                 Origin:
                   X: 0.0
                   Y: 0.5
-                PixelDensity: 3780
+                ScaleFactor: 0.00800000038
+                Size:
+                  X: 8.0
+                  Y: 1.10000002
                 Text: Samples of sliders with custom materials and text colors.
-                TextAlignment: Left
-                TextTrimming: None
-                TextWrapping: Wrap
-                UpdateOrder: 0.5
                 VerticalAlignment: Center
-                Width: 0.360000014
+                Wrapping: true
+              - !Evergine.Components.Fonts.Text3DRenderer,Evergine.Components
+                Id: 6c154e5b-aaa4-4f61-b0d6-0871fc3b16ce
+                DebugBoundingbox: true
+                DebugMode: false
+                IsCullingEnabled: true
+                IsEnabled: true
+                OrderBias: 0
+                RenderFlags: CastShadows
             Children: []
-            Id: 3602a542-b7b6-465f-a5ab-03eca288ff47
+            Id: f57efa4b-d648-42ca-923e-e6bf039c92a8
           - !Evergine.Framework.Assets.AssetSources.Entities.EntityItemModel,Evergine.Framework
             Name: samples
             Tag: null
@@ -490,24 +478,6 @@ Items:
                           X: 0.0120000001
                           Y: -0.0309999995
                           Z: 0.0
-                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.MRTK.Toolkit.GUI.FontFamilySourceProperty,Evergine.MRTK]],Evergine.Framework
-                        Name: FontFamilySourceProperty
-                        Target: 2d146da0-dc69-4713-96f6-02f27aa3f6e4
-                        TypedValue:
-                          FontFamilySource: 
-                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.String,System.Private.CoreLib]],Evergine.Framework
-                        Name: Text
-                        Target: a1cc0b39-c06b-4e2b-8f45-cfc2236572f7
-                        TypedValue: 0.50
-                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.Single,System.Private.CoreLib]],Evergine.Framework
-                        Name: Width
-                        Target: a1cc0b39-c06b-4e2b-8f45-cfc2236572f7
-                        TypedValue: 0.0267999992
-                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.MRTK.Toolkit.GUI.FontFamilySourceProperty,Evergine.MRTK]],Evergine.Framework
-                        Name: FontFamilySourceProperty
-                        Target: a1cc0b39-c06b-4e2b-8f45-cfc2236572f7
-                        TypedValue:
-                          FontFamilySource: 
                     removedComponentList: []
                   - !Evergine.Framework.Assets.AssetSources.Entities.PrefabInstanceModel,Evergine.Framework
                     Id: ce3451d8-b354-44d3-bb08-447d1bbe3f35
@@ -520,8 +490,7 @@ Items:
                             Id: 9be927d8-5e1e-4d36-93ac-10a05d2515eb
                             CreatesNewThumbMaterialInstance: false
                             CreatesNewTrackMaterialInstance: false
-                            FontFamilySourceProperty:
-                              FontFamilySource: null
+                            Font: null
                             IsEnabled: true
                             PrimaryColor:
                               A: 255
@@ -556,24 +525,6 @@ Items:
                         Name: Material
                         Target: e2cd7596-1a8b-4819-8457-0c7b0c8a2b1f
                         TypedValue: 78e9e4d7-711b-44b7-b673-9d2cb9f1220f
-                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.MRTK.Toolkit.GUI.FontFamilySourceProperty,Evergine.MRTK]],Evergine.Framework
-                        Name: FontFamilySourceProperty
-                        Target: 2d146da0-dc69-4713-96f6-02f27aa3f6e4
-                        TypedValue:
-                          FontFamilySource: null
-                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.String,System.Private.CoreLib]],Evergine.Framework
-                        Name: Text
-                        Target: a1cc0b39-c06b-4e2b-8f45-cfc2236572f7
-                        TypedValue: 0.50
-                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.Single,System.Private.CoreLib]],Evergine.Framework
-                        Name: Width
-                        Target: a1cc0b39-c06b-4e2b-8f45-cfc2236572f7
-                        TypedValue: 0.0267999992
-                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.MRTK.Toolkit.GUI.FontFamilySourceProperty,Evergine.MRTK]],Evergine.Framework
-                        Name: FontFamilySourceProperty
-                        Target: a1cc0b39-c06b-4e2b-8f45-cfc2236572f7
-                        TypedValue:
-                          FontFamilySource: null
                     removedComponentList: []
                   - !Evergine.Framework.Assets.AssetSources.Entities.PrefabInstanceModel,Evergine.Framework
                     Id: 46ca31a9-e404-4c75-90ef-6acfffee5746
@@ -586,8 +537,7 @@ Items:
                             Id: 0cf5d27a-a566-4549-9c4d-a49a0d0af6c6
                             CreatesNewThumbMaterialInstance: false
                             CreatesNewTrackMaterialInstance: false
-                            FontFamilySourceProperty:
-                              FontFamilySource: null
+                            Font: null
                             IsEnabled: true
                             PrimaryColor:
                               A: 255
@@ -624,46 +574,24 @@ Items:
                         TypedValue: 3521d95f-b8ce-40cb-b4d0-c268f64496bd
                       - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.String,System.Private.CoreLib]],Evergine.Framework
                         Name: Text
-                        Target: 2d146da0-dc69-4713-96f6-02f27aa3f6e4
+                        Target: da706d1c-05a2-4360-ae80-519c0fa5aaab
                         TypedValue: Custom
-                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.Single,System.Private.CoreLib]],Evergine.Framework
-                        Name: Width
-                        Target: 2d146da0-dc69-4713-96f6-02f27aa3f6e4
-                        TypedValue: 0.0306000002
                       - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Common.Graphics.Color,Evergine.Common]],Evergine.Framework
-                        Name: Foreground
-                        Target: 2d146da0-dc69-4713-96f6-02f27aa3f6e4
+                        Name: Color
+                        Target: da706d1c-05a2-4360-ae80-519c0fa5aaab
                         TypedValue:
                           A: 255
                           B: 216
                           G: 216
                           R: 6
-                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.MRTK.Toolkit.GUI.FontFamilySourceProperty,Evergine.MRTK]],Evergine.Framework
-                        Name: FontFamilySourceProperty
-                        Target: 2d146da0-dc69-4713-96f6-02f27aa3f6e4
-                        TypedValue:
-                          FontFamilySource: null
-                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.String,System.Private.CoreLib]],Evergine.Framework
-                        Name: Text
-                        Target: a1cc0b39-c06b-4e2b-8f45-cfc2236572f7
-                        TypedValue: 0.50
-                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.Single,System.Private.CoreLib]],Evergine.Framework
-                        Name: Width
-                        Target: a1cc0b39-c06b-4e2b-8f45-cfc2236572f7
-                        TypedValue: 0.0267999992
                       - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Common.Graphics.Color,Evergine.Common]],Evergine.Framework
-                        Name: Foreground
-                        Target: a1cc0b39-c06b-4e2b-8f45-cfc2236572f7
+                        Name: Color
+                        Target: 0f01517a-c230-4313-83c9-91826912d8c9
                         TypedValue:
                           A: 255
                           B: 235
                           G: 127
                           R: 24
-                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.MRTK.Toolkit.GUI.FontFamilySourceProperty,Evergine.MRTK]],Evergine.Framework
-                        Name: FontFamilySourceProperty
-                        Target: a1cc0b39-c06b-4e2b-8f45-cfc2236572f7
-                        TypedValue:
-                          FontFamilySource: null
                     removedComponentList: []
                   - !Evergine.Framework.Assets.AssetSources.Entities.PrefabInstanceModel,Evergine.Framework
                     Id: 0d072168-f598-45d6-8502-5eb7f94995fa
@@ -676,8 +604,7 @@ Items:
                             Id: dbf77436-a65b-414a-91fa-e9b4b04aabdf
                             CreatesNewThumbMaterialInstance: false
                             CreatesNewTrackMaterialInstance: false
-                            FontFamilySourceProperty:
-                              FontFamilySource: null
+                            Font: null
                             IsEnabled: true
                             PrimaryColor:
                               A: 0
@@ -714,46 +641,24 @@ Items:
                         TypedValue: 3521d95f-b8ce-40cb-b4d0-c268f64496bd
                       - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.String,System.Private.CoreLib]],Evergine.Framework
                         Name: Text
-                        Target: 2d146da0-dc69-4713-96f6-02f27aa3f6e4
+                        Target: da706d1c-05a2-4360-ae80-519c0fa5aaab
                         TypedValue: Custom
-                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.Single,System.Private.CoreLib]],Evergine.Framework
-                        Name: Width
-                        Target: 2d146da0-dc69-4713-96f6-02f27aa3f6e4
-                        TypedValue: 0.0306000002
                       - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Common.Graphics.Color,Evergine.Common]],Evergine.Framework
-                        Name: Foreground
-                        Target: 2d146da0-dc69-4713-96f6-02f27aa3f6e4
+                        Name: Color
+                        Target: da706d1c-05a2-4360-ae80-519c0fa5aaab
                         TypedValue:
                           A: 0
                           B: 216
                           G: 216
                           R: 6
-                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.MRTK.Toolkit.GUI.FontFamilySourceProperty,Evergine.MRTK]],Evergine.Framework
-                        Name: FontFamilySourceProperty
-                        Target: 2d146da0-dc69-4713-96f6-02f27aa3f6e4
-                        TypedValue:
-                          FontFamilySource: null
-                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.String,System.Private.CoreLib]],Evergine.Framework
-                        Name: Text
-                        Target: a1cc0b39-c06b-4e2b-8f45-cfc2236572f7
-                        TypedValue: 0.50
-                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.Single,System.Private.CoreLib]],Evergine.Framework
-                        Name: Width
-                        Target: a1cc0b39-c06b-4e2b-8f45-cfc2236572f7
-                        TypedValue: 0.0267999992
                       - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Common.Graphics.Color,Evergine.Common]],Evergine.Framework
-                        Name: Foreground
-                        Target: a1cc0b39-c06b-4e2b-8f45-cfc2236572f7
+                        Name: Color
+                        Target: 0f01517a-c230-4313-83c9-91826912d8c9
                         TypedValue:
                           A: 0
                           B: 235
                           G: 127
                           R: 24
-                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.MRTK.Toolkit.GUI.FontFamilySourceProperty,Evergine.MRTK]],Evergine.Framework
-                        Name: FontFamilySourceProperty
-                        Target: a1cc0b39-c06b-4e2b-8f45-cfc2236572f7
-                        TypedValue:
-                          FontFamilySource: null
                     removedComponentList: []
                 Id: c49b637e-23e6-4989-82e7-2bc03254fb7e
             Id: 6af2958c-8175-4a38-be2c-59819d7c3a1f
@@ -788,60 +693,54 @@ Items:
             IsStatic: false
             Components:
               - !Evergine.Framework.Graphics.Transform3D,Evergine.Framework
-                Id: 93c9cbcd-0835-4111-9d05-808234ff86bd
+                Id: 36c1bf67-8e41-4bb2-b83e-71188e8b07dd
                 IsEnabled: true
                 LocalOrientation:
-                  W: 1.0
+                  W: -4.37113883E-08
                   X: 0.0
-                  Y: 0.0
+                  Y: -1.0
                   Z: 0.0
                 LocalPosition:
-                  X: 0.0202045217
-                  Y: 0.0610097647
-                  Z: 0.0
+                  X: 0.0199999996
+                  Y: 0.0710000023
+                  Z: 6.70135947E-08
                 LocalScale:
                   X: 1.0
                   Y: 1.0
                   Z: 1.0
-              - !Evergine.MRTK.Toolkit.GUI.Text3D,Evergine.MRTK
-                Id: e9cb769c-aaa4-4d91-907d-5bda3701a780
-                Alpha: 1.0
-                Background:
-                  A: 0
-                  B: 0
-                  G: 0
-                  R: 0
-                CustomHeight: false
-                CustomWidth: false
-                FontFamilySourceProperty:
-                  FontFamilySource: /Fonts/#Segoe UI
-                FontSize: 64
-                FontStretch: Normal
-                FontStyle: Normal
-                FontWeight: Bold
-                Foreground:
+              - !Evergine.Components.Fonts.Text3DMesh,Evergine.Components
+                Id: a63ded1d-1a81-4d5c-b0e9-f96beced82fd
+                Color:
                   A: 255
                   B: 255
                   G: 255
                   R: 255
-                Height: 0.022751322
+                Ellipsis: true
+                Font: 1144d6d6-31f0-4dd7-b206-964e4647a722
                 HorizontalAlignment: Left
                 IsEnabled: true
                 Layer: e35c59a9-26ab-4b4c-8210-4b1f21c31530
-                Normal: ZNegative
+                LineSpacing: 0.0
                 Origin:
                   X: 0.0
                   Y: 0.5
-                PixelDensity: 3780
+                ScaleFactor: 0.0219999999
+                Size:
+                  X: 8.0
+                  Y: 1.10000002
                 Text: Horizontal sliders
-                TextAlignment: Left
-                TextTrimming: None
-                TextWrapping: NoWrap
-                UpdateOrder: 0.5
                 VerticalAlignment: Center
-                Width: 0.139947087
+                Wrapping: true
+              - !Evergine.Components.Fonts.Text3DRenderer,Evergine.Components
+                Id: 3ff15d84-75f2-4cb8-aa50-e28756b68010
+                DebugBoundingbox: true
+                DebugMode: false
+                IsCullingEnabled: true
+                IsEnabled: true
+                OrderBias: 0
+                RenderFlags: CastShadows
             Children: []
-            Id: 1a5b7aa4-147e-46c4-8c41-2c34b51750a2
+            Id: 64aed92d-519e-4a29-a6c8-2c1f839507c5
           - !Evergine.Framework.Assets.AssetSources.Entities.EntityItemModel,Evergine.Framework
             Name: description
             Tag: null
@@ -849,60 +748,54 @@ Items:
             IsStatic: false
             Components:
               - !Evergine.Framework.Graphics.Transform3D,Evergine.Framework
-                Id: 9de43366-4267-4088-a1f2-5a1ad4cfb645
+                Id: 065d4c90-ef04-4319-9d29-65767542b6d2
                 IsEnabled: true
                 LocalOrientation:
-                  W: 1.0
+                  W: -4.37113883E-08
                   X: 0.0
-                  Y: 0.0
+                  Y: -1.0
                   Z: 0.0
                 LocalPosition:
-                  X: 0.0202045217
-                  Y: 0.0355906785
-                  Z: 3.03025782E-09
+                  X: 0.0199999996
+                  Y: 0.0459999964
+                  Z: 6.70135947E-08
                 LocalScale:
                   X: 1.0
                   Y: 1.0
                   Z: 1.0
-              - !Evergine.MRTK.Toolkit.GUI.Text3D,Evergine.MRTK
-                Id: 62258f20-d604-4534-86e7-2b9f70647b88
-                Alpha: 1.0
-                Background:
-                  A: 0
-                  B: 0
-                  G: 0
-                  R: 0
-                CustomHeight: false
-                CustomWidth: true
-                FontFamilySourceProperty:
-                  FontFamilySource: /Fonts/#Segoe UI
-                FontSize: 24
-                FontStretch: Normal
-                FontStyle: Normal
-                FontWeight: Bold
-                Foreground:
+              - !Evergine.Components.Fonts.Text3DMesh,Evergine.Components
+                Id: d963bda6-45bb-4ba3-aa5b-591d00854c6e
+                Color:
                   A: 255
                   B: 255
                   G: 255
                   R: 255
-                Height: 0.00846560858
+                Ellipsis: true
+                Font: 1144d6d6-31f0-4dd7-b206-964e4647a722
                 HorizontalAlignment: Left
                 IsEnabled: true
                 Layer: e35c59a9-26ab-4b4c-8210-4b1f21c31530
-                Normal: ZNegative
+                LineSpacing: 0.0
                 Origin:
                   X: 0.0
                   Y: 0.5
-                PixelDensity: 3780
+                ScaleFactor: 0.00800000038
+                Size:
+                  X: 8.0
+                  Y: 1.10000002
                 Text: Samples of how to change slider orientation to horizontal.
-                TextAlignment: Left
-                TextTrimming: None
-                TextWrapping: Wrap
-                UpdateOrder: 0.5
                 VerticalAlignment: Center
-                Width: 0.360000014
+                Wrapping: true
+              - !Evergine.Components.Fonts.Text3DRenderer,Evergine.Components
+                Id: b85b5061-9823-494b-a53d-3df91e298225
+                DebugBoundingbox: true
+                DebugMode: false
+                IsCullingEnabled: true
+                IsEnabled: true
+                OrderBias: 0
+                RenderFlags: CastShadows
             Children: []
-            Id: fd85e6fd-e20d-4baf-9a2c-65bf8fc61b91
+            Id: 64371087-5031-409c-a7cc-ce7b352fcefc
           - !Evergine.Framework.Assets.AssetSources.Entities.EntityItemModel,Evergine.Framework
             Name: samples
             Tag: null
@@ -988,24 +881,6 @@ Items:
                           X: 0.0
                           Y: 0.0
                           Z: -0.707106769
-                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.MRTK.Toolkit.GUI.FontFamilySourceProperty,Evergine.MRTK]],Evergine.Framework
-                        Name: FontFamilySourceProperty
-                        Target: 2d146da0-dc69-4713-96f6-02f27aa3f6e4
-                        TypedValue:
-                          FontFamilySource: 
-                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.String,System.Private.CoreLib]],Evergine.Framework
-                        Name: Text
-                        Target: a1cc0b39-c06b-4e2b-8f45-cfc2236572f7
-                        TypedValue: 0.50
-                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.Single,System.Private.CoreLib]],Evergine.Framework
-                        Name: Width
-                        Target: a1cc0b39-c06b-4e2b-8f45-cfc2236572f7
-                        TypedValue: 0.0267999992
-                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.MRTK.Toolkit.GUI.FontFamilySourceProperty,Evergine.MRTK]],Evergine.Framework
-                        Name: FontFamilySourceProperty
-                        Target: a1cc0b39-c06b-4e2b-8f45-cfc2236572f7
-                        TypedValue:
-                          FontFamilySource: 
                     removedComponentList: []
                   - !Evergine.Framework.Assets.AssetSources.Entities.PrefabInstanceModel,Evergine.Framework
                     Id: 4b98f91f-9bdc-4fb8-a310-1a93309830d4
@@ -1018,8 +893,7 @@ Items:
                             Id: 7014d28e-c9a9-4cdc-a300-a4c770109758
                             CreatesNewThumbMaterialInstance: false
                             CreatesNewTrackMaterialInstance: false
-                            FontFamilySourceProperty:
-                              FontFamilySource: null
+                            Font: null
                             IsEnabled: true
                             PrimaryColor:
                               A: 255
@@ -1074,24 +948,6 @@ Items:
                           X: 0.0
                           Y: -0.0
                           Z: -0.707106769
-                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.MRTK.Toolkit.GUI.FontFamilySourceProperty,Evergine.MRTK]],Evergine.Framework
-                        Name: FontFamilySourceProperty
-                        Target: 2d146da0-dc69-4713-96f6-02f27aa3f6e4
-                        TypedValue:
-                          FontFamilySource: null
-                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.String,System.Private.CoreLib]],Evergine.Framework
-                        Name: Text
-                        Target: a1cc0b39-c06b-4e2b-8f45-cfc2236572f7
-                        TypedValue: 0.50
-                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.Single,System.Private.CoreLib]],Evergine.Framework
-                        Name: Width
-                        Target: a1cc0b39-c06b-4e2b-8f45-cfc2236572f7
-                        TypedValue: 0.0267999992
-                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.MRTK.Toolkit.GUI.FontFamilySourceProperty,Evergine.MRTK]],Evergine.Framework
-                        Name: FontFamilySourceProperty
-                        Target: a1cc0b39-c06b-4e2b-8f45-cfc2236572f7
-                        TypedValue:
-                          FontFamilySource: null
                     removedComponentList: []
                 Id: 9c021dd6-ed1c-49bb-bb80-0abdcf16c40f
             Id: 56b3e548-2be6-4f33-926a-230a3fd83421

@@ -1,6 +1,7 @@
 ﻿// Copyright © Evergine S.L. All rights reserved. Use is subject to license terms.
 using Evergine.Common.Attributes;
 using Evergine.Common.Graphics;
+using Evergine.Components.Fonts;
 using Evergine.Components.Graphics3D;
 using Evergine.Framework;
 using Evergine.Framework.Graphics;
@@ -23,14 +24,13 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Configurators
         private MaterialComponent iconMaterial = null;
 
         [BindComponent(source: BindComponentSource.ChildrenSkipOwner, tag: "PART_Text", isRequired: false)]
-        private Text3D buttonText = null;
+        private Text3DMesh buttonText = null;
 
         private Material plate;
         private Material icon;
 
         private Color primaryColor = Color.White;
         private string text;
-        private FontFamilySourceProperty fontFamilySourceProperty;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="StandardButtonConfigurator"/> class.
@@ -120,40 +120,24 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Configurators
         }
 
         /// <summary>
-        /// Gets or sets the text font family source to use.
+        /// Gets or sets the text font to use.
         /// </summary>
-        [RenderProperty(CustomPropertyName = "FontFamily", Tooltip = "The font family source to use in the button text.")]
-        public FontFamilySourceProperty FontFamilySourceProperty
+        [RenderProperty(Tooltip = "The font to use in the button text.")]
+        public Font Font
         {
-            get
-            {
-                if (this.fontFamilySourceProperty == null)
-                {
-                    this.fontFamilySourceProperty = new FontFamilySourceProperty();
-                    this.fontFamilySourceProperty.OnFontFamilySourceChanged += this.FontFamilySourceProperty_OnFontFamilySourceChanged;
-                }
-
-                return this.fontFamilySourceProperty;
-            }
+            get => this.font;
 
             set
             {
-                if (this.fontFamilySourceProperty != value)
+                if (this.font != value)
                 {
-                    if (this.fontFamilySourceProperty != null)
-                    {
-                        this.fontFamilySourceProperty.OnFontFamilySourceChanged -= this.FontFamilySourceProperty_OnFontFamilySourceChanged;
-                    }
-
-                    this.fontFamilySourceProperty = value;
-
-                    if (this.fontFamilySourceProperty != null)
-                    {
-                        this.fontFamilySourceProperty.OnFontFamilySourceChanged += this.FontFamilySourceProperty_OnFontFamilySourceChanged;
-                    }
+                    this.font = value;
+                    this.OnUpdateFont();
                 }
             }
         }
+
+        private Font font;
 
         /// <inheritdoc />
         protected override bool OnAttached()
@@ -183,7 +167,7 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Configurators
             this.iconConfigurator.Apply();
             this.OnUpdateText();
             this.OnUpdateTextColor();
-            this.OnUpdateFontFamilySource();
+            this.OnUpdateFont();
         }
 
         private void OnPrimaryColorUpdate()
@@ -204,21 +188,16 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Configurators
         {
             if (this.buttonText != null)
             {
-                this.buttonText.Foreground = this.primaryColor;
+                this.buttonText.Color = this.primaryColor;
             }
         }
 
-        private void OnUpdateFontFamilySource()
+        private void OnUpdateFont()
         {
-            if (this.buttonText != null)
+            if (this.buttonText != null && this.Font != null)
             {
-                this.buttonText.FontFamilySourceProperty.FontFamilySource = this.FontFamilySourceProperty.FontFamilySource;
+                this.buttonText.Font = this.Font;
             }
-        }
-
-        private void FontFamilySourceProperty_OnFontFamilySourceChanged(object sender, System.EventArgs e)
-        {
-            this.OnUpdateFontFamilySource();
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿// Copyright © Evergine S.L. All rights reserved. Use is subject to license terms.
 
+using Evergine.Components.Fonts;
 using Evergine.Framework;
-using Evergine.MRTK.Toolkit.GUI;
 
 namespace Evergine.MRTK.SDK.Features.UX.Components.Sliders
 {
@@ -11,7 +11,7 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Sliders
     public class ShowSliderValue : Component
     {
         [BindComponent]
-        private Text3D text3D = null;
+        private Text3DMesh text3D = null;
 
         [BindComponent(source: BindComponentSource.Parents)]
         private PinchSlider pinchSlider = null;

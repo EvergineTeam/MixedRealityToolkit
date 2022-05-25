@@ -3,10 +3,10 @@
 using System;
 using Evergine.Common.Attributes;
 using Evergine.Common.Graphics;
+using Evergine.Components.Fonts;
 using Evergine.Components.Graphics3D;
 using Evergine.Framework;
 using Evergine.Framework.Graphics;
-using Evergine.MRTK.Toolkit.GUI;
 
 namespace Evergine.MRTK.SDK.Features.UX.Components.Configurators
 {
@@ -25,10 +25,10 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Configurators
         private MaterialComponent thumbMaterial = null;
 
         [BindComponent(source: BindComponentSource.ChildrenSkipOwner, tag: "PART_Title", isRequired: false)]
-        private Text3D titleText = null;
+        private Text3DMesh titleText = null;
 
         [BindComponent(source: BindComponentSource.ChildrenSkipOwner, tag: "PART_Value", isRequired: false)]
-        private Text3D valueText = null;
+        private Text3DMesh valueText = null;
 
         private Material track;
         private Material thumb;
@@ -36,7 +36,6 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Configurators
         private Color primaryColor = Color.White;
         private Color secondaryColor = Color.White;
         private string title = "Title";
-        private FontFamilySourceProperty fontFamilySourceProperty;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SliderConfigurator"/> class.
@@ -141,40 +140,23 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Configurators
         }
 
         /// <summary>
-        /// Gets or sets the text font family source to use.
+        /// Gets or sets the text font to use.
         /// </summary>
-        [RenderProperty(CustomPropertyName = "FontFamily", Tooltip = "The font family source to use in the button text.")]
-        public FontFamilySourceProperty FontFamilySourceProperty
+        [RenderProperty(Tooltip = "The font to use in the slider text.")]
+        public Font Font
         {
-            get
-            {
-                if (this.fontFamilySourceProperty == null)
-                {
-                    this.fontFamilySourceProperty = new FontFamilySourceProperty();
-                    this.fontFamilySourceProperty.OnFontFamilySourceChanged += this.FontFamilySourceProperty_OnFontFamilySourceChanged;
-                }
-
-                return this.fontFamilySourceProperty;
-            }
-
+            get => this.font;
             set
             {
-                if (this.fontFamilySourceProperty != value)
+                if (this.font != value)
                 {
-                    if (this.fontFamilySourceProperty != null)
-                    {
-                        this.fontFamilySourceProperty.OnFontFamilySourceChanged -= this.FontFamilySourceProperty_OnFontFamilySourceChanged;
-                    }
-
-                    this.fontFamilySourceProperty = value;
-
-                    if (this.fontFamilySourceProperty != null)
-                    {
-                        this.fontFamilySourceProperty.OnFontFamilySourceChanged += this.FontFamilySourceProperty_OnFontFamilySourceChanged;
-                    }
+                    this.font = value;
+                    this.OnUpdateFont();
                 }
             }
         }
+
+        private Font font;
 
         /// <inheritdoc />
         protected override bool OnAttached()
@@ -205,14 +187,14 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Configurators
             this.OnUpdateTitle();
             this.OnPrimaryColorUpdate();
             this.OnSecondaryColorUpdate();
-            this.OnUpdateFontFamilySource();
+            this.OnUpdateFont();
         }
 
         private void OnPrimaryColorUpdate()
         {
             if (this.titleText != null)
             {
-                this.titleText.Foreground = this.primaryColor;
+                this.titleText.Color = this.primaryColor;
             }
         }
 
@@ -220,7 +202,7 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Configurators
         {
             if (this.valueText != null)
             {
-                this.valueText.Foreground = this.secondaryColor;
+                this.valueText.Color = this.secondaryColor;
             }
         }
 
@@ -232,22 +214,20 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Configurators
             }
         }
 
-        private void OnUpdateFontFamilySource()
+        private void OnUpdateFont()
         {
-            if (this.titleText != null)
+            if (this.Font != null)
             {
-                this.titleText.FontFamilySourceProperty.FontFamilySource = this.FontFamilySourceProperty.FontFamilySource;
-            }
+                if (this.titleText != null)
+                {
+                    this.titleText.Font = this.Font;
+                }
 
-            if (this.valueText != null)
-            {
-                this.valueText.FontFamilySourceProperty.FontFamilySource = this.FontFamilySourceProperty.FontFamilySource;
+                if (this.valueText != null)
+                {
+                    this.valueText.Font = this.Font;
+                }
             }
-        }
-
-        private void FontFamilySourceProperty_OnFontFamilySourceChanged(object sender, EventArgs e)
-        {
-            this.OnUpdateFontFamilySource();
         }
     }
 }

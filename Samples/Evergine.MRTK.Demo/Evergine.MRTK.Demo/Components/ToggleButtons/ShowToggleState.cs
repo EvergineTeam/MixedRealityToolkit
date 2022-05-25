@@ -1,14 +1,14 @@
 ﻿using System;
+using Evergine.Components.Fonts;
 using Evergine.Framework;
 using Evergine.MRTK.SDK.Features.UX.Components.ToggleButtons;
-using Evergine.MRTK.Toolkit.GUI;
 
 namespace Evergine.MRTK.Demo.Components.ToggleButtons
 {
     public class ShowToggleState : Component
     {
         [BindComponent(source: BindComponentSource.Owner, isRequired: true)]
-        protected Text3D textComponent;
+        protected Text3DMesh textComponent;
 
         [BindComponent(source: BindComponentSource.ChildrenSkipOwner, isRequired: true)]
         protected ToggleButton button;

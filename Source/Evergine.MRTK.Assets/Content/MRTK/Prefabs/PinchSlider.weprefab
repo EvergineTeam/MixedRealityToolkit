@@ -255,60 +255,54 @@ Root:
                   IsStatic: false
                   Components:
                     - !Evergine.Framework.Graphics.Transform3D,Evergine.Framework
-                      Id: f4a22c88-f69c-4f4f-864b-a20fa676a96d
+                      Id: fa501c25-9686-44da-b671-511ab5b649f5
                       IsEnabled: true
                       LocalOrientation:
-                        W: 1.0
-                        X: 0.0
-                        Y: 0.0
+                        W: -4.37113883E-08
+                        X: -0.0
+                        Y: 1.0
                         Z: 0.0
                       LocalPosition:
                         X: 0.0
-                        Y: 0.00548836868
-                        Z: 8.81039242E-10
+                        Y: 0.00292915665
+                        Z: -2.46858756E-10
                       LocalScale:
                         X: 1.0
                         Y: 1.0
                         Z: 1.0
-                    - !Evergine.MRTK.Toolkit.GUI.Text3D,Evergine.MRTK
-                      Id: 2d146da0-dc69-4713-96f6-02f27aa3f6e4
-                      Alpha: 1.0
-                      Background:
-                        A: 0
-                        B: 0
-                        G: 0
-                        R: 0
-                      CustomHeight: false
-                      CustomWidth: false
-                      FontFamilySourceProperty:
-                        FontFamilySource: 
-                      FontSize: 32
-                      FontStretch: Normal
-                      FontStyle: Normal
-                      FontWeight: Normal
-                      Foreground:
+                    - !Evergine.Components.Fonts.Text3DMesh,Evergine.Components
+                      Id: da706d1c-05a2-4360-ae80-519c0fa5aaab
+                      Color:
                         A: 255
                         B: 255
                         G: 255
                         R: 255
-                      Height: 0.00860000029
+                      Ellipsis: true
+                      Font: d1322288-d9e9-4b1e-b2fe-ca281f0388a2
                       HorizontalAlignment: Right
                       IsEnabled: true
                       Layer: e35c59a9-26ab-4b4c-8210-4b1f21c31530
-                      Normal: ZNegative
+                      LineSpacing: 0.0
                       Origin:
                         X: 1.0
-                        Y: 0.5
-                      PixelDensity: 5000
+                        Y: 1.0
+                      ScaleFactor: 0.00999999978
+                      Size:
+                        X: 8.0
+                        Y: 1.10000002
                       Text: Title
-                      TextAlignment: Right
-                      TextTrimming: None
-                      TextWrapping: NoWrap
-                      UpdateOrder: 0.5
-                      VerticalAlignment: Center
-                      Width: 0.0253999997
+                      VerticalAlignment: Bottom
+                      Wrapping: true
+                    - !Evergine.Components.Fonts.Text3DRenderer,Evergine.Components
+                      Id: 4139380f-9971-4623-bf90-4630b5ff27c3
+                      DebugBoundingbox: true
+                      DebugMode: false
+                      IsCullingEnabled: true
+                      IsEnabled: true
+                      OrderBias: 0
+                      RenderFlags: CastShadows
                   Children: []
-                  Id: f822d1fd-a540-4f1f-a1c5-b2a97dc7b151
+                  Id: 91e90cc0-6bf6-42ba-ad76-8a8ab5266499
                 - !Evergine.Framework.Assets.AssetSources.Entities.EntityItemModel,Evergine.Framework
                   Name: Value
                   Tag: PART_Value
@@ -316,63 +310,57 @@ Root:
                   IsStatic: false
                   Components:
                     - !Evergine.Framework.Graphics.Transform3D,Evergine.Framework
-                      Id: 67f0cc20-fe0a-4ed6-a5c6-b88a639011f9
+                      Id: f8a6f7da-8753-4532-b8f8-d96f793232c6
                       IsEnabled: true
                       LocalOrientation:
-                        W: 1.0
-                        X: 0.0
-                        Y: 0.0
+                        W: -4.37113883E-08
+                        X: -0.0
+                        Y: 1.0
                         Z: 0.0
                       LocalPosition:
                         X: 0.0
-                        Y: -0.00433111843
-                        Z: 3.78102705E-09
+                        Y: 8.44681635E-05
+                        Z: -5.85970272E-10
                       LocalScale:
                         X: 1.0
                         Y: 1.0
                         Z: 1.0
-                    - !Evergine.MRTK.Toolkit.GUI.Text3D,Evergine.MRTK
-                      Id: a1cc0b39-c06b-4e2b-8f45-cfc2236572f7
-                      Alpha: 1.0
-                      Background:
-                        A: 0
-                        B: 0
-                        G: 0
-                        R: 0
-                      CustomHeight: false
-                      CustomWidth: false
-                      FontFamilySourceProperty:
-                        FontFamilySource: 
-                      FontSize: 42
-                      FontStretch: Normal
-                      FontStyle: Normal
-                      FontWeight: Normal
-                      Foreground:
+                    - !Evergine.Components.Fonts.Text3DMesh,Evergine.Components
+                      Id: 0f01517a-c230-4313-83c9-91826912d8c9
+                      Color:
                         A: 255
                         B: 255
                         G: 255
                         R: 255
-                      Height: 0.0111999996
+                      Ellipsis: true
+                      Font: d1322288-d9e9-4b1e-b2fe-ca281f0388a2
                       HorizontalAlignment: Right
                       IsEnabled: true
                       Layer: e35c59a9-26ab-4b4c-8210-4b1f21c31530
-                      Normal: ZNegative
+                      LineSpacing: 0.0
                       Origin:
                         X: 1.0
-                        Y: 0.5
-                      PixelDensity: 5000
-                      Text: Value
-                      TextAlignment: Right
-                      TextTrimming: None
-                      TextWrapping: NoWrap
-                      UpdateOrder: 0.5
-                      VerticalAlignment: Center
-                      Width: 0.0333999991
+                        Y: 0.0
+                      ScaleFactor: 0.00999999978
+                      Size:
+                        X: 8.0
+                        Y: 1.10000002
+                      Text: 0.50
+                      VerticalAlignment: Top
+                      Wrapping: true
+                    - !Evergine.Components.Fonts.Text3DRenderer,Evergine.Components
+                      Id: 3aebe4fa-d666-447f-a368-5833f2e1fed6
+                      DebugBoundingbox: true
+                      DebugMode: false
+                      IsCullingEnabled: true
+                      IsEnabled: true
+                      OrderBias: 0
+                      RenderFlags: CastShadows
                     - !Evergine.MRTK.SDK.Features.UX.Components.Sliders.ShowSliderValue,Evergine.MRTK
-                      Id: a5c9ddb0-e967-41ba-b350-5035ea53a5f5
+                      Id: ef903c2b-be3d-48b4-aaa5-68d43aa59ec2
                       IsEnabled: true
                   Children: []
-                  Id: 2d1a0452-acba-444e-bd8e-d7a8cb9aedbc
+                  Id: a94504c6-5fb6-4bd6-baaa-0ae7df7c89b0
               Id: 021dcb6b-b30b-4c59-a8df-3f30bb953ce0
           Id: 9c0d18b5-5928-4a8c-bf0a-ee78937b1c7b
       Id: 660df448-a8ac-4d33-a9bd-ae324caebaeb
