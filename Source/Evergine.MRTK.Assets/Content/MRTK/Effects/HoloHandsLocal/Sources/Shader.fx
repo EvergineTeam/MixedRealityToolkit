@@ -31,7 +31,7 @@
 	cbuffer PerCamera : register(b2)
 	{
 		float4x4  MultiviewViewProj[6]		: packoffset(c0.x);  [MultiviewViewProjection]
-		int       EyeCount                  : packoffset(c10.x); [MultiviewCount]
+		int       EyeCount                  : packoffset(c24.x); [MultiviewCount]
 	};
 
 [End_ResourceLayout]
@@ -57,7 +57,7 @@
 		float4 pos 		: SV_POSITION;
 		
 #if MULTIVIEW_VI	
-		uint ViewID 	: SV_ViewID;	
+		uint ViewID 	: TEXCOORD0;
 #elif MULTIVIEW_RTI
 		uint InstId 	: SV_InstanceID;
 #endif
@@ -169,7 +169,7 @@
 		
 		float4x4 worldViewProj = mul(World, viewProj);
 #elif MULTIVIEW_VI
-		float4x4 viewProj = MultiviewViewProj[input.ViewID];
+		float4x4 viewProj = MultiviewViewProj[input[0].ViewID];
 		float4x4 worldViewProj = mul(World, viewProj);
 #else
 		float4x4 worldViewProj = WorldViewProj;

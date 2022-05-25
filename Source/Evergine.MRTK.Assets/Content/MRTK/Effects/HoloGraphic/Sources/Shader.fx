@@ -47,12 +47,12 @@
 		float RoundCornerMargin 	: packoffset(c3.y); [Default(0.01)]  //Range(0.0, 0.5)
 		float Cutoff				: packoffset(c3.z); [Default(0.5)]	 //Range(0.0, 0.5)
 
-		// INDEPENDENT_CORNERS
-		float4 RoundCornersRadious 	: packoffset(c4);   [Default(0.5 ,0.5, 0.5, 0.5)]
-
 		// BORDER_LIGHT OR ROUND_CORNERS
 		float EdgeSmoothingValue	: packoffset(c3.w); [Default(0.002)] //Range(0.0, 0.2)
 		
+		// INDEPENDENT_CORNERS
+		float4 RoundCornersRadious 	: packoffset(c4);   [Default(0.5 ,0.5, 0.5, 0.5)]
+
 		//NEAR_LIGHT_FADE
 		float FadeBeginDistance     : packoffset(c5.x); [Default(0.01)] //Range(0.0, 10.0)
         float FadeCompleteDistance  : packoffset(c5.y); [Default(0.1)]  //Range(0.0, 10.0)
@@ -281,6 +281,8 @@
 		output.ViewId = vid;
 #elif MULTIVIEW_VI
 		const float4x4 viewProj = MultiviewViewProj[input.ViewID];
+		
+		float4x4 worldViewProj = mul(World, viewProj);
 #else
 		float4x4 worldViewProj = WorldViewProj;
 #endif
