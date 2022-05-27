@@ -2,6 +2,7 @@
 
 using System;
 using Evergine.Components.Graphics3D;
+using Evergine.Components.XR;
 using Evergine.Framework;
 using Evergine.Framework.Graphics;
 using Evergine.Framework.XR;
@@ -18,6 +19,18 @@ namespace Evergine.MRTK.Behaviors
     public class HoloHandsUpdater : Behavior
     {
         /// <summary>
+        /// The component that contains the hand model.
+        /// </summary>
+        [BindComponent]
+        protected MaterialComponent materialComponent;
+
+        /// <summary>
+        /// The component that contains the hand model.
+        /// </summary>
+        [BindComponent]
+        protected XRDeviceRenderableModel xrDeviceRenderableModel;
+
+        /// <summary>
         /// Gets or sets Left or right hand.
         /// </summary>
         public XRHandedness Handedness { get; set; }
@@ -30,7 +43,6 @@ namespace Evergine.MRTK.Behaviors
         private string[] directivesAnimating = { "PULSE", "REFLECTION" };
         private string[] directivesNotAnimating = { "BASE", "REFLECTION" };
         private bool isAnimating = true;
-        private MeshRenderer meshRenderer;
         private MeshRenderer cursorMeshRenderer;
 
         /// <inheritdoc/>
@@ -38,12 +50,10 @@ namespace Evergine.MRTK.Behaviors
         {
             if (!Application.Current.IsEditor)
             {
-                var materialComponent = this.Owner.FindComponent<MaterialComponent>();
-                materialComponent.Material = materialComponent.Material.Clone();
-                this.material = materialComponent.Material;
+                this.materialComponent.Material = this.materialComponent.Material.Clone();
+                this.material = this.materialComponent.Material;
                 this.holoHandsDecorator = new HoloHandsLocal(this.material);
                 this.material.ActiveDirectivesNames = this.directivesAnimating;
-                this.meshRenderer = this.Owner.FindComponent<MeshRenderer>();
 
                 foreach (var c in Cursor.ActiveCursors)
                 {
@@ -81,7 +91,7 @@ namespace Evergine.MRTK.Behaviors
                 if (isAnimating != this.isAnimating)
                 {
                     this.material.ActiveDirectivesNames = isAnimating ? this.directivesAnimating : this.directivesNotAnimating;
-                    this.meshRenderer.IsEnabled = isAnimating || this.time == 1;
+                    this.xrDeviceRenderableModel.IsEnabled = isAnimating || this.time == 1;
                     this.cursorMeshRenderer.IsEnabled = this.time != 0;
                     this.isAnimating = isAnimating;
                 }

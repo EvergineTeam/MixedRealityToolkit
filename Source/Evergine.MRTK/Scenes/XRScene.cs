@@ -182,15 +182,12 @@ namespace Evergine.MRTK.Scenes
             Entity handEntity = new Entity()
                 .AddComponent(new Transform3D())
                 .AddComponent(new MaterialComponent() { Material = material })
-                .AddComponent(new XRDeviceMeshComponent()
+                .AddComponent(new TrackXRArticulatedHand()
                 {
-                    XRModelName = handedness.ToString(),
+                    Handedness = handedness,
                 })
+                .AddComponent(new XRDeviceRenderableModel())
                 .AddComponent(new MeshRenderer())
-                .AddComponent(new TrackModelNode()
-                {
-                    SelectionStrategy = TrackModelNode.SelectionNodeStrategy.RootNode,
-                })
                 .AddComponent(new HoloHandsUpdater() { Handedness = handedness })
                 ;
 
@@ -230,14 +227,14 @@ namespace Evergine.MRTK.Scenes
 
             if (Tools.IsXRPlatformInputTrackingAvailable())
             {
-                // HoloLens 2
+                // XR platforms
                 mainCursor.AddComponent(new TrackXRJoint()
                 {
                     Handedness = handedness,
                     JointKind = XRHandJointKind.IndexTip,
                     TrackingLostMode = TrackXRDevice.XRTrackingLostMode.KeepLastPose,
                 })
-                          .AddComponent(new HoloLensControlBehavior());
+                          .AddComponent(new HandTrackingControlBehavior());
             }
             else
             {

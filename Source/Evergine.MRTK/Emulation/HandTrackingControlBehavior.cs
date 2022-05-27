@@ -13,7 +13,7 @@ namespace Evergine.MRTK.Behaviors
     /// <summary>
     /// HoloLens pinch.
     /// </summary>
-    public class HoloLensControlBehavior : Behavior
+    public class HandTrackingControlBehavior : Behavior
     {
         /// <summary>
         /// The joint.

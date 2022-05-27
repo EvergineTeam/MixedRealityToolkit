@@ -9,7 +9,7 @@ namespace Evergine.MRTK.Demo.Scenes
 
         protected override Guid CursorMatReleased => EvergineContent.MRTK.Materials.Cursor.CursorBase;
 
-        protected override Guid HoloHandsMat => EvergineContent.MRTK.Materials.HoloHands;
+        protected override Guid HoloHandsMat => EvergineContent.Materials.Colors.Standard_Orange;
 
         protected override Guid SpatialMappingMat => Guid.Empty;
 
