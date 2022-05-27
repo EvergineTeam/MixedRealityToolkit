@@ -107,7 +107,7 @@ namespace Evergine.MRTK.Demo.Quest
                 })
             {
                 RenderMirrorTexture = false,
-                ReferenceSpace = ReferenceSpaceType.Stage,
+                ReferenceSpace = ReferenceSpaceType.Local,
                 MirrorDisplay = mirrorDisplay,
             };
 
@@ -117,7 +117,7 @@ namespace Evergine.MRTK.Demo.Quest
             var graphicsPresenter = application.Container.Resolve<GraphicsPresenter>();
             graphicsPresenter.AddDisplay("DefaultDisplay", openXRPlatform.Display);
             graphicsPresenter.AddDisplay("MirrorDisplay", mirrorDisplay);
+        }
     }
-}
 }
 
