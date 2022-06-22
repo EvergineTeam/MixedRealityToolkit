@@ -29,8 +29,24 @@
 		float4x4 WorldViewProj		: packoffset(c0);	[WorldViewProjection]
 		float4x4 World				: packoffset(c4);	[World]
 	};
+	
+	cbuffer PerCamera : register(b1)
+	{
+		float3    EyePosition				: packoffset(c0.x); [CameraPosition]
+		int       EyeCount					: packoffset(c0.w); [MultiviewCount]
+		float4x4  MultiviewViewProj[6]		: packoffset(c1.x); [MultiviewViewProjection]
+	};
+	
+	cbuffer PerScene : register(b2)
+	{
+		float3 SunDirection  	: packoffset(c0); [SunDirection]
+		float3 SunColor     	: packoffset(c1); [SunColor]
+        
+        float4 HoverLightData[6]     : packoffset(c2);
+        float4 ProximityLightData[12] : packoffset(c8);
+	};
 
-	cbuffer Parameters : register(b1)
+	cbuffer Parameters : register(b3)
 	{
 		float3 Color				: packoffset(c0);   [Default(0.070740278, 0.070740278, 1.0)]
 		float Alpha             	: packoffset(c0.w); [Default(1.0)]
@@ -77,23 +93,7 @@
 		float IridescenceIntensity  : packoffset(c12.x); [Default(0.5)] //Range(0.0, 1.0)
 		float IridescenceThreshold  : packoffset(c12.y); [Default(0.05)] //Range(0.0, 1.0)
 		float IridescenceAngle  	: packoffset(c12.z); [Default(-0.78)] //Range(-0.78, 0.78)
-	};
-	
-	cbuffer PerCamera : register(b2)
-	{
-		float3    EyePosition				: packoffset(c4.x); [CameraPosition]
-		int       EyeCount					: packoffset(c4.w); [MultiviewCount]
-		float4x4  MultiviewViewProj[6]		: packoffset(c5.x); [MultiviewViewProjection]
-	};
-	
-	cbuffer PerScene : register(b3)
-	{
-		float3 SunDirection  	: packoffset(c0); [SunDirection]
-		float3 SunColor     	: packoffset(c1); [SunColor]
-        
-        float4 HoverLightData[6]     : packoffset(c2);
-        float4 ProximityLightData[12] : packoffset(c8);
-	};
+	};	
 
 	Texture2D Texture		: register(t0);
 	SamplerState Sampler	: register(s0);
