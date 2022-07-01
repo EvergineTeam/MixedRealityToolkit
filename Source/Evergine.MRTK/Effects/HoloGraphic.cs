@@ -31,11 +31,11 @@ namespace Evergine.MRTK.Effects
         {
             get
             {
-                return this.material.CBuffers[1].GetBufferData<Evergine.Mathematics.Vector3>(0);
+                return this.material.CBuffers[3].GetBufferData<Evergine.Mathematics.Vector3>(0);
             }
             set
             {
-                this.material.CBuffers[1].SetBufferData(value, 0);
+                this.material.CBuffers[3].SetBufferData(value, 0);
             }
         }
 
@@ -43,11 +43,11 @@ namespace Evergine.MRTK.Effects
         {
             get
             {
-                return this.material.CBuffers[1].GetBufferData<System.Single>(12);
+                return this.material.CBuffers[3].GetBufferData<System.Single>(12);
             }
             set
             {
-                this.material.CBuffers[1].SetBufferData(value, 12);
+                this.material.CBuffers[3].SetBufferData(value, 12);
             }
         }
 
@@ -55,11 +55,11 @@ namespace Evergine.MRTK.Effects
         {
             get
             {
-                return this.material.CBuffers[1].GetBufferData<Evergine.Mathematics.Vector3>(16);
+                return this.material.CBuffers[3].GetBufferData<Evergine.Mathematics.Vector3>(16);
             }
             set
             {
-                this.material.CBuffers[1].SetBufferData(value, 16);
+                this.material.CBuffers[3].SetBufferData(value, 16);
             }
         }
 
@@ -67,11 +67,11 @@ namespace Evergine.MRTK.Effects
         {
             get
             {
-                return this.material.CBuffers[1].GetBufferData<System.Single>(28);
+                return this.material.CBuffers[3].GetBufferData<System.Single>(28);
             }
             set
             {
-                this.material.CBuffers[1].SetBufferData(value, 28);
+                this.material.CBuffers[3].SetBufferData(value, 28);
             }
         }
 
@@ -79,11 +79,11 @@ namespace Evergine.MRTK.Effects
         {
             get
             {
-                return this.material.CBuffers[1].GetBufferData<System.Single>(32);
+                return this.material.CBuffers[3].GetBufferData<System.Single>(32);
             }
             set
             {
-                this.material.CBuffers[1].SetBufferData(value, 32);
+                this.material.CBuffers[3].SetBufferData(value, 32);
             }
         }
 
@@ -91,11 +91,11 @@ namespace Evergine.MRTK.Effects
         {
             get
             {
-                return this.material.CBuffers[1].GetBufferData<System.Single>(36);
+                return this.material.CBuffers[3].GetBufferData<System.Single>(36);
             }
             set
             {
-                this.material.CBuffers[1].SetBufferData(value, 36);
+                this.material.CBuffers[3].SetBufferData(value, 36);
             }
         }
 
@@ -103,11 +103,11 @@ namespace Evergine.MRTK.Effects
         {
             get
             {
-                return this.material.CBuffers[1].GetBufferData<System.Single>(40);
+                return this.material.CBuffers[3].GetBufferData<System.Single>(40);
             }
             set
             {
-                this.material.CBuffers[1].SetBufferData(value, 40);
+                this.material.CBuffers[3].SetBufferData(value, 40);
             }
         }
 
@@ -115,11 +115,11 @@ namespace Evergine.MRTK.Effects
         {
             get
             {
-                return this.material.CBuffers[1].GetBufferData<System.Single>(44);
+                return this.material.CBuffers[3].GetBufferData<System.Single>(44);
             }
             set
             {
-                this.material.CBuffers[1].SetBufferData(value, 44);
+                this.material.CBuffers[3].SetBufferData(value, 44);
             }
         }
 
@@ -127,11 +127,11 @@ namespace Evergine.MRTK.Effects
         {
             get
             {
-                return this.material.CBuffers[1].GetBufferData<System.Single>(48);
+                return this.material.CBuffers[3].GetBufferData<System.Single>(48);
             }
             set
             {
-                this.material.CBuffers[1].SetBufferData(value, 48);
+                this.material.CBuffers[3].SetBufferData(value, 48);
             }
         }
 
@@ -139,11 +139,11 @@ namespace Evergine.MRTK.Effects
         {
             get
             {
-                return this.material.CBuffers[1].GetBufferData<System.Single>(52);
+                return this.material.CBuffers[3].GetBufferData<System.Single>(52);
             }
             set
             {
-                this.material.CBuffers[1].SetBufferData(value, 52);
+                this.material.CBuffers[3].SetBufferData(value, 52);
             }
         }
 
@@ -151,11 +151,11 @@ namespace Evergine.MRTK.Effects
         {
             get
             {
-                return this.material.CBuffers[1].GetBufferData<System.Single>(56);
+                return this.material.CBuffers[3].GetBufferData<System.Single>(56);
             }
             set
             {
-                this.material.CBuffers[1].SetBufferData(value, 56);
+                this.material.CBuffers[3].SetBufferData(value, 56);
             }
         }
 
@@ -163,11 +163,11 @@ namespace Evergine.MRTK.Effects
         {
             get
             {
-                return this.material.CBuffers[1].GetBufferData<Evergine.Mathematics.Vector4>(64);
+                return this.material.CBuffers[3].GetBufferData<Evergine.Mathematics.Vector4>(64);
             }
             set
             {
-                this.material.CBuffers[1].SetBufferData(value, 64);
+                this.material.CBuffers[3].SetBufferData(value, 64);
             }
         }
 
@@ -175,11 +175,11 @@ namespace Evergine.MRTK.Effects
         {
             get
             {
-                return this.material.CBuffers[1].GetBufferData<System.Single>(60);
+                return this.material.CBuffers[3].GetBufferData<System.Single>(60);
             }
             set
             {
-                this.material.CBuffers[1].SetBufferData(value, 60);
+                this.material.CBuffers[3].SetBufferData(value, 60);
             }
         }
 
@@ -187,11 +187,11 @@ namespace Evergine.MRTK.Effects
         {
             get
             {
-                return this.material.CBuffers[1].GetBufferData<System.Single>(80);
+                return this.material.CBuffers[3].GetBufferData<System.Single>(80);
             }
             set
             {
-                this.material.CBuffers[1].SetBufferData(value, 80);
+                this.material.CBuffers[3].SetBufferData(value, 80);
             }
         }
 
@@ -199,11 +199,11 @@ namespace Evergine.MRTK.Effects
         {
             get
             {
-                return this.material.CBuffers[1].GetBufferData<System.Single>(84);
+                return this.material.CBuffers[3].GetBufferData<System.Single>(84);
             }
             set
             {
-                this.material.CBuffers[1].SetBufferData(value, 84);
+                this.material.CBuffers[3].SetBufferData(value, 84);
             }
         }
 
@@ -211,11 +211,11 @@ namespace Evergine.MRTK.Effects
         {
             get
             {
-                return this.material.CBuffers[1].GetBufferData<System.Single>(88);
+                return this.material.CBuffers[3].GetBufferData<System.Single>(88);
             }
             set
             {
-                this.material.CBuffers[1].SetBufferData(value, 88);
+                this.material.CBuffers[3].SetBufferData(value, 88);
             }
         }
 
@@ -223,11 +223,11 @@ namespace Evergine.MRTK.Effects
         {
             get
             {
-                return this.material.CBuffers[1].GetBufferData<Evergine.Mathematics.Vector3>(96);
+                return this.material.CBuffers[3].GetBufferData<Evergine.Mathematics.Vector3>(96);
             }
             set
             {
-                this.material.CBuffers[1].SetBufferData(value, 96);
+                this.material.CBuffers[3].SetBufferData(value, 96);
             }
         }
 
@@ -235,11 +235,11 @@ namespace Evergine.MRTK.Effects
         {
             get
             {
-                return this.material.CBuffers[1].GetBufferData<Evergine.Mathematics.Vector4>(112);
+                return this.material.CBuffers[3].GetBufferData<Evergine.Mathematics.Vector4>(112);
             }
             set
             {
-                this.material.CBuffers[1].SetBufferData(value, 112);
+                this.material.CBuffers[3].SetBufferData(value, 112);
             }
         }
 
@@ -247,11 +247,11 @@ namespace Evergine.MRTK.Effects
         {
             get
             {
-                return this.material.CBuffers[1].GetBufferData<Evergine.Mathematics.Vector4>(128);
+                return this.material.CBuffers[3].GetBufferData<Evergine.Mathematics.Vector4>(128);
             }
             set
             {
-                this.material.CBuffers[1].SetBufferData(value, 128);
+                this.material.CBuffers[3].SetBufferData(value, 128);
             }
         }
 
@@ -259,11 +259,11 @@ namespace Evergine.MRTK.Effects
         {
             get
             {
-                return this.material.CBuffers[1].GetBufferData<Evergine.Mathematics.Vector4>(144);
+                return this.material.CBuffers[3].GetBufferData<Evergine.Mathematics.Vector4>(144);
             }
             set
             {
-                this.material.CBuffers[1].SetBufferData(value, 144);
+                this.material.CBuffers[3].SetBufferData(value, 144);
             }
         }
 
@@ -271,11 +271,11 @@ namespace Evergine.MRTK.Effects
         {
             get
             {
-                return this.material.CBuffers[1].GetBufferData<System.Single>(160);
+                return this.material.CBuffers[3].GetBufferData<System.Single>(160);
             }
             set
             {
-                this.material.CBuffers[1].SetBufferData(value, 160);
+                this.material.CBuffers[3].SetBufferData(value, 160);
             }
         }
 
@@ -283,11 +283,11 @@ namespace Evergine.MRTK.Effects
         {
             get
             {
-                return this.material.CBuffers[1].GetBufferData<System.Single>(164);
+                return this.material.CBuffers[3].GetBufferData<System.Single>(164);
             }
             set
             {
-                this.material.CBuffers[1].SetBufferData(value, 164);
+                this.material.CBuffers[3].SetBufferData(value, 164);
             }
         }
 
@@ -295,11 +295,11 @@ namespace Evergine.MRTK.Effects
         {
             get
             {
-                return this.material.CBuffers[1].GetBufferData<Evergine.Mathematics.Vector2>(176);
+                return this.material.CBuffers[3].GetBufferData<Evergine.Mathematics.Vector2>(176);
             }
             set
             {
-                this.material.CBuffers[1].SetBufferData(value, 176);
+                this.material.CBuffers[3].SetBufferData(value, 176);
             }
         }
 
@@ -307,11 +307,11 @@ namespace Evergine.MRTK.Effects
         {
             get
             {
-                return this.material.CBuffers[1].GetBufferData<Evergine.Mathematics.Vector2>(184);
+                return this.material.CBuffers[3].GetBufferData<Evergine.Mathematics.Vector2>(184);
             }
             set
             {
-                this.material.CBuffers[1].SetBufferData(value, 184);
+                this.material.CBuffers[3].SetBufferData(value, 184);
             }
         }
 
@@ -319,11 +319,11 @@ namespace Evergine.MRTK.Effects
         {
             get
             {
-                return this.material.CBuffers[1].GetBufferData<System.Single>(192);
+                return this.material.CBuffers[3].GetBufferData<System.Single>(192);
             }
             set
             {
-                this.material.CBuffers[1].SetBufferData(value, 192);
+                this.material.CBuffers[3].SetBufferData(value, 192);
             }
         }
 
@@ -331,11 +331,11 @@ namespace Evergine.MRTK.Effects
         {
             get
             {
-                return this.material.CBuffers[1].GetBufferData<System.Single>(196);
+                return this.material.CBuffers[3].GetBufferData<System.Single>(196);
             }
             set
             {
-                this.material.CBuffers[1].SetBufferData(value, 196);
+                this.material.CBuffers[3].SetBufferData(value, 196);
             }
         }
 
@@ -343,11 +343,11 @@ namespace Evergine.MRTK.Effects
         {
             get
             {
-                return this.material.CBuffers[1].GetBufferData<System.Single>(200);
+                return this.material.CBuffers[3].GetBufferData<System.Single>(200);
             }
             set
             {
-                this.material.CBuffers[1].SetBufferData(value, 200);
+                this.material.CBuffers[3].SetBufferData(value, 200);
             }
         }
 
