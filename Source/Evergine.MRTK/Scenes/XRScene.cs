@@ -187,8 +187,7 @@ namespace Evergine.MRTK.Scenes
                     Handedness = handedness,
                 })
                 .AddComponent(new XRDeviceRenderableModel())
-                .AddComponent(new MeshRenderer())
-                .AddComponent(new HoloHandsUpdater() { Handedness = handedness })
+                ////.AddComponent(new HoloHandsUpdater() { Handedness = handedness })
                 ;
 
             this.Managers.EntityManager.Add(handEntity);
