@@ -185,6 +185,12 @@ namespace Evergine.MRTK.Services.Voice
             var text = args.Result.Text;
             Debug.WriteLine($"VoiceCommand: Text recognized '{text}' with condifence {confidence}");
 
+            if (!this.IsEnabled)
+            {
+                Debug.WriteLine("VoiceCommand: skip notification as service is disabled");
+                return;
+            }
+
             // We may choose to discard content that has low confidence, as that could indicate that we're picking up
             // noise via the microphone, or someone could be talking out of earshot.
             if (confidence == SpeechRecognitionConfidence.Medium ||
