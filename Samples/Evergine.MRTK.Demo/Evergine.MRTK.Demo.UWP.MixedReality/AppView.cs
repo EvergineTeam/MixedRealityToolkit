@@ -4,7 +4,7 @@ using Evergine.Common.Graphics;
 using Evergine.DirectX11;
 using Evergine.Framework.Services;
 using Evergine.MixedReality;
-using Evergine.MRTK.Demo.UWP.MixedReality.Services;
+using Evergine.MRTK.Services.Voice;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.ApplicationModel.Core;

@@ -1,4 +1,6 @@
-﻿using Evergine.Framework.Services;
+﻿// Copyright © Evergine S.L. All rights reserved. Use is subject to license terms.
+
+using Evergine.Framework.Services;
 using Evergine.Framework.Threading;
 using Evergine.MRTK.Emulation;
 using System;
@@ -9,9 +11,12 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Core;
 using Windows.Media.SpeechRecognition;
 
-namespace Evergine.MRTK.Demo.UWP.MixedReality.Services
+namespace Evergine.MRTK.Services.Voice
 {
-    class VoiceCommandService : Service, IVoiceCommandService
+    /// <summary>
+    /// Voice command service for UWP.
+    /// </summary>
+    public class VoiceCommandService : Service, IVoiceCommandService
     {
         private string[] keywords;
 
@@ -26,6 +31,7 @@ namespace Evergine.MRTK.Demo.UWP.MixedReality.Services
 
         private SemaphoreSlim startStopSemaphore;
 
+        /// <inheritdoc/>
         public event EventHandler<string> CommandRecognized;
 
         private void CustomInitialize()
@@ -146,7 +152,7 @@ namespace Evergine.MRTK.Demo.UWP.MixedReality.Services
                     this.speechRecognizer.ContinuousRecognitionSession.Completed -= this.ContinuousRecognitionSession_Completed;
                     this.speechRecognizer.ContinuousRecognitionSession.ResultGenerated -= this.ContinuousRecognitionSession_ResultGenerated;
                     this.speechRecognizer.HypothesisGenerated -= this.SpeechRecognizer_HypothesisGenerated;
-                    this.speechRecognizer.StateChanged -= SpeechRecognizer_StateChanged;
+                    this.speechRecognizer.StateChanged -= this.SpeechRecognizer_StateChanged;
 
                     this.speechRecognizer.Dispose();
                     this.speechRecognizer = null;
@@ -171,8 +177,8 @@ namespace Evergine.MRTK.Demo.UWP.MixedReality.Services
         /// <summary>
         /// Handle events fired when a result is generated.
         /// </summary>
-        /// <param name="sender">The Recognition session that generated this result</param>
-        /// <param name="args">Details about the recognized speech</param>
+        /// <param name="sender">The Recognition session that generated this result.</param>
+        /// <param name="args">Details about the recognized speech.</param>
         private void ContinuousRecognitionSession_ResultGenerated(SpeechContinuousRecognitionSession sender, SpeechContinuousRecognitionResultGeneratedEventArgs args)
         {
             var confidence = args.Result.Confidence;
@@ -198,6 +204,7 @@ namespace Evergine.MRTK.Demo.UWP.MixedReality.Services
             Debug.WriteLine($"VoiceCommand: HypothesisGenerated: {args.Hypothesis.Text}");
         }
 
+        /// <inheritdoc/>
         public void ConfigureVoiceCommands(string[] words)
         {
             this.keywords = words;

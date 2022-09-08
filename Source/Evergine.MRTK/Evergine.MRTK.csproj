@@ -1,6 +1,6 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="MSBuild.Sdk.Extras/3.0.22">
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>netstandard2.0;uap10.0.16299</TargetFrameworks>
     <Description>Provides and set of components that help developing Mixed Reality applications using Evergine.</Description>
     <Copyright>Copyright (c) Evergine 2021</Copyright>
     <Authors>Evergine Team</Authors>
@@ -12,6 +12,7 @@
     <PackageTags>Evergine;C#;Game Engine;DirectX;OpenGL;OpenGLES;Vulkan;Metal;2D;3D;AR;VR;MixedReality;Mobile;HoloLens</PackageTags>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+	<EnableDefaultCompileItems>false</EnableDefaultCompileItems>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <IncludeSymbols>true</IncludeSymbols>
@@ -45,4 +46,18 @@
   <ItemGroup>
     <Content Include="Evergine.MRTK.targets" PackagePath="build" Visible="true" />
   </ItemGroup>
+  <ItemGroup>
+    <!-- Prevent files missing when filtered by platform https://github.com/dotnet/sdk/issues/2337 -->
+	<Compile Include="**\*.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder);$(Compile)" />
+	<Compile Remove="**\*\*.uwp.cs" Condition="!$(TargetFramework.StartsWith('uap'))" />
+  </ItemGroup>
+  <Choose>
+	<When Condition="$(TargetFramework.StartsWith('uap'))">
+		<PropertyGroup>
+			<DefineConstants>UWP</DefineConstants>
+			<TargetPlatformVersion>10.0.18362.0</TargetPlatformVersion>
+			<TargetPlatformMinVersion>10.0.16299.0</TargetPlatformMinVersion>
+		</PropertyGroup>
+	</When>
+  </Choose>
 </Project>
