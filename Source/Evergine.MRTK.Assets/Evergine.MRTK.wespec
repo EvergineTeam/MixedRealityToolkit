@@ -6,6 +6,5 @@ Tags:
  - MRTK
  - Mixed Reality
 Nugets:
- - Evergine.Framework 2022.6.1.1-nightly
- - Evergine.MRTK 2022.6.1.1-nightly
- 
+ - Evergine.Framework 2022.9.28.1
+ - Evergine.MRTK 2022.9.28.1
