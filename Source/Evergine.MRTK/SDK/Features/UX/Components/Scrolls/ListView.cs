@@ -1,4 +1,5 @@
-﻿
+﻿// Copyright © Evergine S.L. All rights reserved. Use is subject to license terms.
+
 using Evergine.Common.Graphics;
 using Evergine.Components.Graphics3D;
 using Evergine.Framework;
@@ -13,8 +14,14 @@ using System.Linq;
 
 namespace Evergine.MRTK.SDK.Features.UX.Components.Scrolls
 {
+    /// <summary>
+    /// List view behavior.
+    /// </summary>
     public class ListView : Behavior, IMixedRealityPointerHandler, IMixedRealityTouchHandler
     {
+        /// <summary>
+        /// Raise when the current element selected change.
+        /// </summary>
         public event EventHandler SelectedChanged;
 
         [BindEntity(source: BindEntitySource.ChildrenSkipOwner, tag: "PART_scrollviewer_scrollarea")]
@@ -47,7 +54,7 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Scrolls
         [BindService]
         private AssetsService assetsService = null;
 
-        private ListlViewData dataSource;
+        private ListViewData dataSource;
         private ListViewRender render;
 
         private Vector2 ContentSize;
@@ -65,17 +72,35 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Scrolls
         private RenderLayerDescription alphaLayer;
         private bool headerEnabled = false;
 
+        /// <summary>
+        /// Gets or sets the content padding.
+        /// </summary>
         public float ContentPadding { get; set; } = 0.02f;
 
+        /// <summary>
+        /// Gets or sets the elastic time when the content go to the edges.
+        /// </summary>
         public float ElasticTime { get; set; } = 0.1f;
 
+        /// <summary>
+        /// Gets or sets z content respect to the content z.
+        /// </summary>
         public float ZContentDistance { get; set; } = 0.004f;
 
+        /// <summary>
+        /// Gets or sets the row height.
+        /// </summary>
         public float RowHeight { get; set; } = 0.015f;
 
+        /// <summary>
+        /// Gets or sets the bar width.
+        /// </summary>
         public float BarWidth { get; set; } = 0.004f;
 
-        public ListlViewData DataSource
+        /// <summary>
+        /// Gets or sets the data.
+        /// </summary>
+        public ListViewData DataSource
         {
             get => this.dataSource;
             set
@@ -89,10 +114,19 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Scrolls
             }
         }
 
+        /// <summary>
+        /// Gets the selected element index.
+        /// </summary>
         public int SelectedIndex => this.selectedIndex;
 
+        /// <summary>
+        /// Gets the selected row data.
+        /// </summary>
         public string[] Selected => this.dataSource.Data[this.selectedIndex];
 
+        /// <summary>
+        /// Gets or sets the columns render config.
+        /// </summary>
         public ListViewRender Render
         {
             get => this.render;
@@ -106,6 +140,9 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Scrolls
             }
         }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether the Header is visible or not.
+        /// </summary>
         public bool HeaderEnabled
         {
             get => this.headerEnabled;
@@ -124,7 +161,7 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Scrolls
         {
             var result = base.OnAttached();
 
-            this.contentLayer = this.assetsService.Load<RenderLayerDescription>(LoadModelResourceIDs.RenderLayers.Content);
+            this.contentLayer = this.assetsService.Load<RenderLayerDescription>(MRTKResourceIDs.RenderLayers.ScrollContent);
             this.alphaLayer = this.assetsService.Load<RenderLayerDescription>(DefaultResourcesIDs.AlphaRenderLayerID);
             this.Refresh();
 
@@ -174,6 +211,7 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Scrolls
                 this.header.AddChild(entity);
                 headerPosition.X += columnWidth;
             }
+
             this.header.IsEnabled = this.HeaderEnabled;
 
             // Content from data
@@ -222,6 +260,7 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Scrolls
             this.selectionTransform.LocalPosition = selectionPosition;
         }
 
+        /// <inheritdoc/>
         public void OnPointerDown(MixedRealityPointerEventData eventData)
         {
             if (eventData.EventHandled)
@@ -247,6 +286,7 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Scrolls
             }
         }
 
+        /// <inheritdoc/>
         public void OnPointerDragged(MixedRealityPointerEventData eventData)
         {
             if (eventData.EventHandled)
@@ -269,6 +309,7 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Scrolls
             }
         }
 
+        /// <inheritdoc/>
         public void OnPointerUp(MixedRealityPointerEventData eventData)
         {
             if (eventData.EventHandled)
@@ -284,13 +325,15 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Scrolls
             }
         }
 
+        /// <inheritdoc/>
         public void OnPointerClicked(MixedRealityPointerEventData eventData)
         {
         }
 
+        /// <inheritdoc/>
         public void OnTouchStarted(HandTrackingInputEventData eventData)
         {
-            if (eventData.Cursor is not CursorTouch)
+            if (!(eventData.Cursor is CursorTouch))
             {
                 return;
             }
@@ -305,9 +348,10 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Scrolls
             this.lastCursorPosition = eventData.Position;
         }
 
+        /// <inheritdoc/>
         public void OnTouchUpdated(HandTrackingInputEventData eventData)
         {
-            if (eventData.Cursor is not CursorTouch)
+            if (!(eventData.Cursor is CursorTouch))
             {
                 return;
             }
@@ -322,9 +366,10 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Scrolls
             this.lastCursorPosition = this.lastCursorPosition + delta;
         }
 
+        /// <inheritdoc/>
         public void OnTouchCompleted(HandTrackingInputEventData eventData)
         {
-            if (eventData.Cursor is not CursorTouch)
+            if (!(eventData.Cursor is CursorTouch))
             {
                 return;
             }
@@ -333,6 +378,7 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Scrolls
             this.currentCursor = null;
         }
 
+        /// <inheritdoc/>
         protected override void Update(TimeSpan gameTime)
         {
             // Content Inertia
