@@ -51,6 +51,14 @@
     <Compile Include="**\*.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder);$(Compile)" />
     <Compile Remove="**\*\*.uwp.cs" Condition="!$(TargetFramework.StartsWith('uap'))" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="SDK\Features\UX\Components\Scrolls\Data\ListlViewData.cs" />
+    <Compile Remove="SDK\Features\UX\Components\Scrolls\ListView.cs" />
+    <Compile Remove="SDK\Features\UX\Components\Scrolls\Render\CellRenderer.cs" />
+    <Compile Remove="SDK\Features\UX\Components\Scrolls\Render\ListViewColumn.cs" />
+    <Compile Remove="SDK\Features\UX\Components\Scrolls\Render\ListViewRender.cs" />
+    <Compile Remove="SDK\Features\UX\Components\Scrolls\Render\TextCellRenderer.cs" />
+  </ItemGroup>
   <Choose>
     <When Condition="$(TargetFramework.StartsWith('uap'))">
       <PropertyGroup>
