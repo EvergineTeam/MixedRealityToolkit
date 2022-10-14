@@ -311,16 +311,16 @@ Root:
                     - !Evergine.Components.Graphics3D.PlaneMesh,Evergine.Components
                       Id: 662671f8-4d16-42ab-99fe-177af620ef08
                       Height: 1.0
-                      InitialU: 0.0
-                      InitialV: 0.0
+                      UOffset: 0.0
+                      VOffset: 0.0
                       IsEnabled: true
                       PlaneNormal: ZNegative
                       TwoSides: false
                       UTile: 1.0
-                      UVHorizontalFlip: false
-                      UVVerticalFlip: false
+                      UMirror: false
+                      VMirror: false
                       Width: 1.0
-                      YTile: 1.0
+                      VTile: 1.0
                     - !Evergine.Components.Graphics3D.MeshRenderer,Evergine.Framework
                       Id: 2e8529b5-6ccb-4aba-8b50-79d089d40adb
                       DebugBoundingbox: true

@@ -114,14 +114,14 @@ Items:
                 RenderFlags: CastShadows
               - !Evergine.Components.Graphics3D.CubeMesh,Evergine.Components
                 Id: d85320d3-02b2-42c0-ac1c-5e60227e1774
-                InitialU: 0.0
-                InitialV: 0.0
+                UOffset: 0.0
+                VOffset: 0.0
                 IsEnabled: true
                 Size: 1.0
                 UTile: 1.0
-                UVHorizontalFlip: false
-                UVVerticalFlip: false
-                YTile: 1.0
+                UMirror: false
+                VMirror: false
+                VTile: 1.0
             Children: []
             Id: 52a20f53-c705-43a8-a1d5-bde76d4c49ed
         Id: 64b07a03-237d-49fa-a3e6-d98cbba37d41
