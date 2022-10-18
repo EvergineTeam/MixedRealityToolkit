@@ -35,8 +35,9 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Scrolls
         [BindComponent(source: BindComponentSource.ChildrenSkipOwner, tag: "PART_scrollviewer_background")]
         private PlaneMesh backgroundPlaneMesh = null;
 
-        private float ContentYMin;
         private float ContentYMax;
+        private float ContentYMin;
+        private float ContentSizeY;
         private Cursor currentCursor;
         private Vector3 initialOffset;
         private Vector3 lastCursorPosition;
@@ -99,8 +100,9 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Scrolls
                 }
             }
 
-            this.ContentYMin = minY - this.ContentYPadding;
-            this.ContentYMax = maxY + this.ContentYPadding;
+            this.ContentYMin = maxY + this.ContentYPadding;
+            this.ContentYMax = minY - this.ContentYPadding;
+            this.ContentSizeY = Math.Abs(this.ContentYMax - this.ContentYMin);
 
             // Content
             var contentPosition = this.contentTransform.LocalPosition;
@@ -111,7 +113,7 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Scrolls
             this.scrollBarPlaneMesh.Width = this.BarWidth;
 
             var barScale = this.scrollBarTransform.Scale;
-            barScale.Y = this.backgroundPlaneMesh.Height / (this.ContentYMax - this.ContentYMin);
+            barScale.Y = this.backgroundPlaneMesh.Height / this.ContentSizeY;
             this.scrollBarTransform.Scale = barScale;
 
             this.barOrigin = new Vector3((this.backgroundPlaneMesh.Width * 0.5f) - this.scrollBarPlaneMesh.Width, this.backgroundPlaneMesh.Height * 0.5f, this.ZContentDistance);
@@ -244,13 +246,13 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Scrolls
             {
                 var position = this.contentTransform.LocalPosition;
 
-                if (position.Y < 0)
+                if (position.Y < -(this.ContentYMin - (this.backgroundPlaneMesh.Height * 0.5f)))
                 {
-                    position.Y = MathHelper.SmoothDamp(position.Y, 0, ref this.velocityY, this.ElasticTime, (float)gameTime.TotalSeconds);
+                    position.Y = MathHelper.SmoothDamp(position.Y, -(this.ContentYMin - (this.backgroundPlaneMesh.Height * 0.5f)), ref this.velocityY, this.ElasticTime, (float)gameTime.TotalSeconds);
                 }
-                else if (position.Y > (this.ContentYMax - this.ContentYMin) - this.backgroundPlaneMesh.Height)
+                else if (position.Y > -this.ContentYMax - (this.backgroundPlaneMesh.Height * 0.5f))
                 {
-                    position.Y = MathHelper.SmoothDamp(position.Y, (this.ContentYMax - this.ContentYMin) - this.backgroundPlaneMesh.Height, ref this.velocityY, this.ElasticTime, (float)gameTime.TotalSeconds);
+                    position.Y = MathHelper.SmoothDamp(position.Y, -this.ContentYMax - (this.backgroundPlaneMesh.Height * 0.5f), ref this.velocityY, this.ElasticTime, (float)gameTime.TotalSeconds);
                 }
 
                 this.contentTransform.LocalPosition = position;
@@ -258,8 +260,8 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Scrolls
 
             // Bar
             var barPosition = this.scrollBarTransform.LocalPosition;
-            float contentDeltaNormalized = MathHelper.Clamp(this.contentTransform.LocalPosition.Y / ((this.ContentYMax - this.ContentYMin) - this.backgroundPlaneMesh.Height), 0, 1);
-            barPosition.Y = this.barOrigin.Y + (contentDeltaNormalized * (this.backgroundPlaneMesh.Height - this.scrollBarTransform.Scale.Y));
+            float contentDeltaNormalized = MathHelper.Clamp(this.contentTransform.LocalPosition.Y / (this.ContentSizeY - this.backgroundPlaneMesh.Height), 0, 1);
+            barPosition.Y = this.barOrigin.Y - (contentDeltaNormalized * (this.backgroundPlaneMesh.Height - (this.scrollBarTransform.Scale.Y * this.scrollBarPlaneMesh.Height)));
             this.scrollBarTransform.LocalPosition = barPosition;
 
             // Debug mode
@@ -267,9 +269,12 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Scrolls
             {
                 var position = this.contentTransform.Position;
                 var localPosition = this.contentTransform.LocalPosition;
-                var min = new Vector3(position.X - (this.backgroundPlaneMesh.Width * 0.5f), this.ContentYMin + localPosition.Y, position.Z);
-                var max = new Vector3(position.X + (this.backgroundPlaneMesh.Width * 0.5f), this.ContentYMax + localPosition.Y, position.Z);
+                var min = new Vector3(position.X - (this.backgroundPlaneMesh.Width * 0.5f), this.ContentYMax + localPosition.Y, position.Z);
+                var max = new Vector3(position.X + (this.backgroundPlaneMesh.Width * 0.5f), this.ContentYMin + localPosition.Y, position.Z);
                 this.Managers.RenderManager.LineBatch3D.DrawRectangle(min, max, Color.Red);
+
+                this.Managers.RenderManager.LineBatch3D.DrawPoint(Vector3.UnitY * this.ContentYMin, 0.01f, Color.Green);
+                this.Managers.RenderManager.LineBatch3D.DrawPoint(Vector3.UnitY * this.ContentYMax, 0.01f, Color.Orange);
 
                 var elements = this.contentTransform.Owner.ChildEntities.ToArray();
                 foreach (var element in elements)
