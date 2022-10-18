@@ -168,7 +168,7 @@ Items:
         Id: d031dd27-8264-46c2-8f7e-f805d9c8e2b4
         AsignedTo: Default
         IsEnabled: true
-        Material: 7f2e458d-35be-42f8-bf9a-909542647a3a
+        Material: 10a65aa0-fc33-44a4-8329-ae340ba226e9
         UseCopy: false
       - !Evergine.Components.Graphics3D.SphereMesh,Evergine.Components
         Id: db915ad3-ec8c-4c45-abd2-cc5ed956b010
@@ -226,6 +226,18 @@ Items:
           X: 1.0
           Y: 1.0
           Z: 1.0
+      - !Evergine.MRTK.SDK.Features.UX.Components.Scrolls.ListView,Evergine.MRTK
+        Id: 4eff5f80-1c13-4893-ac0b-84f65a4d07f9
+        BarWidth: 0.00400000019
+        ContentPadding: 0.0199999996
+        DataSource: null
+        ElasticTime: 0.100000001
+        HeaderEnabled: true
+        IsEnabled: true
+        Render: null
+        RowHeight: 0.0149999997
+        UpdateOrder: 0.5
+        ZContentDistance: 0.00400000019
     Children:
       - !Evergine.Framework.Assets.AssetSources.Entities.EntityItemModel,Evergine.Framework
         Name: ScrollArea

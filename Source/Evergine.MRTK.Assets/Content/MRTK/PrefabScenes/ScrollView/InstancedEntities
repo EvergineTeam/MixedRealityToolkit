@@ -168,7 +168,7 @@ Items:
         Id: d031dd27-8264-46c2-8f7e-f805d9c8e2b4
         AsignedTo: Default
         IsEnabled: true
-        Material: 187d6d8b-7407-4e7c-8f6c-b055e661bec4
+        Material: b63f8641-9481-4bc6-8b9c-fd30fda648bd
         UseCopy: false
       - !Evergine.Components.Graphics3D.SphereMesh,Evergine.Components
         Id: db915ad3-ec8c-4c45-abd2-cc5ed956b010
@@ -226,6 +226,15 @@ Items:
           X: 1.0
           Y: 1.0
           Z: 1.0
+      - !Evergine.MRTK.SDK.Features.UX.Components.Scrolls.ScrollView,Evergine.MRTK
+        Id: e7c351e8-778e-4877-b2ec-b52e7a13356a
+        BarWidth: 0.00400000019
+        ContentYPadding: 0.0199999996
+        Debug: false
+        ElasticTime: 0.100000001
+        IsEnabled: true
+        UpdateOrder: 0.5
+        ZContentDistance: 0.00400000019
     Children:
       - !Evergine.Framework.Assets.AssetSources.Entities.EntityItemModel,Evergine.Framework
         Name: ScrollArea
@@ -359,7 +368,7 @@ Items:
                 LocalPosition:
                   X: 0.0
                   Y: 0.0
-                  Z: 0.0
+                  Z: 0.00400000019
                 LocalScale:
                   X: 1.0
                   Y: 1.0
@@ -381,12 +390,12 @@ Items:
                   Y: 0.0
                   Z: 0.0
                 LocalPosition:
-                  X: 0.119999997
+                  X: 0.120999999
                   Y: 0.0900000036
-                  Z: 0.00130886585
+                  Z: 0.00400000019
                 LocalScale:
                   X: 1.0
-                  Y: 1.0
+                  Y: 0.0
                   Z: 1.0
               - !Evergine.Components.Graphics3D.MaterialComponent,Evergine.Framework
                 Id: d23770a7-1916-4329-a95e-7e37439138cc
@@ -409,7 +418,7 @@ Items:
                 VMirror: false
                 VOffset: 0.0
                 VTile: 1.0
-                Width: 0.00499999989
+                Width: 0.00400000019
               - !Evergine.Components.Graphics3D.MeshRenderer,Evergine.Framework
                 Id: 1e6f84d9-4d17-40e9-a5ec-72e819f1294a
                 DebugBoundingbox: true

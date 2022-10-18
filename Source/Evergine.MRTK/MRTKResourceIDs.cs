@@ -49,13 +49,13 @@ namespace Evergine.MRTK
             public static readonly Guid BoundingBox_ScaleHandle_weprefab = new Guid("ae0e37ce-4928-42ef-970e-a4b1e547f4ea");
 
             /// <summary> Asset Path (MRTK\Prefabs\ListView.weprefab.weprf) </summary>
-            public static readonly Guid ListView_weprefab = new Guid("06d4c0d7-ce72-4657-a123-b25940bf1def");
+            public static readonly Guid ListView_weprefab = new Guid("9502a182-b61a-4cb2-b320-1d0d2f4ee595");
 
             /// <summary> Asset Path (MRTK\Prefabs\PressableButtonPlated.weprefab.weprf) </summary>
             public static readonly Guid PressableButtonPlated = new Guid("dabe9073-b1d1-42c5-99b9-ebc0cb4a7430");
 
             /// <summary> Asset Path (MRTK/Prefabs/ScrollView.weprefab.weprf) </summary>
-            public static readonly Guid ScrollView_weprefab = new Guid("889bcf09-5df6-4416-8f1f-e94219cd2e93");
+            public static readonly Guid ScrollView_weprefab = new Guid("6951d88e-98e7-454c-b22f-9e9e1faf4d79");
         }
 
         public sealed class RenderLayers
