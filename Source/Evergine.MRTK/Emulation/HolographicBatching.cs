@@ -90,7 +90,7 @@ namespace Evergine.MRTK.Emulation
 
                 // Border Light and inner glow don't work if batching is enabled
                 var meshComponent = pair.Key.FindComponent<MeshComponent>(isExactType: false);
-                if (meshComponent == null)
+                if (meshComponent == null || meshComponent.Meshes == null)
                 {
                     continue;
                 }
