@@ -49,7 +49,7 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Scrolls
         /// <summary>
         /// Gets or sets the content padding.
         /// </summary>
-        public float ContentYPadding { get; set; } = 0.02f;
+        public float ContentYPadding { get; set; } = 0.01f;
 
         /// <summary>
         /// Gets or sets the elastic time when the content go to the edges.
@@ -244,18 +244,18 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Scrolls
             // Content Inertia
             if (!this.interacting)
             {
-                var position = this.contentTransform.LocalPosition;
+                var localPosition = this.contentTransform.LocalPosition;
 
-                if (position.Y < -(this.ContentYMin - (this.backgroundPlaneMesh.Height * 0.5f)))
+                if (localPosition.Y < 0)
                 {
-                    position.Y = MathHelper.SmoothDamp(position.Y, -(this.ContentYMin - (this.backgroundPlaneMesh.Height * 0.5f)), ref this.velocityY, this.ElasticTime, (float)gameTime.TotalSeconds);
+                    localPosition.Y = MathHelper.SmoothDamp(localPosition.Y, 0, ref this.velocityY, this.ElasticTime, (float)gameTime.TotalSeconds);
                 }
-                else if (position.Y > -this.ContentYMax - (this.backgroundPlaneMesh.Height * 0.5f))
+                else if (localPosition.Y > this.ContentSizeY - this.backgroundPlaneMesh.Height)
                 {
-                    position.Y = MathHelper.SmoothDamp(position.Y, -this.ContentYMax - (this.backgroundPlaneMesh.Height * 0.5f), ref this.velocityY, this.ElasticTime, (float)gameTime.TotalSeconds);
+                    localPosition.Y = MathHelper.SmoothDamp(localPosition.Y, this.ContentSizeY - this.backgroundPlaneMesh.Height, ref this.velocityY, this.ElasticTime, (float)gameTime.TotalSeconds);
                 }
 
-                this.contentTransform.LocalPosition = position;
+                this.contentTransform.LocalPosition = localPosition;
             }
 
             // Bar
@@ -269,12 +269,9 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Scrolls
             {
                 var position = this.contentTransform.Position;
                 var localPosition = this.contentTransform.LocalPosition;
-                var min = new Vector3(position.X - (this.backgroundPlaneMesh.Width * 0.5f), this.ContentYMax + localPosition.Y, position.Z);
-                var max = new Vector3(position.X + (this.backgroundPlaneMesh.Width * 0.5f), this.ContentYMin + localPosition.Y, position.Z);
+                var min = new Vector3(position.X - (this.backgroundPlaneMesh.Width * 0.5f), localPosition.Y + this.ContentYMin, position.Z);
+                var max = new Vector3(position.X + (this.backgroundPlaneMesh.Width * 0.5f), localPosition.Y + this.ContentYMax, position.Z);
                 this.Managers.RenderManager.LineBatch3D.DrawRectangle(min, max, Color.Red);
-
-                this.Managers.RenderManager.LineBatch3D.DrawPoint(Vector3.UnitY * this.ContentYMin, 0.01f, Color.Green);
-                this.Managers.RenderManager.LineBatch3D.DrawPoint(Vector3.UnitY * this.ContentYMax, 0.01f, Color.Orange);
 
                 var elements = this.contentTransform.Owner.ChildEntities.ToArray();
                 foreach (var element in elements)
