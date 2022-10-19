@@ -6814,6 +6814,7 @@ Items:
                       Z: 0.0
                     CollisionCategory: Cat1
                     FaceScaleHandlePrefab: caa9ea87-b38e-4677-86fb-87ef1cb99838
+                    HandleFocusedMaterial: 8e30ffce-70db-48f2-b3e1-a5737b0530fc
                     HandleGrabbedMaterial: 7c6dfc11-0f01-4d22-bfc9-bc5ca4fae227
                     HandleMaterial: 9adff77b-f6b6-4683-bf28-243fafea5436
                     IsEnabled: true
@@ -6915,6 +6916,7 @@ Items:
                   Z: 0.0
                 CollisionCategory: Cat1
                 FaceScaleHandlePrefab: null
+                HandleFocusedMaterial: 8e30ffce-70db-48f2-b3e1-a5737b0530fc
                 HandleGrabbedMaterial: 7c6dfc11-0f01-4d22-bfc9-bc5ca4fae227
                 HandleMaterial: 9adff77b-f6b6-4683-bf28-243fafea5436
                 IsEnabled: true
@@ -7038,6 +7040,7 @@ Items:
                       Z: 0.0
                     CollisionCategory: Cat1
                     FaceScaleHandlePrefab: null
+                    HandleFocusedMaterial: 8e30ffce-70db-48f2-b3e1-a5737b0530fc
                     HandleGrabbedMaterial: 7c6dfc11-0f01-4d22-bfc9-bc5ca4fae227
                     HandleMaterial: 9adff77b-f6b6-4683-bf28-243fafea5436
                     IsEnabled: true
@@ -7123,6 +7126,7 @@ Items:
                   Z: 0.0
                 CollisionCategory: Cat1
                 FaceScaleHandlePrefab: null
+                HandleFocusedMaterial: null
                 HandleGrabbedMaterial: 7c6dfc11-0f01-4d22-bfc9-bc5ca4fae227
                 HandleMaterial: 9adff77b-f6b6-4683-bf28-243fafea5436
                 IsEnabled: true
@@ -7838,7 +7842,7 @@ Items:
 Managers:
   - !Evergine.Framework.Managers.EnvironmentManager,Evergine.Framework
     Id: 0b6695c7-b505-442d-b0e2-8e2791c63949
-    IBLReflectionProbe: 482cadc3-5764-458f-b44f-6767833d4c13
+    IBLReflectionProbe: d9a1b71e-d7a4-43b2-b251-98189ac46527
     IntensityMultiplier: 1.0
     IsEnabled: true
     Strategy: Automatically

@@ -11,6 +11,7 @@ using Evergine.Framework.Physics3D;
 using Evergine.Framework.Prefabs;
 using Evergine.Mathematics;
 using Evergine.MRTK.Base.EventDatum.Input;
+using Evergine.MRTK.Base.Interfaces.InputSystem.Handlers;
 using Evergine.MRTK.Emulation;
 using Evergine.MRTK.SDK.Features.Input.Handlers;
 using Evergine.MRTK.Services.InputSystem;
@@ -21,7 +22,7 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.BoundingBox
     /// BoundingBox allows to transform objects (rotate and scale) and draws a cube around the object to visualize
     /// the possibility of user triggered transform manipulation.
     /// </summary>
-    public class BoundingBox : Behavior
+    public class BoundingBox : Behavior, IMixedRealityTouchHandler
     {
         private static readonly string RIG_ROOT_NAME = "rigRoot";
 
@@ -377,6 +378,26 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.BoundingBox
         }
 
         private Material handleMaterial;
+
+        /// <summary>
+        /// Gets or sets the material applied to the handles when in a focused state.
+        /// </summary>
+        [RenderProperty(Tooltip = "The material applied to the handles when in a focused state.")]
+        public Material HandleFocusedMaterial
+        {
+            get => this.handleFocusedMaterial;
+
+            set
+            {
+                if (this.handleFocusedMaterial != value)
+                {
+                    this.handleFocusedMaterial = value;
+                    this.CreateRig();
+                }
+            }
+        }
+
+        private Material handleFocusedMaterial;
 
         /// <summary>
         /// Gets or sets the material applied to the handles when in a grabbed state.
@@ -1386,6 +1407,39 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.BoundingBox
             var diff = point - planePoint;
             float dot = Vector3.Dot(diff, planeNormal);
             return point - (dot * planeNormal);
+        }
+
+        /// <inheritdoc/>
+        public void OnTouchStarted(HandTrackingInputEventData eventData)
+        {
+            if (this.HandleFocusedMaterial != null)
+            {
+                var target = eventData.CurrentTarget;
+
+                if (this.helpers.ContainsKey(target))
+                {
+                    this.ApplyMaterialToAllComponents(target, this.HandleFocusedMaterial);
+                }
+            }
+        }
+
+        /// <inheritdoc/>
+        public void OnTouchUpdated(HandTrackingInputEventData eventData)
+        {
+        }
+
+        /// <inheritdoc/>
+        public void OnTouchCompleted(HandTrackingInputEventData eventData)
+        {
+            if (this.HandleFocusedMaterial != null && this.HandleMaterial != null)
+            {
+                var target = eventData.CurrentTarget;
+
+                if (this.helpers.ContainsKey(target))
+                {
+                    this.ApplyMaterialToAllComponents(target, this.HandleMaterial);
+                }
+            }
         }
     }
 }
