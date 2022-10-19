@@ -602,7 +602,25 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.BoundingBox
                 this.Owner.AddComponent(this.boxCollider3D);
             }
 
+            this.boxCollider3D.OnShapeChanged += this.BoxCollider3D_OnShapeChanged;
+
             return true;
+        }
+
+        /// <inheritdoc/>
+        protected override void OnDetach()
+        {
+            base.OnDetach();
+
+            if (this.boxCollider3D != null)
+            {
+                this.boxCollider3D.OnShapeChanged -= this.BoxCollider3D_OnShapeChanged;
+            }
+        }
+
+        private void BoxCollider3D_OnShapeChanged(object sender, EventArgs e)
+        {
+            this.CreateRig();
         }
 
         /// <inheritdoc/>
