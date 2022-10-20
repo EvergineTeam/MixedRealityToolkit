@@ -102,6 +102,19 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Sliders
         private float sliderValue;
 
         /// <inheritdoc/>
+        protected override bool OnAttached()
+        {
+            if (!base.OnAttached())
+            {
+                return false;
+            }
+
+            this.sliderValue = this.InitialValue;
+
+            return true;
+        }
+
+        /// <inheritdoc/>
         protected override void OnActivated()
         {
             base.OnActivated();
@@ -113,8 +126,6 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Sliders
             var startToThumb = this.thumbRootTransform.LocalPosition - this.SliderStartPosition;
             var thumbProjectedOnTrack = this.SliderStartPosition + Vector3.Project(startToThumb, this.SliderAxis);
             this.sliderThumbOffset = this.thumbRootTransform.LocalPosition - thumbProjectedOnTrack;
-
-            this.sliderValue = this.InitialValue;
         }
 
         /// <inheritdoc/>
