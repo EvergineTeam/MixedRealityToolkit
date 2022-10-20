@@ -567,6 +567,8 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.BoundingBox
         private Vector3 grabDiagonalDirection;
         private Vector3 currentRotationAxis;
 
+        private bool hasFocus;
+
         private void AdjustBoundingToChildren()
         {
             Mathematics.BoundingBox? boundingBox = null;
@@ -1160,7 +1162,7 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.BoundingBox
         {
             if (material != null && root != null)
             {
-                MaterialComponent[] components = root.FindComponentsInChildren<MaterialComponent>().ToArray();
+                var components = root.FindComponentsInChildren<MaterialComponent>().ToArray();
 
                 for (int i = 0; i < components.Length; i++)
                 {
@@ -1375,7 +1377,7 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.BoundingBox
         {
             if (this.currentCursor == eventData.Cursor)
             {
-                this.ApplyMaterialToAllComponents(this.currentHandle.BaseEntity, this.handleMaterial);
+                this.ApplyMaterialToAllComponents(this.currentHandle.BaseEntity, this.hasFocus ? this.handleFocusedMaterial : this.handleMaterial);
                 this.ApplyMaterialToAllComponents(this.boxDisplay, this.boxMaterial);
 
                 switch (this.currentHandle.Type)
@@ -1418,7 +1420,12 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.BoundingBox
 
                 if (this.helpers.ContainsKey(target))
                 {
-                    this.ApplyMaterialToAllComponents(target, this.HandleFocusedMaterial);
+                    if (this.currentHandle == null)
+                    {
+                        this.ApplyMaterialToAllComponents(target, this.HandleFocusedMaterial);
+                    }
+
+                    this.hasFocus = true;
                 }
             }
         }
@@ -1437,7 +1444,12 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.BoundingBox
 
                 if (this.helpers.ContainsKey(target))
                 {
-                    this.ApplyMaterialToAllComponents(target, this.HandleMaterial);
+                    if (this.currentHandle == null)
+                    {
+                        this.ApplyMaterialToAllComponents(target, this.HandleMaterial);
+                    }
+
+                    this.hasFocus = false;
                 }
             }
         }
