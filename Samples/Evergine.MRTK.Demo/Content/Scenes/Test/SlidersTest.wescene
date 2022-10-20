@@ -81,7 +81,7 @@ Items:
         Id: 88e25e58-d6ca-4934-a280-294f805c26bd
         AsignedTo: Default
         IsEnabled: true
-        Material: cb644cd0-3f34-4d93-8089-06ccc5da2fcb
+        Material: efad6412-0dbd-4531-a073-95e32664e777
         UseCopy: false
       - !Evergine.Components.Graphics3D.SphereMesh,Evergine.Components
         Id: 9369593f-c243-4632-b7c2-8b3e94abc256
@@ -951,7 +951,7 @@ Items:
 Managers:
   - !Evergine.Framework.Managers.EnvironmentManager,Evergine.Framework
     Id: 442fe9b0-c7e0-451a-b479-2497fdb64f6a
-    IBLReflectionProbe: a5ce41b5-441c-490d-868e-108e9285ce82
+    IBLReflectionProbe: 024b4d2f-cbe8-4819-8979-b669eb0c00ee
     IntensityMultiplier: 1.0
     IsEnabled: true
     Strategy: Automatically

@@ -2405,6 +2405,8 @@ Items:
                     additionalComponentList:
                       - !Evergine.MRTK.SDK.Features.UX.Components.Configurators.StandardButtonConfigurator,Evergine.MRTK
                         Id: 7627e0bd-2795-4204-b7c1-c3a9e2a7ed5b
+                        AllowBackPlateNullMaterial: false
+                        AllowIconNullMaterial: false
                         CreatesNewBackPlateMaterialInstance: false
                         CreatesNewIconMaterialInstance: false
                         Font: a1bec550-b538-4416-acc3-83ca62a349c7
@@ -2462,6 +2464,8 @@ Items:
                     additionalComponentList:
                       - !Evergine.MRTK.SDK.Features.UX.Components.Configurators.StandardButtonConfigurator,Evergine.MRTK
                         Id: 6bb78813-ffad-40d0-a1f2-dcea09261861
+                        AllowBackPlateNullMaterial: false
+                        AllowIconNullMaterial: false
                         CreatesNewBackPlateMaterialInstance: false
                         CreatesNewIconMaterialInstance: false
                         Font: a1bec550-b538-4416-acc3-83ca62a349c7
@@ -2519,6 +2523,8 @@ Items:
                     additionalComponentList:
                       - !Evergine.MRTK.SDK.Features.UX.Components.Configurators.StandardButtonConfigurator,Evergine.MRTK
                         Id: 6bb78813-ffad-40d0-a1f2-dcea09261861
+                        AllowBackPlateNullMaterial: false
+                        AllowIconNullMaterial: false
                         CreatesNewBackPlateMaterialInstance: false
                         CreatesNewIconMaterialInstance: false
                         Font: a1bec550-b538-4416-acc3-83ca62a349c7
@@ -2583,6 +2589,8 @@ Items:
                     additionalComponentList:
                       - !Evergine.MRTK.SDK.Features.UX.Components.Configurators.StandardButtonConfigurator,Evergine.MRTK
                         Id: 6bb78813-ffad-40d0-a1f2-dcea09261861
+                        AllowBackPlateNullMaterial: false
+                        AllowIconNullMaterial: false
                         CreatesNewBackPlateMaterialInstance: false
                         CreatesNewIconMaterialInstance: false
                         Font: a1bec550-b538-4416-acc3-83ca62a349c7
@@ -2647,6 +2655,8 @@ Items:
                     additionalComponentList:
                       - !Evergine.MRTK.SDK.Features.UX.Components.Configurators.StandardButtonConfigurator,Evergine.MRTK
                         Id: 6bb78813-ffad-40d0-a1f2-dcea09261861
+                        AllowBackPlateNullMaterial: false
+                        AllowIconNullMaterial: false
                         CreatesNewBackPlateMaterialInstance: false
                         CreatesNewIconMaterialInstance: false
                         Font: a1bec550-b538-4416-acc3-83ca62a349c7
@@ -2711,6 +2721,8 @@ Items:
                     additionalComponentList:
                       - !Evergine.MRTK.SDK.Features.UX.Components.Configurators.StandardButtonConfigurator,Evergine.MRTK
                         Id: 6bb78813-ffad-40d0-a1f2-dcea09261861
+                        AllowBackPlateNullMaterial: false
+                        AllowIconNullMaterial: false
                         CreatesNewBackPlateMaterialInstance: false
                         CreatesNewIconMaterialInstance: false
                         Font: a1bec550-b538-4416-acc3-83ca62a349c7
@@ -2876,6 +2888,8 @@ Items:
                     additionalComponentList:
                       - !Evergine.MRTK.SDK.Features.UX.Components.Configurators.StandardButtonConfigurator,Evergine.MRTK
                         Id: 49af8c4b-22a4-43a3-8612-75cc4226a960
+                        AllowBackPlateNullMaterial: false
+                        AllowIconNullMaterial: false
                         CreatesNewBackPlateMaterialInstance: false
                         CreatesNewIconMaterialInstance: false
                         Font: a1bec550-b538-4416-acc3-83ca62a349c7
@@ -2929,6 +2943,8 @@ Items:
                     additionalComponentList:
                       - !Evergine.MRTK.SDK.Features.UX.Components.Configurators.StandardButtonConfigurator,Evergine.MRTK
                         Id: 49af8c4b-22a4-43a3-8612-75cc4226a960
+                        AllowBackPlateNullMaterial: false
+                        AllowIconNullMaterial: false
                         CreatesNewBackPlateMaterialInstance: false
                         CreatesNewIconMaterialInstance: false
                         Font: a1bec550-b538-4416-acc3-83ca62a349c7
@@ -2982,6 +2998,8 @@ Items:
                     additionalComponentList:
                       - !Evergine.MRTK.SDK.Features.UX.Components.Configurators.StandardButtonConfigurator,Evergine.MRTK
                         Id: 49af8c4b-22a4-43a3-8612-75cc4226a960
+                        AllowBackPlateNullMaterial: false
+                        AllowIconNullMaterial: false
                         CreatesNewBackPlateMaterialInstance: false
                         CreatesNewIconMaterialInstance: false
                         Font: a1bec550-b538-4416-acc3-83ca62a349c7
@@ -3028,6 +3046,8 @@ Items:
                     additionalComponentList:
                       - !Evergine.MRTK.SDK.Features.UX.Components.Configurators.StandardButtonConfigurator,Evergine.MRTK
                         Id: 49af8c4b-22a4-43a3-8612-75cc4226a960
+                        AllowBackPlateNullMaterial: false
+                        AllowIconNullMaterial: false
                         CreatesNewBackPlateMaterialInstance: false
                         CreatesNewIconMaterialInstance: false
                         Font: a1bec550-b538-4416-acc3-83ca62a349c7
@@ -3182,6 +3202,8 @@ Items:
                     additionalComponentList:
                       - !Evergine.MRTK.Demo.Components.MultiStateButtons.MultiStateButtonConfigurator,Evergine.MRTK.Demo
                         Id: 9abca191-be1b-4eb6-af84-6aa91b21d43f
+                        AllowBackPlateNullMaterial: false
+                        AllowIconNullMaterial: false
                         CreatesNewBackPlateMaterialInstance: false
                         CreatesNewIconMaterialInstance: false
                         Font: a1bec550-b538-4416-acc3-83ca62a349c7
@@ -3197,6 +3219,8 @@ Items:
                         Text: Option A
                       - !Evergine.MRTK.Demo.Components.MultiStateButtons.MultiStateButtonConfigurator,Evergine.MRTK.Demo
                         Id: bbccd43b-fa26-4aaa-9ce5-5311626e1b67
+                        AllowBackPlateNullMaterial: false
+                        AllowIconNullMaterial: false
                         CreatesNewBackPlateMaterialInstance: false
                         CreatesNewIconMaterialInstance: false
                         Font: null
@@ -3212,6 +3236,8 @@ Items:
                         Text: Option B
                       - !Evergine.MRTK.Demo.Components.MultiStateButtons.MultiStateButtonConfigurator,Evergine.MRTK.Demo
                         Id: 2852ce44-e002-406e-a893-83da2a78825a
+                        AllowBackPlateNullMaterial: false
+                        AllowIconNullMaterial: false
                         CreatesNewBackPlateMaterialInstance: false
                         CreatesNewIconMaterialInstance: false
                         Font: null
@@ -3265,6 +3291,8 @@ Items:
                     additionalComponentList:
                       - !Evergine.MRTK.Demo.Components.MultiStateButtons.MultiStateButtonConfigurator,Evergine.MRTK.Demo
                         Id: 9abca191-be1b-4eb6-af84-6aa91b21d43f
+                        AllowBackPlateNullMaterial: false
+                        AllowIconNullMaterial: false
                         CreatesNewBackPlateMaterialInstance: false
                         CreatesNewIconMaterialInstance: false
                         Font: a1bec550-b538-4416-acc3-83ca62a349c7
@@ -3280,6 +3308,8 @@ Items:
                         Text: Option A
                       - !Evergine.MRTK.Demo.Components.MultiStateButtons.MultiStateButtonConfigurator,Evergine.MRTK.Demo
                         Id: bbccd43b-fa26-4aaa-9ce5-5311626e1b67
+                        AllowBackPlateNullMaterial: false
+                        AllowIconNullMaterial: false
                         CreatesNewBackPlateMaterialInstance: false
                         CreatesNewIconMaterialInstance: false
                         Font: null
@@ -3295,6 +3325,8 @@ Items:
                         Text: Option B
                       - !Evergine.MRTK.Demo.Components.MultiStateButtons.MultiStateButtonConfigurator,Evergine.MRTK.Demo
                         Id: 2852ce44-e002-406e-a893-83da2a78825a
+                        AllowBackPlateNullMaterial: false
+                        AllowIconNullMaterial: false
                         CreatesNewBackPlateMaterialInstance: false
                         CreatesNewIconMaterialInstance: false
                         Font: null
@@ -3348,6 +3380,8 @@ Items:
                     additionalComponentList:
                       - !Evergine.MRTK.Demo.Components.MultiStateButtons.MultiStateButtonConfigurator,Evergine.MRTK.Demo
                         Id: 9abca191-be1b-4eb6-af84-6aa91b21d43f
+                        AllowBackPlateNullMaterial: false
+                        AllowIconNullMaterial: false
                         CreatesNewBackPlateMaterialInstance: false
                         CreatesNewIconMaterialInstance: false
                         Font: a1bec550-b538-4416-acc3-83ca62a349c7
@@ -3363,6 +3397,8 @@ Items:
                         Text: Option A
                       - !Evergine.MRTK.Demo.Components.MultiStateButtons.MultiStateButtonConfigurator,Evergine.MRTK.Demo
                         Id: bbccd43b-fa26-4aaa-9ce5-5311626e1b67
+                        AllowBackPlateNullMaterial: false
+                        AllowIconNullMaterial: false
                         CreatesNewBackPlateMaterialInstance: false
                         CreatesNewIconMaterialInstance: false
                         Font: null
@@ -3378,6 +3414,8 @@ Items:
                         Text: Option B
                       - !Evergine.MRTK.Demo.Components.MultiStateButtons.MultiStateButtonConfigurator,Evergine.MRTK.Demo
                         Id: 2852ce44-e002-406e-a893-83da2a78825a
+                        AllowBackPlateNullMaterial: false
+                        AllowIconNullMaterial: false
                         CreatesNewBackPlateMaterialInstance: false
                         CreatesNewIconMaterialInstance: false
                         Font: null
@@ -7842,7 +7880,7 @@ Items:
 Managers:
   - !Evergine.Framework.Managers.EnvironmentManager,Evergine.Framework
     Id: 0b6695c7-b505-442d-b0e2-8e2791c63949
-    IBLReflectionProbe: d9a1b71e-d7a4-43b2-b251-98189ac46527
+    IBLReflectionProbe: 8583ebad-7beb-46e8-9ddf-b50a170fb54b
     IntensityMultiplier: 1.0
     IsEnabled: true
     Strategy: Automatically

@@ -68,6 +68,16 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Configurators
         public bool CreatesNewIconMaterialInstance { get; set; }
 
         /// <summary>
+        /// Gets or sets a value indicating whether the null material will be allowed for the backplate.
+        /// </summary>
+        public bool AllowBackPlateNullMaterial { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the null material will be allowed for the icon.
+        /// </summary>
+        public bool AllowIconNullMaterial { get; set; }
+
+        /// <summary>
         /// Gets or sets button icon.
         /// </summary>
         public Material Icon
@@ -151,6 +161,9 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Configurators
 
             this.plateConfigurator.CreatesNewMaterialInstance = this.CreatesNewBackPlateMaterialInstance;
             this.iconConfigurator.CreatesNewMaterialInstance = this.CreatesNewIconMaterialInstance;
+
+            this.plateConfigurator.AllowNullMaterial = this.AllowBackPlateNullMaterial;
+            this.iconConfigurator.AllowNullMaterial = this.AllowIconNullMaterial;
 
             this.plateConfigurator.TargetMaterialComponent = this.plateMaterial;
             this.iconConfigurator.TargetMaterialComponent = this.iconMaterial;

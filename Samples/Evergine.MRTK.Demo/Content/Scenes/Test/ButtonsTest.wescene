@@ -25,10 +25,10 @@ Items:
       - !Evergine.Framework.Graphics.PhotometricDirectionalLight,Evergine.Framework
         Id: d9abdcf3-5231-4fa2-bb59-f1a9ba6e555c
         Color:
-          A: 255
-          B: 253
-          G: 248
-          R: 255
+          A: 0
+          B: 228
+          G: 240
+          R: 249
         ColorByTemperature: true
         DebugMode: false
         GammaDistribution: 0.800000012
@@ -37,10 +37,10 @@ Items:
         IsEnabled: true
         IsShadowEnabled: false
         LinearColor:
-          A: 1.0
-          B: 0.982790232
-          G: 0.943362474
-          R: 1.0
+          A: 0.0
+          B: 0.779089451
+          G: 0.874792576
+          R: 0.9453125
         ShadowBias: 0.00499999989
         ShadowDistance: 80.0
         ShadowOpacity: 1.0
@@ -81,7 +81,7 @@ Items:
         Id: 88e25e58-d6ca-4934-a280-294f805c26bd
         AsignedTo: Default
         IsEnabled: true
-        Material: a2c5b95d-080e-42cf-a6ec-7f282e071b70
+        Material: de7dd9c4-72a6-4aac-b209-3f9d223b9a2f
         UseCopy: false
       - !Evergine.Components.Graphics3D.SphereMesh,Evergine.Components
         Id: 9369593f-c243-4632-b7c2-8b3e94abc256
@@ -459,6 +459,8 @@ Items:
                         additionalComponentList:
                           - !Evergine.MRTK.SDK.Features.UX.Components.Configurators.StandardButtonConfigurator,Evergine.MRTK
                             Id: ead94537-fb3a-42ea-a4b7-626dddfa96d4
+                            AllowBackPlateNullMaterial: false
+                            AllowIconNullMaterial: false
                             CreatesNewBackPlateMaterialInstance: false
                             CreatesNewIconMaterialInstance: false
                             Font: a1bec550-b538-4416-acc3-83ca62a349c7
@@ -505,6 +507,8 @@ Items:
                         additionalComponentList:
                           - !Evergine.MRTK.SDK.Features.UX.Components.Configurators.StandardButtonConfigurator,Evergine.MRTK
                             Id: 38a86398-a70a-421a-8ac8-415c46b106c0
+                            AllowBackPlateNullMaterial: false
+                            AllowIconNullMaterial: false
                             CreatesNewBackPlateMaterialInstance: false
                             CreatesNewIconMaterialInstance: true
                             Font: a1bec550-b538-4416-acc3-83ca62a349c7
@@ -559,6 +563,8 @@ Items:
                         additionalComponentList:
                           - !Evergine.MRTK.SDK.Features.UX.Components.Configurators.StandardButtonConfigurator,Evergine.MRTK
                             Id: ef62e33f-9994-4304-9795-67d76b0609a2
+                            AllowBackPlateNullMaterial: false
+                            AllowIconNullMaterial: false
                             CreatesNewBackPlateMaterialInstance: true
                             CreatesNewIconMaterialInstance: true
                             Font: a1bec550-b538-4416-acc3-83ca62a349c7
@@ -1010,6 +1016,8 @@ Items:
                                     IsEnabled: true
                                   - !Evergine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleButtonConfigurator,Evergine.MRTK
                                     Id: fea0498a-3e99-491d-a2cb-0f21ba3d2d3e
+                                    AllowBackPlateNullMaterial: false
+                                    AllowIconNullMaterial: false
                                     CreatesNewBackPlateMaterialInstance: false
                                     CreatesNewIconMaterialInstance: true
                                     Font: a1bec550-b538-4416-acc3-83ca62a349c7
@@ -1025,6 +1033,8 @@ Items:
                                     Text: I am off
                                   - !Evergine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleButtonConfigurator,Evergine.MRTK
                                     Id: 39a5005e-168e-4364-8f1b-69cdb64521a8
+                                    AllowBackPlateNullMaterial: false
+                                    AllowIconNullMaterial: false
                                     CreatesNewBackPlateMaterialInstance: false
                                     CreatesNewIconMaterialInstance: true
                                     Font: a1bec550-b538-4416-acc3-83ca62a349c7
@@ -1181,6 +1191,8 @@ Items:
                                     IsEnabled: true
                                   - !Evergine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleButtonConfigurator,Evergine.MRTK
                                     Id: c75e214d-1bd5-4561-a6a9-fcb32b28f0b5
+                                    AllowBackPlateNullMaterial: false
+                                    AllowIconNullMaterial: false
                                     CreatesNewBackPlateMaterialInstance: false
                                     CreatesNewIconMaterialInstance: true
                                     Font: a1bec550-b538-4416-acc3-83ca62a349c7
@@ -1196,6 +1208,8 @@ Items:
                                     Text: I am off
                                   - !Evergine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleButtonConfigurator,Evergine.MRTK
                                     Id: 1233aca5-0c8c-48f3-99de-8464fc79f995
+                                    AllowBackPlateNullMaterial: false
+                                    AllowIconNullMaterial: false
                                     CreatesNewBackPlateMaterialInstance: false
                                     CreatesNewIconMaterialInstance: true
                                     Font: a1bec550-b538-4416-acc3-83ca62a349c7
@@ -3893,7 +3907,7 @@ Items:
 Managers:
   - !Evergine.Framework.Managers.EnvironmentManager,Evergine.Framework
     Id: ee2d8654-8b9f-42fc-93bb-9e632d1a8efc
-    IBLReflectionProbe: bd512909-555a-4c5d-b4d9-afd2dc5540a1
+    IBLReflectionProbe: 9e86e84c-dc70-4f3b-99f5-251ee759478f
     IntensityMultiplier: 1.0
     IsEnabled: true
     Strategy: Automatically
