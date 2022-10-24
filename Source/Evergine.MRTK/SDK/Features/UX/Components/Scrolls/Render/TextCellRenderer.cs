@@ -44,7 +44,7 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Scrolls
                             Color = color,
                             Layer = layer,
                             Size = new Vector2(width, height),
-                            ScaleFactor = 0.01f,
+                            ScaleFactor = 0.006f,
                             VerticalAlignment = VerticalAlignment.Center,
                         })
                         .AddComponent(new Text3DRenderer()
