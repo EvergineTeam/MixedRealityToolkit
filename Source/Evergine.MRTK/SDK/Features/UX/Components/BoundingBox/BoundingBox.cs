@@ -14,6 +14,7 @@ using Evergine.MRTK.Base.EventDatum.Input;
 using Evergine.MRTK.Base.Interfaces.InputSystem.Handlers;
 using Evergine.MRTK.Emulation;
 using Evergine.MRTK.SDK.Features.Input.Handlers;
+using Evergine.MRTK.SDK.Features.Input.Handlers.Manipulation;
 using Evergine.MRTK.Services.InputSystem;
 
 namespace Evergine.MRTK.SDK.Features.UX.Components.BoundingBox
@@ -31,6 +32,9 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.BoundingBox
 
         [BindComponent(isRequired: false)]
         private BoxCollider3D boxCollider3D = null;
+
+        [BindComponent(isRequired: false)]
+        private SimpleManipulationHandler simpleManipulationHandler = null;
 
         /// <summary>
         /// Gets or sets a value indicating whether the bounding collider should be calculated automatically
@@ -138,6 +142,26 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.BoundingBox
         }
 
         private Material boxMaterial;
+
+        /// <summary>
+        /// Gets or sets the material applied to the box when in a focused state.
+        /// </summary>
+        [RenderProperty(Tooltip = "The material applied to the box when in a focused state. If set to null, no change will occur when focused.")]
+        public Material BoxFocusedMaterial
+        {
+            get => this.boxFocusedMaterial;
+
+            set
+            {
+                if (this.boxFocusedMaterial != value)
+                {
+                    this.boxFocusedMaterial = value;
+                    this.CreateRig();
+                }
+            }
+        }
+
+        private Material boxFocusedMaterial;
 
         /// <summary>
         /// Gets or sets the material applied to the box when in a grabbed state.
@@ -567,7 +591,9 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.BoundingBox
         private Vector3 grabDiagonalDirection;
         private Vector3 currentRotationAxis;
 
-        private bool hasFocus;
+        private bool hasHandlerFocus;
+        private bool hasBoxGrab;
+        private bool hasBoxFocus;
 
         private void AdjustBoundingToChildren()
         {
@@ -627,6 +653,14 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.BoundingBox
 
             this.boxCollider3D.OnShapeChanged += this.BoxCollider3D_OnShapeChanged;
 
+            if (this.simpleManipulationHandler != null)
+            {
+                this.simpleManipulationHandler.ManipulationStarted += this.SimpleManipulationHandler_ManipulationStarted;
+                this.simpleManipulationHandler.ManipulationEnded += this.SimpleManipulationHandler_ManipulationEnded;
+                this.simpleManipulationHandler.TouchStarted += this.SimpleManipulationHandler_TouchStarted;
+                this.simpleManipulationHandler.TouchEnded += this.SimpleManipulationHandler_TouchEnded;
+            }
+
             return true;
         }
 
@@ -638,6 +672,14 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.BoundingBox
             if (this.boxCollider3D != null)
             {
                 this.boxCollider3D.OnShapeChanged -= this.BoxCollider3D_OnShapeChanged;
+            }
+
+            if (this.simpleManipulationHandler != null)
+            {
+                this.simpleManipulationHandler.ManipulationStarted -= this.SimpleManipulationHandler_ManipulationStarted;
+                this.simpleManipulationHandler.ManipulationEnded -= this.SimpleManipulationHandler_ManipulationEnded;
+                this.simpleManipulationHandler.TouchStarted -= this.SimpleManipulationHandler_TouchStarted;
+                this.simpleManipulationHandler.TouchEnded -= this.SimpleManipulationHandler_TouchEnded;
             }
         }
 
@@ -834,8 +876,8 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.BoundingBox
 
             faceRotations[0] = new Vector3(0, 0, 1);
             faceRotations[1] = new Vector3(0, 0, -1);
-            faceRotations[2] = new Vector3(0, 1, 0);
-            faceRotations[3] = new Vector3(0, -1, 0);
+            faceRotations[2] = new Vector3(0, 0, 0);
+            faceRotations[3] = new Vector3(0, 0, 2);
             faceRotations[4] = new Vector3(1, 0, 0);
             faceRotations[5] = new Vector3(-1, 0, 0);
 
@@ -918,7 +960,7 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.BoundingBox
 
         private void AddHelpers()
         {
-            // Add corners
+            // Add scale handles in the corners
             var cornerCenters = this.GetCornerPositionsFromBounds();
             var cornerRotations = this.CalculateCornerRotations();
 
@@ -936,7 +978,7 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.BoundingBox
                 }
             }
 
-            // Add face balls
+            // Add non-uniform scale handles in the center of the box faces
             var faceCenters = this.CalculateFaceCenters();
             var faceRotations = this.CalculateFaceRotations();
 
@@ -957,7 +999,7 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.BoundingBox
                     (AxisType)((i / 2) + 1));
             }
 
-            // Add midpoints
+            // Add rotation handles in the center of the box edges
             var edgeCenters = this.CalculateEdgeCenters(cornerCenters);
             var edgeRotations = this.CalculateEdgeRotations();
             var edgeAxes = this.CalculateAxisTypes();
@@ -979,12 +1021,12 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.BoundingBox
                     edgeAxes[i]);
             }
 
-            // Add links
+            // Add links in the box edges
             if (this.showWireframe)
             {
                 for (int i = 0; i < edgeCenters.Length; ++i)
                 {
-                    Vector3 rotation = Vector3.Zero;
+                    var rotation = Vector3.Zero;
 
                     switch (edgeAxes[i])
                     {
@@ -1239,7 +1281,6 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.BoundingBox
                     this.currentHandle = handle;
 
                     this.ApplyMaterialToAllComponents(this.currentHandle.BaseEntity, this.handleGrabbedMaterial);
-                    this.ApplyMaterialToAllComponents(this.boxDisplay, this.boxGrabbedMaterial);
 
                     this.currentCursor = eventData.Cursor;
                     this.initialGrabPoint = eventData.Position;
@@ -1377,8 +1418,7 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.BoundingBox
         {
             if (this.currentCursor == eventData.Cursor)
             {
-                this.ApplyMaterialToAllComponents(this.currentHandle.BaseEntity, this.hasFocus ? this.handleFocusedMaterial : this.handleMaterial);
-                this.ApplyMaterialToAllComponents(this.boxDisplay, this.boxMaterial);
+                this.ApplyMaterialToAllComponents(this.currentHandle.BaseEntity, this.hasHandlerFocus ? this.handleFocusedMaterial : this.handleMaterial);
 
                 switch (this.currentHandle.Type)
                 {
@@ -1425,7 +1465,7 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.BoundingBox
                         this.ApplyMaterialToAllComponents(target, this.HandleFocusedMaterial);
                     }
 
-                    this.hasFocus = true;
+                    this.hasHandlerFocus = true;
                 }
             }
         }
@@ -1449,9 +1489,43 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.BoundingBox
                         this.ApplyMaterialToAllComponents(target, this.HandleMaterial);
                     }
 
-                    this.hasFocus = false;
+                    this.hasHandlerFocus = false;
                 }
             }
+        }
+
+        private void SimpleManipulationHandler_ManipulationStarted(object sender, EventArgs e)
+        {
+            this.ApplyMaterialToAllComponents(this.boxDisplay, this.boxGrabbedMaterial);
+
+            this.hasBoxGrab = true;
+        }
+
+        private void SimpleManipulationHandler_ManipulationEnded(object sender, EventArgs e)
+        {
+            this.ApplyMaterialToAllComponents(this.boxDisplay, this.hasBoxFocus && this.boxFocusedMaterial != null ? this.boxFocusedMaterial : this.boxMaterial);
+
+            this.hasBoxGrab = false;
+        }
+
+        private void SimpleManipulationHandler_TouchStarted(object sender, EventArgs e)
+        {
+            if (!this.hasBoxGrab && this.boxFocusedMaterial != null && this.currentHandle == null)
+            {
+                this.ApplyMaterialToAllComponents(this.boxDisplay, this.boxFocusedMaterial);
+            }
+
+            this.hasBoxFocus = true;
+        }
+
+        private void SimpleManipulationHandler_TouchEnded(object sender, EventArgs e)
+        {
+            if (!this.hasBoxGrab && this.boxFocusedMaterial != null && this.currentHandle == null)
+            {
+                this.ApplyMaterialToAllComponents(this.boxDisplay, this.boxMaterial);
+            }
+
+            this.hasBoxFocus = false;
         }
     }
 }

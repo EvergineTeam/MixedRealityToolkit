@@ -17,7 +17,7 @@ namespace Evergine.MRTK.SDK.Features.Input.Handlers.Manipulation
     /// <summary>
     /// A simple manipulation handler.
     /// </summary>
-    public class SimpleManipulationHandler : Behavior, IMixedRealityPointerHandler
+    public class SimpleManipulationHandler : Behavior, IMixedRealityPointerHandler, IMixedRealityTouchHandler
     {
         /// <summary>
         /// The transform.
@@ -70,6 +70,16 @@ namespace Evergine.MRTK.SDK.Features.Input.Handlers.Manipulation
         /// The manipulation ended event.
         /// </summary>
         public event EventHandler ManipulationEnded;
+
+        /// <summary>
+        /// The touch started event.
+        /// </summary>
+        public event EventHandler TouchStarted;
+
+        /// <summary>
+        /// The touch ended event.
+        /// </summary>
+        public event EventHandler TouchEnded;
 
         /// <summary>
         /// Constraints.
@@ -486,6 +496,29 @@ namespace Evergine.MRTK.SDK.Features.Input.Handlers.Manipulation
                 this.rigidBody.AngularVelocity = Quaternion.ToEuler(angularVelocity);
 
                 this.rigidBody.WakeUp();
+            }
+        }
+
+        /// <inheritdoc/>
+        public void OnTouchStarted(HandTrackingInputEventData eventData)
+        {
+            if (eventData.CurrentTarget == this.Owner)
+            {
+                this.TouchStarted?.Invoke(this, EventArgs.Empty);
+            }
+        }
+
+        /// <inheritdoc/>
+        public void OnTouchUpdated(HandTrackingInputEventData eventData)
+        {
+        }
+
+        /// <inheritdoc/>
+        public void OnTouchCompleted(HandTrackingInputEventData eventData)
+        {
+            if (eventData.CurrentTarget == this.Owner)
+            {
+                this.TouchEnded?.Invoke(this, EventArgs.Empty);
             }
         }
     }

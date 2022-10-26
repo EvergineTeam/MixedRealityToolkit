@@ -6844,6 +6844,7 @@ Items:
                   - !Evergine.MRTK.SDK.Features.UX.Components.BoundingBox.BoundingBox,Evergine.MRTK
                     Id: 57c9c2d9-31d3-4351-a4b1-8fed49fe5118
                     AutoCalculate: false
+                    BoxFocusedMaterial: 370707c3-dd0f-4d47-a5c3-17b3abde46b0
                     BoxGrabbedMaterial: 0852af68-ed44-4dd5-bebb-05c15449d498
                     BoxMaterial: 76254053-dba8-4ecd-8ffd-2989ae519c06
                     BoxPadding:
@@ -6856,7 +6857,7 @@ Items:
                     HandleGrabbedMaterial: 7c6dfc11-0f01-4d22-bfc9-bc5ca4fae227
                     HandleMaterial: 9adff77b-f6b6-4683-bf28-243fafea5436
                     IsEnabled: true
-                    LinkScale: 0.00100000005
+                    LinkScale: 0.00100000016
                     MaintainHandlesApparentSize: false
                     RotationHandlePrefab: 5e18a808-fd7d-49f9-8187-d9256af252c7
                     RotationHandleScale: 0.0299999975
@@ -6946,6 +6947,7 @@ Items:
               - !Evergine.MRTK.SDK.Features.UX.Components.BoundingBox.BoundingBox,Evergine.MRTK
                 Id: e5b18d5f-4bd1-453c-bb55-3e44a7845933
                 AutoCalculate: false
+                BoxFocusedMaterial: 370707c3-dd0f-4d47-a5c3-17b3abde46b0
                 BoxGrabbedMaterial: 0852af68-ed44-4dd5-bebb-05c15449d498
                 BoxMaterial: 76254053-dba8-4ecd-8ffd-2989ae519c06
                 BoxPadding:
@@ -7070,6 +7072,7 @@ Items:
                   - !Evergine.MRTK.SDK.Features.UX.Components.BoundingBox.BoundingBox,Evergine.MRTK
                     Id: 2e64bfc9-2248-46d9-bb3d-7d7b591d6372
                     AutoCalculate: false
+                    BoxFocusedMaterial: 370707c3-dd0f-4d47-a5c3-17b3abde46b0
                     BoxGrabbedMaterial: 0852af68-ed44-4dd5-bebb-05c15449d498
                     BoxMaterial: 76254053-dba8-4ecd-8ffd-2989ae519c06
                     BoxPadding:
@@ -7156,6 +7159,7 @@ Items:
               - !Evergine.MRTK.SDK.Features.UX.Components.BoundingBox.BoundingBox,Evergine.MRTK
                 Id: d7f0823f-63ac-48a7-a97b-469f1c5a5704
                 AutoCalculate: false
+                BoxFocusedMaterial: null
                 BoxGrabbedMaterial: 0852af68-ed44-4dd5-bebb-05c15449d498
                 BoxMaterial: null
                 BoxPadding:
@@ -7880,7 +7884,7 @@ Items:
 Managers:
   - !Evergine.Framework.Managers.EnvironmentManager,Evergine.Framework
     Id: 0b6695c7-b505-442d-b0e2-8e2791c63949
-    IBLReflectionProbe: 8583ebad-7beb-46e8-9ddf-b50a170fb54b
+    IBLReflectionProbe: d9a1b71e-d7a4-43b2-b251-98189ac46527
     IntensityMultiplier: 1.0
     IsEnabled: true
     Strategy: Automatically
