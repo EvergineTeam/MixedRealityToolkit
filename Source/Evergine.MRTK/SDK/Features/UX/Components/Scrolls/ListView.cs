@@ -243,7 +243,7 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Scrolls
             this.scrollBarPlaneMesh.Width = this.BarWidth;
 
             var barScale = this.scrollBarTransform.Scale;
-            barScale.Y = this.backgroundPlaneMesh.Height / this.ContentSize.Y;
+            barScale.Y = this.backgroundPlaneMesh.Height > this.ContentSize.Y ? 1 : this.backgroundPlaneMesh.Height / this.ContentSize.Y;
             this.scrollBarTransform.Scale = barScale;
 
             this.barOrigin = new Vector3((this.backgroundPlaneMesh.Width * 0.5f) - this.scrollBarPlaneMesh.Width, this.backgroundPlaneMesh.Height * 0.5f, this.ZContentDistance);
@@ -399,10 +399,13 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Scrolls
             }
 
             // Bar
-            var barPosition = this.scrollBarTransform.LocalPosition;
-            float contentDeltaNormalized = MathHelper.Clamp(this.contentTransform.LocalPosition.Y / (this.ContentSize.Y - this.backgroundPlaneMesh.Height), 0, 1);
-            barPosition.Y = this.barOrigin.Y + (contentDeltaNormalized * (this.backgroundPlaneMesh.Height - this.scrollBarTransform.Scale.Y));
-            this.scrollBarTransform.LocalPosition = barPosition;
+            if (this.scrollBarTransform.Scale.Y != 1)
+            {
+                var barPosition = this.scrollBarTransform.LocalPosition;
+                float contentDeltaNormalized = MathHelper.Clamp(this.contentTransform.LocalPosition.Y / (this.ContentSize.Y - this.backgroundPlaneMesh.Height), 0, 1);
+                barPosition.Y = this.barOrigin.Y + (contentDeltaNormalized * (this.backgroundPlaneMesh.Height - this.scrollBarTransform.Scale.Y));
+                this.scrollBarTransform.LocalPosition = barPosition;
+            }
 
             // Selection
             var selectionPosition = this.selectionTransform.LocalPosition;
