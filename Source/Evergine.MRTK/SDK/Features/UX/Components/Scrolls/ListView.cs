@@ -168,9 +168,12 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Scrolls
             return result;
         }
 
-        private void Refresh()
+        /// <summary>
+        /// Refresh the layout.
+        /// </summary>
+        public void Refresh()
         {
-            if (this.dataSource == null || this.render == null)
+            if (this.dataSource == null || this.render == null || this.dataSource.Data.Count == 0)
             {
                 return;
             }
