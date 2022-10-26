@@ -1,36 +1,6 @@
 !Evergine.Framework.Assets.AssetSources.Entities.SceneModel,Evergine.Framework
 Items:
   - !Evergine.Framework.Assets.AssetSources.Entities.EntityItemModel,Evergine.Framework
-    Name: EnvironmentManager
-    Tag: null
-    IsEnabled: true
-    IsStatic: false
-    Components:
-      - !Evergine.Framework.Graphics.Transform3D,Evergine.Framework
-        Id: d91a504c-b26f-47e8-8763-def1f58bf0c1
-        IsEnabled: true
-        LocalOrientation:
-          W: 1.0
-          X: 0.0
-          Y: 0.0
-          Z: 0.0
-        LocalPosition:
-          X: 0.999729156
-          Y: 1.580235
-          Z: 0.843612909
-        LocalScale:
-          X: 1.0
-          Y: 1.0
-          Z: 1.0
-      - !Evergine.Components.Graphics3D.EnvironmentComponent,Evergine.Framework
-        Id: 123f9559-4071-45e5-9708-ea09bae31c5f
-        IntensityMultiplier: 1.0
-        IsEnabled: true
-        ReflectionProbe: 0f2bae0d-3847-4ff8-8606-1f519fed6798
-        Strategy: Automatically
-    Children: []
-    Id: ad8017e0-08ed-427c-97ed-a9c055150ae7
-  - !Evergine.Framework.Assets.AssetSources.Entities.EntityItemModel,Evergine.Framework
     Name: SunLight
     Tag: null
     IsEnabled: true
@@ -111,7 +81,8 @@ Items:
         Id: 88e25e58-d6ca-4934-a280-294f805c26bd
         AsignedTo: Default
         IsEnabled: true
-        Material: 643b4466-e256-478c-8b2b-571d54d2424d
+        Material: de7dd9c4-72a6-4aac-b209-3f9d223b9a2f
+        UseCopy: false
       - !Evergine.Components.Graphics3D.SphereMesh,Evergine.Components
         Id: 9369593f-c243-4632-b7c2-8b3e94abc256
         Diameter: 1.0
@@ -488,6 +459,8 @@ Items:
                         additionalComponentList:
                           - !Evergine.MRTK.SDK.Features.UX.Components.Configurators.StandardButtonConfigurator,Evergine.MRTK
                             Id: ead94537-fb3a-42ea-a4b7-626dddfa96d4
+                            AllowBackPlateNullMaterial: false
+                            AllowIconNullMaterial: false
                             CreatesNewBackPlateMaterialInstance: false
                             CreatesNewIconMaterialInstance: false
                             Font: a1bec550-b538-4416-acc3-83ca62a349c7
@@ -534,6 +507,8 @@ Items:
                         additionalComponentList:
                           - !Evergine.MRTK.SDK.Features.UX.Components.Configurators.StandardButtonConfigurator,Evergine.MRTK
                             Id: 38a86398-a70a-421a-8ac8-415c46b106c0
+                            AllowBackPlateNullMaterial: false
+                            AllowIconNullMaterial: false
                             CreatesNewBackPlateMaterialInstance: false
                             CreatesNewIconMaterialInstance: true
                             Font: a1bec550-b538-4416-acc3-83ca62a349c7
@@ -588,6 +563,8 @@ Items:
                         additionalComponentList:
                           - !Evergine.MRTK.SDK.Features.UX.Components.Configurators.StandardButtonConfigurator,Evergine.MRTK
                             Id: ef62e33f-9994-4304-9795-67d76b0609a2
+                            AllowBackPlateNullMaterial: false
+                            AllowIconNullMaterial: false
                             CreatesNewBackPlateMaterialInstance: true
                             CreatesNewIconMaterialInstance: true
                             Font: a1bec550-b538-4416-acc3-83ca62a349c7
@@ -1039,6 +1016,8 @@ Items:
                                     IsEnabled: true
                                   - !Evergine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleButtonConfigurator,Evergine.MRTK
                                     Id: fea0498a-3e99-491d-a2cb-0f21ba3d2d3e
+                                    AllowBackPlateNullMaterial: false
+                                    AllowIconNullMaterial: false
                                     CreatesNewBackPlateMaterialInstance: false
                                     CreatesNewIconMaterialInstance: true
                                     Font: a1bec550-b538-4416-acc3-83ca62a349c7
@@ -1054,6 +1033,8 @@ Items:
                                     Text: I am off
                                   - !Evergine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleButtonConfigurator,Evergine.MRTK
                                     Id: 39a5005e-168e-4364-8f1b-69cdb64521a8
+                                    AllowBackPlateNullMaterial: false
+                                    AllowIconNullMaterial: false
                                     CreatesNewBackPlateMaterialInstance: false
                                     CreatesNewIconMaterialInstance: true
                                     Font: a1bec550-b538-4416-acc3-83ca62a349c7
@@ -1210,6 +1191,8 @@ Items:
                                     IsEnabled: true
                                   - !Evergine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleButtonConfigurator,Evergine.MRTK
                                     Id: c75e214d-1bd5-4561-a6a9-fcb32b28f0b5
+                                    AllowBackPlateNullMaterial: false
+                                    AllowIconNullMaterial: false
                                     CreatesNewBackPlateMaterialInstance: false
                                     CreatesNewIconMaterialInstance: true
                                     Font: a1bec550-b538-4416-acc3-83ca62a349c7
@@ -1225,6 +1208,8 @@ Items:
                                     Text: I am off
                                   - !Evergine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleButtonConfigurator,Evergine.MRTK
                                     Id: 1233aca5-0c8c-48f3-99de-8464fc79f995
+                                    AllowBackPlateNullMaterial: false
+                                    AllowIconNullMaterial: false
                                     CreatesNewBackPlateMaterialInstance: false
                                     CreatesNewIconMaterialInstance: true
                                     Font: a1bec550-b538-4416-acc3-83ca62a349c7
@@ -3919,4 +3904,10 @@ Items:
             Id: fda77584-8d22-4095-9b14-ef4d8b4b881f
         Id: 3b297d23-f7d9-4d3d-a0ff-c5e996a24f65
     Id: 386cdfbd-5282-47d7-bcd3-0b9956b21f03
-Managers: []
+Managers:
+  - !Evergine.Framework.Managers.EnvironmentManager,Evergine.Framework
+    Id: ee2d8654-8b9f-42fc-93bb-9e632d1a8efc
+    IBLReflectionProbe: 9e86e84c-dc70-4f3b-99f5-251ee759478f
+    IntensityMultiplier: 1.0
+    IsEnabled: true
+    Strategy: Automatically

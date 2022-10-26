@@ -1,36 +1,6 @@
 !Evergine.Framework.Assets.AssetSources.Entities.SceneModel,Evergine.Framework
 Items:
   - !Evergine.Framework.Assets.AssetSources.Entities.EntityItemModel,Evergine.Framework
-    Name: EnvironmentManager
-    Tag: null
-    IsEnabled: true
-    IsStatic: false
-    Components:
-      - !Evergine.Framework.Graphics.Transform3D,Evergine.Framework
-        Id: d91a504c-b26f-47e8-8763-def1f58bf0c1
-        IsEnabled: true
-        LocalOrientation:
-          W: 1.0
-          X: 0.0
-          Y: 0.0
-          Z: 0.0
-        LocalPosition:
-          X: 0.999729156
-          Y: 1.580235
-          Z: 0.843612909
-        LocalScale:
-          X: 1.0
-          Y: 1.0
-          Z: 1.0
-      - !Evergine.Components.Graphics3D.EnvironmentComponent,Evergine.Framework
-        Id: 123f9559-4071-45e5-9708-ea09bae31c5f
-        IntensityMultiplier: 1.0
-        IsEnabled: true
-        ReflectionProbe: 82c69771-0da5-4d35-a1f2-3f95b2ea4231
-        Strategy: Automatically
-    Children: []
-    Id: ad8017e0-08ed-427c-97ed-a9c055150ae7
-  - !Evergine.Framework.Assets.AssetSources.Entities.EntityItemModel,Evergine.Framework
     Name: SunLight
     Tag: null
     IsEnabled: true
@@ -111,7 +81,8 @@ Items:
         Id: 88e25e58-d6ca-4934-a280-294f805c26bd
         AsignedTo: Default
         IsEnabled: true
-        Material: 60ac447f-cef3-4e54-9387-fd41d91d16ae
+        Material: efad6412-0dbd-4531-a073-95e32664e777
+        UseCopy: false
       - !Evergine.Components.Graphics3D.SphereMesh,Evergine.Components
         Id: 9369593f-c243-4632-b7c2-8b3e94abc256
         Diameter: 1.0
@@ -525,11 +496,11 @@ Items:
                         Name: Material
                         Target: e2cd7596-1a8b-4819-8457-0c7b0c8a2b1f
                         TypedValue: 78e9e4d7-711b-44b7-b673-9d2cb9f1220f
-                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%25601[[Evergine.Framework.Graphics.Font,Evergine.Framework]],Evergine.Framework
+                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Framework.Graphics.Font,Evergine.Framework]],Evergine.Framework
                         Name: Font
                         Target: da706d1c-05a2-4360-ae80-519c0fa5aaab
                         TypedValue: a1bec550-b538-4416-acc3-83ca62a349c7
-                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%25601[[Evergine.Framework.Graphics.Font,Evergine.Framework]],Evergine.Framework
+                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Framework.Graphics.Font,Evergine.Framework]],Evergine.Framework
                         Name: Font
                         Target: 0f01517a-c230-4313-83c9-91826912d8c9
                         TypedValue: a1bec550-b538-4416-acc3-83ca62a349c7
@@ -580,7 +551,7 @@ Items:
                         Name: Material
                         Target: e2cd7596-1a8b-4819-8457-0c7b0c8a2b1f
                         TypedValue: 3521d95f-b8ce-40cb-b4d0-c268f64496bd
-                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%25601[[Evergine.Framework.Graphics.Font,Evergine.Framework]],Evergine.Framework
+                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Framework.Graphics.Font,Evergine.Framework]],Evergine.Framework
                         Name: Font
                         Target: da706d1c-05a2-4360-ae80-519c0fa5aaab
                         TypedValue: a1bec550-b538-4416-acc3-83ca62a349c7
@@ -596,7 +567,7 @@ Items:
                           B: 216
                           G: 216
                           R: 6
-                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%25601[[Evergine.Framework.Graphics.Font,Evergine.Framework]],Evergine.Framework
+                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Framework.Graphics.Font,Evergine.Framework]],Evergine.Framework
                         Name: Font
                         Target: 0f01517a-c230-4313-83c9-91826912d8c9
                         TypedValue: a1bec550-b538-4416-acc3-83ca62a349c7
@@ -964,11 +935,11 @@ Items:
                           X: 0.0
                           Y: -0.0
                           Z: -0.707106769
-                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%25601[[Evergine.Framework.Graphics.Font,Evergine.Framework]],Evergine.Framework
+                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Framework.Graphics.Font,Evergine.Framework]],Evergine.Framework
                         Name: Font
                         Target: da706d1c-05a2-4360-ae80-519c0fa5aaab
                         TypedValue: a1bec550-b538-4416-acc3-83ca62a349c7
-                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%25601[[Evergine.Framework.Graphics.Font,Evergine.Framework]],Evergine.Framework
+                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Framework.Graphics.Font,Evergine.Framework]],Evergine.Framework
                         Name: Font
                         Target: 0f01517a-c230-4313-83c9-91826912d8c9
                         TypedValue: a1bec550-b538-4416-acc3-83ca62a349c7
@@ -977,4 +948,10 @@ Items:
             Id: 56b3e548-2be6-4f33-926a-230a3fd83421
         Id: 59b44705-0bb8-4341-8b5e-43cf8d364b08
     Id: 386cdfbd-5282-47d7-bcd3-0b9956b21f03
-Managers: []
+Managers:
+  - !Evergine.Framework.Managers.EnvironmentManager,Evergine.Framework
+    Id: 442fe9b0-c7e0-451a-b479-2497fdb64f6a
+    IBLReflectionProbe: 024b4d2f-cbe8-4819-8979-b669eb0c00ee
+    IntensityMultiplier: 1.0
+    IsEnabled: true
+    Strategy: Automatically

@@ -66,6 +66,11 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Configurators
         public bool CreatesNewMaterialInstance { get; set; }
 
         /// <summary>
+        /// Gets or sets a value indicating whether the null material will be allowed.
+        /// </summary>
+        public bool AllowNullMaterial { get; set; }
+
+        /// <summary>
         /// Indicates manager instance to be used.
         /// </summary>
         /// <param name="assetManager">Asset manager.</param>
@@ -82,17 +87,21 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Configurators
 
         private void OnMaterialUpdate()
         {
-            if (this.sourceMaterial != null && this.TargetMaterialComponent != null)
+            if ((this.AllowNullMaterial || this.sourceMaterial != null) && this.TargetMaterialComponent != null)
             {
                 if (this.cachedMaterial == null)
                 {
                     this.cachedMaterial = this.CreatesNewMaterialInstance
-                        ? this.sourceMaterial.LoadNewInstance(this.assetManager)
+                        ? this.sourceMaterial?.LoadNewInstance(this.assetManager)
                         : this.sourceMaterial;
                 }
 
                 this.TargetMaterialComponent.Material = this.cachedMaterial;
-                this.holoMaterial = new HoloGraphic(this.cachedMaterial);
+
+                if (this.cachedMaterial != null)
+                {
+                    this.holoMaterial = new HoloGraphic(this.cachedMaterial);
+                }
             }
         }
 

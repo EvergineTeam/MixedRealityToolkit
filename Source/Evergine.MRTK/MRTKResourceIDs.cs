@@ -26,6 +26,9 @@ namespace Evergine.MRTK
 
                 /// <summary> Asset Path (MRTK/Materials/BoundingBox/BoundingBoxWireframe.wemt) </summary>
                 public static readonly Guid BoundingBoxWireframe = new Guid("d04c6b19-b181-4798-8052-73388883abfe");
+
+                /// <summary> Asset Path (MRTK/Materials/BoundingBox/BoundingBoxHandleBlueFocused.wemt) </summary>
+                public static readonly Guid BoundingBoxHandleBlueFocused = new Guid("8e30ffce-70db-48f2-b3e1-a5737b0530fc");
             }
 
             public sealed class Buttons
