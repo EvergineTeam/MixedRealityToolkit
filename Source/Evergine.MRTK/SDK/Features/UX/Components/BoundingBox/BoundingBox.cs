@@ -834,8 +834,8 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.BoundingBox
 
             faceRotations[0] = new Vector3(0, 0, 1);
             faceRotations[1] = new Vector3(0, 0, -1);
-            faceRotations[2] = new Vector3(0, 1, 0);
-            faceRotations[3] = new Vector3(0, -1, 0);
+            faceRotations[2] = new Vector3(0, 0, 0);
+            faceRotations[3] = new Vector3(0, 0, 2);
             faceRotations[4] = new Vector3(1, 0, 0);
             faceRotations[5] = new Vector3(-1, 0, 0);
 
