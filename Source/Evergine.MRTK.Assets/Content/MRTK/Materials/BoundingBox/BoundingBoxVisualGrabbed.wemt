@@ -6,12 +6,15 @@ DefaultProfile:
   Platform: Undefined
 ExportAsRaw: false
 MaterialInfo:
-  Id: 49186cd5-7c1f-411a-9dc8-7cd70856e894
+  Id: 303b5fbf-ae7c-4db8-b2fa-155e75e07d08
   ActiveDirectives:
+    - ALPHABLEND
     - DIRECTIONAL_LIGHT
     - IBL
+  AllowInstancing: false
   EffectID: 4f7e4c24-e83c-4350-9cd4-511fb2199cf4
   Layer: e35c59a9-26ab-4b4c-8210-4b1f21c31530
+  OrderBias: 0
   Parameters:
     - Name: WorldViewProj
       Type: Evergine.Mathematics.Matrix4x4,Evergine.Mathematics
@@ -19,12 +22,33 @@ MaterialInfo:
     - Name: World
       Type: Evergine.Mathematics.Matrix4x4,Evergine.Mathematics
       ValueByteArray: AAAAQAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAACAPw==
+    - Name: EyePosition
+      Type: Evergine.Mathematics.Vector3,Evergine.Mathematics
+      ValueByteArray: lDlJvQ8wnD463Kc+
+    - Name: EyeCount
+      Type: System.Int32
+      ValueByteArray: AAAAAA==
+    - Name: MultiviewViewProj
+      Type: Evergine.Mathematics.Matrix4x4,Evergine.Mathematics
+      ValueByteArray: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
+    - Name: SunDirection
+      Type: Evergine.Mathematics.Vector3,Evergine.Mathematics
+      ValueByteArray: AAAAAAAAAAAAAIA/
+    - Name: SunColor
+      Type: Evergine.Mathematics.Vector3,Evergine.Mathematics
+      ValueByteArray: AACAPwAAgD8AAIA/
+    - Name: HoverLightData
+      Type: Evergine.Mathematics.Vector4,Evergine.Mathematics
+      ValueByteArray: AAAAAAAAAAAAAAAAAAAAAA==
+    - Name: ProximityLightData
+      Type: Evergine.Mathematics.Vector4,Evergine.Mathematics
+      ValueByteArray: AAAAAAAAAAAAAAAAAAAAAA==
     - Name: Color
       Type: Evergine.Mathematics.Vector3,Evergine.Mathematics
       ValueByteArray: AACAPwAAgD8AAIA/
     - Name: Alpha
       Type: System.Single
-      ValueByteArray: l5aWPg==
+      ValueByteArray: 8fDwPQ==
     - Name: InnerGlowColor
       Type: Evergine.Mathematics.Vector3,Evergine.Mathematics
       ValueByteArray: AACAPwAAgD8AAIA/
@@ -55,6 +79,9 @@ MaterialInfo:
     - Name: EdgeSmoothingValue
       Type: System.Single
       ValueByteArray: bxIDOw==
+    - Name: RoundCornersRadious
+      Type: Evergine.Mathematics.Vector4,Evergine.Mathematics
+      ValueByteArray: AAAAPwAAAD8AAAA/AAAAPw==
     - Name: FadeBeginDistance
       Type: System.Single
       ValueByteArray: CtcjPA==
@@ -76,9 +103,6 @@ MaterialInfo:
     - Name: ProximityLightOuterColorOverride
       Type: Evergine.Mathematics.Vector4,Evergine.Mathematics
       ValueByteArray: CtejPo/C9T2kcD0/AACAPw==
-    - Name: LightColor0
-      Type: Evergine.Mathematics.Vector4,Evergine.Mathematics
-      ValueByteArray: AAAAPwAAAD8AAAA/AACAPw==
     - Name: Metallic
       Type: System.Single
       ValueByteArray: AAAAAA==
@@ -91,22 +115,23 @@ MaterialInfo:
     - Name: Offset
       Type: Evergine.Mathematics.Vector2,Evergine.Mathematics
       ValueByteArray: AAAAAAAAAAA=
-    - Name: HoverLightData
-      Type: Evergine.Mathematics.Vector4,Evergine.Mathematics
-      ValueByteArray: AAAAAAAAAAAAAAAAAAAAAA==
-    - Name: ProximityLightData
-      Type: Evergine.Mathematics.Vector4,Evergine.Mathematics
-      ValueByteArray: AAAAAAAAAAAAAAAAAAAAAA==
-    - Name: MultiviewViewProj
-      Type: Evergine.Mathematics.Matrix4x4,Evergine.Mathematics
-      ValueByteArray: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
-    - Name: EyeCount
-      Type: System.Int32
-      ValueByteArray: AAAAAA==
+    - Name: IridescenceIntensity
+      Type: System.Single
+      ValueByteArray: AAAAPw==
+    - Name: IridescenceThreshold
+      Type: System.Single
+      ValueByteArray: zcxMPQ==
+    - Name: IridescenceAngle
+      Type: System.Single
+      ValueByteArray: FK5Hvw==
   Samplers:
     - ID: 00000000-0000-0000-0000-000000000000
       Name: null
+    - ID: 00000000-0000-0000-0000-000000000000
+      Name: null
   Textures:
+    - ID: 00000000-0000-0000-0000-000000000000
+      Name: null
     - ID: 00000000-0000-0000-0000-000000000000
       Name: null
 Profiles: {}

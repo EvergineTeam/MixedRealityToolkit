@@ -1,29 +1,30 @@
 !Evergine.Assets.Exporters.MaterialMetaFile,Evergine.Assets
-Id: 7c6dfc11-0f01-4d22-bfc9-bc5ca4fae227
+Id: 370707c3-dd0f-4d47-a5c3-17b3abde46b0
 DefaultProfile:
   ExcludeAsset: false
   Name: null
   Platform: Undefined
 ExportAsRaw: false
 MaterialInfo:
-  Id: f39ce7b8-6078-4d8d-89d4-15f2d649ee79
+  Id: f9592259-da97-4432-b358-da499d662ad6
   ActiveDirectives:
+    - ALPHABLEND
     - DIRECTIONAL_LIGHT
     - IBL
   AllowInstancing: false
   EffectID: 4f7e4c24-e83c-4350-9cd4-511fb2199cf4
-  Layer: 69451f8f-e41d-4a68-a5ad-28a08c76980a
+  Layer: e35c59a9-26ab-4b4c-8210-4b1f21c31530
   OrderBias: 0
   Parameters:
     - Name: WorldViewProj
       Type: Evergine.Mathematics.Matrix4x4,Evergine.Mathematics
-      ValueByteArray: TaOcQAAAAAAAAAAAAAAAAAAAAACYMopADf9kvzD5ZL8AAAAAmjIKwAv/5L8u+eS/AAAAAHmCGjUf7ItAvRuPQA==
+      ValueByteArray: SnwpvpSjmEA6rpa+XqqWvlRd1zD5Fja/fDv9vwA1/b+bGldAJ4lwPhhzbbwEbW28XeDLsXFCQTUf7ItAvRuPQA==
     - Name: World
       Type: Evergine.Mathematics.Matrix4x4,Evergine.Mathematics
       ValueByteArray: AAAAQAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAACAPw==
     - Name: EyePosition
       Type: Evergine.Mathematics.Vector3,Evergine.Mathematics
-      ValueByteArray: AAAAAAAAAAAAAAAA
+      ValueByteArray: lDlJvQ8wnD463Kc+
     - Name: EyeCount
       Type: System.Int32
       ValueByteArray: AAAAAA==
@@ -32,10 +33,10 @@ MaterialInfo:
       ValueByteArray: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
     - Name: SunDirection
       Type: Evergine.Mathematics.Vector3,Evergine.Mathematics
-      ValueByteArray: AAAAAAAAAAAAAAAA
+      ValueByteArray: AAAAAAAAAAAAAIA/
     - Name: SunColor
       Type: Evergine.Mathematics.Vector3,Evergine.Mathematics
-      ValueByteArray: AAAAAAAAAAAAAAAA
+      ValueByteArray: AACAPwAAgD8AAIA/
     - Name: HoverLightData
       Type: Evergine.Mathematics.Vector4,Evergine.Mathematics
       ValueByteArray: AAAAAAAAAAAAAAAAAAAAAA==
@@ -47,7 +48,7 @@ MaterialInfo:
       ValueByteArray: AACAPwAAgD8AAIA/
     - Name: Alpha
       Type: System.Single
-      ValueByteArray: AACAPw==
+      ValueByteArray: oaAgPQ==
     - Name: InnerGlowColor
       Type: Evergine.Mathematics.Vector3,Evergine.Mathematics
       ValueByteArray: AACAPwAAgD8AAIA/
@@ -83,10 +84,10 @@ MaterialInfo:
       ValueByteArray: AAAAPwAAAD8AAAA/AAAAPw==
     - Name: FadeBeginDistance
       Type: System.Single
-      ValueByteArray: CtcjPA==
+      ValueByteArray: zcxMPg==
     - Name: FadeCompleteDistance
       Type: System.Single
-      ValueByteArray: zczMPQ==
+      ValueByteArray: mpmZPg==
     - Name: FadeMinValue
       Type: System.Single
       ValueByteArray: AAAAAA==
