@@ -6901,6 +6901,13 @@ Items:
                       X: 1.0
                       Y: 0.99999994
                       Z: 1.0
+                  - !Evergine.MRTK.SDK.Features.Input.Constraints.MinScaleConstraint,Evergine.MRTK
+                    Id: ed9123b7-032d-405e-b7a3-03ca4a63af6a
+                    IsEnabled: true
+                    MinimumScale:
+                      X: 0.0500000007
+                      Y: 0.0500000007
+                      Z: 0.0500000007
                 Children: []
                 Id: 8e41fb61-2bd1-4a2e-81c2-be9b96539ffc
             Id: 10a93be1-3592-48a8-a470-9b5c6e6300c3
@@ -7004,6 +7011,13 @@ Items:
                 SmoothingActive: true
                 SmoothingAmount: 0.00100000005
                 UpdateOrder: 0.5
+              - !Evergine.MRTK.SDK.Features.Input.Constraints.MinScaleConstraint,Evergine.MRTK
+                Id: 672b5768-b10c-4b03-8ebd-aa0a7ac9194f
+                IsEnabled: true
+                MinimumScale:
+                  X: 0.0500000007
+                  Y: 0.0500000007
+                  Z: 0.0500000007
             Children: []
             Id: a3a5d007-0e0a-4220-9f31-cab5841a1f92
           - !Evergine.Framework.Assets.AssetSources.Entities.EntityItemModel,Evergine.Framework
@@ -7131,6 +7145,13 @@ Items:
                     Restitution: 0.0
                     RollingFriction: 0.0
                     UpdateOrder: 0.5
+                  - !Evergine.MRTK.SDK.Features.Input.Constraints.MinScaleConstraint,Evergine.MRTK
+                    Id: 2dc138fc-94ba-490b-9b74-cd5617e55077
+                    IsEnabled: true
+                    MinimumScale:
+                      X: 0.0500000007
+                      Y: 0.0500000007
+                      Z: 0.0500000007
                 Children: []
                 Id: 014dff1a-4507-48ab-821d-e2828e57a1d0
             Id: 2fe202b7-c59f-49d5-af31-f6dd79eeebf0
@@ -7884,7 +7905,7 @@ Items:
 Managers:
   - !Evergine.Framework.Managers.EnvironmentManager,Evergine.Framework
     Id: 0b6695c7-b505-442d-b0e2-8e2791c63949
-    IBLReflectionProbe: d9a1b71e-d7a4-43b2-b251-98189ac46527
+    IBLReflectionProbe: 8583ebad-7beb-46e8-9ddf-b50a170fb54b
     IntensityMultiplier: 1.0
     IsEnabled: true
     Strategy: Automatically
