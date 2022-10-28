@@ -13,6 +13,7 @@ using Evergine.Mathematics;
 using Evergine.MRTK.Base.EventDatum.Input;
 using Evergine.MRTK.Base.Interfaces.InputSystem.Handlers;
 using Evergine.MRTK.Emulation;
+using Evergine.MRTK.SDK.Features.Input.Constraints;
 using Evergine.MRTK.SDK.Features.Input.Handlers;
 using Evergine.MRTK.SDK.Features.Input.Handlers.Manipulation;
 using Evergine.MRTK.Services.InputSystem;
@@ -35,6 +36,9 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.BoundingBox
 
         [BindComponent(isRequired: false)]
         private SimpleManipulationHandler simpleManipulationHandler = null;
+
+        [BindComponent(isRequired: false)]
+        private MinScaleConstraint minScaleConstraint = null;
 
         /// <summary>
         /// Gets or sets a value indicating whether the bounding collider should be calculated automatically
@@ -1367,35 +1371,60 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.BoundingBox
                     case BoundingBoxHelperType.ScaleHandle:
                     case BoundingBoxHelperType.NonUniformScaleHandle:
                         {
-                            float initialDist = Vector3.Dot(this.initialGrabPoint - this.grabOppositeCorner, this.grabDiagonalDirection);
-                            float currentDist = Vector3.Dot(currentGrabPoint - this.grabOppositeCorner, this.grabDiagonalDirection);
-                            float scaleFactor = 1.0f + ((currentDist - initialDist) / initialDist);
+                            var initialDist = Vector3.Dot(this.initialGrabPoint - this.grabOppositeCorner, this.grabDiagonalDirection);
+                            var currentDist = Vector3.Dot(currentGrabPoint - this.grabOppositeCorner, this.grabDiagonalDirection);
+                            var scaleFactor = 1.0f + ((currentDist - initialDist) / initialDist);
 
-                            Vector3 localScale = this.transform.LocalScale;
+                            var desiredScale = this.transformOnGrabStart.Scale * scaleFactor;
 
-                            this.transform.Scale = this.transformOnGrabStart.Scale * scaleFactor;
+                            if (this.minScaleConstraint != null)
+                            {
+                                desiredScale = Vector3.Max(desiredScale, this.minScaleConstraint.MinimumScale);
+                            }
 
                             if (this.currentHandle.Type == BoundingBoxHelperType.ScaleHandle)
                             {
-                                this.transform.Position = this.grabOppositeCorner + (scaleFactor * (this.transformOnGrabStart.Translation - this.grabOppositeCorner));
+                                if (Vector3.Distance(desiredScale, this.transform.Scale) > MathHelper.Epsilon)
+                                {
+                                    var clampedScaleFactor = desiredScale / this.transformOnGrabStart.Scale;
+
+                                    this.transform.Scale = desiredScale;
+                                    this.transform.Position = this.grabOppositeCorner + (clampedScaleFactor * (this.transformOnGrabStart.Translation - this.grabOppositeCorner));
+                                }
                             }
                             else
                             {
+                                var finalScale = this.transform.Scale;
+
                                 if (this.currentHandle.AxisType == AxisType.X)
                                 {
-                                    this.transform.LocalScale = new Vector3(this.transform.LocalScale.X, localScale.Y, localScale.Z);
+                                    if (this.minScaleConstraint == null || desiredScale.X > this.minScaleConstraint.MinimumScale.X)
+                                    {
+                                        finalScale.X = desiredScale.X;
+                                    }
                                 }
                                 else if (this.currentHandle.AxisType == AxisType.Y)
                                 {
-                                    this.transform.LocalScale = new Vector3(localScale.X, this.transform.LocalScale.Y, localScale.Z);
+                                    if (this.minScaleConstraint == null || desiredScale.Y > this.minScaleConstraint.MinimumScale.Y)
+                                    {
+                                        finalScale.Y = desiredScale.Y;
+                                    }
                                 }
                                 else if (this.currentHandle.AxisType == AxisType.Z)
                                 {
-                                    this.transform.LocalScale = new Vector3(localScale.X, localScale.Y, this.transform.LocalScale.Z);
+                                    if (this.minScaleConstraint == null || desiredScale.Z > this.minScaleConstraint.MinimumScale.Z)
+                                    {
+                                        finalScale.Z = desiredScale.Z;
+                                    }
                                 }
 
-                                Vector3 oppositeCornerPos = Vector3.TransformCoordinate(this.currentHandle.OppositeHandlePosition, this.transform.WorldTransform);
-                                this.transform.Position += this.grabOppositeCorner - oppositeCornerPos;
+                                if (this.transform.Scale != finalScale)
+                                {
+                                    this.transform.Scale = finalScale;
+
+                                    var oppositeCornerPos = Vector3.TransformCoordinate(this.currentHandle.OppositeHandlePosition, this.transform.WorldTransform);
+                                    this.transform.Position += this.grabOppositeCorner - oppositeCornerPos;
+                                }
                             }
 
                             this.UpdateRigHandles();

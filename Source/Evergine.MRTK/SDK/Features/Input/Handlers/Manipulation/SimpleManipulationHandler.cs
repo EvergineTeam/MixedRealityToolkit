@@ -11,6 +11,7 @@ using Evergine.Mathematics;
 using Evergine.MRTK.Base.EventDatum.Input;
 using Evergine.MRTK.Base.Interfaces.InputSystem.Handlers;
 using Evergine.MRTK.Emulation;
+using Evergine.MRTK.SDK.Features.Input.Constraints;
 
 namespace Evergine.MRTK.SDK.Features.Input.Handlers.Manipulation
 {
@@ -42,6 +43,9 @@ namespace Evergine.MRTK.SDK.Features.Input.Handlers.Manipulation
         /// </summary>
         [BindComponent(isRequired: false, isExactType: false)]
         protected PhysicBody3D physicBody3D;
+
+        [BindComponent(isRequired: false)]
+        private MinScaleConstraint minScaleConstraint = null;
 
         /// <summary>
         /// Gets or sets a value indicating whether the manipulation smoothing is enabled.
@@ -349,14 +353,15 @@ namespace Evergine.MRTK.SDK.Features.Input.Handlers.Manipulation
                     if (this.rightPressed)
                     {
                         // Calculate two-hand combined world transform
-                        Vector3 right = rightTransform.Translation - leftTransform.Translation;
-                        Vector3 up_avg = Vector3.Lerp(leftTransform.Up, rightTransform.Up, 0.5f);
+                        var right = rightTransform.Translation - leftTransform.Translation;
+                        var up_avg = Vector3.Lerp(leftTransform.Up, rightTransform.Up, 0.5f);
+                        up_avg.Normalize();
 
-                        Vector3 position = Vector3.Lerp(leftTransform.Translation, rightTransform.Translation, 0.5f);
-                        Vector3 forward = Vector3.Cross(up_avg, right);
-                        Vector3 up = Vector3.Cross(right, forward);
+                        var position = Vector3.Lerp(leftTransform.Translation, rightTransform.Translation, 0.5f);
+                        var forward = Vector3.Cross(up_avg, right);
+                        var up = Vector3.Cross(right, forward);
 
-                        controllerTransform = Matrix4x4.CreateWorld(position, forward, up);
+                        var controllerWorld = Matrix4x4.CreateWorld(position, forward, up);
 
                         // Calculate current distance between the controllers
                         var currentDistance = right.Length();
@@ -369,6 +374,17 @@ namespace Evergine.MRTK.SDK.Features.Input.Handlers.Manipulation
 
                         // Calculate target scale
                         var scale = Vector3.One * currentDistance / this.grabDistance;
+
+                        // Constrain scale
+                        if (this.minScaleConstraint != null)
+                        {
+                            var finalScale = scale * this.grabTransform.Scale;
+
+                            var constrainedScale = Vector3.Max(this.minScaleConstraint.MinimumScale, finalScale);
+
+                            scale = constrainedScale / this.grabTransform.Scale;
+                        }
+
                         if ((constraintsMask & (int)ConstraintsEnum.ConstraintScaleAll) != 0)
                         {
                             for (int i = 0; i < 3; ++i)
@@ -381,7 +397,7 @@ namespace Evergine.MRTK.SDK.Features.Input.Handlers.Manipulation
                         }
 
                         // Final controller transform
-                        controllerTransform = Matrix4x4.CreateScale(scale) * controllerTransform;
+                        controllerTransform = Matrix4x4.CreateScale(scale) * controllerWorld;
                     }
                     else
                     {
@@ -442,9 +458,9 @@ namespace Evergine.MRTK.SDK.Features.Input.Handlers.Manipulation
                 // Update object transform
                 float lerpAmount = this.GetLerpAmount(timeStep);
 
-                Vector3 pos = Vector3.Lerp(this.transform.Position, finalTransform.Translation, lerpAmount);
-                Quaternion rot = Quaternion.Lerp(this.transform.Orientation, finalTransform.Orientation, lerpAmount);
-                Vector3 scl = Vector3.Lerp(this.transform.Scale, finalTransform.Scale, lerpAmount);
+                var pos = Vector3.Lerp(this.transform.Position, finalTransform.Translation, lerpAmount);
+                var rot = Quaternion.Lerp(this.transform.Orientation, finalTransform.Orientation, lerpAmount);
+                var scl = Vector3.Lerp(this.transform.Scale, finalTransform.Scale, lerpAmount);
 
                 if (this.rigidBody != null && this.KeepRigidBodyActiveDuringDrag)
                 {
