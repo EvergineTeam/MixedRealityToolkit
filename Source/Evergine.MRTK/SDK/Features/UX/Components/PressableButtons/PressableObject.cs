@@ -26,16 +26,6 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.PressableButtons
             Releasing,
         }
 
-        private PressSimulationState simulatePressState;
-
-        private float simulatedPressAmount;
-
-        private MixedRealityPointerEventData simulatedPointerEventData;
-
-        private bool touchUpdatedRan;
-        private HandTrackingInputEventData forceRunTouchCompletedEventData;
-        private int delayedFrames;
-
         /// <summary>
         /// The transform component.
         /// </summary>
@@ -105,6 +95,16 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.PressableButtons
         /// The cursor distances.
         /// </summary>
         protected Dictionary<Cursor, float> cursorDistances = new Dictionary<Cursor, float>();
+
+        private PressSimulationState simulatePressState;
+
+        private float simulatedPressAmount;
+
+        private MixedRealityPointerEventData simulatedPointerEventData;
+
+        private bool touchUpdatedRan;
+        private HandTrackingInputEventData forceRunTouchCompletedEventData;
+        private int delayedFrames;
 
         /// <inheritdoc/>
         void IMixedRealityTouchHandler.OnTouchStarted(HandTrackingInputEventData eventData)

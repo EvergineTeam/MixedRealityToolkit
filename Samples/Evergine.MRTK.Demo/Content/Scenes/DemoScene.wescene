@@ -287,10 +287,10 @@ Items:
                 Id: 31a7a5ee-3127-49a5-8e26-87ff36f52178
                 IsEnabled: true
                 LocalOrientation:
-                  W: 0.923879564
-                  X: 0.382683367
-                  Y: 0.0
-                  Z: 0.0
+                  W: -6.4040492E-08
+                  X: 7.38393027E-08
+                  Y: 0.923879504
+                  Z: 0.382683456
                 LocalPosition:
                   X: 0.0379999988
                   Y: -0.206699997
@@ -2383,14 +2383,14 @@ Items:
                 Id: 7eb83060-aeb8-4c91-a56f-b1f4c712c242
                 IsEnabled: true
                 LocalOrientation:
-                  W: 1.0
-                  X: 0.0
-                  Y: 0.0
+                  W: -4.37113883E-08
+                  X: -0.0
+                  Y: 1.0
                   Z: 0.0
                 LocalPosition:
-                  X: 0.0799999982
+                  X: -0.0048902519
                   Y: -0.0170000009
-                  Z: -0.0144999996
+                  Z: -0.0144970417
                 LocalScale:
                   X: 1.0
                   Y: 1.0
@@ -2439,9 +2439,9 @@ Items:
                     Name: LocalPosition
                     Target: 32c920a6-bf72-4169-bcaf-c8a2d39674d4
                     TypedValue:
-                      X: 0.0549999997
+                      X: -0.159597695
                       Y: 0.0
-                      Z: 0.0
+                      Z: -4.41074371E-06
                   - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Framework.Graphics.Material,Evergine.Framework]],Evergine.Framework
                     Name: Material
                     Target: 945ecb95-128b-4645-9a98-16a8b76fd419
@@ -2498,9 +2498,9 @@ Items:
                     Name: LocalPosition
                     Target: 32c920a6-bf72-4169-bcaf-c8a2d39674d4
                     TypedValue:
-                      X: 0.0170000009
+                      X: -0.122902393
                       Y: 0.0
-                      Z: 0.0
+                      Z: -4.76837158E-06
                   - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Framework.Graphics.Material,Evergine.Framework]],Evergine.Framework
                     Name: Material
                     Target: 945ecb95-128b-4645-9a98-16a8b76fd419
@@ -2689,9 +2689,9 @@ Items:
                     Name: LocalPosition
                     Target: 32c920a6-bf72-4169-bcaf-c8a2d39674d4
                     TypedValue:
-                      X: -0.131999999
+                      X: 0.078756839
                       Y: 0.0
-                      Z: 0.0
+                      Z: -3.33786011E-06
                   - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Vector3,Evergine.Mathematics]],Evergine.Framework
                     Name: LocalScale
                     Target: 43017ed1-371e-4755-bb8c-0cdf498bd5f8
@@ -2755,9 +2755,9 @@ Items:
                     Name: LocalPosition
                     Target: 32c920a6-bf72-4169-bcaf-c8a2d39674d4
                     TypedValue:
-                      X: -0.186000004
+                      X: 0.0258806348
                       Y: 0.0
-                      Z: 0.0
+                      Z: -2.14576721E-06
                   - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Vector3,Evergine.Mathematics]],Evergine.Framework
                     Name: LocalScale
                     Target: 43017ed1-371e-4755-bb8c-0cdf498bd5f8
@@ -2789,14 +2789,14 @@ Items:
                 Id: 1662ca80-ec6f-40cc-b38b-75cbc1f34c34
                 IsEnabled: true
                 LocalOrientation:
-                  W: 1.0
-                  X: 0.0
-                  Y: 0.0
+                  W: -4.37113883E-08
+                  X: -0.0
+                  Y: 1.0
                   Z: 0.0
                 LocalPosition:
-                  X: 0.0700000003
+                  X: 0.122281075
                   Y: -0.101300001
-                  Z: -0.0138999997
+                  Z: -0.0138989091
                 LocalScale:
                   X: 1.0
                   Y: 1.0
@@ -2835,8 +2835,8 @@ Items:
                         Id: 3be7a394-183b-4108-afc2-ee4eed09416f
                         IsEnabled: true
                         LocalOrientation:
-                          W: 0.707106829
-                          X: -0.707106709
+                          W: 1.0
+                          X: 0.0
                           Y: 0.0
                           Z: 0.0
                         LocalPosition:
@@ -2845,8 +2845,8 @@ Items:
                           Z: 0.0
                         LocalScale:
                           X: 0.128000006
-                          Y: 0.00999999978
-                          Z: 0.0320000015
+                          Y: 0.0320000015
+                          Z: 0.00999999978
                       - !Evergine.Components.Graphics3D.MaterialComponent,Evergine.Framework
                         Id: 96d9e162-e213-4581-94b3-36fa51fc2ae1
                         AsignedTo: Default
@@ -2860,7 +2860,7 @@ Items:
                         Origin:
                           X: 0.5
                           Y: 0.5
-                        PlaneNormal: YPositive
+                        PlaneNormal: ZPositive
                         TwoSides: false
                         UMirror: false
                         UOffset: 0.0
@@ -2881,14 +2881,14 @@ Items:
                 Id: d96cf240-ab6f-461e-9104-b2f5478c4aab
               - !Evergine.Framework.Assets.AssetSources.Entities.PrefabInstanceModel,Evergine.Framework
                 Id: 5056cf9e-5840-4e08-9662-e6b9b7c44431
-                Source: fdf54b8f-7c8a-40b5-aa32-d878870437e5
+                Source: dabe9073-b1d1-42c5-99b9-ebc0cb4a7430
                 entityLinks:
-                  bd9e7ad5-f7c8-4680-99f6-6e5380eb1902:
+                  a395de9a-85d9-4313-be9b-84d142b99e01:
                     additionalChildrenList: []
                     additionalComponentList:
                       - !Evergine.MRTK.SDK.Features.UX.Components.Configurators.StandardButtonConfigurator,Evergine.MRTK
                         Id: 49af8c4b-22a4-43a3-8612-75cc4226a960
-                        AllowBackPlateNullMaterial: false
+                        AllowBackPlateNullMaterial: true
                         AllowIconNullMaterial: false
                         CreatesNewBackPlateMaterialInstance: false
                         CreatesNewIconMaterialInstance: false
@@ -2916,34 +2916,38 @@ Items:
                 modificationList:
                   - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Vector3,Evergine.Mathematics]],Evergine.Framework
                     Name: LocalPosition
-                    Target: d2c7e621-8de6-4a14-a9b9-0acebcff7fce
+                    Target: 32c920a6-bf72-4169-bcaf-c8a2d39674d4
                     TypedValue:
                       X: 0.064000003
                       Y: 0.0
                       Z: 0.0
                   - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Framework.Graphics.Material,Evergine.Framework]],Evergine.Framework
                     Name: Material
+                    Target: de26b28f-b9c6-4576-9fb4-f33e50dc4e76
+                    TypedValue: null
+                  - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Framework.Graphics.Material,Evergine.Framework]],Evergine.Framework
+                    Name: Material
                     Target: 945ecb95-128b-4645-9a98-16a8b76fd419
                     TypedValue: 163a35b7-72c2-41c3-8116-2b44e8a79394
                   - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Framework.Graphics.Font,Evergine.Framework]],Evergine.Framework
                     Name: Font
-                    Target: 44e150aa-f6c2-447c-975a-21def785b195
+                    Target: a7c5a62f-b112-4c25-bb9e-eaec97942a6f
                     TypedValue: a1bec550-b538-4416-acc3-83ca62a349c7
                   - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.String,System.Private.CoreLib]],Evergine.Framework
                     Name: Text
-                    Target: 44e150aa-f6c2-447c-975a-21def785b195
+                    Target: a7c5a62f-b112-4c25-bb9e-eaec97942a6f
                     TypedValue: Button
                 removedComponentList: []
               - !Evergine.Framework.Assets.AssetSources.Entities.PrefabInstanceModel,Evergine.Framework
                 Id: a44f7a71-4aec-43f2-b09b-0a634b1f40f5
-                Source: fdf54b8f-7c8a-40b5-aa32-d878870437e5
+                Source: dabe9073-b1d1-42c5-99b9-ebc0cb4a7430
                 entityLinks:
-                  bd9e7ad5-f7c8-4680-99f6-6e5380eb1902:
+                  a395de9a-85d9-4313-be9b-84d142b99e01:
                     additionalChildrenList: []
                     additionalComponentList:
                       - !Evergine.MRTK.SDK.Features.UX.Components.Configurators.StandardButtonConfigurator,Evergine.MRTK
                         Id: 49af8c4b-22a4-43a3-8612-75cc4226a960
-                        AllowBackPlateNullMaterial: false
+                        AllowBackPlateNullMaterial: true
                         AllowIconNullMaterial: false
                         CreatesNewBackPlateMaterialInstance: false
                         CreatesNewIconMaterialInstance: false
@@ -2971,34 +2975,38 @@ Items:
                 modificationList:
                   - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Vector3,Evergine.Mathematics]],Evergine.Framework
                     Name: LocalPosition
-                    Target: d2c7e621-8de6-4a14-a9b9-0acebcff7fce
+                    Target: 32c920a6-bf72-4169-bcaf-c8a2d39674d4
                     TypedValue:
                       X: 0.0320000015
                       Y: 0.0
                       Z: 0.0
                   - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Framework.Graphics.Material,Evergine.Framework]],Evergine.Framework
                     Name: Material
+                    Target: de26b28f-b9c6-4576-9fb4-f33e50dc4e76
+                    TypedValue: null
+                  - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Framework.Graphics.Material,Evergine.Framework]],Evergine.Framework
+                    Name: Material
                     Target: 945ecb95-128b-4645-9a98-16a8b76fd419
                     TypedValue: 163a35b7-72c2-41c3-8116-2b44e8a79394
                   - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Framework.Graphics.Font,Evergine.Framework]],Evergine.Framework
                     Name: Font
-                    Target: 44e150aa-f6c2-447c-975a-21def785b195
+                    Target: a7c5a62f-b112-4c25-bb9e-eaec97942a6f
                     TypedValue: a1bec550-b538-4416-acc3-83ca62a349c7
                   - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.String,System.Private.CoreLib]],Evergine.Framework
                     Name: Text
-                    Target: 44e150aa-f6c2-447c-975a-21def785b195
+                    Target: a7c5a62f-b112-4c25-bb9e-eaec97942a6f
                     TypedValue: Button
                 removedComponentList: []
               - !Evergine.Framework.Assets.AssetSources.Entities.PrefabInstanceModel,Evergine.Framework
                 Id: e7a8bb52-4590-47f5-8d5a-cf0316c846be
-                Source: fdf54b8f-7c8a-40b5-aa32-d878870437e5
+                Source: dabe9073-b1d1-42c5-99b9-ebc0cb4a7430
                 entityLinks:
-                  bd9e7ad5-f7c8-4680-99f6-6e5380eb1902:
+                  a395de9a-85d9-4313-be9b-84d142b99e01:
                     additionalChildrenList: []
                     additionalComponentList:
                       - !Evergine.MRTK.SDK.Features.UX.Components.Configurators.StandardButtonConfigurator,Evergine.MRTK
                         Id: 49af8c4b-22a4-43a3-8612-75cc4226a960
-                        AllowBackPlateNullMaterial: false
+                        AllowBackPlateNullMaterial: true
                         AllowIconNullMaterial: false
                         CreatesNewBackPlateMaterialInstance: false
                         CreatesNewIconMaterialInstance: false
@@ -3026,27 +3034,31 @@ Items:
                 modificationList:
                   - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Framework.Graphics.Material,Evergine.Framework]],Evergine.Framework
                     Name: Material
+                    Target: de26b28f-b9c6-4576-9fb4-f33e50dc4e76
+                    TypedValue: null
+                  - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Framework.Graphics.Material,Evergine.Framework]],Evergine.Framework
+                    Name: Material
                     Target: 945ecb95-128b-4645-9a98-16a8b76fd419
                     TypedValue: 163a35b7-72c2-41c3-8116-2b44e8a79394
                   - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Framework.Graphics.Font,Evergine.Framework]],Evergine.Framework
                     Name: Font
-                    Target: 44e150aa-f6c2-447c-975a-21def785b195
+                    Target: a7c5a62f-b112-4c25-bb9e-eaec97942a6f
                     TypedValue: a1bec550-b538-4416-acc3-83ca62a349c7
                   - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.String,System.Private.CoreLib]],Evergine.Framework
                     Name: Text
-                    Target: 44e150aa-f6c2-447c-975a-21def785b195
+                    Target: a7c5a62f-b112-4c25-bb9e-eaec97942a6f
                     TypedValue: Button
                 removedComponentList: []
               - !Evergine.Framework.Assets.AssetSources.Entities.PrefabInstanceModel,Evergine.Framework
                 Id: 433c5288-c9e0-423f-a499-652673ac6f60
-                Source: fdf54b8f-7c8a-40b5-aa32-d878870437e5
+                Source: dabe9073-b1d1-42c5-99b9-ebc0cb4a7430
                 entityLinks:
-                  bd9e7ad5-f7c8-4680-99f6-6e5380eb1902:
+                  a395de9a-85d9-4313-be9b-84d142b99e01:
                     additionalChildrenList: []
                     additionalComponentList:
                       - !Evergine.MRTK.SDK.Features.UX.Components.Configurators.StandardButtonConfigurator,Evergine.MRTK
                         Id: 49af8c4b-22a4-43a3-8612-75cc4226a960
-                        AllowBackPlateNullMaterial: false
+                        AllowBackPlateNullMaterial: true
                         AllowIconNullMaterial: false
                         CreatesNewBackPlateMaterialInstance: false
                         CreatesNewIconMaterialInstance: false
@@ -3074,22 +3086,26 @@ Items:
                 modificationList:
                   - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Vector3,Evergine.Mathematics]],Evergine.Framework
                     Name: LocalPosition
-                    Target: d2c7e621-8de6-4a14-a9b9-0acebcff7fce
+                    Target: 32c920a6-bf72-4169-bcaf-c8a2d39674d4
                     TypedValue:
                       X: -0.0320000015
                       Y: 0.0
                       Z: 0.0
                   - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Framework.Graphics.Material,Evergine.Framework]],Evergine.Framework
                     Name: Material
+                    Target: de26b28f-b9c6-4576-9fb4-f33e50dc4e76
+                    TypedValue: null
+                  - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Framework.Graphics.Material,Evergine.Framework]],Evergine.Framework
+                    Name: Material
                     Target: 945ecb95-128b-4645-9a98-16a8b76fd419
                     TypedValue: 163a35b7-72c2-41c3-8116-2b44e8a79394
                   - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Framework.Graphics.Font,Evergine.Framework]],Evergine.Framework
                     Name: Font
-                    Target: 44e150aa-f6c2-447c-975a-21def785b195
+                    Target: a7c5a62f-b112-4c25-bb9e-eaec97942a6f
                     TypedValue: a1bec550-b538-4416-acc3-83ca62a349c7
                   - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.String,System.Private.CoreLib]],Evergine.Framework
                     Name: Text
-                    Target: 44e150aa-f6c2-447c-975a-21def785b195
+                    Target: a7c5a62f-b112-4c25-bb9e-eaec97942a6f
                     TypedValue: Button
                 removedComponentList: []
             Id: 3b5d2bca-fadf-4628-8931-9e8f5e344acb
@@ -3103,14 +3119,14 @@ Items:
                 Id: 5cb6f6e7-ebb0-40b4-b86d-67017fc6145f
                 IsEnabled: true
                 LocalOrientation:
-                  W: 1.0
-                  X: 0.0
-                  Y: 0.0
+                  W: -4.37113883E-08
+                  X: -0.0
+                  Y: 1.0
                   Z: 0.0
                 LocalPosition:
-                  X: -0.109300002
+                  X: -0.00864093378
                   Y: -0.101300001
-                  Z: -0.0138999997
+                  Z: -0.0138995051
                 LocalScale:
                   X: 1.25
                   Y: 1.25
@@ -3149,8 +3165,8 @@ Items:
                         Id: 165594c9-f760-433b-a3f6-32daf7394fc7
                         IsEnabled: true
                         LocalOrientation:
-                          W: 0.707106829
-                          X: -0.707106709
+                          W: 1.0
+                          X: 0.0
                           Y: 0.0
                           Z: 0.0
                         LocalPosition:
@@ -3159,8 +3175,8 @@ Items:
                           Z: 0.0
                         LocalScale:
                           X: 0.128000006
-                          Y: 0.00999999978
-                          Z: 0.0320000015
+                          Y: 0.0320000015
+                          Z: 0.00999999978
                       - !Evergine.Components.Graphics3D.MaterialComponent,Evergine.Framework
                         Id: f834b1b7-681d-4a83-8b53-9cfaa784324f
                         AsignedTo: Default
@@ -3174,7 +3190,7 @@ Items:
                         Origin:
                           X: 0.5
                           Y: 0.5
-                        PlaneNormal: YPositive
+                        PlaneNormal: ZPositive
                         TwoSides: false
                         UMirror: false
                         UOffset: 0.0
@@ -3195,14 +3211,14 @@ Items:
                 Id: 2695742b-5a94-4382-9416-c4e035027f52
               - !Evergine.Framework.Assets.AssetSources.Entities.PrefabInstanceModel,Evergine.Framework
                 Id: c7326431-7d6a-4b96-8583-9b09d9dfde4d
-                Source: fdf54b8f-7c8a-40b5-aa32-d878870437e5
+                Source: dabe9073-b1d1-42c5-99b9-ebc0cb4a7430
                 entityLinks:
-                  bd9e7ad5-f7c8-4680-99f6-6e5380eb1902:
+                  a395de9a-85d9-4313-be9b-84d142b99e01:
                     additionalChildrenList: []
                     additionalComponentList:
                       - !Evergine.MRTK.Demo.Components.MultiStateButtons.MultiStateButtonConfigurator,Evergine.MRTK.Demo
                         Id: 9abca191-be1b-4eb6-af84-6aa91b21d43f
-                        AllowBackPlateNullMaterial: false
+                        AllowBackPlateNullMaterial: true
                         AllowIconNullMaterial: false
                         CreatesNewBackPlateMaterialInstance: false
                         CreatesNewIconMaterialInstance: false
@@ -3219,7 +3235,7 @@ Items:
                         Text: Option A
                       - !Evergine.MRTK.Demo.Components.MultiStateButtons.MultiStateButtonConfigurator,Evergine.MRTK.Demo
                         Id: bbccd43b-fa26-4aaa-9ce5-5311626e1b67
-                        AllowBackPlateNullMaterial: false
+                        AllowBackPlateNullMaterial: true
                         AllowIconNullMaterial: false
                         CreatesNewBackPlateMaterialInstance: false
                         CreatesNewIconMaterialInstance: false
@@ -3236,7 +3252,7 @@ Items:
                         Text: Option B
                       - !Evergine.MRTK.Demo.Components.MultiStateButtons.MultiStateButtonConfigurator,Evergine.MRTK.Demo
                         Id: 2852ce44-e002-406e-a893-83da2a78825a
-                        AllowBackPlateNullMaterial: false
+                        AllowBackPlateNullMaterial: true
                         AllowIconNullMaterial: false
                         CreatesNewBackPlateMaterialInstance: false
                         CreatesNewIconMaterialInstance: false
@@ -3264,34 +3280,38 @@ Items:
                 modificationList:
                   - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Vector3,Evergine.Mathematics]],Evergine.Framework
                     Name: LocalPosition
-                    Target: d2c7e621-8de6-4a14-a9b9-0acebcff7fce
+                    Target: 32c920a6-bf72-4169-bcaf-c8a2d39674d4
                     TypedValue:
                       X: 0.064000003
                       Y: 0.0
                       Z: 0.0
                   - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Framework.Graphics.Material,Evergine.Framework]],Evergine.Framework
                     Name: Material
+                    Target: de26b28f-b9c6-4576-9fb4-f33e50dc4e76
+                    TypedValue: null
+                  - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Framework.Graphics.Material,Evergine.Framework]],Evergine.Framework
+                    Name: Material
                     Target: 945ecb95-128b-4645-9a98-16a8b76fd419
                     TypedValue: 7a93b9b7-56a3-41f1-8392-0751355e1bef
                   - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Framework.Graphics.Font,Evergine.Framework]],Evergine.Framework
                     Name: Font
-                    Target: 44e150aa-f6c2-447c-975a-21def785b195
+                    Target: a7c5a62f-b112-4c25-bb9e-eaec97942a6f
                     TypedValue: a1bec550-b538-4416-acc3-83ca62a349c7
                   - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.String,System.Private.CoreLib]],Evergine.Framework
                     Name: Text
-                    Target: 44e150aa-f6c2-447c-975a-21def785b195
+                    Target: a7c5a62f-b112-4c25-bb9e-eaec97942a6f
                     TypedValue: Option A
                 removedComponentList: []
               - !Evergine.Framework.Assets.AssetSources.Entities.PrefabInstanceModel,Evergine.Framework
                 Id: ebb58b20-b972-400f-9748-209d37c06429
-                Source: fdf54b8f-7c8a-40b5-aa32-d878870437e5
+                Source: dabe9073-b1d1-42c5-99b9-ebc0cb4a7430
                 entityLinks:
-                  bd9e7ad5-f7c8-4680-99f6-6e5380eb1902:
+                  a395de9a-85d9-4313-be9b-84d142b99e01:
                     additionalChildrenList: []
                     additionalComponentList:
                       - !Evergine.MRTK.Demo.Components.MultiStateButtons.MultiStateButtonConfigurator,Evergine.MRTK.Demo
                         Id: 9abca191-be1b-4eb6-af84-6aa91b21d43f
-                        AllowBackPlateNullMaterial: false
+                        AllowBackPlateNullMaterial: true
                         AllowIconNullMaterial: false
                         CreatesNewBackPlateMaterialInstance: false
                         CreatesNewIconMaterialInstance: false
@@ -3308,7 +3328,7 @@ Items:
                         Text: Option A
                       - !Evergine.MRTK.Demo.Components.MultiStateButtons.MultiStateButtonConfigurator,Evergine.MRTK.Demo
                         Id: bbccd43b-fa26-4aaa-9ce5-5311626e1b67
-                        AllowBackPlateNullMaterial: false
+                        AllowBackPlateNullMaterial: true
                         AllowIconNullMaterial: false
                         CreatesNewBackPlateMaterialInstance: false
                         CreatesNewIconMaterialInstance: false
@@ -3325,7 +3345,7 @@ Items:
                         Text: Option B
                       - !Evergine.MRTK.Demo.Components.MultiStateButtons.MultiStateButtonConfigurator,Evergine.MRTK.Demo
                         Id: 2852ce44-e002-406e-a893-83da2a78825a
-                        AllowBackPlateNullMaterial: false
+                        AllowBackPlateNullMaterial: true
                         AllowIconNullMaterial: false
                         CreatesNewBackPlateMaterialInstance: false
                         CreatesNewIconMaterialInstance: false
@@ -3353,34 +3373,38 @@ Items:
                 modificationList:
                   - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Vector3,Evergine.Mathematics]],Evergine.Framework
                     Name: LocalPosition
-                    Target: d2c7e621-8de6-4a14-a9b9-0acebcff7fce
+                    Target: 32c920a6-bf72-4169-bcaf-c8a2d39674d4
                     TypedValue:
                       X: 0.0320000015
                       Y: 0.0
                       Z: 0.0
                   - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Framework.Graphics.Material,Evergine.Framework]],Evergine.Framework
                     Name: Material
+                    Target: de26b28f-b9c6-4576-9fb4-f33e50dc4e76
+                    TypedValue: null
+                  - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Framework.Graphics.Material,Evergine.Framework]],Evergine.Framework
+                    Name: Material
                     Target: 945ecb95-128b-4645-9a98-16a8b76fd419
                     TypedValue: 7a93b9b7-56a3-41f1-8392-0751355e1bef
                   - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Framework.Graphics.Font,Evergine.Framework]],Evergine.Framework
                     Name: Font
-                    Target: 44e150aa-f6c2-447c-975a-21def785b195
+                    Target: a7c5a62f-b112-4c25-bb9e-eaec97942a6f
                     TypedValue: a1bec550-b538-4416-acc3-83ca62a349c7
                   - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.String,System.Private.CoreLib]],Evergine.Framework
                     Name: Text
-                    Target: 44e150aa-f6c2-447c-975a-21def785b195
+                    Target: a7c5a62f-b112-4c25-bb9e-eaec97942a6f
                     TypedValue: Option A
                 removedComponentList: []
               - !Evergine.Framework.Assets.AssetSources.Entities.PrefabInstanceModel,Evergine.Framework
                 Id: 39869133-e8c2-4c7e-b8a4-0db469fb8754
-                Source: fdf54b8f-7c8a-40b5-aa32-d878870437e5
+                Source: dabe9073-b1d1-42c5-99b9-ebc0cb4a7430
                 entityLinks:
-                  bd9e7ad5-f7c8-4680-99f6-6e5380eb1902:
+                  a395de9a-85d9-4313-be9b-84d142b99e01:
                     additionalChildrenList: []
                     additionalComponentList:
                       - !Evergine.MRTK.Demo.Components.MultiStateButtons.MultiStateButtonConfigurator,Evergine.MRTK.Demo
                         Id: 9abca191-be1b-4eb6-af84-6aa91b21d43f
-                        AllowBackPlateNullMaterial: false
+                        AllowBackPlateNullMaterial: true
                         AllowIconNullMaterial: false
                         CreatesNewBackPlateMaterialInstance: false
                         CreatesNewIconMaterialInstance: false
@@ -3397,7 +3421,7 @@ Items:
                         Text: Option A
                       - !Evergine.MRTK.Demo.Components.MultiStateButtons.MultiStateButtonConfigurator,Evergine.MRTK.Demo
                         Id: bbccd43b-fa26-4aaa-9ce5-5311626e1b67
-                        AllowBackPlateNullMaterial: false
+                        AllowBackPlateNullMaterial: true
                         AllowIconNullMaterial: false
                         CreatesNewBackPlateMaterialInstance: false
                         CreatesNewIconMaterialInstance: false
@@ -3414,7 +3438,7 @@ Items:
                         Text: Option B
                       - !Evergine.MRTK.Demo.Components.MultiStateButtons.MultiStateButtonConfigurator,Evergine.MRTK.Demo
                         Id: 2852ce44-e002-406e-a893-83da2a78825a
-                        AllowBackPlateNullMaterial: false
+                        AllowBackPlateNullMaterial: true
                         AllowIconNullMaterial: false
                         CreatesNewBackPlateMaterialInstance: false
                         CreatesNewIconMaterialInstance: false
@@ -3442,15 +3466,19 @@ Items:
                 modificationList:
                   - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Framework.Graphics.Material,Evergine.Framework]],Evergine.Framework
                     Name: Material
+                    Target: de26b28f-b9c6-4576-9fb4-f33e50dc4e76
+                    TypedValue: null
+                  - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Framework.Graphics.Material,Evergine.Framework]],Evergine.Framework
+                    Name: Material
                     Target: 945ecb95-128b-4645-9a98-16a8b76fd419
                     TypedValue: 7a93b9b7-56a3-41f1-8392-0751355e1bef
                   - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Framework.Graphics.Font,Evergine.Framework]],Evergine.Framework
                     Name: Font
-                    Target: 44e150aa-f6c2-447c-975a-21def785b195
+                    Target: a7c5a62f-b112-4c25-bb9e-eaec97942a6f
                     TypedValue: a1bec550-b538-4416-acc3-83ca62a349c7
                   - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.String,System.Private.CoreLib]],Evergine.Framework
                     Name: Text
-                    Target: 44e150aa-f6c2-447c-975a-21def785b195
+                    Target: a7c5a62f-b112-4c25-bb9e-eaec97942a6f
                     TypedValue: Option A
                 removedComponentList: []
             Id: 24812237-5896-4b61-acc4-a5d844be7534
@@ -7905,7 +7933,7 @@ Items:
 Managers:
   - !Evergine.Framework.Managers.EnvironmentManager,Evergine.Framework
     Id: 0b6695c7-b505-442d-b0e2-8e2791c63949
-    IBLReflectionProbe: 8583ebad-7beb-46e8-9ddf-b50a170fb54b
+    IBLReflectionProbe: d9a1b71e-d7a4-43b2-b251-98189ac46527
     IntensityMultiplier: 1.0
     IsEnabled: true
     Strategy: Automatically
