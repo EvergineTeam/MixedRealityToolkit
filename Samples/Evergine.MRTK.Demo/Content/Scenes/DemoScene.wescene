@@ -3269,6 +3269,7 @@ Items:
                         Text: Option C
                       - !Evergine.MRTK.Demo.Components.MultiStateButtons.MultiStateStateManager,Evergine.MRTK.Demo
                         Id: 91bbf23a-2476-4f80-8e33-9ae90c5d25f1
+                        InitialState: StateA
                         IsEnabled: true
                       - !Evergine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButtonSpeechHandler,Evergine.MRTK
                         Id: 70452f31-ed86-4ec3-a02f-dd3b46e3d43d
@@ -3362,6 +3363,7 @@ Items:
                         Text: Option C
                       - !Evergine.MRTK.Demo.Components.MultiStateButtons.MultiStateStateManager,Evergine.MRTK.Demo
                         Id: 91bbf23a-2476-4f80-8e33-9ae90c5d25f1
+                        InitialState: StateA
                         IsEnabled: true
                       - !Evergine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButtonSpeechHandler,Evergine.MRTK
                         Id: 70452f31-ed86-4ec3-a02f-dd3b46e3d43d
@@ -3455,6 +3457,7 @@ Items:
                         Text: Option C
                       - !Evergine.MRTK.Demo.Components.MultiStateButtons.MultiStateStateManager,Evergine.MRTK.Demo
                         Id: 91bbf23a-2476-4f80-8e33-9ae90c5d25f1
+                        InitialState: StateA
                         IsEnabled: true
                       - !Evergine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButtonSpeechHandler,Evergine.MRTK
                         Id: 70452f31-ed86-4ec3-a02f-dd3b46e3d43d
