@@ -7,6 +7,16 @@ namespace Evergine.MRTK
 {
     public sealed class MRTKResourceIDs
     {
+        public sealed class Effects
+        {
+
+            /// <summary> Asset Path (MRTK/Effects/HoloGraphic.wefx) </summary>
+            public static readonly Guid HoloGraphic = new Guid("4f7e4c24-e83c-4350-9cd4-511fb2199cf4");
+
+            /// <summary> Asset Path (MRTK/Effects/HoloHandsLocal.wefx) </summary>
+            public static readonly Guid HoloHandsLocal = new Guid("b7b6076f-e298-45cf-babc-a8316996f359");
+        }
+
         public sealed class Materials
         {
             public sealed class BoundingBox
