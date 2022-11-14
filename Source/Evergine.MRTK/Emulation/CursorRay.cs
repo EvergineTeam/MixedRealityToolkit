@@ -144,8 +144,10 @@ namespace Evergine.MRTK.Emulation
 
             if (this.xrJoint?.PoseIsValid == true)
             {
-                var jointOrientation = Matrix4x4.CreateFromQuaternion(this.xrJoint.Pose.Orientation);
-                var jointNormal = -jointOrientation.Up;
+                // TODO: Put your eyes here
+                ////var jointOrientation = Matrix4x4.CreateFromQuaternion(this.xrJoint.Pose.Orientation);
+                ////var jointNormal = -jointOrientation.Up;
+                var jointNormal = Vector3.Up;
 
                 var headForward = this.cam.Transform.WorldTransform.Forward;
                 disableByPalmUp = !this.ShouldShowRay(headForward, jointNormal);
