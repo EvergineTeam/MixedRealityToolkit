@@ -19,6 +19,23 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.States
 
         private State<TState> currentState;
         private List<State<TState>> allStates;
+        private TState initialState;
+
+        /// <summary>
+        /// Gets or sets the initial state.
+        /// </summary>
+        public TState InitialState
+        {
+            get => this.initialState;
+            set
+            {
+                if (this.initialState?.Equals(value) != true)
+                {
+                    this.initialState = value;
+                    this.SetInitialState();
+                }
+            }
+        }
 
         /// <summary>
         /// Gets current state.
@@ -67,7 +84,8 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.States
         protected override void Start()
         {
             base.Start();
-            this.ChangeState(this.allStates.FirstOrDefault());
+
+            this.SetInitialState();
         }
 
         /// <inheritdoc />
@@ -118,6 +136,16 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.States
             {
                 var newState = this.GetNextState();
                 this.ChangeState(newState);
+            }
+        }
+
+        private void SetInitialState()
+        {
+            if (this.allStates != null)
+            {
+                var initialState = this.allStates.FirstOrDefault(s => s.Value.Equals(this.InitialState));
+
+                this.ChangeState(initialState);
             }
         }
     }

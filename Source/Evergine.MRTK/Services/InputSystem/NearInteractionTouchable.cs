@@ -26,10 +26,11 @@ namespace Evergine.MRTK.Services.InputSystem
 
         /// <summary>
         /// Gets the local press direction.
+        /// By default it is set as -Forward as by convention all controls and GUI elements (such as the Text component) face the Forward direction.
         /// </summary>
         [IgnoreEvergine]
         [DontRenderProperty]
-        public Vector3 LocalPressDirection { get; private set; } = Vector3.Forward;
+        public Vector3 LocalPressDirection { get; private set; } = -Vector3.Forward;
 
         /// <summary>
         /// Gets the box collider transform.
@@ -48,20 +49,20 @@ namespace Evergine.MRTK.Services.InputSystem
         /// <inheritdoc/>
         protected override bool OnAttached()
         {
-            var attached = base.OnAttached();
-
-            if (attached)
+            if (!base.OnAttached())
             {
-                var collider = this.BoxCollider3D;
-                if (collider != null)
-                {
-                    // Precompute box collider local transforms
-                    this.BoxCollider3DTransform = Matrix4x4.CreateFromTRS(collider.Offset, collider.OrientationOffset, collider.Size);
-                    this.BoxCollider3DTransformInverse = Matrix4x4.Invert(this.BoxCollider3DTransform);
-                }
+                return false;
             }
 
-            return attached;
+            var collider = this.BoxCollider3D;
+            if (collider != null)
+            {
+                // Precompute box collider local transforms
+                this.BoxCollider3DTransform = Matrix4x4.CreateFromTRS(collider.Offset, collider.OrientationOffset, collider.Size);
+                this.BoxCollider3DTransformInverse = Matrix4x4.Invert(this.BoxCollider3DTransform);
+            }
+
+            return true;
         }
     }
 }

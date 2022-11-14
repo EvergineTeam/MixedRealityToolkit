@@ -665,6 +665,8 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.BoundingBox
                 this.simpleManipulationHandler.TouchEnded += this.SimpleManipulationHandler_TouchEnded;
             }
 
+            this.InternalCreateRig();
+
             return true;
         }
 
@@ -685,6 +687,8 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.BoundingBox
                 this.simpleManipulationHandler.TouchStarted -= this.SimpleManipulationHandler_TouchStarted;
                 this.simpleManipulationHandler.TouchEnded -= this.SimpleManipulationHandler_TouchEnded;
             }
+
+            this.DestroyRig();
         }
 
         private void BoxCollider3D_OnShapeChanged(object sender, EventArgs e)
@@ -700,7 +704,7 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.BoundingBox
             this.transform.ScaleChanged += this.Transform_ScaleChanged;
             this.transform.LocalScaleChanged += this.Transform_ScaleChanged;
 
-            this.InternalCreateRig();
+            this.rigRootEntity.IsEnabled = true;
         }
 
         /// <inheritdoc/>
@@ -711,7 +715,7 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.BoundingBox
             this.transform.ScaleChanged -= this.Transform_ScaleChanged;
             this.transform.LocalScaleChanged -= this.Transform_ScaleChanged;
 
-            this.DestroyRig();
+            this.rigRootEntity.IsEnabled = false;
         }
 
         /// <inheritdoc/>
@@ -758,6 +762,8 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.BoundingBox
                 this.AddHelpers();
                 this.AddBoxDisplay();
                 this.UpdateRigHandles();
+
+                this.rigRootEntity.IsEnabled = true;
             }
         }
 
@@ -785,6 +791,7 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.BoundingBox
             this.rigRootEntity = new Entity(RIG_ROOT_NAME)
             {
                 Flags = HideFlags.DontSave | HideFlags.DontShow,
+                IsEnabled = false,
             }
             .AddComponent(new Transform3D())
             .AddComponent(rigRootPointerHandler);
