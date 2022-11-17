@@ -130,6 +130,11 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Scrolls
         {
             get
             {
+                if (this.dataSource == null || this.dataSource.Data.Count == 0)
+                {
+                    return null;
+                }
+
                 if (this.selectedIndex >= 0 &&
                     this.selectedIndex < this.dataSource.Data.Count)
                 {
