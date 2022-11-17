@@ -431,9 +431,7 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Scrolls
             {
                 var barPosition = this.scrollBarTransform.LocalPosition;
                 float contentDeltaNormalized = MathHelper.Clamp(this.contentTransform.LocalPosition.Y / (this.ContentSize.Y - this.backgroundPlaneMesh.Height), 0, 1);
-                ////barPosition.Y = this.barOrigin.Y + (contentDeltaNormalized * (this.backgroundPlaneMesh.Height - this.scrollBarTransform.Scale.Y));
                 barPosition.Y = this.barOrigin.Y - (contentDeltaNormalized * (this.backgroundPlaneMesh.Height - this.barSize));
-                Debug.WriteLine($"ContentDeltaNormalized: {contentDeltaNormalized}");
                 this.scrollBarTransform.LocalPosition = barPosition;
             }
 
