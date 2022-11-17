@@ -1,6 +1,7 @@
 ﻿// Copyright © Evergine S.L. All rights reserved. Use is subject to license terms.
 
 using Evergine.Common.Graphics;
+using Evergine.Common.Input.Pointer;
 using Evergine.Components.Graphics3D;
 using Evergine.Framework;
 using Evergine.Framework.Graphics;
@@ -10,6 +11,7 @@ using Evergine.MRTK.Base.EventDatum.Input;
 using Evergine.MRTK.Base.Interfaces.InputSystem.Handlers;
 using Evergine.MRTK.Emulation;
 using System;
+using System.Diagnostics;
 using System.Linq;
 
 namespace Evergine.MRTK.SDK.Features.UX.Components.Scrolls
@@ -60,6 +62,7 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Scrolls
         private Vector2 ContentSize;
 
         private Cursor currentCursor;
+        private Vector3 eventDataPosition;
         private Vector3 initialOffset;
         private int selectedIndex;
         private Vector3 lastCursorPosition;
@@ -71,6 +74,7 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Scrolls
         private RenderLayerDescription contentLayer;
         private RenderLayerDescription alphaLayer;
         private bool headerEnabled = false;
+        private float barSize;
 
         /// <summary>
         /// Gets or sets the content padding.
@@ -122,7 +126,26 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Scrolls
         /// <summary>
         /// Gets the selected row data.
         /// </summary>
-        public string[] Selected => this.dataSource.Data[this.selectedIndex];
+        public string[] Selected
+        {
+            get
+            {
+                if (this.dataSource == null || this.dataSource.Data.Count == 0)
+                {
+                    return null;
+                }
+
+                if (this.selectedIndex >= 0 &&
+                    this.selectedIndex < this.dataSource.Data.Count)
+                {
+                    return this.dataSource.Data[this.selectedIndex];
+                }
+                else
+                {
+                    return this.dataSource.Data[0];
+                }
+            }
+        }
 
         /// <summary>
         /// Gets or sets the columns render config.
@@ -247,6 +270,7 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Scrolls
 
             var barScale = this.scrollBarTransform.Scale;
             barScale.Y = this.backgroundPlaneMesh.Height > this.ContentSize.Y ? 1 : this.backgroundPlaneMesh.Height / this.ContentSize.Y;
+            this.barSize = this.backgroundPlaneMesh.Height * barScale.Y;
             this.scrollBarTransform.Scale = barScale;
 
             this.barOrigin = new Vector3((this.backgroundPlaneMesh.Width * 0.5f) - this.scrollBarPlaneMesh.Width, this.backgroundPlaneMesh.Height * 0.5f, this.ZContentDistance);
@@ -255,7 +279,7 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Scrolls
             this.scrollBarTransform.LocalPosition = barPosition;
 
             // Selection
-            this.selectionPlaneMesh.Width = size.X;
+            this.selectionPlaneMesh.Width = this.backgroundPlaneMesh.Width - this.ContentPadding;
             this.selectionPlaneMesh.Height = this.RowHeight;
             var selectionPosition = this.selectionTransform.LocalPosition;
             selectionPosition.X = this.contentOrigin.X - (this.ContentPadding * 0.25f);
@@ -279,6 +303,7 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Scrolls
 
                     this.currentCursor = eventData.Cursor;
 
+                    this.eventDataPosition = eventData.Position;
                     this.initialOffset = this.contentTransform.LocalPosition - eventData.Position;
                     this.SelectedRow(eventData.Position);
                     this.contentTransform.LocalPosition = eventData.Position + this.initialOffset;
@@ -406,7 +431,7 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Scrolls
             {
                 var barPosition = this.scrollBarTransform.LocalPosition;
                 float contentDeltaNormalized = MathHelper.Clamp(this.contentTransform.LocalPosition.Y / (this.ContentSize.Y - this.backgroundPlaneMesh.Height), 0, 1);
-                barPosition.Y = this.barOrigin.Y + (contentDeltaNormalized * (this.backgroundPlaneMesh.Height - this.scrollBarTransform.Scale.Y));
+                barPosition.Y = this.barOrigin.Y - (contentDeltaNormalized * (this.backgroundPlaneMesh.Height - this.barSize));
                 this.scrollBarTransform.LocalPosition = barPosition;
             }
 
@@ -418,7 +443,9 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Scrolls
 
         private void SelectedRow(Vector3 pointerPosition)
         {
-            var distance = (this.contentTransform.Position.Y + this.contentOrigin.Y) - pointerPosition.Y;
+            var originTransformed = this.contentTransform.Position + (this.contentTransform.WorldTransform.Up * this.contentOrigin.Y);
+            var pointerPositionTransformed = this.contentTransform.Position + Vector3.Project(pointerPosition - this.contentTransform.Position, this.contentTransform.WorldTransform.Up);
+            var distance = Vector3.Distance(originTransformed, pointerPositionTransformed);
             int index = (int)(distance / this.RowHeight);
             if (index < 0 || index >= this.dataSource.Data.Count)
             {
