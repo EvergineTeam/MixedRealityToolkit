@@ -138,22 +138,22 @@
       <Version>6.2.10</Version>
     </PackageReference>
     <PackageReference Include="Evergine.MixedReality">
-      <Version>2022.11.16.6-nightly</Version>
+      <Version>2022.11.17.3-nightly</Version>
     </PackageReference>
     <PackageReference Include="Evergine.XAudio2">
-      <Version>2022.11.16.6-nightly</Version>
+      <Version>2022.11.17.3-nightly</Version>
     </PackageReference>
     <PackageReference Include="Evergine.Targets">
-      <Version>2022.11.16.6-nightly</Version>
+      <Version>2022.11.17.3-nightly</Version>
     </PackageReference>
     <PackageReference Include="Evergine.Targets.UWP">
-      <Version>2022.11.16.6-nightly</Version>
+      <Version>2022.11.17.3-nightly</Version>
     </PackageReference>
     <PackageReference Include="Evergine.UWPView">
-      <Version>2022.11.16.6-nightly</Version>
+      <Version>2022.11.17.3-nightly</Version>
     </PackageReference>
     <PackageReference Include="Evergine.DirectX11">
-      <Version>2022.11.16.6-nightly</Version>
+      <Version>2022.11.17.3-nightly</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
