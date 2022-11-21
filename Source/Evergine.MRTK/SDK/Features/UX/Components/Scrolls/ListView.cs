@@ -35,6 +35,9 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Scrolls
         [BindEntity(source: BindEntitySource.ChildrenSkipOwner, tag: "PART_scrollviewer_content")]
         private Entity content = null;
 
+        [BindEntity(source: BindEntitySource.ChildrenSkipOwner, tag: "PART_scrollviewer_bar")]
+        private Entity scrollBarEntity = null;
+
         [BindComponent(source: BindComponentSource.ChildrenSkipOwner, tag: "PART_scrollviewer_bar")]
         private Transform3D scrollBarTransform = null;
 
@@ -46,6 +49,9 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Scrolls
 
         [BindEntity(source: BindEntitySource.ChildrenSkipOwner, tag: "PART_scrollviewer_header")]
         private Entity header = null;
+
+        [BindEntity(source: BindEntitySource.ChildrenSkipOwner, tag: "PART_scrollviewer_selection")]
+        private Entity selectionEntity = null;
 
         [BindComponent(source: BindComponentSource.ChildrenSkipOwner, tag: "PART_scrollviewer_selection")]
         private PlaneMesh selectionPlaneMesh = null;
@@ -198,6 +204,8 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Scrolls
         {
             if (this.dataSource == null || this.render == null || this.dataSource.Data.Count == 0)
             {
+                this.scrollBarEntity.IsEnabled = false;
+                this.selectionEntity.IsEnabled = false;
                 return;
             }
 
@@ -266,6 +274,7 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Scrolls
             this.ContentSize = size;
 
             // Update bar
+            this.scrollBarEntity.IsEnabled = true;
             this.scrollBarPlaneMesh.Width = this.BarWidth;
 
             var barScale = this.scrollBarTransform.Scale;
@@ -279,6 +288,7 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Scrolls
             this.scrollBarTransform.LocalPosition = barPosition;
 
             // Selection
+            this.selectionEntity.IsEnabled = true;
             this.selectionPlaneMesh.Width = this.backgroundPlaneMesh.Width - this.ContentPadding;
             this.selectionPlaneMesh.Height = this.RowHeight;
             var selectionPosition = this.selectionTransform.LocalPosition;
@@ -455,6 +465,15 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Scrolls
             this.selectedIndex = index;
 
             this.SelectedChanged?.Invoke(this, null);
+        }
+
+        /// <summary>
+        /// Clear all data of ListView.
+        /// </summary>
+        public void ClearData()
+        {
+            this.dataSource.Data.Clear();
+            this.Refresh();
         }
     }
 }

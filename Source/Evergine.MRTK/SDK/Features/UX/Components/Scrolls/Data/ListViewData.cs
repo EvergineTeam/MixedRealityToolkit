@@ -49,13 +49,5 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Scrolls
 
             return this;
         }
-
-        /// <summary>
-        /// Remove all data.
-        /// </summary>
-        public void ClearData()
-        {
-            this.data.Clear();
-        }
     }
 }
