@@ -18,25 +18,21 @@ param (
 	[string]$assetsCsprojPath = "Source\Evergine.MRTK.Assets\Evergine.MRTK.Assets.csproj"
 )
 
-# Utility functions
-function LogDebug($line)
-{ Write-Host "##[debug] $line" -Foreground Blue -Background Black
-}
+# Source helper functions
+. ./Helpers.ps1
 
 # Show variables
-LogDebug "############## VARIABLES ##############"
-LogDebug "Version.............: $version"
-LogDebug "Build configuration.: $buildConfiguration"
-LogDebug "Build verbosity.....: $buildVerbosity"
-LogDebug "Output folder.......: $outputFolderBase"
-LogDebug "#######################################"
+ShowVariables $version $buildConfiguration $buildVerbosity $outputFolderBase
 
 # Create output folder
-New-Item -ItemType Directory -Force -Path $outputFolderBase
-$absoluteOutputFolder = Resolve-Path $outputFolderBase
+$absoluteOutputFolder = (CreateOutputFolder $outputFolderBase)
+
+# Locate build tools and enter build environment
+PrepareEnvironment
 
 # Generate packages
 LogDebug "START assets packaging process"
-& dotnet build "$assetsCsprojPath" -v:$buildVerbosity -p:Configuration=$buildConfiguration -t:CreateEvergineAddOn -p:Version=$version -o "$absoluteOutputFolder"
+& msbuild -t:restore "$assetsCsprojPath" -p:RestorePackagesConfig=true
+& msbuild -t:build "$assetsCsprojPath" -v:$buildVerbosity -p:Configuration=$buildConfiguration -t:CreateEvergineAddOn -p:Version=$version -p:OutputPath="$absoluteOutputFolder"
 
 LogDebug "END assets packaging process"

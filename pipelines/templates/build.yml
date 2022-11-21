@@ -18,7 +18,10 @@ jobs:
     workspace:
       clean: all
     pool:
-      vmImage: "windows-2022"
+      name: Evergine
+      demands:
+        - msbuild
+        - pscore
     variables:
       nugetOutputPath: "$(Build.StagingDirectory)/nupkgs"
       wepkgOutputPath: "$(Build.StagingDirectory)/wepkgs"
