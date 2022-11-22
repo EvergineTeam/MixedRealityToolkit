@@ -33,17 +33,19 @@ function CreateOutputFolder($outputFolderBase)
 
 function PrepareEnvironment
 {
-	# Download vswhere
+	# Create temp folder
 	$tempFolder = "temp"
 	New-Item -ItemType Directory -Force -Path $tempFolder
 	
+	# Add to path
+	$toolsPath = Resolve-Path $tempFolder
+	$env:Path = "$toolsPath;" + $env:Path
+
+	# Download vswhere
 	$vsWherePath = Join-Path -Path $tempFolder -ChildPath "vswhere.exe"
 	Invoke-WebRequest "https://github.com/microsoft/vswhere/releases/download/3.1.1/vswhere.exe" -OutFile $vsWherePath
 
 	# Invoke vswhere
-	$toolsPath = Resolve-Path $tempFolder
-	$env:Path = "$toolsPath;" + $env:Path
-
 	$VSPath = vswhere -prerelease -latest -products * -requires Microsoft.Component.MSBuild -property installationPath
 	if (-Not $?) { exit $lastexitcode }
 	

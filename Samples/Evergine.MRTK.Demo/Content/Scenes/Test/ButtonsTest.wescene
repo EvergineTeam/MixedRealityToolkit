@@ -81,7 +81,7 @@ Items:
         Id: 88e25e58-d6ca-4934-a280-294f805c26bd
         AsignedTo: Default
         IsEnabled: true
-        Material: de7dd9c4-72a6-4aac-b209-3f9d223b9a2f
+        Material: 8d2c6db7-6147-4ada-bcd0-a309adf4a1e2
         UseCopy: false
       - !Evergine.Components.Graphics3D.SphereMesh,Evergine.Components
         Id: 9369593f-c243-4632-b7c2-8b3e94abc256
@@ -267,7 +267,7 @@ Items:
               W: 1.0
               X: 0.0
               Y: 0.0
-              Z: 0.0
+              Z: -0.0
             LocalPosition:
               X: 0.0680612251
               Y: 0.0477196798
@@ -420,9 +420,9 @@ Items:
                     Id: c0125479-7f50-4cee-bf27-497840780727
                     IsEnabled: true
                     LocalOrientation:
-                      W: 1.0
-                      X: 0.0
-                      Y: 0.0
+                      W: -4.37113883E-08
+                      X: -0.0
+                      Y: 1.0
                       Z: 0.0
                     LocalPosition:
                       X: 0.00352758914
@@ -482,7 +482,7 @@ Items:
                         Name: LocalPosition
                         Target: 32c920a6-bf72-4169-bcaf-c8a2d39674d4
                         TypedValue:
-                          X: -0.0390000008
+                          X: 0.0390000008
                           Y: 0.0199999996
                           Z: 0.0
                       - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Framework.Graphics.Material,Evergine.Framework]],Evergine.Framework
@@ -530,7 +530,7 @@ Items:
                         Name: LocalPosition
                         Target: 32c920a6-bf72-4169-bcaf-c8a2d39674d4
                         TypedValue:
-                          X: -0.0780000016
+                          X: 0.0780000016
                           Y: 0.0199999996
                           Z: 0.0
                       - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Framework.Graphics.Material,Evergine.Framework]],Evergine.Framework
@@ -586,7 +586,7 @@ Items:
                         Name: LocalPosition
                         Target: 32c920a6-bf72-4169-bcaf-c8a2d39674d4
                         TypedValue:
-                          X: -0.119000003
+                          X: 0.119000003
                           Y: 0.0199999996
                           Z: 0.0
                       - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Framework.Graphics.Material,Evergine.Framework]],Evergine.Framework
@@ -625,9 +625,9 @@ Items:
                     Id: 778f8764-2faf-4f1d-9748-149057673cf4
                     IsEnabled: true
                     LocalOrientation:
-                      W: 1.0
-                      X: 0.0
-                      Y: 0.0
+                      W: -4.37113883E-08
+                      X: -0.0
+                      Y: 1.0
                       Z: 0.0
                     LocalPosition:
                       X: 0.00176247954
@@ -651,7 +651,7 @@ Items:
                         Name: LocalPosition
                         Target: e3d8652e-1c6e-4341-ae1f-7d42a38115ca
                         TypedValue:
-                          X: 0.00100000005
+                          X: 0.0
                           Y: -0.0340000018
                           Z: -0.00499999989
                       - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Vector3,Evergine.Mathematics]],Evergine.Framework
@@ -683,7 +683,7 @@ Items:
                         Name: LocalPosition
                         Target: e3d8652e-1c6e-4341-ae1f-7d42a38115ca
                         TypedValue:
-                          X: -0.0419999994
+                          X: 0.0419999994
                           Y: -0.0340000018
                           Z: -0.00499999989
                       - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Vector3,Evergine.Mathematics]],Evergine.Framework
@@ -719,7 +719,7 @@ Items:
                         Name: LocalPosition
                         Target: e3d8652e-1c6e-4341-ae1f-7d42a38115ca
                         TypedValue:
-                          X: -0.0850000009
+                          X: 0.0839999989
                           Y: -0.0340000018
                           Z: -0.00499999989
                       - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Vector3,Evergine.Mathematics]],Evergine.Framework
@@ -1013,6 +1013,7 @@ Items:
                                   - !Evergine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleStateManager,Evergine.MRTK
                                     Id: 0ee8080d-b2f9-4c4d-a77a-78830f3d1adb
                                     DefaultComponentsAdded: true
+                                    InitialState: Off
                                     IsEnabled: true
                                   - !Evergine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleButtonConfigurator,Evergine.MRTK
                                     Id: fea0498a-3e99-491d-a2cb-0f21ba3d2d3e
@@ -1060,14 +1061,6 @@ Items:
                                   X: -0.0016310662
                                   Y: 0.0247318596
                                   Z: 1.3957739E-08
-                              - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Quaternion,Evergine.Mathematics]],Evergine.Framework
-                                Name: LocalOrientation
-                                Target: 32c920a6-bf72-4169-bcaf-c8a2d39674d4
-                                TypedValue:
-                                  W: 4.37113883E-08
-                                  X: 0.0
-                                  Y: 1.0
-                                  Z: 0.0
                               - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Framework.Graphics.Material,Evergine.Framework]],Evergine.Framework
                                 Name: Material
                                 Target: de26b28f-b9c6-4576-9fb4-f33e50dc4e76
@@ -1188,6 +1181,7 @@ Items:
                                   - !Evergine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleStateManager,Evergine.MRTK
                                     Id: 7aab627f-6f28-4b5d-8b5e-392f86b6bf74
                                     DefaultComponentsAdded: true
+                                    InitialState: Off
                                     IsEnabled: true
                                   - !Evergine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleButtonConfigurator,Evergine.MRTK
                                     Id: c75e214d-1bd5-4561-a6a9-fcb32b28f0b5
@@ -1258,14 +1252,6 @@ Items:
                                   X: 0.800000012
                                   Y: 0.800000012
                                   Z: 0.800000012
-                              - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Quaternion,Evergine.Mathematics]],Evergine.Framework
-                                Name: LocalOrientation
-                                Target: 32c920a6-bf72-4169-bcaf-c8a2d39674d4
-                                TypedValue:
-                                  W: -4.37113883E-08
-                                  X: 0.0
-                                  Y: 1.0
-                                  Z: 0.0
                               - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Framework.Graphics.Material,Evergine.Framework]],Evergine.Framework
                                 Name: Material
                                 Target: de26b28f-b9c6-4576-9fb4-f33e50dc4e76
@@ -1474,6 +1460,7 @@ Items:
                                   - !Evergine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleStateManager,Evergine.MRTK
                                     Id: e728509a-b8ed-4e70-ad1d-68ed45cc9018
                                     DefaultComponentsAdded: true
+                                    InitialState: Off
                                     IsEnabled: true
                                   - !Evergine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleButton,Evergine.MRTK
                                     Id: 8c293fdf-8ca0-4b3b-bf08-9f8dbe514562
@@ -1497,14 +1484,6 @@ Items:
                                   X: 0.800000012
                                   Y: 0.800000012
                                   Z: 0.800000012
-                              - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Quaternion,Evergine.Mathematics]],Evergine.Framework
-                                Name: LocalOrientation
-                                Target: e3d8652e-1c6e-4341-ae1f-7d42a38115ca
-                                TypedValue:
-                                  W: -4.37113883E-08
-                                  X: 0.0
-                                  Y: 1.0
-                                  Z: 0.0
                               - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Framework.Graphics.Material,Evergine.Framework]],Evergine.Framework
                                 Name: Material
                                 Target: 141105e4-f3a9-4fb9-a051-c15ee0a4c315
@@ -1618,6 +1597,7 @@ Items:
                                   - !Evergine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleStateManager,Evergine.MRTK
                                     Id: db710800-e3d3-4706-a2e2-4e10390ce56b
                                     DefaultComponentsAdded: true
+                                    InitialState: Off
                                     IsEnabled: true
                                   - !Evergine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleButton,Evergine.MRTK
                                     Id: d6140de3-ea17-475c-b323-d80fd33d29a8
@@ -1657,14 +1637,6 @@ Items:
                                   X: 0.600000024
                                   Y: 0.600000024
                                   Z: 0.600000024
-                              - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Quaternion,Evergine.Mathematics]],Evergine.Framework
-                                Name: LocalOrientation
-                                Target: e3d8652e-1c6e-4341-ae1f-7d42a38115ca
-                                TypedValue:
-                                  W: -4.37113883E-08
-                                  X: 0.0
-                                  Y: 1.0
-                                  Z: 0.0
                               - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Framework.Graphics.Material,Evergine.Framework]],Evergine.Framework
                                 Name: Material
                                 Target: 141105e4-f3a9-4fb9-a051-c15ee0a4c315
@@ -2043,6 +2015,7 @@ Items:
                                       - !Evergine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleStateManager,Evergine.MRTK
                                         Id: fb346324-e483-4cce-bc05-503d2d24375a
                                         DefaultComponentsAdded: true
+                                        InitialState: Off
                                         IsEnabled: true
                                       - !Evergine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleButton,Evergine.MRTK
                                         Id: 0bba35e7-b88a-4733-87ae-667d6360d19c
@@ -2066,14 +2039,6 @@ Items:
                                       X: 0.800000012
                                       Y: 0.800000012
                                       Z: 0.800000012
-                                  - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Quaternion,Evergine.Mathematics]],Evergine.Framework
-                                    Name: LocalOrientation
-                                    Target: e3d8652e-1c6e-4341-ae1f-7d42a38115ca
-                                    TypedValue:
-                                      W: -4.37113883E-08
-                                      X: 0.0
-                                      Y: 1.0
-                                      Z: 0.0
                                   - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Framework.Graphics.Material,Evergine.Framework]],Evergine.Framework
                                     Name: Material
                                     Target: 65182969-b575-4f02-92f3-d9c8b594fa14
@@ -2188,6 +2153,7 @@ Items:
                                       - !Evergine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleStateManager,Evergine.MRTK
                                         Id: b86380bb-694e-4f08-9861-c91feab98f95
                                         DefaultComponentsAdded: true
+                                        InitialState: Off
                                         IsEnabled: true
                                       - !Evergine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleButton,Evergine.MRTK
                                         Id: f243c199-4fcb-4814-a500-402905dfa296
@@ -2211,14 +2177,6 @@ Items:
                                       X: 0.800000012
                                       Y: 0.800000012
                                       Z: 0.800000012
-                                  - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Quaternion,Evergine.Mathematics]],Evergine.Framework
-                                    Name: LocalOrientation
-                                    Target: e3d8652e-1c6e-4341-ae1f-7d42a38115ca
-                                    TypedValue:
-                                      W: -4.37113883E-08
-                                      X: 0.0
-                                      Y: 1.0
-                                      Z: 0.0
                                   - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Framework.Graphics.Material,Evergine.Framework]],Evergine.Framework
                                     Name: Material
                                     Target: 65182969-b575-4f02-92f3-d9c8b594fa14
@@ -2333,6 +2291,7 @@ Items:
                                       - !Evergine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleStateManager,Evergine.MRTK
                                         Id: 62668ef3-41c1-4cfd-a6b4-09a3dc134bca
                                         DefaultComponentsAdded: true
+                                        InitialState: Off
                                         IsEnabled: true
                                       - !Evergine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleButton,Evergine.MRTK
                                         Id: 6e0376c3-e6a1-40e6-a7a2-6bb5a9bb9fc7
@@ -2356,14 +2315,6 @@ Items:
                                       X: 0.800000012
                                       Y: 0.800000012
                                       Z: 0.800000012
-                                  - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Quaternion,Evergine.Mathematics]],Evergine.Framework
-                                    Name: LocalOrientation
-                                    Target: e3d8652e-1c6e-4341-ae1f-7d42a38115ca
-                                    TypedValue:
-                                      W: -4.37113883E-08
-                                      X: 0.0
-                                      Y: 1.0
-                                      Z: 0.0
                                   - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Framework.Graphics.Material,Evergine.Framework]],Evergine.Framework
                                     Name: Material
                                     Target: 65182969-b575-4f02-92f3-d9c8b594fa14
@@ -2478,6 +2429,7 @@ Items:
                                       - !Evergine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleStateManager,Evergine.MRTK
                                         Id: efd08fd1-7200-4cf8-abbf-f95381a7f72a
                                         DefaultComponentsAdded: true
+                                        InitialState: Off
                                         IsEnabled: true
                                       - !Evergine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleButton,Evergine.MRTK
                                         Id: 4dd6a090-140f-4859-a883-2ecec2d86c82
@@ -2501,14 +2453,6 @@ Items:
                                       X: 0.800000012
                                       Y: 0.800000012
                                       Z: 0.800000012
-                                  - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Quaternion,Evergine.Mathematics]],Evergine.Framework
-                                    Name: LocalOrientation
-                                    Target: e3d8652e-1c6e-4341-ae1f-7d42a38115ca
-                                    TypedValue:
-                                      W: -4.37113883E-08
-                                      X: 0.0
-                                      Y: 1.0
-                                      Z: 0.0
                                   - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Framework.Graphics.Material,Evergine.Framework]],Evergine.Framework
                                     Name: Material
                                     Target: 65182969-b575-4f02-92f3-d9c8b594fa14
@@ -2726,6 +2670,7 @@ Items:
                                       - !Evergine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleStateManager,Evergine.MRTK
                                         Id: 16f75b43-4ea4-4968-b734-303362f19d7e
                                         DefaultComponentsAdded: true
+                                        InitialState: Off
                                         IsEnabled: true
                                       - !Evergine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleButton,Evergine.MRTK
                                         Id: b675ebeb-b093-481c-bfe4-9af646a30d7a
@@ -2749,14 +2694,6 @@ Items:
                                       X: 0.800000012
                                       Y: 0.800000012
                                       Z: 0.800000012
-                                  - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Quaternion,Evergine.Mathematics]],Evergine.Framework
-                                    Name: LocalOrientation
-                                    Target: e3d8652e-1c6e-4341-ae1f-7d42a38115ca
-                                    TypedValue:
-                                      W: -4.37113883E-08
-                                      X: 0.0
-                                      Y: 1.0
-                                      Z: 0.0
                                   - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Framework.Graphics.Material,Evergine.Framework]],Evergine.Framework
                                     Name: Material
                                     Target: 141105e4-f3a9-4fb9-a051-c15ee0a4c315
@@ -2875,6 +2812,7 @@ Items:
                                       - !Evergine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleStateManager,Evergine.MRTK
                                         Id: 0fbb0edf-3761-427b-827b-34959032f4fa
                                         DefaultComponentsAdded: true
+                                        InitialState: Off
                                         IsEnabled: true
                                       - !Evergine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleButton,Evergine.MRTK
                                         Id: cdc8eaa3-d398-4b0d-b839-49a982398de9
@@ -2898,14 +2836,6 @@ Items:
                                       X: 0.800000012
                                       Y: 0.800000012
                                       Z: 0.800000012
-                                  - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Quaternion,Evergine.Mathematics]],Evergine.Framework
-                                    Name: LocalOrientation
-                                    Target: e3d8652e-1c6e-4341-ae1f-7d42a38115ca
-                                    TypedValue:
-                                      W: -4.37113883E-08
-                                      X: 0.0
-                                      Y: 1.0
-                                      Z: 0.0
                                   - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Framework.Graphics.Material,Evergine.Framework]],Evergine.Framework
                                     Name: Material
                                     Target: 141105e4-f3a9-4fb9-a051-c15ee0a4c315
@@ -3024,6 +2954,7 @@ Items:
                                       - !Evergine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleStateManager,Evergine.MRTK
                                         Id: ad3b0e82-3612-4793-9f18-af4f00f3b79f
                                         DefaultComponentsAdded: true
+                                        InitialState: Off
                                         IsEnabled: true
                                       - !Evergine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleButton,Evergine.MRTK
                                         Id: ed23e1e0-38fc-4363-bc38-d72dc3d8256b
@@ -3047,14 +2978,6 @@ Items:
                                       X: 0.800000012
                                       Y: 0.800000012
                                       Z: 0.800000012
-                                  - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Quaternion,Evergine.Mathematics]],Evergine.Framework
-                                    Name: LocalOrientation
-                                    Target: e3d8652e-1c6e-4341-ae1f-7d42a38115ca
-                                    TypedValue:
-                                      W: -4.37113883E-08
-                                      X: 0.0
-                                      Y: 1.0
-                                      Z: 0.0
                                   - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Framework.Graphics.Material,Evergine.Framework]],Evergine.Framework
                                     Name: Material
                                     Target: 141105e4-f3a9-4fb9-a051-c15ee0a4c315
@@ -3173,6 +3096,7 @@ Items:
                                       - !Evergine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleStateManager,Evergine.MRTK
                                         Id: ed2cfabc-b4ca-460c-b268-6dd9e8b10adc
                                         DefaultComponentsAdded: true
+                                        InitialState: Off
                                         IsEnabled: true
                                       - !Evergine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleButton,Evergine.MRTK
                                         Id: 41a0e40b-231f-43d4-a5e7-f00f054eb5a4
@@ -3196,14 +3120,6 @@ Items:
                                       X: 0.800000012
                                       Y: 0.800000012
                                       Z: 0.800000012
-                                  - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Quaternion,Evergine.Mathematics]],Evergine.Framework
-                                    Name: LocalOrientation
-                                    Target: e3d8652e-1c6e-4341-ae1f-7d42a38115ca
-                                    TypedValue:
-                                      W: -4.37113883E-08
-                                      X: 0.0
-                                      Y: 1.0
-                                      Z: 0.0
                                   - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Framework.Graphics.Material,Evergine.Framework]],Evergine.Framework
                                     Name: Material
                                     Target: 141105e4-f3a9-4fb9-a051-c15ee0a4c315
@@ -3425,6 +3341,7 @@ Items:
                                       - !Evergine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleStateManager,Evergine.MRTK
                                         Id: 7a3ec19a-4976-4334-8310-75e9b3b2dbf0
                                         DefaultComponentsAdded: true
+                                        InitialState: Off
                                         IsEnabled: true
                                       - !Evergine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleButton,Evergine.MRTK
                                         Id: e604e79a-4bd1-467e-950a-f362b1bdd7bc
@@ -3448,14 +3365,6 @@ Items:
                                       X: 0.800000012
                                       Y: 0.800000012
                                       Z: 0.800000012
-                                  - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Quaternion,Evergine.Mathematics]],Evergine.Framework
-                                    Name: LocalOrientation
-                                    Target: e3d8652e-1c6e-4341-ae1f-7d42a38115ca
-                                    TypedValue:
-                                      W: -4.37113883E-08
-                                      X: 0.0
-                                      Y: 1.0
-                                      Z: 0.0
                                   - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Framework.Graphics.Material,Evergine.Framework]],Evergine.Framework
                                     Name: Material
                                     Target: 141105e4-f3a9-4fb9-a051-c15ee0a4c315
@@ -3569,6 +3478,7 @@ Items:
                                       - !Evergine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleStateManager,Evergine.MRTK
                                         Id: 02ef6c7d-1ddd-48cb-98e5-8ca4d633c60e
                                         DefaultComponentsAdded: true
+                                        InitialState: Off
                                         IsEnabled: true
                                       - !Evergine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleButton,Evergine.MRTK
                                         Id: 48dfa641-3bc6-470f-8ddd-c02b9ca0f453
@@ -3592,14 +3502,6 @@ Items:
                                       X: 0.800000012
                                       Y: 0.800000012
                                       Z: 0.800000012
-                                  - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Quaternion,Evergine.Mathematics]],Evergine.Framework
-                                    Name: LocalOrientation
-                                    Target: e3d8652e-1c6e-4341-ae1f-7d42a38115ca
-                                    TypedValue:
-                                      W: -4.37113883E-08
-                                      X: 0.0
-                                      Y: 1.0
-                                      Z: 0.0
                                   - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Framework.Graphics.Material,Evergine.Framework]],Evergine.Framework
                                     Name: Material
                                     Target: 141105e4-f3a9-4fb9-a051-c15ee0a4c315
@@ -3713,6 +3615,7 @@ Items:
                                       - !Evergine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleStateManager,Evergine.MRTK
                                         Id: ff6246fe-21da-4aa4-ab47-892031b08600
                                         DefaultComponentsAdded: true
+                                        InitialState: Off
                                         IsEnabled: true
                                       - !Evergine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleButton,Evergine.MRTK
                                         Id: a7c3a2aa-386c-4adc-be46-ef6424843994
@@ -3736,14 +3639,6 @@ Items:
                                       X: 0.800000012
                                       Y: 0.800000012
                                       Z: 0.800000012
-                                  - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Quaternion,Evergine.Mathematics]],Evergine.Framework
-                                    Name: LocalOrientation
-                                    Target: e3d8652e-1c6e-4341-ae1f-7d42a38115ca
-                                    TypedValue:
-                                      W: -4.37113883E-08
-                                      X: 0.0
-                                      Y: 1.0
-                                      Z: 0.0
                                   - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Framework.Graphics.Material,Evergine.Framework]],Evergine.Framework
                                     Name: Material
                                     Target: 141105e4-f3a9-4fb9-a051-c15ee0a4c315
@@ -3857,6 +3752,7 @@ Items:
                                       - !Evergine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleStateManager,Evergine.MRTK
                                         Id: 419c7ed9-74ff-4eff-bf80-ea8243dc3600
                                         DefaultComponentsAdded: true
+                                        InitialState: Off
                                         IsEnabled: true
                                       - !Evergine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleButton,Evergine.MRTK
                                         Id: 27eb36f4-6e3b-48e7-87a8-7fe9c2958d82
@@ -3880,14 +3776,6 @@ Items:
                                       X: 0.800000012
                                       Y: 0.800000012
                                       Z: 0.800000012
-                                  - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Quaternion,Evergine.Mathematics]],Evergine.Framework
-                                    Name: LocalOrientation
-                                    Target: e3d8652e-1c6e-4341-ae1f-7d42a38115ca
-                                    TypedValue:
-                                      W: -4.37113883E-08
-                                      X: 0.0
-                                      Y: 1.0
-                                      Z: 0.0
                                   - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Framework.Graphics.Material,Evergine.Framework]],Evergine.Framework
                                     Name: Material
                                     Target: 141105e4-f3a9-4fb9-a051-c15ee0a4c315
@@ -3907,7 +3795,7 @@ Items:
 Managers:
   - !Evergine.Framework.Managers.EnvironmentManager,Evergine.Framework
     Id: ee2d8654-8b9f-42fc-93bb-9e632d1a8efc
-    IBLReflectionProbe: 9e86e84c-dc70-4f3b-99f5-251ee759478f
+    IBLReflectionProbe: e38eae35-aa81-42c3-b364-fc8f7b6f3446
     IntensityMultiplier: 1.0
     IsEnabled: true
     Strategy: Automatically
