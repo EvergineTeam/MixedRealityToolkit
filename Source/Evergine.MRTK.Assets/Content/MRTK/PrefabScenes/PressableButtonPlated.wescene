@@ -384,7 +384,7 @@ Items:
                         LocalPosition:
                           X: 0.0
                           Y: 0.0
-                          Z: -0.510592341
+                          Z: 0.510999978
                         LocalScale:
                           X: 1.0
                           Y: 1.0
@@ -402,7 +402,7 @@ Items:
                         Origin:
                           X: 0.5
                           Y: 0.5
-                        PlaneNormal: ZNegative
+                        PlaneNormal: ZPositive
                         TwoSides: false
                         UMirror: false
                         UOffset: 0.0
