@@ -11,7 +11,6 @@ namespace Evergine.MRTK.Demo.Quest
     [Activity(Label = "@string/app_name",
         ConfigurationChanges = ConfigChanges.KeyboardHidden | ConfigChanges.Orientation,
         ScreenOrientation = ScreenOrientation.SensorLandscape,
-        MainLauncher = true,
         Theme = "@style/SplashTheme")]
     public class SplashActivity : Activity
     {
