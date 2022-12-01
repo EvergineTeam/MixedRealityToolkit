@@ -480,8 +480,8 @@ Items:
                       Y: 0.0499999933
                       Z: 0.00100000016
                     OrientationOffset:
-                      W: 1.0
-                      X: 0.0
+                      W: -4.37113883E-08
+                      X: 1.0
                       Y: 0.0
                       Z: 0.0
                     Size:
@@ -622,8 +622,8 @@ Items:
                       Y: 0.0499999933
                       Z: 0.00100000016
                     OrientationOffset:
-                      W: 1.0
-                      X: 0.0
+                      W: -4.37113883E-08
+                      X: 1.0
                       Y: 0.0
                       Z: 0.0
                     Size:
@@ -764,8 +764,8 @@ Items:
                       Y: 0.0499999933
                       Z: 0.00100000016
                     OrientationOffset:
-                      W: 1.0
-                      X: 0.0
+                      W: -4.37113883E-08
+                      X: 1.0
                       Y: 0.0
                       Z: 0.0
                     Size:
@@ -906,8 +906,8 @@ Items:
                       Y: 0.0499999933
                       Z: 0.00100000016
                     OrientationOffset:
-                      W: 1.0
-                      X: 0.0
+                      W: -4.37113883E-08
+                      X: 1.0
                       Y: 0.0
                       Z: 0.0
                     Size:
@@ -1048,8 +1048,8 @@ Items:
                       Y: 0.0499999933
                       Z: 0.00100000016
                     OrientationOffset:
-                      W: 1.0
-                      X: 0.0
+                      W: -4.37113883E-08
+                      X: 1.0
                       Y: 0.0
                       Z: 0.0
                     Size:
@@ -1190,8 +1190,8 @@ Items:
                       Y: 0.0499999933
                       Z: 0.00100000016
                     OrientationOffset:
-                      W: 1.0
-                      X: 0.0
+                      W: -4.37113883E-08
+                      X: 1.0
                       Y: 0.0
                       Z: 0.0
                     Size:
@@ -1332,8 +1332,8 @@ Items:
                       Y: 0.0499999933
                       Z: 0.00100000016
                     OrientationOffset:
-                      W: 1.0
-                      X: 0.0
+                      W: -4.37113883E-08
+                      X: 1.0
                       Y: 0.0
                       Z: 0.0
                     Size:
@@ -1474,8 +1474,8 @@ Items:
                       Y: 0.0499999933
                       Z: 0.00100000016
                     OrientationOffset:
-                      W: 1.0
-                      X: 0.0
+                      W: -4.37113883E-08
+                      X: 1.0
                       Y: 0.0
                       Z: 0.0
                     Size:
@@ -1616,8 +1616,8 @@ Items:
                       Y: 0.0499999933
                       Z: 0.00100000016
                     OrientationOffset:
-                      W: 1.0
-                      X: 0.0
+                      W: -4.37113883E-08
+                      X: 1.0
                       Y: 0.0
                       Z: 0.0
                     Size:
@@ -1758,8 +1758,8 @@ Items:
                       Y: 0.0499999933
                       Z: 0.00100000016
                     OrientationOffset:
-                      W: 1.0
-                      X: 0.0
+                      W: -4.37113883E-08
+                      X: 1.0
                       Y: 0.0
                       Z: 0.0
                     Size:
@@ -1900,8 +1900,8 @@ Items:
                       Y: 0.0499999933
                       Z: 0.00100000016
                     OrientationOffset:
-                      W: 1.0
-                      X: 0.0
+                      W: -4.37113883E-08
+                      X: 1.0
                       Y: 0.0
                       Z: 0.0
                     Size:
@@ -2042,8 +2042,8 @@ Items:
                       Y: 0.0499999933
                       Z: 0.00100000016
                     OrientationOffset:
-                      W: 1.0
-                      X: 0.0
+                      W: -4.37113883E-08
+                      X: 1.0
                       Y: 0.0
                       Z: 0.0
                     Size:
@@ -2196,6 +2196,7 @@ Items:
                 Size:
                   X: 8.0
                   Y: 1.10000002
+                Softness: 0.75
                 Text: Press Interaction
                 VerticalAlignment: Top
                 Wrapping: true
@@ -2251,6 +2252,7 @@ Items:
                 Size:
                   X: 0.215000093
                   Y: 0.034999989
+                Softness: 0.75
                 Text: HoloLens 2 buttons and other custom button examples using PressableButton.cs
                 VerticalAlignment: Top
                 Wrapping: true
@@ -2359,6 +2361,7 @@ Items:
                     Size:
                       X: 8.0
                       Y: 1.10000002
+                    Softness: 0.75
                     Text: Color Change on Pressed Event
                     VerticalAlignment: Top
                     Wrapping: true
@@ -3728,6 +3731,7 @@ Items:
                 Size:
                   X: 8.0
                   Y: 1.10000002
+                Softness: 0.75
                 Text: Slider Interaction
                 VerticalAlignment: Top
                 Wrapping: true
@@ -3783,6 +3787,7 @@ Items:
                 Size:
                   X: 8.0
                   Y: 1.10000002
+                Softness: 0.75
                 Text: Example using PinchSlider.cs
                 VerticalAlignment: Top
                 Wrapping: true
@@ -4497,6 +4502,7 @@ Items:
                 Size:
                   X: 8.0
                   Y: 1.10000002
+                Softness: 0.75
                 Text: Touch Interaction
                 VerticalAlignment: Top
                 Wrapping: true
@@ -4552,6 +4558,7 @@ Items:
                 Size:
                   X: 0.200000003
                   Y: 0.200000003
+                Softness: 0.75
                 Text: Examples of touch events using HandInteractionTouch.cs Only works with HoloLens 2's articulated hand
                 VerticalAlignment: Top
                 Wrapping: true
@@ -5415,6 +5422,7 @@ Items:
                 Size:
                   X: 8.0
                   Y: 1.10000002
+                Softness: 0.75
                 Text: Manipulation Interaction
                 VerticalAlignment: Top
                 Wrapping: true
@@ -5470,6 +5478,7 @@ Items:
                 Size:
                   X: 0.589999676
                   Y: 0.200000003
+                Softness: 0.75
                 Text: Examples using SimpleManipulationHandler.cs with and without physics and using TetheredPlacement.cs
                 VerticalAlignment: Top
                 Wrapping: true
@@ -5681,6 +5690,7 @@ Items:
                 Size:
                   X: 0.589999676
                   Y: 0.200000003
+                Softness: 0.75
                 Text: One/Two Handed
                 VerticalAlignment: Top
                 Wrapping: true
@@ -5736,6 +5746,7 @@ Items:
                 Size:
                   X: 0.589999676
                   Y: 0.200000003
+                Softness: 0.75
                 Text: Maintain original rotation
                 VerticalAlignment: Top
                 Wrapping: true
@@ -5791,6 +5802,7 @@ Items:
                 Size:
                   X: 0.589999676
                   Y: 0.200000003
+                Softness: 0.75
                 Text: One/Two Handed
                 VerticalAlignment: Top
                 Wrapping: true
@@ -5846,6 +5858,7 @@ Items:
                 Size:
                   X: 0.589999676
                   Y: 0.200000003
+                Softness: 0.75
                 Text: Maintain original scale
                 VerticalAlignment: Top
                 Wrapping: true
@@ -5901,6 +5914,7 @@ Items:
                 Size:
                   X: 0.589999676
                   Y: 0.200000003
+                Softness: 0.75
                 Text: One/Two Handed
                 VerticalAlignment: Top
                 Wrapping: true
@@ -5956,6 +5970,7 @@ Items:
                 Size:
                   X: 0.589999676
                   Y: 0.200000003
+                Softness: 0.75
                 Text: Maintain original position
                 VerticalAlignment: Top
                 Wrapping: true
@@ -6295,6 +6310,7 @@ Items:
                 Size:
                   X: 8.0
                   Y: 1.10000002
+                Softness: 0.75
                 Text: Pan & Zoom Interaction
                 VerticalAlignment: Top
                 Wrapping: true
@@ -6350,6 +6366,7 @@ Items:
                 Size:
                   X: 8.0
                   Y: 1.10000002
+                Softness: 0.75
                 Text: Example of panning and zooming 2D content using HandInteractionPanZoom.cs
                 VerticalAlignment: Top
                 Wrapping: true
@@ -6717,6 +6734,7 @@ Items:
                 Size:
                   X: 8.0
                   Y: 1.10000002
+                Softness: 0.75
                 Text: Hand Interaction Examples
                 VerticalAlignment: Top
                 Wrapping: true
@@ -6772,6 +6790,7 @@ Items:
                 Size:
                   X: 0.359999865
                   Y: 0.200000003
+                Softness: 0.75
                 Text: This example scene demonstrates various types of hand tracking interactions such as Press, Touch, Grab, Scroll, Move, Rotate, and Scale. You can find common UI and interaction building blocks that are part of HoloLens shell.
                 VerticalAlignment: Top
                 Wrapping: true
@@ -7471,6 +7490,7 @@ Items:
                 Size:
                   X: 8.0
                   Y: 1.10000002
+                Softness: 0.75
                 Text: Bounding Box
                 VerticalAlignment: Top
                 Wrapping: true
@@ -7526,6 +7546,7 @@ Items:
                 Size:
                   X: 0.269999892
                   Y: 1.10000002
+                Softness: 0.75
                 Text: Standard UI for resizing and rotating an object
                 VerticalAlignment: Top
                 Wrapping: true
@@ -7581,6 +7602,7 @@ Items:
                 Size:
                   X: 0.480000019
                   Y: 1.10000002
+                Softness: 0.75
                 Text: Bounding box with all handles
                 VerticalAlignment: Top
                 Wrapping: true
@@ -7636,6 +7658,7 @@ Items:
                 Size:
                   X: 0.480000019
                   Y: 1.10000002
+                Softness: 0.75
                 Text: Bounding box with rotation handles
                 VerticalAlignment: Top
                 Wrapping: true
@@ -7691,6 +7714,7 @@ Items:
                 Size:
                   X: 0.554999948
                   Y: 1.10000002
+                Softness: 0.75
                 Text: Bounding box with uniform scale handles
                 VerticalAlignment: Top
                 Wrapping: true
@@ -7863,6 +7887,7 @@ Items:
                 Size:
                   X: 8.0
                   Y: 1.10000002
+                Softness: 0.75
                 Text: Axis Manipulator
                 VerticalAlignment: Top
                 Wrapping: true
@@ -7918,6 +7943,7 @@ Items:
                 Size:
                   X: 0.14000006
                   Y: 1.10000002
+                Softness: 0.75
                 Text: A handle to move an object along one, two or all three axes.
                 VerticalAlignment: Top
                 Wrapping: true
