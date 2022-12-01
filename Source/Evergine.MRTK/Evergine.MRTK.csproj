@@ -60,22 +60,4 @@
       </PropertyGroup>
     </When>
   </Choose>
-  <ItemGroup>
-    <None Remove="SDK\Features\UX\Components\Scrolls\ListView.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Remove="SDK\Features\UX\Components\Scrolls\Render\CellRenderer.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Remove="SDK\Features\UX\Components\Scrolls\Render\ListViewColumn.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Remove="SDK\Features\UX\Components\Scrolls\Render\ListViewRender.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Remove="SDK\Features\UX\Components\Scrolls\Render\TextCellRenderer.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Remove="MRTKResourceIDs.cs" />
-  </ItemGroup>
 </Project>
