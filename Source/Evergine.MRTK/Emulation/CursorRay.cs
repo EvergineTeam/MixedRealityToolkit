@@ -130,7 +130,7 @@ namespace Evergine.MRTK.Emulation
                     this.xrJoint.TrackedDevice.TryGetArticulatedHandJoint(XRHandJointKind.IndexProximal, out var handJoint);
                     var handPosition = handJoint.Pose.Position;
                     var measuredRayPosition = handPosition;
-                    var measuredDirection = this.xrJoint.Pointer.Direction;
+                    var measuredDirection = this.xrJoint.LocalPointer.Direction;
 
                     this.stabilizedRay.AddSample(new Ray(measuredRayPosition, measuredDirection));
                     ray = new Ray(this.stabilizedRay.StabilizedPosition, this.stabilizedRay.StabilizedDirection);
@@ -142,9 +142,9 @@ namespace Evergine.MRTK.Emulation
                 ray = new Ray(touchCursorWorldTransform.Translation, touchCursorWorldTransform.Forward);
             }
 
-            if (this.xrJoint?.PoseIsValid == true)
+            if (this.xrJoint != null && this.xrJoint.TryGetArticulatedHandJoint(XRHandJointKind.Palm, out var palmJoint))
             {
-                var jointOrientation = Matrix4x4.CreateFromQuaternion(this.xrJoint.Pose.Orientation);
+                var jointOrientation = Matrix4x4.CreateFromQuaternion(palmJoint.Pose.Orientation);
                 var jointNormal = -jointOrientation.Up;
 
                 var headForward = this.cam.Transform.WorldTransform.Forward;
