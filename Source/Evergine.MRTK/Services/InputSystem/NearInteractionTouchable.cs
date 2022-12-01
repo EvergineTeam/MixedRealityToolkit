@@ -15,8 +15,14 @@ namespace Evergine.MRTK.Services.InputSystem
         /// <summary>
         /// The box collider 3D.
         /// </summary>
-        [BindComponent]
+        [BindComponent(isRequired: false)]
         public BoxCollider3D BoxCollider3D;
+
+        /// <summary>
+        /// The mesh collider 3D.
+        /// </summary>
+        [BindComponent(isRequired: false)]
+        public MeshCollider3D MeshCollider3D;
 
         /// <summary>
         /// The static body 3D.
@@ -49,16 +55,31 @@ namespace Evergine.MRTK.Services.InputSystem
         /// <inheritdoc/>
         protected override bool OnAttached()
         {
-            if (!base.OnAttached())
+            if (!base.OnAttached() || (this.MeshCollider3D == null && this.BoxCollider3D == null))
             {
                 return false;
             }
 
-            var collider = this.BoxCollider3D;
-            if (collider != null)
+            Vector3 offset = Vector3.Zero;
+            Quaternion orientationOffset = Quaternion.Identity;
+            Vector3 size = Vector3.Zero;
+            if (this.BoxCollider3D != null)
+            {
+                offset = this.BoxCollider3D.Offset;
+                orientationOffset = this.BoxCollider3D.OrientationOffset;
+                size = this.BoxCollider3D.Size;
+            }
+            else if (this.MeshCollider3D != null)
+            {
+                offset = this.MeshCollider3D.Offset;
+                orientationOffset = this.MeshCollider3D.OrientationOffset;
+                size = this.MeshCollider3D.Size;
+            }
+
+            if (this.BoxCollider3D != null || this.MeshCollider3D != null)
             {
                 // Precompute box collider local transforms
-                this.BoxCollider3DTransform = Matrix4x4.CreateFromTRS(collider.Offset, collider.OrientationOffset, collider.Size);
+                this.BoxCollider3DTransform = Matrix4x4.CreateFromTRS(offset, orientationOffset, size);
                 this.BoxCollider3DTransformInverse = Matrix4x4.Invert(this.BoxCollider3DTransform);
             }
 
