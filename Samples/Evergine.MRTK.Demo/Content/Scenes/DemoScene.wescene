@@ -7239,7 +7239,7 @@ Items:
                   Z: 0.0
                 CollisionCategory: Cat1
                 FaceScaleHandlePrefab: null
-                HandleFocusedMaterial: null
+                HandleFocusedMaterial: 8e30ffce-70db-48f2-b3e1-a5737b0530fc
                 HandleGrabbedMaterial: 7c6dfc11-0f01-4d22-bfc9-bc5ca4fae227
                 HandleMaterial: 9adff77b-f6b6-4683-bf28-243fafea5436
                 IsEnabled: true
