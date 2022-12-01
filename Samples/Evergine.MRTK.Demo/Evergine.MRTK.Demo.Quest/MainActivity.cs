@@ -77,7 +77,7 @@ namespace Evergine.MRTK.Demo.Quest
         {
             base.OnStop();
             this.windowsSystem.Dispose();
-            this.application.Dispose();
+            this.application?.Dispose();
             this.windowsSystem = null;
             this.application = null;
 
@@ -122,7 +122,7 @@ namespace Evergine.MRTK.Demo.Quest
                 })
             {
                 RenderMirrorTexture = false,
-                ReferenceSpace = ReferenceSpaceType.Stage,
+                ReferenceSpace = ReferenceSpaceType.Local,
                 MirrorDisplay = mirrorDisplay,
             };
 
