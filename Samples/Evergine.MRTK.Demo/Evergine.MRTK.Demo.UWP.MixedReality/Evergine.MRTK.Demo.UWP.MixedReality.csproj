@@ -136,25 +136,25 @@
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
-      <Version>6.2.10</Version>
+      <Version>6.2.14</Version>
     </PackageReference>
     <PackageReference Include="Evergine.MixedReality">
-      <Version>2022.9.28.1</Version>
+      <Version>2022.9.28.6</Version>
     </PackageReference>
     <PackageReference Include="Evergine.XAudio2">
-      <Version>2022.9.28.1</Version>
+      <Version>2022.9.28.6</Version>
     </PackageReference>
     <PackageReference Include="Evergine.Targets">
-      <Version>2022.9.28.1</Version>
+      <Version>2022.9.28.6</Version>
     </PackageReference>
     <PackageReference Include="Evergine.Targets.UWP">
-      <Version>2022.9.28.1</Version>
+      <Version>2022.9.28.6</Version>
     </PackageReference>
     <PackageReference Include="Evergine.UWPView">
-      <Version>2022.9.28.1</Version>
+      <Version>2022.9.28.6</Version>
     </PackageReference>
     <PackageReference Include="Evergine.DirectX11">
-      <Version>2022.9.28.1</Version>
+      <Version>2022.9.28.6</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
