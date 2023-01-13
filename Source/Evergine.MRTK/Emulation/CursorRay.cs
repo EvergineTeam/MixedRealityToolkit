@@ -3,6 +3,7 @@
 using System;
 using Evergine.Common.Graphics;
 using Evergine.Components.Primitives;
+using Evergine.Components.XR;
 using Evergine.Framework;
 using Evergine.Framework.Graphics;
 using Evergine.Framework.Physics3D;
@@ -33,6 +34,7 @@ namespace Evergine.MRTK.Emulation
         protected LineMeshBase rayLineMesh;
 
         private CursorTouch touchCursor;
+        private TrackXRController xrController;
         private TrackXRJoint xrJoint;
         private Transform3D lineMeshTransform;
         private Transform3D touchCursorTransform;
@@ -65,10 +67,14 @@ namespace Evergine.MRTK.Emulation
                 return false;
             }
 
-            this.touchCursor = this.TouchCursorEntity.FindComponentInChildren<CursorTouch>();
-            this.xrJoint = this.TouchCursorEntity.FindComponent<TrackXRJoint>();
+            this.touchCursor = this.TouchCursorEntity.FindComponentInChildren<CursorTouch>(isRecursive: true);
+            this.xrController = this.TouchCursorEntity.FindComponent<TrackXRController>(isExactType: false);
+            if (this.xrController is TrackXRJoint trackXRJoint)
+            {
+                this.xrJoint = trackXRJoint;
+            }
 
-            this.cursorCollisionCategoryMask = this.TouchCursorEntity.FindComponent<StaticBody3D>().MaskBits;
+            this.cursorCollisionCategoryMask = this.TouchCursorEntity.FindComponentInChildren<StaticBody3D>(isRecursive: true).MaskBits;
 
             this.UpdateOrder = this.touchCursor.UpdateOrder + 0.1f; // Ensure this is executed always after the main Cursor
             this.cam = this.Managers.RenderManager.ActiveCamera3D;
@@ -123,18 +129,25 @@ namespace Evergine.MRTK.Emulation
         {
             Ray? ray = null;
             var disableByPalmUp = false;
-            if (this.xrJoint != null)
+            if (this.xrController != null)
             {
-                if (this.xrJoint.PoseIsValid)
+                var rayPosition = Vector3.Zero;
+                if (this.xrJoint != null && this.xrJoint.PoseIsValid)
                 {
-                    this.xrJoint.TrackedDevice.TryGetArticulatedHandJoint(XRHandJointKind.IndexProximal, out var handJoint);
-                    var handPosition = handJoint.Pose.Position;
-                    var measuredRayPosition = handPosition;
-                    var measuredDirection = this.xrJoint.LocalPointer.Direction;
-
-                    this.stabilizedRay.AddSample(new Ray(measuredRayPosition, measuredDirection));
-                    ray = new Ray(this.stabilizedRay.StabilizedPosition, this.stabilizedRay.StabilizedDirection);
+                    if (this.xrJoint.TrackedDevice.TryGetArticulatedHandJoint(XRHandJointKind.IndexProximal, out var handJoint))
+                    {
+                        rayPosition = handJoint.Pose.Position;
+                    }
                 }
+                else if (this.xrController.PoseIsValid)
+                {
+                    rayPosition = this.xrController.Pose.Position;
+                }
+
+                var measuredDirection = this.xrController.LocalPointer.Direction;
+
+                this.stabilizedRay.AddSample(new Ray(rayPosition, measuredDirection));
+                ray = new Ray(this.stabilizedRay.StabilizedPosition, this.stabilizedRay.StabilizedDirection);
             }
             else
             {
@@ -210,7 +223,7 @@ namespace Evergine.MRTK.Emulation
                 }
 
                 // Update line
-                disableByJointInvalid = this.xrJoint != null && !Tools.IsJointValid(this.xrJoint);
+                disableByJointInvalid = this.xrController != null && !Tools.IsJointValid(this.xrController);
 
                 rayVisible = !disableByJointInvalid && !disableByProximity && !disableByPalmUp;
                 if (rayVisible)

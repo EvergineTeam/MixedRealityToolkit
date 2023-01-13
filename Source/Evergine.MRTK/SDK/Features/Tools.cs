@@ -3,6 +3,7 @@
 using Evergine.Common.Audio;
 using Evergine.Common.Media;
 using Evergine.Components.Sound;
+using Evergine.Components.XR;
 using Evergine.Framework;
 using Evergine.Framework.Services;
 using Evergine.Framework.XR.TrackedDevices;
@@ -76,13 +77,13 @@ namespace Evergine.MRTK.SDK.Features
         }
 
         /// <summary>
-        /// Check if the join is valid (hololens data can be considered valid).
+        /// Check if the controller pose is valid (HoloLens data can be considered valid).
         /// </summary>
-        /// <param name="joint">The joint to check.</param>
+        /// <param name="controller">The controller to check.</param>
         /// <returns>Valid or not.</returns>
-        public static bool IsJointValid(TrackXRJoint joint)
+        public static bool IsJointValid(TrackXRController controller)
         {
-            return joint != null && joint.TrackedDevice != null && joint.TrackedDevice.IsConnected && joint.TrackedDevice.PoseIsValid;
+            return controller != null && controller.TrackedDevice != null && controller.TrackedDevice.IsConnected && controller.TrackedDevice.PoseIsValid;
         }
 
         /// <summary>

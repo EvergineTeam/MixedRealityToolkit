@@ -16,5 +16,9 @@ namespace Evergine.MRTK.Demo.Scenes
         protected override Guid HandRayTexture => EvergineContent.MRTK.Textures.line_dots_png;
 
         protected override Guid HandRaySampler => EvergineContent.MRTK.Samplers.LinearWrapSampler;
+
+        protected override Guid LeftControllerModelPrefab => EvergineContent.Prefabs.LeftController_weprefab;
+
+        protected override Guid RightControllerModelPrefab => EvergineContent.Prefabs.RightController_weprefab;
     }
 }

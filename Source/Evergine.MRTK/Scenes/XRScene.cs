@@ -12,6 +12,7 @@ using Evergine.Components.XR;
 using Evergine.Framework;
 using Evergine.Framework.Graphics;
 using Evergine.Framework.Physics3D;
+using Evergine.Framework.Prefabs;
 using Evergine.Framework.XR;
 using Evergine.Mathematics;
 using Evergine.MRTK.Behaviors;
@@ -26,6 +27,10 @@ namespace Evergine.MRTK.Scenes
     /// </summary>
     public abstract class XRScene : Scene
     {
+        private const string BaseCursorTag = "BaseCursor";
+        private const string CursorAnchorTag = "CursorAnchor";
+        private const float CursorPlaneSize = 0.01f;
+
         /// <summary>
         /// Gets cursors material Guid for released state.
         /// </summary>
@@ -55,6 +60,16 @@ namespace Evergine.MRTK.Scenes
         /// Gets the Sampler for the hand rays.
         /// </summary>
         protected abstract Guid HandRaySampler { get; }
+
+        /// <summary>
+        /// Gets the prefab for the left controller.
+        /// </summary>
+        protected abstract Guid LeftControllerModelPrefab { get; }
+
+        /// <summary>
+        /// Gets the prefab for the right controller.
+        /// </summary>
+        protected abstract Guid RightControllerModelPrefab { get; }
 
         /// <summary>
         /// Gets or sets the <see cref="CollisionCategory3D"/> used by the <see cref="Cursor"/> entities.
@@ -115,8 +130,11 @@ namespace Evergine.MRTK.Scenes
             base.Start();
 
             // Create GazeProvider
-            Camera3D cam = this.Managers.EntityManager.FindFirstComponentOfType<Camera3D>();
-            cam.Owner.AddComponent(new GazeProvider() { CollisionCategoryMask = this.CursorCollisionCategoryMask & ~this.CursorCollisionCategory });
+            var cam = this.Managers.EntityManager.FindFirstComponentOfType<Camera3D>();
+            cam.Owner.AddComponent(new GazeProvider()
+            {
+                CollisionCategoryMask = this.CursorCollisionCategoryMask & ~this.CursorCollisionCategory,
+            });
         }
 
         /// <summary>
@@ -124,25 +142,53 @@ namespace Evergine.MRTK.Scenes
         /// </summary>
         protected void InitXRScene()
         {
+            var entityManager = this.Managers.EntityManager;
             var assetsManager = this.Managers.AssetSceneManager;
 
-            // Create cursors
+            // Get materials
             var cursorMatPressed = assetsManager.Load<Material>(this.CursorMatPressed);
             var cursorMatReleased = assetsManager.Load<Material>(this.CursorMatReleased);
             var handRayTexture = assetsManager.Load<Texture>(this.HandRayTexture);
             var handRaySampler = assetsManager.Load<SamplerState>(this.HandRaySampler);
-            this.CreateCursor(XRHandedness.LeftHand, cursorMatPressed, cursorMatReleased, handRayTexture, handRaySampler);
-            this.CreateCursor(XRHandedness.RightHand, cursorMatPressed, cursorMatReleased, handRayTexture, handRaySampler);
 
-            // Create hand meshes
-            var handMat = this.HoloHandsMat == Guid.Empty ? null : assetsManager.Load<Material>(this.HoloHandsMat);
-            if (handMat != null)
+            // Create hand controller entities
+            var handMaterial = this.HoloHandsMat != Guid.Empty ? assetsManager.Load<Material>(this.HoloHandsMat) : null;
+            var leftHandController = this.CreateXRHandController(XRHandedness.LeftHand, handMaterial);
+            var rightHandController = this.CreateXRHandController(XRHandedness.RightHand, handMaterial);
+
+            // Create cursors for hand controllers
+            var leftHandControllerNearCursor = this.CreateNearCursor(XRHandedness.LeftHand, cursorMatPressed, cursorMatReleased);
+            var rightHandControllerNearCursor = this.CreateNearCursor(XRHandedness.RightHand, cursorMatPressed, cursorMatReleased);
+            var leftHandControllerFarCursor = this.CreateFarCursor(XRHandedness.LeftHand, cursorMatPressed, cursorMatReleased, handRayTexture, handRaySampler, leftHandControllerNearCursor);
+            var rightHandControllerFarCursor = this.CreateFarCursor(XRHandedness.RightHand, cursorMatPressed, cursorMatReleased, handRayTexture, handRaySampler, rightHandControllerNearCursor);
+            this.AddControlComponents(leftHandControllerNearCursor, XRHandedness.LeftHand, isHandTrackingCursor: true);
+            this.AddControlComponents(rightHandControllerNearCursor, XRHandedness.RightHand, isHandTrackingCursor: true);
+
+            // Add entities to entity manager
+            entityManager.Add(this.CreateControllerHierarchy(leftHandController, leftHandControllerNearCursor, leftHandControllerFarCursor));
+            entityManager.Add(this.CreateControllerHierarchy(rightHandController, rightHandControllerNearCursor, rightHandControllerFarCursor));
+
+            // Add controller stuff in XR platforms
+            if (Tools.IsXRPlatformInputTrackingAvailable())
             {
-                this.CreateXRHandMesh(XRHandedness.LeftHand, handMat);
-                this.CreateXRHandMesh(XRHandedness.RightHand, handMat);
-            }
+                // Create physical controller entities
+                var leftPrefab = this.LeftControllerModelPrefab != Guid.Empty ? assetsManager.Load<Prefab>(this.LeftControllerModelPrefab) : null;
+                var rightPrefab = this.RightControllerModelPrefab != Guid.Empty ? assetsManager.Load<Prefab>(this.RightControllerModelPrefab) : null;
+                var leftPhysicalController = this.CreateXRPhysicalController(XRHandedness.LeftHand, leftPrefab);
+                var rightPhysicalController = this.CreateXRPhysicalController(XRHandedness.RightHand, rightPrefab);
 
-            var entityManager = this.Managers.EntityManager;
+                // Create cursors for physical controllers
+                var leftPhysicalControllerNearCursor = this.CreateNearCursor(XRHandedness.LeftHand, cursorMatPressed, cursorMatReleased);
+                var rightPhysicalControllerNearCursor = this.CreateNearCursor(XRHandedness.RightHand, cursorMatPressed, cursorMatReleased);
+                var leftPhysicalControllerFarCursor = this.CreateFarCursor(XRHandedness.LeftHand, cursorMatPressed, cursorMatReleased, handRayTexture, handRaySampler, leftPhysicalControllerNearCursor);
+                var rightPhysicalControllerFarCursor = this.CreateFarCursor(XRHandedness.RightHand, cursorMatPressed, cursorMatReleased, handRayTexture, handRaySampler, rightPhysicalControllerNearCursor);
+                this.AddControlComponents(leftPhysicalControllerNearCursor, XRHandedness.LeftHand, isHandTrackingCursor: false, leftPhysicalController);
+                this.AddControlComponents(rightPhysicalControllerNearCursor, XRHandedness.RightHand, isHandTrackingCursor: false, rightPhysicalController);
+
+                // Add entities to entity manager
+                entityManager.Add(this.CreateControllerHierarchy(leftPhysicalController, leftPhysicalControllerNearCursor, leftPhysicalControllerFarCursor));
+                entityManager.Add(this.CreateControllerHierarchy(rightPhysicalController, rightPhysicalControllerNearCursor, rightPhysicalControllerFarCursor));
+            }
 
             // Create cursor position updater
             if (entityManager.FindFirstComponentOfType<CursorPosShaderUpdater>() == null)
@@ -177,71 +223,98 @@ namespace Evergine.MRTK.Scenes
         {
         }
 
-        private void CreateXRHandMesh(XRHandedness handedness, Material material)
+        private Entity CreateXRHandController(XRHandedness handedness, Material material)
         {
-            Entity handEntity = new Entity()
-                .AddComponent(new Transform3D())
-                .AddComponent(new MaterialComponent() { Material = material })
-                .AddComponent(new TrackXRArticulatedHand()
-                {
-                    Handedness = handedness,
-                })
-                .AddComponent(new XRDeviceRenderableModel())
+            var handEntity = new Entity($"handController_{handedness}")
+            {
+                IsEnabled = false,
+            }
+            .AddComponent(new Transform3D());
+
+            if (material != null)
+            {
+                handEntity
+                    .AddComponent(new MaterialComponent()
+                    {
+                        Material = material,
+                    })
+                    .AddComponent(new TrackXRArticulatedHand()
+                    {
+                        Handedness = handedness,
+                    })
+                    .AddComponent(new XRDeviceRenderableModel())
                 ////.AddComponent(new HoloHandsUpdater() { Handedness = handedness })
                 ;
+            }
 
-            this.Managers.EntityManager.Add(handEntity);
+            return handEntity;
         }
 
-        private Entity CreateCursor(XRHandedness handedness, Material pressedMaterial, Material releasedMaterial, Texture handRayTexture, SamplerState handRaySampler)
+        private Entity CreateXRPhysicalController(XRHandedness handedness, Prefab prefab)
         {
-            const float cursorPlaneSize = 0.01f;
+            var controllerEntity = new Entity($"physicalController_{handedness}")
+            {
+                IsEnabled = false,
+            }
+            .AddComponent(new Transform3D())
+            .AddComponent(new TrackXRController()
+            {
+                Handedness = handedness,
+            })
+            ;
 
-            var mainCursor = new Entity($"{nameof(CursorTouch)}_{handedness}")
+            if (prefab != null)
+            {
+                var instance = prefab.Instantiate();
+
+                controllerEntity.AddChild(instance);
+            }
+
+            return controllerEntity;
+        }
+
+        private Entity CreateNearCursor(XRHandedness handedness, Material pressedMaterial, Material releasedMaterial)
+        {
+            var nearCursor = new Entity()
+            {
+                Name = $"{nameof(CursorTouch)}_{handedness}",
+                Tag = BaseCursorTag,
+            }
+            .AddComponent(new Transform3D())
+            .AddComponent(new CursorTouch()
+            {
+                PressedMaterial = pressedMaterial,
+                ReleasedMaterial = releasedMaterial,
+            })
+            .AddComponent(new SphereCollider3D() { Radius = 0.005f })
+            .AddComponent(new StaticBody3D()
+            {
+                IsSensor = true,
+                CollisionCategories = this.CursorCollisionCategory,
+                MaskBits = this.CursorCollisionCategoryMask & ~this.CursorCollisionCategory,
+            })
+            .AddChild(new Entity("visual")
                 .AddComponent(new Transform3D())
-                .AddComponent(new CursorTouch()
+                .AddComponent(new MaterialComponent())
+                .AddComponent(new PlaneMesh()
                 {
-                    PressedMaterial = pressedMaterial,
-                    ReleasedMaterial = releasedMaterial,
+                    TwoSides = true,
+                    PlaneNormal = PlaneMesh.NormalAxis.ZNegative,
+                    Width = CursorPlaneSize,
+                    Height = CursorPlaneSize,
                 })
-                .AddComponent(new SphereCollider3D() { Radius = 0.005f })
-                .AddComponent(new StaticBody3D()
-                {
-                    IsSensor = true,
-                    CollisionCategories = this.CursorCollisionCategory,
-                    MaskBits = this.CursorCollisionCategoryMask & ~this.CursorCollisionCategory,
-                })
-                .AddChild(new Entity("visual")
-                    .AddComponent(new Transform3D())
-                    .AddComponent(new MaterialComponent())
-                    .AddComponent(new PlaneMesh()
-                    {
-                        TwoSides = true,
-                        PlaneNormal = PlaneMesh.NormalAxis.ZNegative,
-                        Width = cursorPlaneSize,
-                        Height = cursorPlaneSize,
-                    })
-                    .AddComponent(new MeshRenderer())
-                    .AddComponent(new ProximityLight()));
+                .AddComponent(new MeshRenderer())
+                .AddComponent(new ProximityLight()));
 
-            if (Tools.IsXRPlatformInputTrackingAvailable())
-            {
-                // XR platforms
-                mainCursor.AddComponent(new TrackXRJoint()
-                {
-                    Handedness = handedness,
-                    JointKind = XRHandJointKind.IndexTip,
-                    TrackingLostMode = TrackXRDevice.XRTrackingLostMode.KeepLastPose,
-                })
-                          .AddComponent(new HandTrackingControlBehavior());
-            }
-            else
-            {
-                // Windows
-                var key = handedness == XRHandedness.RightHand ? Keys.LeftShift : Keys.Space;
-                mainCursor.AddComponent(new MouseControlBehavior() { Key = key });
-            }
+            var rootCursor = new Entity()
+                .AddComponent(new Transform3D())
+                .AddChild(nearCursor);
 
+            return rootCursor;
+        }
+
+        private Entity CreateFarCursor(XRHandedness handedness, Material pressedMaterial, Material releasedMaterial, Texture handRayTexture, SamplerState handRaySampler, Entity nearCursor)
+        {
             var ray = new Entity()
                 .AddComponent(new Transform3D())
                 .AddComponent(new LineMesh()
@@ -263,7 +336,7 @@ namespace Evergine.MRTK.Scenes
                 {
                     PressedMaterial = pressedMaterial,
                     ReleasedMaterial = releasedMaterial,
-                    TouchCursorEntity = mainCursor,
+                    TouchCursorEntity = nearCursor,
                 })
                 .AddChild(ray)
                 .AddChild(new Entity("visual")
@@ -272,18 +345,68 @@ namespace Evergine.MRTK.Scenes
                     .AddComponent(new PlaneMesh()
                     {
                         PlaneNormal = PlaneMesh.NormalAxis.ZNegative,
-                        Width = cursorPlaneSize,
-                        Height = cursorPlaneSize,
+                        Width = CursorPlaneSize,
+                        Height = CursorPlaneSize,
                     })
                     .AddComponent(new MeshRenderer())
                     .AddComponent(new CameraDistanceScale() { UpdateOrder = 1 })
                     .AddComponent(new HoverLight()));
 
-            var entityManager = this.Managers.EntityManager;
-            entityManager.Add(mainCursor);
-            entityManager.Add(farCursor);
+            return farCursor;
+        }
 
-            return mainCursor;
+        private Entity CreateControllerHierarchy(Entity controller, Entity nearCursor, Entity farCursor)
+        {
+            return new Entity()
+                .AddComponent(new Transform3D())
+                .AddChild(controller)
+                .AddChild(nearCursor)
+                .AddChild(farCursor);
+        }
+
+        private void AddControlComponents(Entity entity, XRHandedness handedness, bool isHandTrackingCursor, Entity physicalController = null)
+        {
+            if (Tools.IsXRPlatformInputTrackingAvailable())
+            {
+                // XR platforms
+                if (isHandTrackingCursor)
+                {
+                    entity
+                        .AddComponent(new TrackXRJoint()
+                        {
+                            Handedness = handedness,
+                            JointKind = XRHandJointKind.IndexTip,
+                            TrackingLostMode = TrackXRDevice.XRTrackingLostMode.KeepLastPose,
+                        })
+                        .AddComponent(new HandTrackingControlBehavior());
+                }
+                else
+                {
+                    entity
+                        .AddComponent(new TrackXRController()
+                        {
+                            Handedness = handedness,
+                        })
+                        .AddComponent(new PhysicalControllerControlBehavior());
+
+                    if (physicalController != null)
+                    {
+                        var cursorAnchorTransform = physicalController.FindComponentInChildren<Transform3D>(isRecursive: true, tag: CursorAnchorTag);
+
+                        if (cursorAnchorTransform != null)
+                        {
+                            var transform3D = entity.FindComponentInChildren<Transform3D>(tag: BaseCursorTag, isRecursive: true);
+                            transform3D.LocalTransform = cursorAnchorTransform.LocalTransform;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                // Windows
+                var key = handedness == XRHandedness.RightHand ? Keys.LeftShift : Keys.Space;
+                entity.AddComponent(new MouseControlBehavior() { Key = key });
+            }
         }
     }
 }
