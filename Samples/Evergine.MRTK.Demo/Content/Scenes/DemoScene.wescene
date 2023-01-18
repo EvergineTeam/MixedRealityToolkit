@@ -179,7 +179,6 @@ Items:
       - !Evergine.Framework.Graphics.Camera3D,Evergine.Framework
         Id: e6234645-a09c-405e-b7cc-e8970277f72c
         Aperture: 1.0
-        AspectRatio: 1.81428576
         AutoDepthBounds: false
         AutoExposureEnabled: false
         CameraOrder: 0.0
@@ -2422,6 +2421,7 @@ Items:
                           G: 255
                           R: 255
                         Text: Button
+                        TextScale: 0.00600000005
                       - !Evergine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButtonSpeechHandler,Evergine.MRTK
                         Id: c1c4c665-d354-4332-93ac-5f59479b8bc5
                         IsEnabled: true
@@ -2481,6 +2481,7 @@ Items:
                           G: 255
                           R: 255
                         Text: Button
+                        TextScale: 0.00600000005
                       - !Evergine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButtonSpeechHandler,Evergine.MRTK
                         Id: 3c484148-9311-4f60-beb4-5c6506c83c92
                         IsEnabled: true
@@ -2540,6 +2541,7 @@ Items:
                           G: 255
                           R: 255
                         Text: Button
+                        TextScale: 0.00600000005
                       - !Evergine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButtonSpeechHandler,Evergine.MRTK
                         Id: 3c484148-9311-4f60-beb4-5c6506c83c92
                         IsEnabled: true
@@ -2606,6 +2608,7 @@ Items:
                           G: 255
                           R: 255
                         Text: Button
+                        TextScale: 0.00600000005
                       - !Evergine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButtonSpeechHandler,Evergine.MRTK
                         Id: 3c484148-9311-4f60-beb4-5c6506c83c92
                         IsEnabled: true
@@ -2672,6 +2675,7 @@ Items:
                           G: 255
                           R: 255
                         Text: Button
+                        TextScale: 0.00600000005
                       - !Evergine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButtonSpeechHandler,Evergine.MRTK
                         Id: 3c484148-9311-4f60-beb4-5c6506c83c92
                         IsEnabled: true
@@ -2738,6 +2742,7 @@ Items:
                           G: 255
                           R: 255
                         Text: Button
+                        TextScale: 0.00600000005
                       - !Evergine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButtonSpeechHandler,Evergine.MRTK
                         Id: 3c484148-9311-4f60-beb4-5c6506c83c92
                         IsEnabled: true
@@ -2905,6 +2910,7 @@ Items:
                           G: 255
                           R: 255
                         Text: Button
+                        TextScale: 0.00600000005
                       - !Evergine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButtonSpeechHandler,Evergine.MRTK
                         Id: 97e3519e-b71c-472d-9b3b-f305f56a5fb1
                         IsEnabled: true
@@ -2964,6 +2970,7 @@ Items:
                           G: 255
                           R: 255
                         Text: Button
+                        TextScale: 0.00600000005
                       - !Evergine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButtonSpeechHandler,Evergine.MRTK
                         Id: 97e3519e-b71c-472d-9b3b-f305f56a5fb1
                         IsEnabled: true
@@ -3023,6 +3030,7 @@ Items:
                           G: 255
                           R: 255
                         Text: Button
+                        TextScale: 0.00600000005
                       - !Evergine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButtonSpeechHandler,Evergine.MRTK
                         Id: 97e3519e-b71c-472d-9b3b-f305f56a5fb1
                         IsEnabled: true
@@ -3075,6 +3083,7 @@ Items:
                           G: 255
                           R: 255
                         Text: Button
+                        TextScale: 0.00600000005
                       - !Evergine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButtonSpeechHandler,Evergine.MRTK
                         Id: 97e3519e-b71c-472d-9b3b-f305f56a5fb1
                         IsEnabled: true
@@ -3236,6 +3245,7 @@ Items:
                           R: 255
                         TargetState: StateA
                         Text: Option A
+                        TextScale: 0.00600000005
                       - !Evergine.MRTK.Demo.Components.MultiStateButtons.MultiStateButtonConfigurator,Evergine.MRTK.Demo
                         Id: bbccd43b-fa26-4aaa-9ce5-5311626e1b67
                         AllowBackPlateNullMaterial: true
@@ -3253,6 +3263,7 @@ Items:
                           R: 255
                         TargetState: StateB
                         Text: Option B
+                        TextScale: 0.00600000005
                       - !Evergine.MRTK.Demo.Components.MultiStateButtons.MultiStateButtonConfigurator,Evergine.MRTK.Demo
                         Id: 2852ce44-e002-406e-a893-83da2a78825a
                         AllowBackPlateNullMaterial: true
@@ -3270,6 +3281,7 @@ Items:
                           R: 255
                         TargetState: StateC
                         Text: Option C
+                        TextScale: 0.00600000005
                       - !Evergine.MRTK.Demo.Components.MultiStateButtons.MultiStateStateManager,Evergine.MRTK.Demo
                         Id: 91bbf23a-2476-4f80-8e33-9ae90c5d25f1
                         InitialState: StateA
@@ -3330,6 +3342,7 @@ Items:
                           R: 255
                         TargetState: StateA
                         Text: Option A
+                        TextScale: 0.00600000005
                       - !Evergine.MRTK.Demo.Components.MultiStateButtons.MultiStateButtonConfigurator,Evergine.MRTK.Demo
                         Id: bbccd43b-fa26-4aaa-9ce5-5311626e1b67
                         AllowBackPlateNullMaterial: true
@@ -3347,6 +3360,7 @@ Items:
                           R: 255
                         TargetState: StateB
                         Text: Option B
+                        TextScale: 0.00600000005
                       - !Evergine.MRTK.Demo.Components.MultiStateButtons.MultiStateButtonConfigurator,Evergine.MRTK.Demo
                         Id: 2852ce44-e002-406e-a893-83da2a78825a
                         AllowBackPlateNullMaterial: true
@@ -3364,6 +3378,7 @@ Items:
                           R: 255
                         TargetState: StateC
                         Text: Option C
+                        TextScale: 0.00600000005
                       - !Evergine.MRTK.Demo.Components.MultiStateButtons.MultiStateStateManager,Evergine.MRTK.Demo
                         Id: 91bbf23a-2476-4f80-8e33-9ae90c5d25f1
                         InitialState: StateA
@@ -3424,6 +3439,7 @@ Items:
                           R: 255
                         TargetState: StateA
                         Text: Option A
+                        TextScale: 0.00600000005
                       - !Evergine.MRTK.Demo.Components.MultiStateButtons.MultiStateButtonConfigurator,Evergine.MRTK.Demo
                         Id: bbccd43b-fa26-4aaa-9ce5-5311626e1b67
                         AllowBackPlateNullMaterial: true
@@ -3441,6 +3457,7 @@ Items:
                           R: 255
                         TargetState: StateB
                         Text: Option B
+                        TextScale: 0.00600000005
                       - !Evergine.MRTK.Demo.Components.MultiStateButtons.MultiStateButtonConfigurator,Evergine.MRTK.Demo
                         Id: 2852ce44-e002-406e-a893-83da2a78825a
                         AllowBackPlateNullMaterial: true
@@ -3458,6 +3475,7 @@ Items:
                           R: 255
                         TargetState: StateC
                         Text: Option C
+                        TextScale: 0.00600000005
                       - !Evergine.MRTK.Demo.Components.MultiStateButtons.MultiStateStateManager,Evergine.MRTK.Demo
                         Id: 91bbf23a-2476-4f80-8e33-9ae90c5d25f1
                         InitialState: StateA
