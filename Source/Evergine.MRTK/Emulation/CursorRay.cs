@@ -1,6 +1,7 @@
 ﻿// Copyright © Evergine S.L. All rights reserved. Use is subject to license terms.
 
 using System;
+using Evergine.Common.Attributes;
 using Evergine.Common.Graphics;
 using Evergine.Components.Primitives;
 using Evergine.Components.XR;
@@ -26,6 +27,12 @@ namespace Evergine.MRTK.Emulation
 
         private readonly float CursorBeamBackwardTolerance = 0.5f;
         private readonly float CursorBeamUpTolerance = 0.8f;
+
+        /// <summary>
+        /// Gets or sets the maximum length of the cursor representation.
+        /// </summary>
+        [RenderProperty(Tooltip = "The maximum length of the cursor representation")]
+        public float MaxLength { get; set; } = 0.5f;
 
         /// <summary>
         /// The <see cref="LineMeshBase"/> of the ray.
@@ -230,10 +237,12 @@ namespace Evergine.MRTK.Emulation
                 {
                     var distance = (this.transform.Position - r.Position).Length();
 
+                    var distanceClamped = Math.Min(distance, this.MaxLength);
+
                     this.lineMeshTransform.Position = r.Position;
-                    this.lineMeshTransform.Scale = new Vector3(1, 1, distance);
+                    this.lineMeshTransform.Scale = new Vector3(1, 1, distanceClamped);
                     this.lineMeshTransform.LookAt(this.transform.Position, Vector3.Up);
-                    this.rayLineMesh.TextureTiling = new Vector2(distance * 0.5f * 30.0f, 1.0f);
+                    this.rayLineMesh.TextureTiling = new Vector2(distanceClamped * 8.0f * 2.0f, 1.0f);
                 }
                 else
                 {

@@ -72,6 +72,11 @@ namespace Evergine.MRTK.Scenes
         protected abstract Guid RightControllerModelPrefab { get; }
 
         /// <summary>
+        /// Gets the maximum length of the far cursor representation.
+        /// </summary>
+        protected abstract float MaxFarCursorLength { get; }
+
+        /// <summary>
         /// Gets or sets the <see cref="CollisionCategory3D"/> used by the <see cref="Cursor"/> entities.
         /// Default: <see cref="CollisionCategory3D.Cat2"/>.
         /// </summary>
@@ -323,7 +328,7 @@ namespace Evergine.MRTK.Scenes
                     LinePoints = new List<LinePointInfo>()
                     {
                         new LinePointInfo() { Position = Vector3.Zero, Thickness = 0.003f, Color = Color.White },
-                        new LinePointInfo() { Position = -Vector3.UnitZ, Thickness = 0.003f, Color = Color.White },
+                        new LinePointInfo() { Position = -Vector3.UnitZ, Thickness = 0.003f, Color = Color.Transparent },
                     },
                     DiffuseTexture = handRayTexture,
                     DiffuseSampler = handRaySampler,
@@ -337,6 +342,7 @@ namespace Evergine.MRTK.Scenes
                     PressedMaterial = pressedMaterial,
                     ReleasedMaterial = releasedMaterial,
                     TouchCursorEntity = nearCursor,
+                    MaxLength = this.MaxFarCursorLength,
                 })
                 .AddChild(ray)
                 .AddChild(new Entity("visual")
