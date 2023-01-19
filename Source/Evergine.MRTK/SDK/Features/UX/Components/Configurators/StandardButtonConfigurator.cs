@@ -30,6 +30,7 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Configurators
 
         private Color primaryColor = Color.White;
         private string text;
+        private float textScale = 0.006f;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="StandardButtonConfigurator"/> class.
@@ -129,6 +130,23 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Configurators
         }
 
         /// <summary>
+        /// Gets or sets button text scale.
+        /// </summary>
+        public float TextScale
+        {
+            get => this.textScale;
+
+            set
+            {
+                if (this.textScale != value)
+                {
+                    this.textScale = value;
+                    this.OnUpdateTextScale();
+                }
+            }
+        }
+
+        /// <summary>
         /// Gets or sets the text font to use.
         /// </summary>
         [RenderProperty(Tooltip = "The font to use in the button text.")]
@@ -178,6 +196,7 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Configurators
             this.plateConfigurator.Apply();
             this.iconConfigurator.Apply();
             this.OnUpdateText();
+            this.OnUpdateTextScale();
             this.OnUpdateTextColor();
             this.OnUpdateFont();
         }
@@ -193,6 +212,14 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Configurators
             if (this.buttonText != null)
             {
                 this.buttonText.Text = this.text;
+            }
+        }
+
+        private void OnUpdateTextScale()
+        {
+            if (this.buttonText != null)
+            {
+                this.buttonText.ScaleFactor = this.textScale;
             }
         }
 

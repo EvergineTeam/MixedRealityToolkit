@@ -179,7 +179,6 @@ Items:
       - !Evergine.Framework.Graphics.Camera3D,Evergine.Framework
         Id: e6234645-a09c-405e-b7cc-e8970277f72c
         Aperture: 1.0
-        AspectRatio: 1.74418604
         AutoDepthBounds: false
         AutoExposureEnabled: false
         CameraOrder: 0.0
@@ -319,6 +318,7 @@ Items:
                 Size:
                   X: 8.0
                   Y: 1.10000002
+                Softness: 0.75
                 Text: Slider configurator
                 VerticalAlignment: Center
                 Wrapping: true
@@ -374,6 +374,7 @@ Items:
                 Size:
                   X: 8.0
                   Y: 1.10000002
+                Softness: 0.75
                 Text: Samples of sliders with custom materials and text colors.
                 VerticalAlignment: Center
                 Wrapping: true
@@ -715,6 +716,7 @@ Items:
                 Size:
                   X: 8.0
                   Y: 1.10000002
+                Softness: 0.75
                 Text: Horizontal sliders
                 VerticalAlignment: Center
                 Wrapping: true
@@ -770,6 +772,7 @@ Items:
                 Size:
                   X: 8.0
                   Y: 1.10000002
+                Softness: 0.75
                 Text: Samples of how to change slider orientation to horizontal.
                 VerticalAlignment: Center
                 Wrapping: true

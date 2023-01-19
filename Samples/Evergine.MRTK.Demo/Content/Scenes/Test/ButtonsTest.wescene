@@ -179,7 +179,6 @@ Items:
       - !Evergine.Framework.Graphics.Camera3D,Evergine.Framework
         Id: e6234645-a09c-405e-b7cc-e8970277f72c
         Aperture: 1.0
-        AspectRatio: 1.74418604
         AutoDepthBounds: false
         AutoExposureEnabled: false
         CameraOrder: 0.0
@@ -267,7 +266,7 @@ Items:
               W: 1.0
               X: 0.0
               Y: 0.0
-              Z: -0.0
+              Z: 0.0
             LocalPosition:
               X: 0.0680612251
               Y: 0.0477196798
@@ -319,6 +318,7 @@ Items:
                 Size:
                   X: 8.0
                   Y: 1.10000002
+                Softness: 0.75
                 Text: Button configurator
                 VerticalAlignment: Center
                 Wrapping: true
@@ -374,6 +374,7 @@ Items:
                 Size:
                   X: 0.179999962
                   Y: 0.02999999
+                Softness: 0.75
                 Text: Samples of buttons with custom icons, plate and tint colors.
                 VerticalAlignment: Center
                 Wrapping: true
@@ -473,6 +474,7 @@ Items:
                               G: 255
                               R: 255
                             Text: Button
+                            TextScale: 0.00800000038
                     modificationList:
                       - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.String,System.Private.CoreLib]],Evergine.Framework
                         Name: Name
@@ -497,6 +499,10 @@ Items:
                         Name: Text
                         Target: a7c5a62f-b112-4c25-bb9e-eaec97942a6f
                         TypedValue: Button
+                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%25601[[System.Single,System.Private.CoreLib]],Evergine.Framework
+                        Name: ScaleFactor
+                        Target: a7c5a62f-b112-4c25-bb9e-eaec97942a6f
+                        TypedValue: 0.00800000038
                     removedComponentList: []
                   - !Evergine.Framework.Assets.AssetSources.Entities.PrefabInstanceModel,Evergine.Framework
                     Id: 9449245b-2498-49ad-b3c6-cd4d919a5dde
@@ -521,6 +527,7 @@ Items:
                               G: 0
                               R: 255
                             Text: Button
+                            TextScale: 0.00600000005
                     modificationList:
                       - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.String,System.Private.CoreLib]],Evergine.Framework
                         Name: Name
@@ -577,6 +584,7 @@ Items:
                               G: 0
                               R: 255
                             Text: Button
+                            TextScale: 0.00800000038
                     modificationList:
                       - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.String,System.Private.CoreLib]],Evergine.Framework
                         Name: Name
@@ -613,6 +621,10 @@ Items:
                           B: 4
                           G: 0
                           R: 255
+                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%25601[[System.Single,System.Private.CoreLib]],Evergine.Framework
+                        Name: ScaleFactor
+                        Target: a7c5a62f-b112-4c25-bb9e-eaec97942a6f
+                        TypedValue: 0.00800000038
                     removedComponentList: []
                 Id: c49b637e-23e6-4989-82e7-2bc03254fb7e
               - !Evergine.Framework.Assets.AssetSources.Entities.EntityItemModel,Evergine.Framework
@@ -806,6 +818,7 @@ Items:
                 Size:
                   X: 8.0
                   Y: 1.10000002
+                Softness: 0.75
                 Text: Toggle buttons
                 VerticalAlignment: Center
                 Wrapping: true
@@ -861,6 +874,7 @@ Items:
                 Size:
                   X: 0.179999962
                   Y: 0.02999999
+                Softness: 0.75
                 Text: Samples of toggle buttons with custom icons, plate and tint colors. A different set of configuration is possible depending on button state (On/Off).
                 VerticalAlignment: Center
                 Wrapping: true
@@ -985,6 +999,7 @@ Items:
                             Size:
                               X: 8.0
                               Y: 1.10000002
+                            Softness: 0.75
                             Text: Off
                             VerticalAlignment: Center
                             Wrapping: true
@@ -1032,6 +1047,7 @@ Items:
                                       R: 190
                                     TargetState: Off
                                     Text: I am off
+                                    TextScale: 0.00600000005
                                   - !Evergine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleButtonConfigurator,Evergine.MRTK
                                     Id: 39a5005e-168e-4364-8f1b-69cdb64521a8
                                     AllowBackPlateNullMaterial: false
@@ -1049,6 +1065,7 @@ Items:
                                       R: 41
                                     TargetState: On
                                     Text: I am on
+                                    TextScale: 0.00600000005
                             modificationList:
                               - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.String,System.Private.CoreLib]],Evergine.Framework
                                 Name: Name
@@ -1153,6 +1170,7 @@ Items:
                             Size:
                               X: 8.0
                               Y: 1.10000002
+                            Softness: 0.75
                             Text: Off
                             VerticalAlignment: Center
                             Wrapping: true
@@ -1200,6 +1218,7 @@ Items:
                                       R: 190
                                     TargetState: Off
                                     Text: I am off
+                                    TextScale: 0.00600000005
                                   - !Evergine.MRTK.SDK.Features.UX.Components.ToggleButtons.ToggleButtonConfigurator,Evergine.MRTK
                                     Id: 1233aca5-0c8c-48f3-99de-8464fc79f995
                                     AllowBackPlateNullMaterial: false
@@ -1217,6 +1236,7 @@ Items:
                                       R: 41
                                     TargetState: On
                                     Text: I am on
+                                    TextScale: 0.00600000005
                                   - !Evergine.MRTK.Demo.Components.ToggleButtons.ToggleApplyTransform,Evergine.MRTK.Demo
                                     Id: cd5f1da2-2bdf-4716-b236-03675f7fb796
                                     IsEnabled: true
@@ -1321,6 +1341,7 @@ Items:
                         Size:
                           X: 0.13000001
                           Y: 0.100000001
+                        Softness: 0.75
                         Text: Second button in this row shows how you can create custom state-based components. For example, to scale target item.
                         VerticalAlignment: Center
                         Wrapping: true
@@ -1423,6 +1444,7 @@ Items:
                             Size:
                               X: 8.0
                               Y: 1.10000002
+                            Softness: 0.75
                             Text: Off
                             VerticalAlignment: Center
                             Wrapping: true
@@ -1560,6 +1582,7 @@ Items:
                             Size:
                               X: 8.0
                               Y: 1.10000002
+                            Softness: 0.75
                             Text: Off
                             VerticalAlignment: Center
                             Wrapping: true
@@ -1716,6 +1739,7 @@ Items:
                 Size:
                   X: 8.0
                   Y: 1.10000002
+                Softness: 0.75
                 Text: Toggle groups
                 VerticalAlignment: Center
                 Wrapping: true
@@ -1771,6 +1795,7 @@ Items:
                 Size:
                   X: 0.179999962
                   Y: 0.02999999
+                Softness: 0.75
                 Text: Samples of toggle buttons with custom icons, plate and tint colors. A different set of configuration is possible depending on button state (On/Off).
                 VerticalAlignment: Center
                 Wrapping: true
@@ -1872,6 +1897,7 @@ Items:
                         Size:
                           X: 0.179999962
                           Y: 0.02999999
+                        Softness: 0.75
                         Text: 'Group #1: each element has a group component. Allow off = false.'
                         VerticalAlignment: Center
                         Wrapping: true
@@ -1978,6 +2004,7 @@ Items:
                                 Size:
                                   X: 8.0
                                   Y: 1.10000002
+                                Softness: 0.75
                                 Text: Off
                                 VerticalAlignment: Center
                                 Wrapping: true
@@ -2116,6 +2143,7 @@ Items:
                                 Size:
                                   X: 8.0
                                   Y: 1.10000002
+                                Softness: 0.75
                                 Text: Off
                                 VerticalAlignment: Center
                                 Wrapping: true
@@ -2254,6 +2282,7 @@ Items:
                                 Size:
                                   X: 8.0
                                   Y: 1.10000002
+                                Softness: 0.75
                                 Text: Off
                                 VerticalAlignment: Center
                                 Wrapping: true
@@ -2392,6 +2421,7 @@ Items:
                                 Size:
                                   X: 8.0
                                   Y: 1.10000002
+                                Softness: 0.75
                                 Text: Off
                                 VerticalAlignment: Center
                                 Wrapping: true
@@ -2527,6 +2557,7 @@ Items:
                         Size:
                           X: 0.179999962
                           Y: 0.02999999
+                        Softness: 0.75
                         Text: 'Group #2: each element has a group component. Allow off = true.'
                         VerticalAlignment: Center
                         Wrapping: true
@@ -2633,6 +2664,7 @@ Items:
                                 Size:
                                   X: 8.0
                                   Y: 1.10000002
+                                Softness: 0.75
                                 Text: Off
                                 VerticalAlignment: Center
                                 Wrapping: true
@@ -2775,6 +2807,7 @@ Items:
                                 Size:
                                   X: 8.0
                                   Y: 1.10000002
+                                Softness: 0.75
                                 Text: Off
                                 VerticalAlignment: Center
                                 Wrapping: true
@@ -2917,6 +2950,7 @@ Items:
                                 Size:
                                   X: 8.0
                                   Y: 1.10000002
+                                Softness: 0.75
                                 Text: Off
                                 VerticalAlignment: Center
                                 Wrapping: true
@@ -3059,6 +3093,7 @@ Items:
                                 Size:
                                   X: 8.0
                                   Y: 1.10000002
+                                Softness: 0.75
                                 Text: Off
                                 VerticalAlignment: Center
                                 Wrapping: true
@@ -3203,6 +3238,7 @@ Items:
                         Size:
                           X: 0.179999962
                           Y: 0.02999999
+                        Softness: 0.75
                         Text: 'Group #3: single group component for all hierarchy. Allow off = false.'
                         VerticalAlignment: Center
                         Wrapping: true
@@ -3304,6 +3340,7 @@ Items:
                                 Size:
                                   X: 8.0
                                   Y: 1.10000002
+                                Softness: 0.75
                                 Text: Off
                                 VerticalAlignment: Center
                                 Wrapping: true
@@ -3441,6 +3478,7 @@ Items:
                                 Size:
                                   X: 8.0
                                   Y: 1.10000002
+                                Softness: 0.75
                                 Text: Off
                                 VerticalAlignment: Center
                                 Wrapping: true
@@ -3578,6 +3616,7 @@ Items:
                                 Size:
                                   X: 8.0
                                   Y: 1.10000002
+                                Softness: 0.75
                                 Text: Off
                                 VerticalAlignment: Center
                                 Wrapping: true
@@ -3715,6 +3754,7 @@ Items:
                                 Size:
                                   X: 8.0
                                   Y: 1.10000002
+                                Softness: 0.75
                                 Text: Off
                                 VerticalAlignment: Center
                                 Wrapping: true
