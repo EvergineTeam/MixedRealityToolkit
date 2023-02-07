@@ -3,7 +3,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Evergine.MRTK.SDK.Features.UX.Components.Scrolls
+namespace Evergine.MRTK.SDK.Features.UX.Components.Lists
 {
     /// <summary>
     /// List view data.

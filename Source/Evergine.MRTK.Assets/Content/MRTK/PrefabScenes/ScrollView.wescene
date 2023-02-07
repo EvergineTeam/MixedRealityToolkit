@@ -226,7 +226,7 @@ Items:
           X: 1.0
           Y: 1.0
           Z: 1.0
-      - !Evergine.MRTK.SDK.Features.UX.Components.Scrolls.ScrollView,Evergine.MRTK
+      - !Evergine.MRTK.SDK.Features.UX.Components.Scrolling.ScrollView,Evergine.MRTK
         Id: e7c351e8-778e-4877-b2ec-b52e7a13356a
         BarWidth: 0.00400000019
         ContentYPadding: 0.0199999996

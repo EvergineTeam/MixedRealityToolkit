@@ -4,7 +4,7 @@ using Evergine.Common.Graphics;
 using Evergine.Framework;
 using Evergine.Mathematics;
 
-namespace Evergine.MRTK.SDK.Features.UX.Components.Scrolls
+namespace Evergine.MRTK.SDK.Features.UX.Components.Lists
 {
     /// <summary>
     /// Render of a table cell.

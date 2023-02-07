@@ -14,7 +14,7 @@ using System;
 using System.Diagnostics;
 using System.Linq;
 
-namespace Evergine.MRTK.SDK.Features.UX.Components.Scrolls
+namespace Evergine.MRTK.SDK.Features.UX.Components.Lists
 {
     /// <summary>
     /// List view behavior.
@@ -447,7 +447,7 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Scrolls
 
             // Selection
             var selectionPosition = this.selectionTransform.LocalPosition;
-            selectionPosition.Y = (this.contentTransform.LocalPosition.Y + this.contentOrigin.Y) - (this.RowHeight * this.selectedIndex);
+            selectionPosition.Y = this.contentTransform.LocalPosition.Y + this.contentOrigin.Y - (this.RowHeight * this.selectedIndex);
             this.selectionTransform.LocalPosition = selectionPosition;
         }
 

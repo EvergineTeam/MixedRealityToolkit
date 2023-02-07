@@ -6,7 +6,7 @@ using Evergine.Framework;
 using Evergine.Framework.Graphics;
 using Evergine.Mathematics;
 
-namespace Evergine.MRTK.SDK.Features.UX.Components.Scrolls
+namespace Evergine.MRTK.SDK.Features.UX.Components.Lists
 {
     /// <summary>
     /// Render a cell as a text.

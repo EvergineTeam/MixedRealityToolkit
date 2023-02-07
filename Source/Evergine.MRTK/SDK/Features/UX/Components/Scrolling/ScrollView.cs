@@ -13,7 +13,7 @@ using Evergine.MRTK.Emulation;
 using System;
 using System.Linq;
 
-namespace Evergine.MRTK.SDK.Features.UX.Components.Scrolls
+namespace Evergine.MRTK.SDK.Features.UX.Components.Scrolling
 {
     /// <summary>
     /// Simple scroll viewer.
