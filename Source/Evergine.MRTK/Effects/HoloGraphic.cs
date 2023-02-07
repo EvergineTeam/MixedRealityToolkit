@@ -9,7 +9,6 @@
 
 namespace Evergine.MRTK.Effects
 {
-    using Evergine.Common.Attributes;
     using Evergine.Framework.Graphics;
 
 
@@ -28,7 +27,6 @@ namespace Evergine.MRTK.Effects
             this.EnsureIsHolographic(material?.Effect);
         }
 
-        [DontRenderProperty]
         public Evergine.Mathematics.Vector3 Parameters_Color
         {
             get
@@ -41,7 +39,6 @@ namespace Evergine.MRTK.Effects
             }
         }
 
-        [DontRenderProperty]
         public float Parameters_Alpha
         {
             get
@@ -54,7 +51,6 @@ namespace Evergine.MRTK.Effects
             }
         }
 
-        [DontRenderProperty]
         public Evergine.Mathematics.Vector3 Parameters_InnerGlowColor
         {
             get
@@ -67,7 +63,6 @@ namespace Evergine.MRTK.Effects
             }
         }
 
-        [DontRenderProperty]
         public float Parameters_InnerGlowAlpha
         {
             get
@@ -80,7 +75,6 @@ namespace Evergine.MRTK.Effects
             }
         }
 
-        [DontRenderProperty]
         public float Parameters_InnerGlowPower
         {
             get
@@ -93,7 +87,6 @@ namespace Evergine.MRTK.Effects
             }
         }
 
-        [DontRenderProperty]
         public float Parameters_BorderWidth
         {
             get
@@ -106,7 +99,6 @@ namespace Evergine.MRTK.Effects
             }
         }
 
-        [DontRenderProperty]
         public float Parameters_BorderMinValue
         {
             get
@@ -119,7 +111,6 @@ namespace Evergine.MRTK.Effects
             }
         }
 
-        [DontRenderProperty]
         public float Parameters_FluentLightIntensity
         {
             get
@@ -132,7 +123,6 @@ namespace Evergine.MRTK.Effects
             }
         }
 
-        [DontRenderProperty]
         public float Parameters_RoundCornerRadious
         {
             get
@@ -145,7 +135,6 @@ namespace Evergine.MRTK.Effects
             }
         }
 
-        [DontRenderProperty]
         public float Parameters_RoundCornerMargin
         {
             get
@@ -158,7 +147,6 @@ namespace Evergine.MRTK.Effects
             }
         }
 
-        [DontRenderProperty]
         public float Parameters_Cutoff
         {
             get
@@ -171,7 +159,6 @@ namespace Evergine.MRTK.Effects
             }
         }
 
-        [DontRenderProperty]
         public Evergine.Mathematics.Vector4 Parameters_RoundCornersRadious
         {
             get
@@ -184,7 +171,6 @@ namespace Evergine.MRTK.Effects
             }
         }
 
-        [DontRenderProperty]
         public float Parameters_EdgeSmoothingValue
         {
             get
@@ -197,7 +183,6 @@ namespace Evergine.MRTK.Effects
             }
         }
 
-        [DontRenderProperty]
         public float Parameters_FadeBeginDistance
         {
             get
@@ -210,7 +195,6 @@ namespace Evergine.MRTK.Effects
             }
         }
 
-        [DontRenderProperty]
         public float Parameters_FadeCompleteDistance
         {
             get
@@ -223,7 +207,6 @@ namespace Evergine.MRTK.Effects
             }
         }
 
-        [DontRenderProperty]
         public float Parameters_FadeMinValue
         {
             get
@@ -236,7 +219,6 @@ namespace Evergine.MRTK.Effects
             }
         }
 
-        [DontRenderProperty]
         public Evergine.Mathematics.Vector3 Parameters_HoverColorOverride
         {
             get
@@ -249,7 +231,6 @@ namespace Evergine.MRTK.Effects
             }
         }
 
-        [DontRenderProperty]
         public Evergine.Mathematics.Vector4 Parameters_ProximityLightCenterColorOverride
         {
             get
@@ -262,7 +243,6 @@ namespace Evergine.MRTK.Effects
             }
         }
 
-        [DontRenderProperty]
         public Evergine.Mathematics.Vector4 Parameters_ProximityLightMiddleColorOverride
         {
             get
@@ -275,7 +255,6 @@ namespace Evergine.MRTK.Effects
             }
         }
 
-        [DontRenderProperty]
         public Evergine.Mathematics.Vector4 Parameters_ProximityLightOuterColorOverride
         {
             get
@@ -288,7 +267,6 @@ namespace Evergine.MRTK.Effects
             }
         }
 
-        [DontRenderProperty]
         public float Parameters_Metallic
         {
             get
@@ -301,7 +279,6 @@ namespace Evergine.MRTK.Effects
             }
         }
 
-        [DontRenderProperty]
         public float Parameters_Smoothness
         {
             get
@@ -314,7 +291,6 @@ namespace Evergine.MRTK.Effects
             }
         }
 
-        [DontRenderProperty]
         public Evergine.Mathematics.Vector2 Parameters_Tiling
         {
             get
@@ -327,7 +303,6 @@ namespace Evergine.MRTK.Effects
             }
         }
 
-        [DontRenderProperty]
         public Evergine.Mathematics.Vector2 Parameters_Offset
         {
             get
@@ -340,7 +315,6 @@ namespace Evergine.MRTK.Effects
             }
         }
 
-        [DontRenderProperty]
         public float Parameters_IridescenceIntensity
         {
             get
@@ -353,7 +327,6 @@ namespace Evergine.MRTK.Effects
             }
         }
 
-        [DontRenderProperty]
         public float Parameters_IridescenceThreshold
         {
             get
@@ -366,7 +339,6 @@ namespace Evergine.MRTK.Effects
             }
         }
 
-        [DontRenderProperty]
         public float Parameters_IridescenceAngle
         {
             get
@@ -379,7 +351,6 @@ namespace Evergine.MRTK.Effects
             }
         }
 
-        [DontRenderProperty]
         protected Evergine.Common.Graphics.Texture Internal_Texture
         {
             get
@@ -392,7 +363,6 @@ namespace Evergine.MRTK.Effects
             }
         }
 
-        [DontRenderProperty]
         protected Evergine.Common.Graphics.Texture Internal_IridescentSpectrumMap
         {
             get
@@ -405,7 +375,6 @@ namespace Evergine.MRTK.Effects
             }
         }
 
-        [DontRenderProperty]
         public Evergine.Common.Graphics.SamplerState Sampler
         {
             get
@@ -418,7 +387,6 @@ namespace Evergine.MRTK.Effects
             }
         }
 
-        [DontRenderProperty]
         public Evergine.Common.Graphics.SamplerState IridescentSpectrumMapSampler
         {
             get
