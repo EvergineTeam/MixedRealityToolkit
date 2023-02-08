@@ -68,10 +68,10 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Lists
         private Vector2 ContentSize;
 
         private Cursor currentCursor;
-        private Vector3 eventDataPosition;
         private Vector3 initialOffset;
         private int selectedIndex;
         private Vector3 lastCursorPosition;
+        private Vector3 gestureStartPosition;
 
         private bool interacting = false;
         private float velocityY;
@@ -312,10 +312,8 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Lists
                     this.interacting = true;
 
                     this.currentCursor = eventData.Cursor;
-
-                    this.eventDataPosition = eventData.Position;
+                    this.gestureStartPosition = eventData.Position;
                     this.initialOffset = this.contentTransform.LocalPosition - eventData.Position;
-                    this.SelectedRow(eventData.Position);
                     this.contentTransform.LocalPosition = eventData.Position + this.initialOffset;
                     this.lastCursorPosition = eventData.Position;
 
@@ -335,7 +333,6 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Lists
             if (this.currentCursor == eventData.Cursor)
             {
                 Vector3 delta = eventData.Position - this.lastCursorPosition;
-
                 Vector3 newPosition = this.lastCursorPosition + delta + this.initialOffset;
 
                 var position = this.contentTransform.LocalPosition;
@@ -359,6 +356,12 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Lists
             {
                 this.interacting = false;
                 this.currentCursor = null;
+
+                if (!ThatHasBeenADraggingGesture(this.gestureStartPosition, eventData.Position))
+                {
+                    this.SelectedRow(eventData.Position);
+                }
+
                 eventData.SetHandled();
             }
         }
@@ -377,11 +380,9 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Lists
             }
 
             this.interacting = true;
-
             this.currentCursor = eventData.Cursor;
-
+            this.gestureStartPosition = eventData.Position;
             this.initialOffset = this.contentTransform.LocalPosition - eventData.Position;
-            this.SelectedRow(eventData.Position);
             this.contentTransform.LocalPosition = eventData.Position + this.initialOffset;
             this.lastCursorPosition = eventData.Position;
         }
@@ -395,7 +396,6 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Lists
             }
 
             Vector3 delta = eventData.Position - this.lastCursorPosition;
-
             Vector3 newPosition = this.lastCursorPosition + delta + this.initialOffset;
 
             var position = this.contentTransform.LocalPosition;
@@ -410,6 +410,11 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Lists
             if (!(eventData.Cursor is CursorTouch))
             {
                 return;
+            }
+
+            if (!ThatHasBeenADraggingGesture(this.gestureStartPosition, eventData.Position))
+            {
+                this.SelectedRow(eventData.Position);
             }
 
             this.interacting = false;
@@ -449,6 +454,19 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Lists
             var selectionPosition = this.selectionTransform.LocalPosition;
             selectionPosition.Y = this.contentTransform.LocalPosition.Y + this.contentOrigin.Y - (this.RowHeight * this.selectedIndex);
             this.selectionTransform.LocalPosition = selectionPosition;
+        }
+
+        private static bool ThatHasBeenADraggingGesture(Vector3 initialPosition, Vector3 finalPosition)
+        {
+            /*
+             * Distance that pointer/touch should be moved to consider that selection is effectively
+             * being performed by user, and he is not just dragging the list.
+             */
+            const float SelectionChangeGestureDiff = 0.01f;
+
+            // we just consider Y component, as other parts of class code
+            var diffY = Math.Abs(initialPosition.Y - finalPosition.Y);
+            return diffY > SelectionChangeGestureDiff;
         }
 
         private void SelectedRow(Vector3 pointerPosition)
