@@ -9,7 +9,6 @@ namespace Evergine.MRTK
     {
         public sealed class Effects
         {
-
             /// <summary> Asset Path (MRTK/Effects/HoloGraphic.wefx) </summary>
             public static readonly Guid HoloGraphic = new Guid("4f7e4c24-e83c-4350-9cd4-511fb2199cf4");
 
@@ -21,7 +20,6 @@ namespace Evergine.MRTK
         {
             public sealed class BoundingBox
             {
-
                 /// <summary> Asset Path (MRTK/Materials/BoundingBox/BoundingBoxHandleBlue.wemt) </summary>
                 public static readonly Guid BoundingBoxHandleBlue = new Guid("9adff77b-f6b6-4683-bf28-243fafea5436");
 
@@ -47,7 +45,38 @@ namespace Evergine.MRTK
                 public static readonly Guid ButtonPrimary = new Guid("ce1f6bc9-39ac-4a0a-a913-07963f7342f5");
             }
 
+            public sealed class PinchSlider
+            {
+                /// <summary> Asset Path (MRTK/Materials/PinchSlider/PinchSlider_Thumb.wemt) </summary>
+                public static readonly Guid PinchSlider_Thumb = new Guid("207c3402-9a1e-43ed-a8a1-11dabe70811d");
+
+                /// <summary> Asset Path (MRTK/Materials/PinchSlider/PinchSlider_Track.wemt) </summary>
+                public static readonly Guid PinchSlider_Track = new Guid("7c71e125-9173-449d-a0ab-4771ad204dd5");
+            }
+
+            public sealed class Scrolling
+            {
+
+                /// <summary> Asset Path (MRTK/Materials/Scrolling/ScrollBackground.wemt) </summary>
+                public static readonly Guid ScrollBackground = new Guid("f478b4e6-db00-44f4-a529-3126487183ea");
+
+                /// <summary> Asset Path (MRTK/Materials/Scrolling/ScrollHeader.wemt) </summary>
+                public static readonly Guid ScrollHeader = new Guid("ff78b4e6-db00-44f4-a529-3126487183ea");
+
+                /// <summary> Asset Path (MRTK/Materials/Scrolling/ScrollViewerBar.wemt) </summary>
+                public static readonly Guid ScrollViewerBar = new Guid("09b7e0f4-19dc-4643-909b-a3494e81343c");
+
+                /// <summary> Asset Path (MRTK/Materials/Scrolling/ScrollViewerSelection.wemt) </summary>
+                public static readonly Guid ScrollViewerSelection = new Guid("09f7e0f4-19dc-4643-909b-a3494e81343c");
+
+                /// <summary> Asset Path (MRTK/Materials/Scrolling/ScrollViewerShadow.wemt) </summary>
+                public static readonly Guid ScrollViewerShadow = new Guid("98337cd0-8fcc-40f9-953f-b5d5abe34ebf");
+            }
+
             public static Guid HolographicButtonContentCageProximity = new Guid("876d9b5c-5016-4796-8473-92a19a5d244c");
+
+            /// <summary> Asset Path (MRTK/Materials/loadingMat.wemt) </summary>
+            public static readonly Guid loadingMat = new Guid("00fd8a25-0cdd-40ad-b39d-12608e78194e");
         }
 
         public sealed class Prefabs
