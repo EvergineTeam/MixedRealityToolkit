@@ -129,6 +129,7 @@ namespace Evergine.MRTK.Emulation
         private void ExternalTouch_BeginCollision(object sender, CollisionInfo3D info)
         {
             var otherEntity = this.RegisterCollidedEntity(info);
+            otherEntity.AttachableStateChanged += this.OtherEntity_AttachableStateChanged_RemoveFromExternalTouch;
 
             var hasHandler = otherEntity.HasEventHandlers<IMixedRealityTouchHandler, IMixedRealityPointerHandler>();
             if (hasHandler)
@@ -143,8 +144,18 @@ namespace Evergine.MRTK.Emulation
         {
             var otherEntity = this.UnregisterCollidedEntity(info);
 
-            this.externalTouchCollisionEntities.Remove(otherEntity);
-            this.RemoveFocusableInteraction(otherEntity);
+            this.RemoveEntityFromExternalTouch(otherEntity);
+        }
+
+        private void OtherEntity_AttachableStateChanged_RemoveFromExternalTouch(object sender, AttachableObjectState state)
+        {
+            var entity = (Entity)sender;
+
+            if (state == AttachableObjectState.Deactivated)
+            {
+                this.RemoveEntityFromExternalTouch(entity);
+                entity.AttachableStateChanged -= this.OtherEntity_AttachableStateChanged_RemoveFromExternalTouch;
+            }
         }
 
         private void InternalTouch_BeginCollision(object sender, CollisionInfo3D info)
@@ -191,6 +202,12 @@ namespace Evergine.MRTK.Emulation
             };
 
             other.RunOnComponents<IMixedRealityTouchHandler>((x) => action(x, eventArgs));
+        }
+
+        private void RemoveEntityFromExternalTouch(Entity entity)
+        {
+            this.externalTouchCollisionEntities.Remove(entity);
+            this.RemoveFocusableInteraction(entity);
         }
     }
 }
