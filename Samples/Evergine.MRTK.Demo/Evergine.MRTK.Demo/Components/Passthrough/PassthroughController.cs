@@ -25,7 +25,10 @@ namespace Evergine.MRTK.Demo.Components.Passthrough
                 return false;
             }
 
-            this.Owner.IsEnabled = this.IsPassthroughSupported();
+            if (!Application.Current.IsEditor)
+            {
+                this.Owner.IsEnabled = this.IsPassthroughSupported();
+            }
 
             this.UpdatePassthroughState();
 
@@ -58,7 +61,10 @@ namespace Evergine.MRTK.Demo.Components.Passthrough
 
         private void UpdatePassthroughState()
         {
-            this.xrPassthroughLayerComponent.IsEnabled = this.buttonPassthroughToggleButton.IsOn;
+            if (!Application.Current.IsEditor)
+            {
+                this.xrPassthroughLayerComponent.IsEnabled = this.buttonPassthroughToggleButton.IsOn;
+            }
         }
     }
 }
