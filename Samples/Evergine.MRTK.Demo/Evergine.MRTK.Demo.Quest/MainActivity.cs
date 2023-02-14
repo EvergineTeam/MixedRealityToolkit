@@ -115,6 +115,8 @@ namespace Evergine.MRTK.Demo.Quest
                     "XR_EXT_hand_tracking",         // Enable hand tracking in OpenXR application
                     "XR_FB_hand_tracking_aim",      // Allow to use hand gestures in Meta Quest devices
                     "XR_FB_hand_tracking_mesh",     // Obtain hand mesh in Meta Quest devices
+                    "XR_FB_passthrough",            // Enable Passthrough in Meta Quest devices					
+                    "XR_FB_triangle_mesh",          // Allow to project Passthrough on Meshes
                 },
                 new OpenXRInteractionProfile[]
                 {
