@@ -74,7 +74,7 @@ jobs:
           nuGetFeedType: "external"
           publishFeedCredentials: ${{ parameters.publishFeed }}
 
-      - task: AzureFileCopy@2
+      - task: AzureFileCopy@5
         displayName: "Upload to Azure BLOB packages"
         enabled: ${{ parameters.publishEnabled }}
         condition: and(succeeded(), ne('${{ parameters.publishContainer }}', ''))
