@@ -97,6 +97,7 @@
     <PackageReference Include="Evergine.AndroidView" Version="2023.2.13.1-nightly" />
     <PackageReference Include="Evergine.Vulkan" Version="2023.2.13.1-nightly" />
     <PackageReference Include="Evergine.OpenXR" Version="2023.2.13.1-nightly" />
+	<PackageReference Include="Evergine.OpenXR.Natives.Quest" Version="2023.2.10.2" />
     <PackageReference Include="Evergine.HLSLEverywhere" Version="2023.2.13.1-nightly" />
     <PackageReference Include="Evergine.OpenAL" Version="2023.2.13.1-nightly" />
     <PackageReference Include="Evergine.Bullet" Version="2023.2.13.1-nightly" />
