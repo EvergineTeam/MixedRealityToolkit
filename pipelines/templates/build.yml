@@ -96,7 +96,7 @@ jobs:
 
             if ($Env:Build_SourcesDirectory -and (Test-Path -Path $Env:Build_SourcesDirectory)){
                 Write-Host "Deleting $Env:Build_SourcesDirectory"
-                Remove-Item -Path $Env:Build_SourcesDirectory -Recurse -Force
+                Get-ChildItem -Path $Env:Build_SourcesDirectory -Recurse -Force | Remove-Item -Recurse -Force
             }
 
             if ($Env:Build_ArtifactStagingDirectory -and (Test-Path -Path $Env:Build_ArtifactStagingDirectory)){
