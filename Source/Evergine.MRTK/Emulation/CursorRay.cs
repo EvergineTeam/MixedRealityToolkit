@@ -253,7 +253,7 @@ namespace Evergine.MRTK.Emulation
             this.rayLineMesh.Owner.IsEnabled = rayVisible;
             this.IsVisible = rayVisible;
             this.touchCursor.IsVisible = !disableByJointInvalid && !disableByPalmUp && !rayVisible;
-            this.touchCursor.IsEnabled = !this.Pinch;
+            this.touchCursor.IsEnabled = !this.Pinch && !disableByPalmUp;
 
             this.Pinch = rayVisible && this.touchCursor.Pinch;
             if (this.Pinch != this.PreviousPinch)
