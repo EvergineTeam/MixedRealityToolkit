@@ -25,10 +25,26 @@ param (
 # Show variables
 ShowVariables $version $buildConfiguration $buildVerbosity $outputFolderBase
 
+# Install YAML cmdlets
+if (Get-Module -ListAvailable -Name powershell-yaml)
+{
+	Write-Host "Skip: powershell-yaml already installed"
+}
+else
+{
+	Write-Host "Installing powershell-yaml"
+	Install-Module -Name powershell-yaml -Force -Repository PSGallery -Scope CurrentUser
+	if (-Not $?)
+	{ 
+		throw "Could not install YAML module. Code: {$lastexitcode}"
+	}
+}
+
 # Update wespec file
-$dependencyPackageName = "Evergine.MRTK"
-$evalArgument = "(.Nugets[] | select(. == `\`"$dependencyPackageName *`\`")) = `\`"$dependencyPackageName $version`\`""
-& .\pipelines\tools\yq.exe eval "$evalArgument" -i "$wespecPath"
+Write-Host "Updating version dependency for $wespecPath"
+$wespecContents = Get-Content -Raw -Path $wespecPath | ConvertFrom-Yaml -Ordered
+$wespecContents.Nugets = $wespecContents.Nugets -replace "2023.0.0.0-preview$", $version
+ConvertTo-Yaml -Data $wespecContents | Out-File -Encoding ascii -FilePath $wespecPath
 
 # Create output folder
 $absoluteOutputFolder = (CreateOutputFolder $outputFolderBase)

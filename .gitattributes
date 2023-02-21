@@ -1,2 +1,1 @@
 *.weproj eol=crlf
-pipelines/tools/yq.exe filter=lfs diff=lfs merge=lfs -text
