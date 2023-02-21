@@ -29,6 +29,17 @@ jobs:
       NuGetVersion: "6.x"
 
     steps:
+      - task: PowerShell@2
+        displayName: "Install and checkout lfs manually"
+        inputs:
+          pwsh: true
+          targetType: inline
+          script: |
+            git lfs install
+            git lfs pull
+          errorActionPreference: continue
+          failOnStderr: false
+          ignoreLASTEXITCODE: true
       - task: UseDotNet@2
         displayName: "Check .NETCore SDK"
         inputs:

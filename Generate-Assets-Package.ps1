@@ -15,7 +15,8 @@ param (
 	[string]$outputFolderBase = "wepkgs",
 	[string]$buildVerbosity = "normal",
 	[string]$buildConfiguration = "Release",
-	[string]$assetsCsprojPath = "Source\Evergine.MRTK.Assets\Evergine.MRTK.Assets.csproj"
+	[string]$assetsCsprojPath = "Source\Evergine.MRTK.Assets\Evergine.MRTK.Assets.csproj",
+	[string]$wespecPath = "Source\Evergine.MRTK.Assets\Evergine.MRTK.wespec"
 )
 
 # Source helper functions
@@ -23,6 +24,11 @@ param (
 
 # Show variables
 ShowVariables $version $buildConfiguration $buildVerbosity $outputFolderBase
+
+# Update wespec file
+$dependencyPackageName = "Evergine.MRTK"
+$evalArgument = "(.Nugets[] | select(. == `\`"$dependencyPackageName *`\`")) = `\`"$dependencyPackageName $version`\`""
+& .\pipelines\tools\yq.exe eval "$evalArgument" -i "$wespecPath"
 
 # Create output folder
 $absoluteOutputFolder = (CreateOutputFolder $outputFolderBase)
