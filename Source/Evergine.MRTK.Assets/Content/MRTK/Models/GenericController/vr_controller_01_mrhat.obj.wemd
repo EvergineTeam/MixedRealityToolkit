@@ -1,0 +1,28 @@
+!Evergine.Assets.Exporters.ModelMetaFile,Evergine.Assets
+Id: f4263b92-bfd7-4ab5-8bf8-380ba2b7c540
+Clips: []
+DefaultProfile:
+  ExcludeAsset: false
+  Name: null
+  Platform: Undefined
+ExportAnimations: true
+ExportAsRaw: false
+GenerateTangentSpace: true
+Profiles: {}
+Source:
+  Header:
+    Id: c984fa9c-a1e1-40b4-9cf3-f1cf095a5ff0
+    IsCompressed: true
+  LastModified: 0001-01-01T00:00:00.0000000
+  ModelInfo:
+    Id: 10a9924b-8b8a-4b55-a7f0-45214724c17b
+    AnimationTracks: []
+    EmbeddedResources: null
+    Materials:
+      - Item1: vr_controller_01_mrhat_vrtroller_mrhat_mat
+        Item2: 148c536f-a483-4e93-bb68-d2b9adeda5eb
+    Nodes:
+      - RootNode
+      - vr_controller_01_mrhat_root
+      - vr_controller_01_mrhat_root.vr_controller_01_mrhat_vrtroller_mrhat
+SwapWindingOrder: false
