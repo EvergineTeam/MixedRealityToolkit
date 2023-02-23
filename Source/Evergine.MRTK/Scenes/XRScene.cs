@@ -234,7 +234,12 @@ namespace Evergine.MRTK.Scenes
             {
                 IsEnabled = false,
             }
-            .AddComponent(new Transform3D());
+            .AddComponent(new Transform3D())
+            .AddComponent(new TrackXRArticulatedHand()
+            {
+                Handedness = handedness,
+            })
+            ;
 
             if (material != null)
             {
@@ -242,10 +247,6 @@ namespace Evergine.MRTK.Scenes
                     .AddComponent(new MaterialComponent()
                     {
                         Material = material,
-                    })
-                    .AddComponent(new TrackXRArticulatedHand()
-                    {
-                        Handedness = handedness,
                     })
                     .AddComponent(new XRDeviceRenderableModel())
                 ////.AddComponent(new HoloHandsUpdater() { Handedness = handedness })
@@ -382,7 +383,7 @@ namespace Evergine.MRTK.Scenes
                         {
                             Handedness = handedness,
                             JointKind = XRHandJointKind.IndexTip,
-                            TrackingLostMode = TrackXRDevice.XRTrackingLostMode.KeepLastPose,
+                            TrackingLostMode = TrackXRDevice.XRTrackingLostMode.DisableEntityOnPoseInvalid,
                         })
                         .AddComponent(new HandTrackingControlBehavior());
                 }
