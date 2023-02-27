@@ -81,7 +81,7 @@ Items:
         Id: 88e25e58-d6ca-4934-a280-294f805c26bd
         AsignedTo: Default
         IsEnabled: true
-        Material: efad6412-0dbd-4531-a073-95e32664e777
+        Material: 7c24a977-c143-4233-9cee-133b9c44f2fa
         UseCopy: false
       - !Evergine.Components.Graphics3D.SphereMesh,Evergine.Components
         Id: 9369593f-c243-4632-b7c2-8b3e94abc256
@@ -186,9 +186,6 @@ Items:
         ClearFlags: All
         ClearStencil: 0
         Compensation: 0.0
-        DepthRange:
-          MaxDepth: 1.0
-          MinDepth: 0.0
         DisplayTag: null
         Exposure: 1.00000012
         FarPlane: 1000.0
@@ -209,13 +206,6 @@ Items:
         LogLuminanceRange: 12.0
         MinLogLuminance: -10.0
         NearPlane: 0.100000001
-        ScreenViewport:
-          Height: 172.0
-          MaxDepth: 1.0
-          MinDepth: 0.0
-          Width: 300.0
-          X: 0.0
-          Y: 0.0
         Sensitivity: 100.0
         SensorSize:
           X: 36.0
@@ -223,10 +213,6 @@ Items:
         ShutterSpeed: 1.20000005
         TAU: 1.10000002
         TagFilter: null
-        UpVector:
-          X: 0.0
-          Y: 1.0
-          Z: 0.0
         UsePhysicalParameters: false
     Children: []
     Id: b0c3cd83-5c05-4c45-9228-c44aebdd9b4d
@@ -954,7 +940,7 @@ Items:
 Managers:
   - !Evergine.Framework.Managers.EnvironmentManager,Evergine.Framework
     Id: 442fe9b0-c7e0-451a-b479-2497fdb64f6a
-    IBLReflectionProbe: 024b4d2f-cbe8-4819-8979-b669eb0c00ee
+    IBLReflectionProbe: 46e66e93-da68-4e41-8541-16487f4ab262
     IntensityMultiplier: 1.0
     IsEnabled: true
     Strategy: Automatically

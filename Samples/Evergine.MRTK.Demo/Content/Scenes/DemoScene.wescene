@@ -186,9 +186,6 @@ Items:
         ClearFlags: All
         ClearStencil: 0
         Compensation: 0.0
-        DepthRange:
-          MaxDepth: 1.0
-          MinDepth: 0.0
         DisplayTag: null
         Exposure: 1.00000012
         FarPlane: 1000.0
@@ -209,13 +206,6 @@ Items:
         LogLuminanceRange: 12.0
         MinLogLuminance: -10.0
         NearPlane: 0.100000001
-        ScreenViewport:
-          Height: 270.0
-          MaxDepth: 1.0
-          MinDepth: 0.0
-          Width: 365.0
-          X: 0.0
-          Y: 0.0
         Sensitivity: 100.0
         SensorSize:
           X: 36.0
@@ -223,10 +213,6 @@ Items:
         ShutterSpeed: 1.20000005
         TAU: 1.10000002
         TagFilter: null
-        UpVector:
-          X: 0.0
-          Y: 1.0
-          Z: 0.0
         UsePhysicalParameters: false
     Children: []
     Id: b0c3cd83-5c05-4c45-9228-c44aebdd9b4d
@@ -8248,7 +8234,7 @@ Items:
 Managers:
   - !Evergine.Framework.Managers.EnvironmentManager,Evergine.Framework
     Id: 0b6695c7-b505-442d-b0e2-8e2791c63949
-    IBLReflectionProbe: 8583ebad-7beb-46e8-9ddf-b50a170fb54b
+    IBLReflectionProbe: 82e82c4b-7ed3-42fe-8bd0-848e7a5d2819
     IntensityMultiplier: 1.0
     IsEnabled: true
     Strategy: Automatically

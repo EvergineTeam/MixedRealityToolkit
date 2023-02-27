@@ -81,7 +81,7 @@ Items:
         Id: 88e25e58-d6ca-4934-a280-294f805c26bd
         AsignedTo: Default
         IsEnabled: true
-        Material: 8d2c6db7-6147-4ada-bcd0-a309adf4a1e2
+        Material: 5dd0fb8f-7265-421c-9306-1978686f3540
         UseCopy: false
       - !Evergine.Components.Graphics3D.SphereMesh,Evergine.Components
         Id: 9369593f-c243-4632-b7c2-8b3e94abc256
@@ -186,9 +186,6 @@ Items:
         ClearFlags: All
         ClearStencil: 0
         Compensation: 0.0
-        DepthRange:
-          MaxDepth: 1.0
-          MinDepth: 0.0
         DisplayTag: null
         Exposure: 1.00000012
         FarPlane: 1000.0
@@ -209,13 +206,6 @@ Items:
         LogLuminanceRange: 12.0
         MinLogLuminance: -10.0
         NearPlane: 0.100000001
-        ScreenViewport:
-          Height: 172.0
-          MaxDepth: 1.0
-          MinDepth: 0.0
-          Width: 300.0
-          X: 0.0
-          Y: 0.0
         Sensitivity: 100.0
         SensorSize:
           X: 36.0
@@ -223,10 +213,6 @@ Items:
         ShutterSpeed: 1.20000005
         TAU: 1.10000002
         TagFilter: null
-        UpVector:
-          X: 0.0
-          Y: 1.0
-          Z: 0.0
         UsePhysicalParameters: false
     Children: []
     Id: b0c3cd83-5c05-4c45-9228-c44aebdd9b4d
@@ -499,7 +485,7 @@ Items:
                         Name: Text
                         Target: a7c5a62f-b112-4c25-bb9e-eaec97942a6f
                         TypedValue: Button
-                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%25601[[System.Single,System.Private.CoreLib]],Evergine.Framework
+                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.Single,System.Private.CoreLib]],Evergine.Framework
                         Name: ScaleFactor
                         Target: a7c5a62f-b112-4c25-bb9e-eaec97942a6f
                         TypedValue: 0.00800000038
@@ -621,7 +607,7 @@ Items:
                           B: 4
                           G: 0
                           R: 255
-                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%25601[[System.Single,System.Private.CoreLib]],Evergine.Framework
+                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.Single,System.Private.CoreLib]],Evergine.Framework
                         Name: ScaleFactor
                         Target: a7c5a62f-b112-4c25-bb9e-eaec97942a6f
                         TypedValue: 0.00800000038
@@ -3835,7 +3821,7 @@ Items:
 Managers:
   - !Evergine.Framework.Managers.EnvironmentManager,Evergine.Framework
     Id: ee2d8654-8b9f-42fc-93bb-9e632d1a8efc
-    IBLReflectionProbe: e38eae35-aa81-42c3-b364-fc8f7b6f3446
+    IBLReflectionProbe: 4a10c2e2-142d-484b-b982-3e29d1be967c
     IntensityMultiplier: 1.0
     IsEnabled: true
     Strategy: Automatically
