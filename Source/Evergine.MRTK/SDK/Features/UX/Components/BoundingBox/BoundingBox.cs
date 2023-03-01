@@ -630,13 +630,23 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.BoundingBox
 
             if (boundingBox != null)
             {
-                this.boxCollider3D.Size = boundingBox.Value.HalfExtent * 2;
-                this.boxCollider3D.Offset = boundingBox.Value.Center;
+                var size = boundingBox.Value.HalfExtent * 2;
+                var offset = boundingBox.Value.Center;
                 var bounding = this.Owner.FindComponent<MeshComponent>(isExactType: false)?.BoundingBox;
                 if (bounding != null)
                 {
-                    this.boxCollider3D.Size /= bounding.Value.HalfExtent * 2;
-                    this.boxCollider3D.Offset -= bounding.Value.Center;
+                    size /= bounding.Value.HalfExtent * 2;
+                    offset -= bounding.Value.Center;
+                }
+
+                if (this.boxCollider3D.Size != size)
+                {
+                    this.boxCollider3D.Size = size;
+                }
+
+                if (this.boxCollider3D.Offset != offset)
+                {
+                    this.boxCollider3D.Offset = offset;
                 }
             }
         }
