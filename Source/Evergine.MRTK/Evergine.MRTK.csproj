@@ -2,7 +2,7 @@
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;uap10.0.16299</TargetFrameworks>
     <Description>Provides and set of components that help developing Mixed Reality applications using Evergine.</Description>
-    <Copyright>Copyright (c) Evergine 2021</Copyright>
+    <Copyright>Copyright (c) Evergine</Copyright>
     <Authors>Evergine Team</Authors>
     <Company>Plain Concepts</Company>
     <Product>Evergine</Product>
@@ -13,6 +13,7 @@
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+	<LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <IncludeSymbols>true</IncludeSymbols>
@@ -50,6 +51,10 @@
     <!-- Prevent files missing when filtered by platform https://github.com/dotnet/sdk/issues/2337 -->
     <Compile Include="**\*.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder);$(Compile)" />
     <Compile Remove="**\*\*.uwp.cs" Condition="!$(TargetFramework.StartsWith('uap'))" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="InputSystem\Controllers\" />
+    <Folder Include="InputSystem\Pointers\" />
   </ItemGroup>
   <Choose>
     <When Condition="$(TargetFramework.StartsWith('uap'))">

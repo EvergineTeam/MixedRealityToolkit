@@ -1,0 +1,40 @@
+!Evergine.Framework.Assets.AssetSources.Entities.PrefabModel,Evergine.Framework
+Root:
+  Name: DefaultLeftArticulatedHand
+  Tag: null
+  IsEnabled: true
+  IsStatic: false
+  Components:
+    - !Evergine.Framework.Graphics.Transform3D,Evergine.Framework
+      Id: 59aa7a52-9b86-464e-a9d0-8cc3ef1e265f
+      IsEnabled: true
+      LocalOrientation:
+        W: 1.0
+        X: 0.0
+        Y: 0.0
+        Z: 0.0
+      LocalPosition:
+        X: 0.0
+        Y: 0.0
+        Z: 0.0
+      LocalScale:
+        X: 1.0
+        Y: 1.0
+        Z: 1.0
+    - !Evergine.Components.XR.TrackXRArticulatedHand,Evergine.Components
+      Id: 121991ac-0245-4bf5-85ae-697b82be73eb
+      Handedness: LeftHand
+      IsEnabled: true
+      TrackingLostMode: DisableEntityOnPoseInvalid
+      UpdateOrder: 0.5
+    - !Evergine.Components.Graphics3D.MaterialComponent,Evergine.Framework
+      Id: aef76d66-9128-4cd3-ad9e-cc4a6edef58d
+      AsignedTo: Default
+      IsEnabled: true
+      Material: 4f32ee6e-22c9-48be-ad27-76ba638454fb
+      UseCopy: false
+    - !Evergine.Components.XR.XRDeviceRenderableModel,Evergine.Components
+      Id: a80b227e-8aab-45ee-9efd-343ef2420045
+      IsEnabled: true
+  Children: []
+  Id: 71e96d4a-e62f-43b2-b5a2-0f17e0c68df3

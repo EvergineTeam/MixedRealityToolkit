@@ -2,7 +2,7 @@ using Evergine.Framework;
 using Evergine.Framework.Services;
 using Evergine.Framework.Threading;
 using Evergine.MRTK.Demo.Components.Commands;
-using Evergine.MRTK.Demo.Scenes;
+using Evergine.MRTK.Demo.Scenes.NewTests;
 using Evergine.MRTK.Demo.VoiceCommands;
 using Evergine.MRTK.Emulation;
 using Evergine.Platform;
@@ -48,7 +48,7 @@ namespace Evergine.MRTK.Demo
             var assetsService = this.Container.Resolve<AssetsService>();
 
             // Navigate to scene
-            var scene = assetsService.Load<DemoScene>(EvergineContent.Scenes.DemoScene_wescene);
+            var scene = assetsService.Load<InputSystemTestScene>(EvergineContent.Scenes.NewTests.InputSystemTestScene_wescene);
             var screenContext = new ScreenContext(scene);
             screenContextManager.To(screenContext);
         }

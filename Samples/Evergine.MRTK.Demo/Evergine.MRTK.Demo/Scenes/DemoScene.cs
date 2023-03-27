@@ -17,9 +17,9 @@ namespace Evergine.MRTK.Demo.Scenes
 
         protected override Guid HandRaySampler => EvergineContent.MRTK.Samplers.LinearWrapSampler;
 
-        protected override Guid LeftControllerModelPrefab => EvergineContent.MRTK.Prefabs.DefaultLeftController_weprefab;
+        protected override Guid LeftControllerModelPrefab => EvergineContent.MRTK.Prefabs.InputSystem.DefaultLeftPhysicalController_weprefab;
 
-        protected override Guid RightControllerModelPrefab => EvergineContent.MRTK.Prefabs.DefaultRightController_weprefab;
+        protected override Guid RightControllerModelPrefab => EvergineContent.MRTK.Prefabs.InputSystem.DefaultRightPhysicalController_weprefab;
 
         protected override float MaxFarCursorLength => 0.5f;
     }
