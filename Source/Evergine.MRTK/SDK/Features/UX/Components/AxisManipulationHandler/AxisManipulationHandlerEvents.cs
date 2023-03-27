@@ -4,9 +4,9 @@ using System;
 
 namespace Evergine.MRTK.SDK.Features.UX.Components.AxisManipulationHandler
 {
-    /// <summary>
-    /// A manipulation handler that restricts movement to a combination of axes.
-    /// </summary>
+    /// <content>
+    /// Contains all the events for the <see cref="AxisManipulationHandler"/>.
+    /// </content>
     public partial class AxisManipulationHandler
     {
         /// <summary>
