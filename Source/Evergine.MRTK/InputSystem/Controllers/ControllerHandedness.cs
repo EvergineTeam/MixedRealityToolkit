@@ -1,16 +1,16 @@
 ﻿// Copyright © Evergine S.L. All rights reserved. Use is subject to license terms.
 
-namespace Evergine.MRTK.Managers.Data
+namespace Evergine.MRTK.InputSystem.Controllers
 {
     /// <summary>
-    /// The controller handedness for a pointer option.
+    /// The controller handedness.
     /// </summary>
     public enum ControllerHandedness
     {
         /// <summary>
-        /// Default type
+        /// Any hand
         /// </summary>
-        None = 0,
+        Any,
 
         /// <summary>
         /// Left hand
@@ -21,10 +21,5 @@ namespace Evergine.MRTK.Managers.Data
         /// Right hand
         /// </summary>
         Right,
-
-        /// <summary>
-        /// Any hand
-        /// </summary>
-        Any,
     }
 }

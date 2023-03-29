@@ -1,7 +1,7 @@
 ﻿// Copyright © Evergine S.L. All rights reserved. Use is subject to license terms.
 
 using Evergine.Framework.Prefabs;
-using Evergine.Framework.XR;
+using Evergine.MRTK.InputSystem.Controllers;
 
 namespace Evergine.MRTK.Managers.Data
 {

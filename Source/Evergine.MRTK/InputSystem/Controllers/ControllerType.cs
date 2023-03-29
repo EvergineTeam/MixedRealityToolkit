@@ -1,9 +1,9 @@
 ﻿// Copyright © Evergine S.L. All rights reserved. Use is subject to license terms.
 
-namespace Evergine.MRTK.Managers.Data
+namespace Evergine.MRTK.InputSystem.Controllers
 {
     /// <summary>
-    /// The controller type for a pointer option.
+    /// The controller type.
     /// </summary>
     public enum ControllerType
     {
@@ -13,13 +13,13 @@ namespace Evergine.MRTK.Managers.Data
         None = 0,
 
         /// <summary>
-        /// Controller for an OpenXR physical controller
+        /// Controller for an XR physical controller
         /// </summary>
-        OpenXRPhysicalController,
+        XRPhysicalController,
 
         /// <summary>
-        /// Controller for an OpenXR articulated hand
+        /// Controller for an XR articulated hand
         /// </summary>
-        OpenXRArticulatedHand,
+        XRArticulatedHand,
     }
 }

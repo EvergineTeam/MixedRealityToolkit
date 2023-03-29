@@ -153,7 +153,7 @@ Items:
         Id: 6c4cc251-c583-4115-84af-e7dc608a3d2b
         AsignedTo: Default
         IsEnabled: true
-        Material: d9ebf019-3946-4987-9043-bc76119c827e
+        Material: 0372991a-93a3-4ff2-87ae-40b0e08c5c04
         UseCopy: false
       - !Evergine.Components.Graphics3D.SphereMesh,Evergine.Components
         Id: a7546531-751f-4654-b274-2421c3063adf
@@ -228,7 +228,7 @@ Managers:
     Id: 217d42ba-675d-4a0b-909f-c1759abd94d2
     IsEnabled: true
     LeftArticulatedHandPrefab: c540649c-6d32-469b-a68b-a01fcae320cd
-    LeftControllerPrefab: d1ef1d0b-c616-4f69-97b3-f4496081df5c
+    LeftPhysicalControllerPrefab: d1ef1d0b-c616-4f69-97b3-f4496081df5c
     PointerOptions: []
     RightArticulatedHandPrefab: 825f028f-628b-4f5e-afe1-ceb27836f1de
-    RightControllerPrefab: 99fd4963-c4c6-498d-92d2-2afcecc75d57
+    RightPhysicalControllerPrefab: 99fd4963-c4c6-498d-92d2-2afcecc75d57

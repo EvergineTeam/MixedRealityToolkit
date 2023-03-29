@@ -5,11 +5,9 @@ using Evergine.Framework;
 using Evergine.Framework.Managers;
 using Evergine.Framework.Prefabs;
 using Evergine.Framework.Services;
-using Evergine.Framework.XR;
 using Evergine.Framework.XR.TrackedDevices;
 using Evergine.MRTK.InputSystem;
-using Evergine.MRTK.Managers.Data;
-using System.Collections.Generic;
+using Evergine.MRTK.InputSystem.Controllers;
 using System.Linq;
 
 namespace Evergine.MRTK.Managers
@@ -19,6 +17,9 @@ namespace Evergine.MRTK.Managers
     /// </summary>
     public partial class MRTKManager : SceneManager
     {
+        [BindSceneManager]
+        private AssetSceneManager assetSceneManager = null;
+
         [BindService(isRequired: false)]
         private XRPlatform xrPlatform = null;
 
@@ -29,26 +30,15 @@ namespace Evergine.MRTK.Managers
         private FocusProvider focusProvider = null;
 
         /// <inheritdoc/>
-        protected override void OnLoaded()
-        {
-            base.OnLoaded();
-
-            // Set default values
-            this.LeftPhysicalControllerPrefab ??= this.Managers.AssetSceneManager.Load<Prefab>(MRTKResourceIDs.Prefabs.InputSystem.DefaultLeftPhysicalController_weprefab);
-            this.RightPhysicalControllerPrefab ??= this.Managers.AssetSceneManager.Load<Prefab>(MRTKResourceIDs.Prefabs.InputSystem.DefaultRightPhysicalController_weprefab);
-            this.LeftArticulatedHandPrefab ??= this.Managers.AssetSceneManager.Load<Prefab>(MRTKResourceIDs.Prefabs.InputSystem.DefaultLeftArticulatedHand_weprefab);
-            this.RightArticulatedHandPrefab ??= this.Managers.AssetSceneManager.Load<Prefab>(MRTKResourceIDs.Prefabs.InputSystem.DefaultRightArticulatedHand_weprefab);
-
-            this.PointerOptions ??= new List<PointerOption>(); // TODO make default pointer options list
-        }
-
-        /// <inheritdoc/>
         protected override bool OnAttached()
         {
             if (!base.OnAttached())
             {
                 return false;
             }
+
+            // Set default values
+            this.SetDefaultValues();
 
             // Do nothing else if running on the editor
             if (Application.Current.IsEditor)
@@ -64,21 +54,25 @@ namespace Evergine.MRTK.Managers
 
             this.AddManager(ref this.focusProvider, new FocusProvider());
 
-            // XR platform, like a Meta Quest device
+            ////////////////////////////////////////////////
+            // Spawn controllers for detected platforms
+            ////////////////////////////////////////////////
+
+            // Evergine's XR platform, used for devices like a Meta Quest
             if (this.xrPlatform != null)
             {
                 // Add MRTK Controllers for the physical controllers
                 if (this.xrPlatform.InputTracking.GetDeviceByType(XRTrackedDeviceType.Controller) != null)
                 {
-                    this.HandleController(ControllerType.OpenXRPhysicalController, ControllerHandedness.Left, this.LeftPhysicalControllerPrefab);
-                    this.HandleController(ControllerType.OpenXRPhysicalController, ControllerHandedness.Right, this.RightPhysicalControllerPrefab);
+                    this.HandleController(ControllerType.XRPhysicalController, ControllerHandedness.Left, this.LeftPhysicalControllerPrefab);
+                    this.HandleController(ControllerType.XRPhysicalController, ControllerHandedness.Right, this.RightPhysicalControllerPrefab);
                 }
 
                 // Add MRTK Controllers for the hand tracking feature
                 if (this.xrPlatform.InputTracking.GetDeviceByType(XRTrackedDeviceType.Hand) != null)
                 {
-                    this.HandleController(ControllerType.OpenXRArticulatedHand, ControllerHandedness.Left, this.LeftArticulatedHandPrefab);
-                    this.HandleController(ControllerType.OpenXRArticulatedHand, ControllerHandedness.Right, this.RightArticulatedHandPrefab);
+                    this.HandleController(ControllerType.XRArticulatedHand, ControllerHandedness.Left, this.LeftArticulatedHandPrefab);
+                    this.HandleController(ControllerType.XRArticulatedHand, ControllerHandedness.Right, this.RightArticulatedHandPrefab);
                 }
             }
 
@@ -98,16 +92,21 @@ namespace Evergine.MRTK.Managers
 
         private void HandleController(ControllerType mrtkControllerType, ControllerHandedness handedness, Prefab prefab)
         {
+            // Instantiate the controller prefab
             var controllerPrefabInstance = prefab.Instantiate();
 
-            // Add pointers
-            var pointerOptions = this.PointerOptions.Where(po => po.ControllerType == mrtkControllerType && (po.Handedness == ControllerHandedness.Any || po.Handedness == handedness));
+            // Get the pointers to add to this controller
+            var pointerOptions = this.PointerOptions
+                .Where(po => po.ControllerType == mrtkControllerType && (po.Handedness == ControllerHandedness.Any || po.Handedness == handedness));
+
+            // Instantiate pointer prefabs and add them to the controller
             foreach (var pointerOption in pointerOptions)
             {
                 var pointerPrefabInstance = pointerOption.Pointer.Instantiate();
                 controllerPrefabInstance.AddChild(pointerPrefabInstance);
             }
 
+            // Register the controller entity
             this.Managers.EntityManager.Add(controllerPrefabInstance);
         }
     }

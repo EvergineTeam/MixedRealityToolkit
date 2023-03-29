@@ -1,6 +1,6 @@
 !Evergine.Framework.Assets.AssetSources.Entities.PrefabModel,Evergine.Framework
 Root:
-  Name: DefaultRightController
+  Name: DefaultLeftPhysicalController
   Tag: null
   IsEnabled: true
   IsStatic: false
@@ -22,11 +22,14 @@ Root:
         Y: 1.0
         Z: 1.0
     - !Evergine.Components.XR.TrackXRController,Evergine.Components
-      Id: 7908e628-4f09-440b-b076-b1991a72f8d6
-      Handedness: RightHand
+      Id: 20c5cab4-cc8d-4229-8575-717f6d81e60b
+      Handedness: LeftHand
       IsEnabled: true
       TrackingLostMode: DisableEntityOnPoseInvalid
       UpdateOrder: 0.5
+    - !Evergine.MRTK.InputSystem.Controllers.XRPhysicalController,Evergine.MRTK
+      Id: e15de445-ce4c-41b1-a4e7-bc37453e3f58
+      IsEnabled: true
   Children:
     - !Evergine.Framework.Assets.AssetSources.Entities.EntityItemModel,Evergine.Framework
       Name: Root
@@ -35,7 +38,7 @@ Root:
       IsStatic: false
       Components:
         - !Evergine.Framework.Graphics.Transform3D,Evergine.Framework
-          Id: c3383483-2c30-4c62-bc32-3d0e30886281
+          Id: 79755afc-d23b-4d9e-9884-fcab92912caa
           IsEnabled: true
           LocalOrientation:
             W: 1.0
@@ -82,7 +85,7 @@ Root:
           IsStatic: false
           Components:
             - !Evergine.Framework.Graphics.Transform3D,Evergine.Framework
-              Id: 47894473-0362-4163-999c-024e6b7dc375
+              Id: d6ccde71-2749-4e1c-9fcd-98139950d3ca
               IsEnabled: true
               LocalOrientation:
                 W: 0.923879504
@@ -105,7 +108,7 @@ Root:
               IsStatic: false
               Components:
                 - !Evergine.Framework.Graphics.Transform3D,Evergine.Framework
-                  Id: ec0e3834-1501-46ee-8160-125b57e2a4a0
+                  Id: 1a90fa0b-5dbd-43b3-9b69-7d4c9587b867
                   IsEnabled: true
                   LocalOrientation:
                     W: 1.0
@@ -128,7 +131,7 @@ Root:
                   IsStatic: false
                   Components:
                     - !Evergine.Framework.Graphics.Transform3D,Evergine.Framework
-                      Id: a9e0befa-b844-4200-92cf-a2c5c9498e6f
+                      Id: 78cf0610-b9c3-4704-8c6a-078af8cb6310
                       IsEnabled: true
                       LocalOrientation:
                         W: 1.0
@@ -144,26 +147,26 @@ Root:
                         Y: 1.0
                         Z: 1.0
                     - !Evergine.Components.Graphics3D.MaterialComponent,Evergine.Framework
-                      Id: 1b63e387-4692-4cdf-adee-64c09ed7b888
+                      Id: fb3ecf04-1be0-4550-aea5-ff99d30bdd27
                       AsignedTo: vr_controller_01_mrhat_vrtroller_mrhat_mat
                       IsEnabled: true
                       Material: 148c536f-a483-4e93-bb68-d2b9adeda5eb
                       UseCopy: false
                     - !Evergine.Components.Graphics3D.MeshComponent,Evergine.Framework
-                      Id: d527b0cc-f85d-4b22-bff0-fd649cedb168
+                      Id: 92b88f74-1cc7-4949-aa59-c4cbff885ce6
                       IsEnabled: true
                       Model: f4263b92-bfd7-4ab5-8bf8-380ba2b7c540
                       ModelMeshName: vr_controller_01_mrhat_vrtroller_mrhat
                     - !Evergine.Components.Graphics3D.MeshRenderer,Evergine.Framework
-                      Id: 6855b93a-1818-435d-9ab1-db7b635e3d03
+                      Id: 610cb607-0450-499f-8289-394d190a36c9
                       DebugBoundingbox: true
                       IsCullingEnabled: true
                       IsEnabled: true
                       OrderBias: 0
                       RenderFlags: CastShadows
                   Children: []
-                  Id: fbd10ef6-0962-4ed8-87b2-14b135362b47
-              Id: f964e54e-0b5f-4a7b-b5f7-f861061d7e0a
-          Id: 79223490-cd84-40f1-9e3e-9f454eef3d62
-      Id: 1dd48e4b-fe3a-4fd3-a2a7-d8b4a49cf89a
+                  Id: c5e42be0-00f6-462b-a86b-22fc8064e076
+              Id: e8d509fd-04dd-4805-a1c9-bbef0e552b1a
+          Id: 80c54470-240b-4209-8cf6-27ee52482d51
+      Id: 9e39e7c4-5b60-4e2a-bd6b-f9e0b87212cc
   Id: f55e8438-1e76-4cb3-b9ae-7318ffba016e

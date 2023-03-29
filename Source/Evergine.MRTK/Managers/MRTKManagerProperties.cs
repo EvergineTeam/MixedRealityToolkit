@@ -2,6 +2,7 @@
 
 using Evergine.Common.Attributes;
 using Evergine.Framework.Prefabs;
+using Evergine.MRTK.InputSystem.Controllers;
 using Evergine.MRTK.Managers.Data;
 using System.Collections.Generic;
 
@@ -51,5 +52,34 @@ namespace Evergine.MRTK.Managers
             CustomPropertyName = "Pointer Options",
             Tooltip = "The pointers associated with each type of controller")]
         public List<PointerOption> PointerOptions { get; set; }
+
+        private void SetDefaultValues()
+        {
+            this.LeftPhysicalControllerPrefab ??= this.assetSceneManager.Load<Prefab>(MRTKResourceIDs.Prefabs.InputSystem.Controllers.DefaultLeftPhysicalController_weprefab);
+            this.RightPhysicalControllerPrefab ??= this.assetSceneManager.Load<Prefab>(MRTKResourceIDs.Prefabs.InputSystem.Controllers.DefaultRightPhysicalController_weprefab);
+            this.LeftArticulatedHandPrefab ??= this.assetSceneManager.Load<Prefab>(MRTKResourceIDs.Prefabs.InputSystem.Controllers.DefaultLeftArticulatedHand_weprefab);
+            this.RightArticulatedHandPrefab ??= this.assetSceneManager.Load<Prefab>(MRTKResourceIDs.Prefabs.InputSystem.Controllers.DefaultRightArticulatedHand_weprefab);
+
+            // TODO make default pointer options list
+            var nearPointerPrefab = this.assetSceneManager.Load<Prefab>(MRTKResourceIDs.Prefabs.InputSystem.Pointers.NearPointer_weprefab);
+            if (this.PointerOptions == null)
+            {
+                this.PointerOptions = new List<PointerOption>
+                {
+                    new PointerOption()
+                    {
+                        ControllerType = ControllerType.XRArticulatedHand,
+                        Handedness = ControllerHandedness.Any,
+                        Pointer = nearPointerPrefab,
+                    },
+                    new PointerOption()
+                    {
+                        ControllerType = ControllerType.XRPhysicalController,
+                        Handedness = ControllerHandedness.Any,
+                        Pointer = nearPointerPrefab,
+                    },
+                };
+            }
+        }
     }
 }

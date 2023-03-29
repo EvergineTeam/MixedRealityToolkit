@@ -101,17 +101,29 @@ namespace Evergine.MRTK
 
             public sealed class InputSystem
             {
-                /// <summary> Asset Path (MRTK/Prefabs/InputSystem/DefaultLeftArticulatedHand.weprefab.weprf) </summary>
-                public static readonly Guid DefaultLeftArticulatedHand_weprefab = new Guid("c540649c-6d32-469b-a68b-a01fcae320cd");
 
-                /// <summary> Asset Path (MRTK/Prefabs/InputSystem/DefaultLeftPhysicalController.weprefab.weprf) </summary>
-                public static readonly Guid DefaultLeftPhysicalController_weprefab = new Guid("d1ef1d0b-c616-4f69-97b3-f4496081df5c");
+                public sealed class Controllers
+                {
 
-                /// <summary> Asset Path (MRTK/Prefabs/InputSystem/DefaultRightArticulatedHand.weprefab.weprf) </summary>
-                public static readonly Guid DefaultRightArticulatedHand_weprefab = new Guid("825f028f-628b-4f5e-afe1-ceb27836f1de");
+                    /// <summary> Asset Path (MRTK/Prefabs/InputSystem/Controllers/DefaultLeftArticulatedHand.weprefab.weprf) </summary>
+                    public static readonly Guid DefaultLeftArticulatedHand_weprefab = new Guid("c540649c-6d32-469b-a68b-a01fcae320cd");
 
-                /// <summary> Asset Path (MRTK/Prefabs/InputSystem/DefaultRightPhysicalController.weprefab.weprf) </summary>
-                public static readonly Guid DefaultRightPhysicalController_weprefab = new Guid("99fd4963-c4c6-498d-92d2-2afcecc75d57");
+                    /// <summary> Asset Path (MRTK/Prefabs/InputSystem/Controllers/DefaultLeftPhysicalController.weprefab.weprf) </summary>
+                    public static readonly Guid DefaultLeftPhysicalController_weprefab = new Guid("d1ef1d0b-c616-4f69-97b3-f4496081df5c");
+
+                    /// <summary> Asset Path (MRTK/Prefabs/InputSystem/Controllers/DefaultRightArticulatedHand.weprefab.weprf) </summary>
+                    public static readonly Guid DefaultRightArticulatedHand_weprefab = new Guid("825f028f-628b-4f5e-afe1-ceb27836f1de");
+
+                    /// <summary> Asset Path (MRTK/Prefabs/InputSystem/Controllers/DefaultRightPhysicalController.weprefab.weprf) </summary>
+                    public static readonly Guid DefaultRightPhysicalController_weprefab = new Guid("99fd4963-c4c6-498d-92d2-2afcecc75d57");
+                }
+
+                public sealed class Pointers
+                {
+
+                    /// <summary> Asset Path (MRTK/Prefabs/InputSystem/Pointers/NearPointer.weprefab.weprf) </summary>
+                    public static readonly Guid NearPointer_weprefab = new Guid("82b58835-45e6-4dac-b91b-a75cd0bddeab");
+                }
             }
         }
 

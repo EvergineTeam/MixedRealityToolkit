@@ -52,10 +52,6 @@
     <Compile Include="**\*.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder);$(Compile)" />
     <Compile Remove="**\*\*.uwp.cs" Condition="!$(TargetFramework.StartsWith('uap'))" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="InputSystem\Controllers\" />
-    <Folder Include="InputSystem\Pointers\" />
-  </ItemGroup>
   <Choose>
     <When Condition="$(TargetFramework.StartsWith('uap'))">
       <PropertyGroup>
