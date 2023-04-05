@@ -242,6 +242,13 @@ namespace Evergine.MRTK.Emulation
                     this.lineMeshTransform.Position = r.Position;
                     this.lineMeshTransform.Scale = new Vector3(1, 1, distanceClamped);
                     this.lineMeshTransform.LookAt(this.transform.Position, Vector3.Up);
+
+                    /*
+                     * Some "magic numbers" comments here:
+                     * - line_dots texture counts with 8 pixels, this is that first magic number value.
+                     * - Second one (2.0) is a simmetry value, which origin could be transparent pixels
+                     * acting as margin in texture file.
+                     */
                     this.rayLineMesh.TextureTiling = new Vector2(distanceClamped * 8.0f * 2.0f, 1.0f);
                 }
                 else
