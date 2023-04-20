@@ -90,6 +90,12 @@ namespace Evergine.MRTK
             /// <summary> Asset Path (MRTK/Prefabs/BoundingBox_ScaleHandle.weprefab.weprf) </summary>
             public static readonly Guid BoundingBox_ScaleHandle_weprefab = new Guid("ae0e37ce-4928-42ef-970e-a4b1e547f4ea");
 
+            /// <summary> Asset Path (MRTK/Prefabs/DefaultLeftController.weprefab.weprf) </summary>
+            public static readonly Guid DefaultLeftController_weprefab = new Guid("d1ef1d0b-c616-4f69-97b3-f4496081df5c");
+
+            /// <summary> Asset Path (MRTK/Prefabs/DefaultRightController.weprefab.weprf) </summary>
+            public static readonly Guid DefaultRightController_weprefab = new Guid("99fd4963-c4c6-498d-92d2-2afcecc75d57");
+
             /// <summary> Asset Path (MRTK\Prefabs\ListView.weprefab.weprf) </summary>
             public static readonly Guid ListView_weprefab = new Guid("9502a182-b61a-4cb2-b320-1d0d2f4ee595");
 
