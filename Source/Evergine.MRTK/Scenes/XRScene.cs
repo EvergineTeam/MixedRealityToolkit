@@ -27,6 +27,7 @@ namespace Evergine.MRTK.Scenes
     /// </summary>
     public abstract class XRScene : Scene
     {
+        private const string MRTKRootTag = "MRTKRoot";
         private const string BaseCursorTag = "BaseCursor";
         private const string CursorAnchorTag = "CursorAnchor";
         private const float CursorPlaneSize = 0.01f;
@@ -150,6 +151,9 @@ namespace Evergine.MRTK.Scenes
             var entityManager = this.Managers.EntityManager;
             var assetsManager = this.Managers.AssetSceneManager;
 
+            // Create list of entities to add to the scene
+            var mrtkEntityList = new List<Entity>();
+
             // Get materials
             var cursorMatPressed = assetsManager.Load<Material>(this.CursorMatPressed);
             var cursorMatReleased = assetsManager.Load<Material>(this.CursorMatReleased);
@@ -170,8 +174,8 @@ namespace Evergine.MRTK.Scenes
             this.AddControlComponents(rightHandControllerNearCursor, XRHandedness.RightHand, isHandTrackingCursor: true);
 
             // Add entities to entity manager
-            entityManager.Add(this.CreateControllerHierarchy(leftHandController, leftHandControllerNearCursor, leftHandControllerFarCursor));
-            entityManager.Add(this.CreateControllerHierarchy(rightHandController, rightHandControllerNearCursor, rightHandControllerFarCursor));
+            mrtkEntityList.Add(this.CreateControllerHierarchy(leftHandController, leftHandControllerNearCursor, leftHandControllerFarCursor));
+            mrtkEntityList.Add(this.CreateControllerHierarchy(rightHandController, rightHandControllerNearCursor, rightHandControllerFarCursor));
 
             // Add controller stuff in XR platforms
             if (Tools.IsXRPlatformInputTrackingAvailable())
@@ -191,8 +195,25 @@ namespace Evergine.MRTK.Scenes
                 this.AddControlComponents(rightPhysicalControllerNearCursor, XRHandedness.RightHand, isHandTrackingCursor: false, rightPhysicalController);
 
                 // Add entities to entity manager
-                entityManager.Add(this.CreateControllerHierarchy(leftPhysicalController, leftPhysicalControllerNearCursor, leftPhysicalControllerFarCursor));
-                entityManager.Add(this.CreateControllerHierarchy(rightPhysicalController, rightPhysicalControllerNearCursor, rightPhysicalControllerFarCursor));
+                mrtkEntityList.Add(this.CreateControllerHierarchy(leftPhysicalController, leftPhysicalControllerNearCursor, leftPhysicalControllerFarCursor));
+                mrtkEntityList.Add(this.CreateControllerHierarchy(rightPhysicalController, rightPhysicalControllerNearCursor, rightPhysicalControllerFarCursor));
+            }
+
+            // Add MRTK entities to the scene
+            var mrtkRootEntity = entityManager.Find(MRTKRootTag);
+            if (mrtkRootEntity == null)
+            {
+                mrtkRootEntity = new Entity(MRTKRootTag)
+                {
+                    Tag = MRTKRootTag,
+                };
+
+                entityManager.Add(mrtkRootEntity);
+            }
+
+            foreach (var item in mrtkEntityList)
+            {
+                mrtkRootEntity.AddChild(item);
             }
 
             // Create cursor position updater
