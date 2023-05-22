@@ -281,9 +281,9 @@ namespace Evergine.MRTK.Scenes
 
         private Entity CreateNearCursor(XRHandedness handedness, Material pressedMaterial, Material releasedMaterial)
         {
-            var nearCursor = new Entity()
+            var name = $"{nameof(CursorTouch)}_{handedness}";
+            var nearCursor = new Entity(name)
             {
-                Name = $"{nameof(CursorTouch)}_{handedness}",
                 Tag = BaseCursorTag,
             }
             .AddComponent(new Transform3D())
@@ -312,7 +312,7 @@ namespace Evergine.MRTK.Scenes
                 .AddComponent(new MeshRenderer())
                 .AddComponent(new ProximityLight()));
 
-            var rootCursor = new Entity()
+            var rootCursor = new Entity($"{name}_root")
                 .AddComponent(new Transform3D())
                 .AddChild(nearCursor);
 
@@ -321,7 +321,7 @@ namespace Evergine.MRTK.Scenes
 
         private Entity CreateFarCursor(XRHandedness handedness, Material pressedMaterial, Material releasedMaterial, Texture handRayTexture, SamplerState handRaySampler, Entity nearCursor)
         {
-            var ray = new Entity()
+            var ray = new Entity("ray")
                 .AddComponent(new Transform3D())
                 .AddComponent(new LineMesh()
                 {
@@ -364,7 +364,7 @@ namespace Evergine.MRTK.Scenes
 
         private Entity CreateControllerHierarchy(Entity controller, Entity nearCursor, Entity farCursor)
         {
-            return new Entity()
+            return new Entity($"{controller.Name}_root")
                 .AddComponent(new Transform3D())
                 .AddChild(controller)
                 .AddChild(nearCursor)
