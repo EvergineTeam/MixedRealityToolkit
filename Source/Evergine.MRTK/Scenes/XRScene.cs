@@ -200,7 +200,7 @@ namespace Evergine.MRTK.Scenes
             }
 
             // Add MRTK entities to the scene
-            var mrtkRootEntity = entityManager.Find(MRTKRootTag);
+            var mrtkRootEntity = entityManager.FindAllByTag(MRTKRootTag).FirstOrDefault();
             if (mrtkRootEntity == null)
             {
                 mrtkRootEntity = new Entity(MRTKRootTag)
