@@ -40,6 +40,10 @@ namespace Evergine.MRTK.Emulation
         [BindComponent(isExactType: false, source: BindComponentSource.Children)]
         protected LineMeshBase rayLineMesh;
 
+        // TODO improve MRTK root entity location
+        [BindComponent(source: BindComponentSource.ParentsSkipOwner, tag: "MRTKRoot")]
+        private Transform3D parentTransform3D = null;
+
         private CursorTouch touchCursor;
         private TrackXRController xrController;
         private TrackXRJoint xrJoint;
@@ -143,15 +147,15 @@ namespace Evergine.MRTK.Emulation
                 {
                     if (this.xrJoint.TrackedDevice.TryGetArticulatedHandJoint(XRHandJointKind.IndexProximal, out var handJoint))
                     {
-                        rayPosition = handJoint.Pose.Position;
+                        rayPosition = Vector3.Transform(handJoint.Pose.Position, this.parentTransform3D.WorldTransform);
                     }
                 }
                 else if (this.xrController.PoseIsValid)
                 {
-                    rayPosition = this.xrController.Pose.Position;
+                    rayPosition = Vector3.Transform(this.xrController.Pose.Position, this.parentTransform3D.WorldTransform);
                 }
 
-                var measuredDirection = this.xrController.LocalPointer.Direction;
+                var measuredDirection = this.xrController.Pointer.Direction;
 
                 this.stabilizedRay.AddSample(new Ray(rayPosition, measuredDirection));
                 ray = new Ray(this.stabilizedRay.StabilizedPosition, this.stabilizedRay.StabilizedDirection);
