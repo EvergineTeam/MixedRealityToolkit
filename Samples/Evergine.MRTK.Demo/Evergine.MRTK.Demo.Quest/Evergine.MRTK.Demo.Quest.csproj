@@ -94,15 +94,15 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_launcher_round.png" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Evergine.AndroidView" Version="2023.9.27.597-nightly" />
-    <PackageReference Include="Evergine.Vulkan" Version="2023.9.27.597-nightly" />
-    <PackageReference Include="Evergine.OpenXR" Version="2023.9.27.597-nightly" />
+    <PackageReference Include="Evergine.AndroidView" Version="2023.9.28.510" />
+    <PackageReference Include="Evergine.Vulkan" Version="2023.9.28.510" />
+    <PackageReference Include="Evergine.OpenXR" Version="2023.9.28.510" />
     <PackageReference Include="Evergine.OpenXR.Natives.Quest" Version="2023.2.10.2" />
-    <PackageReference Include="Evergine.HLSLEverywhere" Version="2023.9.27.597-nightly" />
-    <PackageReference Include="Evergine.OpenAL" Version="2023.9.27.597-nightly" />
-    <PackageReference Include="Evergine.Bullet" Version="2023.9.27.597-nightly" />
-    <PackageReference Include="Evergine.Targets" Version="2023.9.27.597-nightly" />
-    <PackageReference Include="Evergine.Targets.Android" Version="2023.9.27.597-nightly" />
+    <PackageReference Include="Evergine.HLSLEverywhere" Version="2023.9.28.510" />
+    <PackageReference Include="Evergine.OpenAL" Version="2023.9.28.510" />
+    <PackageReference Include="Evergine.Bullet" Version="2023.9.28.510" />
+    <PackageReference Include="Evergine.Targets" Version="2023.9.28.510" />
+    <PackageReference Include="Evergine.Targets.Android" Version="2023.9.28.510" />
     <PackageReference Include="Evergine.LibBulletc.Natives" Version="2023.9.22.18" />
   </ItemGroup>
   <ItemGroup>
