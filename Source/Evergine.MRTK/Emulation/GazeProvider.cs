@@ -227,11 +227,6 @@ namespace Evergine.MRTK.Services.InputSystem
 
                 var result = this.Managers.PhysicManager3D.RayCast(ref fromPosition, ref toPosition, this.CollisionCategoryMask);
 
-                if (result.Succeeded)
-                {
-                    this.Managers.RenderManager.LineBatch3D.DrawPoint(result.Point, 0.1f, Color.Red); 
-                }
-
                 this.GazeTarget = result.Succeeded ? result.PhysicBody.BodyComponent.Owner : null;
 
                 // Update gaze pointer
