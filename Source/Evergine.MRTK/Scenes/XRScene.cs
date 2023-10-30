@@ -90,6 +90,11 @@ namespace Evergine.MRTK.Scenes
         /// </summary>
         public virtual CollisionCategory3D CursorCollisionCategoryMask { get; protected set; } = CollisionCategory3D.All;
 
+        /// <summary>
+        /// Gets or sets a value indicating whether the Eye Gaze will be enabled to be used in the application. The XR platform must support this feature.
+        /// </summary>
+        public virtual bool EnableEyeGaze { get; set; } = false;
+
         /// <inheritdoc/>
         public override void RegisterManagers()
         {
@@ -139,6 +144,7 @@ namespace Evergine.MRTK.Scenes
             var cam = this.Managers.EntityManager.FindFirstComponentOfType<Camera3D>();
             cam.Owner.AddComponent(new GazeProvider()
             {
+                EnableEyeGaze = this.EnableEyeGaze,
                 CollisionCategoryMask = this.CursorCollisionCategoryMask & ~this.CursorCollisionCategory,
             });
         }
