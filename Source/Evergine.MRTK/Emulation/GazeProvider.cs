@@ -45,10 +45,22 @@ namespace Evergine.MRTK.Services.InputSystem
 
         private ISphereColliderShape3D gazePointerShape;
 
+        private bool eyeGazeAllowed;
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the Eye gaze will be used as a gaze provider.
+        /// </summary>
+        public bool EnableEyeGaze { get; set; } = false;
+
         /// <summary>
         /// Gets or sets the max distance to capture.
         /// </summary>
         public float Distance { get; set; } = 10.0f;
+
+        /// <summary>
+        /// Gets a value indicating whether the eye gaze has been allowed to be used in the application.
+        /// </summary>
+        public bool EyeGazeAllowed => this.eyeGazeAllowed;
 
         /// <summary>
         /// Gets or sets a value indicating whether the gaze pointer should have an hover light.
@@ -147,6 +159,11 @@ namespace Evergine.MRTK.Services.InputSystem
                    .AddComponent(this.gazePointerTransform)
                    .AddComponent(this.gazePointerLight);
 
+            if (this.EnableEyeGaze)
+            {
+                this.RequestPermission();
+            }
+
             return true;
         }
 
@@ -188,9 +205,13 @@ namespace Evergine.MRTK.Services.InputSystem
             if (this.xrPlatform != null)
             {
                 ray = this.xrPlatform.EyeGaze;
-                if (ray == null)
+                if (!ray.HasValue)
                 {
                     ray = this.xrPlatform.HeadGaze;
+                    if (ray.HasValue && ray.Value.Direction == Vector3.Zero)
+                    {
+                        ray = new Ray(this.transform.Position, this.transform.LocalTransform.Forward);
+                    }
                 }
             }
             else
@@ -219,6 +240,11 @@ namespace Evergine.MRTK.Services.InputSystem
             {
                 this.GazeTarget = null;
             }
+        }
+
+        private async void RequestPermission()
+        {
+            this.eyeGazeAllowed = await this.xrPlatform.RequestEyeGazePermission();
         }
     }
 }

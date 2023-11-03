@@ -314,6 +314,10 @@ Items:
                       X: 1.5
                       Y: 1.5
                       Z: 1.5
+                  - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.TimeSpan,System.Private.CoreLib]],Evergine.Framework
+                    Name: FocusSelectionTime
+                    Target: a45ee70c-9568-4381-b9bc-8b4133933221
+                    TypedValue: 0:00:00:02.0000000
                 removedComponentList: []
               - !Evergine.Framework.Assets.AssetSources.Entities.PrefabInstanceModel,Evergine.Framework
                 Id: da56fbc2-f77b-47fe-a3b0-88b7c4455127
@@ -337,6 +341,10 @@ Items:
                       X: 1.5
                       Y: 1.5
                       Z: 1.5
+                  - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.TimeSpan,System.Private.CoreLib]],Evergine.Framework
+                    Name: FocusSelectionTime
+                    Target: a45ee70c-9568-4381-b9bc-8b4133933221
+                    TypedValue: 0:00:00:02.0000000
                 removedComponentList: []
               - !Evergine.Framework.Assets.AssetSources.Entities.PrefabInstanceModel,Evergine.Framework
                 Id: cd9198ed-28f4-4163-95a0-09be18b5e230
@@ -367,6 +375,10 @@ Items:
                       X: 1.5
                       Y: 1.5
                       Z: 1.5
+                  - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.TimeSpan,System.Private.CoreLib]],Evergine.Framework
+                    Name: FocusSelectionTime
+                    Target: a45ee70c-9568-4381-b9bc-8b4133933221
+                    TypedValue: 0:00:00:02.0000000
                 removedComponentList: []
             Id: 92a40ec7-7556-4edf-9e3e-3ca7b6411c94
           - !Evergine.Framework.Assets.AssetSources.Entities.EntityItemModel,Evergine.Framework
@@ -489,6 +501,7 @@ Items:
                     Id: 001d1547-5ca7-45c9-95d0-ff91e9bf4f4d
                     EndPosition: -0.400000006
                     EnforceFrontPush: false
+                    FocusSelectionTime: 0:00:00:00.0000000
                     IsEnabled: true
                     PressPosition: 0.100000001
                     ReleasePosition: 0.300000012
@@ -631,6 +644,7 @@ Items:
                     Id: f671c12c-f6b4-4eb4-b8a1-f0c90452e44d
                     EndPosition: -0.400000006
                     EnforceFrontPush: false
+                    FocusSelectionTime: 0:00:00:00.0000000
                     IsEnabled: true
                     PressPosition: 0.100000001
                     ReleasePosition: 0.300000012
@@ -773,6 +787,7 @@ Items:
                     Id: 1e67fac4-9362-46c4-b126-11ca927f891f
                     EndPosition: -0.400000006
                     EnforceFrontPush: false
+                    FocusSelectionTime: 0:00:00:00.0000000
                     IsEnabled: true
                     PressPosition: 0.100000001
                     ReleasePosition: 0.300000012
@@ -915,6 +930,7 @@ Items:
                     Id: 6307104e-6339-48ff-aa1e-1ffe8e76f2d1
                     EndPosition: -0.400000006
                     EnforceFrontPush: false
+                    FocusSelectionTime: 0:00:00:00.0000000
                     IsEnabled: true
                     PressPosition: 0.100000001
                     ReleasePosition: 0.300000012
@@ -1057,6 +1073,7 @@ Items:
                     Id: 2bc3f7dc-8f65-4aa5-b0a2-89f58492237f
                     EndPosition: -0.400000006
                     EnforceFrontPush: false
+                    FocusSelectionTime: 0:00:00:00.0000000
                     IsEnabled: true
                     PressPosition: 0.100000001
                     ReleasePosition: 0.300000012
@@ -1199,6 +1216,7 @@ Items:
                     Id: 897af695-85ff-48ac-890c-8d83b839e9c6
                     EndPosition: -0.100000001
                     EnforceFrontPush: false
+                    FocusSelectionTime: 0:00:00:00.0000000
                     IsEnabled: true
                     PressPosition: 0.100000001
                     ReleasePosition: 0.300000012
@@ -1341,6 +1359,7 @@ Items:
                     Id: 1c43d670-49a9-47d2-9540-d91992d0091f
                     EndPosition: -0.100000001
                     EnforceFrontPush: false
+                    FocusSelectionTime: 0:00:00:00.0000000
                     IsEnabled: true
                     PressPosition: 0.100000001
                     ReleasePosition: 0.300000012
@@ -1483,6 +1502,7 @@ Items:
                     Id: c99f1c5c-1d6f-4ae6-adcb-708b755ccbe5
                     EndPosition: -0.100000001
                     EnforceFrontPush: false
+                    FocusSelectionTime: 0:00:00:00.0000000
                     IsEnabled: true
                     PressPosition: 0.100000001
                     ReleasePosition: 0.300000012
@@ -1625,6 +1645,7 @@ Items:
                     Id: cd6455b9-9e12-4e0a-b00b-4d80862343d8
                     EndPosition: -0.100000001
                     EnforceFrontPush: false
+                    FocusSelectionTime: 0:00:00:00.0000000
                     IsEnabled: true
                     PressPosition: 0.100000001
                     ReleasePosition: 0.300000012
@@ -1767,6 +1788,7 @@ Items:
                     Id: 0e5fd8b5-9834-4f98-b3d1-268f3fe2ac2e
                     EndPosition: -0.100000001
                     EnforceFrontPush: false
+                    FocusSelectionTime: 0:00:00:00.0000000
                     IsEnabled: true
                     PressPosition: 0.100000001
                     ReleasePosition: 0.300000012
@@ -1909,6 +1931,7 @@ Items:
                     Id: cc020fb0-c4ec-489f-84f8-400b82090d88
                     EndPosition: -0.100000001
                     EnforceFrontPush: false
+                    FocusSelectionTime: 0:00:00:00.0000000
                     IsEnabled: true
                     PressPosition: 0.100000001
                     ReleasePosition: 0.300000012
@@ -2051,6 +2074,7 @@ Items:
                     Id: 156e30b8-01b2-4c88-ab56-3e347e2e0879
                     EndPosition: -0.100000001
                     EnforceFrontPush: false
+                    FocusSelectionTime: 0:00:00:00.0000000
                     IsEnabled: true
                     PressPosition: 0.100000001
                     ReleasePosition: 0.300000012
@@ -8234,7 +8258,7 @@ Items:
 Managers:
   - !Evergine.Framework.Managers.EnvironmentManager,Evergine.Framework
     Id: 0b6695c7-b505-442d-b0e2-8e2791c63949
-    IBLReflectionProbe: 82e82c4b-7ed3-42fe-8bd0-848e7a5d2819
+    IBLReflectionProbe: 38a5d19c-8a9d-4210-b582-570fec9b4234
     IntensityMultiplier: 1.0
     IsEnabled: true
     Strategy: Automatically
