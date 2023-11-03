@@ -125,6 +125,11 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.PressableButtons
             this.transform.LocalPosition = this.movingVisualsInitialLocalPosition + this.focusOffset;
         }
 
+        /// <inheritdoc/>
+        void IPressableButtonFeedback.FocusTimeout(float timeout)
+        {
+        }
+
         /// <summary>
         /// It's possible that other component changes default button material, that here is cached
         /// when component is attached.
