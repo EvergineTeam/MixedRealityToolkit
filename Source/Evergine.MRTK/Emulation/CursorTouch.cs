@@ -92,7 +92,14 @@ namespace Evergine.MRTK.Emulation
             {
                 this.externalTouchStaticBody3D.BeginCollision -= this.ExternalTouch_BeginCollision;
                 this.externalTouchStaticBody3D.EndCollision -= this.ExternalTouch_EndCollision;
-                this.Owner.DetachChild(this.externalTouchEntity);
+
+                try
+                {
+                    this.Owner.DetachChild(this.externalTouchEntity);
+                }
+                catch (InvalidOperationException)
+                {
+                }
             }
 
             base.OnDeactivated();
