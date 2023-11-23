@@ -1,11 +1,9 @@
 ﻿// Copyright © Evergine S.L. All rights reserved. Use is subject to license terms.
 
 using Evergine.Common.Graphics;
-using Evergine.Components.Fonts;
 using Evergine.Components.Graphics3D;
 using Evergine.Framework;
 using Evergine.Framework.Graphics;
-using Evergine.Framework.Services;
 using Evergine.Mathematics;
 using Evergine.MRTK.Base.EventDatum.Input;
 using Evergine.MRTK.Base.Interfaces.InputSystem.Handlers;
@@ -83,26 +81,10 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Scrolling
         {
             base.OnActivated();
 
-            // Calculate content size
-            float minY = float.MaxValue;
-            float maxY = float.MinValue;
-            var elements = this.contentTransform.Owner.ChildEntities.ToArray();
-            foreach (var element in elements)
-            {
-                var mesh = element.FindComponent<MeshComponent>(false);
-                var transform = element.FindComponent<Transform3D>();
-                if (mesh != null && transform != null)
-                {
-                    var boundingBox = mesh.BoundingBox.Value;
-                    boundingBox.Transform(transform.WorldTransform);
-                    minY = MathHelper.Min(minY, boundingBox.Min.Y);
-                    maxY = MathHelper.Max(maxY, boundingBox.Max.Y);
-                }
-            }
+            this.RefreshScrollBar();
 
-            this.ContentYMin = maxY + this.ContentYPadding;
-            this.ContentYMax = minY - this.ContentYPadding;
-            this.ContentSizeY = Math.Abs(this.ContentYMax - this.ContentYMin);
+            this.barOrigin = new Vector3((this.backgroundPlaneMesh.Width * 0.5f) - this.scrollBarPlaneMesh.Width, this.backgroundPlaneMesh.Height * 0.5f, this.ZContentDistance);
+            this.scrollBarTransform.LocalPosition = this.barOrigin;
 
             // Content
             var contentPosition = this.contentTransform.LocalPosition;
@@ -111,15 +93,46 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Scrolling
 
             // Update bar
             this.scrollBarPlaneMesh.Width = this.BarWidth;
+        }
+
+        /// <summary>
+        /// Refreshes the scroll bar's scale and position according to current content.
+        /// </summary>
+        /// <param name="contentSizeY">Precalculated content size Y, or null to calculate it on demand.</param>
+        public void RefreshScrollBar(float? contentSizeY = null)
+        {
+            if (contentSizeY.HasValue)
+            {
+                this.ContentSizeY = contentSizeY.Value;
+            }
+            else
+            {
+                float minY = float.MaxValue;
+                float maxY = float.MinValue;
+                var elements = this.contentTransform.Owner.ChildEntities.ToArray();
+                foreach (var element in elements)
+                {
+                    var mesh = element.FindComponent<MeshComponent>(false);
+                    var transform = element.FindComponent<Transform3D>();
+                    if (mesh != null && transform != null)
+                    {
+                        var boundingBox = mesh.BoundingBox.Value;
+                        boundingBox.Transform(transform.WorldTransform);
+                        minY = MathHelper.Min(minY, boundingBox.Min.Y);
+                        maxY = MathHelper.Max(maxY, boundingBox.Max.Y);
+                    }
+                }
+
+                this.ContentYMin = minY - this.ContentYPadding;
+                this.ContentYMax = maxY + this.ContentYPadding;
+                this.ContentSizeY = Math.Abs(this.ContentYMax - this.ContentYMin);
+            }
 
             var barScale = this.scrollBarTransform.Scale;
-            barScale.Y = this.backgroundPlaneMesh.Height / this.ContentSizeY;
+            barScale.Y = this.ContentSizeY > this.backgroundPlaneMesh.Height
+                ? this.backgroundPlaneMesh.Height / this.ContentSizeY
+                : 1f;
             this.scrollBarTransform.Scale = barScale;
-
-            this.barOrigin = new Vector3((this.backgroundPlaneMesh.Width * 0.5f) - this.scrollBarPlaneMesh.Width, this.backgroundPlaneMesh.Height * 0.5f, this.ZContentDistance);
-            var barPosition = this.scrollBarTransform.LocalPosition;
-            barPosition = this.barOrigin;
-            this.scrollBarTransform.LocalPosition = barPosition;
         }
 
         /// <inheritdoc/>
