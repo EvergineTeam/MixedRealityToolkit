@@ -81,7 +81,7 @@ namespace Evergine.MRTK.Services.InputSystem
         private IEnumerable<IMixedRealitySpeechHandler> FindSpeechHandlersInEntity(Entity e)
         {
             return e
-                .FindComponents(typeof(IMixedRealitySpeechHandler), isExactType: false)
+                .FindComponentsInChildren(typeof(IMixedRealitySpeechHandler), isExactType: false)
                 .Cast<IMixedRealitySpeechHandler>();
         }
     }
