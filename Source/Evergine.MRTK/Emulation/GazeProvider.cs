@@ -244,6 +244,12 @@ namespace Evergine.MRTK.Services.InputSystem
 
         private async void RequestPermission()
         {
+            if (this.xrPlatform == null)
+            {
+                this.eyeGazeAllowed = false;
+                return;
+            }
+
             this.eyeGazeAllowed = await this.xrPlatform.RequestEyeGazePermission();
         }
     }
