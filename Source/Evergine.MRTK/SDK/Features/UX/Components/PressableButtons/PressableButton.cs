@@ -2,9 +2,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using Evergine.Common.Attributes;
 using Evergine.Framework;
+using Evergine.Framework.Services;
 using Evergine.Mathematics;
 using Evergine.MRTK.Base.EventDatum.Input;
 using Evergine.MRTK.Base.Interfaces.InputSystem.Handlers;
@@ -17,6 +19,8 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.PressableButtons
     /// </summary>
     public class PressableButton : PressableObject, IMixedRealityFocusHandler
     {
+        private Clock clock;
+
         /// <summary>
         /// The button feedback.
         /// </summary>
@@ -28,6 +32,12 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.PressableButtons
         /// </summary>
         [RenderProperty(Tooltip = "Speed for retracting the moving button visuals on release.")]
         public float RetractSpeed { get; set; } = 1f;
+
+        /// <summary>
+        /// Gets or sets a value that allows to press a button by focusing during a period of time (in seconds). A value of 0 disable this feature.
+        /// </summary>
+        [RenderProperty(Tooltip = "Allow to press a button by focusing during a period of time (in seconds). A value of 0 disable this feature.")]
+        public TimeSpan FocusSelectionTime { get; set; } = TimeSpan.Zero;
 
         /// <summary>
         /// Event fired when the button is pressed.
@@ -46,6 +56,8 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.PressableButtons
         private IPressableButtonFeedback[] feedbackVisualsComponentsArray;
 
         private bool simulatePressRequested = false;
+
+        private TimeSpan? focusPressTimeout;
 
         /// <inheritdoc/>
         public void OnFocusEnter(MixedRealityFocusEventData eventData)
@@ -120,6 +132,18 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.PressableButtons
                 }
             }
 
+            if (this.focusPressTimeout.HasValue)
+            {
+                var timeoutRemain = (float)(this.focusPressTimeout.Value.TotalSeconds - this.clock.TotalTime.TotalSeconds);
+                var focusTimeout = 1 - (float)(timeoutRemain / this.FocusSelectionTime.TotalSeconds);
+                this.RefreshFocusTimeoutState(focusTimeout);
+
+                if (timeoutRemain <= 0)
+                {
+                    targetPosition = this.EndPosition;
+                }
+            }
+
             if (this.currentPosition != targetPosition)
             {
                 // Calculate the error from the current to the target position
@@ -153,11 +177,36 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.PressableButtons
 
         private void RefreshFocusedState(bool focused)
         {
+            // In case that the button has enabled the focus selection, set the timeout.
+            if (this.FocusSelectionTime.TotalSeconds > 0)
+            {
+                if (focused)
+                {
+                    this.clock = this.clock ?? Application.Current.Container.Resolve<Clock>();
+                    this.focusPressTimeout = this.clock.TotalTime + this.FocusSelectionTime;
+                }
+                else
+                {
+                    this.focusPressTimeout = null;
+                }
+            }
+
             if (this.feedbackVisualsComponentsArray != null)
             {
                 for (int i = 0; i < this.feedbackVisualsComponentsArray.Length; i++)
                 {
                     this.feedbackVisualsComponentsArray[i].FocusChanged(focused);
+                }
+            }
+        }
+
+        private void RefreshFocusTimeoutState(float focusTimeout)
+        {
+            if (this.feedbackVisualsComponentsArray != null)
+            {
+                for (int i = 0; i < this.feedbackVisualsComponentsArray.Length; i++)
+                {
+                    this.feedbackVisualsComponentsArray[i].FocusTimeout(focusTimeout);
                 }
             }
         }
@@ -181,6 +230,7 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.PressableButtons
 
         private void UpdatePressedState()
         {
+            this.focusPressTimeout = null;
             if (this.GetNewPressedState(this.isPressing, this.currentPosition, out var newPressedState))
             {
                 this.isPressing = newPressedState;
