@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net6.0-android</TargetFramework>
-    <SupportedOSPlatformVersion>21</SupportedOSPlatformVersion>
+    <TargetFramework>net8.0-android</TargetFramework>
+    <SupportedOSPlatformVersion>23</SupportedOSPlatformVersion>
     <OutputType>Exe</OutputType>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
@@ -9,17 +9,14 @@
     <ApplicationVersion>1</ApplicationVersion>
     <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <AndroidPackageFormat>apk</AndroidPackageFormat>
-  </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Evergine.AndroidView" Version="2023.9.28.510" />
-    <PackageReference Include="Evergine.Vulkan" Version="2023.9.28.510" />
-    <PackageReference Include="Evergine.OpenXR" Version="2023.9.28.510" />
-    <PackageReference Include="Evergine.HLSLEverywhere" Version="2023.9.28.510" />
-    <PackageReference Include="Evergine.OpenAL" Version="2023.9.28.510" />
-    <PackageReference Include="Evergine.Targets" Version="2023.9.28.510" />
-    <PackageReference Include="Evergine.Targets.Android" Version="2023.9.28.510" />
+    <PackageReference Include="Evergine.AndroidView" Version="2023.12.13.791-nightly" />
+    <PackageReference Include="Evergine.Vulkan" Version="2023.12.13.791-nightly" />
+    <PackageReference Include="Evergine.OpenXR" Version="2023.12.13.791-nightly" />
+    <PackageReference Include="Evergine.HLSLEverywhere" Version="2023.12.13.791-nightly" />
+    <PackageReference Include="Evergine.OpenAL" Version="2023.12.13.791-nightly" />
+    <PackageReference Include="Evergine.Targets" Version="2023.12.13.791-nightly" />
+    <PackageReference Include="Evergine.Targets.Android" Version="2023.12.13.791-nightly" />
     <PackageReference Include="Evergine.LibBulletc.Natives" Version="2023.9.22.18" />
     <PackageReference Include="Evergine.OpenXR.Natives.Pico" Version="2023.2.10.2" />
   </ItemGroup>

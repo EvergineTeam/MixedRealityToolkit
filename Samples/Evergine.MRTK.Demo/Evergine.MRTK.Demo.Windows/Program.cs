@@ -11,7 +11,10 @@ namespace Evergine.MRTK.Demo.Windows
         static void Main(string[] args)
         {
             // Create app
-            MyApplication application = new MyApplication();
+            MyApplication application = new MyApplication
+            {
+                HasPassthroughSupport = false,
+            };
 
             // Create Services
             uint width = 1280;

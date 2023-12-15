@@ -5,7 +5,6 @@ using Evergine.Components.XR;
 using Evergine.Framework;
 using Evergine.MRTK.SDK.Features;
 using Evergine.MRTK.SDK.Features.UX.Components.ToggleButtons;
-using Evergine.Platform;
 using System;
 
 namespace Evergine.MRTK.Demo.Components.Passthrough
@@ -56,7 +55,8 @@ namespace Evergine.MRTK.Demo.Components.Passthrough
 
         private bool IsPassthroughSupported()
         {
-            return Tools.IsXRPlatformInputTrackingAvailable() && DeviceInfo.PlatformType == PlatformType.Android;
+            bool hasPasstroughSupport = (Application.Current as MyApplication).HasPassthroughSupport;
+            return Tools.IsXRPlatformInputTrackingAvailable() && hasPasstroughSupport;
         }
 
         private void UpdatePassthroughState()

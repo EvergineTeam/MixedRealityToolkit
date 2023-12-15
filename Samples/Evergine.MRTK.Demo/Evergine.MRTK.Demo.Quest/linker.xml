@@ -7,8 +7,6 @@
     <type fullname="Evergine.Platform.AssetsDirectory" />
   </assembly>
   <assembly fullname="Evergine.Framework">
-    <namespace fullname="DryIoc" />
-    
     <!-- Scene -->
     <type fullname="Evergine.Framework.Assets.SceneSourceConverter" />
     <!-- Material -->

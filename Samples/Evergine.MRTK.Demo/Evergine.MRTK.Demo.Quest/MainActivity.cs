@@ -1,15 +1,13 @@
-using Android.App;
 using Android.Content.PM;
-using Android.OS;
 using Android.Views;
-using Android.Widget;
-using Evergine.AndroidView;
+using System.Diagnostics;
 using Evergine.Common.Graphics;
 using Evergine.Framework.Services;
-using Evergine.OpenXR;
-using System.Diagnostics;
 using Display = Evergine.Framework.Graphics.Display;
 using Surface = Evergine.Common.Graphics.Surface;
+using Evergine.OpenXR;
+using Activity = Android.App.Activity;
+using Evergine.AndroidView;
 
 namespace Evergine.MRTK.Demo.Quest
 {
@@ -17,7 +15,6 @@ namespace Evergine.MRTK.Demo.Quest
         ConfigurationChanges = ConfigChanges.KeyboardHidden | ConfigChanges.Orientation | ConfigChanges.ScreenSize | ConfigChanges.ScreenLayout | ConfigChanges.UiMode | ConfigChanges.Navigation | ConfigChanges.Keyboard,
         ScreenOrientation = ScreenOrientation.Landscape,
         LaunchMode = LaunchMode.SingleTask,
-
         MainLauncher = true,
         Theme = "@android:style/Theme.Black.NoTitleBar.Fullscreen")]
     [IntentFilter(new[] { Android.Content.Intent.ActionMain },
@@ -40,7 +37,10 @@ namespace Evergine.MRTK.Demo.Quest
             this.SetContentView(Resource.Layout.Main);
 
             // Create app
-            this.application = new MyApplication();
+            this.application = new MyApplication
+            {
+                HasPassthroughSupport = true,
+            };
 
             // Create Services
             this.windowsSystem = new global::Evergine.AndroidView.AndroidWindowsSystem(this);
@@ -77,7 +77,7 @@ namespace Evergine.MRTK.Demo.Quest
         {
             base.OnStop();
             this.windowsSystem.Dispose();
-            this.application?.Dispose();
+            this.application.Dispose();
             this.windowsSystem = null;
             this.application = null;
 
@@ -110,21 +110,22 @@ namespace Evergine.MRTK.Demo.Quest
 
             // Create OpenXR Platform
             openXRPlatform = new OpenXRPlatform(
-                new string[]
-                {
+                new string[] 
+                { 
                     "XR_EXT_hand_tracking",         // Enable hand tracking in OpenXR application
                     "XR_FB_hand_tracking_aim",      // Allow to use hand gestures in Meta Quest devices
                     "XR_FB_hand_tracking_mesh",     // Obtain hand mesh in Meta Quest devices
-                    "XR_FB_passthrough",            // Enable Passthrough in Meta Quest devices					
-                    "XR_FB_triangle_mesh",          // Allow to project Passthrough on Meshes
-                },
-                new OpenXRInteractionProfile[]
-                {
-                    DefaultInteractionProfiles.OculusTouchProfile
+                    
+                    "XR_FB_passthrough",         // Enable Passthrough in Meta Quest devices
+                    "XR_FB_triangle_mesh",       // Allow to project Passthrough on Meshes
+                }, 
+                new OpenXRInteractionProfile[] 
+                { 
+                    DefaultInteractionProfiles.OculusTouchProfile 
                 })
             {
                 RenderMirrorTexture = false,
-                ReferenceSpace = ReferenceSpaceType.Local,
+                ReferenceSpace = ReferenceSpaceType.Stage,
                 MirrorDisplay = mirrorDisplay,
             };
 
@@ -134,8 +135,7 @@ namespace Evergine.MRTK.Demo.Quest
             var graphicsPresenter = application.Container.Resolve<GraphicsPresenter>();
             graphicsPresenter.AddDisplay("DefaultDisplay", openXRPlatform.Display);
             graphicsPresenter.AddDisplay("MirrorDisplay", mirrorDisplay);
-        }
     }
 }
-
+}
 

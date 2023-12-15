@@ -119,7 +119,7 @@ namespace Evergine.MRTK.Demo.Pico
                 })
             {
                 RenderMirrorTexture = false,
-                ReferenceSpace = ReferenceSpaceType.Local,
+                ReferenceSpace = ReferenceSpaceType.Stage,
                 MirrorDisplay = mirrorDisplay,
             };
 

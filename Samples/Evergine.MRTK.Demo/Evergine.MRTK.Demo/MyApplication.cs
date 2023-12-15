@@ -24,15 +24,17 @@ namespace Evergine.MRTK.Demo
             this.Container.Register<ForegroundTaskSchedulerService>();            
             this.Container.Register<WorkActionScheduler>();
 
-            this.Container.Register<DemoCommandService>();
-
             ForegroundTaskScheduler.Foreground.Configure(this.Container);
             BackgroundTaskScheduler.Background.Configure(this.Container);
         }
 
+        public bool HasPassthroughSupport { get; set; } = false;
+
         public override void Initialize()
         {
             base.Initialize();
+
+            this.Container.Register<DemoCommandService>();
 
             var voiceCommandService = this.Container.Resolve<IVoiceCommandService>();
             if (voiceCommandService == null)

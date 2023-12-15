@@ -423,8 +423,8 @@ Items:
                   - !Evergine.Framework.Assets.AssetSources.Entities.PrefabInstanceModel,Evergine.Framework
                     Id: 8d632952-912b-4696-953b-9cad120fba44
                     Source: 57766a38-40a4-4c0b-adc9-7287d8ff9dc3
-                    entityLinks: {}
-                    modificationList:
+                    EntityLinks: {}
+                    Modifications:
                       - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.String,System.Private.CoreLib]],Evergine.Framework
                         Name: Name
                         Target: 19859b6c-2c13-4512-a276-841d6de282e6
@@ -436,14 +436,14 @@ Items:
                           X: 0.0120000001
                           Y: -0.0309999995
                           Z: 0.0
-                    removedComponentList: []
+                    RemovedComponents: []
                   - !Evergine.Framework.Assets.AssetSources.Entities.PrefabInstanceModel,Evergine.Framework
                     Id: ce3451d8-b354-44d3-bb08-447d1bbe3f35
                     Source: 57766a38-40a4-4c0b-adc9-7287d8ff9dc3
-                    entityLinks:
+                    EntityLinks:
                       19859b6c-2c13-4512-a276-841d6de282e6:
-                        additionalChildrenList: []
-                        additionalComponentList:
+                        AdditionalChildren: []
+                        AdditionalComponents:
                           - !Evergine.MRTK.SDK.Features.UX.Components.Configurators.SliderConfigurator,Evergine.MRTK
                             Id: 9be927d8-5e1e-4d36-93ac-10a05d2515eb
                             CreatesNewThumbMaterialInstance: false
@@ -463,7 +463,7 @@ Items:
                             Thumb: 78e9e4d7-711b-44b7-b673-9d2cb9f1220f
                             Title: Title
                             Track: b5810cca-0555-4aab-86b8-b591766234a5
-                    modificationList:
+                    Modifications:
                       - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.String,System.Private.CoreLib]],Evergine.Framework
                         Name: Name
                         Target: 19859b6c-2c13-4512-a276-841d6de282e6
@@ -491,14 +491,14 @@ Items:
                         Name: Font
                         Target: 0f01517a-c230-4313-83c9-91826912d8c9
                         TypedValue: a1bec550-b538-4416-acc3-83ca62a349c7
-                    removedComponentList: []
+                    RemovedComponents: []
                   - !Evergine.Framework.Assets.AssetSources.Entities.PrefabInstanceModel,Evergine.Framework
                     Id: 46ca31a9-e404-4c75-90ef-6acfffee5746
                     Source: 57766a38-40a4-4c0b-adc9-7287d8ff9dc3
-                    entityLinks:
+                    EntityLinks:
                       19859b6c-2c13-4512-a276-841d6de282e6:
-                        additionalChildrenList: []
-                        additionalComponentList:
+                        AdditionalChildren: []
+                        AdditionalComponents:
                           - !Evergine.MRTK.SDK.Features.UX.Components.Configurators.SliderConfigurator,Evergine.MRTK
                             Id: 0cf5d27a-a566-4549-9c4d-a49a0d0af6c6
                             CreatesNewThumbMaterialInstance: false
@@ -518,7 +518,7 @@ Items:
                             Thumb: 3521d95f-b8ce-40cb-b4d0-c268f64496bd
                             Title: Custom
                             Track: 8e4718a1-e35c-4cfd-8cdb-166657218560
-                    modificationList:
+                    Modifications:
                       - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.String,System.Private.CoreLib]],Evergine.Framework
                         Name: Name
                         Target: 19859b6c-2c13-4512-a276-841d6de282e6
@@ -566,14 +566,14 @@ Items:
                           B: 235
                           G: 127
                           R: 24
-                    removedComponentList: []
+                    RemovedComponents: []
                   - !Evergine.Framework.Assets.AssetSources.Entities.PrefabInstanceModel,Evergine.Framework
                     Id: 0d072168-f598-45d6-8502-5eb7f94995fa
                     Source: 57766a38-40a4-4c0b-adc9-7287d8ff9dc3
-                    entityLinks:
+                    EntityLinks:
                       19859b6c-2c13-4512-a276-841d6de282e6:
-                        additionalChildrenList: []
-                        additionalComponentList:
+                        AdditionalChildren: []
+                        AdditionalComponents:
                           - !Evergine.MRTK.SDK.Features.UX.Components.Configurators.SliderConfigurator,Evergine.MRTK
                             Id: dbf77436-a65b-414a-91fa-e9b4b04aabdf
                             CreatesNewThumbMaterialInstance: false
@@ -593,7 +593,7 @@ Items:
                             Thumb: 3521d95f-b8ce-40cb-b4d0-c268f64496bd
                             Title: Custom
                             Track: 8e4718a1-e35c-4cfd-8cdb-166657218560
-                    modificationList:
+                    Modifications:
                       - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.String,System.Private.CoreLib]],Evergine.Framework
                         Name: Name
                         Target: 19859b6c-2c13-4512-a276-841d6de282e6
@@ -633,7 +633,7 @@ Items:
                           B: 235
                           G: 127
                           R: 24
-                    removedComponentList: []
+                    RemovedComponents: []
                 Id: c49b637e-23e6-4989-82e7-2bc03254fb7e
             Id: 6af2958c-8175-4a38-be2c-59819d7c3a1f
         Id: 1cdb4f38-ec5e-406e-991a-59bb2affbb31
@@ -821,15 +821,15 @@ Items:
                   - !Evergine.Framework.Assets.AssetSources.Entities.PrefabInstanceModel,Evergine.Framework
                     Id: 7138cbfa-6e00-4150-ab60-09e37f61eca0
                     Source: 57766a38-40a4-4c0b-adc9-7287d8ff9dc3
-                    entityLinks:
+                    EntityLinks:
                       19859b6c-2c13-4512-a276-841d6de282e6:
-                        additionalChildrenList: []
-                        additionalComponentList:
+                        AdditionalChildren: []
+                        AdditionalComponents:
                           - !Evergine.MRTK.SDK.Features.UX.Components.Sliders.ChangeSliderOrientation,Evergine.MRTK
                             Id: 7668b074-4958-46cc-a78a-00376d98cb25
                             IsEnabled: true
                             Rotation: 1.57079637
-                    modificationList:
+                    Modifications:
                       - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.String,System.Private.CoreLib]],Evergine.Framework
                         Name: Name
                         Target: 19859b6c-2c13-4512-a276-841d6de282e6
@@ -857,14 +857,14 @@ Items:
                           X: 0.0
                           Y: 0.0
                           Z: -0.707106769
-                    removedComponentList: []
+                    RemovedComponents: []
                   - !Evergine.Framework.Assets.AssetSources.Entities.PrefabInstanceModel,Evergine.Framework
                     Id: 4b98f91f-9bdc-4fb8-a310-1a93309830d4
                     Source: 57766a38-40a4-4c0b-adc9-7287d8ff9dc3
-                    entityLinks:
+                    EntityLinks:
                       19859b6c-2c13-4512-a276-841d6de282e6:
-                        additionalChildrenList: []
-                        additionalComponentList:
+                        AdditionalChildren: []
+                        AdditionalComponents:
                           - !Evergine.MRTK.SDK.Features.UX.Components.Configurators.SliderConfigurator,Evergine.MRTK
                             Id: 7014d28e-c9a9-4cdc-a300-a4c770109758
                             CreatesNewThumbMaterialInstance: false
@@ -888,7 +888,7 @@ Items:
                             Id: 68e8d9d6-b457-4611-8faf-dec5f5e3bb3a
                             IsEnabled: true
                             Rotation: 1.57079637
-                    modificationList:
+                    Modifications:
                       - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.String,System.Private.CoreLib]],Evergine.Framework
                         Name: Name
                         Target: 19859b6c-2c13-4512-a276-841d6de282e6
@@ -932,7 +932,7 @@ Items:
                         Name: Font
                         Target: 0f01517a-c230-4313-83c9-91826912d8c9
                         TypedValue: a1bec550-b538-4416-acc3-83ca62a349c7
-                    removedComponentList: []
+                    RemovedComponents: []
                 Id: 9c021dd6-ed1c-49bb-bb80-0abdcf16c40f
             Id: 56b3e548-2be6-4f33-926a-230a3fd83421
         Id: 59b44705-0bb8-4341-8b5e-43cf8d364b08

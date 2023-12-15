@@ -128,13 +128,6 @@ Managers:
     Id: a557a4cc-80e2-4025-a0de-04f3a9d821fa
     DebugLines: false
     IsEnabled: true
-  - !Evergine.Framework.Managers.VirtualScreenManager,Evergine.Framework
-    Id: 45c6d7d4-9dde-4431-b504-2f533979ac72
-    Expand: true
-    IsEnabled: false
-    Stretch: Uniform
-    VirtualHeight: 0.0
-    VirtualWidth: 0.0
   - !Evergine.Framework.Managers.EnvironmentManager,Evergine.Framework
     Id: ce779079-0c8e-4f5e-9229-8a58fce16d5a
     IBLReflectionProbe: 98667968-90dd-471f-9341-cd5bce835533
@@ -149,3 +142,4 @@ Managers:
     PunctualResolution: Size_512
     ShadowFilter: PCF3x3
     SpotResolution: Size_512
+

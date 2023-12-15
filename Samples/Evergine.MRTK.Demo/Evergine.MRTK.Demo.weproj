@@ -2,7 +2,7 @@
 Packages:
   - Id: Evergine.Core
     LocalPath: null
-    Version: 2023.9.28.510
+    Version: 2023.12.13.791-nightly
   - Id: Evergine.MRTK
     LocalPath: ../../Source/Evergine.MRTK.Assets/
     Version: null
@@ -35,7 +35,7 @@ Profiles:
     AlphaCompressionFormat: R4G4B4A4
     CompileEffects: true
     GraphicsBackend: Vulkan
-    LauncherType: Pico_NET6
+    LauncherType: Pico
     Name: Pico
     NonAlphaCompressionFormat: ETC1_RGB8
     Platform: Android
