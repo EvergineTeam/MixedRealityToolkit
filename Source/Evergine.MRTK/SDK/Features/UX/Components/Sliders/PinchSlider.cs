@@ -126,6 +126,9 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Sliders
             var startToThumb = this.thumbRootTransform.LocalPosition - this.SliderStartPosition;
             var thumbProjectedOnTrack = this.SliderStartPosition + Vector3.Project(startToThumb, this.SliderAxis);
             this.sliderThumbOffset = this.thumbRootTransform.LocalPosition - thumbProjectedOnTrack;
+
+            // Force UI update, to consider values as InitialValue
+            this.UpdateUI();
         }
 
         /// <inheritdoc/>
