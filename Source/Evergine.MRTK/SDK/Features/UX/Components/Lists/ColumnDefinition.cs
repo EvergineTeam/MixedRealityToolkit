@@ -5,21 +5,16 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Lists
     /// <summary>
     /// List view column.
     /// </summary>
-    public struct ListViewColumn
+    public class ColumnDefinition
     {
         /// <summary>
-        /// Gets or sets the column name.
+        /// Gets or sets the column title.
         /// </summary>
-        public string Name { get; set; }
+        public string Title { get; set; }
 
         /// <summary>
         /// Gets or sets the percentage column size.
         /// </summary>
-        public float percentageSize { get; set; }
-
-        /// <summary>
-        /// Gets or sets the cell renderer.
-        /// </summary>
-        public CellRenderer cellRenderer { get; set; }
+        public float PercentageSize { get; set; }
     }
 }

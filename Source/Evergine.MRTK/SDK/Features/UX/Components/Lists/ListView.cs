@@ -1,18 +1,18 @@
 ﻿// Copyright © Evergine S.L. All rights reserved. Use is subject to license terms.
 
+using Evergine.Common.Attributes;
 using Evergine.Common.Graphics;
-using Evergine.Common.Input.Pointer;
-using Evergine.Components.Graphics3D;
 using Evergine.Framework;
 using Evergine.Framework.Graphics;
+using Evergine.Framework.Physics3D;
 using Evergine.Framework.Services;
 using Evergine.Mathematics;
 using Evergine.MRTK.Base.EventDatum.Input;
 using Evergine.MRTK.Base.Interfaces.InputSystem.Handlers;
 using Evergine.MRTK.Emulation;
 using System;
-using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
 
 namespace Evergine.MRTK.SDK.Features.UX.Components.Lists
 {
@@ -29,6 +29,9 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Lists
         [BindEntity(source: BindEntitySource.ChildrenSkipOwner, tag: "PART_scrollviewer_scrollarea")]
         private Entity scrollArea = null;
 
+        [BindComponent(source: BindComponentSource.ChildrenSkipOwner, tag: "PART_scrollviewer_scrollarea")]
+        private BoxCollider3D scrollAreaCollider = null;
+
         [BindComponent(source: BindComponentSource.ChildrenSkipOwner, tag: "PART_scrollviewer_content")]
         private Transform3D contentTransform = null;
 
@@ -41,20 +44,26 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Lists
         [BindComponent(source: BindComponentSource.ChildrenSkipOwner, tag: "PART_scrollviewer_bar")]
         private Transform3D scrollBarTransform = null;
 
-        [BindComponent(source: BindComponentSource.ChildrenSkipOwner, tag: "PART_scrollviewer_bar")]
-        private PlaneMesh scrollBarPlaneMesh = null;
-
         [BindComponent(source: BindComponentSource.ChildrenSkipOwner, tag: "PART_scrollviewer_background")]
-        private PlaneMesh backgroundPlaneMesh = null;
+        private Transform3D backgroundPlaneTransform = null;
+
+        [BindComponent(source: BindComponentSource.ChildrenSkipOwner, tag: "PART_scrollviewer_separator")]
+        private Transform3D separatorTransform = null;
 
         [BindEntity(source: BindEntitySource.ChildrenSkipOwner, tag: "PART_scrollviewer_header")]
         private Entity header = null;
 
+        [BindEntity(source: BindEntitySource.ChildrenSkipOwner, tag: "PART_scrollviewer_header_contents")]
+        private Entity headerContents = null;
+
+        [BindComponent(source: BindComponentSource.ChildrenSkipOwner, tag: "PART_scrollviewer_header")]
+        private Transform3D headerContainerTransform = null;
+
+        [BindComponent(source: BindComponentSource.ChildrenSkipOwner, tag: "PART_scrollviewer_header_background")]
+        private Transform3D headerBackgroundTransform = null;
+
         [BindEntity(source: BindEntitySource.ChildrenSkipOwner, tag: "PART_scrollviewer_selection")]
         private Entity selectionEntity = null;
-
-        [BindComponent(source: BindComponentSource.ChildrenSkipOwner, tag: "PART_scrollviewer_selection")]
-        private PlaneMesh selectionPlaneMesh = null;
 
         [BindComponent(source: BindComponentSource.ChildrenSkipOwner, tag: "PART_scrollviewer_selection")]
         private Transform3D selectionTransform = null;
@@ -62,14 +71,16 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Lists
         [BindService]
         private AssetsService assetsService = null;
 
-        private ListViewData dataSource;
-        private ListViewRender render;
+        private Vector2 size = new Vector2(0.25f, 0.18f);
+
+        private ColumnDefinition[] columnDefinitions;
+        private DataAdapter dataSource;
 
         private Vector2 ContentSize;
 
         private Cursor currentCursor;
         private Vector3 initialOffset;
-        private int selectedIndex;
+        private int selectedIndex = -1;
         private Vector3 lastCursorPosition;
         private Vector3 gestureStartPosition;
 
@@ -81,6 +92,22 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Lists
         private RenderLayerDescription alphaLayer;
         private bool headerEnabled = false;
         private float barSize;
+
+        /// <summary>
+        /// Gets or sets ListView size.
+        /// </summary>
+        public Vector2 Size
+        {
+            get => this.size;
+            set
+            {
+                this.size = value;
+                if (this.IsAttached)
+                {
+                    this.UpdateSize();
+                }
+            }
+        }
 
         /// <summary>
         /// Gets or sets the content padding.
@@ -110,7 +137,8 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Lists
         /// <summary>
         /// Gets or sets the data.
         /// </summary>
-        public ListViewData DataSource
+        [IgnoreEvergine]
+        public DataAdapter DataSource
         {
             get => this.dataSource;
             set
@@ -125,43 +153,55 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Lists
         }
 
         /// <summary>
-        /// Gets the selected element index.
+        /// Gets or sets the selected element index.
         /// </summary>
-        public int SelectedIndex => this.selectedIndex;
-
-        /// <summary>
-        /// Gets the selected row data.
-        /// </summary>
-        public string[] Selected
+        public int SelectedIndex
         {
-            get
+            get => this.selectedIndex;
+            set
             {
-                if (this.dataSource == null || this.dataSource.Data.Count == 0)
+                if (this.selectedIndex != value)
                 {
-                    return null;
-                }
-
-                if (this.selectedIndex >= 0 &&
-                    this.selectedIndex < this.dataSource.Data.Count)
-                {
-                    return this.dataSource.Data[this.selectedIndex];
-                }
-                else
-                {
-                    return this.dataSource.Data[0];
+                    this.SetSelectedRow(value);
                 }
             }
         }
 
         /// <summary>
-        /// Gets or sets the columns render config.
+        /// Gets the selected row data.
         /// </summary>
-        public ListViewRender Render
+        [IgnoreEvergine]
+        public object SelectedItem
         {
-            get => this.render;
+            get
+            {
+                if (this.dataSource == null || this.dataSource.Count == 0)
+                {
+                    return null;
+                }
+
+                if (this.selectedIndex >= 0 &&
+                    this.selectedIndex < this.dataSource.Count)
+                {
+                    return this.dataSource.GetRowValue(this.selectedIndex);
+                }
+                else
+                {
+                    return this.dataSource.GetRowValue(0);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets column definitions.
+        /// </summary>
+        [IgnoreEvergine]
+        public ColumnDefinition[] Columns
+        {
+            get => this.columnDefinitions;
             set
             {
-                this.render = value;
+                this.columnDefinitions = value;
                 if (this.IsAttached)
                 {
                     this.Refresh();
@@ -197,71 +237,92 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Lists
             return result;
         }
 
+        private void UpdateSize()
+        {
+            this.scrollAreaCollider.Size = new Vector3(this.size.X, this.size.Y, this.scrollAreaCollider.Size.Z);
+            this.backgroundPlaneTransform.LocalScale = new Vector3(this.size.X, this.size.Y, this.backgroundPlaneTransform.LocalScale.Z);
+            var headerContainerPosition = this.headerContainerTransform.LocalPosition;
+            headerContainerPosition.Y = (this.size.Y / 2) + (this.RowHeight / 2);
+            this.headerContainerTransform.LocalPosition = headerContainerPosition;
+            this.separatorTransform.LocalScale = new Vector3(this.size.X, this.separatorTransform.LocalScale.Y, this.separatorTransform.LocalScale.Z);
+            this.headerBackgroundTransform.LocalScale = new Vector3(this.size.X, this.headerBackgroundTransform.LocalScale.Y, this.headerBackgroundTransform.LocalScale.Z);
+
+            this.Refresh();
+        }
+
         /// <summary>
         /// Refresh the layout.
         /// </summary>
         public void Refresh()
         {
-            if (this.dataSource == null || this.render == null || this.dataSource.Data.Count == 0)
+            this.ValidateColumnDefinitions();
+
+            if (this.dataSource == null || this.columnDefinitions?.Any() != true || this.dataSource.Count == 0)
             {
-                this.scrollBarEntity.IsEnabled = false;
+                this.scrollBarEntity.IsEnabled = Application.Current.IsEditor;
                 this.selectionEntity.IsEnabled = false;
                 return;
             }
 
-            if (this.dataSource.Data[0].Length != this.render.Columns.Count)
-            {
-                throw new InvalidOperationException("The number of data columns must match with the render columns");
-            }
-
             // Clean
-            var headerChildren = this.header.ChildEntities.ToArray();
-            foreach (var child in headerChildren)
+            var headerChildren = this.headerContents.ChildEntities?.ToArray();
+            if (headerChildren != null)
             {
-                this.header.RemoveChild(child);
+                foreach (var child in headerChildren)
+                {
+                    this.headerContents.RemoveChild(child);
+                }
             }
 
-            var contentChildren = this.content.ChildEntities.ToArray();
-            foreach (var child in contentChildren)
+            var contentChildren = this.content.ChildEntities?.ToArray();
+            if (contentChildren != null)
             {
-                this.content.RemoveChild(child);
+                foreach (var child in contentChildren)
+                {
+                    this.content.RemoveChild(child);
+                }
             }
 
             // Content config
             var contentPosition = this.contentTransform.LocalPosition;
             contentPosition.Z = this.ZContentDistance;
             this.contentTransform.LocalPosition = contentPosition;
-            Vector2 size = new Vector2(this.backgroundPlaneMesh.Width - (this.ContentPadding * 2.0f), 0);
+            Vector2 size = new Vector2(this.backgroundPlaneTransform.LocalScale.X - (this.ContentPadding * 2.0f), 0);
 
             // Header
-            var columns = this.render.Columns;
-            Vector3 headerPosition = new Vector3((this.backgroundPlaneMesh.Width * -0.5f) + this.ContentPadding, this.RowHeight * 0.5f, this.ZContentDistance);
+            Vector3 headerPosition = new Vector3((this.backgroundPlaneTransform.LocalScale.X * -0.5f) + this.ContentPadding, this.RowHeight * 0.5f, this.ZContentDistance);
             Color headerTextColor = Color.DarkBlue;
-            for (int j = 0; j < columns.Count; j++)
+            var textRenderer = TextCellRenderer.Instance;
+
+            for (int columnIndex = 0; columnIndex < this.columnDefinitions.Length; columnIndex++)
             {
-                var column = columns[j];
-                float columnWidth = size.X * column.percentageSize;
-                var entity = TextCellRenderer.Instance.Render(column.Name, headerPosition, columnWidth, this.RowHeight, this.alphaLayer, headerTextColor);
-                this.header.AddChild(entity);
+                var column = this.columnDefinitions[columnIndex];
+                float columnWidth = size.X * column.PercentageSize;
+                textRenderer.Text = column.Title;
+                textRenderer.Color = headerTextColor;
+
+                var entity = textRenderer.InternalRender(headerPosition, columnWidth, this.RowHeight, this.alphaLayer);
+                entity.Flags = HideFlags.DontSave;
+                this.headerContents.AddChild(entity);
                 headerPosition.X += columnWidth;
             }
 
-            this.header.IsEnabled = this.HeaderEnabled;
+            textRenderer.Color = Color.White;
+            this.headerContents.IsEnabled = this.HeaderEnabled;
 
             // Content from data
-            this.contentOrigin = new Vector3((this.backgroundPlaneMesh.Width * -0.5f) + this.ContentPadding, this.backgroundPlaneMesh.Height * 0.5f, 0);
+            this.contentOrigin = new Vector3((this.backgroundPlaneTransform.LocalScale.X * -0.5f) + this.ContentPadding, this.backgroundPlaneTransform.LocalScale.Y * 0.5f, 0);
             Vector3 currentPosition = this.contentOrigin;
 
-            var data = this.dataSource.Data;
-            for (int i = 0; i < data.Count; i++)
+            for (int rowIndex = 0; rowIndex < this.dataSource.Count; rowIndex++)
             {
-                var rowData = data[i];
-                for (int j = 0; j < columns.Count; j++)
+                for (int columnIndex = 0; columnIndex < this.columnDefinitions.Length; columnIndex++)
                 {
-                    var column = columns[j];
-                    var cellRender = column.cellRenderer;
-                    float columnWidth = size.X * column.percentageSize;
-                    var entity = cellRender.Render(rowData[j], currentPosition, columnWidth, this.RowHeight, this.contentLayer, Color.White);
+                    var column = this.columnDefinitions[columnIndex];
+                    var cellRender = this.dataSource.GetRenderer(rowIndex, columnIndex);
+                    float columnWidth = size.X * column.PercentageSize;
+                    var entity = cellRender.InternalRender(currentPosition, columnWidth, this.RowHeight, this.contentLayer);
+                    entity.Flags = HideFlags.DontSave;
                     this.content.AddChild(entity);
                     currentPosition.X += columnWidth;
                 }
@@ -275,22 +336,26 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Lists
 
             // Update bar
             this.scrollBarEntity.IsEnabled = true;
-            this.scrollBarPlaneMesh.Width = this.BarWidth;
 
-            var barScale = this.scrollBarTransform.Scale;
-            barScale.Y = this.backgroundPlaneMesh.Height > this.ContentSize.Y ? 1 : this.backgroundPlaneMesh.Height / this.ContentSize.Y;
-            this.barSize = this.backgroundPlaneMesh.Height * barScale.Y;
-            this.scrollBarTransform.Scale = barScale;
+            var scrollBarScale = this.scrollBarTransform.LocalScale;
+            scrollBarScale.X = this.BarWidth;
+            this.scrollBarTransform.LocalScale = scrollBarScale;
 
-            this.barOrigin = new Vector3((this.backgroundPlaneMesh.Width * 0.5f) - this.scrollBarPlaneMesh.Width, this.backgroundPlaneMesh.Height * 0.5f, this.ZContentDistance);
-            var barPosition = this.scrollBarTransform.LocalPosition;
-            barPosition = this.barOrigin;
-            this.scrollBarTransform.LocalPosition = barPosition;
+            var barScale = this.scrollBarTransform.LocalScale;
+            var barScaleFactor = this.backgroundPlaneTransform.LocalScale.Y > this.ContentSize.Y ? 1 : this.backgroundPlaneTransform.LocalScale.Y / this.ContentSize.Y;
+            this.barSize = this.size.Y * barScaleFactor;
+            barScale.Y = this.barSize;
+            this.scrollBarTransform.LocalScale = barScale;
+
+            this.barOrigin = new Vector3((this.backgroundPlaneTransform.LocalScale.X * 0.5f) - this.BarWidth, this.backgroundPlaneTransform.LocalScale.Y * 0.5f, this.ZContentDistance);
+            this.scrollBarTransform.LocalPosition = this.barOrigin;
 
             // Selection
-            this.selectionEntity.IsEnabled = true;
-            this.selectionPlaneMesh.Width = this.backgroundPlaneMesh.Width - this.ContentPadding;
-            this.selectionPlaneMesh.Height = this.RowHeight;
+            var selectionScale = this.selectionTransform.LocalScale;
+            selectionScale.X = this.backgroundPlaneTransform.LocalScale.X - this.ContentPadding;
+            selectionScale.Y = this.RowHeight;
+            this.selectionTransform.LocalScale = selectionScale;
+
             var selectionPosition = this.selectionTransform.LocalPosition;
             selectionPosition.X = this.contentOrigin.X - (this.ContentPadding * 0.25f);
             selectionPosition.Z = this.ZContentDistance * 0.25f;
@@ -359,7 +424,7 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Lists
 
                 if (!ThatHasBeenADraggingGesture(this.gestureStartPosition, eventData.Position))
                 {
-                    this.SelectedRow(eventData.Position);
+                    this.SetSelectedRow(eventData.Position);
                 }
 
                 eventData.SetHandled();
@@ -414,7 +479,7 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Lists
 
             if (!ThatHasBeenADraggingGesture(this.gestureStartPosition, eventData.Position))
             {
-                this.SelectedRow(eventData.Position);
+                this.SetSelectedRow(eventData.Position);
             }
 
             this.interacting = false;
@@ -433,9 +498,9 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Lists
                 {
                     position.Y = MathHelper.SmoothDamp(position.Y, 0, ref this.velocityY, this.ElasticTime, (float)gameTime.TotalSeconds);
                 }
-                else if (position.Y > this.ContentSize.Y - this.backgroundPlaneMesh.Height)
+                else if (position.Y > this.ContentSize.Y - this.backgroundPlaneTransform.LocalScale.Y)
                 {
-                    position.Y = MathHelper.SmoothDamp(position.Y, this.ContentSize.Y - this.backgroundPlaneMesh.Height, ref this.velocityY, this.ElasticTime, (float)gameTime.TotalSeconds);
+                    position.Y = MathHelper.SmoothDamp(position.Y, this.ContentSize.Y - this.backgroundPlaneTransform.LocalScale.Y, ref this.velocityY, this.ElasticTime, (float)gameTime.TotalSeconds);
                 }
 
                 this.contentTransform.LocalPosition = position;
@@ -445,8 +510,8 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Lists
             if (this.scrollBarTransform.Scale.Y != 1)
             {
                 var barPosition = this.scrollBarTransform.LocalPosition;
-                float contentDeltaNormalized = MathHelper.Clamp(this.contentTransform.LocalPosition.Y / (this.ContentSize.Y - this.backgroundPlaneMesh.Height), 0, 1);
-                barPosition.Y = this.barOrigin.Y - (contentDeltaNormalized * (this.backgroundPlaneMesh.Height - this.barSize));
+                float contentDeltaNormalized = MathHelper.Clamp(this.contentTransform.LocalPosition.Y / (this.ContentSize.Y - this.backgroundPlaneTransform.LocalScale.Y), 0, 1);
+                barPosition.Y = this.barOrigin.Y - (contentDeltaNormalized * (this.backgroundPlaneTransform.LocalScale.Y - this.barSize));
                 this.scrollBarTransform.LocalPosition = barPosition;
             }
 
@@ -469,29 +534,34 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Lists
             return diffY > SelectionChangeGestureDiff;
         }
 
-        private void SelectedRow(Vector3 pointerPosition)
+        private void SetSelectedRow(Vector3 pointerPosition)
         {
             var originTransformed = this.contentTransform.Position + (this.contentTransform.WorldTransform.Up * this.contentOrigin.Y);
             var pointerPositionTransformed = this.contentTransform.Position + Vector3.Project(pointerPosition - this.contentTransform.Position, this.contentTransform.WorldTransform.Up);
             var distance = Vector3.Distance(originTransformed, pointerPositionTransformed);
             int index = (int)(distance / this.RowHeight);
-            if (index < 0 || index >= this.dataSource.Data.Count)
+            this.SetSelectedRow(index);
+        }
+
+        private void SetSelectedRow(int rowIndex)
+        {
+            if (rowIndex < 0 || rowIndex >= this.dataSource.Count)
             {
+                this.selectionEntity.IsEnabled = false;
                 return;
             }
 
-            this.selectedIndex = index;
-
+            this.selectedIndex = rowIndex;
+            this.selectionEntity.IsEnabled = true;
             this.SelectedChanged?.Invoke(this, null);
         }
 
-        /// <summary>
-        /// Clear all data of ListView.
-        /// </summary>
-        public void ClearData()
+        private void ValidateColumnDefinitions()
         {
-            this.dataSource.Data.Clear();
-            this.Refresh();
+            if (this.columnDefinitions != null && this.columnDefinitions.Sum(def => def.PercentageSize) != 1.0f)
+            {
+                throw new InvalidOperationException("Column sizes sum must be 1.0f");
+            }
         }
     }
 }

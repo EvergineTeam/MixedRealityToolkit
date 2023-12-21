@@ -2,6 +2,7 @@
 
 using Evergine.Common.Graphics;
 using Evergine.Framework;
+using Evergine.Framework.Graphics;
 using Evergine.Mathematics;
 
 namespace Evergine.MRTK.SDK.Features.UX.Components.Lists
@@ -12,15 +13,40 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Lists
     public abstract class CellRenderer
     {
         /// <summary>
+        /// Gets cell rendering area width.
+        /// </summary>
+        public float Width { get; private set; }
+
+        /// <summary>
+        /// Gets cell rendering area height.
+        /// </summary>
+        public float Height { get; private set; }
+
+        /// <summary>
+        /// Gets proposed cell rendering layer.
+        /// </summary>
+        public RenderLayerDescription Layer { get; private set; }
+
+        /// <summary>
         /// Render a cell.
         /// </summary>
-        /// <param name="value">string value.</param>
-        /// <param name="position">Cell position.</param>
-        /// <param name="width">Cell width.</param>
-        /// <param name="height">Cell height.</param>
-        /// <param name="layer">Cell layer.</param>
-        /// <param name="color">Cell color.</param>
-        /// <returns>Return a entity.</returns>
-        public abstract Entity Render(string value, Vector3 position, float width, float height, RenderLayerDescription layer, Color color);
+        /// <param name="parent">Cell parent container.</param>
+        public abstract void Render(Entity parent);
+
+        internal Entity InternalRender(Vector3 position, float width, float height, RenderLayerDescription layer)
+        {
+            var entity = new Entity()
+                .AddComponent(new Transform3D()
+                {
+                    LocalPosition = position,
+                });
+
+            this.Width = width;
+            this.Height = height;
+            this.Layer = layer;
+            this.Render(entity);
+
+            return entity;
+        }
     }
 }
