@@ -12,7 +12,6 @@ using Evergine.MRTK.Base.Interfaces.InputSystem.Handlers;
 using Evergine.MRTK.Emulation;
 using System;
 using System.Linq;
-using System.Reflection;
 
 namespace Evergine.MRTK.SDK.Features.UX.Components.Lists
 {
@@ -68,6 +67,9 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Lists
         [BindComponent(source: BindComponentSource.ChildrenSkipOwner, tag: "PART_scrollviewer_selection")]
         private Transform3D selectionTransform = null;
 
+        [BindEntity(source: BindEntitySource.ChildrenSkipOwner, tag: "PART_scrollviewer_loading_holder")]
+        private Entity loadingHolder = null;
+
         [BindService]
         private AssetsService assetsService = null;
 
@@ -92,6 +94,8 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Lists
         private RenderLayerDescription alphaLayer;
         private bool headerEnabled = false;
         private float barSize;
+
+        private Entity loadingIndicator;
 
         /// <summary>
         /// Gets or sets ListView size.
@@ -225,16 +229,61 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Lists
             }
         }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether loading indicator is shown.
+        /// </summary>
+        [IgnoreEvergine]
+        [DontRenderProperty]
+        public bool ShowLoadingIndicator
+        {
+            get => this.loadingHolder.IsEnabled;
+
+            set => this.loadingHolder.IsEnabled = value;
+        }
+
+        /// <summary>
+        /// Gets or sets loading indicator entity.
+        /// </summary>
+        [IgnoreEvergine]
+        public Entity LoadingIndicator
+        {
+            get => this.loadingIndicator;
+
+            set
+            {
+                if (this.loadingIndicator != value)
+                {
+                    this.loadingIndicator = value;
+                    this.UpdateLoadingIndicator();
+                }
+            }
+        }
+
         /// <inheritdoc/>
         protected override bool OnAttached()
         {
             var result = base.OnAttached();
+
+            this.ShowLoadingIndicator = false;
+
+            this.loadingIndicator = this.loadingIndicator ?? this.loadingHolder.ChildEntities.FirstOrDefault();
+            this.UpdateLoadingIndicator();
 
             this.contentLayer = this.assetsService.Load<RenderLayerDescription>(MRTKResourceIDs.RenderLayers.ScrollContent);
             this.alphaLayer = this.assetsService.Load<RenderLayerDescription>(DefaultResourcesIDs.AlphaRenderLayerID);
             this.Refresh();
 
             return result;
+        }
+
+        private void UpdateLoadingIndicator()
+        {
+            var current = this.loadingHolder?.ChildEntities.FirstOrDefault();
+            if (this.loadingHolder != null && current != this.loadingIndicator)
+            {
+                this.loadingHolder.RemoveChild(current);
+                this.loadingHolder.AddChild(this.loadingIndicator);
+            }
         }
 
         private void UpdateSize()

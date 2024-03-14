@@ -1,0 +1,56 @@
+!Evergine.Framework.Assets.AssetSources.Entities.PrefabModel,Evergine.Framework
+Root:
+  Name: customLoadingIndicator
+  Tag: null
+  IsEnabled: true
+  IsStatic: false
+  Components:
+    - !Evergine.Framework.Graphics.Transform3D,Evergine.Framework
+      Id: 7b032263-a4d4-4618-8181-2b99d02b90dd
+      IsEnabled: true
+      LocalOrientation:
+        W: 1.0
+        X: 0.0
+        Y: 0.0
+        Z: 0.0
+      LocalPosition:
+        X: 0.0
+        Y: 0.0
+        Z: 0.0
+      LocalScale:
+        X: 0.0300000049
+        Y: 0.0300000049
+        Z: 0.0300000049
+    - !Evergine.Components.Graphics3D.MaterialComponent,Evergine.Framework
+      Id: 6fc063bb-153a-4c2b-8ec9-69e8b487aa10
+      AsignedTo: Default
+      IsEnabled: true
+      Material: bfcf267e-cc0a-482c-9738-a19701e97652
+      UseCopy: false
+    - !Evergine.Components.Graphics3D.CubeMesh,Evergine.Components
+      Id: d147f17b-4fbc-4671-9d02-1fa6e69372f1
+      IsEnabled: true
+      Size: 1.0
+      UMirror: false
+      UOffset: 0.0
+      UTile: 1.0
+      VMirror: false
+      VOffset: 0.0
+      VTile: 1.0
+    - !Evergine.Components.Graphics3D.MeshRenderer,Evergine.Framework
+      Id: 5f10d380-c851-41c9-ba9e-aa3373548c92
+      DebugBoundingbox: true
+      IsCullingEnabled: true
+      IsEnabled: true
+      OrderBias: 0
+      RenderFlags: CastShadows
+    - !Evergine.Components.Graphics3D.Spinner,Evergine.Components
+      Id: fb17bf14-860f-4a69-a33c-345b70153d2e
+      AxisIncrease:
+        X: 1.0
+        Y: 2.0
+        Z: 3.0
+      IsEnabled: true
+      UpdateOrder: 0.5
+  Children: []
+  Id: d91f9f96-dcfa-466b-b824-7ee3da5b84a9

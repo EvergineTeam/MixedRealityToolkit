@@ -1,7 +1,9 @@
 ﻿using Evergine.Common.Graphics;
 using Evergine.Components.Graphics3D;
+using Evergine.Components.WorkActions;
 using Evergine.Framework;
 using Evergine.Framework.Graphics;
+using Evergine.Framework.Prefabs;
 using Evergine.Framework.Services;
 using Evergine.Mathematics;
 using Evergine.MRTK.SDK.Features.UX.Components.Lists;
@@ -26,7 +28,10 @@ namespace Evergine.MRTK.Demo.Scenes.Samples
         {
             base.OnPostCreateXRScene();
 
+            var assetsManager = this.Managers.AssetSceneManager;
+
             this.customListView = this.Managers.EntityManager.FindAllByTag("configuration_custom").First().FindComponentInChildren<ListView>();
+            this.customListView.LoadingIndicator = assetsManager.Load<Prefab>(EvergineContent.Prefabs.Samples.customLoadingIndicator_weprefab).Instantiate();
             this.autoListView = this.Managers.EntityManager.FindAllByTag("configuration_auto").First().FindComponentInChildren<ListView>();
             this.initialCustomListViewSize = this.customListView.Size;
 
@@ -70,22 +75,27 @@ namespace Evergine.MRTK.Demo.Scenes.Samples
 
             public int NumberOfElements { get; set; } = 40;
 
-            protected override bool OnAttached()
+            protected override void OnActivated()
             {
-                bool attached = base.OnAttached();
-                if (attached) 
-                {
-                    if (this.UseCustomAdapter)
-                    {
-                        this.CustomAdapterUsage();
-                    }
-                    else
-                    {
-                        this.BuiltInAdapterUsage();
-                    }
-                }
+                base.OnActivated();
 
-                return attached;
+                WorkActionFactory.CreateWorkActionFromAction(
+                    this.Owner.Scene,
+                    () => this.listView.ShowLoadingIndicator = true)
+                    .Delay(TimeSpan.FromSeconds(5))
+                    .ContinueWithAction(() =>
+                    {
+                        if (this.UseCustomAdapter)
+                        {
+                            this.CustomAdapterUsage();
+                        }
+                        else
+                        {
+                            this.BuiltInAdapterUsage();
+                        }
+                    })
+                    .ContinueWithAction(() => this.listView.ShowLoadingIndicator = false)
+                    .Run();
             }
 
             private void CustomAdapterUsage()

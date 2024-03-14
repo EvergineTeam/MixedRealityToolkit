@@ -30,6 +30,7 @@ Items:
         HeaderEnabled: true
         IsEnabled: true
         RowHeight: 0.0149999997
+        SelectedIndex: -1
         Size:
           X: 0.25
           Y: 0.180000007
@@ -176,9 +177,94 @@ Items:
             Children: []
             Id: cc1d45a0-f33c-4f34-ae0c-b5e53dda46d1
           - !Evergine.Framework.Assets.AssetSources.Entities.EntityItemModel,Evergine.Framework
+            Name: LoadingHolder
+            Tag: PART_scrollviewer_loading_holder
+            IsEnabled: true
+            IsStatic: false
+            Components:
+              - !Evergine.Framework.Graphics.Transform3D,Evergine.Framework
+                Id: 347c85da-2881-4c38-99f0-d17a664ff547
+                IsEnabled: true
+                LocalOrientation:
+                  W: 1.0
+                  X: 0.0
+                  Y: 0.0
+                  Z: 0.0
+                LocalPosition:
+                  X: 0.0
+                  Y: 0.0
+                  Z: 0.0
+                LocalScale:
+                  X: 1.0
+                  Y: 1.0
+                  Z: 1.0
+            Children:
+              - !Evergine.Framework.Assets.AssetSources.Entities.EntityItemModel,Evergine.Framework
+                Name: Loading
+                Tag: 
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !Evergine.Framework.Graphics.Transform3D,Evergine.Framework
+                    Id: 319d5e73-6bcb-463b-938c-5be8aba516fe
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.00499999989
+                    LocalScale:
+                      X: 0.300000012
+                      Y: 0.300000012
+                      Z: 1.0
+                  - !Evergine.Components.Graphics3D.MaterialComponent,Evergine.Framework
+                    Id: 27d57005-4f28-4c1c-8384-b558d6e76d0c
+                    AsignedTo: Default
+                    IsEnabled: true
+                    Material: 00fd8a25-0cdd-40ad-b39d-12608e78194e
+                    UseCopy: false
+                  - !Evergine.Components.Graphics3D.PlaneMesh,Evergine.Components
+                    Id: fda53a4a-1cdb-454a-8531-75a9394f632c
+                    Height: 0.100000001
+                    IsEnabled: true
+                    Origin:
+                      X: 0.5
+                      Y: 0.5
+                    PlaneNormal: ZPositive
+                    TwoSides: false
+                    UMirror: false
+                    UOffset: 0.0
+                    UTile: 1.0
+                    VMirror: false
+                    VOffset: 0.0
+                    VTile: 1.0
+                    Width: 0.100000001
+                  - !Evergine.Components.Graphics3D.MeshRenderer,Evergine.Framework
+                    Id: 2d13bbcd-ac06-4e35-8d12-1b40264ed874
+                    DebugBoundingbox: true
+                    IsCullingEnabled: true
+                    IsEnabled: true
+                    OrderBias: 0
+                    RenderFlags: None
+                  - !Evergine.Components.Graphics3D.Spinner,Evergine.Components
+                    Id: 7e6c8383-7749-4358-b9b3-6b0fb55f8ff4
+                    AxisIncrease:
+                      X: 0.0
+                      Y: 0.0
+                      Z: -5.0
+                    IsEnabled: true
+                    UpdateOrder: 0.5
+                Children: []
+                Id: 60ed2e6c-0195-4845-9f7d-43b85b2024ee
+            Id: a0cec5d6-afc7-4783-9450-50a632e40229
+          - !Evergine.Framework.Assets.AssetSources.Entities.EntityItemModel,Evergine.Framework
             Name: Bar
             Tag: PART_scrollviewer_bar
-            IsEnabled: false
+            IsEnabled: true
             IsStatic: false
             Components:
               - !Evergine.Framework.Graphics.Transform3D,Evergine.Framework
@@ -298,7 +384,7 @@ Items:
               Z: 0.0
             LocalPosition:
               X: 0.0
-              Y: 0.0970000029
+              Y: 0.0975000039
               Z: 0.0
             LocalScale:
               X: 1.0
@@ -376,7 +462,7 @@ Items:
                       Y: -0.994164944
                       Z: 0.00099999446
                     LocalScale:
-                      X: 1.0
+                      X: 0.25
                       Y: 1.0
                       Z: 1.0
                   - !Evergine.Components.Graphics3D.MaterialComponent,Evergine.Framework
@@ -453,7 +539,7 @@ Managers:
     IsEnabled: true
   - !Evergine.Framework.Managers.EnvironmentManager,Evergine.Framework
     Id: ea3a9c9b-fb41-481f-aee2-975ff8e79d2f
-    IBLReflectionProbe: e3af0793-f492-4e4f-bd7b-aba6b27d30b4
+    IBLReflectionProbe: d71f0059-fca8-40d6-b723-2458987f9375
     IntensityMultiplier: 1.0
     IsEnabled: true
     Strategy: OnDemand

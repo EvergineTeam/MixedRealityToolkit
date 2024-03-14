@@ -874,8 +874,8 @@ Items:
                           Z: 0.00400000019
                       - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.Boolean,System.Private.CoreLib]],Evergine.Framework
                         Name: IsEnabled
-                        Target: 86e5edc1-2fc5-4200-b5ca-2a5199959a6a
-                        TypedValue: true
+                        Target: a0cec5d6-afc7-4783-9450-50a632e40229
+                        TypedValue: false
                       - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Vector3,Evergine.Mathematics]],Evergine.Framework
                         Name: LocalPosition
                         Target: 6a889edd-bb1b-4ca2-b9de-dc4a16526466
@@ -890,10 +890,6 @@ Items:
                           X: 0.00400000019
                           Y: 0.0540000349
                           Z: 1.0
-                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.Boolean,System.Private.CoreLib]],Evergine.Framework
-                        Name: IsEnabled
-                        Target: 43267a6a-b3ca-43db-9106-d843af84a3fa
-                        TypedValue: true
                       - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Vector3,Evergine.Mathematics]],Evergine.Framework
                         Name: LocalPosition
                         Target: d6c432b6-81a8-43d8-908f-ad58f88e0dfb
@@ -956,8 +952,8 @@ Items:
                           Z: 0.00400000019
                       - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.Boolean,System.Private.CoreLib]],Evergine.Framework
                         Name: IsEnabled
-                        Target: 86e5edc1-2fc5-4200-b5ca-2a5199959a6a
-                        TypedValue: true
+                        Target: a0cec5d6-afc7-4783-9450-50a632e40229
+                        TypedValue: false
                       - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Vector3,Evergine.Mathematics]],Evergine.Framework
                         Name: LocalPosition
                         Target: 6a889edd-bb1b-4ca2-b9de-dc4a16526466
@@ -972,10 +968,6 @@ Items:
                           X: 0.00400000019
                           Y: 0.0540000349
                           Z: 1.0
-                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.Boolean,System.Private.CoreLib]],Evergine.Framework
-                        Name: IsEnabled
-                        Target: 43267a6a-b3ca-43db-9106-d843af84a3fa
-                        TypedValue: true
                       - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Vector3,Evergine.Mathematics]],Evergine.Framework
                         Name: LocalPosition
                         Target: d6c432b6-81a8-43d8-908f-ad58f88e0dfb
