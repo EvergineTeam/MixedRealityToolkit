@@ -65,7 +65,10 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Sliders
                 {
                     var oldValue = this.sliderValue;
                     this.sliderValue = value;
-                    this.UpdateUI();
+                    if (this.IsActivated)
+                    {
+                        this.UpdateUI();
+                    }
 
                     this.ValueUpdated?.Invoke(this, new SliderEventData(oldValue, this.sliderValue));
                 }
