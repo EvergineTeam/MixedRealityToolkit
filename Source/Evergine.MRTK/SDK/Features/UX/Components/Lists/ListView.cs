@@ -314,15 +314,6 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Lists
             }
 
             // Clean
-            var headerChildren = this.headerContents.ChildEntities?.ToArray();
-            if (headerChildren != null)
-            {
-                foreach (var child in headerChildren)
-                {
-                    this.headerContents.RemoveChild(child);
-                }
-            }
-
             var contentChildren = this.content.ChildEntities?.ToArray();
             if (contentChildren != null)
             {
@@ -336,28 +327,10 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Lists
             var contentPosition = this.contentTransform.LocalPosition;
             contentPosition.Z = this.ZContentDistance;
             this.contentTransform.LocalPosition = contentPosition;
-            Vector2 size = new Vector2(this.backgroundPlaneTransform.LocalScale.X - (this.ContentPadding * 2.0f), 0);
+            Vector2 size = this.CalculateContentSize();
 
             // Header
-            Vector3 headerPosition = new Vector3((this.backgroundPlaneTransform.LocalScale.X * -0.5f) + this.ContentPadding, this.RowHeight * 0.5f, this.ZContentDistance);
-            Color headerTextColor = Color.DarkBlue;
-            var textRenderer = TextCellRenderer.Instance;
-
-            for (int columnIndex = 0; columnIndex < this.columnDefinitions.Length; columnIndex++)
-            {
-                var column = this.columnDefinitions[columnIndex];
-                float columnWidth = size.X * column.PercentageSize;
-                textRenderer.Text = column.Title;
-                textRenderer.Color = headerTextColor;
-
-                var entity = textRenderer.InternalRender(headerPosition, columnWidth, this.RowHeight, this.alphaLayer);
-                entity.Flags = HideFlags.DontSave;
-                this.headerContents.AddChild(entity);
-                headerPosition.X += columnWidth;
-            }
-
-            textRenderer.Color = Color.White;
-            this.headerContents.IsEnabled = this.HeaderEnabled;
+            this.RefreshHeader();
 
             // Content from data
             this.contentOrigin = new Vector3((this.backgroundPlaneTransform.LocalScale.X * -0.5f) + this.ContentPadding, this.backgroundPlaneTransform.LocalScale.Y * 0.5f, 0);
@@ -409,6 +382,47 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Lists
             selectionPosition.X = this.contentOrigin.X - (this.ContentPadding * 0.25f);
             selectionPosition.Z = this.ZContentDistance * 0.25f;
             this.selectionTransform.LocalPosition = selectionPosition;
+        }
+
+        /// <summary>
+        /// Refresh header layout.
+        /// </summary>
+        public void RefreshHeader()
+        {
+            var headerChildren = this.headerContents.ChildEntities?.ToArray();
+            if (headerChildren != null)
+            {
+                foreach (var child in headerChildren)
+                {
+                    this.headerContents.RemoveChild(child);
+                }
+            }
+
+            Vector2 size = this.CalculateContentSize();
+            Vector3 headerPosition = new Vector3((this.backgroundPlaneTransform.LocalScale.X * -0.5f) + this.ContentPadding, this.RowHeight * 0.5f, this.ZContentDistance);
+            var textRenderer = TextCellRenderer.Instance;
+            var recoverColor = textRenderer.Color;
+
+            for (int columnIndex = 0; columnIndex < this.columnDefinitions.Length; columnIndex++)
+            {
+                var column = this.columnDefinitions[columnIndex];
+                float columnWidth = size.X * column.PercentageSize;
+                textRenderer.Text = column.Title;
+                textRenderer.Color = column.HeaderTextColor;
+
+                var entity = textRenderer.InternalRender(headerPosition, columnWidth, this.RowHeight, this.alphaLayer);
+                entity.Flags = HideFlags.DontSave;
+                this.headerContents.AddChild(entity);
+                headerPosition.X += columnWidth;
+            }
+
+            textRenderer.Color = recoverColor;
+            this.headerContents.IsEnabled = this.HeaderEnabled;
+        }
+
+        private Vector2 CalculateContentSize()
+        {
+            return new Vector2(this.backgroundPlaneTransform.LocalScale.X - (this.ContentPadding * 2.0f), 0);
         }
 
         /// <inheritdoc/>

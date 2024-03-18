@@ -1,5 +1,7 @@
 ﻿// Copyright © Evergine S.L. All rights reserved. Use is subject to license terms.
 
+using Evergine.Common.Graphics;
+
 namespace Evergine.MRTK.SDK.Features.UX.Components.Lists
 {
     /// <summary>
@@ -16,5 +18,10 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Lists
         /// Gets or sets the percentage column size.
         /// </summary>
         public float PercentageSize { get; set; }
+
+        /// <summary>
+        /// Gets or sets header text color.
+        /// </summary>
+        public Color HeaderTextColor { get; set; } = Color.DarkBlue;
     }
 }

@@ -104,9 +104,9 @@ namespace Evergine.MRTK.Demo.Scenes.Samples
                 listView.DataSource = new SampleTasksAdapter(allTasks, this.assetsService);
                 listView.Columns = new[]
                 {
-                    new ColumnDefinition { Title = "Name", PercentageSize = 0.4f },
-                    new ColumnDefinition { Title = "Deadline", PercentageSize = 0.4f },
-                    new ColumnDefinition { Title = "Status", PercentageSize = 0.2f }
+                    new ColumnDefinition { Title = "Name", PercentageSize = 0.4f, HeaderTextColor = Color.Yellow },
+                    new ColumnDefinition { Title = "Deadline", PercentageSize = 0.4f, HeaderTextColor = Color.Yellow },
+                    new ColumnDefinition { Title = "Status", PercentageSize = 0.2f, HeaderTextColor = Color.White }
                 };
             }
 
