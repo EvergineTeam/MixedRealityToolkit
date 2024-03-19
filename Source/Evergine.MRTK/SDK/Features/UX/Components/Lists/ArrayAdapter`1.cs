@@ -34,6 +34,9 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Lists
         /// <inheritdoc/>
         public override object GetRowValue(int rowIndex) => this.GetTypedRowValue(rowIndex);
 
+        /// <inheritdoc/>
+        public override int IndexOf(object @value) => this.data.IndexOf((T)@value);
+
         /// <summary>
         /// Gets typed row value.
         /// </summary>

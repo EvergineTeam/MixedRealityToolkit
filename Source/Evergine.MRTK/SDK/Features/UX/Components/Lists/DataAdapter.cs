@@ -20,6 +20,13 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Lists
         public abstract object GetRowValue(int rowIndex);
 
         /// <summary>
+        /// Gets index of a given value, if it exists.
+        /// </summary>
+        /// <param name="value">Search value.</param>
+        /// <returns>Row index for a given value. If element is not part of adapter data, it returns -1.</returns>
+        public abstract int IndexOf(object @value);
+
+        /// <summary>
         /// Gets renderer instance to be used to draw column data for a given row.
         /// </summary>
         /// <param name="rowIndex">Row index.</param>

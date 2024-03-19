@@ -172,7 +172,7 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Lists
         }
 
         /// <summary>
-        /// Gets the selected row data.
+        /// Gets or sets the selected item.
         /// </summary>
         [IgnoreEvergine]
         public object SelectedItem
@@ -193,6 +193,12 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Lists
                 {
                     return this.dataSource.GetRowValue(0);
                 }
+            }
+
+            set
+            {
+                this.selectedIndex = this.dataSource.IndexOf(value);
+                this.SetSelectedRow(this.selectedIndex);
             }
         }
 
@@ -418,6 +424,61 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Lists
 
             textRenderer.Color = recoverColor;
             this.headerContents.IsEnabled = this.HeaderEnabled;
+        }
+
+        /// <summary>
+        /// Scrolls the list to make a row visible.
+        /// </summary>
+        /// <param name="rowIndex">Row index.</param>
+        /// <param name="position">Scroll position.</param>
+        public void ScrollTo(int rowIndex, ScrollToPosition position)
+        {
+            if (rowIndex >= 0)
+            {
+                float scrollYPosition = rowIndex * this.RowHeight;
+                int numberOfInScreenItems = (int)(this.size.Y / this.RowHeight);
+
+                switch (position)
+                {
+                    case ScrollToPosition.Start:
+                        break;
+                    case ScrollToPosition.Center:
+                        scrollYPosition -= numberOfInScreenItems / 2 * this.RowHeight;
+                        break;
+                    case ScrollToPosition.End:
+                        // If size.Y is not a multiple of RowHeight, end alignment will only show
+                        // part of the item. We calculate extra scroll distance to avoid this.
+                        float extraDistance = this.RowHeight - (this.size.Y % this.RowHeight);
+                        scrollYPosition -= (numberOfInScreenItems * this.RowHeight) - extraDistance;
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException(nameof(position));
+                }
+
+                this.ScrollTo(scrollYPosition);
+            }
+        }
+
+        /// <summary>
+        /// Scrolls the list to make a row visible.
+        /// </summary>
+        /// <param name="item">Target item.</param>
+        /// <param name="position">Scroll position.</param>
+        public void ScrollTo(object item, ScrollToPosition position)
+        {
+            var itemIndex = this.dataSource.IndexOf(item);
+            this.ScrollTo(itemIndex, position);
+        }
+
+        /// <summary>
+        /// Scrolls the list to a position.
+        /// </summary>
+        /// <param name="positionY">Position Y of the scroll area.</param>
+        public void ScrollTo(float positionY)
+        {
+            var contentPosition = this.contentTransform.LocalPosition;
+            contentPosition.Y = positionY;
+            this.contentTransform.LocalPosition = contentPosition;
         }
 
         private Vector2 CalculateContentSize()

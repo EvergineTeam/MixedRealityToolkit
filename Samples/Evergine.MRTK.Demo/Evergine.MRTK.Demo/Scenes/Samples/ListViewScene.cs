@@ -23,6 +23,10 @@ namespace Evergine.MRTK.Demo.Scenes.Samples
         private Vector2 initialCustomListViewSize;
         private PinchSlider customWidthSlider;
         private PinchSlider customHeightSlider;
+        private ListView selectionListView;
+        private ToggleButton scrollToStartToggle;
+        private ToggleButton scrollToCenterToggle;
+        private ToggleButton scrollToEndToggle;
 
         protected override void OnPostCreateXRScene()
         {
@@ -40,10 +44,52 @@ namespace Evergine.MRTK.Demo.Scenes.Samples
             this.customWidthSlider.InitialValue = this.customHeightSlider.InitialValue = 1;
 
             var applyButton = this.Managers.EntityManager.FindAllByTag("controls_apply_button").First().FindComponentInChildren<PressableButton>();
-            applyButton.ButtonPressed += ApplyButton_ButtonPressed;
+            applyButton.ButtonPressed += this.ApplyButton_ButtonPressed;
 
             var headerVisibilityButton = this.Managers.EntityManager.FindAllByTag("controls_visibility_button").First().FindComponentInChildren<ToggleButton>();
             headerVisibilityButton.Toggled += HeaderVisibilityButton_Toggled;
+
+            this.selectionListView = this.Managers.EntityManager.FindAllByTag("selection_listView").First().FindComponentInChildren<ListView>();
+
+            var changeSelectedIndexButton = this.Managers.EntityManager.FindAllByTag("controls_selectedIndex_button").First().FindComponentInChildren<PressableButton>();
+            changeSelectedIndexButton.ButtonPressed += this.ChangeSelectedIndexButton_ButtonPressed;
+
+            var changeSelectedItemButton = this.Managers.EntityManager.FindAllByTag("controls_selectedItem_button").First().FindComponentInChildren<PressableButton>();
+            changeSelectedItemButton.ButtonPressed += this.ChangeSelectedItemButton_ButtonPressed;
+            
+            this.scrollToStartToggle = this.Managers.EntityManager.FindAllByTag("selection_scrollTo_Start_button").First().FindComponentInChildren<ToggleButton>();
+            this.scrollToStartToggle.Toggled += this.ScrollTo_Toggled;
+            this.scrollToCenterToggle = this.Managers.EntityManager.FindAllByTag("selection_scrollTo_Center_button").First().FindComponentInChildren<ToggleButton>();
+            this.scrollToCenterToggle.Toggled += this.ScrollTo_Toggled;
+            this.scrollToEndToggle = this.Managers.EntityManager.FindAllByTag("selection_scrollTo_End_button").First().FindComponentInChildren<ToggleButton>();
+            this.scrollToEndToggle.Toggled += this.ScrollTo_Toggled;
+        }
+
+        private void ScrollTo_Toggled(object sender, EventArgs e)
+        {
+            ToggleButton toggle = null;
+            ScrollToPosition position = default;
+
+            if (sender == this.scrollToStartToggle)
+            {
+                toggle = this.scrollToStartToggle;
+                position = ScrollToPosition.Start;
+            }
+            else if (sender == this.scrollToCenterToggle)
+            {
+                toggle = this.scrollToCenterToggle;
+                position = ScrollToPosition.Center;
+            }
+            else if (sender == this.scrollToEndToggle)
+            {
+                toggle = this.scrollToEndToggle;
+                position = ScrollToPosition.End;
+            }
+
+            if (toggle.IsOn)
+            {
+                this.selectionListView.ScrollTo(this.selectionListView.SelectedIndex, position);
+            }
         }
 
         private void ApplyButton_ButtonPressed(object sender, EventArgs e)
@@ -61,6 +107,17 @@ namespace Evergine.MRTK.Demo.Scenes.Samples
             {
                 this.customListView.HeaderEnabled = this.autoListView.HeaderEnabled = toggle.IsOn;
             }
+        }
+
+        private void ChangeSelectedIndexButton_ButtonPressed(object sender, EventArgs e) =>
+            this.selectionListView.SelectedIndex = new System.Random().Next(0, 10);
+
+        private void ChangeSelectedItemButton_ButtonPressed(object sender, EventArgs e)
+        {
+            var dataSource = this.selectionListView.DataSource;
+            var index = new System.Random().Next(0, 10);
+            var value = dataSource.GetRowValue(index);
+            this.selectionListView.SelectedItem = value;
         }
 
         public class SampleTaskConfiguration : Component
@@ -82,7 +139,7 @@ namespace Evergine.MRTK.Demo.Scenes.Samples
                 WorkActionFactory.CreateWorkActionFromAction(
                     this.Owner.Scene,
                     () => this.listView.ShowLoadingIndicator = true)
-                    .Delay(TimeSpan.FromSeconds(5))
+                    .Delay(TimeSpan.FromSeconds(2))
                     .ContinueWithAction(() =>
                     {
                         if (this.UseCustomAdapter)
