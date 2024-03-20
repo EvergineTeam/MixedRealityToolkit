@@ -21,7 +21,11 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.ToggleButtons
         /// <summary>
         /// Gets a value indicating whether button is on or not.
         /// </summary>
-        public bool IsOn { get => this.IsOnState(); }
+        public bool IsOn
+        {
+            get => this.IsOnState();
+            set => this.SetIsOnState(value);
+        }
 
         /// <inheritdoc />
         protected override bool OnAttached()
@@ -57,6 +61,14 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.ToggleButtons
         {
             var toggleState = this.GetToggleState();
             return toggleState?.Value == ToggleState.On;
+        }
+
+        private void SetIsOnState(bool isOn)
+        {
+            if (this.stateManager != null)
+            {
+                this.stateManager.ChangeState(isOn ? ToggleStateManager.State_On : ToggleStateManager.State_Off);
+            }
         }
 
         private void SubscribeEvents()
