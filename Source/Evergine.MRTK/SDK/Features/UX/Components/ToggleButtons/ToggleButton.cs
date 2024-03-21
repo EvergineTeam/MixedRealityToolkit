@@ -19,7 +19,7 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.ToggleButtons
         public event EventHandler Toggled;
 
         /// <summary>
-        /// Gets a value indicating whether button is on or not.
+        /// Gets or sets a value indicating whether toggle is on or not.
         /// </summary>
         public bool IsOn
         {
