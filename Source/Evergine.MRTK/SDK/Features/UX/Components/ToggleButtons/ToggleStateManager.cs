@@ -69,21 +69,22 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.ToggleButtons
             return true;
         }
 
+        /// <summary>
+        /// State for when the toggle is on.
+        /// </summary>
+        public static readonly State<ToggleState> State_On = new State<ToggleState>() { Name = ToggleState.On.ToString(), Value = ToggleState.On };
+
+        /// <summary>
+        /// State for when the toggle is off.
+        /// </summary>
+        public static readonly State<ToggleState> State_Off = new State<ToggleState>() { Name = ToggleState.Off.ToString(), Value = ToggleState.Off };
+
         /// <inheritdoc />
         protected override List<State<ToggleState>> GetStateList()
         {
             var states = new List<State<ToggleState>>();
-            states.Add(new State<ToggleState>
-            {
-                Name = ToggleState.Off.ToString(),
-                Value = ToggleState.Off,
-            });
-            states.Add(new State<ToggleState>
-            {
-                Name = ToggleState.On.ToString(),
-                Value = ToggleState.On,
-            });
-
+            states.Add(State_Off);
+            states.Add(State_On);
             return states;
         }
 
