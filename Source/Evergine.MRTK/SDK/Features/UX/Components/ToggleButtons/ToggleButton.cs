@@ -1,6 +1,7 @@
 ﻿// Copyright © Evergine S.L. All rights reserved. Use is subject to license terms.
 
 using System;
+using Evergine.Common.Attributes;
 using Evergine.Framework;
 using Evergine.MRTK.SDK.Features.UX.Components.States;
 
@@ -19,9 +20,14 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.ToggleButtons
         public event EventHandler Toggled;
 
         /// <summary>
-        /// Gets a value indicating whether button is on or not.
+        /// Gets or sets a value indicating whether toggle is on or not.
         /// </summary>
-        public bool IsOn { get => this.IsOnState(); }
+        [IgnoreEvergine]
+        public bool IsOn
+        {
+            get => this.IsOnState();
+            set => this.SetIsOnState(value);
+        }
 
         /// <inheritdoc />
         protected override bool OnAttached()
@@ -57,6 +63,14 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.ToggleButtons
         {
             var toggleState = this.GetToggleState();
             return toggleState?.Value == ToggleState.On;
+        }
+
+        private void SetIsOnState(bool isOn)
+        {
+            if (this.stateManager != null)
+            {
+                this.stateManager.ChangeState(isOn ? ToggleStateManager.State_On : ToggleStateManager.State_Off);
+            }
         }
 
         private void SubscribeEvents()
