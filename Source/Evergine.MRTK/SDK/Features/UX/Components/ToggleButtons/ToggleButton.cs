@@ -1,6 +1,7 @@
 ﻿// Copyright © Evergine S.L. All rights reserved. Use is subject to license terms.
 
 using System;
+using Evergine.Common.Attributes;
 using Evergine.Framework;
 using Evergine.MRTK.SDK.Features.UX.Components.States;
 
@@ -21,6 +22,7 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.ToggleButtons
         /// <summary>
         /// Gets or sets a value indicating whether toggle is on or not.
         /// </summary>
+        [IgnoreEvergine]
         public bool IsOn
         {
             get => this.IsOnState();
