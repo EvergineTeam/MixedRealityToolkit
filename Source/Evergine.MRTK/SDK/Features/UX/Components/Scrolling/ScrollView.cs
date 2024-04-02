@@ -47,6 +47,11 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Scrolling
         private Vector3 barOrigin;
 
         /// <summary>
+        /// Raise when ScrollView is scrolled.
+        /// </summary>
+        public event EventHandler Scrolled;
+
+        /// <summary>
         /// Gets or sets the content padding.
         /// </summary>
         public float ContentYPadding { get; set; } = 0.01f;
@@ -172,6 +177,7 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Scrolling
                 this.lastCursorPosition = this.lastCursorPosition + delta;
 
                 eventData.SetHandled();
+                this.Scrolled?.Invoke(this, EventArgs.Empty);
             }
         }
 

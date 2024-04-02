@@ -20,11 +20,6 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Lists
     /// </summary>
     public class ListView : Behavior, IMixedRealityPointerHandler, IMixedRealityTouchHandler
     {
-        /// <summary>
-        /// Raise when the current element selected change.
-        /// </summary>
-        public event EventHandler SelectedChanged;
-
         [BindEntity(source: BindEntitySource.ChildrenSkipOwner, tag: "PART_scrollviewer_scrollarea")]
         private Entity scrollArea = null;
 
@@ -96,6 +91,16 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Lists
         private float barSize;
 
         private Entity loadingIndicator;
+
+        /// <summary>
+        /// Raise when the current element selected change.
+        /// </summary>
+        public event EventHandler SelectedChanged;
+
+        /// <summary>
+        /// Raise when ListView is scrolled.
+        /// </summary>
+        public event EventHandler Scrolled;
 
         /// <summary>
         /// Gets or sets ListView size.
@@ -350,7 +355,7 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Lists
                     var cellRender = this.dataSource.GetRenderer(rowIndex, columnIndex);
                     float columnWidth = size.X * column.PercentageSize;
                     var entity = cellRender.InternalRender(currentPosition, columnWidth, this.RowHeight, this.contentLayer);
-                    entity.Flags = HideFlags.DontSave;
+                    entity.Flags = HideFlags.DontSave | HideFlags.DontShow;
                     this.content.AddChild(entity);
                     currentPosition.X += columnWidth;
                 }
@@ -417,7 +422,7 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Lists
                 textRenderer.Color = column.HeaderTextColor;
 
                 var entity = textRenderer.InternalRender(headerPosition, columnWidth, this.RowHeight, this.alphaLayer);
-                entity.Flags = HideFlags.DontSave;
+                entity.Flags = HideFlags.DontSave | HideFlags.DontShow;
                 this.headerContents.AddChild(entity);
                 headerPosition.X += columnWidth;
             }
@@ -479,6 +484,7 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Lists
             var contentPosition = this.contentTransform.LocalPosition;
             contentPosition.Y = positionY;
             this.contentTransform.LocalPosition = contentPosition;
+            this.Scrolled?.Invoke(this, EventArgs.Empty);
         }
 
         private Vector2 CalculateContentSize()
@@ -530,6 +536,7 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Lists
                 this.lastCursorPosition = this.lastCursorPosition + delta;
 
                 eventData.SetHandled();
+                this.Scrolled?.Invoke(this, EventArgs.Empty);
             }
         }
 

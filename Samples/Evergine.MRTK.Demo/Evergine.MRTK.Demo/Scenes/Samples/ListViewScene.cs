@@ -1,4 +1,5 @@
 ﻿using Evergine.Common.Graphics;
+using Evergine.Components.Fonts;
 using Evergine.Components.Graphics3D;
 using Evergine.Components.WorkActions;
 using Evergine.Framework;
@@ -27,6 +28,9 @@ namespace Evergine.MRTK.Demo.Scenes.Samples
         private ToggleButton scrollToStartToggle;
         private ToggleButton scrollToCenterToggle;
         private ToggleButton scrollToEndToggle;
+        private Text3DMesh selectedItemEventText;
+        private Text3DMesh scrolledEventText;
+        private int scrollCounter;
 
         protected override void OnPostCreateXRScene()
         {
@@ -63,7 +67,18 @@ namespace Evergine.MRTK.Demo.Scenes.Samples
             this.scrollToCenterToggle.Toggled += this.ScrollTo_Toggled;
             this.scrollToEndToggle = this.Managers.EntityManager.FindAllByTag("selection_scrollTo_End_button").First().FindComponentInChildren<ToggleButton>();
             this.scrollToEndToggle.Toggled += this.ScrollTo_Toggled;
+
+            this.selectedItemEventText = this.Managers.EntityManager.FindAllByTag("controls_selectedItem_event_text").First().FindComponentInChildren<Text3DMesh>();
+            this.scrolledEventText = this.Managers.EntityManager.FindAllByTag("controls_scrolled_event_text").First().FindComponentInChildren<Text3DMesh>();
+            this.selectionListView.SelectedChanged += this.SelectionListView_SelectedChanged;
+            this.selectionListView.Scrolled += this.SelectionListView_Scrolled;
         }
+
+        private void SelectionListView_Scrolled(object sender, EventArgs e) =>
+            this.scrolledEventText.Text = $"{++scrollCounter} times";
+
+        private void SelectionListView_SelectedChanged(object sender, EventArgs e) =>
+            this.selectedItemEventText.Text = this.selectionListView.SelectedItem?.ToString();
 
         private void ScrollTo_Toggled(object sender, EventArgs e)
         {

@@ -1808,6 +1808,254 @@ Items:
                         Source: dabe9073-b1d1-42c5-99b9-ebc0cb4a7430
                     Id: c148ee54-36db-4a79-9f72-88183043c6c4
                 Id: 91bd6d51-aab7-4777-99eb-55ba5df78906
+              - !Evergine.Framework.Assets.AssetSources.Entities.EntityItemModel,Evergine.Framework
+                Name: events
+                Tag: null
+                IsEnabled: true
+                IsStatic: false
+                Components:
+                  - !Evergine.Framework.Graphics.Transform3D,Evergine.Framework
+                    Id: 43b333db-8780-4830-9e7b-b7aaeaaad173
+                    IsEnabled: true
+                    LocalOrientation:
+                      W: 1.0
+                      X: 0.0
+                      Y: 0.0
+                      Z: 0.0
+                    LocalPosition:
+                      X: 0.0
+                      Y: -0.0844426751
+                      Z: 0.0
+                    LocalScale:
+                      X: 1.0
+                      Y: 1.0
+                      Z: 1.0
+                Children:
+                  - !Evergine.Framework.Assets.AssetSources.Entities.EntityItemModel,Evergine.Framework
+                    Name: text3D
+                    Tag: null
+                    IsEnabled: true
+                    IsStatic: false
+                    Components:
+                      - !Evergine.Framework.Graphics.Transform3D,Evergine.Framework
+                        Id: 9c426dcd-6588-4bbf-ad72-9dc9afff7ba6
+                        IsEnabled: true
+                        LocalOrientation:
+                          W: 1.0
+                          X: 0.0
+                          Y: 0.0
+                          Z: 0.0
+                        LocalPosition:
+                          X: -0.0715364069
+                          Y: 0.00416395068
+                          Z: 0.00879620668
+                        LocalScale:
+                          X: 1.0
+                          Y: 1.0
+                          Z: 1.0
+                      - !Evergine.Components.Fonts.Text3DMesh,Evergine.Components
+                        Id: 459978b3-1ee4-4bfb-943f-8d53898ac828
+                        Color:
+                          A: 255
+                          B: 255
+                          G: 255
+                          R: 255
+                        Ellipsis: true
+                        Font: d1322288-d9e9-4b1e-b2fe-ca281f0388a2
+                        HorizontalAlignment: Left
+                        IsEnabled: true
+                        Layer: e35c59a9-26ab-4b4c-8210-4b1f21c31530
+                        LineSpacing: 0.0
+                        Origin:
+                          X: 0.0
+                          Y: 0.0
+                        ScaleFactor: 0.00700000022
+                        Size:
+                          X: 8.0
+                          Y: 1.10000002
+                        Softness: 0.75
+                        Text: 'Selected Item: '
+                        VerticalAlignment: Top
+                        Wrapping: true
+                      - !Evergine.Components.Fonts.Text3DRenderer,Evergine.Components
+                        Id: df3f9cff-61f5-46a3-9ea3-8d5b41ad30d7
+                        DebugBoundingbox: true
+                        DebugMode: false
+                        IsCullingEnabled: true
+                        IsEnabled: true
+                        OrderBias: 0
+                        RenderFlags: CastShadows
+                    Children: []
+                    Id: fd95da67-31c3-4bab-8e8b-8222e2f893d8
+                  - !Evergine.Framework.Assets.AssetSources.Entities.EntityItemModel,Evergine.Framework
+                    Name: text3D
+                    Tag: controls_selectedItem_event_text
+                    IsEnabled: true
+                    IsStatic: false
+                    Components:
+                      - !Evergine.Framework.Graphics.Transform3D,Evergine.Framework
+                        Id: 1a81cb1b-1e36-4bd7-88b4-0a5fcf5c80c1
+                        IsEnabled: true
+                        LocalOrientation:
+                          W: 1.0
+                          X: 0.0
+                          Y: 0.0
+                          Z: 0.0
+                        LocalPosition:
+                          X: -0.00631812215
+                          Y: 0.00416398048
+                          Z: 0.00879621506
+                        LocalScale:
+                          X: 1.0
+                          Y: 1.0
+                          Z: 1.0
+                      - !Evergine.Components.Fonts.Text3DMesh,Evergine.Components
+                        Id: 928e77e6-a87c-4210-8ba9-523f084a2c92
+                        Color:
+                          A: 255
+                          B: 255
+                          G: 255
+                          R: 255
+                        Ellipsis: true
+                        Font: d1322288-d9e9-4b1e-b2fe-ca281f0388a2
+                        HorizontalAlignment: Left
+                        IsEnabled: true
+                        Layer: e35c59a9-26ab-4b4c-8210-4b1f21c31530
+                        LineSpacing: 0.0
+                        Origin:
+                          X: 0.0
+                          Y: 0.0
+                        ScaleFactor: 0.00700000022
+                        Size:
+                          X: 8.0
+                          Y: 1.10000002
+                        Softness: 0.75
+                        Text: <item>
+                        VerticalAlignment: Top
+                        Wrapping: true
+                      - !Evergine.Components.Fonts.Text3DRenderer,Evergine.Components
+                        Id: b876769a-8378-4bd0-aab1-caa17029b16a
+                        DebugBoundingbox: true
+                        DebugMode: false
+                        IsCullingEnabled: true
+                        IsEnabled: true
+                        OrderBias: 0
+                        RenderFlags: CastShadows
+                    Children: []
+                    Id: cf053e6c-6168-44e3-b5ed-1fe873f63b4c
+                  - !Evergine.Framework.Assets.AssetSources.Entities.EntityItemModel,Evergine.Framework
+                    Name: text3D
+                    Tag: null
+                    IsEnabled: true
+                    IsStatic: false
+                    Components:
+                      - !Evergine.Framework.Graphics.Transform3D,Evergine.Framework
+                        Id: a295dba5-8a9f-4019-b65e-8be910fca0a7
+                        IsEnabled: true
+                        LocalOrientation:
+                          W: 1.0
+                          X: 0.0
+                          Y: 0.0
+                          Z: 0.0
+                        LocalPosition:
+                          X: -0.0715364069
+                          Y: -0.0202541947
+                          Z: 0.00879621506
+                        LocalScale:
+                          X: 1.0
+                          Y: 1.0
+                          Z: 1.0
+                      - !Evergine.Components.Fonts.Text3DMesh,Evergine.Components
+                        Id: 9fc61628-78e0-4127-8ba6-3d4485ff5457
+                        Color:
+                          A: 255
+                          B: 255
+                          G: 255
+                          R: 255
+                        Ellipsis: true
+                        Font: d1322288-d9e9-4b1e-b2fe-ca281f0388a2
+                        HorizontalAlignment: Left
+                        IsEnabled: true
+                        Layer: e35c59a9-26ab-4b4c-8210-4b1f21c31530
+                        LineSpacing: 0.0
+                        Origin:
+                          X: 0.0
+                          Y: 0.0
+                        ScaleFactor: 0.00700000022
+                        Size:
+                          X: 8.0
+                          Y: 1.10000002
+                        Softness: 0.75
+                        Text: 'Scrolled (count): '
+                        VerticalAlignment: Top
+                        Wrapping: true
+                      - !Evergine.Components.Fonts.Text3DRenderer,Evergine.Components
+                        Id: f68a43ab-a05c-4c1d-9982-00746d6e5bc4
+                        DebugBoundingbox: true
+                        DebugMode: false
+                        IsCullingEnabled: true
+                        IsEnabled: true
+                        OrderBias: 0
+                        RenderFlags: CastShadows
+                    Children: []
+                    Id: 3b9e1a68-bf81-4a1c-b32a-d2f21502cc46
+                  - !Evergine.Framework.Assets.AssetSources.Entities.EntityItemModel,Evergine.Framework
+                    Name: text3D
+                    Tag: controls_scrolled_event_text
+                    IsEnabled: true
+                    IsStatic: false
+                    Components:
+                      - !Evergine.Framework.Graphics.Transform3D,Evergine.Framework
+                        Id: d6ea3615-4ff5-4785-8abc-9a22f8e0d511
+                        IsEnabled: true
+                        LocalOrientation:
+                          W: 1.0
+                          X: 0.0
+                          Y: 0.0
+                          Z: 0.0
+                        LocalPosition:
+                          X: -0.00631812215
+                          Y: -0.0210673213
+                          Z: 0.00879621506
+                        LocalScale:
+                          X: 1.0
+                          Y: 1.0
+                          Z: 1.0
+                      - !Evergine.Components.Fonts.Text3DMesh,Evergine.Components
+                        Id: f0008a04-de5f-4200-bda5-4ff089f022c6
+                        Color:
+                          A: 255
+                          B: 255
+                          G: 255
+                          R: 255
+                        Ellipsis: true
+                        Font: d1322288-d9e9-4b1e-b2fe-ca281f0388a2
+                        HorizontalAlignment: Left
+                        IsEnabled: true
+                        Layer: e35c59a9-26ab-4b4c-8210-4b1f21c31530
+                        LineSpacing: 0.0
+                        Origin:
+                          X: 0.0
+                          Y: 0.0
+                        ScaleFactor: 0.00700000022
+                        Size:
+                          X: 8.0
+                          Y: 1.10000002
+                        Softness: 0.75
+                        Text: <scrolled times>
+                        VerticalAlignment: Top
+                        Wrapping: true
+                      - !Evergine.Components.Fonts.Text3DRenderer,Evergine.Components
+                        Id: 79ebeefb-5a9e-479f-8ad3-63104e34db04
+                        DebugBoundingbox: true
+                        DebugMode: false
+                        IsCullingEnabled: true
+                        IsEnabled: true
+                        OrderBias: 0
+                        RenderFlags: CastShadows
+                    Children: []
+                    Id: f987fb62-a7da-4085-9f40-072702d8b4b8
+                Id: 5a8899ab-acee-4515-b75a-0d5af26b66bd
             Id: 4e4023c7-a35b-4c52-b21b-a5e265bb643c
           - !Evergine.Framework.Assets.AssetSources.Entities.EntityItemModel,Evergine.Framework
             Name: samples
