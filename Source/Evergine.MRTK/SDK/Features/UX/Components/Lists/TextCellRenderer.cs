@@ -30,7 +30,7 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Lists
         /// <summary>
         /// Gets or sets text color.
         /// </summary>
-        public Color Color { get; set; }
+        public Color Color { get; set; } = Color.White;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="TextCellRenderer"/> class.
