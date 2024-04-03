@@ -70,7 +70,7 @@ namespace Evergine.MRTK.Demo.Scenes.Samples
 
             this.selectedItemEventText = this.Managers.EntityManager.FindAllByTag("controls_selectedItem_event_text").First().FindComponentInChildren<Text3DMesh>();
             this.scrolledEventText = this.Managers.EntityManager.FindAllByTag("controls_scrolled_event_text").First().FindComponentInChildren<Text3DMesh>();
-            this.selectionListView.SelectedChanged += this.SelectionListView_SelectedChanged;
+            this.selectionListView.SelectedItemChanged += this.SelectionListView_SelectedChanged;
             this.selectionListView.Scrolled += this.SelectionListView_Scrolled;
         }
 

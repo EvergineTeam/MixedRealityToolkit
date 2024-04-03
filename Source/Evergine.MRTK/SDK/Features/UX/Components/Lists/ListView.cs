@@ -93,12 +93,12 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Lists
         private Entity loadingIndicator;
 
         /// <summary>
-        /// Raise when the current element selected change.
+        /// Raised when selection changes.
         /// </summary>
-        public event EventHandler SelectedChanged;
+        public event EventHandler SelectedItemChanged;
 
         /// <summary>
-        /// Raise when ListView is scrolled.
+        /// Raised when ListView is scrolled.
         /// </summary>
         public event EventHandler Scrolled;
 
@@ -164,6 +164,8 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Lists
         /// <summary>
         /// Gets or sets the selected element index.
         /// </summary>
+        [IgnoreEvergine]
+        [DontRenderProperty]
         public int SelectedIndex
         {
             get => this.selectedIndex;
@@ -196,7 +198,7 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Lists
                 }
                 else
                 {
-                    return this.dataSource.GetRowValue(0);
+                    return null;
                 }
             }
 
@@ -233,10 +235,7 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Lists
             set
             {
                 this.headerEnabled = value;
-                if (this.IsAttached)
-                {
-                    this.header.IsEnabled = this.headerEnabled;
-                }
+                this.OnHeaderEnabledUpdated();
             }
         }
 
@@ -285,6 +284,13 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Lists
             this.Refresh();
 
             return result;
+        }
+
+        /// <inheritdoc/>
+        protected override void Start()
+        {
+            base.Start();
+            this.OnHeaderEnabledUpdated();
         }
 
         private void UpdateLoadingIndicator()
@@ -676,7 +682,7 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Lists
 
         private void SetSelectedRow(int rowIndex)
         {
-            if (rowIndex < 0 || rowIndex >= this.dataSource.Count)
+            if (rowIndex < 0 || rowIndex >= this.dataSource?.Count)
             {
                 this.selectionEntity.IsEnabled = false;
                 return;
@@ -684,7 +690,17 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Lists
 
             this.selectedIndex = rowIndex;
             this.selectionEntity.IsEnabled = true;
-            this.SelectedChanged?.Invoke(this, null);
+            this.SelectedItemChanged?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void OnHeaderEnabledUpdated()
+        {
+            if (!this.IsAttached)
+            {
+                return;
+            }
+
+            this.header.IsEnabled = this.headerEnabled;
         }
 
         private void ValidateColumnDefinitions()
