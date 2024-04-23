@@ -19,6 +19,7 @@ using Evergine.MRTK.Behaviors;
 using Evergine.MRTK.Emulation;
 using Evergine.MRTK.SDK.Features;
 using Evergine.MRTK.Services.InputSystem;
+using Evergine.MRTK.Services.TeleportSystem.Behaviors;
 
 namespace Evergine.MRTK.Scenes
 {
@@ -141,6 +142,8 @@ namespace Evergine.MRTK.Scenes
             {
                 CollisionCategoryMask = this.CursorCollisionCategoryMask & ~this.CursorCollisionCategory,
             });
+            ////var mrtkRootEntity = this.Managers.EntityManager.FindAllByTag(MRTKRootTag).FirstOrDefault();
+            ////mrtkRootEntity.AddChild(cam.Owner);
         }
 
         /// <summary>
@@ -159,8 +162,20 @@ namespace Evergine.MRTK.Scenes
                 {
                     Tag = MRTKRootTag,
                 }
-                .AddComponent(new Transform3D());
+                .AddComponent(new Transform3D())
+                .AddComponent(new CharacterController3D())
+                .AddComponent(new MixedRealityCharacterControllerBehavior())
+                .AddComponent(new CapsuleMesh())
+                .AddComponent(new CapsuleCollider3D());
+                ////.AddComponent(new MeshRenderer());
+                ////.AddComponent(new MaterialComponent());
 
+                // Add camera to MRTK root entity
+                var cameraEntity = new Entity("MRTKCamera")
+                .AddComponent(new Transform3D())
+                .AddComponent(new Camera3D());
+
+                mrtkRootEntity.AddChild(cameraEntity);
                 entityManager.Add(mrtkRootEntity);
             }
 
