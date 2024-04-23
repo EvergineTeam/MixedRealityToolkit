@@ -173,7 +173,8 @@ namespace Evergine.MRTK.Scenes
                 // Add camera to MRTK root entity
                 var cameraEntity = new Entity("MRTKCamera")
                 .AddComponent(new Transform3D())
-                .AddComponent(new Camera3D());
+                .AddComponent(new Camera3D())
+                .AddComponent(new MixedRealityCharacterControllerCameraBehavior());
 
                 mrtkRootEntity.AddChild(cameraEntity);
                 entityManager.Add(mrtkRootEntity);

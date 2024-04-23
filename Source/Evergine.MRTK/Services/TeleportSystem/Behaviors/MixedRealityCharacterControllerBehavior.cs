@@ -1,13 +1,11 @@
 ﻿// Copyright © Evergine S.L. All rights reserved. Use is subject to license terms.
 
 using Evergine.Common.Input.Keyboard;
-using Evergine.Common.Input.Mouse;
 using Evergine.Framework;
 using Evergine.Framework.Graphics;
 using Evergine.Framework.Physics3D;
 using Evergine.Mathematics;
 using System;
-using System.Text;
 
 namespace Evergine.MRTK.Services.TeleportSystem.Behaviors
 {
@@ -19,11 +17,8 @@ namespace Evergine.MRTK.Services.TeleportSystem.Behaviors
         [BindComponent]
         private readonly CharacterController3D characterController = null;
 
-        /// <summary>
-        /// The Transform component of the entity to spin (own entity by default).
-        /// </summary>
-        [BindComponent(false)]
-        private Transform3D transform = null;
+        [BindComponent]
+        private readonly Transform3D transform = null;
 
         /// <summary>
         /// The Camera component of the entity (own entity by default).
@@ -36,11 +31,6 @@ namespace Evergine.MRTK.Services.TeleportSystem.Behaviors
         /// </summary>
         public float MoveSpeed { get; set; }
 
-        /// <summary>
-        /// Gets or sets the rotation speed of the camera.
-        /// </summary>
-        public float RotationSpeed { get; set; }
-
         private struct MoveStruct
         {
             public float moveForward;
@@ -50,10 +40,6 @@ namespace Evergine.MRTK.Services.TeleportSystem.Behaviors
             public float moveUp;
             public float moveDown;
 
-            public float yaw;
-            public float pitch;
-            public float roll;
-
             public void Clear()
             {
                 this.moveForward = 0.0f;
@@ -62,27 +48,10 @@ namespace Evergine.MRTK.Services.TeleportSystem.Behaviors
                 this.moveRight = 0.0f;
                 this.moveUp = 0.0f;
                 this.moveDown = 0.0f;
-
-                this.yaw = 0.0f;
-                this.pitch = 0.0f;
-                this.roll = 0.0f;
             }
         }
 
         private MoveStruct moveStruct = new MoveStruct();
-
-        /// <summary>
-        /// Gets or sets the Mouse sensibility.
-        /// </summary>
-        /// <remarks>
-        /// 0.5 is for stop, 1 is for raw delta, 2 is twice delta.
-        /// </remarks>
-        public float MouseSensibility { get; set; }
-
-        /// <summary>
-        /// Gets or sets the maximum pitch angle.
-        /// </summary>
-        public float MaxPitch { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MixedRealityCharacterControllerBehavior"/> class.
@@ -90,10 +59,6 @@ namespace Evergine.MRTK.Services.TeleportSystem.Behaviors
         public MixedRealityCharacterControllerBehavior()
         {
             this.MoveSpeed = 5.0f;
-            this.RotationSpeed = 5.0f;
-            this.MouseSensibility = 0.03f;
-            this.MaxPitch = MathHelper.PiOver2 * 0.95f;
-
             this.moveStruct.Clear();
         }
 
@@ -127,7 +92,6 @@ namespace Evergine.MRTK.Services.TeleportSystem.Behaviors
         private void HandleInput()
         {
             this.HandleKeyboard();
-            this.HandleMouse();
         }
 
         /// <summary>
@@ -178,72 +142,6 @@ namespace Evergine.MRTK.Services.TeleportSystem.Behaviors
             {
                 this.moveStruct.moveRight = currentSpeed;
             }
-
-            if (keyboardDispatcher.IsKeyDown(Keys.Q))
-            {
-                this.moveStruct.moveUp = currentSpeed;
-            }
-            else if (keyboardDispatcher.IsKeyDown(Keys.E))
-            {
-                this.moveStruct.moveDown = currentSpeed;
-            }
-
-            if (keyboardDispatcher.IsKeyDown(Keys.Up))
-            {
-                this.moveStruct.pitch = currentSpeed;
-            }
-            else if (keyboardDispatcher.IsKeyDown(Keys.Down))
-            {
-                this.moveStruct.pitch = -currentSpeed;
-            }
-
-            if (keyboardDispatcher.IsKeyDown(Keys.Left))
-            {
-                this.moveStruct.yaw = currentSpeed;
-            }
-            else if (keyboardDispatcher.IsKeyDown(Keys.Right))
-            {
-                this.moveStruct.yaw = -currentSpeed;
-            }
-        }
-
-        /// <summary>
-        /// Handles Mouse Input.
-        /// </summary>
-        private void HandleMouse()
-        {
-            var display = this.camera.Display;
-
-            if (display == null)
-            {
-                return;
-            }
-
-            var mouseDispatcher = display.MouseDispatcher;
-
-            if (mouseDispatcher?.IsButtonDown(MouseButtons.Right) == true)
-            {
-                var positionDelta = mouseDispatcher.PositionDelta;
-                this.moveStruct.yaw = -positionDelta.X * this.MouseSensibility;
-                this.moveStruct.pitch = -positionDelta.Y * this.MouseSensibility;
-            }
-        }
-
-        /// <summary>
-        /// Helper method to calculate displacement using configurable speed and amount.
-        /// </summary>
-        /// <param name="director">Direction Vector.</param>
-        /// <param name="maxCurrentSpeed">Max Speed.</param>
-        /// <param name="amount">Movement proportion. 0 = stop, 1 = max movement.</param>
-        /// <param name="displacement">Output vector.</param>
-        private void Displacement(Vector3 director, float maxCurrentSpeed, float amount, ref Vector3 displacement)
-        {
-            var elapsedAmount = maxCurrentSpeed * amount;
-
-            // Manual in-line: position += speed * forward;
-            displacement.X = displacement.X + (elapsedAmount * director.X);
-            displacement.Y = displacement.Y + (elapsedAmount * director.Y);
-            displacement.Z = displacement.Z + (elapsedAmount * director.Z);
         }
 
         /// <summary>
@@ -253,62 +151,45 @@ namespace Evergine.MRTK.Services.TeleportSystem.Behaviors
         private void UpdatePositionAndOrientation(float elapsed)
         {
             Vector3 displacement = Vector3.Zero;
-            Matrix4x4 localTransform = this.transform.LocalTransform;
 
-            var elapsedMaxSpeed = elapsed * this.MoveSpeed;
+            var elapsedMaxSpeed = elapsed * this.MoveSpeed * 100;
 
             if (this.moveStruct.moveForward != 0.0f)
             {
-                this.Displacement(localTransform.Forward, elapsedMaxSpeed, this.moveStruct.moveForward, ref displacement);
+                displacement += this.transform.LocalForward * this.moveStruct.moveForward;
             }
             else if (this.moveStruct.moveBackward != 0.0f)
             {
-                this.Displacement(localTransform.Backward, elapsedMaxSpeed, this.moveStruct.moveBackward, ref displacement);
+                displacement += this.transform.LocalBackward * this.moveStruct.moveBackward;
             }
 
             if (this.moveStruct.moveLeft != 0.0f)
             {
-                this.Displacement(localTransform.Left, elapsedMaxSpeed, this.moveStruct.moveLeft, ref displacement);
+                displacement += this.transform.LocalLeft * this.moveStruct.moveLeft;
             }
             else if (this.moveStruct.moveRight != 0.0f)
             {
-                this.Displacement(localTransform.Right, elapsedMaxSpeed, this.moveStruct.moveRight, ref displacement);
+                displacement += this.transform.LocalRight * this.moveStruct.moveRight;
             }
 
-            if (this.moveStruct.moveUp != 0.0f)
-            {
-                this.Displacement(localTransform.Up, elapsedMaxSpeed, this.moveStruct.moveUp, ref displacement);
-            }
-            else if (this.moveStruct.moveDown != 0.0f)
-            {
-                this.Displacement(localTransform.Down, elapsedMaxSpeed, this.moveStruct.moveDown, ref displacement);
-            }
-
-            // Manual in-line: camera.Position = position;
-            ////this.transform.LocalPosition += displacement;
-            this.characterController.SetVelocity(displacement);
-
-            // Rotation:
-            var rotation = this.transform.LocalRotation;
-            rotation.Y += this.moveStruct.yaw * this.RotationSpeed * (1 / 60f);
-            rotation.X += this.moveStruct.pitch * this.RotationSpeed * (1 / 60f);
-
-            // Limit Pitch Angle
-            rotation.X = MathHelper.Clamp(rotation.X, -this.MaxPitch, this.MaxPitch);
-            ////this.transform.LocalRotation = rotation;
-            this.characterController.Rotate(rotation.X);
+            this.characterController.SetVelocity(displacement * elapsedMaxSpeed);
         }
 
         /// <inheritdoc/>
         protected override void Update(TimeSpan gameTime)
         {
+            this.moveStruct.Clear();
             this.HandleInput();
             this.UpdatePositionAndOrientation((float)gameTime.TotalSeconds);
         }
 
-        ////public void Rotate(float angle)
-        ////{
-
-        ////}
+        /// <summary>
+        /// Updates the entity rotation.
+        /// </summary>
+        /// <param name="angle">Angle.</param>
+        public void Rotate(float angle)
+        {
+            this.characterController.Rotate(angle);
+        }
     }
 }
