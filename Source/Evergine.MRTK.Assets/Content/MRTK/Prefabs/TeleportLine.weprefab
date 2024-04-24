@@ -1,0 +1,50 @@
+!Evergine.Framework.Assets.AssetSources.Entities.PrefabModel,Evergine.Framework
+Root:
+  Name: TeleportLine
+  Tag: null
+  IsEnabled: true
+  IsStatic: false
+  Components:
+    - !Evergine.Framework.Graphics.Transform3D,Evergine.Framework
+      Id: 816ca484-a378-48d6-8420-34c9ef2c3ba0
+      IsEnabled: true
+      LocalOrientation:
+        W: 1.0
+        X: 0.0
+        Y: 0.0
+        Z: 0.0
+      LocalPosition:
+        X: 0.0
+        Y: 0.00400000019
+        Z: 0.0149999997
+      LocalScale:
+        X: 1.0
+        Y: 1.0
+        Z: 1.0
+    - !Evergine.Components.Primitives.LineMesh,Evergine.Components
+      Id: b43a855d-3309-4994-b2ac-9241973320ae
+      DiffuseSampler: cb80d2ef-6bcc-4dd3-8e62-636465021fba
+      DiffuseTexture: 79d9580a-094a-407f-8773-2a3d217de8e7
+      IsCameraAligned: false
+      IsEnabled: true
+      IsLoop: false
+      LinePoints: []
+      LineType: LineStrip
+      Model: null
+      TexcoordOffset:
+        X: 0.0
+        Y: 0.25
+      TextureTiling:
+        X: 1.0
+        Y: 1.0
+      UseWorldSpace: true
+    - !Evergine.Components.Graphics3D.LineMeshRenderer3D,Evergine.Components
+      Id: 81c5d3a2-5e7b-43e5-b31e-16cde43effe0
+      DebugBoundingbox: true
+      IsCullingEnabled: true
+      IsEnabled: true
+      Layer: e35c59a9-26ab-4b4c-8210-4b1f21c31530
+      OrderBias: 0
+      RenderFlags: CastShadows
+  Children: []
+  Id: 8df754c2-6e6b-49ce-a0cb-5babd9702284
