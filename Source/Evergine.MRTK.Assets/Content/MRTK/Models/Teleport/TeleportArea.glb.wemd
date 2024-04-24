@@ -1,0 +1,26 @@
+!Evergine.Assets.Exporters.ModelMetaFile,Evergine.Assets
+Id: f2c22b10-0264-4aa6-898d-41aa1474cea9
+Clips: []
+DefaultProfile:
+  ExcludeAsset: false
+  Name: null
+  Platform: Undefined
+ExportAnimations: true
+ExportAsRaw: false
+GenerateTangentSpace: true
+Profiles: {}
+Source:
+  Header:
+    Id: 0dc8162a-ec21-49a5-90e6-fdf61d223ee8
+    IsCompressed: true
+  LastModified: 0001-01-01T00:00:00.0000000
+  ModelInfo:
+    Id: 2d11481c-36c3-432c-a3a1-54099645dedb
+    AnimationTracks: []
+    EmbeddedResources: null
+    Materials:
+      - Item1: SimplygonCastMaterial.008
+        Item2: 71dd10fd-e0cc-4c94-a36b-dc335442f1d7
+    Nodes:
+      - PointerArea
+SwapWindingOrder: false

@@ -1,0 +1,96 @@
+!Evergine.Framework.Assets.AssetSources.Entities.PrefabModel,Evergine.Framework
+Root:
+  Name: TeleportArea
+  Tag: null
+  IsEnabled: true
+  IsStatic: false
+  Components:
+    - !Evergine.Framework.Graphics.Transform3D,Evergine.Framework
+      Id: 23893e17-df1d-452c-8505-e1f23f68e60a
+      IsEnabled: true
+      LocalOrientation:
+        W: 1.0
+        X: 0.0
+        Y: 0.0
+        Z: 0.0
+      LocalPosition:
+        X: 0.0
+        Y: 0.0
+        Z: 0.0
+      LocalScale:
+        X: 1.0
+        Y: 1.0
+        Z: 1.0
+    - !Evergine.Framework.Physics3D.StaticBody3D,Evergine.Framework
+      Id: b0d9b2c5-9dc3-4527-b0c3-3fce490db91a
+      CcdMotionThreshold: 0.0
+      CcdSweptSphereRadius: 0.200000003
+      CollisionCategories: Cat3
+      Friction: 0.5
+      IsEnabled: true
+      IsSensor: true
+      MaskBits: Cat1
+      Restitution: 0.0
+      RollingFriction: 0.0
+      UpdateOrder: 0.5
+    - !Evergine.Framework.Physics3D.SphereCollider3D,Evergine.Framework
+      Id: e2d6ed59-d821-49f2-ad8d-b9e916096b73
+      IsEnabled: true
+      Margin: 0.0399999991
+      Offset:
+        X: 0.0
+        Y: -0.5
+        Z: 0.0
+      Radius: 0.400000006
+  Children:
+    - !Evergine.Framework.Assets.AssetSources.Entities.EntityItemModel,Evergine.Framework
+      Name: PointerArea_glb
+      Tag: null
+      IsEnabled: true
+      IsStatic: false
+      Components:
+        - !Evergine.Framework.Graphics.Transform3D,Evergine.Framework
+          Id: dd289f4c-2bc6-4e29-8c03-733af2220f8d
+          IsEnabled: true
+          LocalOrientation:
+            W: 1.0
+            X: 0.0
+            Y: 0.0
+            Z: 0.0
+          LocalPosition:
+            X: 0.0
+            Y: 0.0
+            Z: 0.0
+          LocalScale:
+            X: 1.0
+            Y: 1.0
+            Z: 1.0
+        - !Evergine.Components.Graphics3D.MaterialComponent,Evergine.Framework
+          Id: f5b6b581-c8ff-4cad-8e9b-2ff3060d9678
+          AsignedTo: SimplygonCastMaterial.008
+          IsEnabled: true
+          Material: 71dd10fd-e0cc-4c94-a36b-dc335442f1d7
+          UseCopy: false
+        - !Evergine.Components.Graphics3D.MeshComponent,Evergine.Framework
+          Id: 2f085cd7-50e7-4cd5-aed8-b0a3edfd1f15
+          IsEnabled: true
+          Model: f2c22b10-0264-4aa6-898d-41aa1474cea9
+          ModelMeshName: ProcessedGeometry_LOD1_009
+        - !Evergine.Components.Graphics3D.MeshRenderer,Evergine.Framework
+          Id: 67f03267-03e1-4f80-bcf2-c738a2d4c2ee
+          DebugBoundingbox: true
+          IsCullingEnabled: true
+          IsEnabled: true
+          OrderBias: 0
+          RenderFlags: None
+        - !Evergine.Components.Graphics3D.Spinner,Evergine.Components
+          Id: 2cf10b78-600b-4afa-86d8-88e7b658ebef
+          AxisIncrease:
+            X: 0.0
+            Y: 5.0
+            Z: 0.0
+          IsEnabled: true
+          UpdateOrder: 0.5
+      Children: []
+      Id: 5b71f9bc-6477-4b70-9544-5ae9904b7063
+  Id: e1cb441f-02c9-4758-8286-856c5cb91643
