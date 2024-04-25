@@ -21,12 +21,6 @@ namespace Evergine.MRTK.Emulation
     /// </summary>
     public class TeleportRay : Behavior
     {
-        //// Teleport Effect Area
-        ////private Entity teleportAreaEntity = null;
-        ////private StaticBody3D teleportAreaStaticBody = null;
-        ////private SphereCollider3D sphereCollider = null;
-        ////private Transform3D teleportAreaTransform = null;
-
         /// <summary>
         /// Prefab for teleportation area.
         /// </summary>
@@ -112,6 +106,17 @@ namespace Evergine.MRTK.Emulation
         /// Origin of the teleport ray.
         /// </summary>
         public Transform3D transform = null;
+
+        /// <summary>
+        /// Event handler for new teleport positions.
+        /// </summary>
+        /// <param name="newPosition">The new position the teleport ray generated.</param>
+        public delegate void TeleportationEventHandler(Vector3 newPosition);
+
+        /// <summary>
+        /// It is triggered when the user selects a valid place to be teleported.
+        /// </summary>
+        public event TeleportationEventHandler TeleportationEvent;
 
         //// Prefab entities
         private Entity teleportationAreaEntity = null;
@@ -216,12 +221,40 @@ namespace Evergine.MRTK.Emulation
 
         private void DeleteLineMesh()
         {
-            throw new NotImplementedException();
+            var linePoints = this.teleportationLineMesh.LinePoints;
+            linePoints.Clear();
+
+            this.teleportationLineMesh.LinePoints = linePoints;
+            this.teleportationLineMeshRenderer.IsEnabled = false;
         }
 
         private void ReleasingBehavior()
         {
-            throw new NotImplementedException();
+            if (this.teleportationAreaEntity != null)
+            {
+                this.teleportationAreaEntity.IsEnabled = false;
+            }
+
+            if (this.groundDetected)
+            {
+                if (!this.rayCollisionDetected && !this.detectedCollisionArea)
+                {
+                    //// Position of the ground the user pointed to. To teleport, the user should use its own "Y" component.
+                    Vector3 newPosition = new Vector3(this.groundPosition.X, this.groundPosition.Y, this.groundPosition.Z);
+                    this.OnTeleportationEvent(newPosition);
+                }
+            }
+
+            this.DeleteLineMesh();
+        }
+
+        /// <summary>
+        /// Raises the TeleportationEvent with the specified new position.
+        /// </summary>
+        /// <param name="newPosition">The new position after teleportation.</param>
+        protected virtual void OnTeleportationEvent(Vector3 newPosition)
+        {
+            this.TeleportationEvent?.Invoke(newPosition);
         }
 
         private void PressedBehavior()
