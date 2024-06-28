@@ -25,7 +25,7 @@ jobs:
     variables:
       nugetOutputPath: "$(Build.StagingDirectory)/nupkgs"
       wepkgOutputPath: "$(Build.StagingDirectory)/wepkgs"
-      NetCoreSDKVersion: "6.x"
+      NetCoreSDKVersion: "8.x"
       NuGetVersion: "6.x"
 
     steps:
