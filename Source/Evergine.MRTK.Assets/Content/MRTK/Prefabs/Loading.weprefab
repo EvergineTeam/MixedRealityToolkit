@@ -1,7 +1,7 @@
 !Evergine.Framework.Assets.AssetSources.Entities.PrefabModel,Evergine.Framework
 Root:
   Name: Loading
-  Tag: PART_loading
+  Tag: null
   IsEnabled: true
   IsStatic: false
   Components:

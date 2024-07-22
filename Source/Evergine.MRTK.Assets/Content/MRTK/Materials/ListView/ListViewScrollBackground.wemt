@@ -1,12 +1,12 @@
 !Evergine.Assets.Exporters.MaterialMetaFile,Evergine.Assets
-Id: f478b4e6-db00-44f4-a529-3126487183ea
+Id: 06016b69-8771-4df2-a9fe-aeb192bff81f
 DefaultProfile:
   ExcludeAsset: false
   Name: null
   Platform: Undefined
 ExportAsRaw: false
 MaterialInfo:
-  Id: 10811ebe-ec59-4a91-9698-3aae9f95bf8f
+  Id: d31f8424-d8af-4410-8eba-1fd373e35e56
   ActiveDirectives:
     - INDEPENDENT_CORNERS
     - IRIDESCENCE
@@ -95,7 +95,7 @@ MaterialInfo:
       ValueByteArray: AAAAAA==
     - Name: HoverColorOverride
       Type: Evergine.Mathematics.Vector3,Evergine.Mathematics
-      ValueByteArray: sbAwPbGwMD2xsDA9
+      ValueByteArray: 61gxPetYMT3rWDE9
     - Name: ProximityLightCenterColorOverride
       Type: Evergine.Mathematics.Vector4,Evergine.Mathematics
       ValueByteArray: DjQEPflsiT753nQ/AAAAAA==

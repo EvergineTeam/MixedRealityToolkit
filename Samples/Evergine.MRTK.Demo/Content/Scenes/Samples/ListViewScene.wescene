@@ -10,18 +10,18 @@ Items:
         Id: 7a3a6340-5fac-4fd1-9ef9-5496fcba6c33
         IsEnabled: true
         LocalOrientation:
-          W: 1.0
-          X: 0.0
-          Y: 0.0
-          Z: 0.0
+          W: 0.997260869
+          X: 0.0390226059
+          Y: 0.0627852902
+          Z: -0.00245676679
         LocalPosition:
-          X: 0.023253426
-          Y: 0.677960277
-          Z: 0.523969293
+          X: -0.0836285576
+          Y: 0.0815521181
+          Z: 0.147638693
         LocalScale:
           X: 1.0
           Y: 1.0
-          Z: 1.0
+          Z: 0.99999994
       - !Evergine.Components.Cameras.FreeCamera3D,Evergine.Components
         Id: edaa62ef-2aea-413c-b869-3691d7a950a9
         IsEnabled: true
@@ -204,8 +204,8 @@ Items:
           Y: 0.0
           Z: 0.0
         LocalPosition:
-          X: -0.101436675
-          Y: 0.0361740589
+          X: -0.29693079
+          Y: 0.155238658
           Z: -0.400000006
         LocalScale:
           X: 1.0
@@ -395,7 +395,42 @@ Items:
                 Children:
                   - !Evergine.Framework.Assets.AssetSources.Entities.PrefabInstanceModel,Evergine.Framework
                     EntityLinks: {}
-                    Id: a4a3085d-243b-4788-8645-31af3de6f27a
+                    Id: fa257023-7ca2-4e8e-8993-93fa87d11495
+                    IdDictionary:
+                      021dcb6b-b30b-4c59-a8df-3f30bb953ce0: 18710c37-c0e7-41e8-9463-750a80f16ef6
+                      094e72b0-b723-4834-8907-195281ac93fe: e9cc3fe8-7fd9-44e7-8755-9f84cb38511e
+                      0f01517a-c230-4313-83c9-91826912d8c9: 99df69e1-a44f-42fa-8df0-4b75f04bcf36
+                      11c208ed-ecbf-41df-95d4-b35d44bc63e0: 6f3db4ff-8044-4229-aca6-64930dbf90a1
+                      19859b6c-2c13-4512-a276-841d6de282e6: fa257023-7ca2-4e8e-8993-93fa87d11495
+                      21e7bfb8-e27f-485e-8f93-c192186d400d: b24e5547-06d2-4420-b860-7e3dbaf71e74
+                      22fa2ed9-462d-49df-be4d-7733385ca4c9: 2088f95d-8c7d-4e42-b742-87944a123ea6
+                      3aebe4fa-d666-447f-a368-5833f2e1fed6: f8c98e4f-b991-402a-a25b-ccb12e269a91
+                      4139380f-9971-4623-bf90-4630b5ff27c3: d6868231-38fa-4962-9b94-57fea4d80cd0
+                      4b02096f-247a-4a01-b41a-731a66912bae: 3d43bf9f-c625-4f97-9b07-14ada4f0571e
+                      4e23cde8-e88f-4c32-9586-f1ae80c99139: a0654eac-4683-48a1-b806-da44dc3401c7
+                      580db696-55c6-4976-b472-a98894d46884: c32fd2a1-a0b5-4a55-bce4-595d52d17532
+                      660df448-a8ac-4d33-a9bd-ae324caebaeb: 3caa0091-e894-4a6c-b05e-76d013343877
+                      91e90cc0-6bf6-42ba-ad76-8a8ab5266499: 816f30cd-bfa6-46b4-aeb7-41ce5245b126
+                      9c0d18b5-5928-4a8c-bf0a-ee78937b1c7b: fe728a11-1d80-4a31-a03b-07e95d4eb39f
+                      a1909cf9-9875-451b-b462-21e26fe5b926: a7ca88fe-2958-4768-8372-e6d16ba4d924
+                      a87344ae-59ff-4fa5-81ed-1f8a8b396719: 57a33c13-d261-48c4-b84b-912cfe806448
+                      a94504c6-5fb6-4bd6-baaa-0ae7df7c89b0: cde28b93-809d-4adf-8ed6-b84896828e11
+                      adcc5215-f512-4262-84e7-4f3f4af1b069: 2646274a-a940-4dc9-b799-ce914e69d6e6
+                      b0cdc717-3bf2-47e3-ba5f-c4639bec0312: 561b87f8-6d9d-4691-b8eb-24b59b3d5073
+                      d953b076-53f1-4daf-977d-ddfc4820de88: b64ca2a1-000f-4540-964e-293fdbe1e781
+                      da706d1c-05a2-4360-ae80-519c0fa5aaab: 061a73dc-c817-49e5-b84f-bcaced6bd70a
+                      db42ed51-5196-4465-8023-45dd97b09526: 3eda549e-712a-485c-bb43-c54fa63b6928
+                      df6e2768-3642-4c67-b08a-224f266ae39b: 182b1812-078b-4197-9cb0-e53154ccf0a7
+                      e0b2f115-1b88-44f9-adcf-b100a8e5b898: 4252e440-9024-40df-80d5-0ee11f8c0994
+                      e2cd7596-1a8b-4819-8457-0c7b0c8a2b1f: 6fc464dc-e0e0-4218-8c60-d086746bf4ba
+                      ea0272b2-a7d6-4202-b68b-ad1c35bfbce6: 741460cc-840d-4973-ac0f-047b99a8903e
+                      ef903c2b-be3d-48b4-aaa5-68d43aa59ec2: 278c0528-b135-45d1-a307-ac8037c02dca
+                      f559c7d2-023f-4689-a08d-56b145303bb6: 321b8591-6622-4ae4-a813-370cfe43a849
+                      f8a6f7da-8753-4532-b8f8-d96f793232c6: b7ad5fd5-9b4e-428e-8110-bfe2680f1ad2
+                      f913aec0-e726-4dac-9d2b-f399b6760a7d: cc4835fe-c01c-43ac-ae69-6119a000800d
+                      fa501c25-9686-44da-b671-511ab5b649f5: f78ba31e-2db2-4f6c-8bb7-c69e7a734a31
+                      fd8022d6-3e69-42bd-b77d-a62f33d45e6d: 954d85a9-99ce-4e54-a7ab-89080d0cbf6b
+                      fff168c2-5aa1-4edf-95fa-93de7248212a: 867fbe7b-1fb6-4b52-b1d4-6765200ba763
                     Modifications:
                       - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.String,System.Private.CoreLib]],Evergine.Framework
                         Name: Name
@@ -500,7 +535,42 @@ Items:
                 Children:
                   - !Evergine.Framework.Assets.AssetSources.Entities.PrefabInstanceModel,Evergine.Framework
                     EntityLinks: {}
-                    Id: bb0284ce-bb22-46d1-bf1b-c19ad14103d1
+                    Id: 763556d1-c4cf-49c7-8b5f-1dc42a34a150
+                    IdDictionary:
+                      021dcb6b-b30b-4c59-a8df-3f30bb953ce0: 5cf3656c-15ee-44cf-b3b8-baca45bdc22f
+                      094e72b0-b723-4834-8907-195281ac93fe: 44f7324a-9ee7-417f-bd43-1866e6ad914c
+                      0f01517a-c230-4313-83c9-91826912d8c9: 23950511-af92-48e8-9e2d-8b94e177159f
+                      11c208ed-ecbf-41df-95d4-b35d44bc63e0: 8e18affc-b5b0-4c37-9a94-17ef35626025
+                      19859b6c-2c13-4512-a276-841d6de282e6: 763556d1-c4cf-49c7-8b5f-1dc42a34a150
+                      21e7bfb8-e27f-485e-8f93-c192186d400d: 3949d51d-52e2-42a3-9572-c436340b063e
+                      22fa2ed9-462d-49df-be4d-7733385ca4c9: cdaae81d-b69a-4004-879f-01b58667d6dc
+                      3aebe4fa-d666-447f-a368-5833f2e1fed6: 91d045d7-693a-43a4-88ad-c42a033f1984
+                      4139380f-9971-4623-bf90-4630b5ff27c3: 7fc33a82-fc33-435a-bc4e-26b395dcdf49
+                      4b02096f-247a-4a01-b41a-731a66912bae: 49a8080c-422c-41d0-afb1-42998c028119
+                      4e23cde8-e88f-4c32-9586-f1ae80c99139: 71b53b86-3ad7-4dfe-b893-a9074a8c7388
+                      580db696-55c6-4976-b472-a98894d46884: b90e633a-1b49-4661-88e3-b21252aaa8e8
+                      660df448-a8ac-4d33-a9bd-ae324caebaeb: f38472f4-5ba2-4b9b-b584-f127e54977c1
+                      91e90cc0-6bf6-42ba-ad76-8a8ab5266499: 12e5fdda-1d57-49a4-a849-ac7f0b84b23b
+                      9c0d18b5-5928-4a8c-bf0a-ee78937b1c7b: 7437a28a-185a-4192-b134-4815f65c7355
+                      a1909cf9-9875-451b-b462-21e26fe5b926: 47dfeaa2-2b49-43d9-96ef-fdda3b2680c2
+                      a87344ae-59ff-4fa5-81ed-1f8a8b396719: 8107f9bd-1799-4f02-b1b9-3b6f40e529d2
+                      a94504c6-5fb6-4bd6-baaa-0ae7df7c89b0: c8aaa64b-97d0-4166-b5a3-9c9a8fa40fb4
+                      adcc5215-f512-4262-84e7-4f3f4af1b069: fb49a72d-fa6d-4e76-8c5a-c64f57fa6f69
+                      b0cdc717-3bf2-47e3-ba5f-c4639bec0312: a68756b3-39f7-46a2-b416-5a6322ea7c74
+                      d953b076-53f1-4daf-977d-ddfc4820de88: 6ec4081b-6796-445c-b5f6-411e34050b53
+                      da706d1c-05a2-4360-ae80-519c0fa5aaab: 3c5873b0-ae44-40d0-8c91-df79bc678b79
+                      db42ed51-5196-4465-8023-45dd97b09526: 9131e280-d8ef-4cc0-809e-86c070710b9c
+                      df6e2768-3642-4c67-b08a-224f266ae39b: 85f6bf09-8acf-453c-9266-0e1f0cb78385
+                      e0b2f115-1b88-44f9-adcf-b100a8e5b898: 2b0fd3d5-82db-4a18-87c8-84ebd06762d0
+                      e2cd7596-1a8b-4819-8457-0c7b0c8a2b1f: 03d26159-2086-45c8-9c1a-791b81b42277
+                      ea0272b2-a7d6-4202-b68b-ad1c35bfbce6: ca194cd0-d4d7-49ff-abdf-37d2aa13e9fe
+                      ef903c2b-be3d-48b4-aaa5-68d43aa59ec2: a3090200-7b13-4b2d-bb75-5a9d1516ab44
+                      f559c7d2-023f-4689-a08d-56b145303bb6: 02c789b0-f846-4e97-885b-bdeb439cd487
+                      f8a6f7da-8753-4532-b8f8-d96f793232c6: bef859a0-a5a1-45b4-8f96-d1455147e9fb
+                      f913aec0-e726-4dac-9d2b-f399b6760a7d: 28affe7e-bf98-4402-b54c-8324470758ba
+                      fa501c25-9686-44da-b671-511ab5b649f5: 5205eea9-bbb8-42a9-8cb2-adf2018e37f4
+                      fd8022d6-3e69-42bd-b77d-a62f33d45e6d: b6034aaf-264e-4e92-91d7-e43da2392a70
+                      fff168c2-5aa1-4edf-95fa-93de7248212a: 1fa2fe5c-7255-4ab8-acd6-4d2898cedd65
                     Modifications:
                       - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.String,System.Private.CoreLib]],Evergine.Framework
                         Name: Name
@@ -622,12 +692,59 @@ Items:
                 Children:
                   - !Evergine.Framework.Assets.AssetSources.Entities.PrefabInstanceModel,Evergine.Framework
                     EntityLinks: {}
-                    Id: b9a80ddc-14b5-4778-9b65-387ad7de37e6
+                    Id: c518cf01-8674-4471-af9f-6437f6a6bf2f
+                    IdDictionary:
+                      00bbb74d-e74c-4115-9560-28ee316bcdac: cc4e874b-9876-48f0-a9dc-98c2d205e6bd
+                      08424638-72fd-4ac9-aaba-10aa4876b008: b2e5ef76-11e7-4688-abb0-d9667b6590c6
+                      0fd70c3f-920c-4b92-aed2-426130d410d7: 48c8c3ab-9ffb-4c2f-a986-e036e7500b7a
+                      10a4a2b4-f5eb-42b4-815f-af13ee0ab6d7: b2070fd5-8858-42d6-afbe-972663bd0dee
+                      114ed9c5-f183-44bc-bb2f-2c3c560f19d6: e753cad7-1b49-4ac7-87c1-a693c007df4b
+                      29a10c2d-676e-40d5-968a-f00b915596a4: a8e3da2d-0e5f-4a9d-8408-17e8966f054b
+                      29c2cc94-c21b-46c3-a1d3-74583b696908: 27312ede-7a44-4170-bd49-5657493b3f13
+                      3285a976-4ce8-4b39-a9e7-203308e91cbd: 14c0d3ec-b3d6-4e51-bc79-ba73a1d6c3d4
+                      32c920a6-bf72-4169-bcaf-c8a2d39674d4: 868a38ac-16c7-410a-a20e-73b59c1679ed
+                      43017ed1-371e-4755-bb8c-0cdf498bd5f8: 58d0c1cd-a79e-4772-8528-c2b9c9d389ae
+                      4adec8bf-3111-4936-9ab0-b2b997bc24b8: f9fbf4b8-f2a4-46de-89d6-36c7fd77526c
+                      4d137a42-43ce-496d-a264-814989a4b636: 83a6ab2a-154c-4099-bb3f-4e9a2ba65736
+                      4fee1d52-e879-4831-86d5-8ef795ce0eeb: 016ab460-eeff-4cb1-908b-6e29ab1eeb04
+                      5fbbb0de-82fc-4b31-8617-9b9bb8fcbd1c: e0222426-fe8f-420c-95c0-7cc6a58a1847
+                      742aa151-4b53-4797-97a8-8dd1821e9094: 1aa457df-54a3-4ea5-b905-af2e3d38f6da
+                      75f3bb3c-f86e-4379-a18e-531c8c7b3933: fa993990-f5ee-4d48-b6f9-481b99d0e550
+                      781bbb9e-c6b5-44f3-be46-5de9077fe86b: 337379f1-dad2-44f0-8118-ff99ba0ad614
+                      7ebe0c55-9452-4ff1-9386-ed4fa69beafa: db0188c4-5565-4a6c-b461-bd8a1bf1cfe2
+                      83bafbbe-6180-4f08-a7d1-87282c3ad9bf: 629ec071-b057-4135-b718-050df32b8098
+                      945ecb95-128b-4645-9a98-16a8b76fd419: 01c21b63-a8e1-4d0a-a1c1-0eb9ba6334da
+                      9dc7cce4-a28a-4b7a-a1e1-82129a1e5296: c0fa7c4a-c5db-46e6-8fdf-4cded46e9b60
+                      9e743e35-7aa1-4f72-a77d-b31ae5175757: 48af023b-f5a6-47ce-b4f7-09985fbfcb35
+                      a395de9a-85d9-4313-be9b-84d142b99e01: c518cf01-8674-4471-af9f-6437f6a6bf2f
+                      a7c5a62f-b112-4c25-bb9e-eaec97942a6f: f14b8bc3-7c5d-4625-9c7f-d4a524408631
+                      aea5078a-934b-4461-931c-0f4cd4987e6b: a42fd528-381a-402f-892e-f3ed5b849157
+                      b2247f4c-dba5-4cf7-8644-2412fd305835: ad6e6733-1e2c-4bb9-be6c-e40e56fef961
+                      b53277ca-0618-48c9-bd14-4827cc1194f8: 79490686-ddb9-452b-9397-9d8fde2ecbe1
+                      b5af3e87-fdcd-4936-ae34-6d88e4958951: 5d051b70-6ef6-4ba8-b893-1bc310d58878
+                      b91b2b30-621b-4a3b-bb50-5cfb1dc04e36: f4e81e64-11f3-45c4-a4ae-a5396ffaf469
+                      bf5809d4-0569-4eac-a934-17ddd341a9c5: f46dd403-58d7-4cf8-9421-d4d45bcaf0ca
+                      c028d348-4932-43b7-8611-13d0c2abd6ca: 973cdcfb-7155-4db2-a769-22d914729e3d
+                      c26415f6-dfc4-41f4-b470-083aa673632c: 02da7845-75f5-4328-8c10-6883c5c24516
+                      c6f04b5b-7640-4a5a-b326-0a340bd43c2b: a055292a-57a3-42e5-87f9-d26d99b83d3a
+                      d074b0f3-7ff0-4d54-b34a-c6d290a0a777: 9daf714b-2a57-4107-a39d-382afdaf26ee
+                      d0a6115e-ceb4-4f55-baaf-1ef2a74b1fc5: 5a197b10-1f94-4706-b9b9-5cd65b376ba7
+                      da41bcc1-b635-4120-a3b4-abf1e52c689f: 0142bbbd-625a-4c72-a568-75dffe3fdb24
+                      de26b28f-b9c6-4576-9fb4-f33e50dc4e76: 4401bb6d-314c-4aa5-9204-bd25029e708e
+                      df845455-77c1-4045-8d40-9324f7654c6c: a0beb2e6-3aa8-4c77-b4a0-3ed7e2d69ea0
+                      ef7755d7-22dc-48de-a216-df8737aaa58d: 31c27197-9fd4-4f91-ac43-790e02ef8bb0
                     Modifications:
                       - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.String,System.Private.CoreLib]],Evergine.Framework
                         Name: Name
                         Target: a395de9a-85d9-4313-be9b-84d142b99e01
                         TypedValue: PressableButtonPlated_weprefab
+                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Vector3,Evergine.Mathematics]],Evergine.Framework
+                        Name: LocalPosition
+                        Target: 32c920a6-bf72-4169-bcaf-c8a2d39674d4
+                        TypedValue:
+                          X: 0.0
+                          Y: 0.0
+                          Z: 0.0
                       - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Framework.Graphics.Material,Evergine.Framework]],Evergine.Framework
                         Name: Material
                         Target: 945ecb95-128b-4645-9a98-16a8b76fd419
@@ -787,12 +904,59 @@ Items:
                     Children:
                       - !Evergine.Framework.Assets.AssetSources.Entities.PrefabInstanceModel,Evergine.Framework
                         EntityLinks: {}
-                        Id: 92ade247-6fe0-403d-91c1-6a4bd11c779d
+                        Id: 0f7e1936-8b41-4734-b690-a6cc54bef830
+                        IdDictionary:
+                          00bbb74d-e74c-4115-9560-28ee316bcdac: 2549fb0c-466b-42b7-9f73-83dc0079b80e
+                          08424638-72fd-4ac9-aaba-10aa4876b008: 69312bed-16c2-470b-bbba-893dc70a7388
+                          0fd70c3f-920c-4b92-aed2-426130d410d7: d6c42d87-592e-4cb6-b379-206f0b92583c
+                          10a4a2b4-f5eb-42b4-815f-af13ee0ab6d7: 87d8f9d9-efd6-4f04-9fa4-e8b1ab463573
+                          114ed9c5-f183-44bc-bb2f-2c3c560f19d6: 0daf2c8d-eda0-4ebb-b4a0-89ef4c02158d
+                          29a10c2d-676e-40d5-968a-f00b915596a4: 3afb5b7c-4138-49b8-9c70-456a3de0e401
+                          29c2cc94-c21b-46c3-a1d3-74583b696908: 0b7fe3dd-383e-4364-8364-fa9c57c59bc1
+                          3285a976-4ce8-4b39-a9e7-203308e91cbd: ea290c7b-8c4f-4372-8c96-ece810786c47
+                          32c920a6-bf72-4169-bcaf-c8a2d39674d4: 042224ac-5043-4f86-9d71-f44ebfa74d55
+                          43017ed1-371e-4755-bb8c-0cdf498bd5f8: 6a3bff75-5436-49a3-8a9e-5a0ae108a207
+                          4adec8bf-3111-4936-9ab0-b2b997bc24b8: 71f6cb05-83e1-4d00-9e6f-526862f1192b
+                          4d137a42-43ce-496d-a264-814989a4b636: 95ca87ff-9aa9-4c43-b628-b42e0d983002
+                          4fee1d52-e879-4831-86d5-8ef795ce0eeb: 0d25dedb-23e2-4b01-88cd-31c47abb743e
+                          5fbbb0de-82fc-4b31-8617-9b9bb8fcbd1c: 17c55e42-549e-4623-877b-c0b51004c48e
+                          742aa151-4b53-4797-97a8-8dd1821e9094: b7274668-53b7-4dbd-9856-69925d82fd83
+                          75f3bb3c-f86e-4379-a18e-531c8c7b3933: 1096e8a1-00aa-4cad-be4c-96881ca5f718
+                          781bbb9e-c6b5-44f3-be46-5de9077fe86b: 87892ccf-ab66-468a-8f93-d11a89dd2447
+                          7ebe0c55-9452-4ff1-9386-ed4fa69beafa: 454a962b-acb9-4746-ba79-61f381ad7b78
+                          83bafbbe-6180-4f08-a7d1-87282c3ad9bf: 28c605a2-54e4-4eb4-837f-000a4338017d
+                          945ecb95-128b-4645-9a98-16a8b76fd419: 1ba62e4a-724d-43bc-a062-fa2379836cc1
+                          9dc7cce4-a28a-4b7a-a1e1-82129a1e5296: 5e820d1b-975f-4aa6-8f4b-c35d3b122f32
+                          9e743e35-7aa1-4f72-a77d-b31ae5175757: fa9ec949-3b64-4c71-bd24-5d967d82af03
+                          a395de9a-85d9-4313-be9b-84d142b99e01: 0f7e1936-8b41-4734-b690-a6cc54bef830
+                          a7c5a62f-b112-4c25-bb9e-eaec97942a6f: 584861ee-c0ff-4d01-9728-d1781e98c556
+                          aea5078a-934b-4461-931c-0f4cd4987e6b: 3115b91f-cb50-439f-80cb-24073297da3c
+                          b2247f4c-dba5-4cf7-8644-2412fd305835: 3a2c0e4e-c971-4d26-907e-bd943138de71
+                          b53277ca-0618-48c9-bd14-4827cc1194f8: 3bfecaa2-c15b-41f8-b8bb-2a779f4dbc63
+                          b5af3e87-fdcd-4936-ae34-6d88e4958951: 1da2e0b2-0963-4e78-a660-3d125605a842
+                          b91b2b30-621b-4a3b-bb50-5cfb1dc04e36: 6d06f744-3323-4c76-bcec-a12f30c3a8f4
+                          bf5809d4-0569-4eac-a934-17ddd341a9c5: 941bd196-cfcf-4dc4-9c2f-90816a61e00d
+                          c028d348-4932-43b7-8611-13d0c2abd6ca: 4640c5e5-5a71-4a2c-acf3-57576cfcc82b
+                          c26415f6-dfc4-41f4-b470-083aa673632c: f49acd50-c8ad-4b7e-9cf5-6dcfde005799
+                          c6f04b5b-7640-4a5a-b326-0a340bd43c2b: ed24f62a-8865-417f-a090-c5398ecdeff5
+                          d074b0f3-7ff0-4d54-b34a-c6d290a0a777: 806c66e2-9b7d-4510-94e1-d333be8b3f0f
+                          d0a6115e-ceb4-4f55-baaf-1ef2a74b1fc5: c2b60ebb-74a7-48a9-8452-1205e328f524
+                          da41bcc1-b635-4120-a3b4-abf1e52c689f: f2f69b02-ca0a-4041-aaf1-a01caa80d526
+                          de26b28f-b9c6-4576-9fb4-f33e50dc4e76: 74c69282-44d3-4e42-ae8f-773e95661235
+                          df845455-77c1-4045-8d40-9324f7654c6c: 636adba3-9ac1-4e3a-9fc4-eb3a1898ef1e
+                          ef7755d7-22dc-48de-a216-df8737aaa58d: a83d4db5-74aa-40c0-b1db-0fd41212551c
                         Modifications:
                           - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.String,System.Private.CoreLib]],Evergine.Framework
                             Name: Name
                             Target: a395de9a-85d9-4313-be9b-84d142b99e01
                             TypedValue: PressableButtonPlated_weprefab
+                          - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Vector3,Evergine.Mathematics]],Evergine.Framework
+                            Name: LocalPosition
+                            Target: 32c920a6-bf72-4169-bcaf-c8a2d39674d4
+                            TypedValue:
+                              X: 0.0
+                              Y: 0.0
+                              Z: 0.0
                           - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Framework.Graphics.Material,Evergine.Framework]],Evergine.Framework
                             Name: Material
                             Target: 945ecb95-128b-4645-9a98-16a8b76fd419
@@ -822,8 +986,8 @@ Items:
                   Z: 0.0
                 LocalPosition:
                   X: 0.374186665
-                  Y: -0.0387007892
-                  Z: 3.99930613E-08
+                  Y: -0.0449999869
+                  Z: 2.98023224E-08
                 LocalScale:
                   X: 1.0
                   Y: 1.0
@@ -859,71 +1023,76 @@ Items:
                 Children:
                   - !Evergine.Framework.Assets.AssetSources.Entities.PrefabInstanceModel,Evergine.Framework
                     EntityLinks: {}
-                    Id: 44048ae6-249d-46ea-996f-9b7e73769051
+                    Id: 2a5b870b-f1c1-4406-9d53-548cab25a0d6
+                    IdDictionary:
+                      0a29fefe-f24b-4f3c-897a-6dca78053e19: 550770c1-9c09-4285-97a7-08940c879601
+                      0f5c06c6-b910-46ab-baab-783441287556: 94292984-b0bc-4ff5-8469-3fb837bedf64
+                      11296f0c-37ba-4310-bfd8-6b4ef21b00c4: 3bb72c3e-ea7d-4042-93a0-6c6c723d712f
+                      1dd02f3c-888e-49b3-a2fb-105ab12b7e44: 2d873bb5-325a-4c8c-9967-75274d1407d7
+                      1ea06921-f80a-48c1-942f-220be37daf7e: 4efd4e4a-13ef-48b9-8a02-a093801cfd0c
+                      1ff77d37-af71-4156-9420-419e4697264d: c70ad246-931b-4c52-802c-96408986344e
+                      213d46b8-5775-4beb-8663-4f0b4bde873b: 2a5b870b-f1c1-4406-9d53-548cab25a0d6
+                      225a6087-e32e-44b1-b608-6324d331c89d: 7c7f92ce-6e38-4432-9ecb-f4652b45af3c
+                      24b36399-6a10-4a7a-809b-08a3712fcf1b: 398bd878-03ed-4ab9-aeee-0438ec99c3c8
+                      264d55b2-98e4-4a6e-9276-4420b9df5782: 3596990b-d747-46ff-8fde-66f6811b2fc5
+                      2a31dd89-9c4d-4a79-9bda-b0e79f0018f1: daff9be2-debf-422c-964a-342709785bc0
+                      2b2b969f-8a8d-42f4-b22e-92aa8643617b: bea2bd9e-1821-4609-a7ac-5cc92a95b392
+                      2b378825-eedc-4c4f-8b27-6f15e874128c: 3669375b-182a-48d0-94b8-64482ad02251
+                      2cbcd674-772e-4e30-883d-5f135cbc42ae: e3b68070-0712-45a3-925c-99b64d801872
+                      33790838-6660-4a48-a857-ad38ef0c0f5b: 7bb048bf-ccd0-456e-82cf-64529ba3d9ed
+                      3c0ced50-0901-45ce-8c2b-5d9d769c8b56: d2998e3d-d6ea-4725-85c0-6d75cf245e64
+                      3dc53d89-f1d3-4faa-a2c9-f99bacf353f4: a40fd77d-d8ee-4da9-bede-ae41c4c47854
+                      42322f88-2838-40a7-8798-dfeffb087d6b: 022b20f8-0502-43a5-a9ee-38279cd70195
+                      46ff3451-6d41-4438-af8a-ae4bb649fc70: 8bed2953-43a6-41dc-a4b5-372db10454fe
+                      4748ce88-47e5-4b87-a23c-af8d30a1d2e0: 75a5750a-0c34-48e8-a899-27cb9d59c2ef
+                      4eff5f80-1c13-4893-ac0b-84f65a4d07f9: a51b99d5-f70c-4e68-b9d1-3bd1c0733c92
+                      54e5aaa2-a2cc-487d-ba97-b1ac82441deb: 806f8e82-1161-4395-a4f2-d4ce3dc1d55c
+                      5d52b960-baec-45f1-996c-dce504509281: 4b333e72-4d1b-42fe-8958-eb00a6b25e08
+                      6223e5be-db9f-48a1-9804-17d54c641060: e83fd453-fe69-4970-ab9a-30a0a31b4c85
+                      65cdf1b8-0c46-4708-b4cb-cb2f93e614e5: 7193339c-592a-4631-a272-1c03dda22372
+                      6a308d59-6cb9-43d4-81f9-71ef42e32b03: 6da2d8cf-3903-4fba-a697-f8428087f0ee
+                      6d8ca26f-fe28-4193-b9d7-5ceec5158554: f05eb7e6-fb0d-4a87-9d3f-91147f761aa9
+                      75abf993-b33a-452b-a217-37fb98a356de: 3fe5575d-7c9b-4be2-8707-9a6580ee0b37
+                      781c3869-7f4b-4d6b-9b20-5a630bb56be6: 613dad43-27b6-4408-92a6-01e4e2f36c55
+                      7c15e077-f5d5-4c01-9ff0-6cff146e638e: d4289db2-72d1-4240-a406-6e53ff0e3f32
+                      7fc845a8-e261-4d1b-841a-4587acda4092: 41188f5d-d6ef-4ef9-8253-881d9760de21
+                      865e2ad1-b269-489e-ad45-1260d15a580f: f52786b8-9291-420e-b91f-1837f4a74425
+                      8bdb9d9b-55e0-487a-8085-96e945374121: a4506aae-8c67-492a-8aac-ce0dd62db210
+                      93fee4a7-790e-46f1-a3ba-009c2d724410: fd66f1fb-91c7-439a-bd71-79b57c4b98d5
+                      951680ce-c808-4bef-8bd5-2ac11a16c633: e62472be-1744-4d17-af2e-34d92905ac97
+                      984ca3f5-67cf-4852-be24-940096729eaa: 46d6933f-a940-48a8-8abc-12bb35b97561
+                      9dfb3dd3-88a3-4c81-918d-a834d31c1df3: 041cc702-53ad-4c8d-93be-857f51c2cb92
+                      a07597d2-2250-4d1d-a61f-b0a60f81ec8a: 5a39478a-7168-44a0-84ff-46267b7604cd
+                      a9c245e7-679c-40d7-901e-3a021e0ff506: 1c01fbe3-b447-43cd-9eed-1dd3205ef2c7
+                      b7e27df2-7836-44cb-b580-28b6760df767: 1f7e38ac-442f-4e3c-9a28-531246faff3a
+                      bd8abaa1-a745-4678-a9e8-337a551b4d06: d8a3da17-305c-4318-a374-9762068271c4
+                      bf25464b-83dd-435d-b731-d3780f4d3f1a: d60cfdae-bd68-4ed8-9d68-7ffadf186a08
+                      c2f688cb-bbdb-4f1e-9e87-63f877bf111d: 86062577-ecb0-46c1-9b73-8fa2d2e8b9c1
+                      c379b379-a0ab-43ce-80fd-8cb6b94dc232: 9ddf5761-e268-4539-b400-1327a9197dfc
+                      c4ef598e-55ef-435d-bcce-be58b6dc44b2: 7856536f-4759-409c-b188-72ed6ec888d0
+                      e0392363-f8e0-405e-9ec3-b4dfee3ee47c: 58d12501-2c11-43ac-bdf8-250c61a9bf16
+                      e6966802-3d5b-4c02-bbf9-0d087710fc08: 451adaf0-3c2a-4897-a80a-d24974c4344d
+                      e6e091e9-66f8-4155-b3cc-6f29ecb4e002: 825a62a9-9299-4c8a-bb8f-078d34384c26
+                      efdd4fd9-e7c0-4065-8e18-dcf4c5553f9d: 30375b11-a971-4d36-9f5d-19891703309b
+                      fc203ae3-847a-4ec0-8bce-f578bd29f396: 0b365530-7927-4c70-a1ec-29b47a45be1f
                     Modifications:
                       - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.String,System.Private.CoreLib]],Evergine.Framework
                         Name: Name
                         Target: 213d46b8-5775-4beb-8663-4f0b4bde873b
                         TypedValue: ListView_weprefab
+                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Vector3,Evergine.Mathematics]],Evergine.Framework
+                        Name: LocalPosition
+                        Target: 0f5c06c6-b910-46ab-baab-783441287556
+                        TypedValue:
+                          X: 0.0
+                          Y: 0.0
+                          Z: 0.0
                       - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Vector2,Evergine.Mathematics]],Evergine.Framework
                         Name: Size
                         Target: 4eff5f80-1c13-4893-ac0b-84f65a4d07f9
                         TypedValue:
                           X: 0.24000001
                           Y: 0.180000007
-                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Vector3,Evergine.Mathematics]],Evergine.Framework
-                        Name: Size
-                        Target: 2b72dc7a-ae39-4f29-9f5f-5fe9db611114
-                        TypedValue:
-                          X: 0.24000001
-                          Y: 0.180000007
-                          Z: 0.0500000007
-                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Vector3,Evergine.Mathematics]],Evergine.Framework
-                        Name: LocalScale
-                        Target: fb273ab4-f0dc-4ba7-ac26-cac0bee243a4
-                        TypedValue:
-                          X: 0.24000001
-                          Y: 0.180000007
-                          Z: 1.0
-                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Vector3,Evergine.Mathematics]],Evergine.Framework
-                        Name: LocalPosition
-                        Target: 319c2a3a-2b8a-4d1f-9ac4-b62ffe608079
-                        TypedValue:
-                          X: 0.0
-                          Y: 0.0
-                          Z: 0.00400000019
-                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.Boolean,System.Private.CoreLib]],Evergine.Framework
-                        Name: IsEnabled
-                        Target: a0cec5d6-afc7-4783-9450-50a632e40229
-                        TypedValue: false
-                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Vector3,Evergine.Mathematics]],Evergine.Framework
-                        Name: LocalPosition
-                        Target: 6a889edd-bb1b-4ca2-b9de-dc4a16526466
-                        TypedValue:
-                          X: 0.116000004
-                          Y: 0.0900000036
-                          Z: 0.00400000019
-                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Vector3,Evergine.Mathematics]],Evergine.Framework
-                        Name: LocalScale
-                        Target: 6a889edd-bb1b-4ca2-b9de-dc4a16526466
-                        TypedValue:
-                          X: 0.00400000019
-                          Y: 0.0540000349
-                          Z: 1.0
-                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Vector3,Evergine.Mathematics]],Evergine.Framework
-                        Name: LocalPosition
-                        Target: d6c432b6-81a8-43d8-908f-ad58f88e0dfb
-                        TypedValue:
-                          X: -0.105000012
-                          Y: 0.086127162
-                          Z: 0.00100000005
-                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Vector3,Evergine.Mathematics]],Evergine.Framework
-                        Name: LocalScale
-                        Target: d6c432b6-81a8-43d8-908f-ad58f88e0dfb
-                        TypedValue:
-                          X: 0.220000014
-                          Y: 0.0149999997
-                          Z: 1.0
                       - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Vector3,Evergine.Mathematics]],Evergine.Framework
                         Name: LocalScale
                         Target: 1ff77d37-af71-4156-9420-419e4697264d
@@ -937,6 +1106,54 @@ Items:
                         TypedValue:
                           X: 0.24000001
                           Y: 1.0
+                          Z: 1.0
+                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Vector2,Evergine.Mathematics]],Evergine.Framework
+                        Name: Size
+                        Target: 865e2ad1-b269-489e-ad45-1260d15a580f
+                        TypedValue:
+                          X: 0.24000001
+                          Y: 0.180000007
+                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Vector3,Evergine.Mathematics]],Evergine.Framework
+                        Name: Size
+                        Target: 11296f0c-37ba-4310-bfd8-6b4ef21b00c4
+                        TypedValue:
+                          X: 0.24000001
+                          Y: 0.180000007
+                          Z: 0.0500000007
+                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Vector3,Evergine.Mathematics]],Evergine.Framework
+                        Name: LocalScale
+                        Target: 54e5aaa2-a2cc-487d-ba97-b1ac82441deb
+                        TypedValue:
+                          X: 0.24000001
+                          Y: 0.180000007
+                          Z: 1.0
+                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Vector3,Evergine.Mathematics]],Evergine.Framework
+                        Name: LocalPosition
+                        Target: 46ff3451-6d41-4438-af8a-ae4bb649fc70
+                        TypedValue:
+                          X: -0.110000007
+                          Y: 0.086127162
+                          Z: -0.00300000003
+                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Vector3,Evergine.Mathematics]],Evergine.Framework
+                        Name: LocalScale
+                        Target: 46ff3451-6d41-4438-af8a-ae4bb649fc70
+                        TypedValue:
+                          X: 0.220000014
+                          Y: 0.0149999997
+                          Z: 1.0
+                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Vector3,Evergine.Mathematics]],Evergine.Framework
+                        Name: LocalPosition
+                        Target: 42322f88-2838-40a7-8798-dfeffb087d6b
+                        TypedValue:
+                          X: 0.116000004
+                          Y: 0.0900000036
+                          Z: 0.00400000019
+                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Vector3,Evergine.Mathematics]],Evergine.Framework
+                        Name: LocalScale
+                        Target: 42322f88-2838-40a7-8798-dfeffb087d6b
+                        TypedValue:
+                          X: 0.00400000019
+                          Y: 0.0540000275
                           Z: 1.0
                     RemovedComponents: []
                     Source: 9502a182-b61a-4cb2-b320-1d0d2f4ee595
@@ -971,7 +1188,58 @@ Items:
                 Children:
                   - !Evergine.Framework.Assets.AssetSources.Entities.PrefabInstanceModel,Evergine.Framework
                     EntityLinks: {}
-                    Id: 68817d97-706c-4cca-9e0b-d0336674b78e
+                    Id: 4c360d7a-8e27-4750-b528-6de39b131e55
+                    IdDictionary:
+                      0a29fefe-f24b-4f3c-897a-6dca78053e19: ffda82b5-bb9a-43d1-8267-f65d698fce38
+                      0f5c06c6-b910-46ab-baab-783441287556: 6cc559dd-b169-45e0-83ee-6dc7a4c33c0e
+                      11296f0c-37ba-4310-bfd8-6b4ef21b00c4: e9caac93-a789-4f79-b26e-7bcb60c6ac61
+                      1dd02f3c-888e-49b3-a2fb-105ab12b7e44: 8b2b217d-b43b-44c8-850f-004be71819a7
+                      1ea06921-f80a-48c1-942f-220be37daf7e: dda36c3e-4d9b-4ea1-980f-497df5db4026
+                      1ff77d37-af71-4156-9420-419e4697264d: 138f27e5-e474-428d-a27a-19eb6a9ee547
+                      213d46b8-5775-4beb-8663-4f0b4bde873b: 4c360d7a-8e27-4750-b528-6de39b131e55
+                      225a6087-e32e-44b1-b608-6324d331c89d: 105f3239-eab0-4ecd-8dbf-9ef218a505a9
+                      24b36399-6a10-4a7a-809b-08a3712fcf1b: 10252370-9d62-43e5-99a2-687d9913a7e5
+                      264d55b2-98e4-4a6e-9276-4420b9df5782: f5ee8e7a-6082-4a8d-8f83-f820ac88b2f1
+                      2a31dd89-9c4d-4a79-9bda-b0e79f0018f1: 7b0707f7-0f9d-45fe-99d1-db0ba650be19
+                      2b2b969f-8a8d-42f4-b22e-92aa8643617b: 55326772-d66a-44e6-9f10-fede8c12e400
+                      2b378825-eedc-4c4f-8b27-6f15e874128c: 1ef4ce2b-7668-451f-842c-4e80839976b5
+                      2cbcd674-772e-4e30-883d-5f135cbc42ae: 95f9789e-b80b-4611-bfc5-24b631be525e
+                      33790838-6660-4a48-a857-ad38ef0c0f5b: eafa8edc-6929-4040-94d5-27b9bf01a236
+                      3c0ced50-0901-45ce-8c2b-5d9d769c8b56: 156a901f-44c5-4d1d-95b3-a43a89a16988
+                      3dc53d89-f1d3-4faa-a2c9-f99bacf353f4: f410e46d-3c4e-4614-96ee-fb4dcdf4423d
+                      42322f88-2838-40a7-8798-dfeffb087d6b: 5116a8e1-6014-4207-8b30-980bd681fbf7
+                      46ff3451-6d41-4438-af8a-ae4bb649fc70: 0dadb5e9-050e-48d5-adb9-21f6ade1d411
+                      4748ce88-47e5-4b87-a23c-af8d30a1d2e0: 044e2e56-e63b-4c84-b6cc-f96ad34b33c3
+                      4eff5f80-1c13-4893-ac0b-84f65a4d07f9: 3919d0e2-1eab-44b6-b7f9-358eb98651e5
+                      54e5aaa2-a2cc-487d-ba97-b1ac82441deb: 32982dcb-bc61-40d3-94df-2655251df627
+                      5d52b960-baec-45f1-996c-dce504509281: 3d661fc7-a29e-452f-a53f-8d8f6ed184a3
+                      6223e5be-db9f-48a1-9804-17d54c641060: 50d6cac3-e94e-41c8-b806-3440ebd272e9
+                      65cdf1b8-0c46-4708-b4cb-cb2f93e614e5: 724ccb1b-3915-460c-a5e2-afa604e94d71
+                      6a308d59-6cb9-43d4-81f9-71ef42e32b03: d9bf957b-3cb1-48e4-8bef-add0995c9bc8
+                      6d8ca26f-fe28-4193-b9d7-5ceec5158554: c13f1576-b64c-40ea-a77d-55e2e09f2733
+                      75abf993-b33a-452b-a217-37fb98a356de: cfffa9dc-9b60-4eb7-9bba-032aeb415f9a
+                      781c3869-7f4b-4d6b-9b20-5a630bb56be6: 9979f89c-9758-4d65-a531-9826cff3f630
+                      7c15e077-f5d5-4c01-9ff0-6cff146e638e: 27d796a6-bc4a-488e-8ad9-e4def69e90fb
+                      7fc845a8-e261-4d1b-841a-4587acda4092: 20bee2e6-eb77-4546-8949-6837c5d4190f
+                      865e2ad1-b269-489e-ad45-1260d15a580f: 2d9f2d3d-021d-40a2-9766-81cbca3a93f3
+                      8bdb9d9b-55e0-487a-8085-96e945374121: e6aad7b8-ca72-432e-aaf2-f43bf21f8d5d
+                      93fee4a7-790e-46f1-a3ba-009c2d724410: 1ac9955b-b797-49d9-8759-2d5a08938529
+                      951680ce-c808-4bef-8bd5-2ac11a16c633: 43a2fc56-84e2-48e1-95b1-feffc8d79ed5
+                      984ca3f5-67cf-4852-be24-940096729eaa: 2409cccf-fa31-41aa-b375-b931bc1a9507
+                      9dfb3dd3-88a3-4c81-918d-a834d31c1df3: 56027be0-3804-48d6-9f2d-2161de2bb779
+                      a07597d2-2250-4d1d-a61f-b0a60f81ec8a: 4da6d372-0e00-494d-b754-52bf479f5b50
+                      a9c245e7-679c-40d7-901e-3a021e0ff506: 64df6c97-fa87-4746-b496-50b67d45a3f1
+                      b7e27df2-7836-44cb-b580-28b6760df767: 4b97a912-39e9-4b0e-9edd-e08042b7b42a
+                      bd8abaa1-a745-4678-a9e8-337a551b4d06: 05a3ba30-2183-4608-b47f-f8b316e9da24
+                      bf25464b-83dd-435d-b731-d3780f4d3f1a: addf3fd3-5717-4b98-84f6-00b708353429
+                      c2f688cb-bbdb-4f1e-9e87-63f877bf111d: d1c6a7e7-49b5-4cf3-bd50-5fa068574d4b
+                      c379b379-a0ab-43ce-80fd-8cb6b94dc232: db2c41be-1854-4c26-9b26-153d049d5f54
+                      c4ef598e-55ef-435d-bcce-be58b6dc44b2: 7a98cfed-cfb1-4584-a9ca-034f33b43289
+                      e0392363-f8e0-405e-9ec3-b4dfee3ee47c: 9c2b052c-7a46-4a2f-bcbf-ec6da0323382
+                      e6966802-3d5b-4c02-bbf9-0d087710fc08: f8900ba8-541e-4f25-ab05-cbc6666e125b
+                      e6e091e9-66f8-4155-b3cc-6f29ecb4e002: e0c91a51-278a-4865-ab67-cfbdad6b123f
+                      efdd4fd9-e7c0-4065-8e18-dcf4c5553f9d: 980c88c3-e250-4e76-ac43-de17cdbad854
+                      fc203ae3-847a-4ec0-8bce-f578bd29f396: 409bfea2-4306-4e9b-b00f-6a1de9834398
                     Modifications:
                       - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.String,System.Private.CoreLib]],Evergine.Framework
                         Name: Name
@@ -991,59 +1259,6 @@ Items:
                           X: 0.150000095
                           Y: 0.180000007
                       - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Vector3,Evergine.Mathematics]],Evergine.Framework
-                        Name: Size
-                        Target: 2b72dc7a-ae39-4f29-9f5f-5fe9db611114
-                        TypedValue:
-                          X: 0.150000095
-                          Y: 0.180000007
-                          Z: 0.0500000007
-                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Vector3,Evergine.Mathematics]],Evergine.Framework
-                        Name: LocalScale
-                        Target: fb273ab4-f0dc-4ba7-ac26-cac0bee243a4
-                        TypedValue:
-                          X: 0.150000095
-                          Y: 0.180000007
-                          Z: 1.0
-                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Vector3,Evergine.Mathematics]],Evergine.Framework
-                        Name: LocalPosition
-                        Target: 319c2a3a-2b8a-4d1f-9ac4-b62ffe608079
-                        TypedValue:
-                          X: 0.0
-                          Y: 0.0
-                          Z: 0.00400000019
-                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.Boolean,System.Private.CoreLib]],Evergine.Framework
-                        Name: IsEnabled
-                        Target: a0cec5d6-afc7-4783-9450-50a632e40229
-                        TypedValue: false
-                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Vector3,Evergine.Mathematics]],Evergine.Framework
-                        Name: LocalPosition
-                        Target: 6a889edd-bb1b-4ca2-b9de-dc4a16526466
-                        TypedValue:
-                          X: 0.071000047
-                          Y: 0.0900000036
-                          Z: 0.00400000019
-                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Vector3,Evergine.Mathematics]],Evergine.Framework
-                        Name: LocalScale
-                        Target: 6a889edd-bb1b-4ca2-b9de-dc4a16526466
-                        TypedValue:
-                          X: 0.00400000019
-                          Y: 0.0540000349
-                          Z: 1.0
-                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Vector3,Evergine.Mathematics]],Evergine.Framework
-                        Name: LocalPosition
-                        Target: d6c432b6-81a8-43d8-908f-ad58f88e0dfb
-                        TypedValue:
-                          X: -0.0600000471
-                          Y: 0.086127162
-                          Z: 0.00100000005
-                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Vector3,Evergine.Mathematics]],Evergine.Framework
-                        Name: LocalScale
-                        Target: d6c432b6-81a8-43d8-908f-ad58f88e0dfb
-                        TypedValue:
-                          X: 0.1300001
-                          Y: 0.0149999997
-                          Z: 1.0
-                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Vector3,Evergine.Mathematics]],Evergine.Framework
                         Name: LocalScale
                         Target: 1ff77d37-af71-4156-9420-419e4697264d
                         TypedValue:
@@ -1056,6 +1271,54 @@ Items:
                         TypedValue:
                           X: 0.150000095
                           Y: 1.0
+                          Z: 1.0
+                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Vector2,Evergine.Mathematics]],Evergine.Framework
+                        Name: Size
+                        Target: 865e2ad1-b269-489e-ad45-1260d15a580f
+                        TypedValue:
+                          X: 0.150000095
+                          Y: 0.180000007
+                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Vector3,Evergine.Mathematics]],Evergine.Framework
+                        Name: Size
+                        Target: 11296f0c-37ba-4310-bfd8-6b4ef21b00c4
+                        TypedValue:
+                          X: 0.150000095
+                          Y: 0.180000007
+                          Z: 0.0500000007
+                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Vector3,Evergine.Mathematics]],Evergine.Framework
+                        Name: LocalScale
+                        Target: 54e5aaa2-a2cc-487d-ba97-b1ac82441deb
+                        TypedValue:
+                          X: 0.150000095
+                          Y: 0.180000007
+                          Z: 1.0
+                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Vector3,Evergine.Mathematics]],Evergine.Framework
+                        Name: LocalPosition
+                        Target: 46ff3451-6d41-4438-af8a-ae4bb649fc70
+                        TypedValue:
+                          X: -0.0650000498
+                          Y: 0.086127162
+                          Z: -0.00300000003
+                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Vector3,Evergine.Mathematics]],Evergine.Framework
+                        Name: LocalScale
+                        Target: 46ff3451-6d41-4438-af8a-ae4bb649fc70
+                        TypedValue:
+                          X: 0.1300001
+                          Y: 0.0149999997
+                          Z: 1.0
+                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Vector3,Evergine.Mathematics]],Evergine.Framework
+                        Name: LocalPosition
+                        Target: 42322f88-2838-40a7-8798-dfeffb087d6b
+                        TypedValue:
+                          X: 0.071000047
+                          Y: 0.0900000036
+                          Z: 0.00400000019
+                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Vector3,Evergine.Mathematics]],Evergine.Framework
+                        Name: LocalScale
+                        Target: 42322f88-2838-40a7-8798-dfeffb087d6b
+                        TypedValue:
+                          X: 0.00400000019
+                          Y: 0.0540000275
                           Z: 1.0
                     RemovedComponents: []
                     Source: 9502a182-b61a-4cb2-b320-1d0d2f4ee595
@@ -1341,12 +1604,59 @@ Items:
                     Children:
                       - !Evergine.Framework.Assets.AssetSources.Entities.PrefabInstanceModel,Evergine.Framework
                         EntityLinks: {}
-                        Id: 4c40a5bf-3363-45e5-949b-2db7eaa7e8e3
+                        Id: a5b5d2f0-df4b-4f78-95c5-16b03563d276
+                        IdDictionary:
+                          00bbb74d-e74c-4115-9560-28ee316bcdac: 8b12c7e9-584c-4eff-aa3d-00464b205366
+                          08424638-72fd-4ac9-aaba-10aa4876b008: ef9b365c-c0cf-4143-b211-db29ef36c4f1
+                          0fd70c3f-920c-4b92-aed2-426130d410d7: 8cb9203e-d153-4ba9-ad08-9034169b83af
+                          10a4a2b4-f5eb-42b4-815f-af13ee0ab6d7: 5c7bbe43-53e1-4d83-8b31-76934ae46462
+                          114ed9c5-f183-44bc-bb2f-2c3c560f19d6: 79fa2f25-bfd9-4cbe-8920-a166d67bd093
+                          29a10c2d-676e-40d5-968a-f00b915596a4: 0a350c6c-5bde-44f0-93c0-1753101bec0f
+                          29c2cc94-c21b-46c3-a1d3-74583b696908: f6c648c6-8c48-4e32-b7d4-5578dcf9f6da
+                          3285a976-4ce8-4b39-a9e7-203308e91cbd: af9c09ff-a66e-454f-8d2f-db9863c59314
+                          32c920a6-bf72-4169-bcaf-c8a2d39674d4: 8891fa4f-79a4-4dcc-bcec-c0ebce518984
+                          43017ed1-371e-4755-bb8c-0cdf498bd5f8: a39e8dce-0eda-4a69-bdb1-39791b1d0a27
+                          4adec8bf-3111-4936-9ab0-b2b997bc24b8: 615703d6-da1a-46ea-949a-065c5e3244b9
+                          4d137a42-43ce-496d-a264-814989a4b636: 61917e32-d8ff-47ab-a0c7-54fb1067d91b
+                          4fee1d52-e879-4831-86d5-8ef795ce0eeb: 89d63745-9e77-4d7f-b8ef-8a004af96e1e
+                          5fbbb0de-82fc-4b31-8617-9b9bb8fcbd1c: f4740c5c-3b23-418d-bde1-a3f6665e6e28
+                          742aa151-4b53-4797-97a8-8dd1821e9094: a7206c6e-88a9-4a0c-9933-2aca4007977e
+                          75f3bb3c-f86e-4379-a18e-531c8c7b3933: 06c21a13-c2af-49ad-8e9b-7e66f181c404
+                          781bbb9e-c6b5-44f3-be46-5de9077fe86b: b28a667e-7a44-4e5e-8cf5-b6d37b4785bf
+                          7ebe0c55-9452-4ff1-9386-ed4fa69beafa: f9dc681e-d9ca-41bc-9b14-c89c0dddf890
+                          83bafbbe-6180-4f08-a7d1-87282c3ad9bf: 961c0408-8405-466a-94d2-44a2c501b0d1
+                          945ecb95-128b-4645-9a98-16a8b76fd419: 0a4c88b5-c4b6-4ca2-9f45-cdeb664ccc5c
+                          9dc7cce4-a28a-4b7a-a1e1-82129a1e5296: ad61115e-d502-470e-87a2-cb40d438a622
+                          9e743e35-7aa1-4f72-a77d-b31ae5175757: 8a7f5137-2913-4a2e-8ed4-2c0c2576cc5c
+                          a395de9a-85d9-4313-be9b-84d142b99e01: a5b5d2f0-df4b-4f78-95c5-16b03563d276
+                          a7c5a62f-b112-4c25-bb9e-eaec97942a6f: cca03192-0ed0-46f8-8249-95a1e14151ac
+                          aea5078a-934b-4461-931c-0f4cd4987e6b: 0d36a661-9d30-4039-9f30-c6f393d170b5
+                          b2247f4c-dba5-4cf7-8644-2412fd305835: e43fd6cf-290c-42df-92f2-ec912cf4bb96
+                          b53277ca-0618-48c9-bd14-4827cc1194f8: 4a0ed1c6-7e5f-4ec7-a2a0-0d788de21779
+                          b5af3e87-fdcd-4936-ae34-6d88e4958951: 924825ea-0296-459d-8ce3-8f555000c6a7
+                          b91b2b30-621b-4a3b-bb50-5cfb1dc04e36: 36f5468e-ceed-415c-b787-af663a0ab928
+                          bf5809d4-0569-4eac-a934-17ddd341a9c5: a2702411-c51e-4aff-af41-6594d8535e58
+                          c028d348-4932-43b7-8611-13d0c2abd6ca: 394f2300-e6f5-444c-badc-2a4764789fc2
+                          c26415f6-dfc4-41f4-b470-083aa673632c: 6348f415-d252-4537-8398-b51c93f68f2d
+                          c6f04b5b-7640-4a5a-b326-0a340bd43c2b: b53dc0ca-6b68-4a87-8153-af1de6c59763
+                          d074b0f3-7ff0-4d54-b34a-c6d290a0a777: 1370bca2-871c-420b-abbb-5a387f8e1a10
+                          d0a6115e-ceb4-4f55-baaf-1ef2a74b1fc5: 2259eccf-e5cc-41b9-868c-73fb35848135
+                          da41bcc1-b635-4120-a3b4-abf1e52c689f: f4987963-f1d0-4a68-a670-6f1985fc35f1
+                          de26b28f-b9c6-4576-9fb4-f33e50dc4e76: e48a7cf3-f03f-4713-87dc-8092a7fe0176
+                          df845455-77c1-4045-8d40-9324f7654c6c: 6c3df7ee-0dbe-4fe8-901b-6a7a14dccd15
+                          ef7755d7-22dc-48de-a216-df8737aaa58d: 67a66879-af4f-4a7a-b6c9-14aea904e738
                         Modifications:
                           - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.String,System.Private.CoreLib]],Evergine.Framework
                             Name: Name
                             Target: a395de9a-85d9-4313-be9b-84d142b99e01
                             TypedValue: PressableButtonPlated_weprefab
+                          - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Vector3,Evergine.Mathematics]],Evergine.Framework
+                            Name: LocalPosition
+                            Target: 32c920a6-bf72-4169-bcaf-c8a2d39674d4
+                            TypedValue:
+                              X: 0.0
+                              Y: 0.0
+                              Z: 0.0
                           - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.String,System.Private.CoreLib]],Evergine.Framework
                             Name: Text
                             Target: a7c5a62f-b112-4c25-bb9e-eaec97942a6f
@@ -1476,12 +1786,59 @@ Items:
                     Children:
                       - !Evergine.Framework.Assets.AssetSources.Entities.PrefabInstanceModel,Evergine.Framework
                         EntityLinks: {}
-                        Id: bb21a48c-b534-4854-8c63-0a22163aa6ad
+                        Id: a8d1d2a2-fd15-42fa-9bc3-54ceb728e47f
+                        IdDictionary:
+                          00bbb74d-e74c-4115-9560-28ee316bcdac: 1007197d-2bca-44eb-9901-4d50a63f124e
+                          08424638-72fd-4ac9-aaba-10aa4876b008: f2c21f22-b09b-4324-89d2-fcab13b07162
+                          0fd70c3f-920c-4b92-aed2-426130d410d7: 9515d389-8a18-45c3-a6cd-d5265034a3ca
+                          10a4a2b4-f5eb-42b4-815f-af13ee0ab6d7: 4aa2a999-25d3-48ac-a3ed-ca5397bc4e3b
+                          114ed9c5-f183-44bc-bb2f-2c3c560f19d6: 54eabdee-1353-40a2-828d-a93bb9dcd6f6
+                          29a10c2d-676e-40d5-968a-f00b915596a4: e6375b28-2fc2-4d0c-a1c3-d2b6710890b4
+                          29c2cc94-c21b-46c3-a1d3-74583b696908: 22a2cb8c-7601-4f30-bc91-41ea168cea8d
+                          3285a976-4ce8-4b39-a9e7-203308e91cbd: 49702fa1-fcb6-48db-8b6f-eba8c3d286ff
+                          32c920a6-bf72-4169-bcaf-c8a2d39674d4: 89252236-efd5-4679-ac4f-e5f240ee7d14
+                          43017ed1-371e-4755-bb8c-0cdf498bd5f8: 10fea5c9-068d-4de6-b94c-94ffc560d716
+                          4adec8bf-3111-4936-9ab0-b2b997bc24b8: 98e41091-acab-436a-b0f1-acfb6e235379
+                          4d137a42-43ce-496d-a264-814989a4b636: c05c816f-9914-4d86-aa35-38467ec74f4d
+                          4fee1d52-e879-4831-86d5-8ef795ce0eeb: e307993d-e851-4777-b720-9a1ad93c27f0
+                          5fbbb0de-82fc-4b31-8617-9b9bb8fcbd1c: e6240961-40a3-479e-ae6f-e43c88204a3a
+                          742aa151-4b53-4797-97a8-8dd1821e9094: ede17afb-068b-43f4-8b5c-e840b7d8c8b5
+                          75f3bb3c-f86e-4379-a18e-531c8c7b3933: 5ccb9907-90ca-4e8d-9289-e89c40a6eba2
+                          781bbb9e-c6b5-44f3-be46-5de9077fe86b: d5190eb7-65f4-4d3e-b0b6-06a6386d7fc3
+                          7ebe0c55-9452-4ff1-9386-ed4fa69beafa: e795ec79-2a36-4d00-9457-f7914120d99b
+                          83bafbbe-6180-4f08-a7d1-87282c3ad9bf: 74201096-3ac5-4fe3-a0c1-f0c1f2940213
+                          945ecb95-128b-4645-9a98-16a8b76fd419: 2c78b555-e290-4cb6-90c9-c34813d68e87
+                          9dc7cce4-a28a-4b7a-a1e1-82129a1e5296: f88378f5-68a4-4b5c-b990-b6d2077bd00c
+                          9e743e35-7aa1-4f72-a77d-b31ae5175757: 374f3578-77cd-4a70-bbf7-98ba405444ec
+                          a395de9a-85d9-4313-be9b-84d142b99e01: a8d1d2a2-fd15-42fa-9bc3-54ceb728e47f
+                          a7c5a62f-b112-4c25-bb9e-eaec97942a6f: 492c552f-43e6-4c2e-a264-a141f4e54a70
+                          aea5078a-934b-4461-931c-0f4cd4987e6b: f842495e-f62d-4534-995b-cb10c9adc7bd
+                          b2247f4c-dba5-4cf7-8644-2412fd305835: 4213fd43-0d87-41d0-976c-2347c8212786
+                          b53277ca-0618-48c9-bd14-4827cc1194f8: 481f701f-f3d0-4236-9cea-944a7fbfcb47
+                          b5af3e87-fdcd-4936-ae34-6d88e4958951: 6a84f4ad-a522-497c-a694-e29bb8c2cbea
+                          b91b2b30-621b-4a3b-bb50-5cfb1dc04e36: 7f89ea8e-b95d-4729-820f-5f43e4ad9c2a
+                          bf5809d4-0569-4eac-a934-17ddd341a9c5: a11f2fe4-aefa-4a65-bdb8-910314ac5552
+                          c028d348-4932-43b7-8611-13d0c2abd6ca: a30b98e9-ae4f-4b50-b005-a1e57f2923a4
+                          c26415f6-dfc4-41f4-b470-083aa673632c: d75b52fc-7b8e-4dee-89d4-8971c808d123
+                          c6f04b5b-7640-4a5a-b326-0a340bd43c2b: d2071866-33bf-4d08-ace5-22d38c64df23
+                          d074b0f3-7ff0-4d54-b34a-c6d290a0a777: 057bc0b2-5c6d-4e7b-ab9a-1a3050638d79
+                          d0a6115e-ceb4-4f55-baaf-1ef2a74b1fc5: be95290e-2359-4718-b929-630ff2c915f7
+                          da41bcc1-b635-4120-a3b4-abf1e52c689f: 251a3d0d-5454-461e-b7e6-ea5a74e51536
+                          de26b28f-b9c6-4576-9fb4-f33e50dc4e76: 231e0e23-66c5-4961-9458-1bdaef6b7819
+                          df845455-77c1-4045-8d40-9324f7654c6c: a82bc669-d2cb-4dfc-a48c-9fe43d37ced6
+                          ef7755d7-22dc-48de-a216-df8737aaa58d: 68d3d538-509a-43f2-ae85-8c794aa3e30b
                         Modifications:
                           - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.String,System.Private.CoreLib]],Evergine.Framework
                             Name: Name
                             Target: a395de9a-85d9-4313-be9b-84d142b99e01
                             TypedValue: PressableButtonPlated_weprefab
+                          - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Vector3,Evergine.Mathematics]],Evergine.Framework
+                            Name: LocalPosition
+                            Target: 32c920a6-bf72-4169-bcaf-c8a2d39674d4
+                            TypedValue:
+                              X: 0.0
+                              Y: 0.0
+                              Z: 0.0
                           - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.String,System.Private.CoreLib]],Evergine.Framework
                             Name: Text
                             Target: a7c5a62f-b112-4c25-bb9e-eaec97942a6f
@@ -1646,7 +2003,47 @@ Items:
                                 TargetState: On
                                 Text: Start
                                 TextScale: 0.00600000005
-                        Id: a5304daf-343d-4015-96a7-a539350cfc0a
+                        Id: 3c0929dc-1092-4797-8445-67e9b6549366
+                        IdDictionary:
+                          00bbb74d-e74c-4115-9560-28ee316bcdac: a5ca8366-fd15-4e71-a861-d18e43f503a7
+                          08424638-72fd-4ac9-aaba-10aa4876b008: 428b85a0-86f4-4aac-9828-5e436bf00a54
+                          0fd70c3f-920c-4b92-aed2-426130d410d7: 5c092bea-be49-47a2-995c-b544525b8a40
+                          10a4a2b4-f5eb-42b4-815f-af13ee0ab6d7: 32ff15b0-cc1f-44aa-a455-f4123adfc551
+                          114ed9c5-f183-44bc-bb2f-2c3c560f19d6: 035fd707-b04a-4a00-8d7f-61bbbe094c95
+                          29a10c2d-676e-40d5-968a-f00b915596a4: f0e280f5-8847-448e-9a59-a4e564014c84
+                          29c2cc94-c21b-46c3-a1d3-74583b696908: a04ec164-1c14-4a96-986e-930f2abdbfc9
+                          3285a976-4ce8-4b39-a9e7-203308e91cbd: a5c01d11-68a5-4a5f-aa2e-7d1acf1b7e58
+                          32c920a6-bf72-4169-bcaf-c8a2d39674d4: 2839c4e1-9761-4dff-b2c8-30a2b010e7e2
+                          43017ed1-371e-4755-bb8c-0cdf498bd5f8: f8ad9fb3-b999-47d1-a4b1-43d40136d74b
+                          4adec8bf-3111-4936-9ab0-b2b997bc24b8: 340d1058-cf06-4465-ab23-2423af8c1929
+                          4d137a42-43ce-496d-a264-814989a4b636: 1fdc6aef-c348-4c9e-ab22-b43a5f270bcd
+                          4fee1d52-e879-4831-86d5-8ef795ce0eeb: 333e5633-b3b3-4396-ad94-c28036cb791c
+                          5fbbb0de-82fc-4b31-8617-9b9bb8fcbd1c: a083fcb9-faa2-4011-9a5f-59a62075d437
+                          742aa151-4b53-4797-97a8-8dd1821e9094: e7a80167-d108-4b77-875a-9ac31e4bf40d
+                          75f3bb3c-f86e-4379-a18e-531c8c7b3933: 2c7373cc-ff2f-4584-ad4d-fdfb9c0d4b3a
+                          781bbb9e-c6b5-44f3-be46-5de9077fe86b: bfe24364-bf8d-4287-9b4f-dff3614dacff
+                          7ebe0c55-9452-4ff1-9386-ed4fa69beafa: a211c0ce-c623-497a-b56f-8d669f343425
+                          83bafbbe-6180-4f08-a7d1-87282c3ad9bf: 811a1a00-779d-4f00-bebd-2cbdaaec9d83
+                          945ecb95-128b-4645-9a98-16a8b76fd419: e010e12d-c5ba-47a9-a067-94d828dbea68
+                          9dc7cce4-a28a-4b7a-a1e1-82129a1e5296: ace98bba-040f-4973-893a-ba5d94b32536
+                          9e743e35-7aa1-4f72-a77d-b31ae5175757: f8aeb72b-3252-45d0-89f8-82aea17a84e6
+                          a395de9a-85d9-4313-be9b-84d142b99e01: 3c0929dc-1092-4797-8445-67e9b6549366
+                          a7c5a62f-b112-4c25-bb9e-eaec97942a6f: ad38ec8c-6225-4653-8c73-916239787c8d
+                          aea5078a-934b-4461-931c-0f4cd4987e6b: faa48b4c-e77a-4d27-9f32-c2c30f03b157
+                          b2247f4c-dba5-4cf7-8644-2412fd305835: 775e7ec7-5de2-4a59-8b90-7485fefa83f1
+                          b53277ca-0618-48c9-bd14-4827cc1194f8: 27e83f50-777d-4fae-b19b-95fc0812becc
+                          b5af3e87-fdcd-4936-ae34-6d88e4958951: 6fbd4a0e-e32c-4672-85b5-eef0629ac6ca
+                          b91b2b30-621b-4a3b-bb50-5cfb1dc04e36: 021491f5-6ffb-41ad-bbf2-556bc202307f
+                          bf5809d4-0569-4eac-a934-17ddd341a9c5: ae0f4788-70df-4453-ad2d-0b5523a585da
+                          c028d348-4932-43b7-8611-13d0c2abd6ca: e7562c63-b206-4df6-b43a-55cd48e6611a
+                          c26415f6-dfc4-41f4-b470-083aa673632c: 79590044-15ca-47e7-a858-aef5856c29f9
+                          c6f04b5b-7640-4a5a-b326-0a340bd43c2b: 84f6d891-3308-411a-8cd8-ea71041d14e0
+                          d074b0f3-7ff0-4d54-b34a-c6d290a0a777: 2fec24ca-7dcf-4e5d-be17-785bdf4cc181
+                          d0a6115e-ceb4-4f55-baaf-1ef2a74b1fc5: 37a66005-8d27-489d-9695-83464dc76a5b
+                          da41bcc1-b635-4120-a3b4-abf1e52c689f: b2e3e3cd-818f-41ae-aeb8-62e7c077e309
+                          de26b28f-b9c6-4576-9fb4-f33e50dc4e76: 293a60b6-3196-4cd3-9a52-dec60e41536f
+                          df845455-77c1-4045-8d40-9324f7654c6c: badc987c-a277-47fb-ad5e-d71b85b2ac3b
+                          ef7755d7-22dc-48de-a216-df8737aaa58d: f63511ef-5133-42d4-9268-3f0dd1079241
                         Modifications:
                           - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.String,System.Private.CoreLib]],Evergine.Framework
                             Name: Name
@@ -1656,6 +2053,13 @@ Items:
                             Name: Tag
                             Target: a395de9a-85d9-4313-be9b-84d142b99e01
                             TypedValue: selection_scrollTo_Start_button
+                          - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Vector3,Evergine.Mathematics]],Evergine.Framework
+                            Name: LocalPosition
+                            Target: 32c920a6-bf72-4169-bcaf-c8a2d39674d4
+                            TypedValue:
+                              X: 0.0
+                              Y: 0.0
+                              Z: 0.0
                           - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.String,System.Private.CoreLib]],Evergine.Framework
                             Name: Text
                             Target: a7c5a62f-b112-4c25-bb9e-eaec97942a6f
@@ -1711,7 +2115,47 @@ Items:
                                 TargetState: On
                                 Text: Center
                                 TextScale: 0.00600000005
-                        Id: b88afd21-78c2-4ad7-95dd-2882b013ac21
+                        Id: a33dfab5-d315-4bb2-90eb-9566255cfc2a
+                        IdDictionary:
+                          00bbb74d-e74c-4115-9560-28ee316bcdac: 2131acac-73c4-41c8-a846-df727bf67156
+                          08424638-72fd-4ac9-aaba-10aa4876b008: 39e069cc-959e-4331-8d16-e4426b5e2bdb
+                          0fd70c3f-920c-4b92-aed2-426130d410d7: 80e4eca2-ee54-4e99-a948-9be10102fd2f
+                          10a4a2b4-f5eb-42b4-815f-af13ee0ab6d7: 55ef72c8-84e3-45b8-a52e-7a9585c7b0c5
+                          114ed9c5-f183-44bc-bb2f-2c3c560f19d6: be3765fc-97a9-48ee-a959-6edbe5d4f53e
+                          29a10c2d-676e-40d5-968a-f00b915596a4: d258b22c-cf52-4ed7-964f-caff3202b457
+                          29c2cc94-c21b-46c3-a1d3-74583b696908: 2dee2cb3-b31d-4dd8-a216-ba53ad3742c2
+                          3285a976-4ce8-4b39-a9e7-203308e91cbd: 5dc79c1c-a857-4394-aefc-44e3546a0407
+                          32c920a6-bf72-4169-bcaf-c8a2d39674d4: 6f01a622-c497-43f3-bfa8-bef8fa2f5edc
+                          43017ed1-371e-4755-bb8c-0cdf498bd5f8: a2087081-6770-4d15-a01b-e25b3a9f7c46
+                          4adec8bf-3111-4936-9ab0-b2b997bc24b8: 3c0caec1-30e1-4899-9112-045db82f3c1a
+                          4d137a42-43ce-496d-a264-814989a4b636: 03b9fb7b-cb07-4072-bf59-43d700f6d438
+                          4fee1d52-e879-4831-86d5-8ef795ce0eeb: 8444d2d3-9b4a-42cf-8f8f-8a63abab7a2c
+                          5fbbb0de-82fc-4b31-8617-9b9bb8fcbd1c: 6fb70dfe-cbfc-4753-ae3e-c74c0c9e9f9c
+                          742aa151-4b53-4797-97a8-8dd1821e9094: 9420bf6e-31ae-4831-bd11-797371e016ac
+                          75f3bb3c-f86e-4379-a18e-531c8c7b3933: b99bb0e9-fc0b-4ddd-880c-040ccefa21e9
+                          781bbb9e-c6b5-44f3-be46-5de9077fe86b: 695bb8e1-d5d3-4475-97b3-dc6892d44074
+                          7ebe0c55-9452-4ff1-9386-ed4fa69beafa: 1f4011b0-a6b0-4e3f-bfc3-50264b0b1d94
+                          83bafbbe-6180-4f08-a7d1-87282c3ad9bf: e65409e7-b5b6-4c49-8a90-56b1d6e62587
+                          945ecb95-128b-4645-9a98-16a8b76fd419: a8baf6bc-0b02-4024-b8f8-17eff31b8aee
+                          9dc7cce4-a28a-4b7a-a1e1-82129a1e5296: 25ab3ff7-e556-4c96-a28a-5563ac2fa849
+                          9e743e35-7aa1-4f72-a77d-b31ae5175757: 9a0df96d-ab27-45ca-ba5e-3d42e2acbd64
+                          a395de9a-85d9-4313-be9b-84d142b99e01: a33dfab5-d315-4bb2-90eb-9566255cfc2a
+                          a7c5a62f-b112-4c25-bb9e-eaec97942a6f: 1f940b99-359f-42a7-a528-b364946063c7
+                          aea5078a-934b-4461-931c-0f4cd4987e6b: 4ec9e05d-7b0f-4c87-bd7c-0ee078578204
+                          b2247f4c-dba5-4cf7-8644-2412fd305835: c4f12055-c64a-4735-acc0-9c493fbcddad
+                          b53277ca-0618-48c9-bd14-4827cc1194f8: d491d060-edd6-4c50-a4e6-56400901428b
+                          b5af3e87-fdcd-4936-ae34-6d88e4958951: 8fd93e48-db69-4825-aecf-74a6d1e34167
+                          b91b2b30-621b-4a3b-bb50-5cfb1dc04e36: 390b5839-f25b-4d69-86e3-8dd4a1922dd5
+                          bf5809d4-0569-4eac-a934-17ddd341a9c5: b7067628-f627-4e0b-a585-c1226295c6fb
+                          c028d348-4932-43b7-8611-13d0c2abd6ca: 6a58a2bf-fc29-4416-8922-953ffcec7de0
+                          c26415f6-dfc4-41f4-b470-083aa673632c: 5d773a14-eeef-4f5d-bede-c0c9e9849323
+                          c6f04b5b-7640-4a5a-b326-0a340bd43c2b: 677bf36e-c27c-47db-bcde-e7258f6de3e5
+                          d074b0f3-7ff0-4d54-b34a-c6d290a0a777: 87c4b5cd-7082-4948-abe1-8a7f781a1a32
+                          d0a6115e-ceb4-4f55-baaf-1ef2a74b1fc5: a3b8959e-ca76-426b-917c-e3ffa8158530
+                          da41bcc1-b635-4120-a3b4-abf1e52c689f: b52e590f-f1b0-4d05-9f29-25111e2b2034
+                          de26b28f-b9c6-4576-9fb4-f33e50dc4e76: 21d93ab7-387b-4f4e-8dd6-5e55432cdd67
+                          df845455-77c1-4045-8d40-9324f7654c6c: 0fd77eed-679b-4f3f-bf01-6c39a90fbf31
+                          ef7755d7-22dc-48de-a216-df8737aaa58d: 803290f9-d3d5-4fb2-860d-fb360f6b2b3a
                         Modifications:
                           - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.String,System.Private.CoreLib]],Evergine.Framework
                             Name: Name
@@ -1783,7 +2227,47 @@ Items:
                                 TargetState: On
                                 Text: End
                                 TextScale: 0.00600000005
-                        Id: 15d82376-fca3-4bd6-8899-d59706e22955
+                        Id: be4ea0cb-c3f2-403d-b4e4-cfddab9578fb
+                        IdDictionary:
+                          00bbb74d-e74c-4115-9560-28ee316bcdac: ac91e523-c405-4e5d-b8c4-1be62b79c1c8
+                          08424638-72fd-4ac9-aaba-10aa4876b008: 8ccf50c0-210d-43e9-8d87-85a58a975e72
+                          0fd70c3f-920c-4b92-aed2-426130d410d7: dbb9f2d4-0ec5-4d13-a88e-ce55c0111a6c
+                          10a4a2b4-f5eb-42b4-815f-af13ee0ab6d7: 743c6f7f-3707-48db-8705-3152c1774ae1
+                          114ed9c5-f183-44bc-bb2f-2c3c560f19d6: d5b86c78-5982-48a2-96f5-83ea4edf8112
+                          29a10c2d-676e-40d5-968a-f00b915596a4: c8abb467-d444-4ba8-bc8f-b10717d344e3
+                          29c2cc94-c21b-46c3-a1d3-74583b696908: 54827faa-6738-470a-83fe-f85633f0417b
+                          3285a976-4ce8-4b39-a9e7-203308e91cbd: 0ddce1b3-98db-422d-978d-7cdc25bbdfb7
+                          32c920a6-bf72-4169-bcaf-c8a2d39674d4: d17dc331-adb9-4bc3-bf2f-c5200ac2dd30
+                          43017ed1-371e-4755-bb8c-0cdf498bd5f8: 48fec0c0-b2be-4ccd-be26-209cbd68513b
+                          4adec8bf-3111-4936-9ab0-b2b997bc24b8: 0ed488af-5419-440c-97ce-5adc0c10145a
+                          4d137a42-43ce-496d-a264-814989a4b636: 0707c210-ad6c-469f-a625-5a4fbac33401
+                          4fee1d52-e879-4831-86d5-8ef795ce0eeb: fce15efe-25f7-4613-987c-5f1dbe2f5f04
+                          5fbbb0de-82fc-4b31-8617-9b9bb8fcbd1c: b8a293e4-1a72-436b-9b22-9f7abeb6a5d7
+                          742aa151-4b53-4797-97a8-8dd1821e9094: fc6f8eec-ca07-4da7-9d0c-439a1c4cad38
+                          75f3bb3c-f86e-4379-a18e-531c8c7b3933: 37751e07-3e9b-493a-bb1c-38e0a737095f
+                          781bbb9e-c6b5-44f3-be46-5de9077fe86b: 180e801e-5044-4956-a198-f0c8b2965e2e
+                          7ebe0c55-9452-4ff1-9386-ed4fa69beafa: 7b2ef554-e580-4134-ad13-107816a0de40
+                          83bafbbe-6180-4f08-a7d1-87282c3ad9bf: 42c47b2e-b859-4131-ae3a-5414815df70a
+                          945ecb95-128b-4645-9a98-16a8b76fd419: cd36d828-d96d-4bcc-ac1b-7721be676e0d
+                          9dc7cce4-a28a-4b7a-a1e1-82129a1e5296: a9a80e70-1b7d-489e-82db-f871ce210da0
+                          9e743e35-7aa1-4f72-a77d-b31ae5175757: ec5b373c-48c8-49a8-9359-261bde81626b
+                          a395de9a-85d9-4313-be9b-84d142b99e01: be4ea0cb-c3f2-403d-b4e4-cfddab9578fb
+                          a7c5a62f-b112-4c25-bb9e-eaec97942a6f: 90ff5783-5559-4ae2-bffb-e7d79b0a9c8d
+                          aea5078a-934b-4461-931c-0f4cd4987e6b: c718a60e-e479-412f-b660-9cfcdc23a7b4
+                          b2247f4c-dba5-4cf7-8644-2412fd305835: 1139a83b-b3bc-47d6-abd2-e3406d7ab55f
+                          b53277ca-0618-48c9-bd14-4827cc1194f8: 752a5362-f257-48f2-8dfa-064b2895edca
+                          b5af3e87-fdcd-4936-ae34-6d88e4958951: 38931cce-62d7-46e3-ad28-454ebf8d7413
+                          b91b2b30-621b-4a3b-bb50-5cfb1dc04e36: ac88a4cb-3ddd-4025-8c78-1d21220afecb
+                          bf5809d4-0569-4eac-a934-17ddd341a9c5: eb7aa473-f6cf-4c3c-90ef-d53bfaab1fd6
+                          c028d348-4932-43b7-8611-13d0c2abd6ca: 4f6583ca-9782-4332-9da2-1c9c9cb60104
+                          c26415f6-dfc4-41f4-b470-083aa673632c: d12f0350-2944-46f1-8d0d-2cce5052f870
+                          c6f04b5b-7640-4a5a-b326-0a340bd43c2b: c74cadc1-e8cb-480c-b8c7-028b5cf61ce9
+                          d074b0f3-7ff0-4d54-b34a-c6d290a0a777: 831a4339-6647-43bc-842d-9f7ba7892671
+                          d0a6115e-ceb4-4f55-baaf-1ef2a74b1fc5: 759f02b0-8e50-4e34-9453-87085d6da4be
+                          da41bcc1-b635-4120-a3b4-abf1e52c689f: a308f3fb-a688-40e7-b7d9-a58dad122b74
+                          de26b28f-b9c6-4576-9fb4-f33e50dc4e76: bc6fba14-b9d1-45ad-9699-cfe53299486e
+                          df845455-77c1-4045-8d40-9324f7654c6c: 98cad2a5-3f88-4e35-96fc-c54f20e5b7c5
+                          ef7755d7-22dc-48de-a216-df8737aaa58d: 148f011f-5ced-452c-90c4-ee7bf83c9e63
                         Modifications:
                           - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.String,System.Private.CoreLib]],Evergine.Framework
                             Name: Name
@@ -2110,71 +2594,76 @@ Items:
                 Children:
                   - !Evergine.Framework.Assets.AssetSources.Entities.PrefabInstanceModel,Evergine.Framework
                     EntityLinks: {}
-                    Id: 482a40a1-a516-4b81-b883-c1d01a53f28d
+                    Id: fb9f92e7-37a5-4974-8fbd-084535ddf2e1
+                    IdDictionary:
+                      0a29fefe-f24b-4f3c-897a-6dca78053e19: 5423866c-a55b-48db-9e24-45df23cd47f0
+                      0f5c06c6-b910-46ab-baab-783441287556: 31449ba1-d3f8-4164-95ed-8c3ff7ba9e9e
+                      11296f0c-37ba-4310-bfd8-6b4ef21b00c4: e153ba58-2ff1-4b03-8ab8-e819f5d95cec
+                      1dd02f3c-888e-49b3-a2fb-105ab12b7e44: 3178a4a4-88f0-4db8-afe2-ab0c1e78d502
+                      1ea06921-f80a-48c1-942f-220be37daf7e: 51995616-5f0c-4598-b6d3-5a6cbadba8ef
+                      1ff77d37-af71-4156-9420-419e4697264d: cb9cf610-8687-4fa2-a434-fec3d614df77
+                      213d46b8-5775-4beb-8663-4f0b4bde873b: fb9f92e7-37a5-4974-8fbd-084535ddf2e1
+                      225a6087-e32e-44b1-b608-6324d331c89d: c66de2b7-cdb8-4014-8429-1fdf92852548
+                      24b36399-6a10-4a7a-809b-08a3712fcf1b: 8a80d396-5532-472f-a831-dbc51b704654
+                      264d55b2-98e4-4a6e-9276-4420b9df5782: 62e161b2-2650-4951-a5be-183091f21fb3
+                      2a31dd89-9c4d-4a79-9bda-b0e79f0018f1: 02db75d2-8708-4a5e-82e8-adcca7e12f47
+                      2b2b969f-8a8d-42f4-b22e-92aa8643617b: 4b2a1c9a-97ff-4eaa-9862-e387b9cb9c2d
+                      2b378825-eedc-4c4f-8b27-6f15e874128c: d22e2d66-ca0f-4db3-801e-3c6e00b3de21
+                      2cbcd674-772e-4e30-883d-5f135cbc42ae: f04c0db8-2669-4f49-994a-24cd3bc9365e
+                      33790838-6660-4a48-a857-ad38ef0c0f5b: 3569e233-9193-49b7-8a05-b91a4feab8cf
+                      3c0ced50-0901-45ce-8c2b-5d9d769c8b56: fe9c1289-06ea-4d3e-9408-52bfb8d2676a
+                      3dc53d89-f1d3-4faa-a2c9-f99bacf353f4: 8b9e4c0d-9f77-466d-a8cb-8554262bd66d
+                      42322f88-2838-40a7-8798-dfeffb087d6b: 7b12dcb5-3af5-4366-9706-a49007857382
+                      46ff3451-6d41-4438-af8a-ae4bb649fc70: 1bc68323-8aa9-4222-9e81-10c19691e2e9
+                      4748ce88-47e5-4b87-a23c-af8d30a1d2e0: 8a080e2b-8ac8-4eb1-bfaf-66a9c806d962
+                      4eff5f80-1c13-4893-ac0b-84f65a4d07f9: 78cfbc7e-5902-4e91-a647-0063b81dc291
+                      54e5aaa2-a2cc-487d-ba97-b1ac82441deb: 6af032f9-ab08-455a-9ebe-3e46e505a2cf
+                      5d52b960-baec-45f1-996c-dce504509281: 6cc049ab-3b5c-4ab6-9e1e-b5935cf7462c
+                      6223e5be-db9f-48a1-9804-17d54c641060: 82a97a4c-f1fb-4a0f-b70d-8235b74be166
+                      65cdf1b8-0c46-4708-b4cb-cb2f93e614e5: 66096581-a17b-4eb0-a3f8-b19898f7d349
+                      6a308d59-6cb9-43d4-81f9-71ef42e32b03: cf336198-9d3b-4c14-b169-a71f624c15a1
+                      6d8ca26f-fe28-4193-b9d7-5ceec5158554: e5adf2e9-0647-4506-a675-980ec8b66620
+                      75abf993-b33a-452b-a217-37fb98a356de: 26dec9ed-9ba1-4b1f-a4b5-62f0dc4c1571
+                      781c3869-7f4b-4d6b-9b20-5a630bb56be6: 3cf219b3-3b23-4048-9d7a-f0441d2afca3
+                      7c15e077-f5d5-4c01-9ff0-6cff146e638e: 973f0b29-8f31-4266-8671-b3c8cd4beb66
+                      7fc845a8-e261-4d1b-841a-4587acda4092: 20563fbe-0d80-4360-a27c-f4dcf6ceaaf8
+                      865e2ad1-b269-489e-ad45-1260d15a580f: cb1fd4b3-c0dc-49a0-bdaa-39971cca75f6
+                      8bdb9d9b-55e0-487a-8085-96e945374121: 478b72c9-7807-47b9-95cd-5ef1b06945cb
+                      93fee4a7-790e-46f1-a3ba-009c2d724410: 4f68da26-7c35-41f9-98e3-cb2463ce84f0
+                      951680ce-c808-4bef-8bd5-2ac11a16c633: 9b481062-ef13-4171-82ee-5227273bb3df
+                      984ca3f5-67cf-4852-be24-940096729eaa: 09fcbb52-eb6e-4cd1-b9f4-1bab51f8bcf3
+                      9dfb3dd3-88a3-4c81-918d-a834d31c1df3: 3dbed06b-d217-4a94-9808-3c7a7a168bcf
+                      a07597d2-2250-4d1d-a61f-b0a60f81ec8a: ffa0bda8-5037-4fc6-8867-c1bca3543080
+                      a9c245e7-679c-40d7-901e-3a021e0ff506: 4007db7f-705b-4f7e-b1c2-ef6983a37c20
+                      b7e27df2-7836-44cb-b580-28b6760df767: 94d5f650-475c-47b6-84e5-a1c2a416213e
+                      bd8abaa1-a745-4678-a9e8-337a551b4d06: be3f3b6f-fafb-4d2f-be1a-0fa4dc9d725f
+                      bf25464b-83dd-435d-b731-d3780f4d3f1a: ca300f78-26f5-4780-89ab-b1ba2526718e
+                      c2f688cb-bbdb-4f1e-9e87-63f877bf111d: b2341e54-3d12-42de-9e7d-d09c5856476b
+                      c379b379-a0ab-43ce-80fd-8cb6b94dc232: b201eac1-89ac-410f-8f9d-ca643199ccf0
+                      c4ef598e-55ef-435d-bcce-be58b6dc44b2: 593dcf8b-f723-4577-a6c7-5bed2484edaf
+                      e0392363-f8e0-405e-9ec3-b4dfee3ee47c: da4976fa-2816-42b3-97bf-3c3eccc6220a
+                      e6966802-3d5b-4c02-bbf9-0d087710fc08: 677c81ac-3a03-4503-8780-cb6de7999cca
+                      e6e091e9-66f8-4155-b3cc-6f29ecb4e002: 17cdd7e1-9b05-440d-8674-d17dc95d5355
+                      efdd4fd9-e7c0-4065-8e18-dcf4c5553f9d: a317c710-a1f2-403c-9858-d0ecc9d4dbc8
+                      fc203ae3-847a-4ec0-8bce-f578bd29f396: e9d104d4-370a-485d-a5a6-cd2e5c1cc48c
                     Modifications:
                       - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.String,System.Private.CoreLib]],Evergine.Framework
                         Name: Name
                         Target: 213d46b8-5775-4beb-8663-4f0b4bde873b
                         TypedValue: ListView_weprefab
+                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Vector3,Evergine.Mathematics]],Evergine.Framework
+                        Name: LocalPosition
+                        Target: 0f5c06c6-b910-46ab-baab-783441287556
+                        TypedValue:
+                          X: 0.0
+                          Y: 0.0
+                          Z: 0.0
                       - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Vector2,Evergine.Mathematics]],Evergine.Framework
                         Name: Size
                         Target: 4eff5f80-1c13-4893-ac0b-84f65a4d07f9
                         TypedValue:
                           X: 0.200000003
                           Y: 0.189999998
-                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Vector3,Evergine.Mathematics]],Evergine.Framework
-                        Name: Size
-                        Target: 2b72dc7a-ae39-4f29-9f5f-5fe9db611114
-                        TypedValue:
-                          X: 0.200000003
-                          Y: 0.189999998
-                          Z: 0.0500000007
-                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Vector3,Evergine.Mathematics]],Evergine.Framework
-                        Name: LocalScale
-                        Target: fb273ab4-f0dc-4ba7-ac26-cac0bee243a4
-                        TypedValue:
-                          X: 0.200000003
-                          Y: 0.189999998
-                          Z: 1.0
-                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Vector3,Evergine.Mathematics]],Evergine.Framework
-                        Name: LocalPosition
-                        Target: 319c2a3a-2b8a-4d1f-9ac4-b62ffe608079
-                        TypedValue:
-                          X: 0.0
-                          Y: 0.0
-                          Z: 0.00400000019
-                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.Boolean,System.Private.CoreLib]],Evergine.Framework
-                        Name: IsEnabled
-                        Target: a0cec5d6-afc7-4783-9450-50a632e40229
-                        TypedValue: false
-                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Vector3,Evergine.Mathematics]],Evergine.Framework
-                        Name: LocalPosition
-                        Target: 6a889edd-bb1b-4ca2-b9de-dc4a16526466
-                        TypedValue:
-                          X: 0.0960000008
-                          Y: 0.0949999988
-                          Z: 0.00400000019
-                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Vector3,Evergine.Mathematics]],Evergine.Framework
-                        Name: LocalScale
-                        Target: 6a889edd-bb1b-4ca2-b9de-dc4a16526466
-                        TypedValue:
-                          X: 0.00400000019
-                          Y: 0.0601666979
-                          Z: 1.0
-                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Vector3,Evergine.Mathematics]],Evergine.Framework
-                        Name: LocalPosition
-                        Target: d6c432b6-81a8-43d8-908f-ad58f88e0dfb
-                        TypedValue:
-                          X: -0.0850000009
-                          Y: 0.086127162
-                          Z: 0.00100000005
-                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Vector3,Evergine.Mathematics]],Evergine.Framework
-                        Name: LocalScale
-                        Target: d6c432b6-81a8-43d8-908f-ad58f88e0dfb
-                        TypedValue:
-                          X: 0.180000007
-                          Y: 0.0149999997
-                          Z: 1.0
                       - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Vector3,Evergine.Mathematics]],Evergine.Framework
                         Name: LocalPosition
                         Target: 3dc53d89-f1d3-4faa-a2c9-f99bacf353f4
@@ -2195,6 +2684,54 @@ Items:
                         TypedValue:
                           X: 0.200000003
                           Y: 1.0
+                          Z: 1.0
+                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Vector2,Evergine.Mathematics]],Evergine.Framework
+                        Name: Size
+                        Target: 865e2ad1-b269-489e-ad45-1260d15a580f
+                        TypedValue:
+                          X: 0.200000003
+                          Y: 0.189999998
+                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Vector3,Evergine.Mathematics]],Evergine.Framework
+                        Name: Size
+                        Target: 11296f0c-37ba-4310-bfd8-6b4ef21b00c4
+                        TypedValue:
+                          X: 0.200000003
+                          Y: 0.189999998
+                          Z: 0.0500000007
+                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Vector3,Evergine.Mathematics]],Evergine.Framework
+                        Name: LocalScale
+                        Target: 54e5aaa2-a2cc-487d-ba97-b1ac82441deb
+                        TypedValue:
+                          X: 0.200000003
+                          Y: 0.189999998
+                          Z: 1.0
+                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Vector3,Evergine.Mathematics]],Evergine.Framework
+                        Name: LocalPosition
+                        Target: 46ff3451-6d41-4438-af8a-ae4bb649fc70
+                        TypedValue:
+                          X: -0.0900000036
+                          Y: 0.086127162
+                          Z: -0.00300000003
+                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Vector3,Evergine.Mathematics]],Evergine.Framework
+                        Name: LocalScale
+                        Target: 46ff3451-6d41-4438-af8a-ae4bb649fc70
+                        TypedValue:
+                          X: 0.180000007
+                          Y: 0.0149999997
+                          Z: 1.0
+                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Vector3,Evergine.Mathematics]],Evergine.Framework
+                        Name: LocalPosition
+                        Target: 42322f88-2838-40a7-8798-dfeffb087d6b
+                        TypedValue:
+                          X: 0.0960000008
+                          Y: 0.0949999988
+                          Z: 0.00400000019
+                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Vector3,Evergine.Mathematics]],Evergine.Framework
+                        Name: LocalScale
+                        Target: 42322f88-2838-40a7-8798-dfeffb087d6b
+                        TypedValue:
+                          X: 0.00400000019
+                          Y: 0.0601666868
                           Z: 1.0
                     RemovedComponents: []
                     Source: 9502a182-b61a-4cb2-b320-1d0d2f4ee595

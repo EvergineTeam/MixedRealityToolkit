@@ -4,12 +4,12 @@ using Evergine.Common.Attributes;
 using Evergine.Common.Graphics;
 using Evergine.Framework;
 using Evergine.Framework.Graphics;
-using Evergine.Framework.Physics3D;
 using Evergine.Framework.Services;
 using Evergine.Mathematics;
 using Evergine.MRTK.Base.EventDatum.Input;
 using Evergine.MRTK.Base.Interfaces.InputSystem.Handlers;
 using Evergine.MRTK.Emulation;
+using Evergine.MRTK.SDK.Features.UX.Components.Scrolling;
 using System;
 using System.Linq;
 
@@ -20,50 +20,32 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Lists
     /// </summary>
     public class ListView : Behavior, IMixedRealityPointerHandler, IMixedRealityTouchHandler
     {
-        [BindEntity(source: BindEntitySource.ChildrenSkipOwner, tag: "PART_scrollviewer_scrollarea")]
-        private Entity scrollArea = null;
-
-        [BindComponent(source: BindComponentSource.ChildrenSkipOwner, tag: "PART_scrollviewer_scrollarea")]
-        private BoxCollider3D scrollAreaCollider = null;
-
-        [BindComponent(source: BindComponentSource.ChildrenSkipOwner, tag: "PART_scrollviewer_content")]
-        private Transform3D contentTransform = null;
-
-        [BindEntity(source: BindEntitySource.ChildrenSkipOwner, tag: "PART_scrollviewer_content")]
-        private Entity content = null;
-
-        [BindEntity(source: BindEntitySource.ChildrenSkipOwner, tag: "PART_scrollviewer_bar")]
-        private Entity scrollBarEntity = null;
-
-        [BindComponent(source: BindComponentSource.ChildrenSkipOwner, tag: "PART_scrollviewer_bar")]
-        private Transform3D scrollBarTransform = null;
-
-        [BindComponent(source: BindComponentSource.ChildrenSkipOwner, tag: "PART_scrollviewer_background")]
-        private Transform3D backgroundPlaneTransform = null;
-
-        [BindComponent(source: BindComponentSource.ChildrenSkipOwner, tag: "PART_scrollviewer_separator")]
+        [BindComponent(source: BindComponentSource.ChildrenSkipOwner, tag: "PART_listview_separator")]
         private Transform3D separatorTransform = null;
 
-        [BindEntity(source: BindEntitySource.ChildrenSkipOwner, tag: "PART_scrollviewer_header")]
+        [BindEntity(source: BindEntitySource.ChildrenSkipOwner, tag: "PART_listview_header")]
         private Entity header = null;
 
-        [BindEntity(source: BindEntitySource.ChildrenSkipOwner, tag: "PART_scrollviewer_header_contents")]
+        [BindEntity(source: BindEntitySource.ChildrenSkipOwner, tag: "PART_listview_header_contents")]
         private Entity headerContents = null;
 
-        [BindComponent(source: BindComponentSource.ChildrenSkipOwner, tag: "PART_scrollviewer_header")]
+        [BindComponent(source: BindComponentSource.ChildrenSkipOwner, tag: "PART_listview_header")]
         private Transform3D headerContainerTransform = null;
 
-        [BindComponent(source: BindComponentSource.ChildrenSkipOwner, tag: "PART_scrollviewer_header_background")]
+        [BindComponent(source: BindComponentSource.ChildrenSkipOwner, tag: "PART_listview_header_background")]
         private Transform3D headerBackgroundTransform = null;
 
-        [BindEntity(source: BindEntitySource.ChildrenSkipOwner, tag: "PART_scrollviewer_selection")]
+        [BindEntity(source: BindEntitySource.ChildrenSkipOwner, tag: "PART_listview_selection")]
         private Entity selectionEntity = null;
 
-        [BindComponent(source: BindComponentSource.ChildrenSkipOwner, tag: "PART_scrollviewer_selection")]
+        [BindComponent(source: BindComponentSource.ChildrenSkipOwner, tag: "PART_listview_selection")]
         private Transform3D selectionTransform = null;
 
-        [BindEntity(source: BindEntitySource.ChildrenSkipOwner, tag: "PART_scrollviewer_loading_holder")]
+        [BindEntity(source: BindEntitySource.ChildrenSkipOwner, tag: "PART_listview_loading_holder")]
         private Entity loadingHolder = null;
+
+        [BindComponent(source: BindComponentSource.ChildrenSkipOwner, tag: "PART_scrollviewer")]
+        private ScrollView scrollView = null;
 
         [BindService]
         private AssetsService assetsService = null;
@@ -71,26 +53,19 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Lists
         private Vector2 size = new Vector2(0.25f, 0.18f);
 
         private ColumnDefinition[] columnDefinitions;
+        private float[] columnSizes;
         private DataAdapter dataSource;
 
-        private Vector2 ContentSize;
-
         private Cursor currentCursor;
-        private Vector3 initialOffset;
         private int selectedIndex = -1;
-        private Vector3 lastCursorPosition;
         private Vector3 gestureStartPosition;
 
-        private bool interacting = false;
-        private float velocityY;
-        private Vector3 contentOrigin;
-        private Vector3 barOrigin;
         private RenderLayerDescription contentLayer;
         private RenderLayerDescription alphaLayer;
         private bool headerEnabled = false;
-        private float barSize;
 
         private Entity loadingIndicator;
+        private Vector3 contentOrigin;
 
         /// <summary>
         /// Raised when selection changes.
@@ -153,6 +128,7 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Lists
             set
             {
                 this.dataSource = value;
+                this.columnSizes = null;
 
                 if (this.IsAttached)
                 {
@@ -272,18 +248,29 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Lists
         /// <inheritdoc/>
         protected override bool OnAttached()
         {
-            var result = base.OnAttached();
+            var attached = base.OnAttached();
+            if (attached)
+            {
+                this.scrollView.Scrolled += this.ScrollView_Scrolled;
 
-            this.ShowLoadingIndicator = false;
+                this.ShowLoadingIndicator = false;
 
-            this.loadingIndicator = this.loadingIndicator ?? this.loadingHolder.ChildEntities.FirstOrDefault();
-            this.UpdateLoadingIndicator();
+                this.loadingIndicator = this.loadingIndicator ?? this.loadingHolder.ChildEntities.FirstOrDefault();
+                this.UpdateLoadingIndicator();
 
-            this.contentLayer = this.assetsService.Load<RenderLayerDescription>(MRTKResourceIDs.RenderLayers.ScrollContent);
-            this.alphaLayer = this.assetsService.Load<RenderLayerDescription>(DefaultResourcesIDs.AlphaRenderLayerID);
-            this.Refresh();
+                this.contentLayer = this.assetsService.Load<RenderLayerDescription>(MRTKResourceIDs.RenderLayers.ScrollContent);
+                this.alphaLayer = this.assetsService.Load<RenderLayerDescription>(DefaultResourcesIDs.AlphaRenderLayerID);
+            }
 
-            return result;
+            return attached;
+        }
+
+        /// <inheritdoc/>
+        protected override void OnDetach()
+        {
+            base.OnDetach();
+
+            this.scrollView.Scrolled -= this.ScrollView_Scrolled;
         }
 
         /// <inheritdoc/>
@@ -291,6 +278,7 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Lists
         {
             base.Start();
             this.OnHeaderEnabledUpdated();
+            this.UpdateSize();
         }
 
         private void UpdateLoadingIndicator()
@@ -305,8 +293,8 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Lists
 
         private void UpdateSize()
         {
-            this.scrollAreaCollider.Size = new Vector3(this.size.X, this.size.Y, this.scrollAreaCollider.Size.Z);
-            this.backgroundPlaneTransform.LocalScale = new Vector3(this.size.X, this.size.Y, this.backgroundPlaneTransform.LocalScale.Z);
+            this.columnSizes = null;
+            this.scrollView.Size = new Vector2(this.size.X, this.size.Y);
             var headerContainerPosition = this.headerContainerTransform.LocalPosition;
             headerContainerPosition.Y = (this.size.Y / 2) + (this.RowHeight / 2);
             this.headerContainerTransform.LocalPosition = headerContainerPosition;
@@ -322,82 +310,61 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Lists
         public void Refresh()
         {
             this.ValidateColumnDefinitions();
+            this.CalculateColumnSizes();
 
             if (this.dataSource == null || this.columnDefinitions?.Any() != true || this.dataSource.Count == 0)
             {
-                this.scrollBarEntity.IsEnabled = Application.Current.IsEditor;
+                this.scrollView.DisplayScrollBar = Application.Current.IsEditor;
                 this.selectionEntity.IsEnabled = false;
                 return;
             }
 
             // Clean
-            var contentChildren = this.content.ChildEntities?.ToArray();
-            if (contentChildren != null)
-            {
-                foreach (var child in contentChildren)
-                {
-                    this.content.RemoveChild(child);
-                }
-            }
+            this.scrollView.ClearContents(child => child != this.selectionEntity);
 
             // Content config
-            var contentPosition = this.contentTransform.LocalPosition;
-            contentPosition.Z = this.ZContentDistance;
-            this.contentTransform.LocalPosition = contentPosition;
-            Vector2 size = this.CalculateContentSize();
+            this.scrollView.ZContentDistance = this.ZContentDistance;
 
             // Header
             this.RefreshHeader();
 
             // Content from data
-            this.contentOrigin = new Vector3((this.backgroundPlaneTransform.LocalScale.X * -0.5f) + this.ContentPadding, this.backgroundPlaneTransform.LocalScale.Y * 0.5f, 0);
-            Vector3 currentPosition = this.contentOrigin;
+            this.contentOrigin = new Vector3((this.size.X * -0.5f) + this.ContentPadding, this.size.Y * 0.5f, 0);
+            var currentPosition = this.contentOrigin;
+            var cellSize = new Vector2(0, this.RowHeight);
 
             for (int rowIndex = 0; rowIndex < this.dataSource.Count; rowIndex++)
             {
                 for (int columnIndex = 0; columnIndex < this.columnDefinitions.Length; columnIndex++)
                 {
-                    var column = this.columnDefinitions[columnIndex];
                     var cellRender = this.dataSource.GetRenderer(rowIndex, columnIndex);
-                    float columnWidth = size.X * column.PercentageSize;
-                    var entity = cellRender.InternalRender(currentPosition, columnWidth, this.RowHeight, this.contentLayer);
+                    cellSize.X = this.columnSizes[columnIndex];
+
+                    var entity = cellRender.InternalRender(currentPosition, cellSize.X, this.RowHeight, this.contentLayer);
                     entity.Flags = HideFlags.DontSave | HideFlags.DontShow;
-                    this.content.AddChild(entity);
-                    currentPosition.X += columnWidth;
+                    this.scrollView.AddContent(entity, currentPosition.ToVector2(), cellSize);
+                    currentPosition.X += cellSize.X;
                 }
 
                 currentPosition.X = this.contentOrigin.X;
                 currentPosition.Y -= this.RowHeight;
-                size.Y += this.RowHeight;
             }
 
-            this.ContentSize = size;
+            this.scrollView.Refresh();
 
             // Update bar
-            this.scrollBarEntity.IsEnabled = true;
-
-            var scrollBarScale = this.scrollBarTransform.LocalScale;
-            scrollBarScale.X = this.BarWidth;
-            this.scrollBarTransform.LocalScale = scrollBarScale;
-
-            var barScale = this.scrollBarTransform.LocalScale;
-            var barScaleFactor = this.backgroundPlaneTransform.LocalScale.Y > this.ContentSize.Y ? 1 : this.backgroundPlaneTransform.LocalScale.Y / this.ContentSize.Y;
-            this.barSize = this.size.Y * barScaleFactor;
-            barScale.Y = this.barSize;
-            this.scrollBarTransform.LocalScale = barScale;
-
-            this.barOrigin = new Vector3((this.backgroundPlaneTransform.LocalScale.X * 0.5f) - this.BarWidth, this.backgroundPlaneTransform.LocalScale.Y * 0.5f, this.ZContentDistance);
-            this.scrollBarTransform.LocalPosition = this.barOrigin;
+            this.scrollView.DisplayScrollBar = true;
+            this.scrollView.BarWidth = this.BarWidth;
 
             // Selection
             var selectionScale = this.selectionTransform.LocalScale;
-            selectionScale.X = this.backgroundPlaneTransform.LocalScale.X - this.ContentPadding;
+            selectionScale.X = this.size.X - this.ContentPadding;
             selectionScale.Y = this.RowHeight;
             this.selectionTransform.LocalScale = selectionScale;
 
             var selectionPosition = this.selectionTransform.LocalPosition;
-            selectionPosition.X = this.contentOrigin.X - (this.ContentPadding * 0.25f);
-            selectionPosition.Z = this.ZContentDistance * 0.25f;
+            selectionPosition.X = (this.ContentPadding / 2) - (this.size.X / 2);
+            selectionPosition.Z = -0.003f;
             this.selectionTransform.LocalPosition = selectionPosition;
         }
 
@@ -415,15 +382,14 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Lists
                 }
             }
 
-            Vector2 size = this.CalculateContentSize();
-            Vector3 headerPosition = new Vector3((this.backgroundPlaneTransform.LocalScale.X * -0.5f) + this.ContentPadding, this.RowHeight * 0.5f, this.ZContentDistance);
+            Vector3 headerPosition = new Vector3((this.size.X * -0.5f) + this.ContentPadding, this.RowHeight * 0.5f, this.ZContentDistance);
             var textRenderer = TextCellRenderer.Instance;
             var recoverColor = textRenderer.Color;
 
             for (int columnIndex = 0; columnIndex < this.columnDefinitions.Length; columnIndex++)
             {
                 var column = this.columnDefinitions[columnIndex];
-                float columnWidth = size.X * column.PercentageSize;
+                float columnWidth = this.columnSizes[columnIndex];
                 textRenderer.Text = column.Title;
                 textRenderer.Color = column.HeaderTextColor;
 
@@ -485,78 +451,30 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Lists
         /// Scrolls the list to a position.
         /// </summary>
         /// <param name="positionY">Position Y of the scroll area.</param>
-        public void ScrollTo(float positionY)
-        {
-            var contentPosition = this.contentTransform.LocalPosition;
-            contentPosition.Y = positionY;
-            this.contentTransform.LocalPosition = contentPosition;
-            this.Scrolled?.Invoke(this, EventArgs.Empty);
-        }
-
-        private Vector2 CalculateContentSize()
-        {
-            return new Vector2(this.backgroundPlaneTransform.LocalScale.X - (this.ContentPadding * 2.0f), 0);
-        }
+        public void ScrollTo(float positionY) => this.scrollView.ScrollTo(positionY);
 
         /// <inheritdoc/>
         public void OnPointerDown(MixedRealityPointerEventData eventData)
         {
-            if (eventData.EventHandled)
+            if (this.currentCursor == null && this.IsPartOfScrollViewHierarchy(eventData.CurrentTarget))
             {
-                return;
-            }
+                this.currentCursor = eventData.Cursor;
+                this.gestureStartPosition = eventData.Position;
 
-            if (this.currentCursor == null)
-            {
-                if (eventData.CurrentTarget == this.scrollArea)
-                {
-                    this.interacting = true;
-
-                    this.currentCursor = eventData.Cursor;
-                    this.gestureStartPosition = eventData.Position;
-                    this.initialOffset = this.contentTransform.LocalPosition - eventData.Position;
-                    this.contentTransform.LocalPosition = eventData.Position + this.initialOffset;
-                    this.lastCursorPosition = eventData.Position;
-
-                    eventData.SetHandled();
-                }
+                eventData.SetHandled();
             }
         }
 
         /// <inheritdoc/>
         public void OnPointerDragged(MixedRealityPointerEventData eventData)
         {
-            if (eventData.EventHandled)
-            {
-                return;
-            }
-
-            if (this.currentCursor == eventData.Cursor)
-            {
-                Vector3 delta = eventData.Position - this.lastCursorPosition;
-                Vector3 newPosition = this.lastCursorPosition + delta + this.initialOffset;
-
-                var position = this.contentTransform.LocalPosition;
-                position.Y = newPosition.Y;
-                this.contentTransform.LocalPosition = position;
-                this.lastCursorPosition = this.lastCursorPosition + delta;
-
-                eventData.SetHandled();
-                this.Scrolled?.Invoke(this, EventArgs.Empty);
-            }
         }
 
         /// <inheritdoc/>
         public void OnPointerUp(MixedRealityPointerEventData eventData)
         {
-            if (eventData.EventHandled)
-            {
-                return;
-            }
-
             if (this.currentCursor == eventData.Cursor)
             {
-                this.interacting = false;
                 this.currentCursor = null;
 
                 if (!ThatHasBeenADraggingGesture(this.gestureStartPosition, eventData.Position))
@@ -581,29 +499,13 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Lists
                 return;
             }
 
-            this.interacting = true;
             this.currentCursor = eventData.Cursor;
             this.gestureStartPosition = eventData.Position;
-            this.initialOffset = this.contentTransform.LocalPosition - eventData.Position;
-            this.contentTransform.LocalPosition = eventData.Position + this.initialOffset;
-            this.lastCursorPosition = eventData.Position;
         }
 
         /// <inheritdoc/>
         public void OnTouchUpdated(HandTrackingInputEventData eventData)
         {
-            if (!(eventData.Cursor is CursorTouch))
-            {
-                return;
-            }
-
-            Vector3 delta = eventData.Position - this.lastCursorPosition;
-            Vector3 newPosition = this.lastCursorPosition + delta + this.initialOffset;
-
-            var position = this.contentTransform.LocalPosition;
-            position.Y = newPosition.Y;
-            this.contentTransform.LocalPosition = position;
-            this.lastCursorPosition = this.lastCursorPosition + delta;
         }
 
         /// <inheritdoc/>
@@ -619,42 +521,14 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Lists
                 this.SetSelectedRow(eventData.Position);
             }
 
-            this.interacting = false;
             this.currentCursor = null;
         }
 
         /// <inheritdoc/>
         protected override void Update(TimeSpan gameTime)
         {
-            // Content Inertia
-            if (!this.interacting)
-            {
-                var position = this.contentTransform.LocalPosition;
-
-                if (position.Y < 0)
-                {
-                    position.Y = MathHelper.SmoothDamp(position.Y, 0, ref this.velocityY, this.ElasticTime, (float)gameTime.TotalSeconds);
-                }
-                else if (position.Y > this.ContentSize.Y - this.backgroundPlaneTransform.LocalScale.Y)
-                {
-                    position.Y = MathHelper.SmoothDamp(position.Y, this.ContentSize.Y - this.backgroundPlaneTransform.LocalScale.Y, ref this.velocityY, this.ElasticTime, (float)gameTime.TotalSeconds);
-                }
-
-                this.contentTransform.LocalPosition = position;
-            }
-
-            // Bar
-            if (this.scrollBarTransform.Scale.Y != 1)
-            {
-                var barPosition = this.scrollBarTransform.LocalPosition;
-                float contentDeltaNormalized = MathHelper.Clamp(this.contentTransform.LocalPosition.Y / (this.ContentSize.Y - this.backgroundPlaneTransform.LocalScale.Y), 0, 1);
-                barPosition.Y = this.barOrigin.Y - (contentDeltaNormalized * (this.backgroundPlaneTransform.LocalScale.Y - this.barSize));
-                this.scrollBarTransform.LocalPosition = barPosition;
-            }
-
-            // Selection
             var selectionPosition = this.selectionTransform.LocalPosition;
-            selectionPosition.Y = this.contentTransform.LocalPosition.Y + this.contentOrigin.Y - (this.RowHeight * this.selectedIndex);
+            selectionPosition.Y = this.contentOrigin.Y - (this.RowHeight * this.selectedIndex);
             this.selectionTransform.LocalPosition = selectionPosition;
         }
 
@@ -671,12 +545,33 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Lists
             return diffY > SelectionChangeGestureDiff;
         }
 
+        private void CalculateColumnSizes()
+        {
+            if (this.columnDefinitions?.Any() != true)
+            {
+                return;
+            }
+
+            if (this.columnSizes != null)
+            {
+                return;
+            }
+
+            float availableWidth = this.size.X - (this.ContentPadding * 2);
+            this.columnSizes = new float[this.columnDefinitions.Length];
+            for (int i = 0; i < this.columnDefinitions.Length; i++)
+            {
+                var columnDef = this.columnDefinitions[i];
+                this.columnSizes[i] = availableWidth * columnDef.PercentageSize;
+            }
+        }
+
         private void SetSelectedRow(Vector3 pointerPosition)
         {
-            var originTransformed = this.contentTransform.Position + (this.contentTransform.WorldTransform.Up * this.contentOrigin.Y);
-            var pointerPositionTransformed = this.contentTransform.Position + Vector3.Project(pointerPosition - this.contentTransform.Position, this.contentTransform.WorldTransform.Up);
-            var distance = Vector3.Distance(originTransformed, pointerPositionTransformed);
-            int index = (int)(distance / this.RowHeight);
+            var transform = this.Owner.FindComponent<Transform3D>();
+            Vector3 localPointerPosition = Vector3.TransformCoordinate(pointerPosition, transform.WorldToLocalTransform);
+
+            int index = (int)Math.Floor((this.scrollView.ScrollPosition.Y + (this.size.Y / 2) - localPointerPosition.Y) / this.RowHeight);
             this.SetSelectedRow(index);
         }
 
@@ -710,5 +605,26 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Lists
                 throw new InvalidOperationException("Column sizes sum must be 1.0f");
             }
         }
+
+        private bool IsPartOfScrollViewHierarchy(Entity entity)
+        {
+            Entity current = entity;
+            if (current == this.scrollView.Owner)
+            {
+                return true;
+            }
+
+            while ((current = current.Parent) != null)
+            {
+                if (current == this.scrollView.Owner)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        private void ScrollView_Scrolled(object sender, EventArgs args) => this.Scrolled?.Invoke(this, EventArgs.Empty);
     }
 }
