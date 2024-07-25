@@ -6,6 +6,7 @@ using Evergine.Components.Graphics3D;
 using Evergine.Framework;
 using Evergine.Framework.Graphics;
 using Evergine.Mathematics;
+using Evergine.MRTK.Emulation;
 
 namespace Evergine.MRTK.SDK.Features.UX.Components.PressableButtons
 {
@@ -119,7 +120,7 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.PressableButtons
         }
 
         /// <inheritdoc/>
-        void IPressableButtonFeedback.FocusChanged(bool focus)
+        void IPressableButtonFeedback.FocusChanged(Cursor cursor, bool focus)
         {
             this.focusOffset = Vector3.Forward * this.FocusedAccentDistance * (focus ? 1 : 0);
             this.transform.LocalPosition = this.movingVisualsInitialLocalPosition + this.focusOffset;

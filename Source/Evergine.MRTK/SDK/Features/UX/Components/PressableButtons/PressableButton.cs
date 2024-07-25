@@ -50,13 +50,13 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.PressableButtons
         /// <inheritdoc/>
         public void OnFocusEnter(MixedRealityFocusEventData eventData)
         {
-            this.RefreshFocusedState(true);
+            this.RefreshFocusedState(eventData.Cursor, true);
         }
 
         /// <inheritdoc/>
         public void OnFocusExit(MixedRealityFocusEventData eventData)
         {
-            this.RefreshFocusedState(false);
+            this.RefreshFocusedState(eventData.Cursor, false);
         }
 
         /// <inheritdoc/>
@@ -151,13 +151,13 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.PressableButtons
             }
         }
 
-        private void RefreshFocusedState(bool focused)
+        private void RefreshFocusedState(Cursor cursor, bool focused)
         {
             if (this.feedbackVisualsComponentsArray != null)
             {
                 for (int i = 0; i < this.feedbackVisualsComponentsArray.Length; i++)
                 {
-                    this.feedbackVisualsComponentsArray[i].FocusChanged(focused);
+                    this.feedbackVisualsComponentsArray[i].FocusChanged(cursor, focused);
                 }
             }
         }

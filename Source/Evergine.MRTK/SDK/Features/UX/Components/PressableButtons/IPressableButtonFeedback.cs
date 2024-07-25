@@ -1,6 +1,7 @@
 ﻿// Copyright © Evergine S.L. All rights reserved. Use is subject to license terms.
 
 using Evergine.Mathematics;
+using Evergine.MRTK.Emulation;
 
 namespace Evergine.MRTK.SDK.Features.UX.Components.PressableButtons
 {
@@ -20,7 +21,8 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.PressableButtons
         /// <summary>
         /// Notify when the button focus state changes.
         /// </summary>
+        /// <param name="cursor">Cursor that is provoking the focus change.</param>
         /// <param name="focus">Whether the button is in focus.</param>
-        void FocusChanged(bool focus);
+        void FocusChanged(Cursor cursor, bool focus);
     }
 }
