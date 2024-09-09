@@ -49,7 +49,7 @@ namespace Evergine.MRTK.Demo.UWP.MixedReality
             application.Container.RegisterInstance(xaudio);
 
             // Register voice commands service
-            application.Container.RegisterType<VoiceCommandService>();
+            application.Container.Register<VoiceCommandService>();
         }
 
         /// <summary>

@@ -6,7 +6,7 @@ DefaultProfile:
   Platform: Undefined
 ExportAsRaw: false
 MaterialInfo:
-  Id: 082705ce-d760-4c95-b068-479e378415cb
+  Id: 10811ebe-ec59-4a91-9698-3aae9f95bf8f
   ActiveDirectives:
     - INDEPENDENT_CORNERS
     - IRIDESCENCE
@@ -95,7 +95,7 @@ MaterialInfo:
       ValueByteArray: AAAAAA==
     - Name: HoverColorOverride
       Type: Evergine.Mathematics.Vector3,Evergine.Mathematics
-      ValueByteArray: 61gxPetYMT3rWDE9
+      ValueByteArray: sbAwPbGwMD2xsDA9
     - Name: ProximityLightCenterColorOverride
       Type: Evergine.Mathematics.Vector4,Evergine.Mathematics
       ValueByteArray: DjQEPflsiT753nQ/AAAAAA==
@@ -134,6 +134,6 @@ MaterialInfo:
   Textures:
     - ID: 00000000-0000-0000-0000-000000000000
       Name: null
-    - ID: ba547d15-0927-4bfe-b7da-6625fdd7d9a5
+    - ID: 93738f86-b58f-45fe-9fed-4520abc4b755
       Name: IridescentSpectrumMap
 Profiles: {}

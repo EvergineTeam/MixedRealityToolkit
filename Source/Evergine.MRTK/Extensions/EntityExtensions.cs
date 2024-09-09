@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Evergine.Framework;
 using Evergine.MRTK.Base.Interfaces.InputSystem.Handlers;
 
@@ -31,8 +32,9 @@ namespace Evergine.MRTK.Extensions
             var current = entity;
             while (current != null)
             {
-                foreach (var c in current.Components)
+                for (int i = 0; i < current.Components.Count(); i++)
                 {
+                    var c = current.Components.ElementAt(i);
                     if (c.IsActivated && c is T interactable)
                     {
                         yield return interactable;
@@ -63,8 +65,9 @@ namespace Evergine.MRTK.Extensions
             var current = entity;
             while (current != null)
             {
-                foreach (var c in current.Components)
+                for (int i = 0; i < current.Components.Count(); i++)
                 {
+                    var c = current.Components.ElementAt(i);
                     if (c.IsActivated && c is T)
                     {
                         return true;
@@ -99,8 +102,9 @@ namespace Evergine.MRTK.Extensions
             var current = entity;
             while (current != null)
             {
-                foreach (var c in current.Components)
+                for (int i = 0; i < current.Components.Count(); i++)
                 {
+                    var c = current.Components.ElementAt(i);
                     if (c.IsActivated && (c is T1 || c is T2))
                     {
                         return true;

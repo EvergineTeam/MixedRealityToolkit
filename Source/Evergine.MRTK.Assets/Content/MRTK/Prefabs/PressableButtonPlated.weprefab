@@ -149,7 +149,7 @@ Root:
           Id: d074b0f3-7ff0-4d54-b34a-c6d290a0a777
         - !Evergine.Framework.Assets.AssetSources.Entities.EntityItemModel,Evergine.Framework
           Name: Content
-          Tag: null
+          Tag: PART_Content
           IsEnabled: true
           IsStatic: false
           Components:
@@ -274,6 +274,7 @@ Root:
                   Size:
                     X: 0.0320000015
                     Y: 0.00800000038
+                  Softness: 0.75
                   Text: Text
                   VerticalAlignment: Center
                   Wrapping: true
@@ -290,7 +291,7 @@ Root:
           Id: 00bbb74d-e74c-4115-9560-28ee316bcdac
         - !Evergine.Framework.Assets.AssetSources.Entities.EntityItemModel,Evergine.Framework
           Name: CompressableButtonVisuals
-          Tag: null
+          Tag: PART_Visuals
           IsEnabled: true
           IsStatic: false
           Components:
@@ -322,7 +323,7 @@ Root:
           Children:
             - !Evergine.Framework.Assets.AssetSources.Entities.EntityItemModel,Evergine.Framework
               Name: FrontPlate
-              Tag: null
+              Tag: PART_Visuals_FrontPlate
               IsEnabled: true
               IsStatic: false
               Components:
@@ -368,7 +369,7 @@ Root:
               Children:
                 - !Evergine.Framework.Assets.AssetSources.Entities.EntityItemModel,Evergine.Framework
                   Name: HighlightPlate
-                  Tag: null
+                  Tag: PART_Visuals_FrontPlate_Highlight
                   IsEnabled: true
                   IsStatic: false
                   Components:

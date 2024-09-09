@@ -24,10 +24,14 @@ Root:
     - !Evergine.MRTK.SDK.Features.UX.Components.Scrolling.ScrollView,Evergine.MRTK
       Id: e7c351e8-778e-4877-b2ec-b52e7a13356a
       BarWidth: 0.00400000019
-      ContentYPadding: 0.0199999996
+      ContentPadding: 0.0199999996
       Debug: false
+      DisplayScrollBar: true
       ElasticTime: 0.100000001
       IsEnabled: true
+      Size:
+        X: 0.25
+        Y: 0.180000007
       UpdateOrder: 0.5
       ZContentDistance: 0.00400000019
   Children:
@@ -112,8 +116,8 @@ Root:
                 Y: 0.0
                 Z: 0.0
               LocalScale:
-                X: 1.0
-                Y: 1.0
+                X: 0.25
+                Y: 0.180000007
                 Z: 1.0
             - !Evergine.Components.Graphics3D.MaterialComponent,Evergine.Framework
               Id: d7c30ba9-ed56-4547-8c0f-e8c28a5d70ff
@@ -123,7 +127,7 @@ Root:
               UseCopy: false
             - !Evergine.Components.Graphics3D.PlaneMesh,Evergine.Components
               Id: 7a00d3b5-d1e3-424a-802c-78210815f22b
-              Height: 0.180000007
+              Height: 1.0
               IsEnabled: true
               Origin:
                 X: 0.5
@@ -136,7 +140,7 @@ Root:
               VMirror: false
               VOffset: 0.0
               VTile: 1.0
-              Width: 0.25
+              Width: 1.0
             - !Evergine.Components.Graphics3D.MeshRenderer,Evergine.Framework
               Id: 9826dd37-8988-48d9-8ab6-1c04761913e1
               DebugBoundingbox: true
@@ -189,8 +193,8 @@ Root:
                 Y: 0.0900000036
                 Z: 0.00400000019
               LocalScale:
-                X: 1.0
-                Y: 0.0
+                X: 0.00400000019
+                Y: 0.180000007
                 Z: 1.0
             - !Evergine.Components.Graphics3D.MaterialComponent,Evergine.Framework
               Id: d23770a7-1916-4329-a95e-7e37439138cc
@@ -200,7 +204,7 @@ Root:
               UseCopy: false
             - !Evergine.Components.Graphics3D.PlaneMesh,Evergine.Components
               Id: 1a786ac8-3396-4d4b-8533-ae3616b443e0
-              Height: 0.180000007
+              Height: 1.0
               IsEnabled: true
               Origin:
                 X: 0.5
@@ -213,7 +217,7 @@ Root:
               VMirror: false
               VOffset: 0.0
               VTile: 1.0
-              Width: 0.00400000019
+              Width: 1.0
             - !Evergine.Components.Graphics3D.MeshRenderer,Evergine.Framework
               Id: 1e6f84d9-4d17-40e9-a5ec-72e819f1294a
               DebugBoundingbox: true
