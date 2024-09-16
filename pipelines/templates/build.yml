@@ -18,21 +18,18 @@ jobs:
     workspace:
       clean: all
     pool:
-      name: Evergine
-      demands:
-        - msbuild
-        - pscore
+      vmImage: 'windows-latest'
     variables:
       nugetOutputPath: "$(Build.StagingDirectory)/nupkgs"
       wepkgOutputPath: "$(Build.StagingDirectory)/wepkgs"
-      NetCoreSDKVersion: "8.x"
+      NetVersion: "8.x"
       NuGetVersion: "6.x"
 
     steps:
       - task: UseDotNet@2
         displayName: "Check .NETCore SDK"
         inputs:
-          version: "$(NetCoreSDKVersion)"
+          version: "$(NetVersion)"
 
       - task: NuGetToolInstaller@1
         displayName: "Check NuGet client"
@@ -85,35 +82,3 @@ jobs:
           Destination: AzureBlob
           storage: everginestudio
           ContainerName: "pkg-${{ parameters.publishContainer }}"
-
-      - task: PowerShell@2
-        displayName: "Clean up"
-        condition: succeededOrFailed()
-        inputs:
-          pwsh: true
-          targetType: inline
-          script: |
-            cd $PSScriptRoot  # important as we cannot delete from same folder
-
-            if ($Env:Build_SourcesDirectory -and (Test-Path -Path $Env:Build_SourcesDirectory)){
-                Write-Host "Deleting $Env:Build_SourcesDirectory"
-                Get-ChildItem -Path $Env:Build_SourcesDirectory -Recurse -Force | Remove-Item -Recurse -Force
-            }
-
-            if ($Env:Build_ArtifactStagingDirectory -and (Test-Path -Path $Env:Build_ArtifactStagingDirectory)){
-                Write-Host "Deleting $Env:Build_ArtifactStagingDirectory"
-                Remove-Item -Path $Env:Build_ArtifactStagingDirectory -Recurse -Force
-            }
-
-            if ($Env:Common_TestResultsDirectory -and (Test-Path -Path $Env:Common_TestResultsDirectory)){
-                Write-Host "Deleting $Env:Common_TestResultsDirectory"
-                Remove-Item -Path $Env:Common_TestResultsDirectory -Recurse -Force
-            }
-
-            if ($Env:Build_BinariesDirectory -and (Test-Path -Path $Env:Build_BinariesDirectory)){
-                Write-Host "Deleting $Env:Build_BinariesDirectory"
-                Remove-Item -Path $Env:Build_BinariesDirectory -Recurse -Force
-            }
-          errorActionPreference: continue
-          failOnStderr: false
-          ignoreLASTEXITCODE: true # some root folders cannot be deleted as they are in use, but we can live with that

@@ -25,10 +25,10 @@ Items:
       - !Evergine.Framework.Graphics.PhotometricDirectionalLight,Evergine.Framework
         Id: d9abdcf3-5231-4fa2-bb59-f1a9ba6e555c
         Color:
-          A: 0
-          B: 228
-          G: 240
-          R: 249
+          A: 255
+          B: 253
+          G: 248
+          R: 255
         ColorByTemperature: true
         DebugMode: false
         GammaDistribution: 0.800000012
@@ -37,10 +37,10 @@ Items:
         IsEnabled: true
         IsShadowEnabled: false
         LinearColor:
-          A: 0.0
-          B: 0.779089451
-          G: 0.874792576
-          R: 0.9453125
+          A: 1.0
+          B: 0.982790232
+          G: 0.943362474
+          R: 1.0
         ShadowBias: 0.00499999989
         ShadowDistance: 80.0
         ShadowOpacity: 1.0
@@ -170,11 +170,11 @@ Items:
         Id: 98c044c8-e826-4290-bdec-7c37e65dd58a
         IsEnabled: true
         MaxPitch: 1.49225616
-        MouseSensibility: 0.200000003
+        MouseSensitivity: 0.200000003
         MoveSpeed: 0.200000003
         RotationSpeed: 1.0
         TouchMoveAndOrientationRatio: 0.5
-        TouchSensibility: 1.0
+        TouchSensitivity: 1.0
         UpdateOrder: 0.5
       - !Evergine.Framework.Graphics.Camera3D,Evergine.Framework
         Id: e6234645-a09c-405e-b7cc-e8970277f72c
@@ -232,8 +232,8 @@ Items:
           Z: 0.0
         LocalPosition:
           X: 0.0
-          Y: 0.0
-          Z: 0.0
+          Y: 1.20000005
+          Z: -0.800000012
         LocalScale:
           X: 1.0
           Y: 1.0

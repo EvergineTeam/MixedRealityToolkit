@@ -170,11 +170,11 @@ Items:
         Id: 98c044c8-e826-4290-bdec-7c37e65dd58a
         IsEnabled: true
         MaxPitch: 1.49225616
-        MouseSensibility: 0.200000003
+        MouseSensitivity: 0.200000003
         MoveSpeed: 0.200000003
         RotationSpeed: 1.0
         TouchMoveAndOrientationRatio: 0.5
-        TouchSensibility: 1.0
+        TouchSensitivity: 1.0
         UpdateOrder: 0.5
       - !Evergine.Framework.Graphics.Camera3D,Evergine.Framework
         Id: e6234645-a09c-405e-b7cc-e8970277f72c
@@ -232,8 +232,8 @@ Items:
           Z: 0.0
         LocalPosition:
           X: 0.0
-          Y: 0.0
-          Z: 0.0
+          Y: 1.20000005
+          Z: -0.5
         LocalScale:
           X: 1.0
           Y: 1.0
@@ -1424,6 +1424,14 @@ Items:
                                 Name: Font
                                 Target: 3669275d-ddf5-4181-ba9f-790fb8c88c87
                                 TypedValue: a1bec550-b538-4416-acc3-83ca62a349c7
+                              - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Common.Audio.AudioBuffer,Evergine.Common]],Evergine.Framework
+                                Name: PressedSound
+                                Target: cce7a6aa-493e-4507-9de4-c7f1ac734c6b
+                                TypedValue: 2f03824d-5709-4c4d-9857-c6a47769a5bc
+                              - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Common.Audio.AudioBuffer,Evergine.Common]],Evergine.Framework
+                                Name: ReleasedSound
+                                Target: cce7a6aa-493e-4507-9de4-c7f1ac734c6b
+                                TypedValue: 7f835fa0-da0a-4152-b6ee-157943781e61
                               - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Framework.Graphics.Material,Evergine.Framework]],Evergine.Framework
                                 Name: Material
                                 Target: f42f8bb0-0585-4b4d-b788-c43e0a6ec63d
@@ -1676,6 +1684,14 @@ Items:
                                 Name: Font
                                 Target: 3669275d-ddf5-4181-ba9f-790fb8c88c87
                                 TypedValue: a1bec550-b538-4416-acc3-83ca62a349c7
+                              - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Common.Audio.AudioBuffer,Evergine.Common]],Evergine.Framework
+                                Name: PressedSound
+                                Target: cce7a6aa-493e-4507-9de4-c7f1ac734c6b
+                                TypedValue: 2f03824d-5709-4c4d-9857-c6a47769a5bc
+                              - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Common.Audio.AudioBuffer,Evergine.Common]],Evergine.Framework
+                                Name: ReleasedSound
+                                Target: cce7a6aa-493e-4507-9de4-c7f1ac734c6b
+                                TypedValue: 7f835fa0-da0a-4152-b6ee-157943781e61
                               - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Framework.Graphics.Material,Evergine.Framework]],Evergine.Framework
                                 Name: Material
                                 Target: f42f8bb0-0585-4b4d-b788-c43e0a6ec63d

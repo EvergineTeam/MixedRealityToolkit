@@ -26,11 +26,11 @@ Items:
         Id: 07d3e21d-cd4b-412f-88a6-1331d8afa583
         IsEnabled: true
         MaxPitch: 1.49225616
-        MouseSensibility: 0.0299999993
+        MouseSensitivity: 0.0299999993
         MoveSpeed: 1.0
         RotationSpeed: 5.0
         TouchMoveAndOrientationRatio: 0.5
-        TouchSensibility: 1.0
+        TouchSensitivity: 1.0
         UpdateOrder: 0.5
       - !Evergine.Framework.Graphics.Camera3D,Evergine.Framework
         Id: 5b10653e-93d2-48e7-884f-a07b2ac173ee
@@ -205,8 +205,8 @@ Items:
           Z: 0.0
         LocalPosition:
           X: 0.0
-          Y: 0.595476031
-          Z: 7.09862036E-08
+          Y: 1.20000005
+          Z: -0.5
         LocalScale:
           X: 1.0
           Y: 1.0
@@ -1063,13 +1063,6 @@ Items:
               Y: -0.0502632856
               Z: 4.45727153E-08
           - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Vector3,Evergine.Mathematics]],Evergine.Framework
-            Name: LocalPosition
-            Target: 6a889edd-bb1b-4ca2-b9de-dc4a16526466
-            TypedValue:
-              X: 0.120999999
-              Y: 0.0900000036
-              Z: 0.00400000019
-          - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Vector3,Evergine.Mathematics]],Evergine.Framework
             Name: LocalScale
             Target: 6a889edd-bb1b-4ca2-b9de-dc4a16526466
             TypedValue:
@@ -1091,7 +1084,7 @@ Managers:
     IsEnabled: true
   - !Evergine.Framework.Managers.EnvironmentManager,Evergine.Framework
     Id: 1b603d3f-2c3a-46aa-b1b4-da1958dc2ffd
-    IBLReflectionProbe: b41e33fd-693b-4e8a-9e35-70adbfd0b595
+    IBLReflectionProbe: 0fc9c477-be54-408f-b9f4-c8b985a412c4
     IntensityMultiplier: 1.0
     IsEnabled: true
     Strategy: OnDemand

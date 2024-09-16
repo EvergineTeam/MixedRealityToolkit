@@ -21,6 +21,7 @@ namespace Evergine.MRTK.Demo.Windows
             uint height = 720;
             WindowsSystem windowsSystem = new Evergine.Forms.FormsWindowsSystem();
             application.Container.RegisterInstance(windowsSystem);
+            application.Container.RegisterInstance(new DummyXRPlatform());
             var window = windowsSystem.CreateWindow("Evergine.MRTK.Demo - DX11", width, height);
 
             ConfigureGraphicsContext(application, window);

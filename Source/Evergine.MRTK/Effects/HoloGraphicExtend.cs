@@ -13,7 +13,6 @@ namespace Evergine.MRTK.Effects
     /// <summary>
     /// Partial class for Holographic, needed for Custom Editor.
     /// </summary>
-    [MaterialDecorator("4f7e4c24-e83c-4350-9cd4-511fb2199cf4")]
     public partial class HoloGraphic : MaterialDecorator
     {
         /// <summary>

@@ -26,11 +26,11 @@ Items:
         Id: 0f02f9a7-7e61-47fe-8e13-889ba12a298d
         IsEnabled: true
         MaxPitch: 1.49225652
-        MouseSensibility: 0.0299999993
+        MouseSensitivity: 0.0299999993
         MoveSpeed: 5.0
         RotationSpeed: 5.0
         TouchMoveAndOrientationRatio: 0.5
-        TouchSensibility: 1.0
+        TouchSensitivity: 1.0
         UpdateOrder: 0.5
       - !Evergine.Framework.Graphics.Camera3D,Evergine.Framework
         Id: 73820c33-0b73-4fe5-b94f-a8860ea22608
@@ -205,7 +205,7 @@ Items:
           Z: 0.0
         LocalPosition:
           X: 0.112523705
-          Y: 0.0
+          Y: 1.20000005
           Z: -0.5
         LocalScale:
           X: 1.0
@@ -993,7 +993,7 @@ Items:
                   - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Framework.Graphics.Material,Evergine.Framework]],Evergine.Framework
                     Name: Material
                     Target: 39015627-7ac0-44a2-b29b-d75875f5b0ed
-                    TypedValue: c3e0700e-b748-4613-82e7-c0de2ecf3c45
+                    TypedValue: bfcf267e-cc0a-482c-9738-a19701e97652
                   - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Framework.Graphics.Material,Evergine.Framework]],Evergine.Framework
                     Name: Material
                     Target: 8edda207-5a18-4b26-b1e1-634355bd41d1
@@ -1003,9 +1003,9 @@ Items:
                     Target: cbbf2567-212c-454e-aabd-255696a367e6
                     TypedValue:
                       A: 255
-                      B: 86
-                      G: 248
-                      R: 73
+                      B: 8
+                      G: 5
+                      R: 133
                 RemovedComponents: []
                 Source: 34fb081a-5e1b-4dff-ad87-9610e506f0da
             Id: dae9d9b8-16cb-4224-ac0d-6491182d1626
@@ -1027,7 +1027,7 @@ Managers:
     IsEnabled: true
   - !Evergine.Framework.Managers.EnvironmentManager,Evergine.Framework
     Id: 8ad1793e-8987-4f34-ab2a-4947f6d05d3b
-    IBLReflectionProbe: 7502613d-714a-45e8-ac46-5a962f78bfae
+    IBLReflectionProbe: 17ed155f-8f31-44f5-a5a2-62ad791a8df6
     IntensityMultiplier: 1.0
     IsEnabled: true
     Strategy: OnDemand

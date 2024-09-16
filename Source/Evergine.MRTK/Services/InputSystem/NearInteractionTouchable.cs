@@ -27,7 +27,7 @@ namespace Evergine.MRTK.Services.InputSystem
         /// <summary>
         /// The static body 3D.
         /// </summary>
-        [BindComponent(isExactType: false)]
+        [BindComponent(isRequired: false, isExactType: false)]
         public StaticBody3D StaticBody3D;
 
         /// <summary>

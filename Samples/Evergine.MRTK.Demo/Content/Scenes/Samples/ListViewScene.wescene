@@ -21,16 +21,16 @@ Items:
         LocalScale:
           X: 1.0
           Y: 1.0
-          Z: 0.99999994
+          Z: 1.0
       - !Evergine.Components.Cameras.FreeCamera3D,Evergine.Components
         Id: edaa62ef-2aea-413c-b869-3691d7a950a9
         IsEnabled: true
         MaxPitch: 1.49225652
-        MouseSensibility: 0.0299999993
+        MouseSensitivity: 0.0299999993
         MoveSpeed: 5.0
         RotationSpeed: 5.0
         TouchMoveAndOrientationRatio: 0.5
-        TouchSensibility: 1.0
+        TouchSensitivity: 1.0
         UpdateOrder: 0.5
       - !Evergine.Framework.Graphics.Camera3D,Evergine.Framework
         Id: 24e39362-a2f0-46af-80dd-a093ca9d8cc5
@@ -205,8 +205,8 @@ Items:
           Z: 0.0
         LocalPosition:
           X: -0.29693079
-          Y: 0.155238658
-          Z: -0.400000006
+          Y: 1.20000005
+          Z: -0.5
         LocalScale:
           X: 1.0
           Y: 1.0
@@ -745,6 +745,14 @@ Items:
                           X: 0.0
                           Y: 0.0
                           Z: 0.0
+                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Common.Audio.AudioBuffer,Evergine.Common]],Evergine.Framework
+                        Name: PressedSound
+                        Target: b5af3e87-fdcd-4936-ae34-6d88e4958951
+                        TypedValue: 2f03824d-5709-4c4d-9857-c6a47769a5bc
+                      - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Common.Audio.AudioBuffer,Evergine.Common]],Evergine.Framework
+                        Name: ReleasedSound
+                        Target: b5af3e87-fdcd-4936-ae34-6d88e4958951
+                        TypedValue: 7f835fa0-da0a-4152-b6ee-157943781e61
                       - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Framework.Graphics.Material,Evergine.Framework]],Evergine.Framework
                         Name: Material
                         Target: 945ecb95-128b-4645-9a98-16a8b76fd419
@@ -957,6 +965,14 @@ Items:
                               X: 0.0
                               Y: 0.0
                               Z: 0.0
+                          - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Common.Audio.AudioBuffer,Evergine.Common]],Evergine.Framework
+                            Name: PressedSound
+                            Target: b5af3e87-fdcd-4936-ae34-6d88e4958951
+                            TypedValue: 2f03824d-5709-4c4d-9857-c6a47769a5bc
+                          - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Common.Audio.AudioBuffer,Evergine.Common]],Evergine.Framework
+                            Name: ReleasedSound
+                            Target: b5af3e87-fdcd-4936-ae34-6d88e4958951
+                            TypedValue: 7f835fa0-da0a-4152-b6ee-157943781e61
                           - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Framework.Graphics.Material,Evergine.Framework]],Evergine.Framework
                             Name: Material
                             Target: 945ecb95-128b-4645-9a98-16a8b76fd419
@@ -1657,6 +1673,14 @@ Items:
                               X: 0.0
                               Y: 0.0
                               Z: 0.0
+                          - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Common.Audio.AudioBuffer,Evergine.Common]],Evergine.Framework
+                            Name: PressedSound
+                            Target: b5af3e87-fdcd-4936-ae34-6d88e4958951
+                            TypedValue: 2f03824d-5709-4c4d-9857-c6a47769a5bc
+                          - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Common.Audio.AudioBuffer,Evergine.Common]],Evergine.Framework
+                            Name: ReleasedSound
+                            Target: b5af3e87-fdcd-4936-ae34-6d88e4958951
+                            TypedValue: 7f835fa0-da0a-4152-b6ee-157943781e61
                           - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.String,System.Private.CoreLib]],Evergine.Framework
                             Name: Text
                             Target: a7c5a62f-b112-4c25-bb9e-eaec97942a6f
@@ -1839,6 +1863,14 @@ Items:
                               X: 0.0
                               Y: 0.0
                               Z: 0.0
+                          - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Common.Audio.AudioBuffer,Evergine.Common]],Evergine.Framework
+                            Name: PressedSound
+                            Target: b5af3e87-fdcd-4936-ae34-6d88e4958951
+                            TypedValue: 2f03824d-5709-4c4d-9857-c6a47769a5bc
+                          - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Common.Audio.AudioBuffer,Evergine.Common]],Evergine.Framework
+                            Name: ReleasedSound
+                            Target: b5af3e87-fdcd-4936-ae34-6d88e4958951
+                            TypedValue: 7f835fa0-da0a-4152-b6ee-157943781e61
                           - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.String,System.Private.CoreLib]],Evergine.Framework
                             Name: Text
                             Target: a7c5a62f-b112-4c25-bb9e-eaec97942a6f
@@ -2060,6 +2092,14 @@ Items:
                               X: 0.0
                               Y: 0.0
                               Z: 0.0
+                          - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Common.Audio.AudioBuffer,Evergine.Common]],Evergine.Framework
+                            Name: PressedSound
+                            Target: b5af3e87-fdcd-4936-ae34-6d88e4958951
+                            TypedValue: 2f03824d-5709-4c4d-9857-c6a47769a5bc
+                          - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Common.Audio.AudioBuffer,Evergine.Common]],Evergine.Framework
+                            Name: ReleasedSound
+                            Target: b5af3e87-fdcd-4936-ae34-6d88e4958951
+                            TypedValue: 7f835fa0-da0a-4152-b6ee-157943781e61
                           - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.String,System.Private.CoreLib]],Evergine.Framework
                             Name: Text
                             Target: a7c5a62f-b112-4c25-bb9e-eaec97942a6f
@@ -2172,6 +2212,14 @@ Items:
                               X: 0.0401945114
                               Y: 0.0
                               Z: 0.0
+                          - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Common.Audio.AudioBuffer,Evergine.Common]],Evergine.Framework
+                            Name: PressedSound
+                            Target: b5af3e87-fdcd-4936-ae34-6d88e4958951
+                            TypedValue: 2f03824d-5709-4c4d-9857-c6a47769a5bc
+                          - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Common.Audio.AudioBuffer,Evergine.Common]],Evergine.Framework
+                            Name: ReleasedSound
+                            Target: b5af3e87-fdcd-4936-ae34-6d88e4958951
+                            TypedValue: 7f835fa0-da0a-4152-b6ee-157943781e61
                           - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.String,System.Private.CoreLib]],Evergine.Framework
                             Name: Text
                             Target: a7c5a62f-b112-4c25-bb9e-eaec97942a6f
@@ -2284,6 +2332,14 @@ Items:
                               X: 0.0778863132
                               Y: 0.0
                               Z: 0.0
+                          - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Common.Audio.AudioBuffer,Evergine.Common]],Evergine.Framework
+                            Name: PressedSound
+                            Target: b5af3e87-fdcd-4936-ae34-6d88e4958951
+                            TypedValue: 2f03824d-5709-4c4d-9857-c6a47769a5bc
+                          - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Common.Audio.AudioBuffer,Evergine.Common]],Evergine.Framework
+                            Name: ReleasedSound
+                            Target: b5af3e87-fdcd-4936-ae34-6d88e4958951
+                            TypedValue: 7f835fa0-da0a-4152-b6ee-157943781e61
                           - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.String,System.Private.CoreLib]],Evergine.Framework
                             Name: Text
                             Target: a7c5a62f-b112-4c25-bb9e-eaec97942a6f
