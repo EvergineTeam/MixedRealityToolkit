@@ -567,41 +567,23 @@
 #endif
 
 // Image based lighting (attempt to mimic the Standard shader).
-#if REFLECTIONS
-	    fixed3 worldReflection = reflect(incident, worldNormal);
-	    fixed4 iblData = UNITY_SAMPLE_TEXCUBE_LOD(unity_SpecCube0, worldReflection, (1.0 - _Smoothness) * UNITY_SPECCUBE_LOD_STEPS);
-	    fixed3 ibl = DecodeHDR(iblData, unity_SpecCube0_HDR);
-#if REFRACTION
-	    fixed4 refractColor = UNITY_SAMPLE_TEXCUBE(unity_SpecCube0, refract(incident, worldNormal, _RefractiveIndex));
-	    ibl *= DecodeHDR(refractColor, unity_SpecCube0_HDR);
-#endif
-#else
-    	float3 ibl = float3(0.9, 0.9,0.9);//unity_IndirectSpecColor.rgb;
-#endif
+		float3 ibl = float3(0.9, 0.9,0.9);//unity_IndirectSpecColor.rgb;
 
 // Final lighting mix.
 		float4 output = albedo;
-#if SPHERICAL_HARMONICS
-    	float3 ambient = i.ambient;
-#else
+
     	float3 ambient = float3(0.7, 0.7, 0.7);//glstate_lightmodel_ambient + float3(0.25, 0.25, 0.25);
-#endif
 	
 #if DIRECTIONAL_LIGHT
 		float minProperty = min(Smoothness, Metallic);
 	    float oneMinusMetallic = (1.0 - Metallic);
-	    output.rgb = lerp(output.rgb, ibl, minProperty);
+	    output.rgb = lerp(output.rgb, ibl, minProperty); 
 	
 	    float3 directionalLightColor = SunColor;
 	
 	    output.rgb *= lerp((ambient + directionalLightColor * diffuse + directionalLightColor * specular) * max(oneMinusMetallic, MinMetallicLightContribution), albedo, minProperty);
 	    output.rgb += (directionalLightColor * albedo * specular) + (directionalLightColor * specular * Smoothness);
 	    output.rgb += ibl * oneMinusMetallic * IblContribution;
-#elif REFLECTIONS
-	    output.rgb = lerp(output.rgb, ibl, minProperty);
-	    output.rgb *= lerp(ambient, albedo, minProperty);
-#elif SPHERICAL_HARMONICS
-    	output.rgb *= ambient;
 #endif
 
 #if INNER_GLOW

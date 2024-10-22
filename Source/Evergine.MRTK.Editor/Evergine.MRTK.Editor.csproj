@@ -4,10 +4,10 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Evergine.Common" Version="2024.9.12.184-nightly" />
-    <PackageReference Include="Evergine.Components" Version="2024.9.12.184-nightly" />
-    <PackageReference Include="Evergine.Framework" Version="2024.9.12.184-nightly" />
-    <PackageReference Include="Evergine.Editor.Extension" Version="2024.9.12.184-nightly" />
+    <PackageReference Include="Evergine.Common" Version="2024.10.21.485-nightly" />
+    <PackageReference Include="Evergine.Components" Version="2024.10.21.485-nightly" />
+    <PackageReference Include="Evergine.Framework" Version="2024.10.21.485-nightly" />
+    <PackageReference Include="Evergine.Editor.Extension" Version="2024.10.21.485-nightly" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Evergine.MRTK\Evergine.MRTK.csproj" />

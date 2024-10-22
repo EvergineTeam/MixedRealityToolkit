@@ -1,3 +1,4 @@
+using Evergine.Common.IO;
 using Evergine.Framework;
 using Evergine.Framework.Services;
 using Evergine.Framework.Threading;
@@ -5,7 +6,6 @@ using Evergine.MRTK.Demo.Components.Commands;
 using Evergine.MRTK.Demo.Scenes;
 using Evergine.MRTK.Demo.VoiceCommands;
 using Evergine.MRTK.Emulation;
-using Evergine.Platform;
 
 namespace Evergine.MRTK.Demo
 {
