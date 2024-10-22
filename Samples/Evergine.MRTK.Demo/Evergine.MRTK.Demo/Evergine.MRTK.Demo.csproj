@@ -6,13 +6,13 @@
     <GenerateEvergineScenesCode>True</GenerateEvergineScenesCode>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Evergine.Common" Version="2024.10.21.485-nightly" />
-    <PackageReference Include="Evergine.Components" Version="2024.10.21.485-nightly" />
-    <PackageReference Include="Evergine.Framework" Version="2024.10.21.485-nightly" />
-    <PackageReference Include="Evergine.Mathematics" Version="2024.10.21.485-nightly" />    
-    <PackageReference Include="Evergine.Bullet" Version="2024.10.21.485-nightly" />
-    <PackageReference Include="Evergine.Targets" Version="2024.10.21.485-nightly" />
-    <PackageReference Include="Evergine.CodeScenes" Version="2024.10.21.485-nightly" />
+    <PackageReference Include="Evergine.Common" Version="2024.10.22.843-nightly" />
+    <PackageReference Include="Evergine.Components" Version="2024.10.22.843-nightly" />
+    <PackageReference Include="Evergine.Framework" Version="2024.10.22.843-nightly" />
+    <PackageReference Include="Evergine.Mathematics" Version="2024.10.22.843-nightly" />
+    <PackageReference Include="Evergine.Bullet" Version="2024.10.22.843-nightly" />
+    <PackageReference Include="Evergine.Targets" Version="2024.10.22.843-nightly" />
+    <PackageReference Include="Evergine.CodeScenes" Version="2024.10.22.843-nightly" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Source\Evergine.MRTK\Evergine.MRTK.csproj" />
