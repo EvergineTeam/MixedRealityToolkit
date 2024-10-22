@@ -11,7 +11,7 @@ using Display = Evergine.Framework.Graphics.Display;
 using Surface = Evergine.Common.Graphics.Surface;
 using Evergine.OpenXR;
 using Activity = Android.App.Activity;
-using Evergine.AndroidView;
+using Evergine.Android;
 
 namespace Evergine.MRTK.Demo.Pico
 {
@@ -42,9 +42,9 @@ namespace Evergine.MRTK.Demo.Pico
             this.application = new MyApplication();
 
             // Create Services
-            this.windowsSystem = new global::Evergine.AndroidView.AndroidWindowsSystem(this);
+            this.windowsSystem = new global::Evergine.Android.AndroidWindowsSystem(this);
             this.application.Container.RegisterInstance(windowsSystem);
-            var surface = this.windowsSystem.CreateSurface(0, 0) as global::Evergine.AndroidView.AndroidSurface;
+            var surface = this.windowsSystem.CreateSurface(0, 0) as global::Evergine.Android.AndroidSurface;
 
             var view = this.FindViewById<RelativeLayout>(Resource.Id.evergineContainer);
             view.AddView(surface.NativeSurface);
@@ -80,7 +80,7 @@ namespace Evergine.MRTK.Demo.Pico
             this.windowsSystem = null;
             this.application = null;
 
-            Android.OS.Process.KillProcess(Android.OS.Process.MyPid());
+            global::Android.OS.Process.KillProcess(global::Android.OS.Process.MyPid());
         }
 
         private void ConfigureGraphicsContext(MyApplication application, Surface surface)

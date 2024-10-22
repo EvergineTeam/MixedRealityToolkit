@@ -7,7 +7,7 @@ using Display = Evergine.Framework.Graphics.Display;
 using Surface = Evergine.Common.Graphics.Surface;
 using Evergine.OpenXR;
 using Activity = Android.App.Activity;
-using Evergine.AndroidView;
+using Evergine.Android;
 
 namespace Evergine.MRTK.Demo.Quest
 {
@@ -17,8 +17,8 @@ namespace Evergine.MRTK.Demo.Quest
         LaunchMode = LaunchMode.SingleTask,
         MainLauncher = true,
         Theme = "@android:style/Theme.Black.NoTitleBar.Fullscreen")]
-    [IntentFilter(new[] { Android.Content.Intent.ActionMain },
-        Categories = new[] { Android.Content.Intent.CategoryLauncher, "com.oculus.intent.category.VR" })]
+    [IntentFilter(new[] { global::Android.Content.Intent.ActionMain },
+        Categories = new[] { global::Android.Content.Intent.CategoryLauncher, "com.oculus.intent.category.VR" })]
     public class MainActivity : Activity
     {
         private static OpenXRPlatform openXRPlatform;
@@ -43,9 +43,9 @@ namespace Evergine.MRTK.Demo.Quest
             };
 
             // Create Services
-            this.windowsSystem = new global::Evergine.AndroidView.AndroidWindowsSystem(this);
+            this.windowsSystem = new global::Evergine.Android.AndroidWindowsSystem(this);
             this.application.Container.RegisterInstance(windowsSystem);
-            var surface = this.windowsSystem.CreateSurface(0, 0) as global::Evergine.AndroidView.AndroidSurface;
+            var surface = this.windowsSystem.CreateSurface(0, 0) as global::Evergine.Android.AndroidSurface;
 
             var view = this.FindViewById<RelativeLayout>(Resource.Id.evergineContainer);
             view.AddView(surface.NativeSurface);
@@ -81,7 +81,7 @@ namespace Evergine.MRTK.Demo.Quest
             this.windowsSystem = null;
             this.application = null;
 
-            Android.OS.Process.KillProcess(Android.OS.Process.MyPid());
+            global::Android.OS.Process.KillProcess(global::Android.OS.Process.MyPid());
         }
 
         private void ConfigureGraphicsContext(MyApplication application, Surface surface)
