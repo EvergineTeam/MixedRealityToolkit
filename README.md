@@ -11,17 +11,17 @@ Evergine.MRTK is an Evergine package that provides a set of components and featu
 
 Evergine.MRTK provides a set of **basic building blocks for Evergine development on XR platforms** such as
 
-- Microsoft HoloLens 2
-- Windows Mixed Reality headsets
+- Meta Quest devices.
 - OpenVR headsets (HTC Vive / Oculus Rift)
 
 Evergine.MRTK is heavily based on Microsoft's [Mixed Reality Toolkit for Unity](https://github.com/microsoft/MixedRealityToolkit-Unity).<br><br>
 
 ## Required software
 
-| [![Evergine](Documentation/Images/evergine.png)](https://www.evergine.com) [Evergine](www.evergine.com) | [![Visual Studio 2022](Documentation/Images/visual_studio.png)](http://dev.windows.com/downloads) [Visual Studio 2019/2022](http://dev.windows.com/downloads) | [![Windows SDK](Documentation/Images/windows.png)](https://developer.microsoft.com/windows/downloads/windows-10-sdk) [Windows SDK](https://developer.microsoft.com/windows/downloads/windows-10-sdk) | [![Emulators (optional)](Documentation/Images/emulators.png)](https://docs.microsoft.com/windows/mixed-reality/using-the-hololens-emulator) [Emulators (optional)](https://docs.microsoft.com/windows/mixed-reality/using-the-hololens-emulator) |
-| :------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Evergine provides support for building XR projects in Windows 10                                                                             | Visual Studio is used for code editing, deploying and building application packages                                                                                  | You need the Windows 10 SDK. To run apps for immersive headsets, you need the Windows 10 Fall Creators Update                                                                                                        | The emulators allow you to test your app without the device in a simulated environment                                                                                                                                                                        |
+| <a href="https://www.evergine.com"><img src="Documentation/Images/evergine.png" alt="Evergine" width="100"/></a><br/> [Evergine](https://www.evergine.com) | <a href="http://dev.windows.com/downloads"><img src="Documentation/Images/visual_studio.png" alt="Visual Studio" width="100"/></a><br/> [Visual Studio 2019/2022](http://dev.windows.com/downloads) |
+|----------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Evergine provides support for building XR projects in Windows 10                                                                                     | Visual Studio is used for code editing, deploying, and building application packages                                                                            |
+
 
 ## UI and interaction building blocks
 

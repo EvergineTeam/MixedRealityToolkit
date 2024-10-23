@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Evergine.Packages.Targets" Version="2024.9.12.184-nightly" />
+    <PackageReference Include="Evergine.Packages.Targets" Version="2024.10.24.7" />
   </ItemGroup>
 
   <ItemGroup>
