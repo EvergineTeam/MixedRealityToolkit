@@ -10,7 +10,7 @@
     <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Evergine.Android" Version="2024.10.22.843-nightly" />
+    <PackageReference Include="Evergine.Android" Version="2024.10.24.7" />
     <PackageReference Include="Evergine.LibBulletc.Natives" Version="2023.11.28.20" />
     <PackageReference Include="Evergine.OpenXR.Natives.Quest" Version="2023.2.10.2" />
     <PackageReference Include="Evergine.Vulkan" Version="2024.10.24.7" />
