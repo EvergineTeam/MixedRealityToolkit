@@ -107,7 +107,7 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Configurators
         }
 
         /// <summary>
-        /// Gets or sets slider secondary color. It affects to title color.
+        /// Gets or sets slider secondary color. It affects to value text color.
         /// </summary>
         public Color SecondaryColor
         {
