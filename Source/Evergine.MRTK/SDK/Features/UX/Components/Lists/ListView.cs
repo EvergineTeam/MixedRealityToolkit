@@ -432,7 +432,7 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Lists
                         throw new ArgumentOutOfRangeException(nameof(position));
                 }
 
-                this.ScrollTo(scrollYPosition);
+                this.ScrollTo(new Vector2(0, scrollYPosition));
             }
         }
 
@@ -450,8 +450,8 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Lists
         /// <summary>
         /// Scrolls the list to a position.
         /// </summary>
-        /// <param name="positionY">Position Y of the scroll area.</param>
-        public void ScrollTo(float positionY) => this.scrollView.ScrollTo(positionY);
+        /// <param name="position">Position of the scroll area.</param>
+        public void ScrollTo(Vector2 position) => this.scrollView.ScrollTo(position);
 
         /// <inheritdoc/>
         public void OnPointerDown(MixedRealityPointerEventData eventData)

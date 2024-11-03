@@ -2,6 +2,7 @@
 
 using Evergine.Common.Attributes;
 using Evergine.Common.Graphics;
+using Evergine.Components.Fonts;
 using Evergine.Components.Graphics3D;
 using Evergine.Framework;
 using Evergine.Framework.Graphics;
@@ -33,11 +34,17 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Scrolling
         [BindEntity(source: BindEntitySource.ChildrenSkipOwner, tag: "PART_scrollviewer_content")]
         private Entity content = null;
 
-        [BindEntity(source: BindEntitySource.ChildrenSkipOwner, tag: "PART_scrollviewer_bar")]
-        private Entity scrollBarEntity = null;
+        [BindEntity(source: BindEntitySource.ChildrenSkipOwner, tag: "PART_scrollviewer_horizontal_bar")]
+        private Entity horizontalScrollBarEntity = null;
 
-        [BindComponent(source: BindComponentSource.ChildrenSkipOwner, tag: "PART_scrollviewer_bar")]
-        private Transform3D scrollBarTransform = null;
+        [BindEntity(source: BindEntitySource.ChildrenSkipOwner, tag: "PART_scrollviewer_vertical_bar")]
+        private Entity verticalScrollBarEntity = null;
+
+        [BindComponent(source: BindComponentSource.ChildrenSkipOwner, tag: "PART_scrollviewer_horizontal_bar")]
+        private Transform3D horizontalScrollBarTransform = null;
+
+        [BindComponent(source: BindComponentSource.ChildrenSkipOwner, tag: "PART_scrollviewer_vertical_bar")]
+        private Transform3D verticalScrollBarTransform = null;
 
         [BindComponent(source: BindComponentSource.ChildrenSkipOwner, tag: "PART_scrollviewer_background")]
         private Transform3D backgroundPlaneTransform = null;
@@ -47,10 +54,12 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Scrolling
         private Vector3 lastCursorPosition;
 
         private bool interacting = false;
+        private float velocityX;
         private float velocityY;
 
         private Vector2 size = new Vector2(0.25f, 0.18f);
-        private bool displayScrollBar = true;
+        private ScrollBarVisibility verticalScrollBarVisibility;
+        private ScrollBarVisibility horizontalScrollBarVisibility;
         private float zContentDistance = 0.004f;
         private float barWidth = 0.004f;
         private Vector2 contentSize;
@@ -130,19 +139,63 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Scrolling
         /// <summary>
         /// Gets or sets a value indicating whether scroll bar should be displayed.
         /// </summary>
+        [IgnoreEvergine]
+        [DontRenderProperty]
+        [Obsolete($"Use {nameof(this.HorizontalScrollBarVisibility)} or {nameof(this.VerticalScrollBarVisibility)} instead")]
         public bool DisplayScrollBar
         {
-            get => this.displayScrollBar;
+            get => this.verticalScrollBarVisibility != ScrollBarVisibility.Hidden;
 
             set
             {
-                if (this.displayScrollBar != value)
+                this.verticalScrollBarVisibility = value ? ScrollBarVisibility.Auto : ScrollBarVisibility.Hidden;
+                this.UpdateDisplayScrollBarsVisibility();
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets horizontal scroll bar visibility.
+        /// </summary>
+        public ScrollBarVisibility HorizontalScrollBarVisibility
+        {
+            get => this.horizontalScrollBarVisibility;
+
+            set
+            {
+                if (this.horizontalScrollBarVisibility != value)
                 {
-                    this.displayScrollBar = value;
-                    this.UpdateDisplayScrollBar();
+                    this.horizontalScrollBarVisibility = value;
+                    this.UpdateDisplayScrollBarsVisibility();
                 }
             }
         }
+
+        /// <summary>
+        /// Gets or sets vertical scroll bar visibility.
+        /// </summary>
+        public ScrollBarVisibility VerticalScrollBarVisibility
+        {
+            get => this.verticalScrollBarVisibility;
+
+            set
+            {
+                if (this.verticalScrollBarVisibility != value)
+                {
+                    this.verticalScrollBarVisibility = value;
+                    this.UpdateDisplayScrollBarsVisibility();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether horizontal scroll is enabled.
+        /// </summary>
+        public bool HorizontalScrollEnabled { get; set; } = true;
+
+        /// <summary>
+        /// Gets or sets a value indicating whether vertical scroll is enabled.
+        /// </summary>
+        public bool VerticalScrollEnabled { get; set; } = true;
 
         /// <summary>
         /// Gets current scroll position.
@@ -181,14 +234,14 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Scrolling
                 if (eventData.CurrentTarget == this.scrollArea)
                 {
                     this.interacting = true;
-
                     this.currentCursor = eventData.Cursor;
-
                     this.initialOffset = this.contentTransform.LocalPosition - eventData.Position;
                     this.contentTransform.LocalPosition = eventData.Position + this.initialOffset;
                     this.lastCursorPosition = eventData.Position;
 
-                    this.ScrollPosition = new Vector2(this.lastCursorPosition.X, Math.Max(0, this.lastCursorPosition.Y));
+                    this.ScrollPosition = new Vector2(
+                        Math.Max(0, this.lastCursorPosition.X),
+                        Math.Max(0, this.lastCursorPosition.Y));
 
                     eventData.SetHandled();
                 }
@@ -206,16 +259,22 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Scrolling
             if (this.currentCursor == eventData.Cursor)
             {
                 Vector3 delta = eventData.Position - this.lastCursorPosition;
+                delta.X = this.HorizontalScrollEnabled ? delta.X : 0;
+                delta.Y = this.VerticalScrollEnabled ? delta.Y : 0;
+
                 Vector3 newPosition = this.lastCursorPosition + delta + this.initialOffset;
 
                 var position = this.contentTransform.LocalPosition;
+                position.X = newPosition.X;
                 position.Y = newPosition.Y;
                 this.contentTransform.LocalPosition = position;
                 this.lastCursorPosition = this.lastCursorPosition + delta;
 
                 eventData.SetHandled();
 
-                this.ScrollPosition = new Vector2(position.X, Math.Max(0, position.Y));
+                this.ScrollPosition = new Vector2(
+                    Math.Max(0, position.X),
+                    Math.Max(0, position.Y));
                 this.Scrolled?.Invoke(this, EventArgs.Empty);
             }
         }
@@ -264,7 +323,9 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Scrolling
             this.contentTransform.LocalPosition = eventData.Position + this.initialOffset;
             this.lastCursorPosition = eventData.Position;
 
-            this.ScrollPosition = new Vector2(this.lastCursorPosition.X, Math.Max(0, this.lastCursorPosition.Y));
+            this.ScrollPosition = new Vector2(
+                Math.Max(0, this.lastCursorPosition.X),
+                Math.Max(0, this.lastCursorPosition.Y));
         }
 
         /// <inheritdoc/>
@@ -276,6 +337,9 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Scrolling
             }
 
             Vector3 delta = eventData.Position - this.lastCursorPosition;
+            delta.X = this.HorizontalScrollEnabled ? delta.X : 0;
+            delta.Y = this.VerticalScrollEnabled ? delta.Y : 0;
+
             Vector3 newPosition = this.lastCursorPosition + delta + this.initialOffset;
 
             var position = this.contentTransform.LocalPosition;
@@ -283,7 +347,9 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Scrolling
             this.contentTransform.LocalPosition = position;
             this.lastCursorPosition = this.lastCursorPosition + delta;
 
-            this.ScrollPosition = new Vector2(position.X, Math.Max(0, position.Y));
+            this.ScrollPosition = new Vector2(
+                Math.Max(0, position.X),
+                Math.Max(0, position.Y));
             this.Scrolled?.Invoke(this, EventArgs.Empty);
         }
 
@@ -332,12 +398,39 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Scrolling
         /// </summary>
         public void Refresh()
         {
-            var barScale = this.scrollBarTransform.LocalScale;
-            var barScaleFactor = this.backgroundPlaneTransform.LocalScale.Y > this.contentSize.Y ? 1 : this.backgroundPlaneTransform.LocalScale.Y / this.contentSize.Y;
-            var barHeight = this.size.Y * barScaleFactor;
-            barScale.Y = barHeight == 0 ? this.size.Y : barHeight;
-            this.scrollBarTransform.LocalScale = barScale;
-            this.scrollBarTransform.LocalPosition = new Vector3((this.backgroundPlaneTransform.LocalScale.X * 0.5f) - this.BarWidth, this.backgroundPlaneTransform.LocalScale.Y * 0.5f, this.ZContentDistance);
+            this.InnerUpdateScrollBarPositionAndScale(true);
+            this.InnerUpdateScrollBarPositionAndScale(false);
+        }
+
+        private void InnerUpdateScrollBarPositionAndScale(bool isHorizontalBar)
+        {
+            var barTransform = isHorizontalBar ? this.horizontalScrollBarTransform : this.verticalScrollBarTransform;
+            var barVisibility = isHorizontalBar ? this.horizontalScrollBarVisibility : this.verticalScrollBarVisibility;
+            var barEntity = isHorizontalBar ? this.horizontalScrollBarEntity : this.verticalScrollBarEntity;
+            var barScale = barTransform.LocalScale;
+            var scaleFactorBackgroundDimension = isHorizontalBar ? this.backgroundPlaneTransform.LocalScale.X : this.backgroundPlaneTransform.LocalScale.Y;
+            var contentSizeDimension = isHorizontalBar ? this.contentSize.X : this.contentSize.Y;
+
+            var barScaleFactor = scaleFactorBackgroundDimension > contentSizeDimension ? 1 : scaleFactorBackgroundDimension / contentSizeDimension;
+            var barFullSpaceDimension = (isHorizontalBar ? this.size.X : this.size.Y) * barScaleFactor;
+            if (isHorizontalBar)
+            {
+                barScale.X = barFullSpaceDimension == 0 ? this.size.X : barFullSpaceDimension;
+            }
+            else
+            {
+                barScale.Y = barFullSpaceDimension == 0 ? this.size.Y : barFullSpaceDimension;
+            }
+
+            barTransform.LocalScale = barScale;
+
+            var barPosition = isHorizontalBar
+                ? new Vector3(-this.backgroundPlaneTransform.LocalScale.X * 0.5f, this.barWidth - (this.backgroundPlaneTransform.LocalScale.Y * 0.5f), this.ZContentDistance)
+                : new Vector3((this.backgroundPlaneTransform.LocalScale.X * 0.5f) - this.barWidth, this.backgroundPlaneTransform.LocalScale.Y * 0.5f, this.ZContentDistance);
+            barTransform.LocalPosition = barPosition;
+            barEntity.IsEnabled = barVisibility == ScrollBarVisibility.Hidden
+                ? false
+                : barVisibility == ScrollBarVisibility.Auto ? barScaleFactor != 1 : true;
         }
 
         /// <inheritdoc/>
@@ -346,25 +439,13 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Scrolling
             // Content Inertia
             if (!this.interacting)
             {
-                var localPosition = this.contentTransform.LocalPosition;
-
-                if (localPosition.Y < 0)
-                {
-                    localPosition.Y = MathHelper.SmoothDamp(localPosition.Y, 0, ref this.velocityY, this.ElasticTime, (float)gameTime.TotalSeconds);
-                }
-                else if (localPosition.Y > this.contentSize.Y - this.backgroundPlaneTransform.LocalScale.Y)
-                {
-                    localPosition.Y = MathHelper.SmoothDamp(localPosition.Y, this.contentSize.Y - this.backgroundPlaneTransform.LocalScale.Y, ref this.velocityY, this.ElasticTime, (float)gameTime.TotalSeconds);
-                }
-
-                this.contentTransform.LocalPosition = localPosition;
+                this.InternalUpdateContentIntertiaOnUpdateCycle(true, gameTime);
+                this.InternalUpdateContentIntertiaOnUpdateCycle(false, gameTime);
             }
 
             // Bar
-            var barPosition = this.scrollBarTransform.LocalPosition;
-            float contentDeltaNormalized = MathHelper.Clamp(this.contentTransform.LocalPosition.Y / (this.contentSize.Y - this.backgroundPlaneTransform.LocalScale.Y), 0, 1);
-            barPosition.Y = MathHelper.Lerp(this.size.Y / 2, -(this.size.Y / 2) + this.scrollBarTransform.Scale.Y, contentDeltaNormalized);
-            this.scrollBarTransform.LocalPosition = barPosition;
+            this.InternalUpdateBarPositionOnUpdateCycle(true);
+            this.InternalUpdateBarPositionOnUpdateCycle(false);
 
             // Debug mode
             if (this.Debug)
@@ -390,14 +471,65 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Scrolling
             }
         }
 
+        private void InternalUpdateContentIntertiaOnUpdateCycle(bool isHorizontalBar, TimeSpan gameTime)
+        {
+            var localPosition = this.contentTransform.LocalPosition;
+
+            if (isHorizontalBar)
+            {
+                if (localPosition.X > 0)
+                {
+                    localPosition.X = MathHelper.SmoothDamp(localPosition.X, 0, ref this.velocityX, this.ElasticTime, (float)gameTime.TotalSeconds);
+                }
+                else if (localPosition.X < this.size.X - this.contentSize.X)
+                {
+                    localPosition.X = MathHelper.SmoothDamp(localPosition.X, this.size.X - this.contentSize.X, ref this.velocityX, this.ElasticTime, (float)gameTime.TotalSeconds);
+                }
+            }
+            else
+            {
+                if (localPosition.Y < 0)
+                {
+                    localPosition.Y = MathHelper.SmoothDamp(localPosition.Y, 0, ref this.velocityY, this.ElasticTime, (float)gameTime.TotalSeconds);
+                }
+                else if (localPosition.Y > this.contentSize.Y - this.size.Y)
+                {
+                    localPosition.Y = MathHelper.SmoothDamp(localPosition.Y, this.contentSize.Y - this.size.Y, ref this.velocityY, this.ElasticTime, (float)gameTime.TotalSeconds);
+                }
+            }
+
+            this.contentTransform.LocalPosition = localPosition;
+        }
+
+        private void InternalUpdateBarPositionOnUpdateCycle(bool isHorizontalBar)
+        {
+            var targetTransform = isHorizontalBar ? this.horizontalScrollBarTransform : this.verticalScrollBarTransform;
+            var barPosition = targetTransform.LocalPosition;
+            float contentDeltaNormalized = isHorizontalBar
+                ? MathHelper.Clamp(this.contentTransform.LocalPosition.X / (this.size.X - this.contentSize.X), 0, 1)
+                : MathHelper.Clamp(this.contentTransform.LocalPosition.Y / (this.contentSize.Y - this.size.Y), 0, 1);
+
+            if (isHorizontalBar)
+            {
+                barPosition.X = MathHelper.Lerp(-this.size.X / 2, (this.size.X / 2) - targetTransform.Scale.X, contentDeltaNormalized);
+            }
+            else
+            {
+                barPosition.Y = MathHelper.Lerp(this.size.Y / 2, -(this.size.Y / 2) + targetTransform.Scale.Y, contentDeltaNormalized);
+            }
+
+            targetTransform.LocalPosition = barPosition;
+        }
+
         /// <summary>
         /// Scrolls the scrollview to a position.
         /// </summary>
-        /// <param name="positionY">Position Y of the scroll area.</param>
-        public void ScrollTo(float positionY)
+        /// <param name="position">Position of the scroll area.</param>
+        public void ScrollTo(Vector2 position)
         {
             var contentPosition = this.contentTransform.LocalPosition;
-            contentPosition.Y = positionY;
+            contentPosition.X = position.X;
+            contentPosition.Y = position.Y;
             this.contentTransform.LocalPosition = contentPosition;
             this.Scrolled?.Invoke(this, EventArgs.Empty);
         }
@@ -409,7 +541,17 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Scrolling
             this.Refresh();
         }
 
-        private void UpdateDisplayScrollBar() => this.scrollBarEntity.IsEnabled = this.displayScrollBar;
+        private void UpdateDisplayScrollBarsVisibility()
+        {
+            if (!this.IsAttached)
+            {
+                return;
+            }
+
+            this.horizontalScrollBarEntity.IsEnabled = this.horizontalScrollBarVisibility != ScrollBarVisibility.Hidden;
+            this.verticalScrollBarEntity.IsEnabled = this.verticalScrollBarVisibility != ScrollBarVisibility.Hidden;
+            this.Refresh();
+        }
 
         private void UpdateZContentDistance()
         {
@@ -420,42 +562,71 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Scrolling
 
         private void UpdateBarWidth()
         {
-            var scrollBarScale = this.scrollBarTransform.LocalScale;
-            scrollBarScale.X = this.BarWidth;
-            this.scrollBarTransform.LocalScale = scrollBarScale;
+            this.InnerUpdateBarWidth(true);
+            this.InnerUpdateBarWidth(false);
+            this.InnerUpdateScrollBarPositionAndScale(true);
+            this.InnerUpdateScrollBarPositionAndScale(false);
+        }
+
+        private void InnerUpdateBarWidth(bool isHorizontalBar)
+        {
+            var targetTransform = isHorizontalBar ? this.horizontalScrollBarTransform : this.verticalScrollBarTransform;
+            var scrollBarScale = targetTransform.LocalScale;
+
+            if (isHorizontalBar)
+            {
+                scrollBarScale.Y = this.BarWidth;
+            }
+            else
+            {
+                scrollBarScale.X = this.BarWidth;
+            }
+
+            targetTransform.LocalScale = scrollBarScale;
         }
 
         private void MeasureContents()
         {
+            float minX = float.MaxValue;
+            float maxX = float.MinValue;
             float minY = float.MaxValue;
             float maxY = float.MinValue;
 
-            var elements = this.content.ChildEntities.ToArray();
-            this.contentSize.X = this.size.X;
-
-            foreach (var element in elements)
+            var children = this.content.ChildEntities.ToArray();
+            foreach (var child in children)
             {
-                var transform = element.FindComponent<Transform3D>();
+                var transform = child.FindComponent<Transform3D>();
 
-                if (!this.measuredContents.ContainsKey(element))
+                if (!this.measuredContents.ContainsKey(child))
                 {
-                    var mesh = element.FindComponent<MeshComponent>(false);
+                    var mesh = child.FindComponent<MeshComponent>(false);
                     if (mesh != null && transform != null)
                     {
                         var boundingBox = mesh.BoundingBox.Value;
                         boundingBox.Transform(transform.WorldTransform);
-                        this.measuredContents.Add(element, (boundingBox.Max - boundingBox.Min).ToVector2());
+                        this.measuredContents.Add(child, (boundingBox.Max - boundingBox.Min).ToVector2());
                     }
                 }
 
-                if (this.measuredContents.ContainsKey(element))
+                if (this.measuredContents.ContainsKey(child))
                 {
-                    var halfSize = this.measuredContents[element].Y / 2;
-                    minY = Math.Min(minY, transform.LocalPosition.Y - halfSize);
-                    maxY = Math.Max(maxY, transform.LocalPosition.Y + halfSize);
+                    var origin = new Vector2(.5f, .5f);
+                    if (child.FindComponent<Text3DMesh>() is Text3DMesh text3d)
+                    {
+                        origin = text3d.Origin;
+                    }
+
+                    var size = this.measuredContents[child];
+                    minX = Math.Min(minX, transform.LocalPosition.X - (origin.X * size.X));
+                    maxX = Math.Max(maxX, transform.LocalPosition.X + ((1 - origin.X) * size.X));
+                    minY = Math.Min(minY, transform.LocalPosition.Y - (origin.Y * size.Y));
+                    maxY = Math.Max(maxY, transform.LocalPosition.Y + ((1 - origin.Y) * size.Y));
                 }
             }
 
+            this.contentSize.X = maxX == float.MinValue || minX == float.MaxValue
+                ? 0
+                : Math.Abs(maxX - minX) + this.ContentPadding;
             this.contentSize.Y = maxY == float.MinValue || minY == float.MaxValue
                 ? 0
                 : Math.Abs(maxY - minY) + this.ContentPadding;
