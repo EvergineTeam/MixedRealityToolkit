@@ -2,10 +2,13 @@
 Packages:
   - Id: Evergine.Core
     LocalPath: null
-    Version: 2024.10.24.7
+    Version: 2024.10.24.804
   - Id: Evergine.MRTK
     LocalPath: ../../Source/Evergine.MRTK.Assets/
     Version: null
+Parameters:
+  MaxSkinningWeights: 4
+  SparseMorphTargets: false
 Profiles:
   - AdditionalEffectTechniqueCombinations: SHADOW_SUPPORTED-SHADOWFILTER7
     AlphaCompressionFormat: BC3_UNorm
