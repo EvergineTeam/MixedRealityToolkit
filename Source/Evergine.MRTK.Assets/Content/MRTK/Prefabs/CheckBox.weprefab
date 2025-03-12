@@ -23,6 +23,7 @@ Root:
         Z: 1.0
     - !Evergine.MRTK.SDK.Features.UX.Components.Selection.CheckBox,Evergine.MRTK
       Id: 95bb102d-03df-4e91-9c18-d1d98cd65fb2
+      IsChecked: false
       IsEnabled: true
       Size:
         X: 0.064000003
@@ -90,10 +91,6 @@ Root:
             Y: 0.0
             Z: 0.0
         - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Framework.Graphics.Material,Evergine.Framework]],Evergine.Framework
-          Name: Plate
-          Target: a2196e88-a72a-48a8-999b-ea8e53d637a2
-          TypedValue: 4f32ee6e-22c9-48be-ad27-76ba638454fb
-        - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Framework.Graphics.Material,Evergine.Framework]],Evergine.Framework
           Name: Icon
           Target: a2196e88-a72a-48a8-999b-ea8e53d637a2
           TypedValue: 694f2a64-1e0f-4bf8-b330-57eb45d7e726
@@ -101,10 +98,6 @@ Root:
           Name: Text
           Target: a2196e88-a72a-48a8-999b-ea8e53d637a2
           TypedValue: Off state text
-        - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Framework.Graphics.Material,Evergine.Framework]],Evergine.Framework
-          Name: Plate
-          Target: 3669275d-ddf5-4181-ba9f-790fb8c88c87
-          TypedValue: 4132ee6e-22c9-48be-ad27-76ba638454fb
         - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Framework.Graphics.Material,Evergine.Framework]],Evergine.Framework
           Name: Icon
           Target: 3669275d-ddf5-4181-ba9f-790fb8c88c87
@@ -124,14 +117,6 @@ Root:
             X: 0.064000003
             Y: 0.0320000015
             Z: 0.0160000008
-        - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Common.Audio.AudioBuffer,Evergine.Common]],Evergine.Framework
-          Name: PressedSound
-          Target: cce7a6aa-493e-4507-9de4-c7f1ac734c6b
-          TypedValue: 2f03824d-5709-4c4d-9857-c6a47769a5bc
-        - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Common.Audio.AudioBuffer,Evergine.Common]],Evergine.Framework
-          Name: ReleasedSound
-          Target: cce7a6aa-493e-4507-9de4-c7f1ac734c6b
-          TypedValue: 7f835fa0-da0a-4152-b6ee-157943781e61
         - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Vector3,Evergine.Mathematics]],Evergine.Framework
           Name: LocalScale
           Target: 7e844d17-eea5-46c4-90de-7275ec955421
@@ -139,10 +124,6 @@ Root:
             X: 0.064000003
             Y: 0.0320000015
             Z: 0.0100008119
-        - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Framework.Graphics.Material,Evergine.Framework]],Evergine.Framework
-          Name: Material
-          Target: f42f8bb0-0585-4b4d-b788-c43e0a6ec63d
-          TypedValue: 4f32ee6e-22c9-48be-ad27-76ba638454fb
         - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Mathematics.Vector3,Evergine.Mathematics]],Evergine.Framework
           Name: LocalPosition
           Target: 34a89fde-69ba-493e-8264-0c397f6a09d0

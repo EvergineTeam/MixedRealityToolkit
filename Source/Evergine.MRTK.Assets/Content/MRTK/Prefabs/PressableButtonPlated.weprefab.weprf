@@ -12,4 +12,5 @@ Source:
     Id: 20a262b7-c9e0-457d-9c02-7f3680ef6e0c
     IsCompressed: true
   LastModified: 0001-01-01T00:00:00.0000000
-  PrefabData: null
+  PrefabData:
+    Id: 6ace3ff3-9a46-4a4e-9969-4bf3e35d493b

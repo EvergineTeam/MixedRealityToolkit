@@ -1,6 +1,7 @@
 ﻿using Evergine.Common.Graphics;
 using Evergine.Framework;
 using Evergine.Framework.Graphics;
+using Evergine.Framework.Managers;
 using Evergine.Framework.Physics3D;
 using Evergine.Mathematics;
 
@@ -8,6 +9,9 @@ namespace Evergine.MRTK.Demo.Drawables
 {
     public class BoxColliderRenderer : Drawable3D
     {
+        [BindSceneManager]
+        private RenderManager renderManager = null;
+
         [BindComponent]
         protected Transform3D transform = null;
 
@@ -25,7 +29,7 @@ namespace Evergine.MRTK.Demo.Drawables
                 box.HalfExtent = colliderShape.Size * this.transform.Scale * 0.5f;
                 box.Orientation = Quaternion.Concatenate(this.collider.OrientationOffset, this.transform.Orientation);
 
-                this.RenderManager.LineBatch3D.DrawBoundingOrientedBox(box, Color.White);
+                this.renderManager.LineBatch3D.DrawBoundingOrientedBox(box, Color.White);
             }
         }
     }

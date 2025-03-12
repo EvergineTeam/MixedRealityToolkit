@@ -16,7 +16,7 @@ Root:
       LocalPosition:
         X: 0.0
         Y: 0.0
-        Z: 5.96046448E-07
+        Z: 0.0
       LocalScale:
         X: 1.0
         Y: 1.0
@@ -104,6 +104,7 @@ Root:
               AsignedTo: DefaultMaterial
               IsEnabled: true
               Material: 9adff77b-f6b6-4683-bf28-243fafea5436
+              UseCopy: false
             - !Evergine.Components.Graphics3D.MeshComponent,Evergine.Framework
               Id: eb5b4be9-b92e-4cbd-9adb-f6763a6447e1
               IsEnabled: true

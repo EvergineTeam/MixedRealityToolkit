@@ -6,6 +6,7 @@ using Evergine.Components.Fonts;
 using Evergine.Components.Graphics3D;
 using Evergine.Framework;
 using Evergine.Framework.Graphics;
+using Evergine.Framework.Managers;
 using Evergine.Framework.Physics3D;
 using Evergine.Mathematics;
 using Evergine.MRTK.Base.EventDatum.Input;
@@ -22,6 +23,9 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Scrolling
     /// </summary>
     public class ScrollView : Behavior, IMixedRealityPointerHandler, IMixedRealityTouchHandler
     {
+        [BindSceneManager]
+        private RenderManager renderManager = null;
+
         [BindEntity(source: BindEntitySource.ChildrenSkipOwner, tag: "PART_scrollviewer_scrollarea")]
         private Entity scrollArea = null;
 
@@ -454,7 +458,7 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Scrolling
                 var localPosition = this.contentTransform.LocalPosition;
                 var min = new Vector3(position.X - (this.backgroundPlaneTransform.LocalScale.X * 0.5f), position.Y - this.contentSize.Y + (this.backgroundPlaneTransform.LocalScale.Y / 2), position.Z);
                 var max = new Vector3(position.X + (this.backgroundPlaneTransform.LocalScale.X * 0.5f), position.Y + (this.backgroundPlaneTransform.LocalScale.Y / 2), position.Z);
-                this.Managers.RenderManager.LineBatch3D.DrawRectangle(min, max, Color.Red);
+                this.renderManager.LineBatch3D.DrawRectangle(min, max, Color.Red);
 
                 var elements = this.contentTransform.Owner.ChildEntities.ToArray();
                 foreach (var element in elements)
@@ -465,7 +469,7 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Scrolling
                     {
                         var boundingBox = mesh.BoundingBox.Value;
                         boundingBox.Transform(transform.WorldTransform);
-                        this.Managers.RenderManager.LineBatch3D.DrawBoundingBox(boundingBox, Color.Yellow);
+                        this.renderManager.LineBatch3D.DrawBoundingBox(boundingBox, Color.Yellow);
                     }
                 }
             }

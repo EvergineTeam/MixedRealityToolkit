@@ -378,11 +378,11 @@ Root:
             X: 0.0
             Y: 0.0
             Z: 0.0
-        - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%25601[[Evergine.MRTK.SDK.Features.UX.Components.Scrolling.ScrollBarVisibility,Evergine.MRTK]],Evergine.Framework
+        - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.MRTK.SDK.Features.UX.Components.Scrolling.ScrollBarVisibility,Evergine.MRTK]],Evergine.Framework
           Name: HorizontalScrollBarVisibility
           Target: e7c351e8-778e-4877-b2ec-b52e7a13356a
           TypedValue: Hidden
-        - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%25601[[System.Boolean,System.Private.CoreLib]],Evergine.Framework
+        - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.Boolean,System.Private.CoreLib]],Evergine.Framework
           Name: HorizontalScrollEnabled
           Target: e7c351e8-778e-4877-b2ec-b52e7a13356a
           TypedValue: false

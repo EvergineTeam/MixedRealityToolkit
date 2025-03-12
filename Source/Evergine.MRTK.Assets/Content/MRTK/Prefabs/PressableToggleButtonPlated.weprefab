@@ -124,18 +124,6 @@ Root:
             X: 0.0
             Y: 0.0
             Z: 0.0
-        - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%25601[[Evergine.Common.Audio.AudioBuffer,Evergine.Common]],Evergine.Framework
-          Name: PressedSound
-          Target: b5af3e87-fdcd-4936-ae34-6d88e4958951
-          TypedValue: 2f03824d-5709-4c4d-9857-c6a47769a5bc
-        - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%25601[[Evergine.Common.Audio.AudioBuffer,Evergine.Common]],Evergine.Framework
-          Name: ReleasedSound
-          Target: b5af3e87-fdcd-4936-ae34-6d88e4958951
-          TypedValue: 7f835fa0-da0a-4152-b6ee-157943781e61
-        - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[Evergine.Framework.Graphics.Material,Evergine.Framework]],Evergine.Framework
-          Name: Material
-          Target: de26b28f-b9c6-4576-9fb4-f33e50dc4e76
-          TypedValue: 4132ee6e-22c9-48be-ad27-76ba638454fb
         - !Evergine.Framework.Assets.AssetSources.Entities.PrefabModification%601[[System.String,System.Private.CoreLib]],Evergine.Framework
           Name: Text
           Target: a7c5a62f-b112-4c25-bb9e-eaec97942a6f

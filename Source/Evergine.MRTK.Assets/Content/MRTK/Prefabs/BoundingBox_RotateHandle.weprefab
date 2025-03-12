@@ -104,6 +104,7 @@ Root:
               AsignedTo: DefaultMaterial
               IsEnabled: true
               Material: 9adff77b-f6b6-4683-bf28-243fafea5436
+              UseCopy: false
             - !Evergine.Components.Graphics3D.MeshComponent,Evergine.Framework
               Id: fe5ef1d5-5562-4fe7-b961-9f99186a3399
               IsEnabled: true

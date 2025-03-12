@@ -26,15 +26,16 @@ Root:
       BarWidth: 0.00400000019
       ContentPadding: 0.0199999996
       Debug: false
-      DisplayScrollBar: true
       ElasticTime: 0.100000001
       HorizontalScrollBarVisibility: Auto
+      HorizontalScrollEnabled: true
       IsEnabled: true
       Size:
         X: 0.25
         Y: 0.180000007
       UpdateOrder: 0.5
       VerticalScrollBarVisibility: Auto
+      VerticalScrollEnabled: true
       ZContentDistance: 0.00400000019
   Children:
     - !Evergine.Framework.Assets.AssetSources.Entities.EntityItemModel,Evergine.Framework

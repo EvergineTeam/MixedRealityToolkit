@@ -113,6 +113,7 @@ Root:
                   AsignedTo: Default
                   IsEnabled: true
                   Material: 7c71e125-9173-449d-a0ab-4771ad204dd5
+                  UseCopy: false
                 - !Evergine.Components.Graphics3D.CylinderMesh,Evergine.Components
                   Id: a87344ae-59ff-4fa5-81ed-1f8a8b396719
                   Diameter: 0.00200000009
@@ -211,6 +212,7 @@ Root:
                   AsignedTo: lambert1
                   IsEnabled: true
                   Material: 207c3402-9a1e-43ed-a8a1-11dabe70811d
+                  UseCopy: false
                 - !Evergine.Components.Graphics3D.MeshComponent,Evergine.Framework
                   Id: f559c7d2-023f-4689-a08d-56b145303bb6
                   IsEnabled: true
@@ -290,6 +292,7 @@ Root:
                       Size:
                         X: 8.0
                         Y: 1.10000002
+                      Softness: 0.75
                       Text: Title
                       VerticalAlignment: Bottom
                       Wrapping: true
@@ -345,6 +348,7 @@ Root:
                       Size:
                         X: 8.0
                         Y: 1.10000002
+                      Softness: 0.75
                       Text: 0.50
                       VerticalAlignment: Top
                       Wrapping: true
