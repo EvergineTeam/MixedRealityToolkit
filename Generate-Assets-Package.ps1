@@ -43,7 +43,7 @@ else
 # Update wespec file
 Write-Host "Updating version dependency for $wespecPath"
 $wespecContents = Get-Content -Raw -Path $wespecPath | ConvertFrom-Yaml -Ordered
-$wespecContents.Nugets = $wespecContents.Nugets -replace "2023.0.0.0-preview$", $version
+$wespecContents.Nugets = $wespecContents.Nugets -replace "2025.0.0.0-preview$", $version
 ConvertTo-Yaml -Data $wespecContents | Out-File -Encoding ascii -FilePath $wespecPath
 
 # Create output folder

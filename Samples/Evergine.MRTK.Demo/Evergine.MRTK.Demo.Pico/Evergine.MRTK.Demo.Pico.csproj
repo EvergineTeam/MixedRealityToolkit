@@ -10,13 +10,13 @@
     <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Evergine.Android" Version="2025.3.12.192-nightly" />
-    <PackageReference Include="Evergine.Vulkan" Version="2025.3.12.192-nightly" />
-    <PackageReference Include="Evergine.OpenXR" Version="2025.3.12.192-nightly" />
-    <PackageReference Include="Evergine.HLSLEverywhere" Version="2025.3.12.192-nightly" />
-    <PackageReference Include="Evergine.OpenAL" Version="2025.3.12.192-nightly" />
-    <PackageReference Include="Evergine.Targets" Version="2025.3.12.192-nightly" />
-    <PackageReference Include="Evergine.Targets.Android" Version="2025.3.12.192-nightly" />
+    <PackageReference Include="Evergine.Android" Version="2025.3.18.7" />
+    <PackageReference Include="Evergine.Vulkan" Version="2025.3.18.7" />
+    <PackageReference Include="Evergine.OpenXR" Version="2025.3.18.7" />
+    <PackageReference Include="Evergine.HLSLEverywhere" Version="2025.3.18.7" />
+    <PackageReference Include="Evergine.OpenAL" Version="2025.3.18.7" />
+    <PackageReference Include="Evergine.Targets" Version="2025.3.18.7" />
+    <PackageReference Include="Evergine.Targets.Android" Version="2025.3.18.7" />
     <PackageReference Include="Evergine.LibBulletc.Natives" Version="2023.11.28.20" />
     <PackageReference Include="Evergine.OpenXR.Natives.Pico" Version="2023.2.10.2" />
   </ItemGroup>
