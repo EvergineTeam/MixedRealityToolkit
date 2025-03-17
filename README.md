@@ -42,3 +42,13 @@ Check out Evergine.MRTK's various types of interactions and UI controls in our s
 Video: https://www.youtube.com/watch?v=KbhLifObJNA
 
 ![alt Example Scene](Documentation/Images/MRTK_Examples.png)
+
+
+---
+Powered by [Evergine](https://evergine.com)
+
+LET'S CONNECT!
+
+- [Youtube](https://www.youtube.com/c/Evergine)
+- [Twitter](https://x.com/EvergineTeam)
+- [Blog](https://evergine.com/news/)
