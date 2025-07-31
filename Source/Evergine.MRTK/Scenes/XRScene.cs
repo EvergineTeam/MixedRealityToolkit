@@ -293,7 +293,14 @@ namespace Evergine.MRTK.Scenes
             return controllerEntity;
         }
 
-        private Entity CreateNearCursor(XRHandedness handedness, Material pressedMaterial, Material releasedMaterial)
+        /// <summary>
+        /// Create a near cursor.
+        /// </summary>
+        /// <param name="handedness">Cursor handedness.</param>
+        /// <param name="pressedMaterial">Cursor material when pressing.</param>
+        /// <param name="releasedMaterial">Cursor material when not pressing.</param>
+        /// <returns>The created cursor entity.</returns>
+        protected Entity CreateNearCursor(XRHandedness handedness, Material pressedMaterial, Material releasedMaterial)
         {
             var name = $"{nameof(CursorTouch)}_{handedness}";
             var nearCursor = new Entity(name)
@@ -333,7 +340,17 @@ namespace Evergine.MRTK.Scenes
             return rootCursor;
         }
 
-        private Entity CreateFarCursor(XRHandedness handedness, Material pressedMaterial, Material releasedMaterial, Texture handRayTexture, SamplerState handRaySampler, Entity nearCursor)
+        /// <summary>
+        /// Create a far cursor.
+        /// </summary>
+        /// <param name="handedness">Cursor handedness.</param>
+        /// <param name="pressedMaterial">Cursor material when pressing.</param>
+        /// <param name="releasedMaterial">Cursor material when not pressing.</param>
+        /// <param name="handRayTexture">Hand ray texture.</param>
+        /// <param name="handRaySampler">Sampler for the hand ray texture.</param>
+        /// <param name="nearCursor">The associated near cursor entity.</param>
+        /// <returns>The created cursor entity.</returns>
+        protected Entity CreateFarCursor(XRHandedness handedness, Material pressedMaterial, Material releasedMaterial, Texture handRayTexture, SamplerState handRaySampler, Entity nearCursor)
         {
             var ray = new Entity("ray")
                 .AddComponent(new Transform3D())
