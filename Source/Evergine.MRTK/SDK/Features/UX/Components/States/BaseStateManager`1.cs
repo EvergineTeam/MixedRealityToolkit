@@ -89,9 +89,9 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.States
         }
 
         /// <inheritdoc />
-        protected override void OnDetach()
+        protected override void OnDetached()
         {
-            base.OnDetach();
+            base.OnDetached();
             this.button.ButtonPressed -= this.Button_ButtonPressed;
         }
 

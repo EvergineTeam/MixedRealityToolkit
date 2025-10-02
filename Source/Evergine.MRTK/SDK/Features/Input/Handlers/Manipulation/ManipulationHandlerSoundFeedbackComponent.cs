@@ -53,9 +53,9 @@ namespace Evergine.MRTK.SDK.Features.Input.Handlers.Manipulation
         }
 
         /// <inheritdoc/>
-        protected override void OnDetach()
+        protected override void OnDetached()
         {
-            base.OnDetach();
+            base.OnDetached();
 
             this.manipulationHandler.ManipulationStarted -= this.ManipulationHandler_ManipulationStarted;
             this.manipulationHandler.ManipulationEnded -= this.ManipulationHandler_ManipulationEnded;

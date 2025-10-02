@@ -5,12 +5,12 @@
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Evergine.DirectX11" Version="2025.3.18.7" />
-    <PackageReference Include="Evergine.HLSLEverywhere" Version="2025.3.18.7" />
-    <PackageReference Include="Evergine.XAudio2" Version="2025.3.18.7" />
-    <PackageReference Include="Evergine.Forms" Version="2025.3.18.7" />
-    <PackageReference Include="Evergine.Targets" Version="2025.3.18.7" />
-    <PackageReference Include="Evergine.Targets.Windows" Version="2025.3.18.7" />
+    <PackageReference Include="Evergine.DirectX11" Version="2025.10.2.194-nightly" />
+    <PackageReference Include="Evergine.HLSLEverywhere" Version="2025.10.2.194-nightly" />
+    <PackageReference Include="Evergine.XAudio2" Version="2025.10.2.194-nightly" />
+    <PackageReference Include="Evergine.Forms" Version="2025.10.2.194-nightly" />
+    <PackageReference Include="Evergine.Targets" Version="2025.10.2.194-nightly" />
+    <PackageReference Include="Evergine.Targets.Windows" Version="2025.10.2.194-nightly" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Evergine.MRTK.Demo\Evergine.MRTK.Demo.csproj" />

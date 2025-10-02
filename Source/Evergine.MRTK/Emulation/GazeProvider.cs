@@ -167,9 +167,9 @@ namespace Evergine.MRTK.Services.InputSystem
         }
 
         /// <inheritdoc />
-        protected override void OnDetach()
+        protected override void OnDetached()
         {
-            base.OnDetach();
+            base.OnDetached();
 
             this.gazePointerShape?.Dispose();
             this.gazePointerShape = null;

@@ -206,9 +206,9 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Selection
         }
 
         /// <inheritdoc/>
-        protected override void OnDetach()
+        protected override void OnDetached()
         {
-            base.OnDetach();
+            base.OnDetached();
             this.itemsListView.SelectedItemChanged -= this.ItemsListView_SelectedChanged;
         }
 

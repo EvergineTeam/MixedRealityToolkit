@@ -66,9 +66,9 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.BoundingBox
         }
 
         /// <inheritdoc/>
-        protected override void OnDetach()
+        protected override void OnDetached()
         {
-            base.OnDetach();
+            base.OnDetached();
 
             this.boundingBox.RotateStarted -= this.BoundingBox_RotateStarted;
             this.boundingBox.RotateStopped -= this.BoundingBox_RotateStopped;

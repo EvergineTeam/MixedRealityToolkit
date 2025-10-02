@@ -681,9 +681,9 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.BoundingBox
         }
 
         /// <inheritdoc/>
-        protected override void OnDetach()
+        protected override void OnDetached()
         {
-            base.OnDetach();
+            base.OnDetached();
 
             if (this.boxCollider3D != null)
             {

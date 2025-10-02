@@ -81,9 +81,9 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.PressableButtons
         }
 
         /// <inheritdoc/>
-        protected override void OnDetach()
+        protected override void OnDetached()
         {
-            base.OnDetach();
+            base.OnDetached();
             this.feedbackVisualsComponentsArray = null;
         }
 

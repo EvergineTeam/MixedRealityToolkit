@@ -41,9 +41,9 @@ namespace Evergine.MRTK.Demo.Components.Passthrough
             this.buttonPassthroughToggleButton.Toggled += this.ButtonPassthroughToggleButton_Toggled;
         }
 
-        protected override void OnDetach()
+        protected override void OnDetached()
         {
-            base.OnDetach();
+            base.OnDetached();
 
             this.buttonPassthroughToggleButton.Toggled -= this.ButtonPassthroughToggleButton_Toggled;
         }
