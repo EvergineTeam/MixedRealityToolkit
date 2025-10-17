@@ -38,7 +38,7 @@
 
 [Begin_Pass:Default]
 
-	[Profile 11_0]
+	[Profile 12_1]
 	[Entrypoints VS=VS GS=GS PS=PS]
 
 	struct VS_IN

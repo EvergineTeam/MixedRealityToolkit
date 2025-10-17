@@ -105,7 +105,7 @@
 
 [Begin_Pass:Default]
 	
-	[Profile 11_0]
+	[Profile 12_1]
 	[Entrypoints VS=VS PS=PS]	
 	
 #define IF(a, b, c) lerp(b, c, step((float) (a), 0.0));
