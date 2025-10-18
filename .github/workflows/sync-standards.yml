@@ -1,0 +1,46 @@
+name: Sync standards
+
+on:
+  workflow_dispatch:
+    inputs:
+      org:
+        description: "Standards org"
+        default: "EvergineTeam"
+        required: false
+      repo:
+        description: "Standards repo"
+        default: "evergine-standards"
+        required: false
+      ref:
+        description: "Branch/tag/commit of standards"
+        default: "main"
+        required: false
+      target_branch:
+        description: "Target branch to apply changes"
+        default: "develop"
+        required: false
+      commit_message:
+        description: "Commit message"
+        required: false
+      mode:
+        description: "auto (push then PR if needed) or pr (always PR)"
+        default: "auto"
+        required: false
+
+  schedule:
+    - cron: "0 2 1 * *"  # 02:00 UTC on the 1st of every month
+  
+jobs:
+  sync:
+    permissions:
+      contents: write  # allow push commits
+      pull-requests: write
+    uses: EvergineTeam/evergine-standards/.github/workflows/_sync-standards-reusable.yml@main
+    with:
+      org:  ${{ github.event.inputs.org  || 'EvergineTeam' }}
+      repo: ${{ github.event.inputs.repo || 'evergine-standards' }}
+      ref:  ${{ github.event.inputs.ref  || 'main' }}
+      target_branch: ${{ github.event.inputs.target_branch || 'develop' }}
+      commit_message: "${{ github.event.inputs.commit_message || vars.STANDARDS_COMMIT_MESSAGE || 'auto: sync standard files [skip ci]' }}"
+      mode: ${{ github.event.inputs.mode || 'auto' }}
+    secrets: inherit

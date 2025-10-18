@@ -1,0 +1,6 @@
+{
+    "schema": "1",
+    "remap": {
+        "assets/nuget-icon.png": "Resources/NugetIcon/icon.png"
+    }
+}
