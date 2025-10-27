@@ -4,9 +4,10 @@
 #   - Public GitHub repo via raw.githubusercontent.com (default)
 #   - Local folder via -SourcePath
 #
-# Supports schema v1 (array of ["src", "dst"]) and per-repo overrides:
+# Supports schema v2 (groups with defaultGroups) and per-repo overrides:
 #   - .standards.override.json with:
-#       { "remap": { "srcOrDst": "new/destination", ... },
+#       { "groups": ["group1", "group2"],
+#         "remap": { "srcOrDst": "new/destination", ... },
 #         "ignore": [ "glob/**", ... ] }
 
 param(
@@ -22,14 +23,15 @@ param(
     [string]$Manifest = "sync-manifest.json",    # Manifest filename
     [string]$Root = (Resolve-Path ".").Path,     # Target base path (usually repo root)
     [string]$OverrideFile = ".standards.override.json",
-    [switch]$DryRun                              # Only show what would be done
+    [switch]$DryRun,                             # Only show what would be done
+    [switch]$TestMode                            # Only load functions for testing, don't execute main logic
 )
 
 # ---------------------------
 # Helpers: HTTP (public raw)
 # ---------------------------
 
-function Get-RawUrl([string]$path) {
+function Get-RawUrl([string]$path, [string]$Org, [string]$Repo, [string]$Ref) {
     return "https://raw.githubusercontent.com/$Org/$Repo/$Ref/$path"
 }
 
@@ -43,7 +45,7 @@ function Get-SourceText([string]$path) {
         return Get-Content -Path $full -Raw
     }
     else {
-        $url = Get-RawUrl $path
+        $url = Get-RawUrl $path $Org $Repo $Ref
         try { 
             return (Invoke-WebRequest -Uri $url).Content 
         }
@@ -62,7 +64,7 @@ function Get-SourceBytes([string]$path) {
         return [System.IO.File]::ReadAllBytes($full)
     }
     else {
-        $url = Get-RawUrl $path
+        $url = Get-RawUrl $path $Org $Repo $Ref
         $tmp = [System.IO.Path]::GetTempFileName()
         try {
             Invoke-WebRequest -Uri $url -OutFile $tmp | Out-Null
@@ -83,66 +85,19 @@ function Get-SourceBytes([string]$path) {
 }
 
 # ---------------------------
-# Load manifest (schema v1)
+# Helper functions for processing overrides and files
 # ---------------------------
 
-$sourceLabel = $(if ($SourcePath) { "local: $(Resolve-Path $SourcePath).Path" } else { "$Org/$Repo@$Ref" })
-Write-Host "Loading manifest '$Manifest' from $sourceLabel ..."
-$manifestText = Get-SourceText $Manifest
-$manifestObj = $manifestText | ConvertFrom-Json -Depth 10
-
-# Assume v1 if schema is absent
-$schema = if ($manifestObj.PSObject.Properties.Name -contains 'schema') { $manifestObj.schema } else { "1" }
-if ($schema -ne "1") { 
-    throw "Unsupported manifest schema '$schema'. This script only supports schema v1." 
-}
-
-$entries = @()
-foreach ($file in $manifestObj.files) {
-    $overwrite = if ($file.PSObject.Properties.Name -contains 'overwrite') { $file.overwrite } else { "always" }
-    $entries += [pscustomobject]@{ src = $file.src; dst = $file.dst; overwrite = $overwrite }
-}
-Write-Host "Loaded $($entries.Count) entries from manifest."
-
-# -------------------------------------------------------
-# Load per-repo overrides (remap + ignore)
-# -------------------------------------------------------
-
-$ov = $null
-$overridePath = Join-Path $Root $OverrideFile
-Write-Host "Looking for override file at: $overridePath"
-if (Test-Path $overridePath) {
-    try {
-        $ov = Get-Content $overridePath -Raw | ConvertFrom-Json -Depth 5
-        
-        # Validate override schema matches manifest schema
-        $overrideSchema = if ($ov.PSObject.Properties.Name -contains 'schema') { $ov.schema } else { "1" }
-        if ($overrideSchema -ne $schema) {
-            throw "Override file schema '$overrideSchema' does not match manifest schema '$schema'. Both files must use the same schema version."
-        }
-        
-        Write-Host "Loaded overrides from '$OverrideFile' (schema: $overrideSchema)."
-        Write-Host "Remap rules: $($ov.remap | ConvertTo-Json -Compress)"
-        Write-Host "Ignore files: $($ov.ignore -join ', ')"
-    }
-    catch {
-        throw "Failed to parse overrides file '$OverrideFile'. $($_.Exception.Message)"
-    }
-}
-else {
-    Write-Host "No override file found at: $overridePath"
-}
-
 function Resolve-Dst([string]$src, [string]$dstDefault, [string]$overwriteDefault) {
-    if ($ov -and $ov.remap) {
+    if ($overwrites -and $overwrites.remap) {
         $remapValue = $null
         
         # Check if there's a remap for dst or src
-        if ($ov.remap.PSObject.Properties.Name -contains $dstDefault) { 
-            $remapValue = $ov.remap.$dstDefault 
+        if ($overwrites.remap.PSObject.Properties.Name -contains $dstDefault) { 
+            $remapValue = $overwrites.remap.$dstDefault 
         }
-        elseif ($ov.remap.PSObject.Properties.Name -contains $src) { 
-            $remapValue = $ov.remap.$src 
+        elseif ($overwrites.remap.PSObject.Properties.Name -contains $src) { 
+            $remapValue = $overwrites.remap.$src 
         }
         
         if ($remapValue) {
@@ -164,8 +119,8 @@ function Resolve-Dst([string]$src, [string]$dstDefault, [string]$overwriteDefaul
 }
 
 function Is-Ignored([string]$dstFinal) {
-    if ($ov -and $ov.ignore) {
-        foreach ($pat in $ov.ignore) { 
+    if ($overwrites -and $overwrites.ignore) {
+        foreach ($pat in $overwrites.ignore) { 
             if ($dstFinal -like $pat) { 
                 return $true 
             } 
@@ -174,6 +129,104 @@ function Is-Ignored([string]$dstFinal) {
 
     return $false
 }
+
+# ---------------------------
+# Load manifest (schema v2)
+# ---------------------------
+
+# Exit early if in test mode (functions are already loaded)
+if ($TestMode) {
+    return
+}
+
+$sourceLabel = $(if ($SourcePath) { "local: $(Resolve-Path $SourcePath).Path" } else { "$Org/$Repo@$Ref" })
+Write-Host "Loading manifest '$Manifest' from $sourceLabel ..."
+$manifestText = Get-SourceText $Manifest
+$manifestObj = $manifestText | ConvertFrom-Json -Depth 10
+
+# Require schema v2
+$schema = if ($manifestObj.PSObject.Properties.Name -contains 'schema') { $manifestObj.schema } else { $null }
+if ($schema -ne "2") { 
+    throw "Manifest must use schema v2. Found: '$schema'. Please update your manifest to use schema v2 with groups." 
+}
+
+Write-Host "Using manifest schema: v$schema"
+
+# -------------------------------------------------------
+# Load per-repo overrides (groups + remap + ignore)
+# -------------------------------------------------------
+
+$overwrites = $null
+$overridePath = Join-Path $Root $OverrideFile
+Write-Host "Looking for override file at: $overridePath"
+if (Test-Path $overridePath) {
+    try {
+        $overwrites = Get-Content $overridePath -Raw | ConvertFrom-Json -Depth 5
+    
+        # Validate override schema matches manifest schema
+        $overrideSchema = if ($overwrites.PSObject.Properties.Name -contains 'schema') { $overwrites.schema } else { "2" }
+        if ($overrideSchema -ne "2") {
+            throw "Override file must use schema v2. Found: '$overrideSchema'. Please update your override file to use schema v2."
+        }
+
+        Write-Host "Loaded overrides from '$OverrideFile' (schema: v2)."
+        if ($overwrites.PSObject.Properties.Name -contains 'groups') {
+            Write-Host "Selected groups: $($overwrites.groups -join ', ')"
+        }
+        if ($overwrites.PSObject.Properties.Name -contains 'remap') {
+            Write-Host "Remap rules: $($overwrites.remap | ConvertTo-Json -Compress)"
+        }
+        if ($overwrites.PSObject.Properties.Name -contains 'ignore') {
+            Write-Host "Ignore files: $($overwrites.ignore -join ', ')"
+        }
+    }
+    catch {
+        throw "Failed to parse overrides file '$OverrideFile'. $($_.Exception.Message)"
+    }
+}
+else {
+    Write-Host "No override file found at: $overridePath"
+}
+
+# -------------------------------------------------------
+# Process manifest entries (schema v2 only)
+# -------------------------------------------------------
+
+$entries = @()
+
+# Determine which groups to use
+$selectedGroups = @()
+if ($overwrites -and $overwrites.PSObject.Properties.Name -contains 'groups') {
+    # Use groups specified in override file
+    $selectedGroups = $overwrites.groups
+    Write-Host "Using groups from override file: $($selectedGroups -join ', ')"
+}
+elseif ($manifestObj.PSObject.Properties.Name -contains 'defaultGroups') {
+    # Use defaultGroups from manifest
+    $selectedGroups = $manifestObj.defaultGroups
+    Write-Host "Using defaultGroups from manifest: $($selectedGroups -join ', ')"
+}
+else {
+    throw "Schema v2 manifest must have 'defaultGroups' defined, or override file must specify 'groups'."
+}
+
+# Process selected groups
+foreach ($groupName in $selectedGroups) {
+    if ($manifestObj.groups.PSObject.Properties.Name -contains $groupName) {
+        $groupFiles = $manifestObj.groups.$groupName
+        Write-Host "Processing group '$groupName' with $($groupFiles.Count) files..."
+        
+        foreach ($file in $groupFiles) {
+            $overwrite = if ($file.PSObject.Properties.Name -contains 'overwrite') { $file.overwrite } else { "always" }
+            $entries += [pscustomobject]@{ src = $file.src; dst = $file.dst; overwrite = $overwrite }
+        }
+    }
+    else {
+        Write-Warning "Group '$groupName' not found in manifest. Available groups: $($manifestObj.groups.PSObject.Properties.Name -join ', ')"
+    }
+}
+
+Write-Host "Loaded $($entries.Count) entries from manifest."
 
 # -------------------------------------------------------
 # Sync files (always overwrite unless -DryRun)
@@ -189,7 +242,7 @@ foreach ($e in $entries) {
     $resolved = Resolve-Dst $src $e.dst $e.overwrite
     $dst = $resolved.dst
     $overwrite = $resolved.overwrite
-    
+
     if (Is-Ignored $dst) {
         Write-Host "Ignored by override: $dst"
         $ignored++
@@ -197,14 +250,14 @@ foreach ($e in $entries) {
     }
 
     $dstFull = Join-Path $Root $dst
-    
+
     # Check overwrite policy
     if ($overwrite -eq "ifMissing" -and (Test-Path $dstFull)) {
         Write-Host "Skipped (exists, overwrite=ifMissing): $dst"
         $skipped++
         continue
     }
-    
+
     $dir = Split-Path $dstFull -Parent
     if ($dir -and -not (Test-Path $dir)) {
         if (-not $DryRun) { 
@@ -233,9 +286,7 @@ foreach ($e in $entries) {
         $skipped++
         continue
     }
-}
-
-Write-Host ""
+}Write-Host ""
 Write-Host "Summary:"
 Write-Host "   Updated: $updated"
 Write-Host "   Ignored: $ignored"

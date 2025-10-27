@@ -26,6 +26,11 @@ on:
         description: "auto (push then PR if needed) or pr (always PR)"
         default: "auto"
         required: false
+      dry_run:
+        description: "Dry run mode - show what would be done without making changes"
+        type: boolean
+        default: false
+        required: false
 
   schedule:
     - cron: "0 2 1 * *"  # 02:00 UTC on the 1st of every month
@@ -43,4 +48,5 @@ jobs:
       target_branch: ${{ github.event.inputs.target_branch || 'develop' }}
       commit_message: "${{ github.event.inputs.commit_message || vars.STANDARDS_COMMIT_MESSAGE || 'auto: sync standard files [skip ci]' }}"
       mode: ${{ github.event.inputs.mode || 'auto' }}
+      dry_run: ${{ github.event.inputs.dry_run == 'true' }}
     secrets: inherit

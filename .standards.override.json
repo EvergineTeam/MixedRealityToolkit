@@ -1,5 +1,8 @@
 {
-    "schema": "1",
+    "schema": "2",
+    "groups": [
+        "core"
+    ],
     "remap": {
         "assets/nuget-icon.png": "Resources/NugetIcon/icon.png"
     }
