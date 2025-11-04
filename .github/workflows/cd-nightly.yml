@@ -1,0 +1,64 @@
+# Add-on CD - Nightly Template
+
+# This template is for Evergine add-ons that need nightly builds and publishing.
+# Copy this file to your repository as `.github/workflows/cd-nightly.yml` and customize the inputs below.
+
+name: CD - Nightly
+
+on:
+  schedule:
+    - cron: '30 1 * * *'  # 1:30 AM UTC, every day
+  workflow_dispatch:
+    inputs:
+      force-execution:
+        description: 'Force execution even if no changes detected'
+        required: false
+        type: boolean
+        default: false
+      skip-assets-publishing:
+        description: 'Skip assets publishing (useful for first run)'
+        required: false
+        type: boolean
+        default: false
+
+jobs:
+  # Check if there are changes since last successful nightly run
+  check_changes:
+    uses: EvergineTeam/evergine-standards/.github/workflows/_check-changes-since-last-run.yml@v2
+    with:
+      workflow-filename: "cd-nightly.yml" # Filename of this workflow, it's case-sensitive
+
+  cd:
+    needs: check_changes
+    if: ${{ (needs.check_changes.outputs.has_changes == 'true' || inputs.force-execution == true) && github.ref == 'refs/heads/develop' }}
+    uses: EvergineTeam/evergine-standards/.github/workflows/addon-simple-cd.yml@v2
+    with:
+      assets-project: "Source/Evergine.MRTK.Assets/Evergine.MRTK.Assets.csproj"  # Path to your assets .csproj
+      nuget-projects: |                                           # NuGet projects (one per line)
+        Source/Evergine.MRTK/Evergine.MRTK.csproj
+      nuget-dependency-projects: |                                    # NuGet dependency projects (one per line)
+        Source/Evergine.MRTK.Editor/Evergine.MRTK.Editor.csproj
+      revision: ${{ github.run_number }}                              # Use run number for nightly versioning
+      version-suffix: "nightly"                                       # Add nightly suffix to packages
+      build-configuration: "Release"                                  # Build configuration
+      dotnet-version: "8.0.x"                                        # .NET version
+      storage-account-name: "everginestudio"                         # Azure Storage account
+      storage-container-name: "pkg-nightly"                          # Azure Storage container
+      publish-packages: ${{ !inputs.skip-assets-publishing }}        # Publish only if skip-upload is false
+      enable-email-notifications: true                               # Send email on failure
+    secrets:
+      NUGET_UPLOAD_TOKEN: ${{ secrets.NUGET_UPLOAD_TOKEN }}          # NuGet.org API key
+      AZURE_STORAGE_SAS_TOKEN: ${{ secrets.AZURE_STORAGE_SAS_TOKEN }} # Azure Storage SAS token
+      WAVE_SENDGRID_TOKEN: ${{ secrets.WAVE_SENDGRID_TOKEN }}        # SendGrid for email notifications
+      EVERGINE_EMAILREPORT_LIST: ${{ secrets.EVERGINE_EMAILREPORT_LIST }}
+      EVERGINE_EMAIL: ${{ secrets.EVERGINE_EMAIL }}
+
+# Tips:
+# - Nightly builds use revision-based versioning with "nightly" suffix (e.g., 2025.11.3.123-nightly)
+# - Configure version-suffix to differentiate from release builds
+# - Uses reusable workflow to check for changes since last successful run
+# - Only runs if there are changes since the last successful nightly build
+# - Manual execution allows "force-execution" option to bypass change check
+# - Remove nuget-projects if you only need .wepkg assets
+# - Set publish-packages: false if you don't want to publish to NuGet.org and Azure Storage
+# - Update storage-account-name and storage-container-name for your specific setup

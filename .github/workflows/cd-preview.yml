@@ -1,0 +1,50 @@
+# Add-on CD - Preview Template
+
+# This template is for Evergine add-ons that need preview builds and publishing.
+# Copy this file to your repository as `.github/workflows/cd-preview.yml` and customize the inputs below.
+
+name: CD - Preview
+
+on:
+  workflow_dispatch:
+    inputs:
+      skip-assets-publishing:
+        description: 'Skip assets publishing'
+        required: false
+        type: boolean
+        default: false
+
+jobs:
+  cd:
+    if: github.event_name != 'schedule' || github.ref == 'refs/heads/master'
+    uses: EvergineTeam/evergine-standards/.github/workflows/addon-simple-cd.yml@v2
+    with:
+      assets-project: "Source/Evergine.MRTK.Assets/Evergine.MRTK.Assets.csproj"  # Path to your assets .csproj
+      nuget-projects: |                                           # NuGet projects (one per line)
+        Source/Evergine.MRTK/Evergine.MRTK.csproj
+      nuget-dependency-projects: |                                    # NuGet dependency projects (one per line)
+        Source/Evergine.MRTK.Editor/Evergine.MRTK.Editor.csproj
+      revision: ${{ github.run_number }}                              # Use run number for preview versioning
+      version-suffix: "preview"                                       # Add preview suffix to packages
+      build-configuration: "Release"                                  # Build configuration
+      dotnet-version: "8.0.x"                                        # .NET version
+      storage-account-name: "everginestudio"                        # Azure Storage account
+      storage-container-name: "pkg-preview"                          # Azure Storage container
+      publish-packages: ${{ !inputs.skip-assets-publishing }}        # Publish both NuGet packages and .wepkg assets
+      enable-email-notifications: true                               # Send email on failure
+    secrets:
+      NUGET_UPLOAD_TOKEN: ${{ secrets.NUGET_UPLOAD_TOKEN }}          # NuGet.org API key
+      AZURE_STORAGE_SAS_TOKEN: ${{ secrets.AZURE_STORAGE_SAS_TOKEN }} # Azure Storage SAS token
+      WAVE_SENDGRID_TOKEN: ${{ secrets.WAVE_SENDGRID_TOKEN }}        # SendGrid for email notifications
+      EVERGINE_EMAILREPORT_LIST: ${{ secrets.EVERGINE_EMAILREPORT_LIST }}
+      EVERGINE_EMAIL: ${{ secrets.EVERGINE_EMAIL }}
+
+# Tips:
+# - Preview builds use revision-based versioning with "preview" suffix (e.g., 2025.11.3.123-preview)
+# - Configure version-suffix to differentiate from release builds
+# - Uses reusable workflow to check for changes since last successful run
+# - Only runs if there are changes since the last successful nightly build
+# - Manual execution allows "force-execution" option to bypass change check
+# - Remove nuget-projects if you only need .wepkg assets
+# - Set publish-packages: false if you don't want to publish to NuGet.org and Azure Storage
+# - Update storage-account-name and storage-container-name for your specific setup
