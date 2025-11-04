@@ -1,0 +1,45 @@
+# Add-on CI - Simple Template
+
+# This template is for Evergine add-ons that generate .wepkg assets and optionally NuGet packages.
+# Copy this file to your repository as `.github/workflows/CI.yml` and customize the inputs below.
+
+name: CI
+
+on:
+  workflow_dispatch:
+    inputs:
+      publish-artifacts:
+        description: 'Publish artifacts'
+        required: false
+        type: boolean
+        default: false
+  push:
+    branches: [ "master", "develop" ]
+  pull_request:
+    branches: [ "master", "develop" ]
+
+jobs:
+  ci:
+    uses: EvergineTeam/evergine-standards/.github/workflows/addon-common-ci.yml@v2
+    with:
+      assets-project: "Source/Evergine.MRTK.Assets/Evergine.MRTK.Assets.csproj"  # Path to your assets .csproj
+      nuget-projects: |                                           # NuGet projects (one per line)
+        Source/Evergine.MRTK/Evergine.MRTK.csproj
+      nuget-dependency-projects: |                                # NuGet dependency projects (one per line)
+        Source/Evergine.MRTK.Editor/Evergine.MRTK.Editor.csproj
+      version-suffix: "rolling"                                   # Add preview suffix to packages
+      build-configuration: "Release"                              # Build configuration (Release, Debug, etc.)
+      dotnet-version: "8.0.x"                                     # .NET version to use
+      upload-artifacts: ${{ inputs.publish-artifacts || false }}  # Upload packages as workflow artifacts
+      revision: ${{ github.run_number }}                          # Revision for date-based version
+
+# Tips:
+# - For direct version:
+#   version: "3.4.22.288-local"
+# - For date-based version:
+#   revision: ${{ github.run_number }}  # Uses github.run_number for automatic versioning
+# - For multiple NuGet projects:
+#   nuget-projects: |
+#     Source/Project1/Project1.csproj
+#     Source/Project2/Project2.csproj
+# - Leave nuget-projects empty if you only need .wepkg assets
