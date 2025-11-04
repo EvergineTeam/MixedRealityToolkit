@@ -2,7 +2,11 @@
 
 ![Evergine.MRTK](Documentation/Images/Evergine_MRTK_banner.png)
 
-[![Build Status](https://waveengineteam.visualstudio.com/Wave.Engine/_apis/build/status/Packages/MixedRealityToolkit/MRTK%20CD%20Stable?branchName=master)](https://waveengineteam.visualstudio.com/Wave.Engine/_build/latest?definitionId=97&branchName=master)
+
+
+![CI](https://github.com/EvergineTeam/MixedRealityToolkit/actions/workflows/ci.yml/badge.svg)
+![CD Nightly](https://github.com/EvergineTeam/MixedRealityToolkit/actions/workflows/cd-nightly.yml/badge.svg)
+![CD Preview](https://github.com/EvergineTeam/MixedRealityToolkit/actions/workflows/cd-preview.yml/badge.svg)
 [![Nuget](https://img.shields.io/nuget/v/Evergine.MRTK?logo=nuget)](https://www.nuget.org/packages/Evergine.MRTK)
 
 ## What is Evergine.MRTK
