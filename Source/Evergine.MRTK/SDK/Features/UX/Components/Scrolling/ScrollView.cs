@@ -145,7 +145,7 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Scrolling
         /// </summary>
         [IgnoreEvergine]
         [DontRenderProperty]
-        [Obsolete($"Use {nameof(this.HorizontalScrollBarVisibility)} or {nameof(this.VerticalScrollBarVisibility)} instead")]
+        [Obsolete($"Use {nameof(HorizontalScrollBarVisibility)} or {nameof(VerticalScrollBarVisibility)} instead")]
         public bool DisplayScrollBar
         {
             get => this.verticalScrollBarVisibility != ScrollBarVisibility.Hidden;

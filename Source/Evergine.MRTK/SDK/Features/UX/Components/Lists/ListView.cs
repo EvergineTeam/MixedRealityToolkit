@@ -314,7 +314,7 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Lists
 
             if (this.dataSource == null || this.columnDefinitions?.Any() != true || this.dataSource.Count == 0)
             {
-                this.scrollView.DisplayScrollBar = Application.Current.IsEditor;
+                this.scrollView.VerticalScrollBarVisibility = Application.Current.IsEditor ? ScrollBarVisibility.Auto : ScrollBarVisibility.Hidden;
                 this.selectionEntity.IsEnabled = false;
                 return;
             }
@@ -353,7 +353,7 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Lists
             this.scrollView.Refresh();
 
             // Update bar
-            this.scrollView.DisplayScrollBar = true;
+            this.scrollView.VerticalScrollBarVisibility = ScrollBarVisibility.Auto;
             this.scrollView.BarWidth = this.BarWidth;
 
             // Selection

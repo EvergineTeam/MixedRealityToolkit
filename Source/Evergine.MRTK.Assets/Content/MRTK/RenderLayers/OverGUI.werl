@@ -93,7 +93,7 @@ RenderLayerInfo:
         StencilFunction: Always
         StencilPassOperation: Keep
       DepthEnable: false
-      DepthFunction: LessEqual
+      DepthFunction: GreaterEqual
       DepthWriteMask: false
       FrontFace:
         StencilDepthFailOperation: Keep
