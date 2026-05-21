@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net10.0-android</TargetFramework>
     <SupportedOSPlatformVersion>23</SupportedOSPlatformVersion>
@@ -10,13 +10,13 @@
     <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Evergine.Android" Version="2026.5.19.266-nightly" />
-    <PackageReference Include="Evergine.Vulkan" Version="2026.5.19.266-nightly" />
-    <PackageReference Include="Evergine.OpenXR" Version="2026.5.19.266-nightly" />
-    <PackageReference Include="Evergine.HLSLEverywhere" Version="2026.5.19.266-nightly" />
-    <PackageReference Include="Evergine.OpenAL" Version="2026.5.19.266-nightly" />
-    <PackageReference Include="Evergine.Targets" Version="2026.5.19.266-nightly" />
-    <PackageReference Include="Evergine.Targets.Android" Version="2026.5.19.266-nightly" />
+    <PackageReference Include="Evergine.Android" Version="2026.5.21.549-nightly" />
+    <PackageReference Include="Evergine.Vulkan" Version="2026.5.21.549-nightly" />
+    <PackageReference Include="Evergine.OpenXR" Version="2026.5.21.549-nightly" />
+    <PackageReference Include="Evergine.HLSLEverywhere" Version="2026.5.21.549-nightly" />
+    <PackageReference Include="Evergine.OpenAL" Version="2026.5.21.549-nightly" />
+    <PackageReference Include="Evergine.Targets" Version="2026.5.21.549-nightly" />
+    <PackageReference Include="Evergine.Targets.Android" Version="2026.5.21.549-nightly" />
     <PackageReference Include="Evergine.LibBulletc.Natives" Version="2025.8.29.27" />
     <PackageReference Include="Evergine.OpenXR.Natives.Pico" Version="2023.2.10.2" />
   </ItemGroup>

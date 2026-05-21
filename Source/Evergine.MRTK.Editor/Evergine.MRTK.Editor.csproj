@@ -1,13 +1,13 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Evergine.Common" Version="2026.5.19.266-nightly" />
-    <PackageReference Include="Evergine.Components" Version="2026.5.19.266-nightly" />
-    <PackageReference Include="Evergine.Framework" Version="2026.5.19.266-nightly" />
-    <PackageReference Include="Evergine.Editor.Extension" Version="2026.5.19.266-nightly" />
+    <PackageReference Include="Evergine.Common" Version="2026.5.21.549-nightly" />
+    <PackageReference Include="Evergine.Components" Version="2026.5.21.549-nightly" />
+    <PackageReference Include="Evergine.Framework" Version="2026.5.21.549-nightly" />
+    <PackageReference Include="Evergine.Editor.Extension" Version="2026.5.21.549-nightly" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Evergine.MRTK\Evergine.MRTK.csproj" />
