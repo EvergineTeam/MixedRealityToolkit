@@ -27,7 +27,7 @@ jobs:
       revision: ${{ github.run_number }}                              # Use run number for preview versioning
       version-suffix: "preview"                                       # Add preview suffix to packages
       build-configuration: "Release"                                  # Build configuration
-      dotnet-version: "8.0.x"                                        # .NET version
+      dotnet-version: "10.0.x"                                       # .NET version
       storage-account-name: "everginestudio"                        # Azure Storage account
       storage-container-name: "pkg-preview"                          # Azure Storage container
       publish-packages: ${{ !inputs.skip-assets-publishing }}        # Publish both NuGet packages and .wepkg assets

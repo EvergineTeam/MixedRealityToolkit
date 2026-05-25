@@ -39,7 +39,7 @@ jobs:
       revision: ${{ github.run_number }}                              # Use run number for nightly versioning
       version-suffix: "nightly"                                       # Add nightly suffix to packages
       build-configuration: "Release"                                  # Build configuration
-      dotnet-version: "8.0.x"                                        # .NET version
+      dotnet-version: "10.0.x"                                       # .NET version
       storage-account-name: "everginestudio"                         # Azure Storage account
       storage-container-name: "pkg-nightly"                          # Azure Storage container
       publish-packages: ${{ !inputs.skip-assets-publishing }}        # Publish only if skip-upload is false
