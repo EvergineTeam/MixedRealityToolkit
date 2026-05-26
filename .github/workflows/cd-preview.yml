@@ -27,14 +27,14 @@ jobs:
       revision: ${{ github.run_number }}                              # Use run number for preview versioning
       version-suffix: "preview"                                       # Add preview suffix to packages
       build-configuration: "Release"                                  # Build configuration
-      dotnet-version: "8.0.x"                                        # .NET version
+      dotnet-version: "10.0.x"                                        # .NET version
       storage-account-name: "everginestudio"                        # Azure Storage account
       storage-container-name: "pkg-preview"                          # Azure Storage container
       publish-packages: ${{ !inputs.skip-assets-publishing }}        # Publish both NuGet packages and .wepkg assets
       enable-email-notifications: true                               # Send email on failure
     secrets:
-      NUGET_UPLOAD_TOKEN: ${{ secrets.NUGET_UPLOAD_TOKEN }}          # NuGet.org API key
-      AZURE_STORAGE_SAS_TOKEN: ${{ secrets.AZURE_STORAGE_SAS_TOKEN }} # Azure Storage SAS token
+      NUGET_UPLOAD_TOKEN: ${{ secrets.EVERGINE_NUGETORG_TOKEN }}          # NuGet.org API key
+      AZURE_STORAGE_SAS_TOKEN: ${{ secrets.PUBLISH_PREVIEW_BLOB_CONTAINER_SAS_TOKEN }} # Azure Storage SAS token
       WAVE_SENDGRID_TOKEN: ${{ secrets.WAVE_SENDGRID_TOKEN }}        # SendGrid for email notifications
       EVERGINE_EMAILREPORT_LIST: ${{ secrets.EVERGINE_EMAILREPORT_LIST }}
       EVERGINE_EMAIL: ${{ secrets.EVERGINE_EMAIL }}
