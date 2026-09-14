@@ -5,7 +5,7 @@ using Evergine.Common.Attributes;
 using Evergine.Common.Graphics;
 using Evergine.Framework;
 using Evergine.Framework.Graphics;
-using Evergine.Framework.Physics3D;
+using Evergine.Framework.Physics;
 using Evergine.Framework.Services;
 using Evergine.Mathematics;
 using Evergine.MRTK.Emulation;
@@ -43,7 +43,7 @@ namespace Evergine.MRTK.Services.InputSystem
         private Transform3D gazePointerTransform;
         private HoverLight gazePointerLight;
 
-        private ISphereColliderShape3D gazePointerShape;
+        private SphereCollider gazePointerShape;
 
         /// <summary>
         /// Gets or sets the max distance to capture.
@@ -88,7 +88,7 @@ namespace Evergine.MRTK.Services.InputSystem
         /// <summary>
         /// Gets or sets the collision category bits.
         /// </summary>
-        public CollisionCategory3D CollisionCategoryMask { get; set; } = CollisionCategory3D.All;
+        public CollisionCategory CollisionCategoryMask { get; set; } = CollisionCategory.All;
 
         /// <summary>
         /// Gets the target aimed by the gaze or null.
@@ -132,7 +132,7 @@ namespace Evergine.MRTK.Services.InputSystem
                 this.xrPlatform = null;
             }
 
-            this.gazePointerShape = this.Managers.PhysicManager3D.CreateColliderShape<ISphereColliderShape3D>();
+            this.gazePointerShape = new SphereCollider();
             this.gazePointerShape.Radius = this.Radius;
 
             this.gazePointerTransform = new Transform3D();
@@ -171,7 +171,7 @@ namespace Evergine.MRTK.Services.InputSystem
         {
             base.OnDetached();
 
-            this.gazePointerShape?.Dispose();
+            this.gazePointerShape?.Destroy();
             this.gazePointerShape = null;
 
             this.gazePointerEntity.Destroy();
@@ -204,14 +204,14 @@ namespace Evergine.MRTK.Services.InputSystem
                 var fromPosition = r.Position;
                 var toPosition = r.GetPoint(this.Distance);
 
-                var result = this.Managers.PhysicManager3D.RayCast(ref fromPosition, ref toPosition, this.CollisionCategoryMask);
+                bool resultSucceeded = this.Managers.PhysicsManager.RayCast(fromPosition, toPosition - fromPosition, Vector3.Distance(fromPosition, toPosition), QueryFilter.FromCategories(this.CollisionCategoryMask), out RayCastHit result);
 
-                this.GazeTarget = result.Succeeded ? result.PhysicBody.BodyComponent.Owner : null;
+                this.GazeTarget = resultSucceeded ? result.Entity : null;
 
                 // Update gaze pointer
                 if (this.hasHoverLight)
                 {
-                    var targetPosition = result.Succeeded ? Vector3.Project(result.Point - r.Position, r.Direction) + r.Position : r.GetPoint(100000.0f);
+                    var targetPosition = resultSucceeded ? Vector3.Project(result.Point - r.Position, r.Direction) + r.Position : r.GetPoint(100000.0f);
                     this.gazePointerTransform.Position = targetPosition;
                 }
             }

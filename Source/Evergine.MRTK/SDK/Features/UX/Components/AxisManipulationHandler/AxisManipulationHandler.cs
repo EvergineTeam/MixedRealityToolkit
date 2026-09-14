@@ -6,7 +6,7 @@ using System.Linq;
 using Evergine.Components.Graphics3D;
 using Evergine.Framework;
 using Evergine.Framework.Graphics;
-using Evergine.Framework.Physics3D;
+using Evergine.Framework.Physics;
 using Evergine.Framework.Prefabs;
 using Evergine.Mathematics;
 using Evergine.MRTK.Base.EventDatum.Input;
@@ -245,9 +245,8 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.AxisManipulationHandler
                         {
                             Diameter = sphereDiameter,
                         };
-                        collider = new SphereCollider3D()
+                        collider = new SphereCollider()
                         {
-                            Margin = 0.0001f,
                             Radius = sphereDiameter,
                         };
                         break;
@@ -259,9 +258,9 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.AxisManipulationHandler
                         size = new Vector3(axisLength, axisThickness, axisThickness);
 
                         mesh = new CubeMesh();
-                        collider = new BoxCollider3D()
+                        collider = new BoxCollider()
                         {
-                            Margin = 0.0001f,
+                            ConvexRadius = 0.0001f,
                             Size = size + Vector3.One,
                             Offset = Vector3.UnitX,
                         };
@@ -276,9 +275,9 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.AxisManipulationHandler
                         size = new Vector3(planeLength, planeThickness, planeLength);
 
                         mesh = new CubeMesh();
-                        collider = new BoxCollider3D()
+                        collider = new BoxCollider()
                         {
-                            Margin = 0.0001f,
+                            ConvexRadius = 0.0001f,
                             Size = size + Vector3.One,
                             Offset = Vector3.UnitX + Vector3.UnitZ,
                         };
@@ -295,9 +294,9 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.AxisManipulationHandler
                         LocalOrientation = orientation,
                     })
                     .AddComponent(collider)
-                    .AddComponent(new StaticBody3D()
+                    .AddComponent(new StaticBody()
                     {
-                        CollisionCategories = this.CollisionCategory,
+                        CollisionCategory = this.CollisionCategory,
                         IsSensor = true,
                     })
                     .AddComponent(new NearInteractionGrabbable());

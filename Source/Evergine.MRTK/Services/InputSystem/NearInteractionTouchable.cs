@@ -2,7 +2,7 @@
 
 using Evergine.Common.Attributes;
 using Evergine.Framework;
-using Evergine.Framework.Physics3D;
+using Evergine.Framework.Physics;
 using Evergine.Mathematics;
 
 namespace Evergine.MRTK.Services.InputSystem
@@ -16,19 +16,19 @@ namespace Evergine.MRTK.Services.InputSystem
         /// The box collider 3D.
         /// </summary>
         [BindComponent(isRequired: false)]
-        public BoxCollider3D BoxCollider3D;
+        public BoxCollider BoxCollider;
 
         /// <summary>
         /// The mesh collider 3D.
         /// </summary>
         [BindComponent(isRequired: false)]
-        public MeshCollider3D MeshCollider3D;
+        public MeshCollider MeshCollider;
 
         /// <summary>
         /// The static body 3D.
         /// </summary>
         [BindComponent(isRequired: false, isExactType: false)]
-        public StaticBody3D StaticBody3D;
+        public StaticBody StaticBody;
 
         /// <summary>
         /// Gets the local press direction.
@@ -55,7 +55,7 @@ namespace Evergine.MRTK.Services.InputSystem
         /// <inheritdoc/>
         protected override bool OnAttached()
         {
-            if (!base.OnAttached() || (this.MeshCollider3D == null && this.BoxCollider3D == null))
+            if (!base.OnAttached() || (this.MeshCollider == null && this.BoxCollider == null))
             {
                 return false;
             }
@@ -63,20 +63,20 @@ namespace Evergine.MRTK.Services.InputSystem
             Vector3 offset = Vector3.Zero;
             Quaternion orientationOffset = Quaternion.Identity;
             Vector3 size = Vector3.Zero;
-            if (this.BoxCollider3D != null)
+            if (this.BoxCollider != null)
             {
-                offset = this.BoxCollider3D.Offset;
-                orientationOffset = this.BoxCollider3D.OrientationOffset;
-                size = this.BoxCollider3D.Size;
+                offset = this.BoxCollider.Offset;
+                orientationOffset = Quaternion.CreateFromYawPitchRoll(this.BoxCollider.RotationOffset.Y, this.BoxCollider.RotationOffset.X, this.BoxCollider.RotationOffset.Z);
+                size = this.BoxCollider.Size;
             }
-            else if (this.MeshCollider3D != null)
+            else if (this.MeshCollider != null)
             {
-                offset = this.MeshCollider3D.Offset;
-                orientationOffset = this.MeshCollider3D.OrientationOffset;
-                size = this.MeshCollider3D.Size;
+                offset = this.MeshCollider.Offset;
+                orientationOffset = Quaternion.CreateFromYawPitchRoll(this.MeshCollider.RotationOffset.Y, this.MeshCollider.RotationOffset.X, this.MeshCollider.RotationOffset.Z);
+                size = Vector3.One;
             }
 
-            if (this.BoxCollider3D != null || this.MeshCollider3D != null)
+            if (this.BoxCollider != null || this.MeshCollider != null)
             {
                 // Precompute box collider local transforms
                 this.BoxCollider3DTransform = Matrix4x4.CreateFromTRS(offset, orientationOffset, size);

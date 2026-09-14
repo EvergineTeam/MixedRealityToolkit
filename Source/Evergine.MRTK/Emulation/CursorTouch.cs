@@ -6,7 +6,7 @@ using System.Linq;
 using Evergine.Common.Attributes;
 using Evergine.Framework;
 using Evergine.Framework.Graphics;
-using Evergine.Framework.Physics3D;
+using Evergine.Framework.Physics;
 using Evergine.Mathematics;
 using Evergine.MRTK.Base.EventDatum.Input;
 using Evergine.MRTK.Base.Interfaces.InputSystem.Handlers;
@@ -22,13 +22,13 @@ namespace Evergine.MRTK.Emulation
         private const float ExternalTouchRadius = 0.15f;
 
         /// <summary>
-        /// The <see cref="StaticBody3D"/> component dependency.
+        /// The <see cref="StaticBody"/> component dependency.
         /// </summary>
         [BindComponent]
-        protected StaticBody3D staticBody3D;
+        protected StaticBody staticBody3D;
 
         private Entity externalTouchEntity;
-        private StaticBody3D externalTouchStaticBody3D;
+        private StaticBody externalTouchStaticBody3D;
 
         private Dictionary<int, Entity> collisionEntitiesByCollisionId = new Dictionary<int, Entity>();
         private HashSet<Entity> externalTouchCollisionEntities = new HashSet<Entity>();
@@ -53,25 +53,24 @@ namespace Evergine.MRTK.Emulation
 
             if (this.externalTouchEntity == null)
             {
-                this.externalTouchStaticBody3D = new StaticBody3D()
+                this.externalTouchStaticBody3D = new StaticBody()
                 {
                     IsSensor = true,
-                    MaskBits = this.staticBody3D.MaskBits,
-                    CollisionCategories = this.staticBody3D.CollisionCategories,
+                    CollisionCategory = this.staticBody3D.CollisionCategory,
                 };
 
                 this.externalTouchEntity = new Entity("ExternalTouch")
                                 .AddComponent(new Transform3D())
-                                .AddComponent(new SphereCollider3D() { Radius = ExternalTouchRadius })
+                                .AddComponent(new SphereCollider() { Radius = ExternalTouchRadius })
                                 .AddComponent(this.externalTouchStaticBody3D);
             }
 
-            this.staticBody3D.BeginCollision += this.InternalTouch_BeginCollision;
-            this.staticBody3D.UpdateCollision += this.InternalTouch_UpdateCollision;
-            this.staticBody3D.EndCollision += this.InternalTouch_EndCollision;
+            this.staticBody3D.CollisionStarted += this.InternalTouch_BeginCollision;
+            this.staticBody3D.CollisionUpdated += this.InternalTouch_UpdateCollision;
+            this.staticBody3D.CollisionEnded += this.InternalTouch_EndCollision;
 
-            this.externalTouchStaticBody3D.BeginCollision += this.ExternalTouch_BeginCollision;
-            this.externalTouchStaticBody3D.EndCollision += this.ExternalTouch_EndCollision;
+            this.externalTouchStaticBody3D.CollisionStarted += this.ExternalTouch_BeginCollision;
+            this.externalTouchStaticBody3D.CollisionEnded += this.ExternalTouch_EndCollision;
             this.Owner.AddChild(this.externalTouchEntity);
         }
 
@@ -83,15 +82,15 @@ namespace Evergine.MRTK.Emulation
                 this.RunTouchHandlers(item, (h, e) => h?.OnTouchCompleted(e));
             }
 
-            this.staticBody3D.BeginCollision -= this.InternalTouch_BeginCollision;
-            this.staticBody3D.UpdateCollision -= this.InternalTouch_UpdateCollision;
-            this.staticBody3D.EndCollision -= this.InternalTouch_EndCollision;
+            this.staticBody3D.CollisionStarted -= this.InternalTouch_BeginCollision;
+            this.staticBody3D.CollisionUpdated -= this.InternalTouch_UpdateCollision;
+            this.staticBody3D.CollisionEnded -= this.InternalTouch_EndCollision;
             this.nearTouchCollisionEntities.Clear();
 
             if (this.externalTouchEntity != null)
             {
-                this.externalTouchStaticBody3D.BeginCollision -= this.ExternalTouch_BeginCollision;
-                this.externalTouchStaticBody3D.EndCollision -= this.ExternalTouch_EndCollision;
+                this.externalTouchStaticBody3D.CollisionStarted -= this.ExternalTouch_BeginCollision;
+                this.externalTouchStaticBody3D.CollisionEnded -= this.ExternalTouch_EndCollision;
                 this.Owner.DetachChild(this.externalTouchEntity);
             }
 
@@ -106,27 +105,27 @@ namespace Evergine.MRTK.Emulation
             this.externalTouchEntity = null;
         }
 
-        private Entity RegisterCollidedEntity(CollisionInfo3D info)
+        private Entity RegisterCollidedEntity(CollisionInfo info)
         {
             this.UnregisterCollidedEntity(info);
 
             var otherEntity = info.OtherBody.Owner;
-            this.collisionEntitiesByCollisionId.Add(info.Id, otherEntity);
+            this.collisionEntitiesByCollisionId.Add(info.OtherBody.GetHashCode(), otherEntity);
             return otherEntity;
         }
 
-        private Entity UnregisterCollidedEntity(CollisionInfo3D info)
+        private Entity UnregisterCollidedEntity(CollisionInfo info)
         {
-            if (this.collisionEntitiesByCollisionId.TryGetValue(info.Id, out var otherEntity))
+            if (this.collisionEntitiesByCollisionId.TryGetValue(info.OtherBody.GetHashCode(), out var otherEntity))
             {
-                this.collisionEntitiesByCollisionId.Remove(info.Id);
+                this.collisionEntitiesByCollisionId.Remove(info.OtherBody.GetHashCode());
                 return otherEntity;
             }
 
             return null;
         }
 
-        private void ExternalTouch_BeginCollision(object sender, CollisionInfo3D info)
+        private void ExternalTouch_BeginCollision(object sender, CollisionInfo info)
         {
             var otherEntity = this.RegisterCollidedEntity(info);
             otherEntity.AttachableStateChanged += this.OtherEntity_AttachableStateChanged_RemoveFromExternalTouch;
@@ -140,7 +139,7 @@ namespace Evergine.MRTK.Emulation
             this.AddFocusableInteraction(otherEntity);
         }
 
-        private void ExternalTouch_EndCollision(object sender, CollisionInfo3D info)
+        private void ExternalTouch_EndCollision(object sender, CollisionInfo info)
         {
             var otherEntity = this.UnregisterCollidedEntity(info);
 
@@ -158,7 +157,7 @@ namespace Evergine.MRTK.Emulation
             }
         }
 
-        private void InternalTouch_BeginCollision(object sender, CollisionInfo3D info)
+        private void InternalTouch_BeginCollision(object sender, CollisionInfo info)
         {
             var interactedEntity = this.RegisterCollidedEntity(info);
 
@@ -171,16 +170,16 @@ namespace Evergine.MRTK.Emulation
             });
         }
 
-        private void InternalTouch_UpdateCollision(object sender, CollisionInfo3D info)
+        private void InternalTouch_UpdateCollision(object sender, CollisionInfo info)
         {
-            if (this.collisionEntitiesByCollisionId.TryGetValue(info.Id, out var interactedEntity) &&
+            if (this.collisionEntitiesByCollisionId.TryGetValue(info.OtherBody.GetHashCode(), out var interactedEntity) &&
                 this.nearTouchCollisionEntities.Contains(interactedEntity))
             {
                 this.RunTouchHandlers(interactedEntity, (h, e) => h?.OnTouchUpdated(e));
             }
         }
 
-        private void InternalTouch_EndCollision(object sender, CollisionInfo3D info)
+        private void InternalTouch_EndCollision(object sender, CollisionInfo info)
         {
             var interactedEntity = this.UnregisterCollidedEntity(info);
             this.RemovePointerInteraction(interactedEntity);

@@ -6,7 +6,7 @@ using System.Linq;
 using Evergine.Common.Attributes;
 using Evergine.Framework;
 using Evergine.Framework.Graphics;
-using Evergine.Framework.Physics3D;
+using Evergine.Framework.Physics;
 using Evergine.Mathematics;
 using Evergine.MRTK.Base.EventDatum.Input;
 using Evergine.MRTK.Base.Interfaces.InputSystem.Handlers;
@@ -30,19 +30,19 @@ namespace Evergine.MRTK.SDK.Features.Input.Handlers.Manipulation
         /// The rigid body.
         /// </summary>
         [BindComponent(isRequired: false)]
-        protected RigidBody3D rigidBody;
+        protected RigidBody rigidBody;
 
         /// <summary>
         /// The collider.
         /// </summary>
         [BindComponent(isRequired: false, isExactType: false, source: BindComponentSource.Children)]
-        protected Collider3D collider;
+        protected Collider collider;
 
         /// <summary>
         /// The physicBody3D.
         /// </summary>
         [BindComponent(isRequired: false, isExactType: false)]
-        protected PhysicBody3D physicBody3D;
+        protected PhysicsBody physicBody3D;
 
         [BindComponent(isRequired: false)]
         private MinScaleConstraint minScaleConstraint = null;
@@ -191,8 +191,7 @@ namespace Evergine.MRTK.SDK.Features.Input.Handlers.Manipulation
 
         private readonly Dictionary<Cursor, Matrix4x4> activeCursors = new Dictionary<Cursor, Matrix4x4>();
 
-        private Vector3 previousAngularFactor;
-        private Vector3 previousLinearFactor;
+        private DegreesOfFreedom previousAllowedDegreesOfFreedom;
 
         /// <inheritdoc/>
         protected override void OnDeactivated()
@@ -220,11 +219,9 @@ namespace Evergine.MRTK.SDK.Features.Input.Handlers.Manipulation
                 {
                     if (this.rigidBody != null && !this.KeepRigidBodyActiveDuringDrag)
                     {
-                        this.previousLinearFactor = this.rigidBody.LinearFactor;
-                        this.previousAngularFactor = this.rigidBody.AngularFactor;
+                        this.previousAllowedDegreesOfFreedom = this.rigidBody.AllowedDegreesOfFreedom;
 
-                        this.rigidBody.LinearFactor = Vector3.Zero;
-                        this.rigidBody.AngularFactor = Vector3.Zero;
+                        this.rigidBody.AllowedDegreesOfFreedom = DegreesOfFreedom.None;
                     }
 
                     this.ManipulationStarted?.Invoke(this, EventArgs.Empty);
@@ -293,13 +290,13 @@ namespace Evergine.MRTK.SDK.Features.Input.Handlers.Manipulation
             {
                 if (this.physicBody3D == null)
                 {
-                    this.physicBody3D = new StaticBody3D();
+                    this.physicBody3D = new StaticBody();
                     this.Owner.AddComponent(this.physicBody3D);
                 }
 
                 if (this.collider == null)
                 {
-                    this.collider = new BoxCollider3D();
+                    this.collider = new BoxCollider();
                     this.Owner.AddComponent(this.collider);
                 }
             }
@@ -313,7 +310,7 @@ namespace Evergine.MRTK.SDK.Features.Input.Handlers.Manipulation
             // Ensure this is always updated after the rigidbody
             if (this.rigidBody != null)
             {
-                this.UpdateOrder = this.rigidBody.UpdateOrder + 0.1f;
+                this.UpdateOrder = 0.1f;
             }
         }
 
@@ -466,7 +463,7 @@ namespace Evergine.MRTK.SDK.Features.Input.Handlers.Manipulation
                 {
                     if (this.transform.Scale != scl)
                     {
-                        this.rigidBody.ResetTransform(pos, rot, scl);
+                        this.rigidBody.Teleport(pos, rot);
                         this.transform.Scale = scl;
 
                         this.rigidBody.LinearVelocity = Vector3.Zero;
@@ -482,7 +479,7 @@ namespace Evergine.MRTK.SDK.Features.Input.Handlers.Manipulation
                 }
                 else
                 {
-                    this.rigidBody?.ResetTransform(pos, rot, scl);
+                    this.rigidBody?.Teleport(pos, rot);
                     this.transform.Position = pos;
                     this.transform.Orientation = rot;
                     this.transform.Scale = scl;
@@ -505,8 +502,7 @@ namespace Evergine.MRTK.SDK.Features.Input.Handlers.Manipulation
         {
             if (this.rigidBody != null && !this.KeepRigidBodyActiveDuringDrag)
             {
-                this.rigidBody.LinearFactor = this.previousLinearFactor;
-                this.rigidBody.AngularFactor = this.previousAngularFactor;
+                this.rigidBody.AllowedDegreesOfFreedom = this.previousAllowedDegreesOfFreedom;
 
                 this.rigidBody.LinearVelocity = linearVelocity;
                 this.rigidBody.AngularVelocity = Quaternion.ToEuler(angularVelocity);

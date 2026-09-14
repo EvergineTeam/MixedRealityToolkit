@@ -5,7 +5,7 @@ using Evergine.Common.Media;
 using Evergine.Components.Graphics3D;
 using Evergine.Components.Sound;
 using Evergine.Framework;
-using Evergine.Framework.Physics3D;
+using Evergine.Framework.Physics;
 using Evergine.Mathematics;
 using Evergine.MRTK.Base.EventDatum.Input;
 using Evergine.MRTK.Base.Interfaces.InputSystem.Handlers;
@@ -31,8 +31,8 @@ namespace Evergine.MRTK.Demo.Behaviors
         {
             if (!Application.Current.IsEditor)
             {
-                Owner.GetOrAddComponent<BoxCollider3D>();
-                Owner.GetOrAddComponent<StaticBody3D>();
+                Owner.GetOrAddComponent<BoxCollider>();
+                Owner.GetOrAddComponent<StaticBody>();
                 soundEmitter = Owner.GetOrAddComponent<SoundEmitter3D>();
             }
 

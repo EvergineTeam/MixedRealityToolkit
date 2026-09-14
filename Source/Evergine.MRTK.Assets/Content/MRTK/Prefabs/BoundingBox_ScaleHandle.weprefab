@@ -44,38 +44,33 @@ Root:
             X: 1.0
             Y: 1.0
             Z: 1.0
-        - !Evergine.Framework.Physics3D.BoxCollider3D,Evergine.Framework
+        - !Evergine.Framework.Physics.BoxCollider,Evergine.Framework
           Id: 233f0dce-6531-46f4-bbeb-66683908a398
           IsEnabled: true
-          Margin: 0.00100000005
           Offset:
             X: -0.5
             Y: -0.5
             Z: -0.5
-          OrientationOffset:
-            W: 1.0
-            X: 0.0
-            Y: 0.0
-            Z: 0.0
+          RotationOffset:
+            X: 0
+            Y: 0
+            Z: 0
           Size:
             X: 2.0
             Y: 2.0
             Z: 2.0
+          UseModelBounds: true
+          ConvexRadius: 0.00100000005
         - !Evergine.MRTK.Services.InputSystem.NearInteractionGrabbable,Evergine.MRTK
           Id: 606f2a46-2c86-4c46-8f4f-5b835eb67e31
           IsEnabled: true
-        - !Evergine.Framework.Physics3D.StaticBody3D,Evergine.Framework
+        - !Evergine.Framework.Physics.StaticBody,Evergine.Framework
           Id: 1f5d4331-f9e5-4cba-be5e-90b41e7b6755
-          CcdMotionThreshold: 0.0
-          CcdSweptSphereRadius: 0.200000003
-          CollisionCategories: Cat1
+          CollisionCategory: Cat1
           Friction: 0.5
           IsEnabled: true
           IsSensor: true
-          MaskBits: All
           Restitution: 0.0
-          RollingFriction: 0.0
-          UpdateOrder: 0.5
       Children:
         - !Evergine.Framework.Assets.AssetSources.Entities.EntityItemModel,Evergine.Framework
           Name: visuals

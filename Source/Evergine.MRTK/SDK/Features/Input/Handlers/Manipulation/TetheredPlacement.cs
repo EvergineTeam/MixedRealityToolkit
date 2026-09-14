@@ -3,7 +3,7 @@
 using System;
 using Evergine.Framework;
 using Evergine.Framework.Graphics;
-using Evergine.Framework.Physics3D;
+using Evergine.Framework.Physics;
 using Evergine.Mathematics;
 
 namespace Evergine.MRTK.SDK.Features.Input.Handlers.Manipulation
@@ -21,7 +21,7 @@ namespace Evergine.MRTK.SDK.Features.Input.Handlers.Manipulation
         /// The rigid body.
         /// </summary>
         [BindComponent(isRequired: false)]
-        protected RigidBody3D rigidBody;
+        protected RigidBody rigidBody;
 
         /// <summary>
         /// Gets or sets the distance threshold.
@@ -46,7 +46,7 @@ namespace Evergine.MRTK.SDK.Features.Input.Handlers.Manipulation
             {
                 if (this.rigidBody != null)
                 {
-                    this.rigidBody.ResetTransform(this.respawnPoint, this.respawnOrientation, this.transform.Scale);
+                    this.rigidBody.Teleport(this.respawnPoint, this.respawnOrientation);
                     this.rigidBody.LinearVelocity = Vector3.Zero;
                     this.rigidBody.AngularVelocity = Vector3.Zero;
                 }

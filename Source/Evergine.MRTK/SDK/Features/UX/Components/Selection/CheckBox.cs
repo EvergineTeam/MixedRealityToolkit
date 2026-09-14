@@ -3,7 +3,7 @@
 using Evergine.Components.Fonts;
 using Evergine.Framework;
 using Evergine.Framework.Graphics;
-using Evergine.Framework.Physics3D;
+using Evergine.Framework.Physics;
 using Evergine.Mathematics;
 using Evergine.MRTK.SDK.Features.UX.Components.ToggleButtons;
 using System;
@@ -19,7 +19,7 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Selection
         private const float TextMarginWithBorder = 0.003f;
 
         [BindComponent(source: BindComponentSource.Children, tag: "PART_Button_Root")]
-        private BoxCollider3D boxCollider = null;
+        private BoxCollider boxCollider = null;
 
         [BindComponent(source: BindComponentSource.Children, tag: "PART_Plate")]
         private Transform3D plateTransform = null;

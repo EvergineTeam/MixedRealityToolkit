@@ -7,7 +7,7 @@ using Evergine.Common.Attributes;
 using Evergine.Components.Graphics3D;
 using Evergine.Framework;
 using Evergine.Framework.Graphics;
-using Evergine.Framework.Physics3D;
+using Evergine.Framework.Physics;
 using Evergine.Framework.Prefabs;
 using Evergine.Mathematics;
 using Evergine.MRTK.Base.EventDatum.Input;
@@ -32,7 +32,7 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.BoundingBox
         private Transform3D transform = null;
 
         [BindComponent(isRequired: false)]
-        private BoxCollider3D boxCollider3D = null;
+        private BoxCollider boxCollider3D = null;
 
         [BindComponent(isRequired: false)]
         private SimpleManipulationHandler simpleManipulationHandler = null;
@@ -509,7 +509,7 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.BoundingBox
         /// </summary>
         [RenderProperty(Tooltip = "The collision category of the handles")]
 
-        public CollisionCategory3D CollisionCategory
+        public CollisionCategory CollisionCategory
         {
             get => this.collisionCategory3D;
 
@@ -523,7 +523,7 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.BoundingBox
             }
         }
 
-        private CollisionCategory3D collisionCategory3D = CollisionCategory3D.Cat1;
+        private CollisionCategory collisionCategory3D = CollisionCategory.Cat1;
 
         /// <summary>
         /// Gets or sets a value indicating whether the handles should keep their apparent size with respect to the camera.
@@ -661,11 +661,11 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.BoundingBox
 
             if (this.boxCollider3D == null)
             {
-                this.boxCollider3D = new BoxCollider3D();
+                this.boxCollider3D = new BoxCollider();
                 this.Owner.AddComponent(this.boxCollider3D);
             }
 
-            this.boxCollider3D.OnShapeChanged += this.BoxCollider3D_OnShapeChanged;
+            this.boxCollider3D.ShapeChanged += this.BoxCollider3D_OnShapeChanged;
 
             if (this.simpleManipulationHandler != null)
             {
@@ -687,7 +687,7 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.BoundingBox
 
             if (this.boxCollider3D != null)
             {
-                this.boxCollider3D.OnShapeChanged -= this.BoxCollider3D_OnShapeChanged;
+                this.boxCollider3D.ShapeChanged -= this.BoxCollider3D_OnShapeChanged;
             }
 
             if (this.simpleManipulationHandler != null)
@@ -1139,18 +1139,17 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.BoundingBox
 
                 if (bbhType == BoundingBoxHelperType.RotationHandle)
                 {
-                    collider = new SphereCollider3D()
+                    collider = new SphereCollider()
                     {
-                        Margin = 0.0001f,
                     };
 
                     mesh = new SphereMesh();
                 }
                 else
                 {
-                    collider = new BoxCollider3D()
+                    collider = new BoxCollider()
                     {
-                        Margin = 0.0001f,
+                        ConvexRadius = 0.0001f,
                     };
 
                     mesh = new CubeMesh();
@@ -1158,9 +1157,9 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.BoundingBox
 
                 handle
                     .AddComponent(collider)
-                    .AddComponent(new StaticBody3D()
+                    .AddComponent(new StaticBody()
                     {
-                        CollisionCategories = this.CollisionCategory,
+                        CollisionCategory = this.CollisionCategory,
                         IsSensor = true,
                     })
                     .AddComponent(new NearInteractionGrabbable());

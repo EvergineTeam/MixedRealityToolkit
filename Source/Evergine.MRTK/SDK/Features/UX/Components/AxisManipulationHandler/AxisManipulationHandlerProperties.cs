@@ -2,7 +2,7 @@
 
 using Evergine.Common.Attributes;
 using Evergine.Framework.Graphics;
-using Evergine.Framework.Physics3D;
+using Evergine.Framework.Physics;
 using Evergine.Framework.Prefabs;
 
 namespace Evergine.MRTK.SDK.Features.UX.Components.AxisManipulationHandler
@@ -274,7 +274,7 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.AxisManipulationHandler
         /// </summary>
         [RenderProperty(Tooltip = "The collision category of the handles")]
 
-        public CollisionCategory3D CollisionCategory
+        public CollisionCategory CollisionCategory
         {
             get => this.collisionCategory;
 
@@ -288,7 +288,7 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.AxisManipulationHandler
             }
         }
 
-        private CollisionCategory3D collisionCategory = CollisionCategory3D.Cat1;
+        private CollisionCategory collisionCategory = CollisionCategory.Cat1;
 
         /// <summary>
         /// Gets or sets a value indicating whether grabbing or focusing a plane handle causes the related axis handles to change material as well.

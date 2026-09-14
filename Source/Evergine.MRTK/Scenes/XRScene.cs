@@ -3,7 +3,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Evergine.Bullet;
 using Evergine.Common.Graphics;
 using Evergine.Common.Input.Keyboard;
 using Evergine.Components.Graphics3D;
@@ -11,7 +10,7 @@ using Evergine.Components.Primitives;
 using Evergine.Components.XR;
 using Evergine.Framework;
 using Evergine.Framework.Graphics;
-using Evergine.Framework.Physics3D;
+using Evergine.Framework.Physics;
 using Evergine.Framework.Prefabs;
 using Evergine.Framework.XR;
 using Evergine.Mathematics;
@@ -82,26 +81,25 @@ namespace Evergine.MRTK.Scenes
         protected abstract float MaxFarCursorLength { get; }
 
         /// <summary>
-        /// Gets or sets the <see cref="CollisionCategory3D"/> used by the <see cref="Cursor"/> entities.
-        /// Default: <see cref="CollisionCategory3D.Cat2"/>.
+        /// Gets or sets the <see cref="CollisionCategory"/> used by the <see cref="Cursor"/> entities.
+        /// Default: <see cref="CollisionCategory.Cat2"/>.
         /// </summary>
-        public virtual CollisionCategory3D CursorCollisionCategory { get; protected set; } = CollisionCategory3D.Cat2;
+        public virtual CollisionCategory CursorCollisionCategory { get; protected set; } = CollisionCategory.Cat2;
 
         /// <summary>
-        /// Gets or sets the <see cref="CollisionCategory3D"/> mask used by the <see cref="Cursor"/> entities.
-        /// Default: <see cref="CollisionCategory3D.All"/>.
-        /// <para>It indicates with which <see cref="CollisionCategory3D"/> the cursors will collide.</para>
+        /// Gets or sets the <see cref="CollisionCategory"/> mask used by the <see cref="Cursor"/> entities.
+        /// Default: <see cref="CollisionCategory.All"/>.
+        /// <para>It indicates with which <see cref="CollisionCategory"/> the cursors will collide.</para>
         /// </summary>
-        public virtual CollisionCategory3D CursorCollisionCategoryMask { get; protected set; } = CollisionCategory3D.All;
+        public virtual CollisionCategory CursorCollisionCategoryMask { get; protected set; } = CollisionCategory.All;
 
         /// <inheritdoc/>
         public override void RegisterManagers()
         {
             base.RegisterManagers();
 
-            this.Managers.AddManager(new BulletPhysicManager3D()
+            this.Managers.AddManager(new PhysicsManager()
             {
-                PhysicWorldResolution = 10,
             });
             this.Managers.AddManager(new FocusProvider());
             this.Managers.AddManager(new VoiceCommandsProvider());
@@ -325,12 +323,11 @@ namespace Evergine.MRTK.Scenes
                 PressedMaterial = pressedMaterial,
                 ReleasedMaterial = releasedMaterial,
             })
-            .AddComponent(new SphereCollider3D() { Radius = 0.005f })
-            .AddComponent(new StaticBody3D()
+            .AddComponent(new SphereCollider() { Radius = 0.005f })
+            .AddComponent(new StaticBody()
             {
                 IsSensor = true,
-                CollisionCategories = this.CursorCollisionCategory,
-                MaskBits = this.CursorCollisionCategoryMask & ~this.CursorCollisionCategory,
+                CollisionCategory = this.CursorCollisionCategory,
             })
             .AddChild(new Entity("visual")
                 .AddComponent(new Transform3D())

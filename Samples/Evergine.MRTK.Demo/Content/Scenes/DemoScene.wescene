@@ -577,35 +577,30 @@ Items:
                       X: 0.393700927
                       Y: 0.393700927
                       Z: 0.393700927
-                  - !Evergine.Framework.Physics3D.BoxCollider3D,Evergine.Framework
+                  - !Evergine.Framework.Physics.BoxCollider,Evergine.Framework
                     Id: 579f941b-8f66-4757-8077-cc92abba2522
                     IsEnabled: true
-                    Margin: 0.0
                     Offset:
                       X: 0.0
                       Y: 0.0499999933
                       Z: 0.00100000016
-                    OrientationOffset:
-                      W: -4.37113883E-08
-                      X: 1.0
-                      Y: 0.0
-                      Z: 0.0
+                    RotationOffset:
+                      X: -8.742278E-08
+                      Y: 3.1415927
+                      Z: 3.1415927
                     Size:
                       X: 0.00499999244
                       Y: 0.034999989
                       Z: 0.00800000038
-                  - !Evergine.Framework.Physics3D.StaticBody3D,Evergine.Framework
+                    UseModelBounds: true
+                    ConvexRadius: 0.0
+                  - !Evergine.Framework.Physics.StaticBody,Evergine.Framework
                     Id: 3cad22b8-2d3d-4252-ad37-15c3230a62a3
-                    CcdMotionThreshold: 0.0
-                    CcdSweptSphereRadius: 0.200000003
-                    CollisionCategories: Cat1
+                    CollisionCategory: Cat1
                     Friction: 0.5
                     IsEnabled: true
                     IsSensor: true
-                    MaskBits: All
                     Restitution: 0.0
-                    RollingFriction: 0.0
-                    UpdateOrder: 0.5
                   - !Evergine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButton,Evergine.MRTK
                     Id: 001d1547-5ca7-45c9-95d0-ff91e9bf4f4d
                     EndPosition: -0.400000006
@@ -719,35 +714,30 @@ Items:
                       X: 0.393700927
                       Y: 0.393700927
                       Z: 0.393700927
-                  - !Evergine.Framework.Physics3D.BoxCollider3D,Evergine.Framework
+                  - !Evergine.Framework.Physics.BoxCollider,Evergine.Framework
                     Id: f1c8ac9c-0738-47a8-a3db-ef428c548c4e
                     IsEnabled: true
-                    Margin: 0.0
                     Offset:
                       X: 0.0
                       Y: 0.0499999933
                       Z: 0.00100000016
-                    OrientationOffset:
-                      W: -4.37113883E-08
-                      X: 1.0
-                      Y: 0.0
-                      Z: 0.0
+                    RotationOffset:
+                      X: -8.742278E-08
+                      Y: 3.1415927
+                      Z: 3.1415927
                     Size:
                       X: 0.00499999244
                       Y: 0.034999989
                       Z: 0.00800000038
-                  - !Evergine.Framework.Physics3D.StaticBody3D,Evergine.Framework
+                    UseModelBounds: true
+                    ConvexRadius: 0.0
+                  - !Evergine.Framework.Physics.StaticBody,Evergine.Framework
                     Id: cacf1041-85cc-4dbb-b6e6-e2b0a880d211
-                    CcdMotionThreshold: 0.0
-                    CcdSweptSphereRadius: 0.200000003
-                    CollisionCategories: Cat1
+                    CollisionCategory: Cat1
                     Friction: 0.5
                     IsEnabled: true
                     IsSensor: true
-                    MaskBits: All
                     Restitution: 0.0
-                    RollingFriction: 0.0
-                    UpdateOrder: 0.5
                   - !Evergine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButton,Evergine.MRTK
                     Id: f671c12c-f6b4-4eb4-b8a1-f0c90452e44d
                     EndPosition: -0.400000006
@@ -861,35 +851,30 @@ Items:
                       X: 0.393700927
                       Y: 0.393700927
                       Z: 0.393700927
-                  - !Evergine.Framework.Physics3D.BoxCollider3D,Evergine.Framework
+                  - !Evergine.Framework.Physics.BoxCollider,Evergine.Framework
                     Id: b19838c1-7ad8-4d60-984d-30b76e33faa3
                     IsEnabled: true
-                    Margin: 0.0
                     Offset:
                       X: 0.0
                       Y: 0.0499999933
                       Z: 0.00100000016
-                    OrientationOffset:
-                      W: -4.37113883E-08
-                      X: 1.0
-                      Y: 0.0
-                      Z: 0.0
+                    RotationOffset:
+                      X: -8.742278E-08
+                      Y: 3.1415927
+                      Z: 3.1415927
                     Size:
                       X: 0.00499999244
                       Y: 0.034999989
                       Z: 0.00800000038
-                  - !Evergine.Framework.Physics3D.StaticBody3D,Evergine.Framework
+                    UseModelBounds: true
+                    ConvexRadius: 0.0
+                  - !Evergine.Framework.Physics.StaticBody,Evergine.Framework
                     Id: d8f13890-ae88-4226-8d25-a0dc6b101c9c
-                    CcdMotionThreshold: 0.0
-                    CcdSweptSphereRadius: 0.200000003
-                    CollisionCategories: Cat1
+                    CollisionCategory: Cat1
                     Friction: 0.5
                     IsEnabled: true
                     IsSensor: true
-                    MaskBits: All
                     Restitution: 0.0
-                    RollingFriction: 0.0
-                    UpdateOrder: 0.5
                   - !Evergine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButton,Evergine.MRTK
                     Id: 1e67fac4-9362-46c4-b126-11ca927f891f
                     EndPosition: -0.400000006
@@ -1003,35 +988,30 @@ Items:
                       X: 0.393700927
                       Y: 0.393700927
                       Z: 0.393700927
-                  - !Evergine.Framework.Physics3D.BoxCollider3D,Evergine.Framework
+                  - !Evergine.Framework.Physics.BoxCollider,Evergine.Framework
                     Id: 3f6aa730-4903-442e-9ed3-d16c5a3d56a2
                     IsEnabled: true
-                    Margin: 0.0
                     Offset:
                       X: 0.0
                       Y: 0.0499999933
                       Z: 0.00100000016
-                    OrientationOffset:
-                      W: -4.37113883E-08
-                      X: 1.0
-                      Y: 0.0
-                      Z: 0.0
+                    RotationOffset:
+                      X: -8.742278E-08
+                      Y: 3.1415927
+                      Z: 3.1415927
                     Size:
                       X: 0.00499999244
                       Y: 0.034999989
                       Z: 0.00800000038
-                  - !Evergine.Framework.Physics3D.StaticBody3D,Evergine.Framework
+                    UseModelBounds: true
+                    ConvexRadius: 0.0
+                  - !Evergine.Framework.Physics.StaticBody,Evergine.Framework
                     Id: 84b7e7d3-c01f-4c4c-8b4d-3dee8231e49b
-                    CcdMotionThreshold: 0.0
-                    CcdSweptSphereRadius: 0.200000003
-                    CollisionCategories: Cat1
+                    CollisionCategory: Cat1
                     Friction: 0.5
                     IsEnabled: true
                     IsSensor: true
-                    MaskBits: All
                     Restitution: 0.0
-                    RollingFriction: 0.0
-                    UpdateOrder: 0.5
                   - !Evergine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButton,Evergine.MRTK
                     Id: 6307104e-6339-48ff-aa1e-1ffe8e76f2d1
                     EndPosition: -0.400000006
@@ -1145,35 +1125,30 @@ Items:
                       X: 0.393700927
                       Y: 0.393700927
                       Z: 0.393700927
-                  - !Evergine.Framework.Physics3D.BoxCollider3D,Evergine.Framework
+                  - !Evergine.Framework.Physics.BoxCollider,Evergine.Framework
                     Id: ea1bdb71-c12c-401b-bea5-3cb66f722e2d
                     IsEnabled: true
-                    Margin: 0.0
                     Offset:
                       X: 0.0
                       Y: 0.0499999933
                       Z: 0.00100000016
-                    OrientationOffset:
-                      W: -4.37113883E-08
-                      X: 1.0
-                      Y: 0.0
-                      Z: 0.0
+                    RotationOffset:
+                      X: -8.742278E-08
+                      Y: 3.1415927
+                      Z: 3.1415927
                     Size:
                       X: 0.00499999244
                       Y: 0.034999989
                       Z: 0.00800000038
-                  - !Evergine.Framework.Physics3D.StaticBody3D,Evergine.Framework
+                    UseModelBounds: true
+                    ConvexRadius: 0.0
+                  - !Evergine.Framework.Physics.StaticBody,Evergine.Framework
                     Id: f9c2be70-92af-429c-8772-7209f2cab432
-                    CcdMotionThreshold: 0.0
-                    CcdSweptSphereRadius: 0.200000003
-                    CollisionCategories: Cat1
+                    CollisionCategory: Cat1
                     Friction: 0.5
                     IsEnabled: true
                     IsSensor: true
-                    MaskBits: All
                     Restitution: 0.0
-                    RollingFriction: 0.0
-                    UpdateOrder: 0.5
                   - !Evergine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButton,Evergine.MRTK
                     Id: 2bc3f7dc-8f65-4aa5-b0a2-89f58492237f
                     EndPosition: -0.400000006
@@ -1287,35 +1262,30 @@ Items:
                       X: 0.393700927
                       Y: 0.393700927
                       Z: 0.393700927
-                  - !Evergine.Framework.Physics3D.BoxCollider3D,Evergine.Framework
+                  - !Evergine.Framework.Physics.BoxCollider,Evergine.Framework
                     Id: 3c80caaf-3ad6-4241-a60e-ec62bfb692bd
                     IsEnabled: true
-                    Margin: 0.0
                     Offset:
                       X: 0.0
                       Y: 0.0499999933
                       Z: 0.00100000016
-                    OrientationOffset:
-                      W: -4.37113883E-08
-                      X: 1.0
-                      Y: 0.0
-                      Z: 0.0
+                    RotationOffset:
+                      X: -8.742278E-08
+                      Y: 3.1415927
+                      Z: 3.1415927
                     Size:
                       X: 0.00999999233
                       Y: 0.0199999921
                       Z: 0.00800000038
-                  - !Evergine.Framework.Physics3D.StaticBody3D,Evergine.Framework
+                    UseModelBounds: true
+                    ConvexRadius: 0.0
+                  - !Evergine.Framework.Physics.StaticBody,Evergine.Framework
                     Id: 8bf67c77-021b-4f1a-8b18-79f7ed54d64c
-                    CcdMotionThreshold: 0.0
-                    CcdSweptSphereRadius: 0.200000003
-                    CollisionCategories: Cat1
+                    CollisionCategory: Cat1
                     Friction: 0.5
                     IsEnabled: true
                     IsSensor: true
-                    MaskBits: All
                     Restitution: 0.0
-                    RollingFriction: 0.0
-                    UpdateOrder: 0.5
                   - !Evergine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButton,Evergine.MRTK
                     Id: 897af695-85ff-48ac-890c-8d83b839e9c6
                     EndPosition: -0.100000001
@@ -1429,35 +1399,30 @@ Items:
                       X: 0.393700927
                       Y: 0.393700927
                       Z: 0.393700927
-                  - !Evergine.Framework.Physics3D.BoxCollider3D,Evergine.Framework
+                  - !Evergine.Framework.Physics.BoxCollider,Evergine.Framework
                     Id: 6f249bf1-3af1-4f65-b238-55e55bd52562
                     IsEnabled: true
-                    Margin: 0.0
                     Offset:
                       X: 0.0
                       Y: 0.0499999933
                       Z: 0.00100000016
-                    OrientationOffset:
-                      W: -4.37113883E-08
-                      X: 1.0
-                      Y: 0.0
-                      Z: 0.0
+                    RotationOffset:
+                      X: -8.742278E-08
+                      Y: 3.1415927
+                      Z: 3.1415927
                     Size:
                       X: 0.00999999233
                       Y: 0.0199999921
                       Z: 0.00800000038
-                  - !Evergine.Framework.Physics3D.StaticBody3D,Evergine.Framework
+                    UseModelBounds: true
+                    ConvexRadius: 0.0
+                  - !Evergine.Framework.Physics.StaticBody,Evergine.Framework
                     Id: ea8d9b6a-2d77-4598-a250-4d8c324d4c72
-                    CcdMotionThreshold: 0.0
-                    CcdSweptSphereRadius: 0.200000003
-                    CollisionCategories: Cat1
+                    CollisionCategory: Cat1
                     Friction: 0.5
                     IsEnabled: true
                     IsSensor: true
-                    MaskBits: All
                     Restitution: 0.0
-                    RollingFriction: 0.0
-                    UpdateOrder: 0.5
                   - !Evergine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButton,Evergine.MRTK
                     Id: 1c43d670-49a9-47d2-9540-d91992d0091f
                     EndPosition: -0.100000001
@@ -1571,35 +1536,30 @@ Items:
                       X: 0.393700927
                       Y: 0.393700927
                       Z: 0.393700927
-                  - !Evergine.Framework.Physics3D.BoxCollider3D,Evergine.Framework
+                  - !Evergine.Framework.Physics.BoxCollider,Evergine.Framework
                     Id: d58356f8-d0d4-404c-b6d5-bfa7f57c47a4
                     IsEnabled: true
-                    Margin: 0.0
                     Offset:
                       X: 0.0
                       Y: 0.0499999933
                       Z: 0.00100000016
-                    OrientationOffset:
-                      W: -4.37113883E-08
-                      X: 1.0
-                      Y: 0.0
-                      Z: 0.0
+                    RotationOffset:
+                      X: -8.742278E-08
+                      Y: 3.1415927
+                      Z: 3.1415927
                     Size:
                       X: 0.00999999233
                       Y: 0.0199999921
                       Z: 0.00800000038
-                  - !Evergine.Framework.Physics3D.StaticBody3D,Evergine.Framework
+                    UseModelBounds: true
+                    ConvexRadius: 0.0
+                  - !Evergine.Framework.Physics.StaticBody,Evergine.Framework
                     Id: 6e43f02b-7696-4275-a1db-e47ee2c08bdc
-                    CcdMotionThreshold: 0.0
-                    CcdSweptSphereRadius: 0.200000003
-                    CollisionCategories: Cat1
+                    CollisionCategory: Cat1
                     Friction: 0.5
                     IsEnabled: true
                     IsSensor: true
-                    MaskBits: All
                     Restitution: 0.0
-                    RollingFriction: 0.0
-                    UpdateOrder: 0.5
                   - !Evergine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButton,Evergine.MRTK
                     Id: c99f1c5c-1d6f-4ae6-adcb-708b755ccbe5
                     EndPosition: -0.100000001
@@ -1713,35 +1673,30 @@ Items:
                       X: 0.393700927
                       Y: 0.393700927
                       Z: 0.393700927
-                  - !Evergine.Framework.Physics3D.BoxCollider3D,Evergine.Framework
+                  - !Evergine.Framework.Physics.BoxCollider,Evergine.Framework
                     Id: 0ca46b5b-2c85-4905-9d66-513e7be2e614
                     IsEnabled: true
-                    Margin: 0.0
                     Offset:
                       X: 0.0
                       Y: 0.0499999933
                       Z: 0.00100000016
-                    OrientationOffset:
-                      W: -4.37113883E-08
-                      X: 1.0
-                      Y: 0.0
-                      Z: 0.0
+                    RotationOffset:
+                      X: -8.742278E-08
+                      Y: 3.1415927
+                      Z: 3.1415927
                     Size:
                       X: 0.00999999233
                       Y: 0.0199999921
                       Z: 0.00800000038
-                  - !Evergine.Framework.Physics3D.StaticBody3D,Evergine.Framework
+                    UseModelBounds: true
+                    ConvexRadius: 0.0
+                  - !Evergine.Framework.Physics.StaticBody,Evergine.Framework
                     Id: faa18f30-b179-48a4-bda6-d67dc924a10d
-                    CcdMotionThreshold: 0.0
-                    CcdSweptSphereRadius: 0.200000003
-                    CollisionCategories: Cat1
+                    CollisionCategory: Cat1
                     Friction: 0.5
                     IsEnabled: true
                     IsSensor: true
-                    MaskBits: All
                     Restitution: 0.0
-                    RollingFriction: 0.0
-                    UpdateOrder: 0.5
                   - !Evergine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButton,Evergine.MRTK
                     Id: cd6455b9-9e12-4e0a-b00b-4d80862343d8
                     EndPosition: -0.100000001
@@ -1855,35 +1810,30 @@ Items:
                       X: 0.393700927
                       Y: 0.393700927
                       Z: 0.393700927
-                  - !Evergine.Framework.Physics3D.BoxCollider3D,Evergine.Framework
+                  - !Evergine.Framework.Physics.BoxCollider,Evergine.Framework
                     Id: 6c93eed9-7e7a-4681-82cb-d32bd41a5d4e
                     IsEnabled: true
-                    Margin: 0.0
                     Offset:
                       X: 0.0
                       Y: 0.0499999933
                       Z: 0.00100000016
-                    OrientationOffset:
-                      W: -4.37113883E-08
-                      X: 1.0
-                      Y: 0.0
-                      Z: 0.0
+                    RotationOffset:
+                      X: -8.742278E-08
+                      Y: 3.1415927
+                      Z: 3.1415927
                     Size:
                       X: 0.00999999233
                       Y: 0.0199999921
                       Z: 0.00800000038
-                  - !Evergine.Framework.Physics3D.StaticBody3D,Evergine.Framework
+                    UseModelBounds: true
+                    ConvexRadius: 0.0
+                  - !Evergine.Framework.Physics.StaticBody,Evergine.Framework
                     Id: 6da9787c-8f49-4e4d-9a84-01482bf22873
-                    CcdMotionThreshold: 0.0
-                    CcdSweptSphereRadius: 0.200000003
-                    CollisionCategories: Cat1
+                    CollisionCategory: Cat1
                     Friction: 0.5
                     IsEnabled: true
                     IsSensor: true
-                    MaskBits: All
                     Restitution: 0.0
-                    RollingFriction: 0.0
-                    UpdateOrder: 0.5
                   - !Evergine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButton,Evergine.MRTK
                     Id: 0e5fd8b5-9834-4f98-b3d1-268f3fe2ac2e
                     EndPosition: -0.100000001
@@ -1997,35 +1947,30 @@ Items:
                       X: 0.393700927
                       Y: 0.393700927
                       Z: 0.393700927
-                  - !Evergine.Framework.Physics3D.BoxCollider3D,Evergine.Framework
+                  - !Evergine.Framework.Physics.BoxCollider,Evergine.Framework
                     Id: 607a9c88-73d0-4e21-a0d5-e41cf5a5e6cf
                     IsEnabled: true
-                    Margin: 0.0
                     Offset:
                       X: 0.0
                       Y: 0.0499999933
                       Z: 0.00100000016
-                    OrientationOffset:
-                      W: -4.37113883E-08
-                      X: 1.0
-                      Y: 0.0
-                      Z: 0.0
+                    RotationOffset:
+                      X: -8.742278E-08
+                      Y: 3.1415927
+                      Z: 3.1415927
                     Size:
                       X: 0.00999999233
                       Y: 0.0199999921
                       Z: 0.00800000038
-                  - !Evergine.Framework.Physics3D.StaticBody3D,Evergine.Framework
+                    UseModelBounds: true
+                    ConvexRadius: 0.0
+                  - !Evergine.Framework.Physics.StaticBody,Evergine.Framework
                     Id: 253027ef-132a-4537-b7d4-eb40e976a888
-                    CcdMotionThreshold: 0.0
-                    CcdSweptSphereRadius: 0.200000003
-                    CollisionCategories: Cat1
+                    CollisionCategory: Cat1
                     Friction: 0.5
                     IsEnabled: true
                     IsSensor: true
-                    MaskBits: All
                     Restitution: 0.0
-                    RollingFriction: 0.0
-                    UpdateOrder: 0.5
                   - !Evergine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButton,Evergine.MRTK
                     Id: cc020fb0-c4ec-489f-84f8-400b82090d88
                     EndPosition: -0.100000001
@@ -2139,35 +2084,30 @@ Items:
                       X: 0.393700927
                       Y: 0.393700927
                       Z: 0.393700927
-                  - !Evergine.Framework.Physics3D.BoxCollider3D,Evergine.Framework
+                  - !Evergine.Framework.Physics.BoxCollider,Evergine.Framework
                     Id: dab90bd4-f3e4-4fee-92f7-382a5e00996b
                     IsEnabled: true
-                    Margin: 0.0
                     Offset:
                       X: 0.0
                       Y: 0.0499999933
                       Z: 0.00100000016
-                    OrientationOffset:
-                      W: -4.37113883E-08
-                      X: 1.0
-                      Y: 0.0
-                      Z: 0.0
+                    RotationOffset:
+                      X: -8.742278E-08
+                      Y: 3.1415927
+                      Z: 3.1415927
                     Size:
                       X: 0.00999999233
                       Y: 0.0199999921
                       Z: 0.00800000038
-                  - !Evergine.Framework.Physics3D.StaticBody3D,Evergine.Framework
+                    UseModelBounds: true
+                    ConvexRadius: 0.0
+                  - !Evergine.Framework.Physics.StaticBody,Evergine.Framework
                     Id: e68ea3a1-917f-4d80-9634-3616dd4dba13
-                    CcdMotionThreshold: 0.0
-                    CcdSweptSphereRadius: 0.200000003
-                    CollisionCategories: Cat1
+                    CollisionCategory: Cat1
                     Friction: 0.5
                     IsEnabled: true
                     IsSensor: true
-                    MaskBits: All
                     Restitution: 0.0
-                    RollingFriction: 0.0
-                    UpdateOrder: 0.5
                   - !Evergine.MRTK.SDK.Features.UX.Components.PressableButtons.PressableButton,Evergine.MRTK
                     Id: 156e30b8-01b2-4c88-ab56-3e347e2e0879
                     EndPosition: -0.100000001
@@ -4864,35 +4804,30 @@ Items:
                     UpdateOrder: 0.5
                     sound: e911e7a0-7098-47f6-86c1-27a461c1eb24
                     speed: 3.0
-                  - !Evergine.Framework.Physics3D.BoxCollider3D,Evergine.Framework
+                  - !Evergine.Framework.Physics.BoxCollider,Evergine.Framework
                     Id: fc065347-b4dd-418d-888c-87eb94984fd2
                     IsEnabled: true
-                    Margin: 0.0
                     Offset:
                       X: 0.0
                       Y: 0.0
                       Z: 0.0
-                    OrientationOffset:
-                      W: 1.0
-                      X: 0.0
-                      Y: 0.0
-                      Z: 0.0
+                    RotationOffset:
+                      X: 0
+                      Y: 0
+                      Z: 0
                     Size:
                       X: 1.0
                       Y: 1.0
                       Z: 1.0
-                  - !Evergine.Framework.Physics3D.StaticBody3D,Evergine.Framework
+                    UseModelBounds: true
+                    ConvexRadius: 0.0
+                  - !Evergine.Framework.Physics.StaticBody,Evergine.Framework
                     Id: c41845b9-af86-403f-a854-451c4e279ab4
-                    CcdMotionThreshold: 0.0
-                    CcdSweptSphereRadius: 0.200000003
-                    CollisionCategories: Cat1
+                    CollisionCategory: Cat1
                     Friction: 0.5
                     IsEnabled: true
                     IsSensor: true
-                    MaskBits: All
                     Restitution: 0.0
-                    RollingFriction: 0.0
-                    UpdateOrder: 0.5
                 Children:
                   - !Evergine.Framework.Assets.AssetSources.Entities.EntityItemModel,Evergine.Framework
                     Name: Platonic
@@ -5053,35 +4988,30 @@ Items:
                     IsEnabled: true
                     OrderBias: 0
                     RenderFlags: CastShadows
-                  - !Evergine.Framework.Physics3D.BoxCollider3D,Evergine.Framework
+                  - !Evergine.Framework.Physics.BoxCollider,Evergine.Framework
                     Id: 7ba5ee0e-cb44-471f-b5cf-db56643991ea
                     IsEnabled: true
-                    Margin: 0.0
                     Offset:
                       X: 0.0
                       Y: 0.0
                       Z: 0.0
-                    OrientationOffset:
-                      W: 1.0
-                      X: 0.0
-                      Y: 0.0
-                      Z: 0.0
+                    RotationOffset:
+                      X: 0
+                      Y: 0
+                      Z: 0
                     Size:
                       X: 1.0
                       Y: 1.0
                       Z: 1.0
-                  - !Evergine.Framework.Physics3D.StaticBody3D,Evergine.Framework
+                    UseModelBounds: true
+                    ConvexRadius: 0.0
+                  - !Evergine.Framework.Physics.StaticBody,Evergine.Framework
                     Id: aac45f8c-6188-4448-a527-fc5752437261
-                    CcdMotionThreshold: 0.0
-                    CcdSweptSphereRadius: 0.200000003
-                    CollisionCategories: Cat1
+                    CollisionCategory: Cat1
                     Friction: 0.5
                     IsEnabled: true
                     IsSensor: true
-                    MaskBits: All
                     Restitution: 0.0
-                    RollingFriction: 0.0
-                    UpdateOrder: 0.5
                   - !Evergine.MRTK.Demo.Behaviors.HandInteractionTouchRotate,Evergine.MRTK.Demo
                     Id: aaa7edf3-8533-4a08-a0db-4d902ac172db
                     IsEnabled: true
@@ -5248,35 +5178,30 @@ Items:
                     IsEnabled: true
                     OrderBias: 0
                     RenderFlags: CastShadows
-                  - !Evergine.Framework.Physics3D.BoxCollider3D,Evergine.Framework
+                  - !Evergine.Framework.Physics.BoxCollider,Evergine.Framework
                     Id: 18d48a3b-f797-4012-b906-9603637fc46e
                     IsEnabled: true
-                    Margin: 0.0
                     Offset:
                       X: 0.0
                       Y: 0.0
                       Z: 0.0
-                    OrientationOffset:
-                      W: 1.0
-                      X: 0.0
-                      Y: 0.0
-                      Z: 0.0
+                    RotationOffset:
+                      X: 0
+                      Y: 0
+                      Z: 0
                     Size:
                       X: 1.0
                       Y: 1.0
                       Z: 1.0
-                  - !Evergine.Framework.Physics3D.StaticBody3D,Evergine.Framework
+                    UseModelBounds: true
+                    ConvexRadius: 0.0
+                  - !Evergine.Framework.Physics.StaticBody,Evergine.Framework
                     Id: 919aa82c-90a3-4368-904e-239fd3d8178f
-                    CcdMotionThreshold: 0.0
-                    CcdSweptSphereRadius: 0.200000003
-                    CollisionCategories: Cat1
+                    CollisionCategory: Cat1
                     Friction: 0.5
                     IsEnabled: true
                     IsSensor: true
-                    MaskBits: All
                     Restitution: 0.0
-                    RollingFriction: 0.0
-                    UpdateOrder: 0.5
                   - !Evergine.MRTK.Demo.Behaviors.HandInteractionTouchRotate,Evergine.MRTK.Demo
                     Id: c1dfeb40-0449-40b2-b794-f85ee90ae2f2
                     IsEnabled: true
@@ -5515,35 +5440,30 @@ Items:
                 IsEnabled: true
                 OrderBias: 0
                 RenderFlags: CastShadows
-              - !Evergine.Framework.Physics3D.BoxCollider3D,Evergine.Framework
+              - !Evergine.Framework.Physics.BoxCollider,Evergine.Framework
                 Id: fde60ff1-9a0a-4d72-b34f-d7d24acebbe4
                 IsEnabled: true
-                Margin: 0.00100000005
                 Offset:
                   X: 0.0
                   Y: 0.0
                   Z: 0.0
-                OrientationOffset:
-                  W: 1.0
-                  X: 0.0
-                  Y: 0.0
-                  Z: 0.0
+                RotationOffset:
+                  X: 0
+                  Y: 0
+                  Z: 0
                 Size:
                   X: 1.0
                   Y: 1.0
                   Z: 1.0
-              - !Evergine.Framework.Physics3D.StaticBody3D,Evergine.Framework
+                UseModelBounds: true
+                ConvexRadius: 0.00100000005
+              - !Evergine.Framework.Physics.StaticBody,Evergine.Framework
                 Id: 8cdb6618-14d5-4e19-8be2-932852b1b7ed
-                CcdMotionThreshold: 0.0
-                CcdSweptSphereRadius: 0.200000003
-                CollisionCategories: Cat1
+                CollisionCategory: Cat1
                 Friction: 0.5
                 IsEnabled: true
                 IsSensor: false
-                MaskBits: All
                 Restitution: 0.0
-                RollingFriction: 0.0
-                UpdateOrder: 0.5
             Children: []
             Id: e62d66f3-f987-49a2-9a6b-dc749ff31db2
           - !Evergine.Framework.Assets.AssetSources.Entities.EntityItemModel,Evergine.Framework
@@ -5601,60 +5521,35 @@ Items:
                 SmoothingActive: true
                 SmoothingAmount: 9.99999975E-05
                 UpdateOrder: 0.600000024
-              - !Evergine.Framework.Physics3D.BoxCollider3D,Evergine.Framework
+              - !Evergine.Framework.Physics.BoxCollider,Evergine.Framework
                 Id: 645e0215-d473-44e2-b5fe-ec64a32781f2
                 IsEnabled: true
-                Margin: 0.00100000005
                 Offset:
                   X: 0.0
                   Y: 0.0
                   Z: 0.0
-                OrientationOffset:
-                  W: 1.0
-                  X: 0.0
-                  Y: 0.0
-                  Z: 0.0
+                RotationOffset:
+                  X: 0
+                  Y: 0
+                  Z: 0
                 Size:
                   X: 1.0
                   Y: 1.0
                   Z: 1.0
-              - !Evergine.Framework.Physics3D.RigidBody3D,Evergine.Framework
+                UseModelBounds: true
+                ConvexRadius: 0.00100000005
+              - !Evergine.Framework.Physics.RigidBody,Evergine.Framework
                 Id: 80937cca-124a-46d5-9c0b-aaf3235947c1
                 AngularDamping: 0.0
-                AngularFactor:
-                  X: 1.0
-                  Y: 1.0
-                  Z: 1.0
-                AngularVelocity:
-                  X: 0.0
-                  Y: 0.0
-                  Z: 0.0
-                CcdMotionThreshold: 0.0
-                CcdSweptSphereRadius: 0.200000003
-                CollisionCategories: Cat1
+                CollisionCategory: Cat1
                 Friction: 0.5
-                Gravity:
-                  X: 0.0
-                  Y: -9.80000019
-                  Z: 0.0
                 IsEnabled: true
                 IsSensor: false
                 LinearDamping: 0.0
-                LinearFactor:
-                  X: 1.0
-                  Y: 1.0
-                  Z: 1.0
-                LinearVelocity:
-                  X: 0.0
-                  Y: 0.0
-                  Z: 0.0
-                MaskBits: All
                 Mass: 1.0
-                OverrideGravity: false
-                PhysicBodyType: Dynamic
                 Restitution: 0.0
-                RollingFriction: 0.0
-                UpdateOrder: 0.5
+                IsKinematic: false
+                AllowedDegreesOfFreedom: All
               - !Evergine.MRTK.SDK.Features.Input.Handlers.Manipulation.TetheredPlacement,Evergine.MRTK
                 Id: a019a3b1-232b-4643-b7b3-737dbf47c6a0
                 DistanceThreshold: 20.0
@@ -5717,60 +5612,35 @@ Items:
                 SmoothingActive: true
                 SmoothingAmount: 9.99999975E-05
                 UpdateOrder: 0.600000024
-              - !Evergine.Framework.Physics3D.BoxCollider3D,Evergine.Framework
+              - !Evergine.Framework.Physics.BoxCollider,Evergine.Framework
                 Id: d83154e5-cb30-4a5a-8eca-4bbd7884f342
                 IsEnabled: true
-                Margin: 0.00100000005
                 Offset:
                   X: 0.0
                   Y: 0.0
                   Z: 0.0
-                OrientationOffset:
-                  W: 1.0
-                  X: 0.0
-                  Y: 0.0
-                  Z: 0.0
+                RotationOffset:
+                  X: 0
+                  Y: 0
+                  Z: 0
                 Size:
                   X: 1.0
                   Y: 1.0
                   Z: 1.0
-              - !Evergine.Framework.Physics3D.RigidBody3D,Evergine.Framework
+                UseModelBounds: true
+                ConvexRadius: 0.00100000005
+              - !Evergine.Framework.Physics.RigidBody,Evergine.Framework
                 Id: 8f0a9b06-8978-4bc4-a43c-e20204326582
                 AngularDamping: 0.0
-                AngularFactor:
-                  X: 1.0
-                  Y: 1.0
-                  Z: 1.0
-                AngularVelocity:
-                  X: 0.0
-                  Y: 0.0
-                  Z: 0.0
-                CcdMotionThreshold: 0.0
-                CcdSweptSphereRadius: 0.200000003
-                CollisionCategories: Cat1
+                CollisionCategory: Cat1
                 Friction: 0.5
-                Gravity:
-                  X: 0.0
-                  Y: -9.80000019
-                  Z: 0.0
                 IsEnabled: true
                 IsSensor: false
                 LinearDamping: 0.0
-                LinearFactor:
-                  X: 1.0
-                  Y: 1.0
-                  Z: 1.0
-                LinearVelocity:
-                  X: 0.0
-                  Y: 0.0
-                  Z: 0.0
-                MaskBits: All
                 Mass: 1.0
-                OverrideGravity: false
-                PhysicBodyType: Dynamic
                 Restitution: 0.0
-                RollingFriction: 0.0
-                UpdateOrder: 0.5
+                IsKinematic: false
+                AllowedDegreesOfFreedom: All
               - !Evergine.MRTK.SDK.Features.Input.Handlers.Manipulation.TetheredPlacement,Evergine.MRTK
                 Id: 7020a278-b69b-4047-ad47-08cbe820bae9
                 DistanceThreshold: 20.0
@@ -5833,60 +5703,35 @@ Items:
                 SmoothingActive: true
                 SmoothingAmount: 9.99999975E-05
                 UpdateOrder: 0.600000024
-              - !Evergine.Framework.Physics3D.BoxCollider3D,Evergine.Framework
+              - !Evergine.Framework.Physics.BoxCollider,Evergine.Framework
                 Id: 98f8b430-498b-4887-92d5-0c8fc1a47a81
                 IsEnabled: true
-                Margin: 0.00100000005
                 Offset:
                   X: 0.0
                   Y: 0.0
                   Z: 0.0
-                OrientationOffset:
-                  W: 1.0
-                  X: 0.0
-                  Y: 0.0
-                  Z: 0.0
+                RotationOffset:
+                  X: 0
+                  Y: 0
+                  Z: 0
                 Size:
                   X: 1.0
                   Y: 1.0
                   Z: 1.0
-              - !Evergine.Framework.Physics3D.RigidBody3D,Evergine.Framework
+                UseModelBounds: true
+                ConvexRadius: 0.00100000005
+              - !Evergine.Framework.Physics.RigidBody,Evergine.Framework
                 Id: 0a69d8fa-b952-4b66-a2d1-c26d14d12c7d
                 AngularDamping: 0.0
-                AngularFactor:
-                  X: 1.0
-                  Y: 1.0
-                  Z: 1.0
-                AngularVelocity:
-                  X: 0.0
-                  Y: 0.0
-                  Z: 0.0
-                CcdMotionThreshold: 0.0
-                CcdSweptSphereRadius: 0.200000003
-                CollisionCategories: Cat1
+                CollisionCategory: Cat1
                 Friction: 0.5
-                Gravity:
-                  X: 0.0
-                  Y: -9.80000019
-                  Z: 0.0
                 IsEnabled: true
                 IsSensor: false
                 LinearDamping: 0.0
-                LinearFactor:
-                  X: 1.0
-                  Y: 1.0
-                  Z: 1.0
-                LinearVelocity:
-                  X: 0.0
-                  Y: 0.0
-                  Z: 0.0
-                MaskBits: All
                 Mass: 1.0
-                OverrideGravity: false
-                PhysicBodyType: Dynamic
                 Restitution: 0.0
-                RollingFriction: 0.0
-                UpdateOrder: 0.5
+                IsKinematic: false
+                AllowedDegreesOfFreedom: All
               - !Evergine.MRTK.SDK.Features.Input.Handlers.Manipulation.TetheredPlacement,Evergine.MRTK
                 Id: ee4fd34b-f807-4bcb-8d57-24146ab95187
                 DistanceThreshold: 20.0
@@ -5916,60 +5761,35 @@ Items:
                   X: 0.0599999987
                   Y: 0.0599999987
                   Z: 0.0599999987
-              - !Evergine.Framework.Physics3D.BoxCollider3D,Evergine.Framework
+              - !Evergine.Framework.Physics.BoxCollider,Evergine.Framework
                 Id: 72f701e7-9b78-44d0-889e-302faac8de73
                 IsEnabled: true
-                Margin: 0.00100000005
                 Offset:
                   X: 0.0
                   Y: 3.0
                   Z: 0.0
-                OrientationOffset:
-                  W: 1.0
-                  X: 0.0
-                  Y: 0.0
-                  Z: 0.0
+                RotationOffset:
+                  X: 0
+                  Y: 0
+                  Z: 0
                 Size:
                   X: 4.0
                   Y: 6.0
                   Z: 4.0
-              - !Evergine.Framework.Physics3D.RigidBody3D,Evergine.Framework
+                UseModelBounds: true
+                ConvexRadius: 0.00100000005
+              - !Evergine.Framework.Physics.RigidBody,Evergine.Framework
                 Id: 98b756ed-3c0f-4066-a8cd-882a44205b07
                 AngularDamping: 0.0
-                AngularFactor:
-                  X: 1.0
-                  Y: 1.0
-                  Z: 1.0
-                AngularVelocity:
-                  X: 0.0
-                  Y: 0.0
-                  Z: 0.0
-                CcdMotionThreshold: 0.0
-                CcdSweptSphereRadius: 0.200000003
-                CollisionCategories: Cat1
+                CollisionCategory: Cat1
                 Friction: 0.5
-                Gravity:
-                  X: 0.0
-                  Y: -9.80000019
-                  Z: 0.0
                 IsEnabled: true
                 IsSensor: false
                 LinearDamping: 0.0
-                LinearFactor:
-                  X: 1.0
-                  Y: 1.0
-                  Z: 1.0
-                LinearVelocity:
-                  X: 0.0
-                  Y: 0.0
-                  Z: 0.0
-                MaskBits: All
                 Mass: 1.0
-                OverrideGravity: false
-                PhysicBodyType: Dynamic
                 Restitution: 0.0
-                RollingFriction: 0.0
-                UpdateOrder: 0.5
+                IsKinematic: false
+                AllowedDegreesOfFreedom: All
               - !Evergine.MRTK.SDK.Features.Input.Handlers.Manipulation.SimpleManipulationHandler,Evergine.MRTK
                 Id: 043ea2b1-3e30-497d-916d-8aa46dc9f3cf
                 Constraints: None
@@ -6135,43 +5955,18 @@ Items:
                   X: 0.0250000004
                   Y: 0.0250000004
                   Z: 0.0250000004
-              - !Evergine.Framework.Physics3D.RigidBody3D,Evergine.Framework
+              - !Evergine.Framework.Physics.RigidBody,Evergine.Framework
                 Id: d674dbd2-b258-4032-93e3-d93b1ed3b46b
                 AngularDamping: 0.0
-                AngularFactor:
-                  X: 1.0
-                  Y: 1.0
-                  Z: 1.0
-                AngularVelocity:
-                  X: 0.0
-                  Y: 0.0
-                  Z: 0.0
-                CcdMotionThreshold: 0.0
-                CcdSweptSphereRadius: 0.200000003
-                CollisionCategories: Cat1
+                CollisionCategory: Cat1
                 Friction: 0.5
-                Gravity:
-                  X: 0.0
-                  Y: -9.80000019
-                  Z: 0.0
                 IsEnabled: true
                 IsSensor: false
                 LinearDamping: 0.0
-                LinearFactor:
-                  X: 1.0
-                  Y: 1.0
-                  Z: 1.0
-                LinearVelocity:
-                  X: 0.0
-                  Y: 0.0
-                  Z: 0.0
-                MaskBits: All
                 Mass: 1.0
-                OverrideGravity: false
-                PhysicBodyType: Dynamic
                 Restitution: 0.0
-                RollingFriction: 0.0
-                UpdateOrder: 0.5
+                IsKinematic: false
+                AllowedDegreesOfFreedom: All
               - !Evergine.MRTK.SDK.Features.Input.Handlers.Manipulation.SimpleManipulationHandler,Evergine.MRTK
                 Id: 93b93049-b1f1-4e95-826d-2545acf10fdf
                 Constraints: None
@@ -6228,23 +6023,23 @@ Items:
                     IsEnabled: true
                     OrderBias: 0
                     RenderFlags: CastShadows
-                  - !Evergine.Framework.Physics3D.BoxCollider3D,Evergine.Framework
+                  - !Evergine.Framework.Physics.BoxCollider,Evergine.Framework
                     Id: db3ea2c7-e367-4e9e-8e54-8e01060505fc
                     IsEnabled: true
-                    Margin: 0.00100000005
                     Offset:
                       X: 0.0
                       Y: 0.0
                       Z: 0.0
-                    OrientationOffset:
-                      W: 1.0
-                      X: 0.0
-                      Y: 0.0
-                      Z: 0.0
+                    RotationOffset:
+                      X: 0
+                      Y: 0
+                      Z: 0
                     Size:
                       X: 0.800000012
                       Y: 0.800000012
                       Z: 1.0
+                    UseModelBounds: true
+                    ConvexRadius: 0.00100000005
                 Children: []
                 Id: 01097cf6-a7ec-4950-9f10-f41fb2a4575d
             Id: 8ad5adaa-8607-4010-98ea-decb39362564
@@ -7115,23 +6910,23 @@ Items:
                           X: 1.0
                           Y: 1.0
                           Z: 1.0
-                      - !Evergine.Framework.Physics3D.BoxCollider3D,Evergine.Framework
+                      - !Evergine.Framework.Physics.BoxCollider,Evergine.Framework
                         Id: b36a29a6-61bc-4df7-9370-7494fdb499eb
                         IsEnabled: true
-                        Margin: 0.0
                         Offset:
                           X: 0.0
                           Y: -0.149999991
                           Z: 0.0
-                        OrientationOffset:
-                          W: 1.0
-                          X: 0.0
-                          Y: 0.0
-                          Z: 0.0
+                        RotationOffset:
+                          X: 0
+                          Y: 0
+                          Z: 0
                         Size:
                           X: 1.0
                           Y: 0.300000668
                           Z: 1.0
+                        UseModelBounds: true
+                        ConvexRadius: 0.0
                     Children: []
                     Id: 8f47f4e5-7b2b-445a-bcd6-c359b5c5e32b
                 Id: c133015b-7348-4397-b5dc-da3fd76ebd9d
@@ -7317,35 +7112,30 @@ Items:
                 IsEnabled: true
                 OrderBias: 0
                 RenderFlags: CastShadows
-              - !Evergine.Framework.Physics3D.BoxCollider3D,Evergine.Framework
+              - !Evergine.Framework.Physics.BoxCollider,Evergine.Framework
                 Id: 0ff04f62-f426-4a78-910e-c5513b9412d7
                 IsEnabled: true
-                Margin: 0.0
                 Offset:
                   X: 0.0
                   Y: 0.0
                   Z: 0.0
-                OrientationOffset:
-                  W: 1.0
-                  X: 0.0
-                  Y: 0.0
-                  Z: 0.0
+                RotationOffset:
+                  X: 0
+                  Y: 0
+                  Z: 0
                 Size:
                   X: 1.0
                   Y: 1.0
                   Z: 1.0
-              - !Evergine.Framework.Physics3D.StaticBody3D,Evergine.Framework
+                UseModelBounds: true
+                ConvexRadius: 0.0
+              - !Evergine.Framework.Physics.StaticBody,Evergine.Framework
                 Id: d503404a-5ed3-4071-81fa-4aa7a7009d63
-                CcdMotionThreshold: 0.0
-                CcdSweptSphereRadius: 0.200000003
-                CollisionCategories: Cat1
+                CollisionCategory: Cat1
                 Friction: 0.5
                 IsEnabled: true
                 IsSensor: false
-                MaskBits: All
                 Restitution: 0.0
-                RollingFriction: 0.0
-                UpdateOrder: 0.5
             Children: []
             Id: 26c344f0-da09-4d71-a9a1-5ce73fcb5743
           - !Evergine.Framework.Assets.AssetSources.Entities.EntityItemModel,Evergine.Framework
@@ -7802,23 +7592,23 @@ Items:
                     SmoothingActive: true
                     SmoothingAmount: 0.00100000005
                     UpdateOrder: 0.5
-                  - !Evergine.Framework.Physics3D.BoxCollider3D,Evergine.Framework
+                  - !Evergine.Framework.Physics.BoxCollider,Evergine.Framework
                     Id: 6b81b143-aa7b-4c7e-be6c-690e213fc8df
                     IsEnabled: true
-                    Margin: 0.0
                     Offset:
                       X: 0.0
                       Y: 0.0
                       Z: -2.38418579E-07
-                    OrientationOffset:
-                      W: 1.0
-                      X: 0.0
-                      Y: 0.0
-                      Z: 0.0
+                    RotationOffset:
+                      X: 0
+                      Y: 0
+                      Z: 0
                     Size:
                       X: 1.0
                       Y: 0.99999994
                       Z: 1.0
+                    UseModelBounds: true
+                    ConvexRadius: 0.0
                   - !Evergine.MRTK.SDK.Features.Input.Constraints.MinScaleConstraint,Evergine.MRTK
                     Id: ed9123b7-032d-405e-b7a3-03ca4a63af6a
                     IsEnabled: true
@@ -7902,23 +7692,23 @@ Items:
                 UpdateOrder: 0.5
                 WireframeMaterial: d04c6b19-b181-4798-8052-73388883abfe
                 WireframeShape: Cubic
-              - !Evergine.Framework.Physics3D.BoxCollider3D,Evergine.Framework
+              - !Evergine.Framework.Physics.BoxCollider,Evergine.Framework
                 Id: 8ff73f77-f295-4e17-8474-67a85c7657e9
                 IsEnabled: true
-                Margin: 0.0
                 Offset:
                   X: 0.0
                   Y: 0.0
                   Z: 1.78813934E-07
-                OrientationOffset:
-                  W: 1.0
-                  X: 0.0
-                  Y: 0.0
-                  Z: 0.0
+                RotationOffset:
+                  X: 0
+                  Y: 0
+                  Z: 0
                 Size:
                   X: 1.0
                   Y: 1.00000012
                   Z: 1.0
+                UseModelBounds: true
+                ConvexRadius: 0.0
               - !Evergine.MRTK.SDK.Features.Input.Handlers.Manipulation.SimpleManipulationHandler,Evergine.MRTK
                 Id: ae59e2b5-8187-4661-a970-d7cc645d51a7
                 Constraints: None
@@ -8034,35 +7824,30 @@ Items:
                     UpdateOrder: 0.5
                     WireframeMaterial: d04c6b19-b181-4798-8052-73388883abfe
                     WireframeShape: Cubic
-                  - !Evergine.Framework.Physics3D.BoxCollider3D,Evergine.Framework
+                  - !Evergine.Framework.Physics.BoxCollider,Evergine.Framework
                     Id: c89505af-0abf-42e0-9759-e00deecb7867
                     IsEnabled: true
-                    Margin: 0.0
                     Offset:
                       X: 0.0
                       Y: 0.0
                       Z: -3.57627869E-07
-                    OrientationOffset:
-                      W: 1.0
-                      X: 0.0
-                      Y: 0.0
-                      Z: 0.0
+                    RotationOffset:
+                      X: 0
+                      Y: 0
+                      Z: 0
                     Size:
                       X: 1.0
                       Y: 0.99999994
                       Z: 1.0
-                  - !Evergine.Framework.Physics3D.StaticBody3D,Evergine.Framework
+                    UseModelBounds: true
+                    ConvexRadius: 0.0
+                  - !Evergine.Framework.Physics.StaticBody,Evergine.Framework
                     Id: 0f82c4a8-cd83-4b66-b4d9-ce7d24650042
-                    CcdMotionThreshold: 0.0
-                    CcdSweptSphereRadius: 0.200000003
-                    CollisionCategories: Cat1
+                    CollisionCategory: Cat1
                     Friction: 0.5
                     IsEnabled: true
                     IsSensor: false
-                    MaskBits: All
                     Restitution: 0.0
-                    RollingFriction: 0.0
-                    UpdateOrder: 0.5
                   - !Evergine.MRTK.SDK.Features.Input.Constraints.MinScaleConstraint,Evergine.MRTK
                     Id: 2dc138fc-94ba-490b-9b74-cd5617e55077
                     IsEnabled: true
@@ -8128,23 +7913,23 @@ Items:
                 UpdateOrder: 0.5
                 WireframeMaterial: d04c6b19-b181-4798-8052-73388883abfe
                 WireframeShape: Cubic
-              - !Evergine.Framework.Physics3D.BoxCollider3D,Evergine.Framework
+              - !Evergine.Framework.Physics.BoxCollider,Evergine.Framework
                 Id: b3c9d17a-26c2-4c3c-92e1-659671773a36
                 IsEnabled: true
-                Margin: 0.0
                 Offset:
                   X: 0.0
                   Y: 0.0
                   Z: -0.000986874104
-                OrientationOffset:
-                  W: 1.0
-                  X: 0.0
-                  Y: 0.0
-                  Z: 0.0
+                RotationOffset:
+                  X: 0
+                  Y: 0
+                  Z: 0
                 Size:
                   X: 0.34054029
                   Y: 0.218011498
                   Z: 0.00197398663
+                UseModelBounds: true
+                ConvexRadius: 0.0
               - !Evergine.MRTK.SDK.Features.Input.Handlers.Manipulation.SimpleManipulationHandler,Evergine.MRTK
                 Id: 95f434a0-e25a-4eca-bf78-9e746b0e9281
                 Constraints: ConstraintRotAll

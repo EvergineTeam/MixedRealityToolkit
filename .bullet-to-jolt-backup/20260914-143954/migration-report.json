@@ -1,0 +1,866 @@
+{
+  "Tool": "Evergine Bullet to Jolt migrator",
+  "ProjectPath": "D:\\Plain\\MixedRealityToolkit",
+  "Mode": "Apply",
+  "GeneratedAt": "2026-09-14T14:39:54.7049821+02:00",
+  "ScannedFiles": 181,
+  "ChangedFiles": [
+    "Samples\\Evergine.MRTK.Demo\\Content\\Prefabs\\PressableRoundButton.weprefab",
+    "Samples\\Evergine.MRTK.Demo\\Content\\Scenes\\DemoScene.wescene",
+    "Samples\\Evergine.MRTK.Demo\\Evergine.MRTK.Demo\\Evergine.MRTK.Demo.csproj",
+    "Samples\\Evergine.MRTK.Demo\\Evergine.MRTK.Demo\\Behaviors\\HandInteractionPanZoom.cs",
+    "Samples\\Evergine.MRTK.Demo\\Evergine.MRTK.Demo\\Behaviors\\HandInteractionTouch.cs",
+    "Samples\\Evergine.MRTK.Demo\\Evergine.MRTK.Demo\\Drawables\\BoxColliderRenderer.cs",
+    "Samples\\Evergine.MRTK.Demo\\Evergine.MRTK.Demo.Pico\\Evergine.MRTK.Demo.Pico.csproj",
+    "Samples\\Evergine.MRTK.Demo\\Evergine.MRTK.Demo.Quest\\Evergine.MRTK.Demo.Quest.csproj",
+    "Source\\Evergine.MRTK\\Evergine.MRTK.csproj",
+    "Source\\Evergine.MRTK\\Emulation\\CursorRay.cs",
+    "Source\\Evergine.MRTK\\Emulation\\CursorTouch.cs",
+    "Source\\Evergine.MRTK\\Emulation\\GazeProvider.cs",
+    "Source\\Evergine.MRTK\\Scenes\\XRScene.cs",
+    "Source\\Evergine.MRTK\\SDK\\Features\\Input\\Handlers\\Manipulation\\SimpleManipulationHandler.cs",
+    "Source\\Evergine.MRTK\\SDK\\Features\\Input\\Handlers\\Manipulation\\TetheredPlacement.cs",
+    "Source\\Evergine.MRTK\\SDK\\Features\\UX\\Components\\AxisManipulationHandler\\AxisManipulationHandler.cs",
+    "Source\\Evergine.MRTK\\SDK\\Features\\UX\\Components\\AxisManipulationHandler\\AxisManipulationHandlerProperties.cs",
+    "Source\\Evergine.MRTK\\SDK\\Features\\UX\\Components\\BoundingBox\\BoundingBox.cs",
+    "Source\\Evergine.MRTK\\SDK\\Features\\UX\\Components\\Scrolling\\ScrollView.cs",
+    "Source\\Evergine.MRTK\\SDK\\Features\\UX\\Components\\Selection\\CheckBox.cs",
+    "Source\\Evergine.MRTK\\SDK\\Features\\UX\\Components\\Selection\\ComboBox.cs",
+    "Source\\Evergine.MRTK\\Services\\InputSystem\\NearInteractionGrabbable.cs",
+    "Source\\Evergine.MRTK\\Services\\InputSystem\\NearInteractionTouchable.cs",
+    "Source\\Evergine.MRTK.Assets\\Content\\MRTK\\Prefabs\\AxisManipulator_Axis.weprefab",
+    "Source\\Evergine.MRTK.Assets\\Content\\MRTK\\Prefabs\\AxisManipulator_Center.weprefab",
+    "Source\\Evergine.MRTK.Assets\\Content\\MRTK\\Prefabs\\AxisManipulator_Plane.weprefab",
+    "Source\\Evergine.MRTK.Assets\\Content\\MRTK\\Prefabs\\BoundingBox_FaceScaleHandle.weprefab",
+    "Source\\Evergine.MRTK.Assets\\Content\\MRTK\\Prefabs\\BoundingBox_RotateHandle.weprefab",
+    "Source\\Evergine.MRTK.Assets\\Content\\MRTK\\Prefabs\\BoundingBox_ScaleHandle.weprefab",
+    "Source\\Evergine.MRTK.Assets\\Content\\MRTK\\Prefabs\\ComboBox.weprefab",
+    "Source\\Evergine.MRTK.Assets\\Content\\MRTK\\Prefabs\\PinchSlider.weprefab",
+    "Source\\Evergine.MRTK.Assets\\Content\\MRTK\\Prefabs\\PressableButtonPlated.weprefab",
+    "Source\\Evergine.MRTK.Assets\\Content\\MRTK\\Prefabs\\ScrollView.weprefab"
+  ],
+  "ConvertedComponents": 72,
+  "Changes": 492,
+  "BackupPath": "D:\\Plain\\MixedRealityToolkit\\.bullet-to-jolt-backup\\20260914-143954",
+  "Findings": [
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Samples\\Evergine.MRTK.Demo\\Content\\Prefabs\\PressableRoundButton.weprefab",
+      "Line": 73,
+      "Message": "UpdateOrder has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Samples\\Evergine.MRTK.Demo\\Content\\Prefabs\\PressableRoundButton.weprefab",
+      "Line": 67,
+      "Message": "CcdSweptSphereRadius has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Samples\\Evergine.MRTK.Demo\\Content\\Prefabs\\PressableRoundButton.weprefab",
+      "Line": 66,
+      "Message": "CcdMotionThreshold has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Samples\\Evergine.MRTK.Demo\\Content\\Scenes\\DemoScene.wescene",
+      "Line": 606,
+      "Message": "UpdateOrder has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Samples\\Evergine.MRTK.Demo\\Content\\Scenes\\DemoScene.wescene",
+      "Line": 600,
+      "Message": "CcdSweptSphereRadius has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Samples\\Evergine.MRTK.Demo\\Content\\Scenes\\DemoScene.wescene",
+      "Line": 599,
+      "Message": "CcdMotionThreshold has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Samples\\Evergine.MRTK.Demo\\Content\\Scenes\\DemoScene.wescene",
+      "Line": 748,
+      "Message": "UpdateOrder has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Samples\\Evergine.MRTK.Demo\\Content\\Scenes\\DemoScene.wescene",
+      "Line": 742,
+      "Message": "CcdSweptSphereRadius has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Samples\\Evergine.MRTK.Demo\\Content\\Scenes\\DemoScene.wescene",
+      "Line": 741,
+      "Message": "CcdMotionThreshold has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Samples\\Evergine.MRTK.Demo\\Content\\Scenes\\DemoScene.wescene",
+      "Line": 890,
+      "Message": "UpdateOrder has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Samples\\Evergine.MRTK.Demo\\Content\\Scenes\\DemoScene.wescene",
+      "Line": 884,
+      "Message": "CcdSweptSphereRadius has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Samples\\Evergine.MRTK.Demo\\Content\\Scenes\\DemoScene.wescene",
+      "Line": 883,
+      "Message": "CcdMotionThreshold has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Samples\\Evergine.MRTK.Demo\\Content\\Scenes\\DemoScene.wescene",
+      "Line": 1032,
+      "Message": "UpdateOrder has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Samples\\Evergine.MRTK.Demo\\Content\\Scenes\\DemoScene.wescene",
+      "Line": 1026,
+      "Message": "CcdSweptSphereRadius has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Samples\\Evergine.MRTK.Demo\\Content\\Scenes\\DemoScene.wescene",
+      "Line": 1025,
+      "Message": "CcdMotionThreshold has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Samples\\Evergine.MRTK.Demo\\Content\\Scenes\\DemoScene.wescene",
+      "Line": 1174,
+      "Message": "UpdateOrder has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Samples\\Evergine.MRTK.Demo\\Content\\Scenes\\DemoScene.wescene",
+      "Line": 1168,
+      "Message": "CcdSweptSphereRadius has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Samples\\Evergine.MRTK.Demo\\Content\\Scenes\\DemoScene.wescene",
+      "Line": 1167,
+      "Message": "CcdMotionThreshold has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Samples\\Evergine.MRTK.Demo\\Content\\Scenes\\DemoScene.wescene",
+      "Line": 1316,
+      "Message": "UpdateOrder has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Samples\\Evergine.MRTK.Demo\\Content\\Scenes\\DemoScene.wescene",
+      "Line": 1310,
+      "Message": "CcdSweptSphereRadius has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Samples\\Evergine.MRTK.Demo\\Content\\Scenes\\DemoScene.wescene",
+      "Line": 1309,
+      "Message": "CcdMotionThreshold has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Samples\\Evergine.MRTK.Demo\\Content\\Scenes\\DemoScene.wescene",
+      "Line": 1458,
+      "Message": "UpdateOrder has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Samples\\Evergine.MRTK.Demo\\Content\\Scenes\\DemoScene.wescene",
+      "Line": 1452,
+      "Message": "CcdSweptSphereRadius has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Samples\\Evergine.MRTK.Demo\\Content\\Scenes\\DemoScene.wescene",
+      "Line": 1451,
+      "Message": "CcdMotionThreshold has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Samples\\Evergine.MRTK.Demo\\Content\\Scenes\\DemoScene.wescene",
+      "Line": 1600,
+      "Message": "UpdateOrder has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Samples\\Evergine.MRTK.Demo\\Content\\Scenes\\DemoScene.wescene",
+      "Line": 1594,
+      "Message": "CcdSweptSphereRadius has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Samples\\Evergine.MRTK.Demo\\Content\\Scenes\\DemoScene.wescene",
+      "Line": 1593,
+      "Message": "CcdMotionThreshold has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Samples\\Evergine.MRTK.Demo\\Content\\Scenes\\DemoScene.wescene",
+      "Line": 1742,
+      "Message": "UpdateOrder has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Samples\\Evergine.MRTK.Demo\\Content\\Scenes\\DemoScene.wescene",
+      "Line": 1736,
+      "Message": "CcdSweptSphereRadius has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Samples\\Evergine.MRTK.Demo\\Content\\Scenes\\DemoScene.wescene",
+      "Line": 1735,
+      "Message": "CcdMotionThreshold has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Samples\\Evergine.MRTK.Demo\\Content\\Scenes\\DemoScene.wescene",
+      "Line": 1884,
+      "Message": "UpdateOrder has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Samples\\Evergine.MRTK.Demo\\Content\\Scenes\\DemoScene.wescene",
+      "Line": 1878,
+      "Message": "CcdSweptSphereRadius has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Samples\\Evergine.MRTK.Demo\\Content\\Scenes\\DemoScene.wescene",
+      "Line": 1877,
+      "Message": "CcdMotionThreshold has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Samples\\Evergine.MRTK.Demo\\Content\\Scenes\\DemoScene.wescene",
+      "Line": 2026,
+      "Message": "UpdateOrder has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Samples\\Evergine.MRTK.Demo\\Content\\Scenes\\DemoScene.wescene",
+      "Line": 2020,
+      "Message": "CcdSweptSphereRadius has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Samples\\Evergine.MRTK.Demo\\Content\\Scenes\\DemoScene.wescene",
+      "Line": 2019,
+      "Message": "CcdMotionThreshold has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Samples\\Evergine.MRTK.Demo\\Content\\Scenes\\DemoScene.wescene",
+      "Line": 2168,
+      "Message": "UpdateOrder has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Samples\\Evergine.MRTK.Demo\\Content\\Scenes\\DemoScene.wescene",
+      "Line": 2162,
+      "Message": "CcdSweptSphereRadius has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Samples\\Evergine.MRTK.Demo\\Content\\Scenes\\DemoScene.wescene",
+      "Line": 2161,
+      "Message": "CcdMotionThreshold has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Samples\\Evergine.MRTK.Demo\\Content\\Scenes\\DemoScene.wescene",
+      "Line": 4893,
+      "Message": "UpdateOrder has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Samples\\Evergine.MRTK.Demo\\Content\\Scenes\\DemoScene.wescene",
+      "Line": 4887,
+      "Message": "CcdSweptSphereRadius has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Samples\\Evergine.MRTK.Demo\\Content\\Scenes\\DemoScene.wescene",
+      "Line": 4886,
+      "Message": "CcdMotionThreshold has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Samples\\Evergine.MRTK.Demo\\Content\\Scenes\\DemoScene.wescene",
+      "Line": 5082,
+      "Message": "UpdateOrder has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Samples\\Evergine.MRTK.Demo\\Content\\Scenes\\DemoScene.wescene",
+      "Line": 5076,
+      "Message": "CcdSweptSphereRadius has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Samples\\Evergine.MRTK.Demo\\Content\\Scenes\\DemoScene.wescene",
+      "Line": 5075,
+      "Message": "CcdMotionThreshold has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Samples\\Evergine.MRTK.Demo\\Content\\Scenes\\DemoScene.wescene",
+      "Line": 5277,
+      "Message": "UpdateOrder has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Samples\\Evergine.MRTK.Demo\\Content\\Scenes\\DemoScene.wescene",
+      "Line": 5271,
+      "Message": "CcdSweptSphereRadius has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Samples\\Evergine.MRTK.Demo\\Content\\Scenes\\DemoScene.wescene",
+      "Line": 5270,
+      "Message": "CcdMotionThreshold has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Samples\\Evergine.MRTK.Demo\\Content\\Scenes\\DemoScene.wescene",
+      "Line": 5544,
+      "Message": "UpdateOrder has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Samples\\Evergine.MRTK.Demo\\Content\\Scenes\\DemoScene.wescene",
+      "Line": 5538,
+      "Message": "CcdSweptSphereRadius has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Samples\\Evergine.MRTK.Demo\\Content\\Scenes\\DemoScene.wescene",
+      "Line": 5537,
+      "Message": "CcdMotionThreshold has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Samples\\Evergine.MRTK.Demo\\Content\\Scenes\\DemoScene.wescene",
+      "Line": 5639,
+      "Message": "UpdateOrder has no safe property mapping on Evergine.Framework.Physics.RigidBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Samples\\Evergine.MRTK.Demo\\Content\\Scenes\\DemoScene.wescene",
+      "Line": 5633,
+      "Message": "LinearVelocity has no safe property mapping on Evergine.Framework.Physics.RigidBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Samples\\Evergine.MRTK.Demo\\Content\\Scenes\\DemoScene.wescene",
+      "Line": 5624,
+      "Message": "AngularVelocity has no safe property mapping on Evergine.Framework.Physics.RigidBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Samples\\Evergine.MRTK.Demo\\Content\\Scenes\\DemoScene.wescene",
+      "Line": 5755,
+      "Message": "UpdateOrder has no safe property mapping on Evergine.Framework.Physics.RigidBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Samples\\Evergine.MRTK.Demo\\Content\\Scenes\\DemoScene.wescene",
+      "Line": 5749,
+      "Message": "LinearVelocity has no safe property mapping on Evergine.Framework.Physics.RigidBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Samples\\Evergine.MRTK.Demo\\Content\\Scenes\\DemoScene.wescene",
+      "Line": 5740,
+      "Message": "AngularVelocity has no safe property mapping on Evergine.Framework.Physics.RigidBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Samples\\Evergine.MRTK.Demo\\Content\\Scenes\\DemoScene.wescene",
+      "Line": 5871,
+      "Message": "UpdateOrder has no safe property mapping on Evergine.Framework.Physics.RigidBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Samples\\Evergine.MRTK.Demo\\Content\\Scenes\\DemoScene.wescene",
+      "Line": 5865,
+      "Message": "LinearVelocity has no safe property mapping on Evergine.Framework.Physics.RigidBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Samples\\Evergine.MRTK.Demo\\Content\\Scenes\\DemoScene.wescene",
+      "Line": 5856,
+      "Message": "AngularVelocity has no safe property mapping on Evergine.Framework.Physics.RigidBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Samples\\Evergine.MRTK.Demo\\Content\\Scenes\\DemoScene.wescene",
+      "Line": 5954,
+      "Message": "UpdateOrder has no safe property mapping on Evergine.Framework.Physics.RigidBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Samples\\Evergine.MRTK.Demo\\Content\\Scenes\\DemoScene.wescene",
+      "Line": 5948,
+      "Message": "LinearVelocity has no safe property mapping on Evergine.Framework.Physics.RigidBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Samples\\Evergine.MRTK.Demo\\Content\\Scenes\\DemoScene.wescene",
+      "Line": 5939,
+      "Message": "AngularVelocity has no safe property mapping on Evergine.Framework.Physics.RigidBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Samples\\Evergine.MRTK.Demo\\Content\\Scenes\\DemoScene.wescene",
+      "Line": 6156,
+      "Message": "UpdateOrder has no safe property mapping on Evergine.Framework.Physics.RigidBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Samples\\Evergine.MRTK.Demo\\Content\\Scenes\\DemoScene.wescene",
+      "Line": 6150,
+      "Message": "LinearVelocity has no safe property mapping on Evergine.Framework.Physics.RigidBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Samples\\Evergine.MRTK.Demo\\Content\\Scenes\\DemoScene.wescene",
+      "Line": 6141,
+      "Message": "AngularVelocity has no safe property mapping on Evergine.Framework.Physics.RigidBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Samples\\Evergine.MRTK.Demo\\Content\\Scenes\\DemoScene.wescene",
+      "Line": 7346,
+      "Message": "UpdateOrder has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Samples\\Evergine.MRTK.Demo\\Content\\Scenes\\DemoScene.wescene",
+      "Line": 7340,
+      "Message": "CcdSweptSphereRadius has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Samples\\Evergine.MRTK.Demo\\Content\\Scenes\\DemoScene.wescene",
+      "Line": 7339,
+      "Message": "CcdMotionThreshold has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Samples\\Evergine.MRTK.Demo\\Content\\Scenes\\DemoScene.wescene",
+      "Line": 8063,
+      "Message": "UpdateOrder has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Samples\\Evergine.MRTK.Demo\\Content\\Scenes\\DemoScene.wescene",
+      "Line": 8057,
+      "Message": "CcdSweptSphereRadius has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Samples\\Evergine.MRTK.Demo\\Content\\Scenes\\DemoScene.wescene",
+      "Line": 8056,
+      "Message": "CcdMotionThreshold has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "source-mask-defaulted",
+      "File": "Source\\Evergine.MRTK\\Emulation\\CursorRay.cs",
+      "Line": 0,
+      "Message": "A read of removed MaskBits was replaced with CollisionCategory.All. Review the query filter or PhysicsManager collision matrix."
+    },
+    {
+      "Severity": "Info",
+      "Code": "source-query-migrated",
+      "File": "Source\\Evergine.MRTK\\Emulation\\CursorRay.cs",
+      "Line": 0,
+      "Message": "A Bullet RayCast result was converted to the Jolt bool/out RayCastHit API with QueryFilter."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "source-mask-removed",
+      "File": "Source\\Evergine.MRTK\\Emulation\\CursorTouch.cs",
+      "Line": 0,
+      "Message": "MaskBits has no per-body Jolt equivalent. The initializer was removed; configure the PhysicsManager collision matrix if filtering is required."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "source-collision-id-migrated",
+      "File": "Source\\Evergine.MRTK\\Emulation\\CursorTouch.cs",
+      "Line": 0,
+      "Message": "CollisionInfo.Id was replaced with OtherBody.GetHashCode(). Review code that needs to distinguish multiple collider pairs on the same body."
+    },
+    {
+      "Severity": "Info",
+      "Code": "source-query-migrated",
+      "File": "Source\\Evergine.MRTK\\Emulation\\GazeProvider.cs",
+      "Line": 0,
+      "Message": "A Bullet RayCast result was converted to the Jolt bool/out RayCastHit API with QueryFilter."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "source-mask-removed",
+      "File": "Source\\Evergine.MRTK\\Scenes\\XRScene.cs",
+      "Line": 0,
+      "Message": "MaskBits has no per-body Jolt equivalent. The initializer was removed; configure the PhysicsManager collision matrix if filtering is required."
+    },
+    {
+      "Severity": "Info",
+      "Code": "source-property-removed",
+      "File": "Source\\Evergine.MRTK\\Scenes\\XRScene.cs",
+      "Line": 0,
+      "Message": "PhysicWorldResolution has no Jolt counterpart and was removed."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "source-update-order-migrated",
+      "File": "Source\\Evergine.MRTK\\SDK\\Features\\Input\\Handlers\\Manipulation\\SimpleManipulationHandler.cs",
+      "Line": 0,
+      "Message": "A behavior order relative to a Bullet body was reduced to the explicit offset because Jolt bodies have no UpdateOrder."
+    },
+    {
+      "Severity": "Info",
+      "Code": "source-margin-migrated",
+      "File": "Source\\Evergine.MRTK\\SDK\\Features\\UX\\Components\\AxisManipulationHandler\\AxisManipulationHandler.cs",
+      "Line": 0,
+      "Message": "Collider Margin was mapped to Jolt ConvexRadius."
+    },
+    {
+      "Severity": "Info",
+      "Code": "source-margin-removed",
+      "File": "Source\\Evergine.MRTK\\SDK\\Features\\UX\\Components\\AxisManipulationHandler\\AxisManipulationHandler.cs",
+      "Line": 0,
+      "Message": "Sphere/Capsule Margin has no Jolt counterpart and was removed."
+    },
+    {
+      "Severity": "Info",
+      "Code": "source-margin-migrated",
+      "File": "Source\\Evergine.MRTK\\SDK\\Features\\UX\\Components\\BoundingBox\\BoundingBox.cs",
+      "Line": 0,
+      "Message": "Collider Margin was mapped to Jolt ConvexRadius."
+    },
+    {
+      "Severity": "Info",
+      "Code": "source-margin-removed",
+      "File": "Source\\Evergine.MRTK\\SDK\\Features\\UX\\Components\\BoundingBox\\BoundingBox.cs",
+      "Line": 0,
+      "Message": "Sphere/Capsule Margin has no Jolt counterpart and was removed."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "source-mesh-size-defaulted",
+      "File": "Source\\Evergine.MRTK\\Services\\InputSystem\\NearInteractionTouchable.cs",
+      "Line": 0,
+      "Message": "MeshCollider.Size no longer exists and was replaced with Vector3.One. Derive bounds from the model when the old size was significant."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Source\\Evergine.MRTK.Assets\\Content\\MRTK\\Prefabs\\AxisManipulator_Axis.weprefab",
+      "Line": 56,
+      "Message": "UpdateOrder has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Source\\Evergine.MRTK.Assets\\Content\\MRTK\\Prefabs\\AxisManipulator_Axis.weprefab",
+      "Line": 50,
+      "Message": "CcdSweptSphereRadius has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Source\\Evergine.MRTK.Assets\\Content\\MRTK\\Prefabs\\AxisManipulator_Axis.weprefab",
+      "Line": 49,
+      "Message": "CcdMotionThreshold has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "collider-margin-not-preserved",
+      "File": "Source\\Evergine.MRTK.Assets\\Content\\MRTK\\Prefabs\\AxisManipulator_Center.weprefab",
+      "Line": 50,
+      "Message": "This Jolt shape has no independent collision margin; verify its effective dimensions."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Source\\Evergine.MRTK.Assets\\Content\\MRTK\\Prefabs\\AxisManipulator_Center.weprefab",
+      "Line": 65,
+      "Message": "UpdateOrder has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Source\\Evergine.MRTK.Assets\\Content\\MRTK\\Prefabs\\AxisManipulator_Center.weprefab",
+      "Line": 59,
+      "Message": "CcdSweptSphereRadius has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Source\\Evergine.MRTK.Assets\\Content\\MRTK\\Prefabs\\AxisManipulator_Center.weprefab",
+      "Line": 58,
+      "Message": "CcdMotionThreshold has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "rolling-friction-removed",
+      "File": "Source\\Evergine.MRTK.Assets\\Content\\MRTK\\Prefabs\\AxisManipulator_Plane.weprefab",
+      "Line": 56,
+      "Message": "Jolt has no equivalent serialized RollingFriction body property."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Source\\Evergine.MRTK.Assets\\Content\\MRTK\\Prefabs\\AxisManipulator_Plane.weprefab",
+      "Line": 56,
+      "Message": "UpdateOrder has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Source\\Evergine.MRTK.Assets\\Content\\MRTK\\Prefabs\\AxisManipulator_Plane.weprefab",
+      "Line": 50,
+      "Message": "CcdSweptSphereRadius has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Source\\Evergine.MRTK.Assets\\Content\\MRTK\\Prefabs\\AxisManipulator_Plane.weprefab",
+      "Line": 49,
+      "Message": "CcdMotionThreshold has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Source\\Evergine.MRTK.Assets\\Content\\MRTK\\Prefabs\\BoundingBox_FaceScaleHandle.weprefab",
+      "Line": 73,
+      "Message": "UpdateOrder has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Source\\Evergine.MRTK.Assets\\Content\\MRTK\\Prefabs\\BoundingBox_FaceScaleHandle.weprefab",
+      "Line": 67,
+      "Message": "CcdSweptSphereRadius has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Source\\Evergine.MRTK.Assets\\Content\\MRTK\\Prefabs\\BoundingBox_FaceScaleHandle.weprefab",
+      "Line": 66,
+      "Message": "CcdMotionThreshold has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Source\\Evergine.MRTK.Assets\\Content\\MRTK\\Prefabs\\BoundingBox_RotateHandle.weprefab",
+      "Line": 73,
+      "Message": "UpdateOrder has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Source\\Evergine.MRTK.Assets\\Content\\MRTK\\Prefabs\\BoundingBox_RotateHandle.weprefab",
+      "Line": 67,
+      "Message": "CcdSweptSphereRadius has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Source\\Evergine.MRTK.Assets\\Content\\MRTK\\Prefabs\\BoundingBox_RotateHandle.weprefab",
+      "Line": 66,
+      "Message": "CcdMotionThreshold has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Source\\Evergine.MRTK.Assets\\Content\\MRTK\\Prefabs\\BoundingBox_ScaleHandle.weprefab",
+      "Line": 76,
+      "Message": "UpdateOrder has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Source\\Evergine.MRTK.Assets\\Content\\MRTK\\Prefabs\\BoundingBox_ScaleHandle.weprefab",
+      "Line": 70,
+      "Message": "CcdSweptSphereRadius has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Source\\Evergine.MRTK.Assets\\Content\\MRTK\\Prefabs\\BoundingBox_ScaleHandle.weprefab",
+      "Line": 69,
+      "Message": "CcdMotionThreshold has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Source\\Evergine.MRTK.Assets\\Content\\MRTK\\Prefabs\\ComboBox.weprefab",
+      "Line": 82,
+      "Message": "UpdateOrder has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Source\\Evergine.MRTK.Assets\\Content\\MRTK\\Prefabs\\ComboBox.weprefab",
+      "Line": 76,
+      "Message": "CcdSweptSphereRadius has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Source\\Evergine.MRTK.Assets\\Content\\MRTK\\Prefabs\\ComboBox.weprefab",
+      "Line": 75,
+      "Message": "CcdMotionThreshold has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Source\\Evergine.MRTK.Assets\\Content\\MRTK\\Prefabs\\PinchSlider.weprefab",
+      "Line": 181,
+      "Message": "UpdateOrder has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Source\\Evergine.MRTK.Assets\\Content\\MRTK\\Prefabs\\PinchSlider.weprefab",
+      "Line": 175,
+      "Message": "CcdSweptSphereRadius has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Source\\Evergine.MRTK.Assets\\Content\\MRTK\\Prefabs\\PinchSlider.weprefab",
+      "Line": 174,
+      "Message": "CcdMotionThreshold has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Source\\Evergine.MRTK.Assets\\Content\\MRTK\\Prefabs\\PressableButtonPlated.weprefab",
+      "Line": 73,
+      "Message": "UpdateOrder has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Source\\Evergine.MRTK.Assets\\Content\\MRTK\\Prefabs\\PressableButtonPlated.weprefab",
+      "Line": 67,
+      "Message": "CcdSweptSphereRadius has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Source\\Evergine.MRTK.Assets\\Content\\MRTK\\Prefabs\\PressableButtonPlated.weprefab",
+      "Line": 66,
+      "Message": "CcdMotionThreshold has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Source\\Evergine.MRTK.Assets\\Content\\MRTK\\Prefabs\\ScrollView.weprefab",
+      "Line": 72,
+      "Message": "UpdateOrder has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Source\\Evergine.MRTK.Assets\\Content\\MRTK\\Prefabs\\ScrollView.weprefab",
+      "Line": 66,
+      "Message": "CcdSweptSphereRadius has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    },
+    {
+      "Severity": "Warning",
+      "Code": "property-needs-manual-migration",
+      "File": "Source\\Evergine.MRTK.Assets\\Content\\MRTK\\Prefabs\\ScrollView.weprefab",
+      "Line": 65,
+      "Message": "CcdMotionThreshold has no safe property mapping on Evergine.Framework.Physics.StaticBody and was removed from the asset."
+    }
+  ]
+}

@@ -7,7 +7,7 @@ using Evergine.Components.Primitives;
 using Evergine.Components.XR;
 using Evergine.Framework;
 using Evergine.Framework.Graphics;
-using Evergine.Framework.Physics3D;
+using Evergine.Framework.Physics;
 using Evergine.Framework.XR;
 using Evergine.Mathematics;
 using Evergine.MRTK.Behaviors;
@@ -50,7 +50,7 @@ namespace Evergine.MRTK.Emulation
         private Transform3D lineMeshTransform;
         private Transform3D touchCursorTransform;
 
-        private CollisionCategory3D cursorCollisionCategoryMask;
+        private CollisionCategory cursorCollisionCategoryMask;
 
         private float pinchDist;
         private Vector3 pinchPosRef;
@@ -85,7 +85,7 @@ namespace Evergine.MRTK.Emulation
                 this.xrJoint = trackXRJoint;
             }
 
-            this.cursorCollisionCategoryMask = this.TouchCursorEntity.FindComponentInChildren<StaticBody3D>(isRecursive: true).MaskBits;
+            this.cursorCollisionCategoryMask = CollisionCategory.All;
 
             this.UpdateOrder = this.touchCursor.UpdateOrder + 0.1f; // Ensure this is executed always after the main Cursor
             this.cam = this.Managers.RenderManager.ActiveCamera3D;
@@ -197,12 +197,12 @@ namespace Evergine.MRTK.Emulation
                     }
                     else
                     {
-                        var result = this.Managers.PhysicManager3D.RayCast(ref r, 10, this.cursorCollisionCategoryMask);
+                        bool resultSucceeded = this.Managers.PhysicsManager.RayCast(ref r, 10, QueryFilter.FromCategories(this.cursorCollisionCategoryMask), out RayCastHit result);
 
-                        var collPoint = result.Succeeded ? result.Point : r.GetPoint(10);
-                        var normal = result.Succeeded ? result.Normal : Vector3.Forward;
+                        var collPoint = resultSucceeded ? result.Point : r.GetPoint(10);
+                        var normal = resultSucceeded ? result.Normal : Vector3.Forward;
 
-                        var interactedEntity = result.PhysicBody?.BodyComponent?.Owner;
+                        var interactedEntity = result.Entity;
                         if (interactedEntity != this.farPointerInteractedEntity)
                         {
                             if (this.farPointerInteractedEntity != null)

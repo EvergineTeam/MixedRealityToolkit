@@ -6,7 +6,7 @@ using Evergine.Components.Graphics3D;
 using Evergine.Components.WorkActions;
 using Evergine.Framework;
 using Evergine.Framework.Graphics;
-using Evergine.Framework.Physics3D;
+using Evergine.Framework.Physics;
 using Evergine.Framework.Services;
 using Evergine.Mathematics;
 using Evergine.MRTK.SDK.Features.UX.Components.Lists;
@@ -27,7 +27,7 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Selection
         private PressableButton rootButton = null;
 
         [BindComponent(source: BindComponentSource.Children, tag: "PART_ComboBox_Root")]
-        private BoxCollider3D rootCollider = null;
+        private BoxCollider rootCollider = null;
 
         [BindComponent(source: BindComponentSource.Children, tag: "PART_ComboBox_BackPlate")]
         private Transform3D backPlateTransform = null;

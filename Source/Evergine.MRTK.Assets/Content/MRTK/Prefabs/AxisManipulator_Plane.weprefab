@@ -44,38 +44,33 @@ Root:
             X: 3.0
             Y: 0.5
             Z: 3.0
-        - !Evergine.Framework.Physics3D.StaticBody3D,Evergine.Framework
+        - !Evergine.Framework.Physics.StaticBody,Evergine.Framework
           Id: 2262921e-e19f-4850-b9a2-5b831395d584
-          CcdMotionThreshold: 0.0
-          CcdSweptSphereRadius: 0.200000018
-          CollisionCategories: Cat1
+          CollisionCategory: Cat1
           Friction: 0.5
           IsEnabled: true
           IsSensor: true
-          MaskBits: All
           Restitution: 0.0
-          RollingFriction: 0.00499999989
-          UpdateOrder: 0.5
         - !Evergine.MRTK.Services.InputSystem.NearInteractionGrabbable,Evergine.MRTK
           Id: 3094fc42-009b-425f-b058-6414d18b88a8
           IsEnabled: true
-        - !Evergine.Framework.Physics3D.BoxCollider3D,Evergine.Framework
+        - !Evergine.Framework.Physics.BoxCollider,Evergine.Framework
           Id: efaeceea-65f5-4d82-9c6e-09348ad06b1d
           IsEnabled: true
-          Margin: 0.00100000005
           Offset:
             X: 0.0
             Y: 0.0
             Z: 0.0
-          OrientationOffset:
-            W: 1.0
-            X: 0.0
-            Y: 0.0
-            Z: 0.0
+          RotationOffset:
+            X: 0
+            Y: 0
+            Z: 0
           Size:
             X: 1.0
             Y: 1.0
             Z: 1.0
+          UseModelBounds: true
+          ConvexRadius: 0.00100000005
       Children:
         - !Evergine.Framework.Assets.AssetSources.Entities.EntityItemModel,Evergine.Framework
           Name: visualFront

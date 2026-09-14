@@ -7,7 +7,7 @@ using Evergine.Components.Graphics3D;
 using Evergine.Framework;
 using Evergine.Framework.Graphics;
 using Evergine.Framework.Managers;
-using Evergine.Framework.Physics3D;
+using Evergine.Framework.Physics;
 using Evergine.Mathematics;
 using Evergine.MRTK.Base.EventDatum.Input;
 using Evergine.MRTK.Base.Interfaces.InputSystem.Handlers;
@@ -30,7 +30,7 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.Scrolling
         private Entity scrollArea = null;
 
         [BindComponent(source: BindComponentSource.ChildrenSkipOwner, tag: "PART_scrollviewer_scrollarea")]
-        private BoxCollider3D scrollAreaCollider = null;
+        private BoxCollider scrollAreaCollider = null;
 
         [BindComponent(source: BindComponentSource.ChildrenSkipOwner, tag: "PART_scrollviewer_content")]
         private Transform3D contentTransform = null;

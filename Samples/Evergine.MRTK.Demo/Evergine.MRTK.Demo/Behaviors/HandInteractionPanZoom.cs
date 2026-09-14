@@ -8,7 +8,7 @@ using Evergine.Components.Graphics3D;
 using Evergine.Components.Sound;
 using Evergine.Framework;
 using Evergine.Framework.Graphics;
-using Evergine.Framework.Physics3D;
+using Evergine.Framework.Physics;
 using Evergine.Mathematics;
 using Evergine.MRTK.Base.EventDatum.Input;
 using Evergine.MRTK.Base.Interfaces.InputSystem.Handlers;
@@ -118,8 +118,8 @@ namespace Evergine.MRTK.Demo.Behaviors
             {
                 this.nearInteractionTouchable = this.Owner.GetOrAddComponent<NearInteractionTouchable>();
                 this.soundEmitter = this.Owner.GetOrAddComponent<SoundEmitter3D>();
-                this.Owner.GetOrAddComponent<StaticBody3D>();
-                this.Owner.GetInChildrenOrAddComponent<BoxCollider3D>();
+                this.Owner.GetOrAddComponent<StaticBody>();
+                this.Owner.GetInChildrenOrAddComponent<BoxCollider>();
             }
         }
 
