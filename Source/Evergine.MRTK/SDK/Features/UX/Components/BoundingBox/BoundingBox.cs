@@ -715,6 +715,10 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.BoundingBox
             this.transform.LocalScaleChanged += this.Transform_ScaleChanged;
 
             this.rigRootEntity.IsEnabled = true;
+
+            // The rig may have been created while its owner was inactive. Reapply
+            // world-space handle sizes now that the hierarchy is fully attached.
+            this.UpdateRigHandles();
         }
 
         /// <inheritdoc/>
@@ -771,9 +775,9 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.BoundingBox
                 this.InitializeDataStructures();
                 this.AddHelpers();
                 this.AddBoxDisplay();
-                this.UpdateRigHandles();
 
                 this.rigRootEntity.IsEnabled = true;
+                this.UpdateRigHandles();
             }
         }
 
@@ -1184,7 +1188,9 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.BoundingBox
             }
 
             // Register helper object
-            var helperTargetEntity = handle.FindComponentInChildren<NearInteractionGrabbable>()?.Owner;
+            // Components in a disabled, newly built rig are not attached yet, so
+            // Component.Owner cannot be used to identify the prefab child entity.
+            var helperTargetEntity = FindNearInteractionGrabbableEntity(handle);
             if (helperTargetEntity != null)
             {
                 var handleHelper = new BoundingBoxHelper()
@@ -1198,6 +1204,25 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.BoundingBox
 
                 this.helpers.Add(helperTargetEntity, handleHelper);
             }
+        }
+
+        private static Entity FindNearInteractionGrabbableEntity(Entity root)
+        {
+            if (root.FindComponent<NearInteractionGrabbable>() != null)
+            {
+                return root;
+            }
+
+            foreach (Entity child in root.ChildEntities)
+            {
+                Entity result = FindNearInteractionGrabbableEntity(child);
+                if (result != null)
+                {
+                    return result;
+                }
+            }
+
+            return null;
         }
 
         private void AddBoxDisplay()
