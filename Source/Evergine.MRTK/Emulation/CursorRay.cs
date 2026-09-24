@@ -50,8 +50,6 @@ namespace Evergine.MRTK.Emulation
         private Transform3D lineMeshTransform;
         private Transform3D touchCursorTransform;
 
-        private CollisionCategory cursorCollisionCategoryMask;
-
         private float pinchDist;
         private Vector3 pinchPosRef;
         private Camera3D cam;
@@ -69,6 +67,11 @@ namespace Evergine.MRTK.Emulation
         /// </summary>
         public XRHandedness Handedness { get; set; }
 
+        /// <summary>
+        /// Gets or sets the collision categories considered by the ray query.
+        /// </summary>
+        public CollisionCategory CollisionCategoryMask { get; set; } = CollisionCategory.All;
+
         /// <inheritdoc/>
         protected override bool OnAttached()
         {
@@ -84,8 +87,6 @@ namespace Evergine.MRTK.Emulation
             {
                 this.xrJoint = trackXRJoint;
             }
-
-            this.cursorCollisionCategoryMask = CollisionCategory.All;
 
             this.UpdateOrder = this.touchCursor.UpdateOrder + 0.1f; // Ensure this is executed always after the main Cursor
             this.cam = this.Managers.RenderManager.ActiveCamera3D;
@@ -197,7 +198,12 @@ namespace Evergine.MRTK.Emulation
                     }
                     else
                     {
-                        bool resultSucceeded = this.Managers.PhysicsManager.RayCast(ref r, 10, QueryFilter.FromCategories(this.cursorCollisionCategoryMask), out RayCastHit result);
+                        var queryFilter = new QueryFilter
+                        {
+                            CategoryMask = this.CollisionCategoryMask,
+                            IncludeSensors = true,
+                        };
+                        bool resultSucceeded = this.Managers.PhysicsManager.RayCast(ref r, 10, queryFilter, out RayCastHit result);
 
                         var collPoint = resultSucceeded ? result.Point : r.GetPoint(10);
                         var normal = resultSucceeded ? result.Normal : Vector3.Forward;

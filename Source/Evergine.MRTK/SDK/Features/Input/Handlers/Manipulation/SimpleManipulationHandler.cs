@@ -296,7 +296,10 @@ namespace Evergine.MRTK.SDK.Features.Input.Handlers.Manipulation
 
                 if (this.collider == null)
                 {
-                    this.collider = new BoxCollider();
+                    this.collider = new BoxCollider
+                    {
+                        UseModelBounds = true,
+                    };
                     this.Owner.AddComponent(this.collider);
                 }
             }

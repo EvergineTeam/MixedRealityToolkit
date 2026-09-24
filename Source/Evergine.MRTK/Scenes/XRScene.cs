@@ -10,6 +10,7 @@ using Evergine.Components.Primitives;
 using Evergine.Components.XR;
 using Evergine.Framework;
 using Evergine.Framework.Graphics;
+using Evergine.Framework.Managers;
 using Evergine.Framework.Physics;
 using Evergine.Framework.Prefabs;
 using Evergine.Framework.XR;
@@ -98,9 +99,23 @@ namespace Evergine.MRTK.Scenes
         {
             base.RegisterManagers();
 
-            this.Managers.AddManager(new PhysicsManager()
+            var physicsManager = new PhysicsManager()
             {
-            });
+            };
+
+            // Bullet stored a mask on each cursor body. Jolt uses a category matrix instead, so configure
+            // the dedicated cursor category with the same effective mask before the world is created.
+            var effectiveCursorMask = this.CursorCollisionCategoryMask & ~this.CursorCollisionCategory;
+            for (uint categoryBit = 1; categoryBit != 0; categoryBit <<= 1)
+            {
+                var category = (CollisionCategory)categoryBit;
+                physicsManager.SetCollisionEnabled(
+                    this.CursorCollisionCategory,
+                    category,
+                    (effectiveCursorMask & category) != 0);
+            }
+
+            this.Managers.AddManager(physicsManager);
             this.Managers.AddManager(new FocusProvider());
             this.Managers.AddManager(new VoiceCommandsProvider());
         }
@@ -324,8 +339,10 @@ namespace Evergine.MRTK.Scenes
                 ReleasedMaterial = releasedMaterial,
             })
             .AddComponent(new SphereCollider() { Radius = 0.005f })
-            .AddComponent(new StaticBody()
+            .AddComponent(new RigidBody()
             {
+                IsKinematic = true,
+                CollideKinematicVsNonDynamic = true,
                 IsSensor = true,
                 CollisionCategory = this.CursorCollisionCategory,
             })
@@ -384,6 +401,7 @@ namespace Evergine.MRTK.Scenes
                     ReleasedMaterial = releasedMaterial,
                     TouchCursorEntity = nearCursor,
                     MaxLength = this.MaxFarCursorLength,
+                    CollisionCategoryMask = this.CursorCollisionCategoryMask & ~this.CursorCollisionCategory,
                 })
                 .AddChild(ray)
                 .AddChild(new Entity("visual")

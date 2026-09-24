@@ -204,7 +204,12 @@ namespace Evergine.MRTK.Services.InputSystem
                 var fromPosition = r.Position;
                 var toPosition = r.GetPoint(this.Distance);
 
-                bool resultSucceeded = this.Managers.PhysicsManager.RayCast(fromPosition, toPosition - fromPosition, Vector3.Distance(fromPosition, toPosition), QueryFilter.FromCategories(this.CollisionCategoryMask), out RayCastHit result);
+                var queryFilter = new QueryFilter
+                {
+                    CategoryMask = this.CollisionCategoryMask,
+                    IncludeSensors = true,
+                };
+                bool resultSucceeded = this.Managers.PhysicsManager.RayCast(fromPosition, toPosition - fromPosition, Vector3.Distance(fromPosition, toPosition), queryFilter, out RayCastHit result);
 
                 this.GazeTarget = resultSucceeded ? result.Entity : null;
 
