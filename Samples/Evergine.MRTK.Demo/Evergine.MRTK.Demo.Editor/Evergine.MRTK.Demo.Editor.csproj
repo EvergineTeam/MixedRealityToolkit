@@ -3,10 +3,10 @@
     <TargetFramework>net10.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Evergine.Common" Version="2026.9.11.765-jolt" />
-    <PackageReference Include="Evergine.Components" Version="2026.9.11.765-jolt" />
-    <PackageReference Include="Evergine.Framework" Version="2026.9.11.765-jolt" />
-    <PackageReference Include="Evergine.Editor.Extension" Version="2026.9.11.765-jolt" />
+    <PackageReference Include="Evergine.Common" Version="2026.10.26.195-nightly" />
+    <PackageReference Include="Evergine.Components" Version="2026.10.26.195-nightly" />
+    <PackageReference Include="Evergine.Framework" Version="2026.10.26.195-nightly" />
+    <PackageReference Include="Evergine.Editor.Extension" Version="2026.10.26.195-nightly" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Source\Evergine.MRTK.Editor\Evergine.MRTK.Editor.csproj" />

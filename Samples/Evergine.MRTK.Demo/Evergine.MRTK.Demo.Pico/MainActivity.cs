@@ -44,7 +44,7 @@ namespace Evergine.MRTK.Demo.Pico
             // Create Services
             this.windowsSystem = new global::Evergine.Android.AndroidWindowsSystem(this);
             this.application.Container.RegisterInstance(windowsSystem);
-            var surface = this.windowsSystem.CreateSurface(0, 0) as global::Evergine.Android.AndroidSurface;
+            var surface = this.windowsSystem.CreateSurface(false) as global::Evergine.Android.AndroidSurface;
 
             var view = this.FindViewById<RelativeLayout>(Resource.Id.evergineContainer);
             view.AddView(surface.NativeSurface);
@@ -72,15 +72,13 @@ namespace Evergine.MRTK.Demo.Pico
 
         }
 
-        protected override void OnStop()
+        protected override void OnDestroy()
         {
-            base.OnStop();
-            this.windowsSystem.Dispose();
-            this.application.Dispose();
+            base.OnDestroy();
+            this.windowsSystem?.Dispose();
+            this.application?.Dispose();
             this.windowsSystem = null;
             this.application = null;
-
-            global::Android.OS.Process.KillProcess(global::Android.OS.Process.MyPid());
         }
 
         private void ConfigureGraphicsContext(MyApplication application, Surface surface)

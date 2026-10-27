@@ -661,7 +661,8 @@ namespace Evergine.MRTK.SDK.Features.UX.Components.BoundingBox
 
             if (this.boxCollider3D == null)
             {
-                this.boxCollider3D = new BoxCollider();
+                // Size and offset are relative to the owner's mesh bounds (see AdjustBoundingToChildren).
+                this.boxCollider3D = new BoxCollider() { UseModelBounds = true };
                 this.Owner.AddComponent(this.boxCollider3D);
             }
 

@@ -2,7 +2,7 @@
 Packages:
   - Id: Evergine.Core
     LocalPath: null
-    Version: 2026.9.11.765-jolt
+    Version: 2026.10.26.195-nightly
   - Id: Evergine.MRTK
     LocalPath: ../../Source/Evergine.MRTK.Assets/
     Version: null

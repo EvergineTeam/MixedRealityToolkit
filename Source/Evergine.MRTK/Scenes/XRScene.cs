@@ -129,6 +129,8 @@ namespace Evergine.MRTK.Scenes
         /// </remarks>
         protected sealed override void CreateScene()
         {
+            (this.Managers.RenderManager as RenderManager).DebugLines = false;
+
             // Disable Z prepass
             var forwardRenderPath = this.Managers.RenderManager.RenderPipeline.DefaultRenderPath as ForwardRenderPath;
             if (forwardRenderPath != null)

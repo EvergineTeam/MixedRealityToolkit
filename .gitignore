@@ -190,3 +190,6 @@ EvergineContent.cs
 
 Environment.wedir
 **/Environment/
+
+# Bullet to Jolt migration backups
+.bullet-to-jolt-backup/
