@@ -33,11 +33,31 @@ jobs:
       publish-packages: ${{ !inputs.skip-assets-publishing }}        # Publish both NuGet packages and .wepkg assets
       enable-email-notifications: true                               # Send email on failure
     secrets:
-      NUGET_UPLOAD_TOKEN: ${{ secrets.EVERGINE_NUGETORG_TOKEN }}          # NuGet.org API key
       AZURE_STORAGE_SAS_TOKEN: ${{ secrets.PUBLISH_STABLE_BLOB_CONTAINER_SAS_TOKEN }} # Azure Storage SAS token
       WAVE_SENDGRID_TOKEN: ${{ secrets.WAVE_SENDGRID_TOKEN }}        # SendGrid for email notifications
       EVERGINE_EMAILREPORT_LIST: ${{ secrets.EVERGINE_EMAILREPORT_LIST }}
       EVERGINE_EMAIL: ${{ secrets.EVERGINE_EMAIL }}
+
+  # nuget.org trusted publishing validates the workflow file the pushing job is defined in,
+  # and it has to belong to this repository, so the push cannot happen inside the reusable workflow.
+  publish:
+    needs: cd
+    if: needs.cd.outputs.publish == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: nuget-packages
+          path: nupkgs
+      - uses: NuGet/login@v1
+        id: login
+        with:
+          user: ${{ vars.EVERGINE_NUGETORG_USER }}
+      - uses: EvergineTeam/evergine-standards/.github/actions/nuget-publish@v2
+        with:
+          auth-token: ${{ steps.login.outputs.NUGET_API_KEY }}
 
 # Tips:
 # - Uses reusable workflow to check for changes since last successful run
