@@ -234,6 +234,14 @@ namespace Evergine.MRTK.Scenes
                 // Add entities to the main entity
                 mrtkRootEntity.AddChild(leftPhysicalControllerHierarchy);
                 mrtkRootEntity.AddChild(rightPhysicalControllerHierarchy);
+
+                // A tracked hand wins over the controller of its side
+                mrtkRootEntity.AddChild(new Entity(nameof(HandOverControllerPriority))
+                    .AddComponent(new HandOverControllerPriority()
+                    {
+                        LeftControllerRoot = leftPhysicalControllerHierarchy,
+                        RightControllerRoot = rightPhysicalControllerHierarchy,
+                    }));
             }
 
             // Create cursor position updater
