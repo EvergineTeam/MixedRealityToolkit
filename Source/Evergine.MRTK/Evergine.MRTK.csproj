@@ -20,10 +20,10 @@
     <DefineConstants>TRACE</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Evergine.Common" Version="2026.11.8.187-nightly" />
-    <PackageReference Include="Evergine.Components" Version="2026.11.8.187-nightly" />
-    <PackageReference Include="Evergine.Framework" Version="2026.11.8.187-nightly" />
-    <PackageReference Include="Evergine.Mathematics" Version="2026.11.8.187-nightly" />
+    <PackageReference Include="Evergine.Common" Version="2026.11.9.188-nightly" />
+    <PackageReference Include="Evergine.Components" Version="2026.11.9.188-nightly" />
+    <PackageReference Include="Evergine.Framework" Version="2026.11.9.188-nightly" />
+    <PackageReference Include="Evergine.Mathematics" Version="2026.11.9.188-nightly" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\LICENSE">
