@@ -11,12 +11,12 @@
     <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Evergine.Android" Version="2026.11.9.188-nightly" />
-    <PackageReference Include="Evergine.Vulkan" Version="2026.11.9.188-nightly" />
-    <PackageReference Include="Evergine.OpenXR" Version="2026.11.9.188-nightly" />
-    <PackageReference Include="Evergine.OpenAL" Version="2026.11.9.188-nightly" />
-    <PackageReference Include="Evergine.Targets" Version="2026.11.9.188-nightly" />
-    <PackageReference Include="Evergine.Targets.Android" Version="2026.11.9.188-nightly" />
+    <PackageReference Include="Evergine.Android" Version="2026.11.12.8" />
+    <PackageReference Include="Evergine.Vulkan" Version="2026.11.12.8" />
+    <PackageReference Include="Evergine.OpenXR" Version="2026.11.12.8" />
+    <PackageReference Include="Evergine.OpenAL" Version="2026.11.12.8" />
+    <PackageReference Include="Evergine.Targets" Version="2026.11.12.8" />
+    <PackageReference Include="Evergine.Targets.Android" Version="2026.11.12.8" />
     <PackageReference Include="Evergine.OpenXR.Natives.AndroidXR" Version="2026.10.28.3" />
   </ItemGroup>
   <ItemGroup>
