@@ -29,7 +29,7 @@ jobs:
       build-configuration: "Release"                                  # Build configuration
       dotnet-version: "10.0.x"                                        # .NET version
       storage-account-name: "everginestudio"                          # Azure Storage account
-      storage-container-name: "pkg-preview"                           # Azure Storage container
+      storage-container-name: "pkg-stable"                            # Azure Storage container
       publish-packages: ${{ !inputs.skip-assets-publishing }}        # Publish both NuGet packages and .wepkg assets
       enable-email-notifications: true                               # Send email on failure
     secrets:
